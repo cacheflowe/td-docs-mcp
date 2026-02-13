@@ -1,0 +1,45 @@
+[project]
+name = "td-mcp"
+version = "0.1.0"
+description = "MCP server providing TouchDesigner documentation to AI coding assistants"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "TD-MCP Contributors" }
+]
+keywords = ["touchdesigner", "mcp", "documentation", "ai", "coding-assistant"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "mcp>=1.0.0",
+    "crawl4ai>=0.4.0",
+    "thefuzz>=0.22.0",
+    "aiofiles>=24.0.0",
+]
+
+[project.scripts]
+td-mcp = "td_mcp.server:main"
+td-mcp-crawl = "td_mcp.crawler:main"
+td-mcp-clean = "td_mcp.cleaner:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/td_mcp"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+]
