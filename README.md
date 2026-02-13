@@ -9,6 +9,19 @@ An MCP (Model Context Protocol) server that provides TouchDesigner documentation
 - **Python Class Lookup**: Quick access to TouchDesigner Python API documentation
 - **MCP Integration**: Works with Claude Code, Claude Desktop, VS Code + Copilot, Cursor, and other MCP-compatible tools
 
+## Using MCP effectively with VS Code + Copilot
+
+The MCP tools are reactive — Copilot calls them when it thinks they're relevant. To get the most out of them:
+
+- Be explicit in your prompts about TouchDesigner context. Instead of "how do I blur an image", say "I'm working in a TouchDesigner DAT execute script and need to change the size parameter on a Blur TOP via Python." This triggers Copilot to search the docs rather than hallucinate.
+- Ask it to look things up before writing code. Something like "Look up the Blur TOP parameters and its Python class, then write a script that..." forces two MCP calls before any code generation.
+- Key use cases where the docs prevent hallucination:
+  - Parameter names — TD parameters have specific identifiers (moviefilein1.par.file not .filename). The docs have every ParamName `identifier` listed.
+  - Python class methods — knowing what's on scriptCHOP_Class vs CHOP_Class vs OP_Class prevents invented method names
+  - Callback signatures — DAT execute, CHOP execute, Panel execute all have specific callback signatures that AI tools frequently get wrong
+  - Node wiring — which operators accept which inputs, and how many, is documented in "Operator Inputs/Outputs" sections
+  - Cooking behavior — when things cook, time slicing, etc. — stuff AI models confidently fabricate
+
 ## Quick Start
 
 ### Prerequisites

@@ -161,3 +161,35 @@ op('table1')['rowName', 'colName'].val  # By names
 3. **Recommend callbacks over polling** when waiting for events
 4. **Consider cook order** when suggesting network structures
 5. **Test parameter names** - TouchDesigner parameter names are case-sensitive and use camelCase
+
+## See Also
+
+### Python Reference
+- [td-python-patterns.md](td-python-patterns.md) — Code patterns by task (DAT tables, CHOP channels, SOP geometry, extensions, storage, time)
+- [td-common-mistakes.md](td-common-mistakes.md) — Mistake/correction pairs for anti-hallucination
+- [td-snippets.md](td-snippets.md) — Small utility snippets (debugging, string formatting, connectors)
+- [td-python-style.md](td-python-style.md) — Python coding conventions (naming, type hints, file org)
+- [td-delayed-calls.md](td-delayed-calls.md) — `run()` patterns for delayed execution
+
+### Architecture
+- [td-oop.md](td-oop.md) — OOP concepts in TD (COMPs as classes, cloning, global refs)
+- [td-extension-template.md](td-extension-template.md) — Full extension template with StorageManager and lifecycle
+- [td-replicator.md](td-replicator.md) — Replicator COMP patterns
+
+### GLSL
+- [td-glsl.md](td-glsl.md) — GLSL reference (built-in uniforms, functions, samplers, snippets)
+
+### Environment and Infrastructure
+- [td-python-environment.md](td-python-environment.md) — External modules (conda, venv, sys.path, tdPyEnvManager)
+- [td-threading.md](td-threading.md) — Threading patterns (queues, subprocess, main-thread safety)
+- [td-ml.md](td-ml.md) — Machine learning (ONNX, PyTorch, model repos)
+
+### AI Prompts
+- [prompt-python-cleanup.md](prompt-python-cleanup.md) — AI prompt for cleaning up TD Python code
+- [prompt-glsl-cleanup.md](prompt-glsl-cleanup.md) — AI prompt for cleaning up TD GLSL code
+
+### Setup
+- [copilot-instructions.md](../config/copilot-instructions.md) — Template for `.github/copilot-instructions.md`
+
+### Learning
+- [td-resources.md](td-resources.md) — Curated tutorials, YouTube channels, and references
