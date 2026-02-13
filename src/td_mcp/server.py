@@ -166,6 +166,44 @@ def list_categories() -> list[dict]:
     return sorted(categories, key=lambda x: x["name"])
 
 
+def find_class_doc_for_operator(operator_path: str) -> tuple[str | None, str | None]:
+    """
+    Find the Python class doc that corresponds to an operator doc.
+    Returns (content, relative_path) or (None, None).
+
+    E.g., 'TOPs/Blur_TOP.md' -> looks for 'TOPs/BlurTOP_Class.md'
+    """
+    docs_dir = get_docs_dir()
+    path = Path(operator_path)
+
+    # Don't look for class docs of class docs
+    if "_Class" in path.stem:
+        return None, None
+
+    # Derive expected class filename by removing underscores from operator stem
+    # e.g., "Blur_TOP" -> "BlurTOP_Class.md"
+    stem = path.stem
+    class_filename_lower = (stem.replace("_", "") + "_Class.md").lower()
+
+    # Look in the same category directory (case-insensitive)
+    parent_dir = docs_dir / path.parent
+    if parent_dir.exists():
+        for f in parent_dir.iterdir():
+            if f.is_file() and f.name.lower() == class_filename_lower:
+                rel = str(f.relative_to(docs_dir))
+                return read_doc(rel), rel
+
+    # Fallback: check the Python directory
+    python_dir = docs_dir / "Python"
+    if python_dir.exists():
+        for f in python_dir.iterdir():
+            if f.is_file() and f.name.lower() == class_filename_lower:
+                rel = str(f.relative_to(docs_dir))
+                return read_doc(rel), rel
+
+    return None, None
+
+
 def get_python_class(class_name: str) -> str | None:
     """
     Get Python class documentation by class name.
@@ -238,7 +276,9 @@ async def list_tools() -> list[Tool]:
             name="read_operator_doc",
             description=(
                 "Read a specific TouchDesigner documentation file by path. "
-                "Use the path returned from search_touchdesigner_docs."
+                "Use the path returned from search_touchdesigner_docs. "
+                "By default, also includes the associated Python class "
+                "documentation if it exists (e.g., BlurTOP_Class for Blur_TOP)."
             ),
             inputSchema={
                 "type": "object",
@@ -246,6 +286,11 @@ async def list_tools() -> list[Tool]:
                     "path": {
                         "type": "string",
                         "description": "Relative path to the documentation file (e.g., 'TOPs/Noise_TOP.md')"
+                    },
+                    "include_python_class": {
+                        "type": "boolean",
+                        "description": "Also include the Python class doc for this operator (default: true)",
+                        "default": True
                     }
                 },
                 "required": ["path"]
@@ -306,8 +351,9 @@ Available tools:
      query: "moviefileinTOP"
      query: "Python OP class"
 
-2. read_operator_doc(path)
+2. read_operator_doc(path, include_python_class=true)
    Read a specific doc file by its relative path (from search results).
+   Automatically includes the Python class doc if one exists.
    Example:
      path: "TOPs/Noise_TOP.md"
 
@@ -360,6 +406,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
 
     elif name == "read_operator_doc":
         path = arguments.get("path", "")
+        include_python_class = arguments.get("include_python_class", True)
 
         content = read_doc(path)
 
@@ -368,6 +415,16 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
                 type="text",
                 text=f"Documentation file not found: {path}"
             )]
+
+        # Append Python class documentation if available
+        if include_python_class:
+            class_content, class_path = find_class_doc_for_operator(path)
+            if class_content:
+                content += f"\n\n---\n\n# Python Class Documentation\n\n*Source: {class_path}*\n\n{class_content}"
+                # Re-apply truncation to combined content
+                if len(content) > MAX_CONTENT_LENGTH:
+                    content = content[:MAX_CONTENT_LENGTH]
+                    content += f"\n\n[Content truncated at {MAX_CONTENT_LENGTH} characters]"
 
         return [TextContent(type="text", text=content)]
 
