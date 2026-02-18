@@ -548,12 +548,10 @@ Returns the number of operators contained recursively within this operator. Only
 The operator finder object, for accessing operators through paths or shortcuts. **Note:** a version of this method that searches relative to '/' is also in the global [td module](https://docs.derivative.ca/Td_Module "Td Module").
 `**op(pattern1, pattern2..., includeUtility=False)**`→`OP[](https://docs.derivative.ca/OP_Class "OP Class") or None`
 
->> Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
+Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
 
   * `pattern` - Can be string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which OP to return, or an integer, which must be an OP Id. Multiple patterns can be given, the first matching OP will be returned.
   * `includeUtility` **(Optional)** - if True, allow [Utility nodes](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates") to be returned. If False, Utility operators will be ignored.
-
->>
 
 ```
 b = op('project1')

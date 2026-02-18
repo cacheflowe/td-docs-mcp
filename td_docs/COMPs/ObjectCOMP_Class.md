@@ -550,13 +550,9 @@ Returns the number of operators contained recursively within this operator. Only
 `op` → `OPShortcut` **(Read Only)** :
 The operator finder object, for accessing operators through paths or shortcuts. **Note:** a version of this method that searches relative to '/' is also in the global [td module](https://docs.derivative.ca/Td_Module "Td Module").
 `**op(pattern1, pattern2..., includeUtility=False)**`→`OP[](https://docs.derivative.ca/OP_Class "OP Class") or None`
-
->> Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
-
+Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
   * `pattern` - Can be string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which OP to return, or an integer, which must be an OP Id. Multiple patterns can be given, the first matching OP will be returned.
   * `includeUtility` **(Optional)** - if True, allow [Utility nodes](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates") to be returned. If False, Utility operators will be ignored.
-
->>
 
 ```
 b = op('project1')
@@ -567,19 +563,15 @@ b = op(154)
 ```
 
 `**op.shortcut**`→`OP`
-
->>     An operator specified with by a [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut"). If no operator exists an exception is raised. These shortcuts are global, and must be unique. That is, cutting and pasting an operator with a Global OP Shortcut specified will lead to a name conflict. One shortcut must be renamed in that case. Furthermore, only components can be given Global OP Shortcuts.
-
+    An operator specified with by a [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut"). If no operator exists an exception is raised. These shortcuts are global, and must be unique. That is, cutting and pasting an operator with a Global OP Shortcut specified will lead to a name conflict. One shortcut must be renamed in that case. Furthermore, only components can be given Global OP Shortcuts.
   * `shortcut` - Corresponds to the Global OP Shortcut parameter specified in the target operator.
-
->>
 
 ```
 b = op.Videoplayer
 
 ```
 
->> To list all Global OP Shortcuts:
+To list all Global OP Shortcuts:
 
 ```
 for x in op:
@@ -590,24 +582,16 @@ for x in op:
 `opex` → `OPEXShortcut` **(Read Only)** :
 An operator finder object, for accessing operators through paths or shortcuts. Works like the op() shortcut method, except it will raise an exception if it fails to find the node instead of returning None as op() does. This is now the recommended way to get nodes in parameter expressions, as the error will be more useful than, for example, `NoneType has no attribute "par"`, that is often seen when using op(). **Note:** a version of this method that searches relative to '/' is also in the global [td module](https://docs.derivative.ca/Td_Module "Td Module").
 `**op(pattern1, pattern2..., includeUtility=False)**`→`OP[](https://docs.derivative.ca/OP_Class "OP Class")`
-
->> Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
-
+Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
   * `pattern` - Can be string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which OP to return, or an integer, which must be an OP Id. Multiple patterns can be given, the first matching OP will be returned.
   * `includeUtility` **(Optional)** - if True, allow [Utility nodes](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates") to be returned. If False, Utility operators will be ignored.
-
->>
 
 `parent` → `ParentShortcut` **(Read Only)** :
 The [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") object, for accessing parent components through indices or shortcuts.
 **Note:** _a version of this method that searches relative to the current operator is also in the global[td module](https://docs.derivative.ca/Td_Module "Td Module")._
 `parent(n)` → `OP or None`
-
->> The nth parent of this operator. If n not specified, returns the parent. If n = 2, returns the parent of the parent, etc. If no parent exists at that level, None is returned.
-
+The nth parent of this operator. If n not specified, returns the parent. If n = 2, returns the parent of the parent, etc. If no parent exists at that level, None is returned.
   * n - (Optional) n is the number of levels up to climb. When n = 1 it will return the operator's parent.
-
->>
 
 ```
 p = parent(2) #grandfather
@@ -615,19 +599,15 @@ p = parent(2) #grandfather
 ```
 
 `parent.shortcut` → `OP`
-
->> A parent component specified with a shortcut. If no parent exists an exception is raised.
-
+A parent component specified with a shortcut. If no parent exists an exception is raised.
   * shortcut - Corresponds to the [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") parameter specified in the target parent.
-
->>
 
 ```
 n = parent.Videoplayer
 
 ```
 
->> See also Parent Shortcut for more examples.
+See also Parent Shortcut for more examples.
 
 `iop` → `IOPShortcut` **(Read Only)** :
 The Internal Operator Shortcut object, for accessing internal shortcuts. See also [Internal Operators](https://docs.derivative.ca/Internal_Operators "Internal Operators"). **Note:** a version of this method that searches relative to the current operator is also in the global [td Module](https://docs.derivative.ca/Td_Module "Td Module").

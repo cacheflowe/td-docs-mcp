@@ -140,11 +140,12 @@ async def crawl_page(
     crawler: AsyncWebCrawler,
     url: str,
     output_dir: Path,
-    category: str
+    category: str,
+    filename_override: str | None = None,
 ) -> bool:
     """Crawl a single documentation page and save as markdown."""
     page_name = extract_page_name(url)
-    filename = sanitize_filename(page_name) + ".md"
+    filename = filename_override or (sanitize_filename(page_name) + ".md")
 
     # Redirect general/meta pages to the General directory
     if filename in GENERAL_PAGE_FILENAMES:
@@ -320,35 +321,51 @@ async def crawl_python_reference(
     return success_count
 
 
-def extract_class_urls_from_docs(docs_dir: Path) -> list[tuple[str, str]]:
+def extract_class_urls_from_docs(docs_dir: Path) -> list[tuple[str, str, str | None]]:
     """Scan saved operator markdown files for Python class page URLs.
 
     Looks through all .md files in operator category directories (TOPs, CHOPs,
     etc.) for links to *_Class pages on docs.derivative.ca.  Returns a
-    deduplicated list of (url, category) tuples so each class file can be saved
-    alongside the operator that references it.
+    deduplicated list of (url, category, operator_stem) tuples so each class
+    file can be saved alongside the operator that references it.
+
+    When a class name matches its containing operator (e.g. BlurTOP_Class found
+    in Blur_TOP.md), operator_stem is set (e.g. "Blur_TOP") so the class file
+    can be named Blur_TOP_Class.md.  Otherwise operator_stem is None.
     """
     operator_dirs = {"TOPs", "CHOPs", "DATs", "SOPs", "POPs", "MATs", "COMPs"}
     pattern = re.compile(r"https://docs\.derivative\.ca/(\w+_Class)")
-    seen: set[str] = set()
-    results: list[tuple[str, str]] = []
+    # Map url -> (category, operator_stem) — prefer entries with a stem
+    best: dict[str, tuple[str, str | None]] = {}
 
     for dir_name in operator_dirs:
         cat_dir = docs_dir / dir_name
         if not cat_dir.is_dir():
             continue
         for md_file in cat_dir.glob("*.md"):
+            # Skip existing class files — only scan operator docs
+            if "_Class" in md_file.stem:
+                continue
             try:
                 text = md_file.read_text(encoding="utf-8")
             except Exception:
                 continue
+
+            op_stem = md_file.stem  # e.g. "Blur_TOP"
+            op_condensed = op_stem.replace("_", "").lower()  # e.g. "blurtop"
+
             for match in pattern.finditer(text):
                 url = match.group(0)
-                if url not in seen:
-                    seen.add(url)
-                    results.append((url, dir_name))
+                class_name = match.group(1)  # e.g. "BlurTOP_Class"
+                class_base = class_name.replace("_Class", "").lower()  # e.g. "blurtop"
 
-    return results
+                # Check if the class matches this operator
+                stem_for_entry = op_stem if class_base == op_condensed else None
+
+                if url not in best or (stem_for_entry and not best[url][1]):
+                    best[url] = (dir_name, stem_for_entry)
+
+    return [(url, cat, stem) for url, (cat, stem) in best.items()]
 
 
 async def crawl_operator_classes(
@@ -359,8 +376,8 @@ async def crawl_operator_classes(
     """Crawl operator-specific Python class pages discovered in saved docs.
 
     Each class file is saved into the same category directory as the operator
-    that references it (e.g. BlurTOP_Class.md sits alongside Blur_TOP.md in
-    TOPs/).
+    that references it.  When the class name matches its operator, the file is
+    named to match (e.g. Blur_TOP_Class.md alongside Blur_TOP.md in TOPs/).
     """
     print("\nCrawling operator Python class pages")
 
@@ -371,12 +388,13 @@ async def crawl_operator_classes(
     print(f"  Found {len(entries)} class URLs in operator docs")
 
     success_count = 0
-    for i, (url, category) in enumerate(entries):
+    for i, (url, category, op_stem) in enumerate(entries):
         page_name = extract_page_name(url)
+        filename_override = f"{op_stem}_Class.md" if op_stem else None
         print(f"  [{i+1}/{len(entries)}] {page_name} -> {category}", end="")
 
         output_dir = docs_dir / category
-        success = await crawl_page(crawler, url, output_dir, category)
+        success = await crawl_page(crawler, url, output_dir, category, filename_override)
         if success:
             success_count += 1
             print(" ✓")
@@ -449,10 +467,14 @@ async def retry_failed(output_dir: Path):
             print(f"  [{i+1}/{len(failed)}] {page_name}", end="")
 
             # Delete the failed file so crawl_page doesn't skip it
+            original_name = file_path.name
             file_path.unlink()
 
             category_dir = output_dir / category
-            success = await crawl_page(crawler, url, category_dir, category)
+            success = await crawl_page(
+                crawler, url, category_dir, category,
+                filename_override=original_name,
+            )
             if success:
                 success_count += 1
                 print(" ✓")

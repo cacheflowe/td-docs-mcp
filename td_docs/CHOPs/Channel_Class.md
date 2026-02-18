@@ -7,7 +7,6 @@ title: Channel_Class
 # Channel Class
 A Channel object describes a single [channel](https://docs.derivative.ca/Channel "Channel") from a [CHOP](https://docs.derivative.ca/CHOP "CHOP"). The [CHOP Class](https://docs.derivative.ca/CHOP_Class "CHOP Class") provides many ways of accessing its individual channels. See [Working with CHOPs in Python](https://docs.derivative.ca/Working_with_CHOPs_in_Python "Working with CHOPs in Python") for more examples of how to use this class.
 
-
 ## Members
 `valid` → `bool` **(Read Only)** :
 True if the referenced chanel value currently exists, False if it has been deleted.

@@ -171,7 +171,8 @@ def find_class_doc_for_operator(operator_path: str) -> tuple[str | None, str | N
     Find the Python class doc that corresponds to an operator doc.
     Returns (content, relative_path) or (None, None).
 
-    E.g., 'TOPs/Blur_TOP.md' -> looks for 'TOPs/BlurTOP_Class.md'
+    E.g., 'TOPs/Blur_TOP.md' -> looks for 'TOPs/Blur_TOP_Class.md'
+    Falls back to old condensed naming (BlurTOP_Class.md) for unrenamed files.
     """
     docs_dir = get_docs_dir()
     path = Path(operator_path)
@@ -180,13 +181,17 @@ def find_class_doc_for_operator(operator_path: str) -> tuple[str | None, str | N
     if "_Class" in path.stem:
         return None, None
 
-    # Derive expected class filename by removing underscores from operator stem
-    # e.g., "Blur_TOP" -> "BlurTOP_Class.md"
     stem = path.stem
-    class_filename_lower = (stem.replace("_", "") + "_Class.md").lower()
-
-    # Look in the same category directory (case-insensitive)
     parent_dir = docs_dir / path.parent
+
+    # Primary: new naming — Blur_TOP.md -> Blur_TOP_Class.md
+    class_path = parent_dir / (stem + "_Class.md")
+    if class_path.exists():
+        rel = str(class_path.relative_to(docs_dir))
+        return read_doc(rel), rel
+
+    # Fallback: old condensed naming (case-insensitive) for any unrenamed files
+    class_filename_lower = (stem.replace("_", "") + "_Class.md").lower()
     if parent_dir.exists():
         for f in parent_dir.iterdir():
             if f.is_file() and f.name.lower() == class_filename_lower:
