@@ -27,6 +27,8 @@ if sys.platform == "win32":
         except Exception:
             pass
 
+from enum import Enum
+
 import aiofiles
 
 # Crawl4AI imports
@@ -47,6 +49,9 @@ OPERATOR_CATEGORIES = {
 	"POPs": "/Category:POPs",
     "MATs": "/Category:MATs",
     "COMPs": "/Category:COMPs",
+    "Learn": "/Learn_TouchDesigner",
+    "Interoperability": "/Interoperability",
+    "Glossary": "/TouchDesigner_Glossary",
 }
 
 # Python reference sections - use TouchDesigner_Python_Classes as primary source
@@ -62,7 +67,6 @@ GENERAL_PAGE_FILENAMES = {
     "Tutorials.md",
     "Derivative_About.md",
     "Derivative_General_disclaimer.md",
-    "Derivative_Privacy_policy.md",
     "Frequently_Asked_Questions.md",
     "Interoperability.md",
     "Learn_TouchDesigner.md",
@@ -72,10 +76,26 @@ GENERAL_PAGE_FILENAMES = {
     "Operator.md",
 }
 
+# Pages that should never be crawled.  Add page names here (without .md) to
+# permanently skip them.  Matched against the extracted page name from the URL.
+SKIP_PAGES = {
+    "Derivative:Privacy_policy",
+    "Derivative:General_disclaimer",
+}
+
 # Rate limiting
 REQUEST_DELAY = 0.5  # seconds between requests
 RETRY_ATTEMPTS = 3
 RETRY_BASE_DELAY = 5  # seconds, doubles each attempt
+
+
+class CrawlStatus(Enum):
+    """Result status for a single page crawl."""
+    NEW = "new"              # File created for the first time
+    UPDATED = "updated"      # Existing file replaced with new content
+    UNCHANGED = "unchanged"  # Existing file content identical, no write
+    SKIPPED = "skipped"      # File exists and force=False, not crawled
+    FAILED = "failed"        # Crawl failed after retries
 
 
 def sanitize_filename(name: str) -> str:
@@ -145,14 +165,23 @@ async def crawl_page(
     output_dir: Path,
     category: str,
     filename_override: str | None = None,
-) -> bool:
-    """Crawl a single documentation page and save as markdown."""
+    force: bool = False,
+) -> CrawlStatus:
+    """Crawl a single documentation page and save as markdown.
+
+    Returns a CrawlStatus indicating whether the page was newly created,
+    updated, unchanged, skipped, or failed.
+    """
     page_name = extract_page_name(url)
 
     # Strip "Experimental:" prefix — these are regular operators that happen
     # to be flagged as experimental on the wiki.  Removing the prefix ensures
     # the saved filename matches the corresponding _Class file.
     page_name = re.sub(r'^Experimental:', '', page_name)
+
+    # Skip pages that should never be crawled
+    if page_name in SKIP_PAGES:
+        return CrawlStatus.SKIPPED
 
     filename = filename_override or (sanitize_filename(page_name) + ".md")
 
@@ -164,9 +193,11 @@ async def crawl_page(
 
     output_path = output_dir / filename
 
-    # Skip if already exists (resume capability)
-    if output_path.exists():
-        return True
+    # Skip if already exists and not forcing a re-crawl
+    if output_path.exists() and not force:
+        return CrawlStatus.SKIPPED
+
+    file_existed = output_path.exists()
 
     config = CrawlerRunConfig(
         wait_until="domcontentloaded",
@@ -183,7 +214,7 @@ async def crawl_page(
                 await asyncio.sleep(delay)
                 continue
             print(f"    Failed: {page_name}")
-            return False
+            return CrawlStatus.FAILED
 
         markdown_content = result.markdown or ""
         markdown_content = clean_markdown(markdown_content)
@@ -197,7 +228,7 @@ async def crawl_page(
             await asyncio.sleep(delay)
         else:
             print(f"    Failed after {RETRY_ATTEMPTS} attempts: {page_name}")
-            return False
+            return CrawlStatus.FAILED
 
     # Detect MediaWiki redirect stubs and follow the target URL.
     # Some _Class pages redirect to Experimental: versions of themselves.
@@ -228,11 +259,20 @@ title: {page_name}
     is_python_doc = category == "Python" or "_Class" in filename
     full_content = clean_td_markdown(full_content, is_python_doc=is_python_doc)
 
+    # When re-crawling, compare content and skip write if unchanged
+    if file_existed:
+        try:
+            existing = output_path.read_text(encoding="utf-8")
+            if existing == full_content:
+                return CrawlStatus.UNCHANGED
+        except Exception:
+            pass  # If we can't read the old file, overwrite it
+
     # Save to file
     async with aiofiles.open(output_path, 'w', encoding='utf-8') as f:
         await f.write(full_content)
 
-    return True
+    return CrawlStatus.UPDATED if file_existed else CrawlStatus.NEW
 
 
 def clean_markdown(content: str) -> str:
@@ -260,13 +300,40 @@ def clean_markdown(content: str) -> str:
     return '\n'.join(cleaned_lines).strip()
 
 
+# Status indicators for crawl results
+_STATUS_SYMBOLS = {
+    CrawlStatus.NEW: " \u2713 new",
+    CrawlStatus.UPDATED: " \u2713 updated",
+    CrawlStatus.UNCHANGED: " \u00b7 unchanged",
+    CrawlStatus.SKIPPED: " \u00b7 skipped",
+    CrawlStatus.FAILED: " \u2717",
+}
+
+
+def _count_successes(counts: dict[CrawlStatus, int]) -> int:
+    """Return the number of pages that were successfully processed."""
+    return counts.get(CrawlStatus.NEW, 0) + counts.get(CrawlStatus.UPDATED, 0) + counts.get(CrawlStatus.UNCHANGED, 0) + counts.get(CrawlStatus.SKIPPED, 0)
+
+
+def _print_crawl_summary(counts: dict[CrawlStatus, int]) -> None:
+    """Print a summary line from crawl status counts."""
+    parts = []
+    for status in (CrawlStatus.NEW, CrawlStatus.UPDATED, CrawlStatus.UNCHANGED, CrawlStatus.SKIPPED, CrawlStatus.FAILED):
+        n = counts.get(status, 0)
+        if n:
+            parts.append(f"{n} {status.value}")
+    if parts:
+        print(f"  Summary: {', '.join(parts)}")
+
+
 async def crawl_category(
     crawler: AsyncWebCrawler,
     category_name: str,
     category_path: str,
     output_base: Path,
-    limit: int | None = None
-) -> int:
+    limit: int | None = None,
+    force: bool = False,
+) -> dict[CrawlStatus, int]:
     """Crawl all pages in a category."""
     print(f"\nCrawling category: {category_name}")
 
@@ -282,22 +349,21 @@ async def crawl_category(
 
     print(f"  Found {len(links)} pages to crawl")
 
-    success_count = 0
+    counts: dict[CrawlStatus, int] = {}
     for i, url in enumerate(links):
         page_name = extract_page_name(url)
         print(f"  [{i+1}/{len(links)}] {page_name}", end="")
 
-        success = await crawl_page(crawler, url, output_dir, category_name)
-        if success:
-            success_count += 1
-            print(" ✓")
-        else:
-            print(" ✗")
+        status = await crawl_page(crawler, url, output_dir, category_name, force=force)
+        counts[status] = counts.get(status, 0) + 1
+        print(_STATUS_SYMBOLS[status])
 
-        # Rate limiting
-        await asyncio.sleep(REQUEST_DELAY)
+        # Rate limiting (skip delay for pages we didn't fetch)
+        if status not in (CrawlStatus.SKIPPED,):
+            await asyncio.sleep(REQUEST_DELAY)
 
-    return success_count
+    _print_crawl_summary(counts)
+    return counts
 
 
 async def crawl_python_reference(
@@ -305,8 +371,9 @@ async def crawl_python_reference(
     section_name: str,
     section_path: str,
     output_base: Path,
-    limit: int | None = None
-) -> int:
+    limit: int | None = None,
+    force: bool = False,
+) -> dict[CrawlStatus, int]:
     """Crawl Python reference documentation."""
     print(f"\nCrawling Python reference: {section_name}")
 
@@ -315,7 +382,9 @@ async def crawl_python_reference(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # First, crawl the main reference page
-    await crawl_page(crawler, section_url, output_dir, section_name)
+    counts: dict[CrawlStatus, int] = {}
+    main_status = await crawl_page(crawler, section_url, output_dir, section_name, force=force)
+    counts[main_status] = counts.get(main_status, 0) + 1
 
     # Get all links from the reference page
     links = await get_links_from_category(crawler, section_url)
@@ -331,21 +400,19 @@ async def crawl_python_reference(
 
     print(f"  Found {len(python_links)} Python pages to crawl")
 
-    success_count = 1  # Count the main page
     for i, url in enumerate(python_links):
         page_name = extract_page_name(url)
         print(f"  [{i+1}/{len(python_links)}] {page_name}", end="")
 
-        success = await crawl_page(crawler, url, output_dir, section_name)
-        if success:
-            success_count += 1
-            print(" ✓")
-        else:
-            print(" ✗")
+        status = await crawl_page(crawler, url, output_dir, section_name, force=force)
+        counts[status] = counts.get(status, 0) + 1
+        print(_STATUS_SYMBOLS[status])
 
-        await asyncio.sleep(REQUEST_DELAY)
+        if status not in (CrawlStatus.SKIPPED,):
+            await asyncio.sleep(REQUEST_DELAY)
 
-    return success_count
+    _print_crawl_summary(counts)
+    return counts
 
 
 def extract_class_urls_from_docs(
@@ -409,7 +476,8 @@ async def crawl_operator_classes(
     docs_dir: Path,
     limit: int | None = None,
     categories: list[str] | None = None,
-) -> int:
+    force: bool = False,
+) -> dict[CrawlStatus, int]:
     """Crawl operator-specific Python class pages discovered in saved docs.
 
     Each class file is saved into the same category directory as the operator
@@ -424,23 +492,22 @@ async def crawl_operator_classes(
 
     print(f"  Found {len(entries)} class URLs in operator docs")
 
-    success_count = 0
+    counts: dict[CrawlStatus, int] = {}
     for i, (url, category, op_stem) in enumerate(entries):
         page_name = extract_page_name(url)
         filename_override = f"{op_stem}_Class.md" if op_stem else None
         print(f"  [{i+1}/{len(entries)}] {page_name} -> {category}", end="")
 
         output_dir = docs_dir / category
-        success = await crawl_page(crawler, url, output_dir, category, filename_override)
-        if success:
-            success_count += 1
-            print(" ✓")
-        else:
-            print(" ✗")
+        status = await crawl_page(crawler, url, output_dir, category, filename_override, force=force)
+        counts[status] = counts.get(status, 0) + 1
+        print(_STATUS_SYMBOLS[status])
 
-        await asyncio.sleep(REQUEST_DELAY)
+        if status not in (CrawlStatus.SKIPPED,):
+            await asyncio.sleep(REQUEST_DELAY)
 
-    return success_count
+    _print_crawl_summary(counts)
+    return counts
 
 
 def find_failed_files(output_dir: Path) -> list[tuple[Path, str, str]]:
@@ -508,15 +575,13 @@ async def retry_failed(output_dir: Path):
             file_path.unlink()
 
             category_dir = output_dir / category
-            success = await crawl_page(
+            status = await crawl_page(
                 crawler, url, category_dir, category,
                 filename_override=original_name,
             )
-            if success:
+            if status != CrawlStatus.FAILED:
                 success_count += 1
-                print(" ✓")
-            else:
-                print(" ✗")
+            print(_STATUS_SYMBOLS[status])
 
             await asyncio.sleep(REQUEST_DELAY)
 
@@ -537,11 +602,14 @@ async def run_crawler(
     limit: int | None = None,
     skip_classes: bool = False,
     classes_only: bool = False,
+    force: bool = False,
 ):
     """Main crawler entry point."""
     print("TouchDesigner Documentation Crawler")
     print("=" * 40)
     print(f"Output directory: {output_dir}")
+    if force:
+        print("Mode: force re-crawl (checking for updates)")
 
     browser_config = BrowserConfig(
         headless=True,
@@ -549,32 +617,37 @@ async def run_crawler(
     )
 
     async with AsyncWebCrawler(config=browser_config, verbose=False) as crawler:
-        total_pages = 0
+        totals: dict[CrawlStatus, int] = {}
 
         if not classes_only:
             # Crawl operator categories
             for cat_name, cat_path in OPERATOR_CATEGORIES.items():
                 if categories is None or cat_name in categories:
-                    count = await crawl_category(
-                        crawler, cat_name, cat_path, output_dir, limit
+                    counts = await crawl_category(
+                        crawler, cat_name, cat_path, output_dir, limit, force
                     )
-                    total_pages += count
+                    for status, n in counts.items():
+                        totals[status] = totals.get(status, 0) + n
 
             # Crawl Python reference
             for section_name, section_path in PYTHON_SECTIONS.items():
                 if categories is None or section_name in categories or "Python" in (categories or []):
-                    count = await crawl_python_reference(
-                        crawler, section_name, section_path, output_dir, limit
+                    counts = await crawl_python_reference(
+                        crawler, section_name, section_path, output_dir, limit, force
                     )
-                    total_pages += count
+                    for status, n in counts.items():
+                        totals[status] = totals.get(status, 0) + n
 
         # Crawl operator-specific Python class pages found in saved docs
         if not skip_classes:
-            count = await crawl_operator_classes(crawler, output_dir, limit, categories)
-            total_pages += count
+            counts = await crawl_operator_classes(crawler, output_dir, limit, categories, force)
+            for status, n in counts.items():
+                totals[status] = totals.get(status, 0) + n
 
         print("\n" + "=" * 40)
-        print(f"Crawling complete! Total pages saved: {total_pages}")
+        total_success = _count_successes(totals)
+        print(f"Crawling complete! {total_success} pages processed")
+        _print_crawl_summary(totals)
 
 
 def main():
@@ -614,6 +687,11 @@ def main():
         action="store_true",
         help="Only crawl operator-specific Python class pages (skip stages 1 & 2)"
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-crawl all pages even if they already exist, updating any that changed"
+    )
 
     args = parser.parse_args()
 
@@ -623,7 +701,7 @@ def main():
         else:
             asyncio.run(run_crawler(
                 args.output, args.categories, args.limit,
-                args.skip_classes, args.classes_only,
+                args.skip_classes, args.classes_only, args.force,
             ))
     except KeyboardInterrupt:
         print("\nCrawling interrupted by user")

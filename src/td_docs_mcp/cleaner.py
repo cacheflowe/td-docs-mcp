@@ -435,8 +435,6 @@ def relocate_general_files(docs_dir: Path, dry_run: bool = False) -> int:
         "TouchDesigner_Python_Classes.md",
         "Tutorials.md",
         "Derivative_About.md",
-        "Derivative_General_disclaimer.md",
-        "Derivative_Privacy_policy.md",
         "Frequently_Asked_Questions.md",
         "Interoperability.md",
         "Learn_TouchDesigner.md",

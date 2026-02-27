@@ -1,6 +1,6 @@
 ---
 url: https://docs.derivative.ca/Tutorials
-category: CHOPs
+category: General
 title: Tutorials
 ---
 
@@ -81,6 +81,7 @@ The [Operator Families](https://docs.derivative.ca/Operator "Operator").
 **[Time Slicing](https://docs.derivative.ca/Time_Slicing_Vid "Time Slicing Vid")** - An in-depth look at CHOP sample ranges and CHOPs most powerful feature, [Time Slicing](https://docs.derivative.ca/Time_Slicing "Time Slicing")!
 **[Using an iPhone with TouchDesigner](https://docs.derivative.ca/IPhone_OSC_Vid "IPhone OSC Vid")** - This video show you how to connect an iPhone, iPod, or iPad to TouchDesigner through OSC. The iOS app [TouchOSC](http://hexler.net/software/touchosc) is used in this tutorial but any OSC-capable application can communicate with TouchDesigner using these techniques.
 **[In 5 Minutes Series](https://docs.derivative.ca/In_5_Minutes "In 5 Minutes")** - For a true blast from the past, check out this series of classic tutorials from Russ Haines that show you how to make something in TouchDesigner in about 5 minutes.
+
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

@@ -1,6 +1,6 @@
 ---
 url: https://docs.derivative.ca/Release_Notes
-category: CHOPs
+category: General
 title: Release_Notes
 ---
 
@@ -14,6 +14,7 @@ See our **[2025 Official Announcement](https://derivative.ca/community-post/2025
 Please report all issues to the **[Bugs Forum](https://forum.derivative.ca/c/bugs/8)**.
 ##  Backward Compatibility
 We try to make upgrading to new TouchDesigner branches as painless as possible, but sometimes changes are made that are not compatible with the features in older builds. Please review all [Backward Compatibility Issues](https://docs.derivative.ca/Release_Notes/2025.30000#Backward_Compatibility_Issues "Release Notes/2025.30000") as preparation for moving your projects to 2025.30000.
+
 
 ##  Build 2025.32280 Jan 20, 2025
   * Hotfix for 2025.32260, please use this build in place of 2025.32260.
@@ -118,6 +119,8 @@ We try to make upgrading to new TouchDesigner branches as painless as possible, 
   * Fix issue which caused some events to be ignored while an open or save dialog was open on Windows.
   * [macOS](https://docs.derivative.ca/MacOS "MacOS") - Removed the grey border added on macOS 26 for windows without a titlebar.
 
+
+
 ##  Build 2025.32050 Dec 10, 2025
 ###  New Python
   * [TOP Class](https://docs.derivative.ca/TOP_Class "TOP Class").`cudaMemory()` - Added `pixelFormat` keyword argument to specify the pixel format of the CUDA memory block. Useful when colorspace settings force format for TOPs.
@@ -206,6 +209,8 @@ We try to make upgrading to new TouchDesigner branches as painless as possible, 
   * A number of POP snippets were updated.
   * We recommend redownloading [POP Examples Files](https://www.dropbox.com/scl/fo/dvvqnl61dgmicxoebl4sy/AFuNixO4WWcAbyM5KkUi9F4?rlkey=f152v4uuzou81c7477w1yf6im&st=zzro8oie&dl=0) as we continue to update and improve them with each release.
 
+
+
 ##  Build 2025.31760 Nov 17, 2025
 ###  Hotfix for 2025.31740
   * [Feedback TOP](https://docs.derivative.ca/Feedback_TOP "Feedback TOP") - Fixed regression that broke the 'Reset' parameter in 3025.31740.
@@ -280,6 +285,8 @@ We try to make upgrading to new TouchDesigner branches as painless as possible, 
   * Fixed issues correctly displaying double and integer POP attribute overlays.
   * Fixed a problem with nodes not updating their file paths when a parents path behavior changes.
 
+
+
 ##  Build 2025.31550 Oct 30, 2025
 ###  Release Highlights
 ####  Point Operators - POPs
@@ -300,11 +307,14 @@ The [Geometry Viewer](https://docs.derivative.ca/Geometry_Viewer "Geometry Viewe
   * The [Display Options](https://docs.derivative.ca/Display_Options "Display Options") dialog also has new options on the 'POP Overlays' page. Here you'll now find settings for Scale Attribute Overlays, Scale in Screen Space, Thin Attribute Range, and Thin Attribute Percentage.
   * In the 'Grids & Overlays' submenu, you'll find a collection of helpful new overlays, such as bounding box, axis and plane bounding projections, axis scale, and a toggle for grid.
 
+
+
 ####  Hardware Device Support
 #####  New DMX Workflows with POPs
 Data can also flow from POPs directly to other operator families, like Channel Operators (CHOPs) and then on to lasers, DMX or other external systems. While DMX was previously handled in TouchDesigner exclusively by the DMX In and Out CHOPs, we have introduced a set of new DMX POP operators enabling powerful new workflows for lighting, LEDs and anything operating on DMX.
 First we introduce the [DMX Fixture POP](https://docs.derivative.ca/DMX_Fixture_POP "DMX Fixture POP") which lets you setup all the channels in your fixture's profile. Each point and primitive in the DMX Fixture POP's input will represent a copy of this fixture, inherently giving you a position in 3D space for every fixture in your setup. From here, the DMX Fixture POP will construct all the channels and universes required to address all your fixtures. Second, the new [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP") takes one or more DMX Fixture POPs, merges all the universes and sends the data out to your DMX, Art-Net, sACN, KiNET, or FTDI devices. A third new operator, the [DMX Map DAT](https://docs.derivative.ca/DMX_Map_DAT "DMX Map DAT"), is useful for visualizing DMX universe and channel layouts and can be helpful for troubleshooting channel conflicts between DMX fixtures. You'll find a DMX Map DAT docked to every DMX Out POP ready to help.
 Last but not least, a new [Pan Tilt CHOP](https://docs.derivative.ca/Pan_Tilt_CHOP "Pan Tilt CHOP") has been introduced to make it easier to control lighting fixture's pan and tilt controls directly, something that previously wasn't trivial using raw rotational values in CHOPs.
+
 
 #####  Laser Upgrades
   * [Laser CHOP](https://docs.derivative.ca/Laser_CHOP "Laser CHOP") - For this release the laser point generation process was overhauled, with improvements to blanking calculations, image sharpness/uniformity, point repeating, general stability, and taking input directly from POPs. The Laser CHOP was developed with the help of [LaserAnimation Sollinger](https://laseranimation.com/en/) who guided us in speccing and implementing the necessary parameters, especially in regards of the blanking timing settings.
@@ -315,6 +325,8 @@ Last but not least, a new [Pan Tilt CHOP](https://docs.derivative.ca/Pan_Tilt_CH
 
   * [Pangolin CHOP](https://docs.derivative.ca/Pangolin_CHOP "Pangolin CHOP") - Added support for using POPs an an input. Also added 'Zone' attribute override for POP inputs.
   * [Laser Device CHOP](https://docs.derivative.ca/Laser_Device_CHOP "Laser Device CHOP") - Helios SDK Updated - Added an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") channel that reports whether the device supports extended frames. If extended frames are supported on the device, then there is now support for full 16-bit color and position, as well up to 4 optional user channels (user1, user2, user3, user4).
+
+
 
 #####  Stereolabs ZED Cameras
 ZED Operators received an SDK Update and an overhaul to their workflow to make it more consistent with other camera devices.
@@ -331,18 +343,26 @@ ZED Operators received an SDK Update and an overhaul to their workflow to make i
     * Added support for 38 joint body tracking.
     * Support for 2D, 3D and head 3D bounding boxes in ZED CHOP by turning on the 'Bounding Boxes' toggle.
 
+
+
 #####  Orbbec Cameras
   * [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP") - Upgraded the Orbbec SDK to 1.10.16 which this is compatible with Orbbec Femto Mega firmware v1.3.0+.
     * Upgraded Kinect Azure wrapper (K4A) to 1.10.3.
     * Orbbec SDK now has support for Intel-based Macs, previously it was for Apple Silicon only.
+
+
 
 #####  ST2110
 ST2110 is a set of industry standards defining professional media over an IP network, delivering uncompressed video and audio streams, timing data, and ancillary data streams using existing network infrastructure technology.
   * [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP") / [ST2110 Out TOP](https://docs.derivative.ca/ST2110_Out_TOP "ST2110 Out TOP") - New input/output TOPs for ST2110 devices such as the Blackmagic IP range and Deltacast DELTA-ip-ST2110.
   * [ST2110 Device CHOP](https://docs.derivative.ca/ST2110_Device_CHOP "ST2110 Device CHOP") - A new CHOP used to configure the ST2110 NIC (DHCP/IP Settings). The ST2110 TOPs reference this node to determine the available channels to send data out of the configured NIC.
 
+
+
 #####  Serial Devices
   * [Serial Devices DAT](https://docs.derivative.ca/Serial_Devices_DAT "Serial Devices DAT") - A new DAT that lists the available serial ports and identifies if a port is in use or not.
+
+
 
 ####  Color Space Workflow
   * [Color Space Workflows](https://docs.derivative.ca/Color_Space_Workflows "Color Space Workflows") - A new 'Color' tab in the Preferences Dialog exposes [Color Space](https://docs.derivative.ca/Color_Space "Color Space") controls. _These settings are saved per-project_ , so a change in any settings on this page requires saving the project.toe file and restarting the project. See articles [Color Space](https://docs.derivative.ca/Color_Space "Color Space") and [Color Space Workflows](https://docs.derivative.ca/Color_Space_Workflows "Color Space Workflows") for details and usage.
@@ -352,16 +372,22 @@ ST2110 is a set of industry standards defining professional media over an IP net
     * A setting for 'UI Reference White' controls TouchDesigner's interface and more generally [Panel COMPs](https://docs.derivative.ca/Panel_Component "Panel Component") to set their reference white brightness.
     * When working with HDR Window Pixel Formats, all content viewers, node viewers etc. will be displayed in HDR making if easy to preview your work.
 
+
+
 ####  3D Texture Support
   * Most TOPs now natively support 3D Textures and 2D Arrays. Feeding one of the following TOPs a 3D Texture source will now perform that operation on the 3D Texture.
     * List of TOPs - Add, Blur, Channel Mix, Chroma Key, Composite, Constant, Convolve, Cross, Difference, Displace, Edge, Emboss, Feedback, Flip, Function, HSV Adjust, HSV to RGB, Inside, Lens Distort, Level, Limit, Luma Blur, Luma Level, Math, Matte, Mirror, Mono, Multiply, Noise, Outside, Over, Remap, Reorder, Screen, Slope, Subtract, Reorder, Threshold, Under.
     * [TOP to CHOP](https://docs.derivative.ca/TOP_to_CHOP "TOP to CHOP") and [TOP to POP](https://docs.derivative.ca/TOP_to_POP "TOP to POP") also work with 3D Textures or 2D Arrays.
+
+
 
 ####  New Operators
 New Operators not mentioned above are highlighted here.
   * [Layer Mix TOP](https://docs.derivative.ca/Layer_Mix_TOP "Layer Mix TOP") - The new Layer Mix TOP lets you composite unlimited image layers in a layer stack with individual adjustment controls for each layer. To avoid clutter and unneeded parameters, you can select only the adjustment controls you want by enabling them. You can also specify a background plate to composite your layers over.
   * [Render Simple TOP](https://docs.derivative.ca/Render_Simple_TOP "Render Simple TOP") - A new TOP to render geometry without needing extra scene objects like a camera or lights.
   * [NVIDIA RTX Video TOP](https://docs.derivative.ca/NVIDIA_RTX_Video_TOP "NVIDIA RTX Video TOP") - A new TOP that leverages the NVIDIA RTX Video SDK for AI-enhanced video processing. This custom TOP enables RTX Video Super Resolution and RTX Video HDR effects to improve sharpness, clarity, and automatically convert SDR video to HDR within TouchDesigner workflows.
+
+
 
 ####  Pattern Matching
 Some parameters in TouchDesigner are used to specify multiple operators, multiple channels, multiple points, etc. For example, the Render TOP allows for multiple lights, geometry COMPs and cameras to be specified in its parameters. The Join CHOP and Composite TOP accept multiple CHOPs and TOPs respectively. A parameter that is a "pattern" allows you to specify several names and/or specify "wild cards" which will match all or parts of the names of operators, channels, point indexes etc. Some examples, 1) `r[xyz]` matches channels rx, ry and rz, 2) `*foot*` matches each channel that has "foot" in it, with anything or nothing before or after it.
@@ -388,14 +414,19 @@ The new **Pattern Matching** includes many improvements outlined here:
     * The [Delete CHOP](https://docs.derivative.ca/Delete_CHOP "Delete CHOP"), [Reorder CHOP](https://docs.derivative.ca/Reorder_CHOP "Reorder CHOP") and [Sort CHOP](https://docs.derivative.ca/Sort_CHOP "Sort CHOP") have a 'Legacy Pattern Matching' toggle for using older style index pattern matching for backward compatibility.
     * SOPs Index pattern matching have been left unchanged.
 
+
+
 ####  Metadata support
   * [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") - Added support for Exif metadata writing for .png, .jpeg and .tiff file formats.
   * [Audio File Out CHOP](https://docs.derivative.ca/Audio_File_Out_CHOP "Audio File Out CHOP") - Added support for writing metadata to .wav, .mp3, .ogg, .aiff audio file formats.
   * [Media File Info DAT](https://docs.derivative.ca/Media_File_Info_DAT "Media File Info DAT") - Added support to read Exif metadata.
   * Added new member `.metadata` to [Media File Info DAT](https://docs.derivative.ca/Media_File_Info_DAT "Media File Info DAT"), [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") and [Audio File In CHOP](https://docs.derivative.ca/Audio_File_In_CHOP "Audio File In CHOP").
 
+
+
 ####  Operator New Features
 There are over 100 additional new features added to TouchDesigner operators in this release. Below we list everything ordered by OP family.
+
 
 #####  COMP Features
   * [Button COMP](https://docs.derivative.ca/Button_COMP "Button COMP") - New parameters to adjust the text on the button's label, including 'Scale Text to Fit', 'Font Size', 'Line Spacing', and 'Text Padding'.
@@ -409,6 +440,8 @@ There are over 100 additional new features added to TouchDesigner operators in t
     * 'Width Affected by FOV' and 'Lift Towards Cam' parameters work with Orthographic camera type.
     * 'Face Camera' behavior rotates about the anchor point of the layout box.
     * All of the above new features work independently for each camera. For example, with the 'Face Camera' parameter toggled on, the text will face each camera it is viewer from.
+
+
 
   * [List COMP](https://docs.derivative.ca/List_COMP "List COMP") - New attribute `topFill` controls the way a Background TOP will fill: `fillMode.STRETCH`, `HORIZONTAL`, `VERTICAL`, `BEST`, `NATIVE`, `OUTSIDE`
 
@@ -437,6 +470,8 @@ def onInitRow(comp, row, attribs):
     * Added parameters to control 'Output Color Space' and 'Output Reference White' when [Working Color Space](https://docs.derivative.ca/Color_Space "Color Space") is set to a color space other than 'Passthrough'.
     * A 'Prevent Display Sleep' toggle parameter has been added to keep your display from going to sleep regardless of power saving modes set on the system.
     * Renamed "monitor" to "display" in parameters, menus and warnings.
+
+
 
 #####  TOP Features
   * Composite TOPs can now use Justify Horizontal and/or Justify Vertical parameters when 'Pre-Fit Overlay' is set to Fit Vertical, Fit Horizontal or Fit Best modes. Which justify parameters are enabled depends on the mode selected, for example Fit Vertical can only be justified horizontally and Fit Horizontal can only be justified vertically. This has been added to the following TOPs: [Composite TOP](https://docs.derivative.ca/Composite_TOP "Composite TOP") / [Over TOP](https://docs.derivative.ca/Over_TOP "Over TOP") / [Cross TOP](https://docs.derivative.ca/Cross_TOP "Cross TOP") / [Difference TOP](https://docs.derivative.ca/Difference_TOP "Difference TOP") / [Add TOP](https://docs.derivative.ca/Add_TOP "Add TOP") / [Inside TOP](https://docs.derivative.ca/Inside_TOP "Inside TOP") / [Multiply TOP](https://docs.derivative.ca/Multiply_TOP "Multiply TOP") / [Screen TOP](https://docs.derivative.ca/Screen_TOP "Screen TOP") / [Subtract TOP](https://docs.derivative.ca/Subtract_TOP "Subtract TOP") / [Under TOP](https://docs.derivative.ca/Under_TOP "Under TOP") / [Outside TOP](https://docs.derivative.ca/Outside_TOP "Outside TOP")
@@ -503,6 +538,8 @@ def onInitRow(comp, row, attribs):
     * New parameter to specify a table to 'Modify Request Headers'.
     * **Backward Compatibility Issue** - Using the same cache with 2 Web Render TOPs is no longer supported, the second one will error.
 
+
+
 #####  CHOP Features
   * [Audio File Out CHOP](https://docs.derivative.ca/Audio_File_Out_CHOP "Audio File Out CHOP") - Added support for big-endian .aiff formats.
   * [Audio Movie CHOP](https://docs.derivative.ca/Audio_Movie_CHOP "Audio Movie CHOP") - Added a 'Volume' parameter for convenience.
@@ -533,6 +570,8 @@ def onInitRow(comp, row, attribs):
   * [Timecode CHOP](https://docs.derivative.ca/Timecode_CHOP "Timecode CHOP") - Added an option to set custom length from a [Timecode Class](https://docs.derivative.ca/Timecode_Class "Timecode Class") object. Also added 'Extend Left' parameter and changed the Cycle toggle to be a menu named 'Extend Right'.
   * [Trigger CHOP](https://docs.derivative.ca/Trigger_CHOP "Trigger CHOP") - Added 'Enable Remap Length' and 'Remap Length' parameters which will re-time the total length of the envelope to the specified length. Note that held sustain length is not remapped, only Delay, Attack, Peak, and Release lengths are remapped.
 
+
+
 #####  DAT Features
   * [DATs](https://docs.derivative.ca/DAT "DAT") - Since newlines are supported in DAT cells, display them as symbols and allow them to be selected/deleted/copied etc.
   * [DAT Execute DAT](https://docs.derivative.ca/DAT_Execute_DAT "DAT Execute DAT") - A new `onTableChange` method does everything now, the other 4 legacy methods (`onRowChange`, `onColChange`, `onCellChange`, and `onSizeChange`) are now deprecated.
@@ -544,6 +583,8 @@ def onInitRow(comp, row, attribs):
   * [Render Pick DAT](https://docs.derivative.ca/Render_Pick_DAT "Render Pick DAT") - Added 'Name Format' and 'Type Suffix' parameters to provide POP friendly naming.
   * [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") - Performance optimizations to make large tables cook significantly faster. As well, in the DAT viewer's right-click menu you'll find a new option to toggle the 'Auto Resize Columns' behavior on/off.
   * [Web Client DAT](https://docs.derivative.ca/Web_Client_DAT "Web Client DAT") - Added 'Web Form' toggle that enables construction of MIME-formatted request, similar to using mimeParts in [WebclientDAT Class](https://docs.derivative.ca/WebclientDAT_Class "WebclientDAT Class").request. When enabled, the second input will be interpreted as MIME parts rather than the request body.
+
+
 
 #####  MAT Features
   * **TriPlanar texturing** ...
@@ -558,10 +599,14 @@ def onInitRow(comp, row, attribs):
   * [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") - Added `TDImageStore_*()` / `TDImageLoad_*()` functions to work with Image Outputs from the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). Required for color correct values when using a working [Color Space](https://docs.derivative.ca/Color_Space "Color Space").
   * [Line MAT](https://docs.derivative.ca/Line_MAT "Line MAT") - New auto-cleanup of memory used by the Line MAT when it's not used for a while.
 
+
+
 ####  Operating System Specific
   * [macOS](https://docs.derivative.ca/MacOS "MacOS") - Minimum requirements now macOS 12.0 Monterey.
   * [macOS](https://docs.derivative.ca/MacOS "MacOS") - Added support for hardware accelerated H.264 and HEVC/H.265 encoding with the [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP").
   * Windows and macOS - A minimum of 4GB GPU memory is required, we recommend 8GB or more.
+
+
 
 ####  Python Tools
   * TouchDesigner's Python version has been updated to **3.11.10**
@@ -579,6 +624,8 @@ def onInitRow(comp, row, attribs):
   * Depth Anything V2 Tutorial - Depth Anything V2 is a machine learning library that can create depth information for images and videos. Check out [this tutorial](https://derivative.ca/community-post/custom-integration-thread-manager-support-third-party-python-library/72023) which uses both the _ThreadManager_ and the _TDPyEnvManager_ to get Depth Anything V2 running in TouchDesigner.
 
   * [Palette:logger](https://docs.derivative.ca/Palette:logger "Palette:logger") - v2.6.1 - Major overall. Improved by always initializing a Logger object reducing initialization issues and now including a QueueHandler to work in conjunction with the [Thread Manager](https://docs.derivative.ca/Thread_Manager "Thread Manager") mentioned above.
+
+
 
 ###  New Python
   * Python version updated to 3.11.10
@@ -751,6 +798,8 @@ For Example:
 
   * [WebclientDAT Class](https://docs.derivative.ca/WebclientDAT_Class "WebclientDAT Class").request - Added formParts keyword argument that accepts a list of WebFormPart namedtuples. formParts enables construction of a MIME-formatted request, allowing for multipart and form requests.
 
+
+
   * [TDStoreTools](https://docs.derivative.ca/TDStoreTools "TDStoreTools") - Improved error messaging and behavior of `DependList` and `DependDict`
   * [TDFunctions](https://docs.derivative.ca/TDFunctions "TDFunctions") - Improved error messaging and behavior of `createProperty`. **Backwards Compatibility** - using delattr to delete a property created by `createProperty` will now only set the value to None
   * [TDFunctions](https://docs.derivative.ca/TDFunctions "TDFunctions") - Fixed an issue with `applyParInfo` when source has a bind expression. Added `raiseExceptions` argument to that and `applyParDefaults`.
@@ -768,6 +817,8 @@ For Example:
     * "Add Externally Installed Python Site-Packages to Search Path"
     * "Add Python User Site-Packages to Search Path"
   * [Optimized Python Expressions](https://docs.derivative.ca/Optimized_Python_Expressions "Optimized Python Expressions") - Optimized [Pattern CHOP](https://docs.derivative.ca/Pattern_CHOP "Pattern CHOP")'s `.chanIndex` and `.sampleIndex`.
+
+
 
 ###  New Palette
   * [Palette:autoMediaPlayer](https://docs.derivative.ca/Palette:autoMediaPlayer "Palette:autoMediaPlayer") - Fix for repeating the last movie and better randomization in selection.
@@ -821,6 +872,8 @@ For Example:
   * [Palette:quadReproject](https://docs.derivative.ca/Palette:quadReproject "Palette:quadReproject") - v1.0.0 - Complete rework. Component is now almost exclusively relying on parSequences and expressions.
   * [Palette:searchReplace](https://docs.derivative.ca/Palette:searchReplace "Palette:searchReplace") - Fixed 'whole words' mode for search strings with special characters.
 
+
+
   * [TDAbleton](https://docs.derivative.ca/TDAbleton "TDAbleton") - Version 2.6.3
     * Added separate MPE MIDI devices. The abletonMIDI component now has a default pitchbend channel option.
     * MIDI m4l devices now work with MPE.
@@ -834,16 +887,24 @@ For Example:
     * Ableton Component's sendOSC functions no longer work when 'Connect' parameter is off. If you need to override this in script, call sendOSC directly on the TDAbleton master component.
     * Firing an empty clip slot (from abletonClipSlot component) on a record-armed track will start recording a new clip.
 
+
+
   * [Palette:tdPyEnvManager](https://docs.derivative.ca/Palette:tdPyEnvManager "Palette:tdPyEnvManager") - Initial release. A component to sideload and manage third-party python and conda environments. Read our [Introduction to the tdPyEnvManager](https://derivative.ca/community-post/introducing-touchdesigner-python-environment-manager-tdpyenvmanager/72024) for details.
+
+
 
   * [Thread Manager](https://docs.derivative.ca/Thread_Manager "Thread Manager") - First public release. A new system component and a set of palette components designed to facilitate Python threading in TouchDesigner. Read our [Introduction to the ThreadManager](https://derivative.ca/community-post/enhancing-your-python-toolbox-touchdesigner%E2%80%99s-thread-manager/72022) for more information.
   * [Palette:threadManagerClient](https://docs.derivative.ca/Palette:threadManagerClient "Palette:threadManagerClient") - A component which works with the Thread Manager COMP, the ThreadManagerClient is designed around it's callback DAT. Users should review the template code and adapt it to their own cases. The customized methods implemented in the ThreadManagerClient Callback are generating a TDTask that gets passed to the Thread Manager TDTask queue. While experienced developers can rely on the Thread Manager directly using `op.TDResources.ThreadManager`, users not familiar with threading should consider using the ThreadManager Client instead.
+
+
 
   * [Palette:treeLister](https://docs.derivative.ca/Palette:treeLister "Palette:treeLister") - Has the new lister topFill and sizable columns features.
   * [Palette:webBrowser](https://docs.derivative.ca/Palette:webBrowser "Palette:webBrowser") - Better support for inputing unicode characters in languages like German and Japanese.
 
   * [Widgets](https://docs.derivative.ca/Widgets "Widgets") - v2.2.6 - New masterRadioMenu widget. Similar the Radio button but is a menu base type and operates with string values. Also includes ability to disable and hide items.
     * v2.2.5 - Button widget now uses Text COMP multiline mode offering better support for button names that require 2 lines.
+
+
 
 ###  Bug Fixes and Improvements
 **SDK Updates**
@@ -861,6 +922,7 @@ For Example:
   * Upgraded to ZED SDK 5.0.2. Pascal GPUs are no longer supported with ZED. - [ZED](https://docs.derivative.ca/ZED "ZED")
   * Upgraded to Helios SDK v11.0 with IDN adapter support - [Laser Device CHOP](https://docs.derivative.ca/Laser_Device_CHOP "Laser Device CHOP") - [Helios](https://bitlasers.com/helios-laser-dac/)
   * Upgraded to latest version of Nvidia Maxine SDK. Adds support for Blackwell GPUs ie. 50-series Geforce GPUs. This update affects [NVIDIA Background TOP](https://docs.derivative.ca/NVIDIA_Background_TOP "NVIDIA Background TOP"), [NVIDIA Denoise TOP](https://docs.derivative.ca/NVIDIA_Denoise_TOP "NVIDIA Denoise TOP"), [NVIDIA Upscaler TOP](https://docs.derivative.ca/NVIDIA_Upscaler_TOP "NVIDIA Upscaler TOP"), [Body Track CHOP](https://docs.derivative.ca/Body_Track_CHOP "Body Track CHOP"), and [Face Track CHOP](https://docs.derivative.ca/Face_Track_CHOP "Face Track CHOP"). Requires runtime dependencies to be installed manually from <https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/>, see operator help pages for more info.
+
 
 **COMP Improvements**
   * [Engine COMP](https://docs.derivative.ca/Engine_COMP "Engine COMP") - Improvements and bug fixes.
@@ -897,6 +959,7 @@ For Example:
     * Fixed issue which could cause the wrong OP to be used in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode") after using Open as Perform Window from a [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP")'s parameter dialog.
     * On macOS, when a window is sized to exactly fill one or all monitors and has no borders, it will open as a full-screen window, matching behaviour on Windows.
     * Removed notion of 'Stereo' from Window COMP and underlaying classes.
+
 
 **POP Improvements** For a history of previous POPs development, you can refer to POPs sections in the [Experimental Release Notes](https://docs.derivative.ca/Release_Notes/Experimental "Release Notes/Experimental").
 
@@ -944,6 +1007,7 @@ For Example:
   * [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP") - Fixed cases where 'Keyframe Interval' and 'B-Frame' parameters were ignored.
   * Added color space information to the TOP viewer's pixel color inspector.
 
+
 **CHOP Improvements**
   * [CHOP](https://docs.derivative.ca/CHOP "CHOP") = Simplified CHOP Viewer 'Scope Tools' to a single string field for scope. Supports [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 
@@ -980,6 +1044,7 @@ For Example:
   * [Touch In CHOP](https://docs.derivative.ca/Touch_In_CHOP "Touch In CHOP") / [Touch Out CHOP](https://docs.derivative.ca/Touch_Out_CHOP "Touch Out CHOP") - The Touch In and Touch Out CHOPs work in non-timeslice mode now, sending multisample data.
   * Added menu with toggling behavior to CHOP Viewer scope tools.
 
+
 **DAT Improvements**
   * [Audio Devices DAT](https://docs.derivative.ca/Audio_Devices_DAT "Audio Devices DAT") / [Video Devices DAT](https://docs.derivative.ca/Video_Devices_DAT "Video Devices DAT") - Now refreshes properly with fewer redundant intermediate callbacks.
   * [Execute DAT](https://docs.derivative.ca/Execute_DAT "Execute DAT") - `onStart` now called after other initializing scripts during load.
@@ -999,8 +1064,10 @@ For Example:
   * [WebSocket DAT](https://docs.derivative.ca/WebSocket_DAT "WebSocket DAT") - Fixed a crash when a message is received but there is no 'Callbacks DAT' referenced.
   * Fixed multiple issues with the cursor position in DATs after pressing shift-TAB.
 
+
 **MAT Improvements**
   * [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") - Improved errors when array uniforms are incorrectly assigned on the 'Vectors' page.
+
 
 **SOP Improvements**
   * [Alembic SOP](https://docs.derivative.ca/Alembic_SOP "Alembic SOP") - Fixed velocity attribute import for point primitives and fixed a crash that could occur dealing with velocities.
@@ -1008,6 +1075,7 @@ For Example:
   * [Skin SOP](https://docs.derivative.ca/Skin_SOP "Skin SOP") - Fixed a crash when input is invalid.
   * [Sphere SOP](https://docs.derivative.ca/Sphere_SOP "Sphere SOP") - The w texture coordinate is now zero when creating Equirectangular coordinates.
   * [ZED SOP](https://docs.derivative.ca/ZED_SOP "ZED SOP") - Added a backwards compatibility warning for ZED on startup for older projects - **BACKWARDS COMPATIBILITY ISSUE** - [ZED SOP](https://docs.derivative.ca/ZED_SOP "ZED SOP") - Now needs to point to a [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP") to select it's camera source.
+
 
 **Other Improvements**
   * [Custom Operators](https://docs.derivative.ca/Custom_Operators "Custom Operators") - Bug fixes and improvements
@@ -1040,9 +1108,12 @@ For Example:
   * TouchDesigner and TouchPlayer now always begin with the timeline playing *unless* it is explicitly stopped in a startup script.
   * New Touch Tips added.
 
+
+
 ###  Operator Snippets
 Introducing OP Snippets for POPs and more. There are snippets for almost all POPs and related inter-family operators, along with a bunch of new ones for other parts of TouchDesigner.
 Recall there are three way to get to Snippets - right-click on names in the OP Create dialog, right-click -> Operator Snippets on any node, and the top menu bar Help -> Operator Snippets.
+
 
 ###  Backward Compatibility Issues
   * **BACKWARD COMPATIBILITY ISSUE** - [File In CHOP](https://docs.derivative.ca/File_In_CHOP "File In CHOP") - .chan files now preserve channel names instead of always defaulting to chan1, chan2, chan3, ...
@@ -1066,6 +1137,7 @@ For example some Random POP parameters (Amplitude, A, B, etc) were extended to h
 
 ##  Experimental Builds 2025.30000 - Oct 08, 2025
 For experimental release notes in this branch refer to [Experimental Release Notes](https://docs.derivative.ca/Release_Notes/Experimental "Release Notes/Experimental")
+
 
 ##  Official Builds 2023.10000 and earlier - Sep 22, 2025
 For earlier Official Build release notes refer to [Official 2023.10000 Release Notes](https://docs.derivative.ca/Release_Notes/2023.10000 "Release Notes/2023.10000")

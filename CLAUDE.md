@@ -25,6 +25,8 @@ Uses **Crawl4AI** (headless browser) to fetch pages from `docs.derivative.ca` an
 python -m src.td_docs_mcp.crawler                     # Full crawl
 python -m src.td_docs_mcp.crawler -c TOPs CHOPs       # Specific categories
 python -m src.td_docs_mcp.crawler --retry-failed       # Re-crawl 403/error pages
+python -m src.td_docs_mcp.crawler --force              # Re-crawl all, update changed pages
+python -m src.td_docs_mcp.crawler --force -c POPs      # Re-crawl + update a single category
 ```
 
 **Key behaviors:**
@@ -33,8 +35,10 @@ python -m src.td_docs_mcp.crawler --retry-failed       # Re-crawl 403/error page
 - **Cleans markdown in-place** by calling `clean_td_markdown()` from `cleaner.py` before writing — files are saved clean on disk
 - **Strips `Experimental:` prefix** from page names so filenames match their `_Class` counterparts
 - **Follows wiki redirects** — if a crawled page is a redirect stub (e.g. `TextPOP_Class` → `Experimental:TextPOP_Class`), fetches the target page instead
-- Resume capability: skips files that already exist on disk
+- **Resume capability**: by default, skips files that already exist on disk
+- **Force re-crawl** (`--force`): re-fetches every page, compares content with existing file, and only writes if the content actually changed. Prints per-page status (new/updated/unchanged) and a summary at the end
 - Retry with exponential backoff (5s/10s/20s) for 403s and empty responses
+- **Skips unwanted pages** listed in `SKIP_PAGES` (e.g. privacy policy, disclaimer) — never fetched or saved
 - General/meta pages (glossary, tutorials, etc.) are redirected to `General/` directory
 - Rate limited at 0.5s between requests
 
@@ -111,8 +115,11 @@ When adding/removing general pages, update both.
 ## Common Commands
 
 ```bash
-# Full re-crawl of a category (delete dir first to force fresh crawl)
-rm -rf td_docs/TOPs && python -m src.td_docs_mcp.crawler -c TOPs
+# Re-crawl a category, updating any pages that changed upstream
+python -m src.td_docs_mcp.crawler --force -c TOPs
+
+# Re-crawl everything and detect updates
+python -m src.td_docs_mcp.crawler --force
 
 # Re-crawl only 403/failed pages
 python -m src.td_docs_mcp.crawler --retry-failed

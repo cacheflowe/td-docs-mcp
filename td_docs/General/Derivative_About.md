@@ -1,6 +1,6 @@
 ---
 url: https://docs.derivative.ca/Derivative:About
-category: CHOPs
+category: General
 title: Derivative:About
 ---
 

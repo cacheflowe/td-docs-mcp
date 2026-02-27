@@ -1,0 +1,17 @@
+---
+url: https://docs.derivative.ca/Node_Viewer
+category: Glossary
+title: Node_Viewer
+---
+
+# Node Viewer
+A [node](https://docs.derivative.ca/Node "Node") can show either its icon or its viewer. Click the top-left node flag (the [Viewer Flag](https://docs.derivative.ca/Viewer_Flag "Viewer Flag")) to toggle the viewer or icon.
+The viewer is only interactive when the node is in [Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active") mode.
+
+[![ViewerActiveOptions.jpg](https://docs.derivative.ca/images/c/cc/ViewerActiveOptions.jpg)](https://docs.derivative.ca/File:ViewerActiveOptions.jpg)
+left: node with 3-letter icon. middle: node with viewer (top-left flag of node). right: node with viewer active (bottom right flag).
+To get a floating resizable node viewer, right-click on the node and select View...
+Node viewers can be on by default when you create new nodes. To do this, turn on the **Viewer On by Default** option via the checkbox in Edit > [Preferences](https://docs.derivative.ca/Dialogs:Preferences_Dialog "Dialogs:Preferences Dialog") > Network.
+Each operator family has its specific style of [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+**Note** : Moving content inside a node viewer does not affect its transforms or parameters. **Exception** : [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP")
+Every component contains a network of operators that create and modify data. The operators are connected by wires that define where data is routed after the operator cooks its inputs and generates an output.

@@ -1,6 +1,6 @@
 ---
 url: https://docs.derivative.ca/TouchDesigner_Python_Classes
-category: CHOPs
+category: General
 title: TouchDesigner_Python_Classes
 ---
 
@@ -114,6 +114,8 @@ The following contain extended Python utilities for use with TouchDesigner.
   * **[TDJSON](https://docs.derivative.ca/TDJSON "TDJSON")** - JSON utilities specific to TouchDesigner.
   * **[TDStoreTools](https://docs.derivative.ca/TDStoreTools "TDStoreTools")** - utilities for use with TouchDesigner's [Storage](https://docs.derivative.ca/Storage "Storage") and [Dependency](https://docs.derivative.ca/Dependency "Dependency") system.
   * **[TDResources](https://docs.derivative.ca/TDResources "TDResources")** (`op.TDResources...`) - not a module, but does contain system resources that can be accessed via Python. It includes system [pop-up menu](https://docs.derivative.ca/TDResources#Pop-Up_Menu "TDResources"), [button pop-up menu](https://docs.derivative.ca/TDResources#Button_Pop-Up_Menu "TDResources"), [pop-up dialog](https://docs.derivative.ca/TDResources#Pop-Up_Dialog "TDResources"), and [mouse](https://docs.derivative.ca/TDResources#Mouse "TDResources") resources.
+
+
 
 ###  3rd Party Packages
 **The following 3rd party packages are automatically installed with TouchDesigner.** They are not in the [td module](https://docs.derivative.ca/Td_Module "Td Module"), so must be imported explicitly to be used in scripts. The name in parentheses is the actual package name used (e.g. to use OpenCV, write this at top of script: `import cv2`). For information on adding or installing other Python modules, see [Importing Modules](https://docs.derivative.ca/Introduction_to_Python_Tutorial#Importing_Modules).
