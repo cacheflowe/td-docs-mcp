@@ -30,14 +30,17 @@ python -m src.td_docs_mcp.crawler --retry-failed       # Re-crawl 403/error page
 **Key behaviors:**
 - Fetches category index pages, extracts operator links, crawls each one
 - Adds YAML frontmatter (url, category, title) to each file
+- **Cleans markdown in-place** by calling `clean_td_markdown()` from `cleaner.py` before writing — files are saved clean on disk
+- **Strips `Experimental:` prefix** from page names so filenames match their `_Class` counterparts
+- **Follows wiki redirects** — if a crawled page is a redirect stub (e.g. `TextPOP_Class` → `Experimental:TextPOP_Class`), fetches the target page instead
 - Resume capability: skips files that already exist on disk
 - Retry with exponential backoff (5s/10s/20s) for 403s and empty responses
 - General/meta pages (glossary, tutorials, etc.) are redirected to `General/` directory
 - Rate limited at 0.5s between requests
 
-### Step 2: Clean (`cleaner.py`)
+### Step 2 (optional): Re-clean (`cleaner.py`)
 
-Post-processes the raw Crawl4AI markdown output to fix formatting issues.
+The crawler already produces clean markdown, but the standalone cleaner can be used to re-process existing files — for example after adding a new cleaning rule.
 
 ```bash
 python -m src.td_docs_mcp.cleaner                     # Clean all docs
@@ -64,6 +67,7 @@ Rules are applied in the order listed. When adding new rules, consider where in 
 | **Remove "From Derivative"** | Drops the wiki byline |
 | **Remove wikieditor lines** | Drops MediaWiki editor metadata |
 | **Remove "Jump to" links** | Drops navigation/search jump links |
+| **Strip `Experimental:` prefix** | Removes `Experimental:` from headers and content — experimental operators are treated like regular ones |
 | **Remove `[edit]` links** | Strips `[[edit](...)]` and standalone edit links |
 | **Remove empty `##` headers** | Drops bare `##` lines (MediaWiki artifact) |
 | **Strip `>>` double blockquote** | Strips `>> ` prefix from any line starting with `>>` — double-blockquote formatting artifact |
@@ -102,7 +106,7 @@ When adding/removing general pages, update both.
 2. **Decide placement**: Line-by-line rules go in the main loop of `clean_td_markdown()`. Section-aware or multi-line rules should be separate functions called from the post-processing section.
 3. **Pattern**: New functions should take `content: str` and return `content: str` for composability.
 4. **Update this doc**: Add the rule to the appropriate table above.
-5. **Test**: Run `python -m src.td_docs_mcp.cleaner --dry-run` and spot-check affected files.
+5. **Test**: Run `python -m src.td_docs_mcp.cleaner --dry-run` and spot-check affected files. Newly-crawled files will already include the rule; the standalone cleaner only needs to run to retrofit existing files.
 
 ## Common Commands
 
@@ -113,7 +117,7 @@ rm -rf td_docs/TOPs && python -m src.td_docs_mcp.crawler -c TOPs
 # Re-crawl only 403/failed pages
 python -m src.td_docs_mcp.crawler --retry-failed
 
-# Clean all docs (also relocates general files)
+# Re-clean all existing docs (e.g., after adding a new cleaning rule)
 python -m src.td_docs_mcp.cleaner
 
 # Run MCP server

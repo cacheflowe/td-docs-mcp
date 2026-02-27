@@ -8,7 +8,6 @@ title: PanelValue_Class
 A PanelValue describes an instance to a [Panel Value](https://docs.derivative.ca/Panel_Value "Panel Value"). They can be accessed through a component's [panel](https://docs.derivative.ca/Panel "Panel") member, and are used in the [Panel Execute DAT](https://docs.derivative.ca/Panel_Execute_DAT "Panel Execute DAT").
 For a list of available panel values, see: [Panel Value](https://docs.derivative.ca/Panel_Value "Panel Value").
 
-
 ## Members
 `name` → `str` **(Read Only)** :
 The name of the panel value. See [Panel Value](https://docs.derivative.ca/Panel_Value "Panel Value") for the list of possible names. name is a string.

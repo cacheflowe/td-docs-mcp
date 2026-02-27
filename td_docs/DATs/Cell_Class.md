@@ -8,7 +8,6 @@ title: Cell_Class
 The Cell Class describes the contents of a single cell from a [DAT](https://docs.derivative.ca/DAT "DAT") operator table. The [DAT Class](https://docs.derivative.ca/DAT_Class "DAT Class") offers many ways of accessing its individual cells. [DAT](https://docs.derivative.ca/DAT "DAT") cells are always internally stored as strings, but may be accessed as numeric values.
 **IMPORTANT** : `op('table1')[1,2]` is this python cell object which usually gets converted for you to the string in the cell. More safely use `op('table1')[1,2].val` which always gives you the string.
 
-
 ## Members
 `valid` → `bool` **(Read Only)** :
 True if the referenced cell currently exists, False if it has been deleted.

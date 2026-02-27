@@ -7,7 +7,6 @@ title: Par_Class
 # Par Class
 The Par class describes an instance of a single [Parameter](https://docs.derivative.ca/Parameter "Parameter"). See also [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters").
 
-
 ## Members
 `owner` → `OP` **(Read Only)** :
 The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.

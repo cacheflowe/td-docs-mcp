@@ -344,7 +344,7 @@ title: MediaWiki:Common.js
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-332)								'action': {
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-333)									'type': 'encapsulate',
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-334)									'options': {
-[](https://docs.derivative.ca/MediaWiki:Common.js#L-335)										'pre': '#REDIRECT [[:Experimental:{{FULLPAGENAME}}]]'
+[](https://docs.derivative.ca/MediaWiki:Common.js#L-335)										'pre': '#REDIRECT [[:{{FULLPAGENAME}}]]'
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-336)									}
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-337)								},
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-338)								'label': 'Redirect to Experimental'

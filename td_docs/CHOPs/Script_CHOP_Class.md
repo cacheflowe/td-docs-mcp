@@ -8,7 +8,6 @@ title: ScriptCHOP_Class
 
 This class inherits from the [ CHOP class](https://docs.derivative.ca/CHOP_Class "CHOP Class"). It references a specific [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP").
 
-
 ## Members
 `timeSliceDefault` → `bool` **(Read Only)** :
 Get the default [Time Slice](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)") for the [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP"). Equal to the first input's `isTimeSlice`.
@@ -60,7 +59,6 @@ c = n.appendChan('velocity')
 
 ##  Callbacks
 The following python callbacks are associated with this operator.
-
 
 ```
 # me - this DAT
@@ -396,7 +394,6 @@ The (possibly empty) list of Annotate operators enclosing this node. See also [A
 ###  Common Flags
 The following methods get or set specific operator [Flags](https://docs.derivative.ca/Flag "Flag"). Note specific operators may contain other flags not in this section.
 
-
 `activeViewer` → `bool` :
 Get or set [Viewer Active Flag](https://docs.derivative.ca/Viewer_Active_Flag "Viewer Active Flag").
 
@@ -470,7 +467,6 @@ Get or set the [operator](https://docs.derivative.ca/OP_Class "OP Class") this o
 The (possibly empty) list of [operators](https://docs.derivative.ca/OP_Class "OP Class") docked to this node.
 ###  Connection
 See also the `OP.parent` methods. To connect components together see [COMP_Class#Connection](https://docs.derivative.ca/COMP_Class#Connection "COMP Class") section.
-
 
 `inputs` → `List[OP]` **(Read Only)** :
 List of input [operators](https://docs.derivative.ca/OP_Class "OP Class") (via left side connectors) to this operator. To get the number of inputs, use len(OP.inputs).
@@ -609,7 +605,6 @@ Type of [License](https://docs.derivative.ca/License_Class "License Class") requ
 ## Methods
 ###  General
 **NOTE** : `create()`, `copy()` and `copyOPs()` is done by the parent operator (a component). For more information see [COMP.create, COMP.copy and COMP.copyOPs methods](https://docs.derivative.ca/COMP_Class#Methods "COMP Class").
-
 
 `pars(pattern)`→ `list[Par]`:
 Returns a (possibly empty) list of [parameter objects](https://docs.derivative.ca/Par_Class "Par Class") that match the pattern.
@@ -834,7 +829,6 @@ When an element of storage is changed by using `n.store()` as explained below, e
 Storage is saved in `.toe` and `.tox` files and restored on startup.
 Storage can hold any python object type (not just strings as in Tscript variables). Storage elements can also have optional startup values, specified separately. Use these startup values for example, to avoid saving and loading some session specific object, and instead save or load a well defined object like `None`.
 See the [Examine DAT](https://docs.derivative.ca/Examine_DAT "Examine DAT") for procedurally viewing the contents of storage.
-
 
 `fetch(key, default, search=True, storeDefault=False)`→ `Any`:
 Return an object from the OP storage dictionary. If the item is not found, and a default it supplied, it will be returned instead.

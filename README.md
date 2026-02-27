@@ -46,7 +46,7 @@ The MCP tools are reactive — Copilot calls them when it thinks they're relevan
    ```bash
    uv run python -m td_docs_mcp.crawler
    ```
-   This creates a `td_docs/` folder with all documentation as markdown files.
+   This creates a `td_docs/` folder with all documentation as clean markdown files.
 
 4. Configure your MCP client (see [Configuration](#configuration) below)
 
@@ -197,10 +197,10 @@ uv run python -m td_docs_mcp.crawler -o /path/to/docs
 
 ## Markdown Cleaner
 
-After every crawl (full, single-category, `--classes-only`, or `--retry-failed`), run the cleaner to post-process the raw Crawl4AI markdown output:
+The crawler automatically cleans each file as it's saved, so a separate cleaning step is no longer required. The standalone cleaner is still useful for re-processing existing files — for example after adding a new cleaning rule:
 
 ```bash
-# Clean all docs
+# Re-clean all existing docs
 uv run python -m td_docs_mcp.cleaner
 
 # Clean a single file

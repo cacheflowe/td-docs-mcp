@@ -7,7 +7,6 @@ title: Point_Class
 # Point Class
 A Point describes an instance to a single [geometry point](https://docs.derivative.ca/Point "Point"). They are accessible through the [SOP.points](https://docs.derivative.ca/SOP_Class "SOP Class") member.
 
-
 ## Members
 `index` → `int` **(Read Only)** :
 The point index in the list.

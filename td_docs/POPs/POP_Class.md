@@ -7,7 +7,6 @@ title: POP_Class
 # POP Class
 A POP describes a reference to a POP operator, containing points and primitives.
 
-
 ## Members
 `compare` → `bool` :
 Get or set Compare Flag.

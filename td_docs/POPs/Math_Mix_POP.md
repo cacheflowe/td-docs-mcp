@@ -39,7 +39,7 @@ It uses the primitives and vertices of the first input and other inputs' primiti
 Optimized - Note that any attribute you select on the Inputs page does not copy the attribute data - it remains as a reference to the attribute arrays of the incoming POPs.
 Attaching an Info DAT will show you raw GLSL code that is generated.
 See also [Math Combine POP](https://docs.derivative.ca/Math_Combine_POP "Math Combine POP"), [Math POP](https://docs.derivative.ca/Math_POP "Math POP"), [ReRange POP](https://docs.derivative.ca/ReRange_POP "ReRange POP"), [Quantize POP](https://docs.derivative.ca/Quantize_POP "Quantize POP"), [Limit POP](https://docs.derivative.ca/Limit_POP "Limit POP")
-See also [Experimental:Math Mix Combine Functions](https://docs.derivative.ca/index.php?title=Experimental:Math_Mix_Combine_Functions&action=edit&redlink=1 "Experimental:Math Mix Combine Functions \(page does not exist\)")
+See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title=Math_Mix_Combine_Functions&action=edit&redlink=1 "Math Mix Combine Functions \(page does not exist\)")
 [mathmixPOP_Class](https://docs.derivative.ca/MathmixPOP_Class "MathmixPOP Class")
 
 ## Parameters - Inputs Page

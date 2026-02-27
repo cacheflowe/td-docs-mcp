@@ -7,7 +7,6 @@ title: ListAttribute_Class
 # ListAttribute Class
 The ListAttribute class describes an attribute defining a cell or set of cells in a [List Component](https://docs.derivative.ca/ListCOMP_Class "ListCOMP Class").
 
-
 ## Members
 `text` → `str` :
 Get or set contents.

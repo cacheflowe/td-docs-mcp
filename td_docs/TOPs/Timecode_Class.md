@@ -26,8 +26,6 @@ t4 = tdu.Timecode(hour=1, minute=2, second=3, frame=4, negative=True, fps=30) # 
 
 ```
 
-
-
 ## Members
 `countdown` → `tdu.Timecode` **(Read Only)** :
 Return a Timecode Object of the difference between the length and the current time. If a custom length is not specified then it will use a default: 23:59:59:ff for SMPTE and 99:59:59:ff.

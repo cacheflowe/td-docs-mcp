@@ -7,7 +7,6 @@ title: Body_Class
 # Body Class
 The Body Class describes the contents of a single body within an [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"). The [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP") has a list of all its bodies.
 
-
 ## Members
 `index` → `int` **(Read Only)** :
 The index of this Body in its [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP") (owner).

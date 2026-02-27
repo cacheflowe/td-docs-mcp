@@ -7,7 +7,6 @@ title: Prims_Class
 # Prims Class
 The Prims class describes the set of [prim objects](https://docs.derivative.ca/Prim_Class "Prim Class") (primitives) owned by one [SOP](https://docs.derivative.ca/SOP_Class "SOP Class").
 
-
 ## Members
 `owner` → `OP` **(Read Only)** :
 The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.

@@ -46,9 +46,9 @@ For other protocols over IP see [NDI (Network Data Interface)](https://docs.deri
 ## Parameters - Video Stream Out Page
 - Active `active` - Controls if the server is active or not. If this is Off then the port this server uses will not be tied up.
 - Mode `mode` - ⊞ - Selects if the mode works as an RTSP server, sends RTMP to a receiever such as a distribution service like YouTube or Twitch, or sends to an SRT destination.
-  * RTSP Server `rtspserver` - Use the RTSP and RTP protocol. More information [here](https://docs.derivative.ca/index.php?title=Experimental:Video_Stream_Out_TOP&action=edit&redlink=1 "Experimental:Video Stream Out TOP \(page does not exist\)").
-  * RTMP Sender `rtmpsender` - Use the RTMP protocol. More information [here](https://docs.derivative.ca/index.php?title=Experimental:Video_Stream_Out_TOP&action=edit&redlink=1 "Experimental:Video Stream Out TOP \(page does not exist\)").
-  * SRT `srt` - Use the SRT protocol. More information [here](https://docs.derivative.ca/index.php?title=Experimental:Video_Stream_Out_TOP&action=edit&redlink=1 "Experimental:Video Stream Out TOP \(page does not exist\)").
+  * RTSP Server `rtspserver` - Use the RTSP and RTP protocol. More information [here](https://docs.derivative.ca/index.php?title=Video_Stream_Out_TOP&action=edit&redlink=1 "Video Stream Out TOP \(page does not exist\)").
+  * RTMP Sender `rtmpsender` - Use the RTMP protocol. More information [here](https://docs.derivative.ca/index.php?title=Video_Stream_Out_TOP&action=edit&redlink=1 "Video Stream Out TOP \(page does not exist\)").
+  * SRT `srt` - Use the SRT protocol. More information [here](https://docs.derivative.ca/index.php?title=Video_Stream_Out_TOP&action=edit&redlink=1 "Video Stream Out TOP \(page does not exist\)").
   * WebRTC `webrtc` - Use a WebRTC peer. More info: [WebRTC](https://docs.derivative.ca/WebRTC "WebRTC"), [WebRTC DAT](https://docs.derivative.ca/WebRTC_DAT "WebRTC DAT").
 
 - Network Port `port` - The port the server should listen on. Multiple Video Stream Out TOPs can use the same port as long as each has a unique Stream Name.
