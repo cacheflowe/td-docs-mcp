@@ -5,15 +5,21 @@ title: Execute_DAT
 ---
 
 # Execute DAT
+
 ## Summary
 
 The Execute DAT lets you edit scripts and run them based on conditions. It can be executed at the start or end of every frame, or at the start or end of the TouchDesigner process.
+
 Execute DATs are created with [default python method placeholders](https://docs.derivative.ca/ExecuteDAT_Class "ExecuteDAT Class"). For each monitored condition in the parameters, there is a matching python method in the DAT. When a condition is turned on in the parameters, each time that condition is satisfied the corresponding python method will be executed.
+
 Text can also can be passed into the Text DAT through the node's input, however this text will not be editable. Text can be created in the DAT via the [Node Viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") or an external text editor.
+
 See also [OP Execute DAT](https://docs.derivative.ca/OP_Execute_DAT "OP Execute DAT").
+
 [executeDAT_Class](https://docs.derivative.ca/ExecuteDAT_Class "ExecuteDAT Class")
 
 ## Parameters - Execute Page
+
 - Active `active` - While on, the DAT will respond to the events selected below.
 - Execute from `executeloc` - ⊞ - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) Determines the location the script is run from.
   * Current Node `current` - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) The script is executed from the current node location.
@@ -31,15 +37,16 @@ See also [OP Execute DAT](https://docs.derivative.ca/OP_Execute_DAT "OP Execute 
 **NOTE:** When using multiple Execute DATs with Start and Create functions, they are triggered in numbered-alphanumeric order of the DAT's names.
 - Edit.. `edit` - Clicking this opens a text editor to edit text in the DAT.
 **TIP:** To direct all "standard output" of python to a Text DAT, put this in the `start()` method: `sys.stdout = op('text1')`
+
 To safely to this and restore standard output:
 ```
 prev = sys.stdout
 sys.stdout = op('text1')
 sys.stdout = prev
-
 ```
 
 ## Parameters - File Page
+
 - File `file` - The filesystem path and name of the file to load. Accepts `.txt` and `.dat` files.
 - Sync to File `syncfile` - When On, loads the file from disk into the DAT when the projects starts. A filename must be specified. Turning on the option will load the file from disk immediately. If the file does not exist, it will be created the first time the DAT is updated. The file is monitored so that any changes made to the file will update the DAT, and any changes made to the DAT will be written to the file right away. If the file is removed, the DAT will retain its current contents.
 - Load on Start `loadonstart` - When On, reloads the file from disk into the DAT when the projects starts.
@@ -48,6 +55,7 @@ sys.stdout = prev
 - Write File `writepulse` - Instantly write the file to disk.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -64,18 +72,25 @@ sys.stdout = prev
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Execute DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

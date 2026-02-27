@@ -5,13 +5,17 @@ title: Matte_TOP
 ---
 
 # Matte TOP
+
 ## Summary
 
 The Matte TOP composites input1 over input2 using the specified channel of input3 as a matte. Using the default setting of Matte Channel = Alpha, white (one) pixels in input3's alpha channel will draw input1 over input2, black (or zero) will make input1 transparent, leaving the input2 image at that pixel.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [matteTOP_Class](https://docs.derivative.ca/MatteTOP_Class "MatteTOP Class")
 
 ## Parameters - Matte Page
+
 - Switch Inputs `switchinputs` - Changes which image is composited over the other. This has the same effect as physically swapping input1 and input2. Also the same as inverting the alpha channel to input3.
 - Matte Channel `mattechannel` - ⊞ - Select which channel from input3 is used to create the matte.
   * Luminance `luminance` -
@@ -25,6 +29,7 @@ The Matte TOP composites input1 over input2 using the specified channel of input
   * RGBA Maximum `max` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -104,14 +109,19 @@ The Matte TOP composites input1 over input2 using the specified channel of input
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Matte TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -125,7 +135,9 @@ Extra Information for the Matte TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

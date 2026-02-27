@@ -5,17 +5,25 @@ title: Depth_TOP
 ---
 
 # Depth TOP
+
 ## Summary
 
 The Depth TOP reads an image containing depth information from a scene described in a specified [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). The resulting image is black (0) at pixels where the surface is at the near depth value (Camera's parameter "Near"). It is white (1) at pixels where the surface is at the far depth value (parameter "Far").
+
 The Depth TOP is used to do shadow mapping. It can have many other uses also, such as edge detection based on depth.
+
 The depth range is by definition the near plane -> far plane. Values in the Depth TOP will be 0 at the near plane, and 1 at the far plane. Generally the image in the Depth TOP will be white, unless you have your planes really tight around your object. But just because you can't visually see anything, it doesn't mean the information isn't there.
+
 Another option is Linear Camera-Space Depth. If the Render TOP's Depth Buffer Format is set to 32-Bit Floating-Point and its Linear Camera-Space Depth parameter is on, then the Depth TOP will output linear camera space depth.
+
 You can use the [Level TOP](https://docs.derivative.ca/Level_TOP "Level TOP") to re-range the Depth TOP's values. However make sure you set the Pixel Format of the Level TOP to 16 or 32-bit, or you'll lose a lot of information from the Depth TOP's data (The Depth TOP has 24-bit data).
+
 The Depth TOP creates a 24-bit fixed-point or 32-bit floating-point single channel image. When the Depth TOP is used as an input to another TOP, its data will be treated like an RGBA value of (D, D, D, 1). The same is true when sampling a depth texture in a GLSL shader.
+
 [depthTOP_Class](https://docs.derivative.ca/DepthTOP_Class "DepthTOP Class")
 
 ## Parameters - Depth Page
+
 - Render TOP `rendertop` - Specifies the Render TOP used for depth values.
 - Camera Index `cameraindex` - When using [Multi-Camera Rendering](https://docs.derivative.ca/Multi-Camera_Rendering "Multi-Camera Rendering"), chooses which camera's output to select.
 - Peel Layer Index `peellayerindex` - When using the 'Depth-Peeling' feature in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"), this chooses which peel layer to select.
@@ -56,6 +64,7 @@ The Depth TOP creates a 24-bit fixed-point or 32-bit floating-point single chann
 - Gamma `gamma` - Apply a gamma curve to the depth values.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -135,9 +144,13 @@ The Depth TOP creates a 24-bit fixed-point or 32-bit floating-point single chann
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Depth TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -151,7 +164,9 @@ Extra Information for the Depth TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

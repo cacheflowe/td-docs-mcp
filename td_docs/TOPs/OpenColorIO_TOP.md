@@ -5,6 +5,7 @@ title: OpenColorIO_TOP
 ---
 
 # OpenColorIO TOP
+
 ## Summary
 
 The OpenColorIO TOP utilizes the OpenColorIO library (<http://opencolorio.org/>) to apply various transforms and lookup tables to your textures and images. The default order that the transforms are applied is: Color Space, File, CDL, Output (Display).
@@ -12,18 +13,22 @@ The OpenColorIO TOP utilizes the OpenColorIO library (<http://opencolorio.org/>)
 This order can be changed using multiple OpenColorIO TOPs in a chain, with any unnecessary transforms toggled off.
 
 The color space of TouchDesigner TOPs is linear, so generally, images inported to TouchDesigner have to be converted to linear, if they are non-linearly encoded.
+
 [opencolorioTOP_Class](https://docs.derivative.ca/OpencolorioTOP_Class "OpencolorioTOP Class")
 
 ## Parameters - Setup Page
+
 - Configuration File `config` - File holding all the relevant information, such as lookup tables, transforms, color spaces, views, and displays. Several sample configurations are provided in the application installation folder /Samples/OpenColorIO.
 - Reload Config `reloadconfig` - Manually reload the configuration file.
 
 ## Parameters - Color Space Transform Page
+
 - Use Transform `usecolorspacetransform` - Toggle this transform's effect on or off. Color space transforms convert an image from one color space to another.
 - Input `incolorspace` - Specify the input color space, the color space of the incoming image.
 - Output `outcolorspace` - Specify the output color space. The image will be converted to this color space from the input color space.
 
 ## Parameters - File Transform Page
+
 - Use Transform `usefiletransform` - Toggle this transform's effect on or off. File transforms apply individual color space conversion files. Various file formats are supported, spi1d and spi3d to name a couple.
 - File Source `filesource` - The file to be loaded.
 Note that the file will expect a certain color space and file transforms do not internally handle this, so ensure that the image is in the correct color space before applying the transform or you will get incorrect results.
@@ -38,6 +43,7 @@ Note that the file will expect a certain color space and file transforms do not 
   * Inverse `inverse` -
 
 ## Parameters - CDL Transform Page
+
 - CDL Mode `cdlmode` - ⊞ - Color Decision List - Select this transform's effect on the image, either manually using parameter values or using a color correction file (.cc). <https://en.wikipedia.org/wiki/ASC_CDL>
   * Off `off` -
   * Values `values` -
@@ -66,6 +72,7 @@ Note that the file will expect a certain color space and file transforms do not 
 - Color Correction File `ccfile` - The slope, offset, power, and saturation information can instead be loaded from a color correction file (.cc).
 
 ## Parameters - Output Page
+
 - Use Output `useoutput` - Toggle a display transform. Display transforms allow for color space conversion onto specific display devices.
 - Gain `gain` - Adjust exposure applied before the display transform.
 - Display `display` - Color space of the device that will be used to view the image.
@@ -74,6 +81,7 @@ Note that the file will expect a certain color space and file transforms do not 
 - Gamma `gamma` - Adjust amount of gamma correction applied after the display transform.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -153,12 +161,17 @@ Note that the file will expect a certain color space and file transforms do not 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the OpenColorIO TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -172,7 +185,9 @@ Extra Information for the OpenColorIO TOP can be accessed via an [Info CHOP](htt
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

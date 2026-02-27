@@ -5,21 +5,33 @@ title: Transform_POP
 ---
 
 # Transform POP
+
 ## Summary
 
 The Transform POP applies a translate, rotate and scale to the position (attribute `P`) and normal (attribute `N`) of all the points of the input.
+
 It can apply the transform to any float3 attribute, not just `P`, and then output to any existing or new float3 attribute, by default `P`. It can apply the transform to point, vertex or primitive attributes.
+
 It can apply partial transforms to the points based on a 0 to 1 `Weight` attribute so that some parts of the geometry are affected and other parts not transformed. The [Field POP](https://docs.derivative.ca/Field_POP "Field POP") can generate a `Weight` attribute to be used by Transform.
+
 **Per-point mapping of parameters** - using the Map page, every point can receive a different value for the transform parameters, based on mapping incoming attributes to the translate, scale, rotate, pivot etc. parameters, So essentially every point can get a completely different transform. See [Mapping POP Attributes to Parameters](https://docs.derivative.ca/Mapping_POP_Attributes_to_Parameters "Mapping POP Attributes to Parameters").
+
 A further transform can be applied by specifying a Look At component (typically a [Null COMP](https://docs.derivative.ca/Null_COMP "Null COMP") or [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP")), and choosing which axis points to the origin of that component.
+
 Another transform may be applied by providing a 16-value transform matrix via a CHOP or DAT.
+
 The order of applying the translate, rotate and scale parameters is determined by the Transform Order and the Rotate Order menus.
+
 The Inverse toggle parameter applies an inverse of the transform specified. (Instead of tx=2 ry=50 sz=4, the equivalent of sz=.25, ry=-50 tx=-2)
+
 On the Align page there are numerous options for aligning the X, Y or Z coordinate to the different sides/center of the input's bounding box or to the bounding box of a reference POP.
+
 See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"), [Trig POP](https://docs.derivative.ca/Trig_POP "Trig POP")
+
 [transformPOP_Class](https://docs.derivative.ca/TransformPOP_Class "TransformPOP Class")
 
 ## Parameters - Transform Page
+
 - Mode `mode` - ⊞ - Choose what the transform is applied to.
   * Transform Geometry `transformgeo` -
   * Transform Attribute `transformattrib` -
@@ -128,6 +140,7 @@ See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"),
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Align Page
+
 - Align Transform Order `alignxformorder` - ⊞ - Whether the transform from the Transform page or the Align page is applied first.
   * Transform, then Align `transformalign` -
   * Align, then Transform `aligntransform` -
@@ -208,6 +221,7 @@ See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"),
   * Reference Proportional `referenceprop` -
 
 ## Parameters - Map Page
+
 - Mapping `map` - Start of Sequential Parameter Blocks for attribute-to-parameter mapping.
 - OP `map0op` - Source OP for parameter mapping. The default of _in0 means the input POP.
 - Element `map0element` - The attribute (or component of an attribute) that will be mapped to a parameter per-point.
@@ -236,20 +250,28 @@ See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"),
   * Add `add` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Transform POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

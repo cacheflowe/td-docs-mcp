@@ -5,12 +5,15 @@ title: Merge_DAT
 ---
 
 # Merge DAT
+
 ## Summary
 
 The Merged DAT is a multi-input DAT which merges the text or tables from the input DATs together.
+
 [mergeDAT_Class](https://docs.derivative.ca/MergeDAT_Class "MergeDAT Class")
 
 ## Parameters - Merge Page
+
 - DAT `dat` - Specifies the path to DATs to be merged. Can be used in conjunction with the operator's wired inputs.
 - How `how` - ⊞ - Sets how tables are merged together.
   * Append Rows `row` - Merges tables together by adding rows from subsequent tables to the first table. If the By Name option is used, then data from subsequent tables will be added to the column with the same name, and the first row will not be added. If the subsequent tables have more columns than the input table, they will be appended.
@@ -23,7 +26,9 @@ The Merged DAT is a multi-input DAT which merges the text or tables from the inp
 
     For example, if your first input table is ```
  Name          Species	  Age
+
  Birch	        Ferret	  6
+
  Diefenbaker	Ferret	  4
 
 ```
@@ -31,16 +36,15 @@ The Merged DAT is a multi-input DAT which merges the text or tables from the inp
  Name          Species	   Age
  Birch	        Ferret	   5
  Diefenbaker	Wolverine  5
-
 ```
 ```
  Name          Species	  Age
  Birch	        Ferret	   6
  Diefenbaker	Otter	   10
-
 ```
     your output table will be ```
  Name          Species	  Age
+
  Birch	        Ferret	   5
 
 ```

@@ -5,10 +5,13 @@ title: OSC_In_DAT
 ---
 
 # OSC In DAT
+
 ## Summary
 
 The OSC In DAT receives and parses full Open Sound Control packets using UDP by default. Each packet is parsed and appended as a row in the DAT's table. The table is FIFO "fisrt-in first-out" and limited to parameter-set number of lines. An optional script may be run for each packet received. Each packet/row represents either one OSC message, or an entire OSC bundle. Each argument is translated into readable ASCII text.
+
 See also [OSC](https://docs.derivative.ca/OSC "OSC"), [OSC Out DAT](https://docs.derivative.ca/OSC_Out_DAT "OSC Out DAT"), [Peer Class](https://docs.derivative.ca/Peer_Class "Peer Class"), [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP"), [OSC Out CHOP](https://docs.derivative.ca/OSC_Out_CHOP "OSC Out CHOP"), [iOS and OSC](https://docs.derivative.ca/IOS_and_OSC "IOS and OSC"), [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols").
+
 The supported argument tag types are:
   * i int32
   * f float32
@@ -29,10 +32,13 @@ The supported argument tag types are:
   * ] End of an array
 
 In the case of multi-vectored arguments (example "blob", "midi", "rgb", etc), the list of values is enclosed in double quotes. In the case of unknown argument types, a quoted list of decimal values representing the bytes of that argument are included instead.
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [oscinDAT_Class](https://docs.derivative.ca/OscinDAT_Class "OscinDAT Class")
 
 ## Parameters - Connect Page
+
 - Active `active` - While on, the DAT receives information sent to the network port. While Off, no updating occurs. Data sent to the port is lost.
 - Protocol `protocol` - ⊞ - Select which protocol to use, refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Messaging (UDP) `msging` -
@@ -50,6 +56,7 @@ In the case of multi-vectored arguments (example "blob", "midi", "rgb", etc), th
 - Bundle Timestamp Column `bundletimestamp` - When On, each bundle timestamp value is included in a column.
 
 ## Parameters - Received Messages Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message received. See [oscinDAT_Class](https://docs.derivative.ca/OscinDAT_Class "OscinDAT Class") for usage.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -63,6 +70,7 @@ In the case of multi-vectored arguments (example "blob", "midi", "rgb", etc), th
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -79,22 +87,30 @@ In the case of multi-vectored arguments (example "blob", "midi", "rgb", etc), th
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the OSC In DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific OSC In DAT Info Channels
   * messages_pending -
 
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

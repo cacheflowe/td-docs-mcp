@@ -5,19 +5,29 @@ title: GLSL_Copy_POP
 ---
 
 # GLSL Copy POP
+
 ## Summary
 
 The GLSL Copy POP lets you make copies of the geometry of the first input POP, and apply custom GLSL code to each copy.
+
 If the template input (second input) is not connected, the "number of copies" parameter determines the number of copies.
+
 If the template input is connected, the number of copies is determined by the number of points in the template. A copy is created at each point.
+
 One compute compute shader is run for each element type (points, vertices, primitives) of a copy. Attributes to output are specified in the Output Attributes parameter. A valid points compute shader is required.
+
 For vertices, a custom compute shader is optional, the default compute shader updates the index buffer and copies the input vertex attributes to the output.
+
 For primitives, a custom compute shader is optional, the default compute shader updates extra buffers required for line strips, primitive groups, and copies the input primitive attributes to the output.
+
 See default commented shader DATs for available helper functions and example usage.
+
 **Refer to the[Write GLSL POPs](https://docs.derivative.ca/Write_GLSL_POPs "Write GLSL POPs") article for more info on using this POP.**
+
 [glslcopyPOP_Class](https://docs.derivative.ca/GlslcopyPOP_Class "GlslcopyPOP Class")
 
 ## Parameters - GLSL Page
+
 - Number of Copies `ncy` - Sets the number of copies.
 - Points Compute Shader `ptcomputedat` - DAT containing the point compute shader code.
 - Point Output Attributes `ptoutputattrs` - ⊞ - Input point attributes modified by the shader.
@@ -48,6 +58,7 @@ See default commented shader DATs for available helper functions and example usa
   * Quality `quality` -
 
 ## Parameters - Create Attributes Page
+
 - New Attribute `attr` - Start of Sequential Parameter Blocks to create new attributes.
 - New Attribute Class `attr0class` - ⊞ - The attribute class for the new attribute.
   * Point `point` -
@@ -80,6 +91,7 @@ See default commented shader DATs for available helper functions and example usa
   * Transform Matrix `transformMatrix` -
 
 ## Parameters - Colors Page
+
 - Pre-Multiply RGB by Alpha `premultcolor` - Enable RGB values pre-multiplication with the Alpha.
 - Color `color` - Start of Sequential Parameter Blocks for color uniforms.
 - Name `color0name` - The name of the color uniform.
@@ -91,6 +103,7 @@ See default commented shader DATs for available helper functions and example usa
 - Alpha `color0alpha` - Alpha value.
 
 ## Parameters - Vectors Page
+
 - Vector `vec` - Start of Sequential Parameter Blocks to define uniform variables.
 - Name `vec0name` - The name of the vector uniform.
 - Type `vec0type` - ⊞ - The number of components for the array.
@@ -118,6 +131,7 @@ See default commented shader DATs for available helper functions and example usa
   * Value `vec0valuew` -
 
 ## Parameters - Samplers Page
+
 - Sampler `sampler` - Start of Sequential Parameter Blocks for Samplers to read from the shader.
 - Name `sampler0name` - The name of the sampler uniform.
 - TOP `sampler0top` - ⊞ - Sets reference to a TOP to sample.
@@ -144,6 +158,7 @@ See default commented shader DATs for available helper functions and example usa
   * Interpolate Pixels `linear` -
 
 ## Parameters - Arrays Page
+
 - Array `array` - Start of Sequential Parameter Blocks for array uniforms.
 - Name `array0name` - The name of the array uniform.
 - Type `array0type` - ⊞ - The number of components for the array.
@@ -158,21 +173,25 @@ See default commented shader DATs for available helper functions and example usa
   * Texture Buffer `texturebuffer` -
 
 ## Parameters - Matrices Page
+
 - Matrix `matrix` - Start of Sequential Parameter Blocks of matrix uniforms.
 - Name `matrix0name` - The name of the matrix uniform.
 - Matrix `matrix0value` - Sets a reference to a matrix to pass to the shader.
 
 ## Parameters - Temp Buffers Page
+
 - Temp Buffer `tempbuffer` - Start of Sequential Parameter Blocks forTemporary buffers used to pass information to the shader as uniforms.
 - Name `tempbuffer0name` - The name of the temporary buffer.
 - Initial Value `tempbuffer0initval` - Initial value for the current temporary buffer.
 
 ## Parameters - Constants Page
+
 - Constant `const` - Start of Sequential Parameter Blocks for Specialization Constants.
 - Name `const0name` - The name of the constant.
 - Value `const0value` - Constant value.
 
 ## Parameters - POP Buffers Page
+
 - Buffer `buffer` - Start of Sequential Parameter Blocks for POP attribute buffers.
 - POP `buffer0pop` - POP to select the attribute from.
 - Attribute Class `buffer0attrclass` - ⊞ - Attribute class for the attribute for the current buffer block.
@@ -184,6 +203,7 @@ See default commented shader DATs for available helper functions and example usa
 - Name `buffer0name` - Name to be used in the shader for the POP attribute buffer.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -228,15 +248,22 @@ See default commented shader DATs for available helper functions and example usa
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the GLSL Copy POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

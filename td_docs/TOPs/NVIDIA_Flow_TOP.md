@@ -5,18 +5,27 @@ title: NVIDIA_Flow_TOP
 ---
 
 # NVIDIA Flow TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This operator only works with **Nvidia GPUs**.
+
 NVIDIA Flow is a volumetric fluid based simulation of a burning gas system. The user controls the 3 main factors of temperature, fuel, and smoke to create fire and smoke simulations.
+
 The Nvidia Flow TOP calculates the Flow simulation and renders it. It requires a [Nvidia Flow Emitter COMP](https://docs.derivative.ca/Nvidia_Flow_Emitter_COMP "Nvidia Flow Emitter COMP") to emit gas into the Flow simulation.
+
 See also [Nvidia Flow Emitter COMP](https://docs.derivative.ca/Nvidia_Flow_Emitter_COMP "Nvidia Flow Emitter COMP"), [Nvidia Flow](https://docs.derivative.ca/Nvidia_Flow "Nvidia Flow").
+
 Read more here [Nvidia Flow Artist Tools](https://docs.nvidia.com/gameworks/content/artisttools/Flow/index.html)
+
 [flowTOP_Class](https://docs.derivative.ca/FlowTOP_Class "FlowTOP Class")
 
 ## Parameters - Setup Page
+
 - Initialize `initialize` - Initializes the simulation.
 - Start `start` - Starts the simulation playback.
 - Play `play` - The simulation only steps forward when Play = On, when off the simulation is paused.
@@ -41,6 +50,7 @@ Read more here [Nvidia Flow Artist Tools](https://docs.nvidia.com/gameworks/cont
 - Render Mode `rendermode` - Provides two debug render modes in addition to the default of Density. Debug Density gives a "rainbow" render, where density is mapped to a colour, and Dubug Velocity converts velocity xyz to an rgb colour.
 
 ## Parameters - Settings Page
+
 - Gravity `gravity` - ⊞ - Gravity direction for use with Buoyancy parameter, where amount controls strength of buoyancy force.
   * X `gravityx` -
   * Y `gravityy` -
@@ -78,6 +88,7 @@ Read more here [Nvidia Flow Artist Tools](https://docs.nvidia.com/gameworks/cont
 - Fuel Alloc Threshold `fuelallocthreshold` - If Fuel Alloc Weight is non-zero, block allocation and deallocation is based on this value. In particular, if the Smoke density is below this threshold, the block will be deallocated, unless velocity and smoke thresholding are active.
 
 ## Parameters - Volume Shadow Page
+
 - Enable `enableshadow` - Enables Volume shadow rendering for the simulation. Shadowing generates light intensity values that overwrite the "burn" channel of the grid. Values range from 0 to 1, where 0 is fully shadowed. Shadow visibilty can be controlled by enabling 'Override Emitter Intensity Mask' or by adjusting the 'Burn Intensity Mask', 'Burn Alpha Mask', and 'Burn Color Mask' in [Nvidia Flow Emitter COMP](https://docs.derivative.ca/Nvidia_Flow_Emitter_COMP "Nvidia Flow Emitter COMP")
 - Draw Debug `drawshadowdebug` - Displays the volume shadow blocks being used. Useful for debugging or optimizing.
 - Override Emitter Intensity Mask `overrideemitter` - Automatically adjusts the emitters' render material, so volume shadows are visible. Will override 'Burn Intensity Mask' and 'Intensity Bias' of emitters.
@@ -94,6 +105,7 @@ Read more here [Nvidia Flow Artist Tools](https://docs.nvidia.com/gameworks/cont
 - Blend Bias `shadowblendbias` - An offset that increases or decreases the blend strength by a constant amount. Parts of the grid with a blend value over 1 will have shadows. Parts of the grid with blend value under 1 will not have shadows. Blend values between 0 and 1 scale the strength of shadow.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -173,12 +185,16 @@ Read more here [Nvidia Flow Artist Tools](https://docs.nvidia.com/gameworks/cont
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0: Background Image - Texture the Flow simulation will be overlayed onto.
   * Input 1: Depth Map - A [Depth TOP](https://docs.derivative.ca/Depth_TOP "Depth TOP") to obscure parts of the Flow Simulation.
 
 ## Info CHOP Channels
+
 Extra Information for the Nvidia Flow TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Nvidia Flow TOP Info Channels
   * initializing -
 
@@ -193,7 +209,9 @@ Specific Nvidia Flow TOP Info Channels
   * playing_seconds -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -207,7 +225,9 @@ Specific Nvidia Flow TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

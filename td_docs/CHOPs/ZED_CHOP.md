@@ -5,18 +5,22 @@ title: ZED_CHOP
 ---
 
 # ZED CHOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The ZED CHOP reads positional and plane tracking from the ZED camera. It can additionally use a UV to find plane in the room, and return information about that plane such as it's size/orientation either relative to the camera, or the room itself.
+
 When the Camera Transform parameter is enabled, we provide the plane orientation data as well as the following.
 ---
 **Channel Name** |  **Description**
 `camera:tx`, `camera:ty`, `camera:tz` | Camera translation vector
 `camera:rx`, `camera:ry`, `camera:rz` | Camera rotation vector
 When Body Tracking is enabled, the Body 3D parameter enables `tx tz tz` positions values for each joint (i.e. `p1/body/shoulder_l:tx` is the position x component of the left shoulder for the first tracked body), the Body 2D parameter enables `u v` coordinates. The following are the supported body landmarks for 18, 34, and 38 joints listed in the [ZED Body Tracking](https://www.stereolabs.com/docs/body-tracking) documentation.
+
 The ZED CHOP supports multiple body tracking with the Max Bodies parameter. Each of the previous as well as following channel names can be prepended with `p#` indicating which body this pertains to, i.e. the `p3/body/neck:tx` channel indicates the neck position x component for the third tracked body.
 ---
 **Number of Joints** |  **Channel Names**
@@ -31,13 +35,19 @@ The following are channels containing information per tracked body.
 `moving` | Whether a body is moving (0 or 1)
 `vel_x`, `vel_y`, `vel_z` | Velocity of tracked body
 The Bounding Boxes parameter enables channels for bounding box positions.
+
 When Body 2D is enabled `bbox2d:[xywh]` channels indicate the bottom left (x,y) coordinate with the width and height of the bounding box as well as `bbox2d:[uv], bbox2d:norm[wh]` provide it in UV coordinates.
+
 When Body 3D is enabled both the bounding box `bbox3d` and head bounding box `headbbox3d` are provided.
+
 **NOTE:** This CHOP works with the [Stereolabs ZED](https://www.stereolabs.com/zed/) hardware. For more information and to know what ZED SDK to install refer to the [ZED](https://docs.derivative.ca/ZED "ZED") article.
+
 See also [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED POP](https://docs.derivative.ca/ZED_POP "ZED POP") and [ZED SOP](https://docs.derivative.ca/ZED_SOP "ZED SOP").
+
 [zedCHOP_Class](https://docs.derivative.ca/ZedCHOP_Class "ZedCHOP Class")
 
 ## Parameters - ZED Page
+
 - Active `active` - When 'On' data is captured from the ZED camera.
 - ZED TOP `zedtop` - The name of the primary [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP") that is configuring the camera. The primary TOP controls which camera the CHOP receives data from.
 - Camera Transform `cameratransform` - Enables transformation, which returns the position and rotation of the camera.
@@ -71,6 +81,7 @@ See also [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED POP](http
 - Bounding Boxes `boundingboxes` - Enable bounding boxes. Head bounding box is only enabled when Body 3D is enabled.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -88,9 +99,13 @@ See also [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED POP](http
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the ZED CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -104,7 +119,9 @@ Extra Information for the ZED CHOP can be accessed via an [Info CHOP](https://do
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,13 +5,21 @@ title: Operator_Shortcuts
 ---
 
 # Operator Shortcuts
+
 There are three ways to give shortcut names to operators in TouchDesigner:
+
 [Parent Shortcuts](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") access a higher level component from within that component.
+
 [Global OP Shortcuts](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") access a unique component from anywhere in TouchDesigner.
+
 [Internal Operator Shortcuts](https://docs.derivative.ca/Internal_Operators "Internal Operators") and the related [Internal Parameter Shortcuts](https://docs.derivative.ca/Internal_Parameters "Internal Parameters") provide easy access from operators inside a component to other operators inside that same component.
+
 These should not be confused with [Keyboard Shortcuts](https://docs.derivative.ca/Keyboard_Shortcuts "Keyboard Shortcuts").
+
 ##  Python Shortcut Objects
+
 There are a number of Python objects that facilitate the various operator shortcuts in TouchDesigner. They can be accessed in the global namespace through the [Td Module](https://docs.derivative.ca/Td_Module "Td Module") and they can also be accessed relative to operators as members of the [OP Class](https://docs.derivative.ca/OP_Class "OP Class"). For detailed usage instructions follow those links. A brief description of the objects themselves is below:
+
 `**Shortcut**`- the parent object of all the other shortcut classes.
   * `**OPShortcut**`- the most commonly used shortcut, accessed through`op`. Returns an operator (or None if path not found) from a provided path (argument) or [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") (member).
   * `**OPEXShortcut**`- Works just like`OPShortcut` but raises an exception when an operator path is not found. Accessed through `opex`.

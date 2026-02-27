@@ -5,13 +5,17 @@ title: Profile_SOP
 ---
 
 # Profile SOP
+
 ## Summary
 
 The Profile SOP enables the extraction and manipulation of profiles.
+
 You will usually need a [Trim SOP](https://docs.derivative.ca/Trim_SOP "Trim SOP"), [Bridge SOP](https://docs.derivative.ca/Bridge_SOP "Bridge SOP"), or Profile SOP after a [Project SOP](https://docs.derivative.ca/Project_SOP "Project SOP"). Use a Trim SOP to cut a hole in the projected surface. Use a Bridge SOP to skin the profile curve to another profile curve.
+
 [profileSOP_Class](https://docs.derivative.ca/ProfileSOP_Class "ProfileSOP Class")
 
 ## Parameters - Profile Page
+
 - Group `group` - This field allows you to specify the particular group of curves on the surface. Other primitives are ignored. You can specify profile curves within the group by providing a profile pattern (e.g. *.3 specifies the fourth profile in all spline surfaces).
 - Method `method` - ⊞ - This menu allows you to extract a stand-alone 3D curve as the world or parametric image of the profile. The non-parametric option will yield a curve whose shape and position in space are identical or very similar to those of the chosen profile. The parametric option will produce a planar, XY face whose vertices and type will be identical to those of the profile in 2D; also, if the profile is a spline it will have the same basis as the extracted curve.
   * Extract `extract` - Use the extraction parameters below to extract a 3D curve from the profile.
@@ -39,12 +43,17 @@ You will usually need a [Trim SOP](https://docs.derivative.ca/Trim_SOP "Trim SOP
   * `vrange2` -
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Profile SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -56,7 +65,9 @@ Extra Information for the Profile SOP can be accessed via an [Info CHOP](https:/
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

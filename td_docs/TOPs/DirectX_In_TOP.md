@@ -5,20 +5,27 @@ title: DirectX_In_TOP
 ---
 
 # DirectX In TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The DirectX In TOP brings DirectX textures from other applications into TouchDesigner. This feature is accessed through the DirectX Sharing Resources feature. This supports DirectX 9.0 and higher.
+
 See also: [DirectX Out TOP](https://docs.derivative.ca/DirectX_Out_TOP "DirectX Out TOP")
+
 [directxinTOP_Class](https://docs.derivative.ca/DirectxinTOP_Class "DirectxinTOP Class")
 
 ## Parameters - DirectX In Page
+
 - Handle `handle` - Specify the handle pointing to the DirectX texture. You can get the handle of any [DirectX Out TOP](https://docs.derivative.ca/DirectX_Out_TOP "DirectX Out TOP") texture by attaching an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") to it. The `handle` is one of the columns. Other applications that support sharing texture will have their own way of getting a texture handle, please consult the application's documentation.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -98,9 +105,13 @@ See also: [DirectX Out TOP](https://docs.derivative.ca/DirectX_Out_TOP "DirectX 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the DirectX In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -114,7 +125,9 @@ Extra Information for the DirectX In TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

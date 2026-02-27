@@ -5,15 +5,21 @@ title: DAT_to_POP
 ---
 
 # DAT to POP
+
 ## Summary
 
 The DAT to POP converts a DAT table into a POP point list, where each column is a name heading followed by values, one row per POP point. The table must be structured as you get with POP to DAT, though for DAT to POP you don't need an `index` column as it is automatically implied.
+
 The column headers need to be in the usual POP form. Vectors (like float3) must be expressed as one column per component of the vector, with headings, for example, `P(0)` or `Color(3)`. Arrays components must be in `MyArray[0]` etc form.
+
 In each [sequential block](https://docs.derivative.ca/Sequential_Parameters#Sequence_Blocks "Sequential Parameters"), you need to specify an attribute to create. You can use `?` in `P(?)` to specify that columns `P(0)`, `P(1)` and `P(2)` will form a float3 vector `P`.
+
 At present, DAT to POP cannot convert or specify primitives or vertices of primitives. This will we implemented at a later date, at which time you will be able to represent any POP as three or four DATs.
+
 [dattoPOP_Class](https://docs.derivative.ca/DattoPOP_Class "DattoPOP Class")
 
 ## Parameters - Points Page
+
 - Points DAT `pointsdat` - DAT containing point attributes.
 - New Attribute `attr` - Start of Sequential Parameter Blocks to create new attributes.
 - Select Columns by `attr0columnstype` - ⊞ - Specifies the columns selection method.
@@ -39,6 +45,7 @@ At present, DAT to POP cannot convert or specify primitives or vertices of primi
 - Array Size `attr0arraysize` - Nunber of elements in the array.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -63,11 +70,17 @@ At present, DAT to POP cannot convert or specify primitives or vertices of primi
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the DAT to POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

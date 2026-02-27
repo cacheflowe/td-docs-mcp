@@ -5,12 +5,15 @@ title: Clip_SOP
 ---
 
 # Clip SOP
+
 ## Summary
 
 The Clip SOP cuts and creases source geometry with a plane.
+
 [clipSOP_Class](https://docs.derivative.ca/ClipSOP_Class "ClipSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in Pattern Matching in the [Scripting Guide.](http://www.derivativeinc.com/Tools/Touch000/Manual/Guides/ScriptingGuide/ScriptingGuide.pdf)
 - Keep `clipop` - ⊞ - Options controlling what part of the clip to keep:
   * Primitives Above the Plane `above` - Retain the primitives above the cutting plane.
@@ -28,12 +31,17 @@ The Clip SOP cuts and creases source geometry with a plane.
 - Below Plane `below` - When Create Groups is checked, you can assign the geometry above the cutting plane to the Group name typed in this field.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Clip SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -45,7 +53,9 @@ Extra Information for the Clip SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,15 +5,21 @@ title: Camera_COMP
 ---
 
 # Camera COMP
+
 ## Summary
 
 The Camera Component is a 3D object that behaves like a real-world camera. You view your scene through it and render from its point of view using a [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP").
+
 See [Geometry Viewer](https://docs.derivative.ca/Geometry_Viewer "Geometry Viewer") to learn about how you can inspect a scene from a camera.
+
 See [cameraViewport](https://docs.derivative.ca/Palette:camera "Palette:camera") in the Palette - it's a powerful interactive camera that can be used in place of the basic Camera COMP.
+
 A Camera Component can be attached or linked to any other 3D Component in a [3D hierarchy](https://docs.derivative.ca/3D_Parenting "3D Parenting").
+
 [cameraCOMP_Class](https://docs.derivative.ca/CameraCOMP_Class "CameraCOMP Class")
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -97,6 +103,7 @@ In the example above, rotations performed on an Component with different pivot p
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
 
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -141,6 +148,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
 
 ## Parameters - View Page
+
 - Projection `projection` - ⊞ - A pop-up menu lets you choose from Perspective and Orthographic projection types. A third option Perpective to Ortho Blend enables the Projection Blend parameter below which can be used to blend between perspectives. A 4th option Custom Projection Matrix allows you to specify a custom 4x4 projection matrix using a tdu.Matrix, CHOP or a DAT.
   * Perspective `perspective` -
   * Orthographic `ortho` -
@@ -156,12 +164,19 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 
 - FOV Angle `fov` - The field of view (FOV) angle is the angular extend of the scene imaged by the camera.
 **Useful Equations**
+
 Field of View and Throw Angle: The FOV would be:      FOV = arctan( (screenWidth / 2) / (distanceToScreen) ) * 2     FOV = arctan( 0.5 * (screenWidth / distanceToScreen) ) * 2
+
 Throw is:      Throw = distanceToScreen / screenWidth     1/Throw = screenWidth / distanceToScreen
+
 In terms of throw, it's      FOV = arctan(0.5 * (1/Throw)) * 2     FOV = arctan(0.5 / Throw) * 2
+
 **FOV calculations in x and y**
+
 The above equations can be used to determine FOV_x and FOV_y (ie. horizontally and vertically) using Comera COMP parameters focal and aperture. In TouchDesigner's Camera COMP, screenWidth = aperture parameter and distanceToScreen = focal parameter (assuming infinity focus), from this      FOV_x = arctan( (aperture / 2) / focal) * 2
+
 Furthermore, as mentioned above aperture parameter = aperture_x and if given the resolution in x and y of the rendered view (ie. aspect ratio)      aperture_y = resy/resx * aperture_x
+
 From this      FOV_y = arctan( (aperture_y / 2) / focal ) * 2
 - Focal Length `focal` - The parameter sets the focal length of the lens, zooming in and out. Perspective is flattened or exaggerated depending on focal length. See FOV Angle parameter for relation of aperture, focal length and field of view angle. Some interesting distortion effects can be acheived with this parameter.
 - Aperture `aperture` - This value relates to the area through which light can pass for the camera.
@@ -185,6 +200,7 @@ To use the IPD with 2 cameras, the right eye camera should be set with +IPD/2 an
 - Proj Matrix/CHOP/DAT `projmatrixop` - When Custom Projection Matrix is selected, this parameters should be filled in a custom 4x4 projection matrix. For ways to specify a matrix in a parameter, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") article. The projection matrix should generate depth values in Vulkan depth clip range [0,1], not OpenGL clip range [-1,1].
 - Custom Projection GLSL DAT `customproj` - Takes a DAT containing a GLSL shader to specify custom projection functions. You must provide one functions in this shader. As a starting point, here are the definitions for the function that is used when custom ones are not provided. This will only be used when the Render TOP is rendering a 2D output, not cubemaps or fisheye renders. Note that projection works using Vulkan depth clip range [0,1], not OpenGL's [-1,1]. So the position will be clipped when z is outside the range 0 <= z <= w. ```
  vec4 UserWorldToProj(vec4 worldSpaceVertPosition, int cameraIndex)
+
  {
      vec4 projP = uTDMats[cameraIndex].camProj * worldSpaceVertPosition;
      return projP;

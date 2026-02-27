@@ -5,15 +5,21 @@ title: Sort_POP
 ---
 
 # Sort POP
+
 ## Summary
 
 The Sort POP sorts the point list and/or the primitive list based on the position `P` or any attribute component. When sorting by `P` it can sort the points relative to a vector, or proximity to a point, or relative to a Geometry COMP's Z axis.
+
 The Sort POP can also randomize the point order, or shift the point order (circularly in the point list, like first point becomes the second point and the last point becomes the first).
+
 It can do the same operations to primitives.
+
 It implements <https://gpuopen.com/fidelityfx-parallel-sort/>
+
 [sortPOP_Class](https://docs.derivative.ca/SortPOP_Class "SortPOP Class")
 
 ## Parameters - Point Page
+
 - Point Method `ptmethod` - ⊞ - Point sorting criteria.
   * No Change `none` -
   * By Attribute `byattrib` -
@@ -51,6 +57,7 @@ It implements <https://gpuopen.com/fidelityfx-parallel-sort/>
 - Offset `pointoffset` - Shifts the point order by this offset.
 
 ## Parameters - Primitive Page
+
 - Primitive Method `primmethod` - ⊞ - Primitive sorting criteria.
   * No Change `none` -
   * By Point Attribute `byptattrib` -
@@ -89,19 +96,27 @@ It implements <https://gpuopen.com/fidelityfx-parallel-sort/>
 - Offset `primoffset` - Shifts the primitive order by this offset.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Sort POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

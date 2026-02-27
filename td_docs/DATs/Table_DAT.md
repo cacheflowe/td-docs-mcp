@@ -9,18 +9,29 @@ title: Table_DAT
 ## Summary
 
 The Table DAT lets you hand-edit or create a table of rows and columns of cells, each cell containing a text string. A "table" is one of the two forms of DATs (the other being simply lines of "free-form" text via the [Text DAT](https://docs.derivative.ca/Text_DAT "Text DAT")).
+
 **Manually editing cells** - When a Table DAT has its [Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active") on, you can add rows and columns by right-clicking on row 0 or column 0 to add rows/columns, and typing text into any cell of its [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer"). Use the Tab key to jump to the next cell, and the up/down arrow keys to navigate to adjacent cells.
+
 **Procedurally filling cells** - You can conveniently create and fill rows and columns of a table. On the Fill page, the Fill Type menu gives 5 options: Manual, Set Size, Set Size and Contents, Fill by Column, and Fill by Row. When a Fill option is chosen, you can generate multiple rows/columns with specific headings using space-separated names or an expression, plus expressions to fill the cells.
+
 You can use `me.subRow` and `me.subCol` (for sub-section being filled) in your expressions. See the popup menu on the Cell Expression parameter for suggestions.
+
 Click the + below the parameters to you generate multiple sets of new cols or rows.
+
 **Filling cells externally with python** - If you are not auto-filling, you can put strings into table cells using something like `op('table1')[2,'select'] = 'yes'` in a python script elsewhere, or append rows using `.appendRow()` in python. See also the [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT") and its Snippets.
+
 **Loading from external files** - The Table DAT can also can load a table from a comma-separated file `(.csv)`, tab-separated file `(.tsv)`, or TouchDesigner DAT file `(.dat)` file on disk or on the web. Other text files `(.txt, .py, .glsl, etc)` can also be loaded, but will be treated as tab-separated files. Either drag-drop the file into a network, or use the File parameter.
+
 Use `http://` when specifying a table on the internet.
+
 If you drag the Table DAT to a desktop or folder, The DAT text will be converted into tab-delimited tables in a `.txt` file.
+
 See also [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT"), [Text DAT](https://docs.derivative.ca/Text_DAT "Text DAT").
+
 [tableDAT_Class](https://docs.derivative.ca/TableDAT_Class "TableDAT Class")
 
 ## Parameters - Table Page
+
 - Edit.. `edit` - Clicking this opens a text editor to add/edit/delete text from the DAT.
 - File `file` - The filesystem path and name of the file to load. Supports comma-separated `(.csv)`, tab-separated `(.tsv)`, or TouchDesigner DAT files `(.dat)`. Other text file formats `(.txt, .py, .glsl, etc)` will be treated as tab-separated files.
 - Sync to File `syncfile` - When On, loads the file from disk into the DAT when the projects starts. A filename must be specified. Turning on the option will load the file from disk immediately. If the file does not exist, it will be created the first time the DAT is updated. The file is monitored so that any changes made to the file will update the DAT, and any changes made to the DAT will be written to the file right away. If the file is removed, the DAT will retain its current contents.
@@ -36,6 +47,7 @@ See also [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT"), [Text
 - Remove Blank Lines `removeblank` - When enabled, do not convert blank lines into empty rows when loading files.
 
 ## Parameters - Fill Page
+
 - Fill Type `fill` - ⊞ - You can create and fill rows and columns of a table. Fill Type menu gives 5 options: Manual, Set Size, Set Size and Contents, Fill by Column, and Fill by Row. When a Fill option is chosen, you can generate multiple rows/columns with specific headings using space-separated names or an expression, plus expressions to fill the cells.
   * Manual `manual` - Rows and Columns will be added manually by user.
   * Set Size `setsize` - The size will be set by the Rows and Columns parameters, but the cells will not be filled in.
@@ -52,6 +64,7 @@ See also [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT"), [Text
 - Cell Expression `fills0expr` - Expression used to fill each cell if the Fill Type is Fill by Row or Fill by Column. Can include expressions `me.subRow` and `me.subCol`.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -68,15 +81,21 @@ See also [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT"), [Text
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Table DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

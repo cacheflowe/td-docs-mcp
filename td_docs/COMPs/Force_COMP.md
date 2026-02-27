@@ -5,31 +5,51 @@ title: Force_COMP
 ---
 
 # Force COMP
+
 ## Summary
 
 Force COMPs are used to added forces to a physics solver's simulation. [Bullet](https://docs.derivative.ca/Bullet_Dynamics "Bullet Dynamics") supports linear/rotational forces and impulse forces (see Force page) and [Flex](https://docs.derivative.ca/Flex "Flex") supports force fields (see Force Field page).
+
 ###
+
 Active Force
+
 Active forces are enabled using the Active toggle parameter on the Force page.
+
 An active force will create a force in the simulation that is applied over time. An active force can either be applied globally by being referenced on the [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP"), or it can be applied locally by being referenced on an individual [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"). The active force applies its force each frame, and the force applied over 1 second is equivalent to an impulse force of the same value applied in a single frame.
+
 The units for the force and torque parameters are in Newtons (N), equivalent to kg*m/s^2. This means that if a force of 10N is applied to an actor with mass equal to 5kg and no initial velocity, then after 1 second the velocity of that actor will be 2m/s => 10N / 5kg * 1 sec = 2m/s. If all the parameters were the same, but instead it was an impulse force, then the velocity would still be 2m/s. However, the impulse force's velocity would change instantaneously and stop increasing (unless pulsed again) whereas with the active force the velocity will continue to increase after 1 second.
+
 The center of mass is assumed to be center of the bounding box of the mass. By default, if a body is not constrained and not colliding, the force will not cause the body to rotate, unless the Relative Position parameter is set to a non-zero value. If Relative Position is set to +1 in X and the force is +1 in Y, it will cause the body to rotate counter-clockwise around the Z-axis and translate in Y.
+
 If the Torque is set to +1 in Z, it will cause the body to only rotate counter-clockwise in the Z-axis (a positive Z rotation), and not translate.
+
 To apply force/torque to specific bodies use a Feedback CHOP (see [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP") or [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP")) and **force[xyz]** and **torque[xyz]** channels.
+
 ###
+
 Impulse Force
+
 Impulse forces are applied through the Impulse Force pulse parameter.
+
 An impulse force pulse will create a force in the simulation that is applied for 1 frame. In the real world, impulse forces are forces applied over a very short duration, however in [Bullet](https://docs.derivative.ca/Bullet_Dynamics "Bullet Dynamics") this is somewhat simplified, and they are instead applied instantly (for a single frame). Examples of impulse forces are kicking a ball or shooting a cannon. The velocities of the affected bodies are changed in an instant by the impulse force, and after that instant the force no longer has an effect unless applied again.
+
 The resulting velocity of the bodies after the impulse force is applied is the same as an active force with the same values if the active force is applied for exactly 1 second. For example, if 10N of impulse force is applied to a body with mass 5kg then the resulting velocity will be 10N / 5kg * 1sec = 2m/s.
+
 ###
+
 Force Field
+
 Force fields are enabled through the Active parameter on the Force Field page.
+
 Force fields are spherical with a radius defined through the Radius parameter. Positive strength pushes bodies outward and negative strength pulls bodies inward.
 
 See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Bullet Dynamics](https://docs.derivative.ca/Bullet_Dynamics "Bullet Dynamics"), [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP"), [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"), [Constraint COMP](https://docs.derivative.ca/Constraint_COMP "Constraint COMP"), [Bullet Solver CHOP](https://docs.derivative.ca/Bullet_Solver_CHOP "Bullet Solver CHOP"), [Nvidia Flex TOP](https://docs.derivative.ca/Nvidia_Flex_TOP "Nvidia Flex TOP"), [Nvidia Flex Solver COMP](https://docs.derivative.ca/Nvidia_Flex_Solver_COMP "Nvidia Flex Solver COMP").
+
 [forceCOMP_Class](https://docs.derivative.ca/ForceCOMP_Class "ForceCOMP Class")
 
 ## Parameters - Force Page
+
 - Active `active` - Toggle the active force on/off in the simulation
 - Force `force` - ⊞ - The linear force in Newtons that will be applied.
   * X `forcex` -
@@ -47,13 +67,16 @@ See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Bullet Dynamics](http
   * Z `torquez` -
 
 - Impulse Force `impulse` - Applies an impulse force in the simulation for 1 frame with the above parameters.
+
 ## Parameters - Force Field Page
+
 - Active `ffactive` - Toggle the force field on/off in the simulation
 - Strength `strength` - The strength of the force field. Positive strength pushes bodies outward and negative strength pulls bodies inward.
 - Radius `radius` - The radius of the force field.
 - Linear Falloff `falloff` - Applies linear falloff to the strength of the force field based on the distance from the center.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -63,6 +86,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -91,13 +115,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * Relative to External COMP File (.tox) `externaltox` - The path, when specified as a relative path, will be relative to the .tox file. When no external COMP file is specified, or when Enable External .tox is not toggled on, this doesn't have any impact.
 
 ## Info CHOP Channels
+
 Extra Information for the Force COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,9 +5,11 @@ title: Video_Device_Out_TOP
 ---
 
 # Video Device Out TOP
+
 ## Summary
 
 The Video Device Out TOP routes video to output devices using their native driver libraries.
+
 Devices currently supported:
   * [Blackmagic Design](https://docs.derivative.ca/Blackmagic_Design "Blackmagic Design") devices.
   * [Bluefish444](https://docs.derivative.ca/Bluefish444 "Bluefish444") devices.
@@ -15,9 +17,11 @@ Devices currently supported:
   * [Deltacast](https://docs.derivative.ca/Deltacast "Deltacast") devices.
 
 See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP").
+
 [videodeviceoutTOP_Class](https://docs.derivative.ca/VideodeviceoutTOP_Class "VideodeviceoutTOP Class")
 
 ## Parameters - Device Out Page
+
 - Active `active` - Enable or disable the output card.
 - Library `library` - ⊞ - Select the driver library to use.
   * Blackmagic `blackmagic` - Supports driver version 12.x
@@ -71,6 +75,7 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
 - Reset Stats `resetstats` - A pulse to reset the statistics in an attached [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
 
 ## Parameters - Color Page
+
 - Output Color Space `colorspace` - ⊞ - Controls what color space the data will be converted to before output. If the output (SDI/ST2110 etc) supports metadata, will also attempt to include the color space in that. Some output forms only support a limited number of color spaces in their metadata. If the color space is unknown to the output form, then no metadata will be included.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
@@ -94,6 +99,7 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
   * High (HDR) `hdr` - Will treat the Output Color Space as HDR for it's reference white value.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -173,11 +179,15 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Video Device Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Video Device Out TOP Info Channels
   * connected - 1 if the device is connected/active, 0 if not.
 
@@ -202,7 +212,9 @@ Specific Video Device Out TOP Info Channels
   * last_dma_copy_time - The amount of time (in milliseconds) the last copy from the driver memory to the device took. -1 if it's not measured by this device type.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -216,7 +228,9 @@ Specific Video Device Out TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

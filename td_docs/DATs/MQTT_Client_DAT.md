@@ -5,6 +5,7 @@ title: MQTT_Client_DAT
 ---
 
 # MQTT Client DAT
+
 ## Summary
 
 The MQTT Client DAT receives and sends data from/to [MQTT](https://docs.derivative.ca/MQTT "MQTT") devices via MQTT servers (broker). TouchDesigner can act as a client and another computer needs to act as a MQTT Server. Once a client establishes a connection with a server, it can do two things:
@@ -12,9 +13,11 @@ The MQTT Client DAT receives and sends data from/to [MQTT](https://docs.derivati
   2. Inform the server that it will send messages to the server with a certain topic string, and then send messages with that topic. The messages then get forward to any client that has expressed interest in that topic.
 
 See also [MQTT](https://docs.derivative.ca/MQTT "MQTT"), [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT").
+
 [mqttclientDAT_Class](https://docs.derivative.ca/MqttclientDAT_Class "MqttclientDAT Class")
 
 ## Parameters - Connect Page
+
 - Active `active` - Enable the connection.
 - Network Address `netaddress` - The address of the broker to connect to. The address should take the form `<protocol>://<host>:<port>`. Accepted protocol URIs can include `tcp`, `ssl`, `ws`, and `wss`.
 - Specify ID `specifyid` - Allows naming the client with parameter `User Client ID`, otherwise automatically and uniquely generated for each connection.
@@ -28,6 +31,7 @@ See also [MQTT](https://docs.derivative.ca/MQTT "MQTT"), [TCP/IP DAT](https://do
 - Reconnect `reconnect` - Will attempt to reconnect to the MQTT broker.
 
 ## Parameters - Received Data Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT contains functions that are called when connections are made, lost or published data arrives. See [mqttclientDAT_Class](https://docs.derivative.ca/MqttclientDAT_Class "MqttclientDAT Class") for usage.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location (for example, where 'cc' points to).
@@ -41,6 +45,7 @@ See also [MQTT](https://docs.derivative.ca/MQTT "MQTT"), [TCP/IP DAT](https://do
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -57,21 +62,28 @@ See also [MQTT](https://docs.derivative.ca/MQTT "MQTT"), [TCP/IP DAT](https://do
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the MQTT Client DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific MQTT Client DAT Info Channels
   * connected -
 
   * messages_pending -
 
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

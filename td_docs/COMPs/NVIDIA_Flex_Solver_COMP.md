@@ -5,20 +5,29 @@ title: NVIDIA_Flex_Solver_COMP
 ---
 
 # NVIDIA Flex Solver COMP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The Nvidia Flex Solver COMP is a physics solver COMP similar to the [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP").
+
 In an Nvidia Flex simulation, the Nvidia Flex Solver COMP is analogous to the world/simulation in which actors/bodies (ie. Actor COMPs) operate. An Nvidia Flex Solver COMP contains any number of actors/bodies (Actor COMPs) or force fields (Force COMP), and as the name suggests it uses [Nvidia's FleX particle physics API](https://developer.nvidia.com/flex).
+
 The Nvidia Flex Solver COMP runs an Nvidia Flex simulation based on some simulation parameters (eg. particle radius and cohesion) and updates the transformations of the Actor COMPs contained within it as the simulation progresses forward.
+
 The Actor COMPs referenced by the Nvidia Flex Solver COMP do not need to be inside its network. They can be anywhere as long as they are not already referenced by another Solver COMP (Nvidia Flex or Bullet).
+
 **Note:** Recent driver versions break certain features (such as multiple colliders), so it is recommended to use Nvidia driver version 546.xx. As a result, Nvidia Flex will also have issues on more recent Nvidia cards like those in the **Nvidia RTX 50 series** , which have a minimum driver of 570.xx.
+
 See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Nvidia Flex TOP](https://docs.derivative.ca/Nvidia_Flex_TOP "Nvidia Flex TOP"), [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"), [Force COMP](https://docs.derivative.ca/Force_COMP "Force COMP")
+
 [nvidiaflexsolverCOMP_Class](https://docs.derivative.ca/NvidiaflexsolverCOMP_Class "NvidiaflexsolverCOMP Class")
 
 ## Parameters - Solver Page
+
 - Actors `actors` - The Actor COMPs to include in the simulation. These actors cannot already be a part of another Solver COMP.
 - Global Forces `forces` - The Force COMPs to include in the simulation. Only force fields are supported in Flex.
 - Gravitational Acceleration `gravity` - ⊞ - Gravity applied to all actors in the simulation in m/s^2. Gravity is applied to actors irrespective of their mass.
@@ -55,6 +64,7 @@ See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Nvidia Flex TOP](http
   * Translation `plane0tz` -
 
 ## Parameters - Properties Page
+
 - Particle Radius `radius` - Radius of the particles in the simulation. **Note:** This is used by all Actor's in the simulation.
 - Dynamic Friction `dfriction` - The force of friction between a moving particle and a static shape.
 - Static Friction `sfriction` - The force of friction between a non-moving particle and a static shape.
@@ -88,6 +98,7 @@ See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Nvidia Flex TOP](http
 - Diffuse Lifetime `difflife` - Time in seconds that a diffuse particle will live for after being spawned.
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -171,6 +182,7 @@ In the example above, rotations performed on an Component with different pivot p
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
 
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -215,6 +227,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
 
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -228,6 +241,7 @@ The Display parameter page controls the component's [material](https://docs.deri
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -237,6 +251,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -285,8 +300,11 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Nvidia Flex Solver COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Nvidia Flex Solver COMP Info Channels
   * num_active_diffuse_particles -
 
@@ -319,11 +337,15 @@ Specific Nvidia Flex Solver COMP Info Channels
   * num_active_bodies -
 
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

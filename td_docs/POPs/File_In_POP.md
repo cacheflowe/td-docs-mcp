@@ -5,9 +5,11 @@ title: File_In_POP
 ---
 
 # File In POP
+
 ## Summary
 
 The File In POP reads a file and converts it into a POP in GPU memory.
+
 File formats:
   * `.obj` The Wavefront Object File Format supports faces (polygons) and line strips (`f` and `l` tags). Triangulation occurs for polygons with more than 3 sides. It supports texture UV coordinates (Texcoord) and normals. (it uses [tinyobj](https://github.com/tinyobjloader/tinyobjloader) internally)
   * `.ply` The Stanford Triangle Format supports faces (polygons) through the `vertex_indices` property in the `face` element. Polygons with 3 and 4 sides are converted to triangles and quadrelateral primitives in POPs. Polygons with more than 4 sides are converted to closed line strips.
@@ -18,10 +20,13 @@ Older formats are supported as well such as:
   * `.hclassic` Houdini ASCII geometry format.
 
 You can use `http://` URL prefix when specifying a supported file accessible on the network.
+
 See also: [Point File In POP](https://docs.derivative.ca/Point_File_In_POP "Point File In POP"), [Alembic In POP](https://docs.derivative.ca/Alembic_In_POP "Alembic In POP"), [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP"), [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP")
+
 [fileinPOP_Class](https://docs.derivative.ca/FileinPOP_Class "FileinPOP Class")
 
 ## Parameters - File In Page
+
 - Geometry File `file` - Contains the full pathname of the geometry file to be read in.
 - Flip Primitive Faces `flipfacing` - Enable flipping the primitive faces of the geometry.
 - Refresh `refresh` - ⊞ - In some modes like Circle, the points can be in a fixed patter or be random.
@@ -53,16 +58,23 @@ See also: [Point File In POP](https://docs.derivative.ca/Point_File_In_POP "Poin
   * UI `ui` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
+
 Extra Information for the File In POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

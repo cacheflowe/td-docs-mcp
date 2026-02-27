@@ -5,19 +5,29 @@ title: Leap_Motion_CHOP
 ---
 
 # Leap Motion CHOP
+
 ## Summary
 
 The Leap Motion CHOP reads hand, finger, tool and gesture data from the [Leap Motion](https://docs.derivative.ca/Leap_Motion "Leap Motion") controller. It outputs hand, finger and tool positions, rotations and 'tracking' channels that indicate if these values are currently being detected and updated. Currently only 1 Leap Motion device can be connected at a time.
+
 To connect with the device you will need to install the Ultraleap Tracking Software. For best performance, it is recommended to use the latest version Gemini drivers for Windows (v5.13.2 or greater) or MacOS (v5.14.0 or greater) that are available here: <https://developer.leapmotion.com/tracking-software-download>. Legacy version 2 or version 4 Orion drivers are also supported. See the API parameter details below for more information.
+
 In addition to installing the driver, TouchDesigner must also be told where to find the tracking library. Installation instructions vary depending on the operating system:
+
 **On Windows:** You can use the Library Folder parameter to point to the location of the LeapC.dll (Orion/Gemini) or Leap.dll (Version 2/3) files on your system. The file is installed as part of the LeapSDK and the location may vary depending on the version and options selected during installation.
+
 **On MacOS:** The library folder should point to the location of the Ultraleap tracking app. By default this is '/Applications/Ultraleap Hand Tracking.app' TouchDesigner will automatically find the library files inside the application's contents folder.
+
 **Tip:** If using Gemini V5, the Leap Motion will only work in one orientation. By default the hands enter from the bottom of the camera view, though this can be changed in setting to invert the direction. This is an important distinction between Gemini V5 and the older V2/V4 APIs which could work in either orientation.
+
 **Note:** TouchDesigner does not include a license to use the Leap Motion hardware or software. Make sure to check with the [UltraLeap website](https://www.ultraleap.com/) regarding any applicable licenses that you may need for your project.
+
 See also [Leap Motion](https://docs.derivative.ca/Leap_Motion "Leap Motion"), [Leap Motion TOP](https://docs.derivative.ca/Leap_Motion_TOP "Leap Motion TOP")
+
 [leapmotionCHOP_Class](https://docs.derivative.ca/LeapmotionCHOP_Class "LeapmotionCHOP Class")
 
 ## Parameters - Setup Page
+
 - Active `active` - When 'On' data is captured from the Leap Motion sensor.
 - API `api` - ⊞ - Select between Leap Motion V2 or V4/V5 SDKs for tracking. V5 offers the fastest and most stable tracking, V2 offers some legacy features like gestures.
   * Version 2 Tracking `default` - Legacy tracking that includes gesture and tool tracking. Download [(Windows: Orion Beta 3.2.1, MacOS: 2.3.1) ](https://developer.leapmotion.com/releases)
@@ -108,11 +118,15 @@ For Gemini V5, first install the tracking software, then set this parameter to C
   * `screentap*:t[xyz]` - Coordinates of the Screen Tap Gesture relative to the sensor.
 
 **NOTES:** Rotation order is `Rx Ry Rz`. All vectors are given in the following [coordinate system](http://developer.leapmotion.com/documentation/Languages/C++/Guides/Leap_Overview.html#coordinate-system).
+
 For gestures, if `handindex` is 1, then channels with the prefix `hand1` contain the data for the hand associated with the gesture. If `handindex` is -1 it means there are no channels available for the hand associated with the gesture. The same follows for `fingerindex`.
+
 Data for all indexed prefixes (`hand*`, `hand/finger*`, etc.) will continue to correspond to the same hand/finger/tool/gesture as long as the Leap Motion sensor is detecting it.
+
 Limits for hands/fingers/tools/gestures will filter data from the Leap Motion sensor if there are more than the specified limit detected.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -130,8 +144,11 @@ Limits for hands/fingers/tools/gestures will filter data from the Leap Motion se
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Leap Motion CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Leap Motion CHOP Info Channels
   * installed -
 
@@ -144,7 +161,9 @@ Specific Leap Motion CHOP Info Channels
   * sequence_id -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -158,7 +177,9 @@ Specific Leap Motion CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

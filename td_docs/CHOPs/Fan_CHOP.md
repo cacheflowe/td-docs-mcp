@@ -5,16 +5,23 @@ title: Fan_CHOP
 ---
 
 # Fan CHOP
+
 ## Summary
 
 The Fan CHOP converts one channel out to many channels, or converts many channels down to one.
+
 Its first operation, **Fan Out** , takes one channel and generates 2 or more channels. It sets to 1 one of the output channels while all others are 0, based on the input channel's value. The first output channel is index value 0, the second, 1, and so on. If the input value is above N-1 or below 0, the value can be clamped, cycled or ignored.
+
 For example, if the value of the input channel at a certain frame is 4, and if the CHOP outputs 8 channels, the fifth channel will have a value of 1, and all other channels will have a zero value at that frame.
+
 The input is assumed to have 1 channel which contains integer values; fractions are truncated and extra channels are ignored. The output channels are binary (0 or 1) channels.
+
 The second operation, **Fan In** , does the opposite: it takes a bunch of binary inputs and produces one channel containing the index of the "On" channel. If more than one input channel is "On", the first "On" input channel is selected.
+
 [fanCHOP_Class](https://docs.derivative.ca/FanCHOP_Class "FanCHOP Class")
 
 ## Parameters - Fan Page
+
 - Operation `fanop` - ⊞ - Selects either Fan In or Fan Out.
   * Fan Out `out` - Takes one channel and generates 2 or more channels. It sets to 1 one of the output channels while all others are 0, based on the input channel's value. The first output channel is index value 0, the second, 1, and so on. If the input value is above N-1 or below 0, the value can be clamped, cycled or ignored. The number of channels generated depends on the 'Channel Names' parameter.
   * Fan In `in` - Takes multiple channels as input and produces one channel containing the index of the "On" channel. If more than one input channel is "On", the first "On" input channel is selected. For example if there are 5 channels (chan1, chan2, chan3, chan4, chan5), and chan3 is 1 while the others are 0, then the output channel value will be equal to 2, since the indexing is 0-based.
@@ -32,6 +39,7 @@ The second operation, **Fan In** , does the opposite: it takes a bunch of binary
 - Quantize Output `quantize` - On by default. Channels are quatized to the nearest integer. For example, if the input channel's value is 5.6 and 6 channels are created, channel 5 is 1, while the rest are 0.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -50,17 +58,25 @@ The second operation, **Fan In** , does the opposite: it takes a bunch of binary
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Fan CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -74,7 +90,9 @@ Extra Information for the Fan CHOP can be accessed via an [Info CHOP](https://do
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

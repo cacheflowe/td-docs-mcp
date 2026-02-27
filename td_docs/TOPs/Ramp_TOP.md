@@ -5,13 +5,17 @@ title: Ramp_TOP
 ---
 
 # Ramp TOP
+
 ## Summary
 
 The Ramp TOP allows you to interactively create vertical, horizontal, radial, and circular ramps. Using the ramp bar and the color picker, you can add as many color tabs to the ramp as you like, each with its own color and alpha values. Click on a color tab to select it and change its color. Click elsewhere on the ramp bar to add another color keyframe. Drag a color tab off the ramp bar to delete it.
+
 The data for each color keyframe in the ramp is held in the [DAT](https://docs.derivative.ca/DAT "DAT") specified by the DAT parameter. Each row in this DAT (in [Table Format](https://docs.derivative.ca/Table_DAT "Table DAT")) represents a color keyframe entry in the ramp. The first column is the color keyframe's position on the ramp, the range is 0-1. The next 4 columns are the RGBA value for the color keyframe at that position. The DAT can be edited directly and the ramp will update in real-time.
+
 [rampTOP_Class](https://docs.derivative.ca/RampTOP_Class "RampTOP Class")
 
 ## Parameters - Ramp Page
+
 - DAT `dat` - Specifies the DAT which defines the entries in the ramp.
 `color` - ⊞ - The color and alpha of each ramp keyframe can be set here. Select between an HSV or RGB colorpicker, or click the "+" button to open a color dialog box with predefined colors.
   * `color1` -
@@ -64,6 +68,7 @@ The data for each color keyframe in the ramp is held in the [DAT](https://docs.d
 - Multiply RGB by Alpha `multrgbbyalpha` - Premultiplies the image.
 
 ## Parameters - Output Page
+
 - Comp Over Input `compoverinput` - Turning this On will composite the input with the image.
 - Operation `operand` - ⊞ - Choose which composite operation is performed from this menu. Search the web for 'blend modes' for more detailed information on the effects of each type.
   * Add `add` - input1.rgba + input2.rgba
@@ -116,6 +121,7 @@ The data for each color keyframe in the ramp is held in the [DAT](https://docs.d
 - Swap Order `swaporder` - Swaps the order of the composite with the input.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -195,13 +201,19 @@ The data for each color keyframe in the ramp is held in the [DAT](https://docs.d
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 [Parameter Color Space Parameters](https://docs.derivative.ca/index.php?title=Parameter_Color_Space_Parameters&action=edit&redlink=1 "Parameter Color Space Parameters \(page does not exist\)")
+
 ## Operator Inputs
+
   * Input 0: Composite Input - Control the Composite operation via the parameters on the Output Page of this operator.
 
 ## Info CHOP Channels
+
 Extra Information for the Ramp TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -215,7 +227,9 @@ Extra Information for the Ramp TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,18 +5,27 @@ title: Line_Break_POP
 ---
 
 # Line Break POP
+
 ## Summary
 
 The Line Break POP creates new line strips from the points and line strips of its input.
+
 It can create a set of line strips using an attribute, default named `LineBreak`, where it steps through all the points of the input and a new line strip is started if the `LineBreak` attribute is 1. If `LineBreak` is 0, it continues the line to include current point.
+
 Alternately, It can use a point attribute `LineStripIndex` (same attribute name as Line Metrics creates) to make separate line strips.
+
 It can also split a line strip based on a point being farther that a specified distance from the previous point.
+
 It can split a line strip every N points.
+
 It can simply create one line strip from its input points.
+
 See also [Primitive POP](https://docs.derivative.ca/Primitive_POP "Primitive POP"), [Convert POP](https://docs.derivative.ca/Convert_POP "Convert POP")
+
 [linebreakPOP_Class](https://docs.derivative.ca/LinebreakPOP_Class "LinebreakPOP Class")
 
 ## Parameters - Line Break Page
+
 - Mode `connecmode` - ⊞ - When on, use the input line strips' connectivity otherwise use only the input points order.
   * No Connectivity `noconnec` -
   * One Line Strip (point order) `onelinestrip` -
@@ -45,19 +54,27 @@ See also [Primitive POP](https://docs.derivative.ca/Primitive_POP "Primitive POP
 - Copy Topology Info Back to CPU `cpureadback` - Enable copying the point count and topology information held on the GPU to the CPU.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Line Break POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

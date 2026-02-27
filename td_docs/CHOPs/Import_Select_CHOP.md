@@ -5,13 +5,17 @@ title: Import_Select_CHOP
 ---
 
 # Import Select CHOP
+
 ## Summary
 
 The Import Select CHOP is used to specify CHOP channels from an importing file such as [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP") or [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP"). One of the main purpose of these channels is to represent the changes of transformation of different primitives or the state of some dynamic features of importing file. The Import Select CHOP can have its own animation controls within the Play page or use the settings from its parent COMP.
+
 See Also: [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP"), [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP")
+
 [importselectCHOP_Class](https://docs.derivative.ca/ImportselectCHOP_Class "ImportselectCHOP Class")
 
 ## Parameters - General Page
+
 - Import Parent `parent` - Specify the import parent (eg. USD/FBX COMP) to search for the asset. When no COMP is specified it will by default search in the first import parent in its path.
 - Take Type `taketype` - ⊞ - Select between playback of an animation or a blend shape.
   * Blend Shapes `blendshapes` -
@@ -21,6 +25,7 @@ See Also: [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP"), [FBX COMP]
 - Reload `reload` - Reloads the asset from the import parent.
 
 ## Parameters - Playback Page
+
 - Use Parent Animation `useparentanim` - A toggle to specify whether to use the parent COMP animation controls or have a custom setting for this SOP.
 - Animation `animation` - Specifices the animation name (if any is specified) from the importing file that this CHOP will playback.
 - Shift Animation Start `shiftanimationstart` - A toggle to specify whether to shift the animation to the start of animation indicated in the importing file.
@@ -79,6 +84,7 @@ See Also: [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP"), [FBX COMP]
   * Mirror `mirror` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -96,13 +102,18 @@ See Also: [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP"), [FBX COMP]
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Import Select CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Import Select CHOP Info Channels
   * animation_length -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -116,7 +127,9 @@ Specific Import Select CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

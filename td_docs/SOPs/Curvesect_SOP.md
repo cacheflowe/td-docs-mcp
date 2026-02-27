@@ -5,12 +5,15 @@ title: Curvesect_SOP
 ---
 
 # Curvesect SOP
+
 ## Summary
 
 The Curvesect SOP finds the intersections or the points of minimum distance between two or more faces (polygons, Bziers, and NURBS curves) or between faces and a polygonal or spline surface.
+
 [curvesectSOP_Class](https://docs.derivative.ca/CurvesectSOP_Class "CurvesectSOP Class")
 
 ## Parameters - Curvesect Page
+
 - Face Group `leftgroup` - A subset of faces (NURBS, Bzier, polygons) to act upon. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Cutter Group `rightgroup` - A subset of faces or spline surfaces to intersect with. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Find All Intersections `xsect` - Compute intersection points if the faces touch the cutter primitive. If the button is unchecked, only the point of minimum distance will be found. Currently, finding the minimum distance between a face and a surface is not available.
@@ -40,8 +43,11 @@ The Curvesect SOP finds the intersections or the points of minimum distance betw
 - Keep Original `keeporiginal` - When using Extract method, turning this on will keep the original geometry connected to the first input (input0).
 
 ## Examples
+
 [![TouchGeometry239.gif](https://docs.derivative.ca/images/f/f3/TouchGeometry239.gif)](https://docs.derivative.ca/File:TouchGeometry239.gif)
+
 ###
+
 Circles
   1. Place two NURBS Circle SOPs, one of them slightly offset in X and Y (not Z).
   2. Pipe their outputs into a Curvesect SOP, make it the display SOP.
@@ -49,6 +55,7 @@ Circles
   4. You can extract the inside (even) or outside (odd) portion of the curve where they intersect.
 
 ###
+
 Star
   1. Model a closed NURBS curve in the shape of a star (use a Model SOP).
   2. Place a NURBS Circle SOP.
@@ -57,6 +64,7 @@ Star
   5. You could append a Join SOP to reconnect the individual NURBS curves into a new continuous curve. It smoothly connects the remaining segments.
 
 ###
+
 Creeping behaviour along a Path
   1. Place a new Font SOP and then a Circle SOP. Circle SOP - Type: NURBS, Radius 0.1, 0.1; Centre -3, 0.3, 0.2. Font SOP - Text: "Creep Along Me".
   2. Append a Curvesect SOP with the Font and Circle SOPs feeding into the first and second inputs respectively. Change the Tolerance to `1.0`, and enable the Extract operation. Turn off Find All Intersections. Make it the display SOP.
@@ -68,13 +76,18 @@ Creeping behaviour along a Path
 [![TouchGeometry21.gif](https://docs.derivative.ca/images/3/35/TouchGeometry21.gif)](https://docs.derivative.ca/File:TouchGeometry21.gif)
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Curvesect SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -86,7 +99,9 @@ Extra Information for the Curvesect SOP can be accessed via an [Info CHOP](https
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

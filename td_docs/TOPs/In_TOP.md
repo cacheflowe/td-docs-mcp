@@ -5,15 +5,19 @@ title: In_TOP
 ---
 
 # In TOP
+
 ## Summary
 
 The In TOP is used to create a TOP input in a Component. Component inputs are positioned alphanumerically on the left side of the Component.
+
 [inTOP_Class](https://docs.derivative.ca/InTOP_Class "InTOP Class")
 
 ## Parameters - In Page
+
 - Label `label` - Creates a pop-up label when the cursor rolls over this Component input.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -93,12 +97,17 @@ The In TOP is used to create a TOP input in a Component. Component inputs are po
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -112,7 +121,9 @@ Extra Information for the In TOP can be accessed via an [Info CHOP](https://docs
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

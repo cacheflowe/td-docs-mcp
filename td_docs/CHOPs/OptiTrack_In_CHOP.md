@@ -5,15 +5,19 @@ title: OptiTrack_In_CHOP
 ---
 
 # OptiTrack In CHOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The OptiTrack In CHOP is used to receive tracking data over the network data from [OptiTrack](http://www.optitrack.com) sytems. Currently the only data that is received is Rigid Body data. This node was previously called the NatNet In CHOP.
+
 [optitrackinCHOP_Class](https://docs.derivative.ca/OptitrackinCHOP_Class "OptitrackinCHOP Class")
 
 ## Parameters - OptiTrack In Page
+
 - Active `active` - While on, the CHOP receives information, while off no updating occurs.
 - Connection Type `connectiontype` - ⊞ - Set this to the connection mode the server is set to.
   * Multicast `mutlicast` -
@@ -27,6 +31,7 @@ The OptiTrack In CHOP is used to receive tracking data over the network data fro
 - Reset `resetpulse` - Reset the data in this node.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -44,13 +49,18 @@ The OptiTrack In CHOP is used to receive tracking data over the network data fro
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the OptiTrack In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific OptiTrack In CHOP Info Channels
   * connected -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -64,7 +74,9 @@ Specific OptiTrack In CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,35 +5,54 @@ title: XML_DAT
 ---
 
 # XML DAT
+
 ## Summary
 
 The XML DAT can be used to parse arbitrary XML and SGML/HTML formatted data. Once formatted, selected sections of the text can be output for further processing.
+
 One approach to parsing with the XML DAT is to read the XML with a Text DAT or a Web DAT, and pass that to a default XML DAT. Then you start to refine your selection by changing the match-all pattern (the "*"), to strings that reduce the elements that are in the output.
+
 ###
+
 XML and HTML Background
+
 XML and HTML data consists of a tree like structure consisting of elements. Each element can be either tagged or contain arbitrary text. Elements may be nested. Tagged elements begin with an opening section and usually are terminated with a closing section.
+
 Example:
 ```
  <greeting a="1" b="2" c="3"> Hello there. </greeting>
-
 ```
 
 In the example above are two elements. The first is a **tag** element named _greeting_ with attributes _a, b_ and _c_. The second element is a **text** element consisting of "_Hello there._ "
+
 ###
+
 XML DAT Operation
+
 The XML DAT begins by parsing its input, creating an internal tree of elements.
+
 The **Element Scope** parameters are then used to filter out unwanted elements. The remaining elements are then used to create the output. The format of the output is determined by the **Format** parameters. The **Output** parameters can then be used to futher limit the information displayed for each scoped element.
+
 Each parsed element contains a number of details:
+
 **Label** - Each element is given an arbitrary label named n0, n1, n2 etc. All elements are children of the reserved element labelled 'root'.
+
 **Type** - Elements are mainly of type 'tag' or 'text', though tag types can be further classified into 'doctype', 'declaration', 'comment' or 'entity'.
+
 **Text** - The text of an element refers to the tag attribute of an element, or the arbitrary text contents. In the above example, the first element would be of type 'tag' and contain text of 'greeting'. The second element would be of type 'text' and contain text of 'Hello there.'
+
 **Level** - This describes how deeply nested an element is. For example the single root element always has a level of 0.
+
 **Parent** - Each element contains one parent. The root element does not have a parent.
+
 **Children** - Each element can have an arbitrary number of children elements.
+
 **Attributes** - Each tagged element can have an arbitrary number of attributes. Each attribute consists of a name and a value. In the above example, the greeting tag would contain 3 attributes (with names a, b and c and values 1, 2, and 3 respectively).
+
 [xmlDAT_Class](https://docs.derivative.ca/XmlDAT_Class "XmlDAT Class")
 
 ## Parameters - Format Page
+
 - Parse SGML/HTML `sgml` - If enabled, the input should be in SGML/HTML format. This includes form data. If disabled, XML format is assumed.
 - Merge `merge` - ⊞ - Merge and label can be used to combine two inputs of data. The second input must be XML formatted, and not SGML/HTML. These two parameters control where and how the second input is merged.
   * Before Element `before` - The second input is merged before the specified element label.
@@ -44,6 +63,7 @@ Each parsed element contains a number of details:
 - Label `mlabel` - Specify the element at which the merge occurs.
 
 ## Parameters - Element Scope Page
+
 This section of parameters controls which elements are selected for output. By default all elements are selected.
 - Label `label` - Element labels must match this parameter.
 - Type `type` - Element types must match this parameter.
@@ -57,6 +77,7 @@ This section of parameters controls which elements are selected for output. By d
 - Parent Value `pvalue` - Elements must have a parent with an attribute whose value matches this parameter.
 
 ## Parameters - Output Page
+
 Once a selection of elements have been selected for output, its output can be further refined.
 - Name Attributes `oaname` - Only output attributes whos name match this parameter.
 - Value Attributes `oavalue` - Only output attributes whose value match this parameter.
@@ -73,6 +94,7 @@ Once a selection of elements have been selected for output, its output can be fu
 - Label Prefix `lprefix` - This determines whether or not the element label is prefixed when outputting tables or attributes or children.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -99,19 +121,26 @@ Once a selection of elements have been selected for output, its output can be fu
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the XML DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

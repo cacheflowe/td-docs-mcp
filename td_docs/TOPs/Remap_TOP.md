@@ -5,16 +5,23 @@ title: Remap_TOP
 ---
 
 # Remap TOP
+
 ## Summary
 
 The Remap TOP uses the second input to warp the first input. For every pixel of the output, it uses the red channel and green channel of the second input to choose which pixel to pick from the first input. Red == 0 will pick from the left column of pixels, red == 1 will pick from the right column of pixels. Green == 0 will pick from the bottom row of pixels, green == 1 will pick from the top row of pixels. Blue == 0 will pick from the frontmost slice of pixels, blue == 1 will pick from the backmost slice of pixels. Red == .5, green == .5, and blue == .5 will pick from the middle pixel in the middle slice of the first input. Pixels from the first input are interpolated.
+
 It is best that the second input contain a 16-bit-per-channel image or better, like 32-bit floats. Otherwise if the second input is 8-bits per color channel, the output images will have jagged edges as there are only 256x256 pixels from the first input that will be sampled. See the Pixel Format parameter on the Common page of the TOP connected to the Remap TOP's second input, and check its current pixel format settings with the MMB Info popup on the TOP.
+
 **Note:** The [Displace TOP](https://docs.derivative.ca/Displace_TOP "Displace TOP") does the same thing if you set the Vertical Source to Green the UV Weight parameter set to 0, and the Displace Weight set to .5. The Displace TOP does more general warping, whereas the Remap TOP is often used for warping images with other tools like the Stitcher component in the [Palette](https://docs.derivative.ca/Palette "Palette"), or for projection mapping.
+
 See also: [Displace TOP](https://docs.derivative.ca/Displace_TOP "Displace TOP"), [Lookup TOP](https://docs.derivative.ca/Lookup_TOP "Lookup TOP")
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [remapTOP_Class](https://docs.derivative.ca/RemapTOP_Class "RemapTOP Class")
 
 ## Parameters - Remap Page
+
 - Resolution Source `resolutionsource` - ⊞ - The selected input's width-height resolution will be used for the final resolution unless manually overwritten on the [Common Page](#Parameters_-_Common_Page).
   * Input 1 `input1` -
   * Input2 `input2` -
@@ -58,6 +65,7 @@ See also: [Displace TOP](https://docs.derivative.ca/Displace_TOP "Displace TOP")
   * Cubic `cubic` - Performs bicubic interpolation for 2D textures and tricubic interpolation for 3D textures.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -137,13 +145,18 @@ See also: [Displace TOP](https://docs.derivative.ca/Displace_TOP "Displace TOP")
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0: Source Image - The image to be warped.
   * Input 1: UV Image. - The image containing the UV lookup values.
 
 ## Info CHOP Channels
+
 Extra Information for the Remap TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -157,7 +170,9 @@ Extra Information for the Remap TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

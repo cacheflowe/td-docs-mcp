@@ -5,12 +5,15 @@ title: Audio_Movie_CHOP
 ---
 
 # Audio Movie CHOP
+
 ## Summary
 
 The Audio Movie CHOP plays the audio of a movie file that is played back with a [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"). Use the Movie File In TOP parameter to specify which Movie File In TOP to get the audio signal from.
+
 [audiomovieCHOP_Class](https://docs.derivative.ca/AudiomovieCHOP_Class "AudiomovieCHOP Class")
 
 ## Parameters - Movie Audio Page
+
 - Play `play` - Audio playback is enabled when this is set to On. No audio output when Off.
 - Movie File In TOP `moviefileintop` - Put the path of a Movie File In TOP in this parameter. The file named in the Movie File In TOP will be the source for the audio.
 - Pre-Read Length `prereadlength` - Use to read-ahead the audio into cache. You can specify in samples, frames and in seconds using the Units menu.

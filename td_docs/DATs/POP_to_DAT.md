@@ -5,19 +5,29 @@ title: POP_to_DAT
 ---
 
 # POP to DAT
+
 ## Summary
 
 The POP to DAT converts, using the Extract menu, a POP's points or primitives to a table of points (one row per point), or a table of primitives (one row per primitive), or a table of vertices (one row per vertex).
+
 In all cases it creates a column for each attribute component, and the Attributes parameter lets you select specific attributes to include.
+
 The Primitives table has an optional column showing the primitive type - point, line, linestrip, triangle, quad.
+
 The Transpose toggle parameter lets you transpose the table (swap rows and columns) which puts all the attribute names in the first column, for greater readability in some cases.
+
 Without affecting the source, you can thin out the displayed data to restrict, for example, points in a certain point index range, or display 1 in N points, or randomly thin out the data. this makes large datasets much easier to inspect.
+
 You can also choose to display only points or primitives that are in specific [Groups](https://docs.derivative.ca/Group "Group").
+
 Because POP data is on the GPU and DAT tables are on the CPU, there may be a pause caused by the GPU to CPU transfer. The default for Download Type is Next Frame (Fast) which causes minimal delay but the DAT is displayed one [Time Slice](https://docs.derivative.ca/Time_Slicing "Time Slicing") later. Otherwise the Download Type is Immediate, which may cause a several-millisecond delay in the current frame.
+
 See also [DAT to POP](https://docs.derivative.ca/DAT_to_POP "DAT to POP"), [POP to CHOP](https://docs.derivative.ca/POP_to_CHOP "POP to CHOP"), [POP to TOP](https://docs.derivative.ca/POP_to_TOP "POP to TOP").
+
 [poptoDAT_Class](https://docs.derivative.ca/PoptoDAT_Class "PoptoDAT Class")
 
 ## Parameters - POP to Page
+
 - Active `active` - When enabled, the DAT will grab and convert the referenced POP's up-to-date geometry information. When disabled, will hold the last converted values.
 - POP `pop` - The POP from which to convert the data.
 - Download Type `downloadtype` - ⊞ - Gives the option for a delayed data download from the GPU, which is much faster and does not stall the render.
@@ -47,6 +57,7 @@ See also [DAT to POP](https://docs.derivative.ca/DAT_to_POP "DAT to POP"), [POP 
   * Column per Group `colpergrp` -
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -63,15 +74,21 @@ See also [DAT to POP](https://docs.derivative.ca/DAT_to_POP "DAT to POP"), [POP 
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the POP to DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

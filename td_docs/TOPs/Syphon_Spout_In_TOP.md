@@ -5,21 +5,30 @@ title: Syphon_Spout_In_TOP
 ---
 
 # Syphon Spout In TOP
+
 ## Summary
 
 **Note:** For Spout on Windows, an Nvidia or AMD GPU is required, Intel does not work.
+
 The Syphon Spout In TOP will obtain its texture image via shared memory from other applications that support the [Spout framework](http://spout.zeal.co/) on Windows or [Syphon](https://syphon.github.io/) on macOS. Since this uses shared memory, it only works on the computer it's running on and does not transmit textures across a network to another computer. To send textures to another computer, see [Touch In TOP](https://docs.derivative.ca/Touch_In_TOP "Touch In TOP") and [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP"), or [NDI In TOP](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP") and [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP").
+
 You can download a Spout setup package at <http://spout.zeal.co/> for testing and example applications. You can download a [Syphon simple server](https://github.com/Syphon/Simple/releases/download/public-beta-2/Syphon.Demo.Apps.Public.Beta.2.dmg) setup to testing.
+
 By default Spout on Windows is limited to 10 senders active on the computer. This limit can be changed by setting the Windows registry DWORD:
+
 HKEY_CURRENT_USER\\\Software\\\Leading Edge\\\Spout\\\MaxSenders
+
 See also: [Syphon Spout Out TOP](https://docs.derivative.ca/Syphon_Spout_Out_TOP "Syphon Spout Out TOP")
+
 [syphonspoutinTOP_Class](https://docs.derivative.ca/SyphonspoutinTOP_Class "SyphonspoutinTOP Class")
 
 ## Parameters - Syphon Spout In Page
+
 - Use Spout Active Sender `usespoutactivesender` - Spout has a external utility that allows selecting from the list of senders running, and flagging one as the global 'Active' sender. Enabling this parameter will make the node use that sender instead of the one listed in the 'Sender Name' parameter.
 - Sender Name `sendername` - The name of the Syphon/Spout sender you wish to receive.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -99,9 +108,13 @@ See also: [Syphon Spout Out TOP](https://docs.derivative.ca/Syphon_Spout_Out_TOP
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Syphon Spout In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -115,7 +128,9 @@ Extra Information for the Syphon Spout In TOP can be accessed via an [Info CHOP]
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

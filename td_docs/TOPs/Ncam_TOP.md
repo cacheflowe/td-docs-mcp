@@ -5,16 +5,23 @@ title: Ncam_TOP
 ---
 
 # Ncam TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The Ncam TOP can receive image data from an external Ncam Reality tracking system for use in virtual production. To receive data, the TOP must reference an [Ncam CHOP](https://docs.derivative.ca/Ncam_CHOP "Ncam CHOP") that is connected to the Ncam server. The type of image displayed in the TOP is chosen using the Output parameter. Multiple image streams may be available depending on the server settings, and additional Ncam TOPs can be used to access more than one stream.
+
 Possible image streams include the primary film stream captured by the external camera, a lens distortion map, and a depth image. The lens distortion map is a 32 bit floating point image where the R and G channels contain coordinates of where that pixel's color data should be taken from. The distortion map is used to warp a rendered image so that it matches the optical properties of an image captured with a physical lens.
+
 The lens distortion map can be applied to a rendered image by connecting a TOP with the rendered content to the Ncam TOP's input and setting the Output parameter to 'Distort Input'. Additionally, the rendered content can be distorted and composited onto the film content using the 'Composite' option.
+
 [ncamTOP_Class](https://docs.derivative.ca/NcamTOP_Class "NcamTOP Class")
 
 ## Parameters - Ncam Page
+
 - Active `active` - Turn this parameter off to stop receiving image data from the Ncam server. The Ncam server only sends the image streams that are requested by active TOPs. Deactivating the TOP does not deactivate the CHOP.
 - Ncam CHOP `chop` - A link to the Ncam CHOP that is connected to the Ncam server. An Ncam CHOP is required for the TOP to receive any data, but more than one TOP can be connected to the same CHOP.
 - Output `output` - ⊞ - Select what type of output this TOP should produce. Some output modes like 'Composite' and 'Distort Input' require an input image from another TOP. Not all image streams may be available from the Ncam server. If a stream is not available, the TOP will produce an error.
@@ -25,6 +32,7 @@ The lens distortion map can be applied to a rendered image by connecting a TOP w
   * Depth Passthrough `depth_passthrough` - Output the raw depth image calculated by the Ncam Reality system.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -104,12 +112,17 @@ The lens distortion map can be applied to a rendered image by connecting a TOP w
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Ncam TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -123,7 +136,9 @@ Extra Information for the Ncam TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

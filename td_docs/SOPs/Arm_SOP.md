@@ -5,12 +5,15 @@ title: Arm_SOP
 ---
 
 # Arm SOP
+
 ## Summary
 
 The Arm SOP creates all the necessary geometry for an arm, and provides a smooth, untwisted skin that connects the arm to the body. It is controlled through inverse kinematics linked to a handprint.
+
 [armSOP_Class](https://docs.derivative.ca/ArmSOP_Class "ArmSOP Class")
 
 ## Parameters - Arm Page
+
 - Capture Type `capttype` - ⊞ - You can use either **Ellipses** or **Capture Regions** as deformation geometry. Ellipses are for use with the Skeleton SOP. Capture Regions are for use with the Capture SOP.
   * Ellipses `ellipses` -
   * Capture Regions `cregions` -
@@ -27,6 +30,7 @@ The Arm SOP creates all the necessary geometry for an arm, and provides a smooth
 - Flip Elbow `flipelbow` - This toggle positions the arm using an alternative elbow position solution.
 
 ## Parameters - Lengths Page
+
 [![TouchGeometry216.gif](https://docs.derivative.ca/images/9/9e/TouchGeometry216.gif)](https://docs.derivative.ca/File:TouchGeometry216.gif)
 - Clavicle `clavlength` - Control bone lengths, as illustrated above.
 - Humerous `humlength` - Control bone lengths, as illustrated above.
@@ -37,7 +41,9 @@ The Arm SOP creates all the necessary geometry for an arm, and provides a smooth
 - Wrist Joint `wrist` - Control the joint lengths, as illustrated above.
 
 ## Parameters - Transforms Page
+
 When the arm is positioned to reach the end affector (hand print), the shoulder, elbow and wrist joints may produce unnatural looking bends. The transform fields allow manual adjustment of each controlling circle of each joint to fix this.
+
 Each joint circle (e.g. Shoulder 1) is given three transform fields (two translates and one scale). These values are scaled by the amount of bend applied to the particular joint. In other words, when the arm is fully extended, the transforms have no effect. When the arm joint angles are at 90, they have maximum effect. Thus, set the joints to 90 before adjusting these values.
 - Shoulder 1 `shoulder1t` - ⊞ - The X, Z position of the first shoulder circle, as well as its overall scale.
   * X `shoulder1tx` - The X position of the first shoulder circle.
@@ -115,6 +121,7 @@ Each joint circle (e.g. Shoulder 1) is given three transform fields (two transla
   * Z `wrist5tz` - The overall scale of the fifth wrist circle. (**Note:** the parameter is labelled Z).
 
 ## Parameters - End Affector Page
+
 - Affector Object `affector` - Allows the end affector to be another object, or simply defined by a default box, which is controlled by the transformations below.
 - Translate `t` - ⊞ - End Affector Translation. For a full explanation of transforms, see the [Transform SOP](https://docs.derivative.ca/Transform_SOP "Transform SOP").
   * X `tx` - End Affector X Translate.
@@ -132,9 +139,13 @@ Each joint circle (e.g. Shoulder 1) is given three transform fields (two transla
   * Z `sz` - End Affector Z Scale.
 
 ## Info CHOP Channels
+
 Extra Information for the Arm SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -146,7 +157,9 @@ Extra Information for the Arm SOP can be accessed via an [Info CHOP](https://doc
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

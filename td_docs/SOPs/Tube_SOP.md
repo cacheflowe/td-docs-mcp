@@ -5,12 +5,15 @@ title: Tube_SOP
 ---
 
 # Tube SOP
+
 ## Summary
 
 The Tube SOP generates open or closed tubes, cones, or pyramids along the X, Y or Z axes. It outputs as meshes, polygons or simply a tube [Primitive](https://docs.derivative.ca/Primitive "Primitive").
+
 [tubeSOP_Class](https://docs.derivative.ca/TubeSOP_Class "TubeSOP Class")
 
 ## Parameters - Tube Page
+
 - Primitive Type `type` - ⊞ - Select from the following types. For information on the different types, see the [Geometry](https://docs.derivative.ca/Category:Geometry "Category:Geometry") category articles. Using the 'Primitive' primitive type is not recommended when using instancing.
   * Primitive `prim` -
   * Polygon `poly` -
@@ -63,6 +66,7 @@ The Tube SOP generates open or closed tubes, cones, or pyramids along the X, Y o
 - Imperfect `imperfect` - This option applies only to Bezier and NURBS types. If selected, the tube is an approximated nonrational curve, otherwise it is a perfect rational curve.
 
 ## Parameters - Detail Page
+
 - Rows `rows` - Number of rows in tube.
 - Columns `cols` - Number of columns in tube.
 - U Order `orderu` - If a spline surface is selected, it is built at this order for U.
@@ -75,12 +79,17 @@ The Tube SOP generates open or closed tubes, cones, or pyramids along the X, Y o
 - Compute Normals `normals` - Checking this option On will compute surface normals.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Tube SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -92,7 +101,9 @@ Extra Information for the Tube SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,12 +5,15 @@ title: Line_SOP
 ---
 
 # Line SOP
+
 ## Summary
 
 The Line SOP creates straight lines.
+
 [lineSOP_Class](https://docs.derivative.ca/LineSOP_Class "LineSOP Class")
 
 ## Parameters - Page
+
 - Point A `pa` - ⊞ - These X,Y, and Z values set the position of the beginning of the line.
   * X `pax` -
   * Y `pay` -
@@ -27,9 +30,13 @@ The Line SOP creates straight lines.
   * Unit `unit` -
 
 ## Info CHOP Channels
+
 Extra Information for the Line SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -41,7 +48,9 @@ Extra Information for the Line SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

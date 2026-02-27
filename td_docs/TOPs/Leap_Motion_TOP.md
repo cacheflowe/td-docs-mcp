@@ -5,19 +5,29 @@ title: Leap_Motion_TOP
 ---
 
 # Leap Motion TOP
+
 ## Summary
 
 The Leap Motion TOP gets the image from the [Leap Motion](https://docs.derivative.ca/Leap_Motion "Leap Motion") controller's cameras. To enable this feature the option **Allow Images** must be turned on in the Leap Motion Control Panel.
+
 To connect with the device you will need to install the Ultraleap Tracking Software. For best performance, it is recommended to use the latest version Gemini drivers for Windows (v5.13.2 or greater) or MacOS (v5.14.0 or greater) that are available here: <https://developer.leapmotion.com/tracking-software-download>. Legacy version 2 or version 4 Orion drivers are also supported. See the API parameter details below for more information.
+
 In addition to installing the driver, TouchDesigner must also be told where to find the tracking library. Installation instructions vary depending on the operating system:
+
 **On Windows:** You can use the Library Folder parameter to point to the location of the LeapC.dll (Orion/Gemini) or Leap.dll (Version 2/3) files on your system. The file is installed as part of the LeapSDK and the location may vary depending on the version and options selected during installation.
+
 **On MacOS:** The library folder should point to the location of the Ultraleap tracking app. By default this is '/Applications/Ultraleap Hand Tracking.app' TouchDesigner will automatically find the library files inside the application's contents folder.
+
 **Tip:** If using Gemini V5, the Leap Motion will only work in one orientation. By default the hands enter from the bottom of the camera view, though this can be changed in setting to invert the direction. This is an important distinction between Gemini V5 and the older V2/V4 APIs which could work in either orientation.
+
 **Note:** TouchDesigner does not include a license to use the Leap Motion hardware or software. Make sure to check with the [UltraLeap website](https://www.ultraleap.com/) regarding any applicable licenses that you may need for your project.
+
 See also [Leap Motion](https://docs.derivative.ca/Leap_Motion "Leap Motion"), [Leap Motion CHOP](https://docs.derivative.ca/Leap_Motion_CHOP "Leap Motion CHOP")
+
 [leapmotionTOP_Class](https://docs.derivative.ca/LeapmotionTOP_Class "LeapmotionTOP Class")
 
 ## Parameters - LeapMotion Page
+
 - Active `active` - If set, this TOP will capture data from the cameras.
 - API `api` - ⊞ - Select between Leap Motion V2 or V4/V5 SDKs for tracking. V5 offers the fastest and most stable tracking, V2 offers some legacy features like gestures.
   * Version 2 Tracking `default` - Legacy tracking that includes gesture and tool tracking. Download [Leap Motion Orion Beta 3.2.1](https://developer.leapmotion.com/releases)
@@ -35,6 +45,7 @@ For Gemini V5, first install the tracking software, then set this parameter to C
   * Off `off` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -114,9 +125,13 @@ For Gemini V5, first install the tracking software, then set this parameter to C
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Leap Motion TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -130,7 +145,9 @@ Extra Information for the Leap Motion TOP can be accessed via an [Info CHOP](htt
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

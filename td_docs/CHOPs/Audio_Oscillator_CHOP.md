@@ -5,22 +5,35 @@ title: Audio_Oscillator_CHOP
 ---
 
 # Audio Oscillator CHOP
+
 ## Summary
 
 The Audio Oscillator CHOP generates sounds in three ways. It repeats common waveforms (sine, triangle), it generates white noise (a random number for each sample), or it repeats a prepared incoming audio clip of any duration. It outputs typically 44100 samples per second. In contrast, the [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP") by default generates waves at lower frequencies and lower sample rates (60 samples/second), however both Audio Oscillator and LFO are interchangeable by changing their frequencies and sample rates.
+
 When it is synthesizing tones from the basic waveforms, the Audio Oscillator CHOP steps through the waveform at a rate that depends on the Pitch Control input. By default, a Pitch Control of 0 gives a middle A at 440 Hz; a 1 gives 880 Hz; a -1 gives 220 Hz. Steps of 1 in Pitch Control are 1 octave apart. Steps of 1/12 (.08333) are 1 semitone apart.
+
 The Audio Oscillator is roughly modelled after the [APR 2600 voltage-controlled oscillator](https://www.google.com/search?q=ARP+2600+Oscillator+design&oq=ARP+2600+Oscillator+design) (VCO).
+
 Up to three input CHOPs can be connected to the Audio Oscillator CHOP.
+
 **Pitch Control** - The first (optional) input affects the pitch. Output channels are generated for each Pitch Control channel. When pitch control is 0, it outputs a wave at the base frequency (default 440 Hz at 44,100 samples per second). It is "logarithmic": By default, increasing the pitch control by 1 increases the pitch by 1 octave, by 2 it increases by 2 octaves (4 times the frequency).
+
 **Reset Pulse** - The second (optional) input contains pulses that restart the oscillator from the beginning of the wave or the Playback Source. 0 in the input means "play the oscillator". 1 means "stop the oscillator and cue it at the start of the waveform or Playback Source".
+
 **Playback Source** - The third (optional) input is a replacement of the waveform Type. It is a sound clip to play at a rate modified by the Pitch Control, and can contain any number of channels. These channels are generated for each Pitch Control channel. The waveform Type and the Base Frequency parameters are disabled.
+
 If you plug any sound clip into the Audio Oscillator CHOP's Playback Source, and Pitch Control is a constant value of 0 of any duration, it will just repeat the Playback Source. If you feed a [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP") as its Pitch Control, it will raise and lower the speed/pitch of the input.
+
 The Audio Oscillator CHOP can serve as a general motion time-warper and repeater. If you put motion channels into the third input, you can control the time warp by feeding different Pitch Control curves. 0 pitch is normal speed, 1 is double speed.
+
 Unlike the Wave CHOP, this is an iterating CHOP, that is, it steps through the waveform while the pitch changes. To see this effect, feed an LFO CHOP into the Audio Oscillator. Unlike the LFO CHOP, the Audio Oscillator CHOP is designed for audio frequencies.
+
 See also: [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"), [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP").
+
 [audiooscillatorCHOP_Class](https://docs.derivative.ca/AudiooscillatorCHOP_Class "AudiooscillatorCHOP Class")
 
 ## Parameters - Waveform Page
+
 - Type `wavetype` - ⊞ - The shape of the waveform to repeat, unless overridden by the Playback Source:
   * Sine `sin` - (-1 to 1)
   * Gaussian `normal` - (0 to 1)
@@ -47,9 +60,11 @@ See also: [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"), [Wave CHOP
 - Reset Pulse `resetpulse` - Instantly resets the channel(s) to 0.
 
 ## Parameters - Channel Page
+
 - Sample Rate `rate` - Set the sample rate of the CHOP in samples per second.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -67,14 +82,19 @@ See also: [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"), [Wave CHOP
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Audio Oscillator CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -88,7 +108,9 @@ Extra Information for the Audio Oscillator CHOP can be accessed via an [Info CHO
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

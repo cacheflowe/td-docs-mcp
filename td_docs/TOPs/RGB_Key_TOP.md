@@ -5,30 +5,36 @@ title: RGB_Key_TOP
 ---
 
 # RGB Key TOP
+
 ## Summary
 
 The RGB Key TOP pulls a key from the image using Red, Green, and Blue channel settings. If a pixel falls between the Min and Max parameters for all three settings, then it is included in the key.
+
 [rgbkeyTOP_Class](https://docs.derivative.ca/RgbkeyTOP_Class "RgbkeyTOP Class")
 
 ## Parameters - Red Page
+
 - Red Min `redmin` - The minimum red value that is added to the key. 0 = min, 1 = max.
 - Red Max `redmax` - The maximum red value that is added to the key. 0 = min, 1 = max.
 - Red Soft Low `rsoftlow` - The rate of falloff at the Red Min setting.
 - Red Soft High `rsofthigh` - The rate of falloff at the Red Max setting.
 
 ## Parameters - Green Page
+
 - Green Min `greenmin` - The minimum green value that is added to the key. 0 = min, 1 = max.
 - Green Max `greenmax` - The maximum green value that is added to the key. 0 = min, 1 = max.
 - Green Soft Low `gsoftlow` - The rate of falloff at the Green Min setting.
 - Green Soft High `gsofthigh` - The rate of falloff at the Green Max setting.
 
 ## Parameters - Blue Page
+
 - Blue Min `bluemin` - The minimum blue value that is added to the key. 0 = min, 1 = max.
 - Blue Max `bluemax` - The maximum blue value that is added to the key. 0 = min, 1 = max.
 - Blue Soft Low `bsoftlow` - The rate of falloff at the Blue Min setting.
 - Blue Soft High `bsofthigh` - The rate of falloff at the Blue Max setting.
 
 ## Parameters - Output Page
+
 - Invert New Alpha `invert` - Inverts the key that is created.
 - RGB Output `rgbout` - ⊞ - Determines the output of the RGB channels from the RGB Key TOP.
   * Source RGB * New Alpha `multalpha` - Multiplies the original image with the key that is created. This has the effect of removing the parts of the image that are not included in the key.
@@ -39,6 +45,7 @@ The RGB Key TOP pulls a key from the image using Red, Green, and Blue channel se
   * Source Alpha * New Alpha `multnewalpha` - Multiplies the original alpha channel with the new key that has been pulled.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -118,12 +125,17 @@ The RGB Key TOP pulls a key from the image using Red, Green, and Blue channel se
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the RGB Key TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -137,7 +149,9 @@ Extra Information for the RGB Key TOP can be accessed via an [Info CHOP](https:/
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

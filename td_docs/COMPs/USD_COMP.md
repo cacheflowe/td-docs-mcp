@@ -5,20 +5,31 @@ title: USD_COMP
 ---
 
 # USD COMP
+
 ## Summary
 
 The USD COMP loads and imports most geometric schemas from a [USD](https://docs.derivative.ca/USD "USD") file in crate/binary or ASCII file formats with extensions as (`.usd`), (`.usda`), (`.usdc`), and (`.usdz`). Currently the USD version 25.05.01 is being used in the USD COMP. You can drag-drop a USD file into a TouchDesigner network, or import it via the USD File parameter. See also [File Types](https://docs.derivative.ca/File_Types "File Types").
+
 The assets from the USD file are saved into a "`.tdc`" file with the same name as the USD file inside the TDImportCache folder, which is created next to your toe file. Assets are read from the "`.tdc`" file using Import Select OPs ([Import Select TOP](https://docs.derivative.ca/Import_Select_TOP "Import Select TOP") / [Import Select SOP](https://docs.derivative.ca/Import_Select_SOP "Import Select SOP") / [Import Select CHOP](https://docs.derivative.ca/Import_Select_CHOP "Import Select CHOP")). Upon reloading a `.toe` file, the assets can be imported directly from the "`.tdc`" cache, and the USD file will not need to be re-imported. However, if there is no existing "`.tdc`" (for instance, if the toe file changed computers) then the USD file will be reopened to grab the assets and a new "`.tdc`" will be saved out.
+
 To open a USD file in an USD COMP:
+
 1) Specify a valid file path in the "USD File" parameter, including the name of the file with correct .usd extension.
+
 2) This step is varied depending on whether the USD COMP is just created and if any changes in the default values of parameters are required or not. If the file is being loaded for the first time in the network and the default parameter values are accepted then simply press the "Build Network" to generate the USD network and import the assets. Note that we recommend toggling the "Merge Geometry" for any medium or large files as it can significantly improve performance. Generally, any changes in the parameters above the "Build Network" requires the network to be built again.
+
 3) The "Reload" button is being used for reloading the internal assets (e.g. meshes, points, etc.) and this is specifically useful if the file has moved to another location and when the `.toe` file is opened the assets were not found and reloaded properly.
+
 4) The "Update" button is used when some changes on USD file are made and we want to merge those changes into the current network without fully rebuilding it.
+
 Here are some examples: <https://developer.apple.com/augmented-reality/quick-look/>
+
 See also: [USD](https://docs.derivative.ca/USD "USD"), [USD In TouchDesigner](https://docs.derivative.ca/USD_In_TouchDesigner "USD In TouchDesigner"), [Import Select CHOP](https://docs.derivative.ca/Import_Select_CHOP "Import Select CHOP"), [Import Select TOP](https://docs.derivative.ca/Import_Select_TOP "Import Select TOP"), [Import Select SOP](https://docs.derivative.ca/Import_Select_SOP "Import Select SOP"), [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP")
+
 [usdCOMP_Class](https://docs.derivative.ca/UsdCOMP_Class "UsdCOMP Class")
 
 ## Parameters - USD Page
+
 - USD File `file` - The path to the USD file. The file can be a binary (.usd or .usdc) or ASCII format (.usda).
 - Import Method `importmethod` - ⊞ -
   * Full Replacement `full` -
@@ -44,6 +55,7 @@ See also: [USD](https://docs.derivative.ca/USD "USD"), [USD In TouchDesigner](ht
 - Update `update` - Updates the network. This option is specifically useful when the USD file is edited after the USD network is imported in TouchDesigner.
 
 ## Parameters - Play Page
+
 This page includes the animation controls parameters of USD within TouchDesigner.
 - Shift Animation Start `shiftanimationstart` - A toggle to specify whether to shift the animation to the start of animation indicated in the USD file.
 - Sample Rate Mode `sampleratemode` - ⊞ - A menu to choose between the file FPS or custom sample rate.
@@ -103,6 +115,7 @@ This page includes the animation controls parameters of USD within TouchDesigner
   * Mirror `mirror` -
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -184,7 +197,9 @@ In the example above, rotations performed on an Component with different pivot p
   * Z `upz` -
 
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
+
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -227,7 +242,9 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Reset Transform `preset` - This button will reset this page's transform so it has no translate/rotate/scale.
 - Commit to Main Transform `pcommit` - This button will copy the transform from this page to the main Xform page, and reset this page's transform.
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
+
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -239,7 +256,9 @@ The Display parameter page controls the component's [material](https://docs.deri
   * Blue `wcolorb` -
 
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
+
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -247,7 +266,9 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Object `ext0object` - A number of class instances that can be attached to the component.
 - Name `ext0name` - Optional name to search by, instead of the instance class name.
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
+
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -296,8 +317,11 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the USD COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific USD COMP Info Channels
   * initializing -
 
@@ -336,11 +360,15 @@ Specific USD COMP Info Channels
   * end_index -
 
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

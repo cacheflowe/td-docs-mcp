@@ -5,15 +5,21 @@ title: ST2110_Device_CHOP
 ---
 
 # ST2110 Device CHOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 This node is used to configure the IP settings of a ST2110 Device such as the DHCP settings, IP configuration and PTP settings. Currently this node does not have any channels it outputs, but it does have some [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") channels that give diagnostic information.
+
 See also [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP"), [ST2110 Out TOP](https://docs.derivative.ca/ST2110_Out_TOP "ST2110 Out TOP").
+
 [st2110deviceCHOP_Class](https://docs.derivative.ca/St2110deviceCHOP_Class "St2110deviceCHOP Class")
 
 ## Parameters - ST2110 Device Page
+
 - Active `active` - Controls if this node is actively configuring this device's settings.
 - Driver `driver` - ⊞ - Select which device driver to use to search and communicate with devices.
   * Blackmagic `blackmagic` - Use the Blackmagic driver.
@@ -37,6 +43,7 @@ See also [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP
   * Version 2 and 3 `version2and3` -
 
 ## Parameters - SPS Page
+
 - Enable SPS `enablesps` - Enables the SPS port on the device.
 - Use DHCP `spsusedhcp` - Chooses if the IP address of the SPS port on the device should be configured using DHCP.
 - SPS IP Address `spsipaddress` - Manually set the IP address, if DHCP is disabled.
@@ -44,6 +51,7 @@ See also [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP
 - SPS Gateway `spsgateway` - Manually set the gateway, if DHCP is disabled.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -61,8 +69,11 @@ See also [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the ST2110 Device CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific ST2110 Device CHOP Info Channels
   * packets_received - The number of packets received on the primary port, or -1 if this query isn't supported by the device.
 
@@ -89,7 +100,9 @@ Specific ST2110 Device CHOP Info Channels
   * sps_ptp_locked - 1 if the PTP on the SPS port is locked to a PTP grandmaster, 0 if PTP is not locked, or -1 if this query isn't supported by the device.
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -103,7 +116,9 @@ Specific ST2110 Device CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,6 +5,7 @@ title: MediaWiki:Common.js
 ---
 
 # MediaWiki:common.js
+
 **Note:** After publishing, you may have to bypass your browser's cache to see the changes.
   * **Firefox / Safari:** Hold _Shift_ while clicking _Reload_ , or press either _Ctrl-F5_ or _Ctrl-R_ (_⌘-R_ on a Mac)
   * **Google Chrome:** Press _Ctrl-Shift-R_ (_⌘-Shift-R_ on a Mac)
@@ -384,11 +385,14 @@ title: MediaWiki:Common.js
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-373)  }
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-374)});
 [](https://docs.derivative.ca/MediaWiki:Common.js#L-375)*/
-
 ```
 
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+
 A [CHOP](https://docs.derivative.ca/CHOP "CHOP") outputs one or more channels, where a channel is simply a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample")), representing motion, audio, etc. Channels are passed between CHOPs in TouchDesigner networks. Channels can be [Exported](https://docs.derivative.ca/Export "Export") to [Parameters](https://docs.derivative.ca/Parameter "Parameter").
+
 Every operator in TouchDesigner has a set of control Parameters that can be integer or floating point numbers, menus, binary toggles, text strings or operator [paths](https://docs.derivative.ca/Network_Path "Network Path"), which determine the output of the operator.
+
 Each operator can have a set of text strings that are its "tags". You can set them and search for them within TouchDesigner.
+
 A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.

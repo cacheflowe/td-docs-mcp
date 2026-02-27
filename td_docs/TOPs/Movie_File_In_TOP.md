@@ -5,21 +5,32 @@ title: Movie_File_In_TOP
 ---
 
 # Movie File In TOP
+
 ## Summary
 
 The Movie File In TOP loads movies, still images, or a sequence of still images into TOPs. It will read images in `.jpg`, `.gif`, `.tif`, or `.bmp` format. It will read movies in QuickTime's `.mov` format, `.mp4`, `.mpg`, `.mpeg`, `.avi`, `.wmv`, `.dpx`, [Cineform](https://docs.derivative.ca/GoPro_Cineform "GoPro Cineform") and [Hap](https://docs.derivative.ca/Hap "Hap") Q formats (including Hap Q with Alpha).
+
 It also supports the [NotchLC](https://docs.derivative.ca/NotchLC "NotchLC") codec, [EXR](https://docs.derivative.ca/EXR "EXR") files (`.exr`) and some `.swf` and `.flv` Flash files as well as DXT1/3/5 and RG compressed `.dds` files. Images and movies can also be fetched from the web by using `http://` to specify a URL.
+
 Access the hardware decoder on Nvidia GPUs with the Hardware Decode parameter on the 'Tune' page. This supports 10 and 12-bit H264/H265s and YUV 444 files on supporting hardware, converted into 16-bit pixel channels. Other codecs that this also decodes include VP8, VP9, JPEG, AV1, VC1. More information [here.](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new)
+
 When reading file formats that support higher bit depths such as 10-bit/16-bit/32-bit, an appropriate pixel format will be automatically used as long as the 'Pixel Format' menu on the Common page is left as 'Use Input'. i.e. a 16-bit file will cause each pixel to have 16-bits per color channel automatically.
+
 For a complete list, see [File Types](https://docs.derivative.ca/File_Types "File Types").
+
 Examine the state of a Movie File In TOP by attaching an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to it (see below on Info CHOP). This will show info like movie length, resolution, the number of images per second (the `sample_rate` channel), and whether there is audio in the file. It also shows dynamic information like movie open status, current frame, readahead frames and queue size, dropped frame count, CPU decode time and GPU upload time.
+
 Note that a movie's "images per second" (sample_rate) may be different than the timeline's frames per second. When referring to the movie's "index", it's in reference to the sequence of images in the movie file, not related to the global project frame rate.
+
 See also the page on Movie File In TOP optimizations [Movie Playback](https://docs.derivative.ca/Movie_Playback "Movie Playback"), plus [Hap](https://docs.derivative.ca/Hap "Hap"), [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP"), [Cineform](https://docs.derivative.ca/GoPro_Cineform "GoPro Cineform") and [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP").
+
 [moviefileinTOP_Class](https://docs.derivative.ca/MoviefileinTOP_Class "MoviefileinTOP Class")
 
 ## Parameters - Play Page
+
 - File `file` - The path and name of the image or movie file to load. Image and movie formats are those found in [File Types](https://docs.derivative.ca/File_Types "File Types"). You can specify files on the internet using `http://` ...
 To treat a folder of images as if they are one movie, specify the folder containing the images instead of a filename. All the files must be the same resolution. It will treat all stills/movies in that folder as if each is a frame in one movie. The order of the images is the alphanumeric. By default the first image has an index of 0, second is 1, etc, regardless of their file names. Overriding the sample rate on the Trim parameter page will let you playback the image sequence at any frame rate.
+
 Using an `info.xml` file in the directory containing a sequence of images allows you to specify the frames per second and an audio file to be used with the sequence of images. Example xml file:
 ```
 <?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
@@ -27,7 +38,6 @@ Using an `info.xml` file in the directory containing a sequence of images allows
       <attributes fps="30.0" />
       <audio filename="audio.wav" />
   </Settings>
-
 ```
 
 URLs can be used to fetch images and movies. The image or movie is downloaded to the user's Derivative temp directory and is read into the Movie File In TOP.
@@ -85,6 +95,7 @@ URLs can be used to fetch images and movies. The image or movie is downloaded to
 - Timecode Object/CHOP/DAT `timecodeop` - Set the movie index with a reference to a timecode. Should be a reference to either a CHOP with channels 'hour', 'second', 'minute', 'frame', a DAT with a timecode string in its first cell, or a [Timecode Class](https://docs.derivative.ca/Timecode_Class "Timecode Class") object.
 
 ## Parameters - Image Page
+
 - Interpolate Frames `interp` - Interpolates between frames based based on exact time. For example, if the index (in frames) is 1.5, then frames 1 and 2 will be blended 50-50. If the index is 1.7 then 30% of frame 1 is blended with 70% of frame 2 and so on.
 - Deinterlace `deinterlace` - ⊞ - For movies that are stored as fields, where each image is made of two images interleaved together. A 30-frame per second movie would contain 60 fields per second. For each image, the even scanlines of the first field are interleaved with the odd scanlines of the second field. The Movie File In TOP has several ways of dealing with this:
   * Off `off` - Output the movie images unchanged.
@@ -139,6 +150,7 @@ URLs can be used to fetch images and movies. The image or movie is downloaded to
   * Best `best` -
 
 ## Parameters - Trim Page
+
 - Trim `trim` - Enables the parameters below to set trim in and out points.
 - Trim Start `tstart` - Trim the starting point of the movie.
 - Trim Start Unit `tstartunit` - ⊞ - Select the units for this parameter from Index, Frames, Seconds, and Fraction (percentage).
@@ -172,6 +184,7 @@ URLs can be used to fetch images and movies. The image or movie is downloaded to
 - Sample Rate `samplerate` - Set the sample rate for playback when 'Override Sample Rate' above is On.
 
 ## Parameters - Tune Page
+
 - Pre-Read Frames `prereadframes` - Sets how many video frames TouchDesigner reads ahead and stores in memory. The Movie File In TOP will read and decode frames of the movie into CPU memory before they are used, this can eliminate pops or stutters in playback that occur from some frames taking too long to decode, other resources accessing the hard drive, or movie looping. When reading a sequence of image, having more Pre Read Frames will allow multiple images to be decode at the same time. This allows playback of heavy file formats such as .exr in real-time, assuming the machine has enough CPU cores.
 - Frame Read Timeout `frametimeout` - The time (in milliseconds) TouchDesigner will wait for a frame from the hard drive before giving up. If the Disk Read Timeout time is reached, that frame is simply skipped. This also works for network files that are downloaded via http://.
 - Frame Timeout Strategy `frametimeoutstrat` - ⊞ - When on, if the Disk Read Timeout is reached TouchDesigner will use the latest available frame in place of the skipped frame.
@@ -189,7 +202,9 @@ URLs can be used to fetch images and movies. The image or movie is downloaded to
 - High Performance Read Factor `highperfreadfactor` - When doing high performance reads, this parameter controls the size of the read operations that are done on disk. Whatever the largest operation the codec asks to be done, this is multiplied by the read factor and all subsequent reads will read that much data instead. This can result in higher throughput depending on the drives. For example if a request is made to read 1MB and the factor is set to 3, then instead the operations will read 3MB from the disk and the extra 2MB read will be ready for the next frame and will likely already have the next 2 frames available in CPU RAM.
 - Hardware Decode `hwdecode` - Controls if this node should use hardware decoding via the Nvidia hardware decoder chip. You can check if hardware decoding is being used using the Info CHOP, 'hardware_decode' channel. This parameter does nothing for Hap and NotchLC codecs, which are always hardware decoded.
 - Async Upload to GPU `asyncupload` - When enabled, this will use OpenGL features to upload movie images to the GPU asynchronously. This will reduce the cook time of the Movie File In TOP considerably (in the performance monitor the lines that say "Uploading Image to GPU" will go down to almost nothing). There is a GPU memory cost to using this feature however. It uses up another (Width * Height * 4 * Read Ahead Size) bytes of GPU memory. If you are having poor results with this feature, make sure your graphics drivers are up to date.
+
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -269,8 +284,11 @@ URLs can be used to fetch images and movies. The image or movie is downloaded to
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Movie File In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Movie File In TOP Info Channels
   * index - The current frame index being shown. This is in the FPS of the movie file, not in timeline frames.
 
@@ -339,7 +357,9 @@ Specific Movie File In TOP Info Channels
   * hardrware_decode - If the Hardware Decode parameter is on, this will be 1 if the GPU is able to hardware decode the movie's codec.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -353,7 +373,9 @@ Specific Movie File In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

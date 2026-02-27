@@ -5,14 +5,19 @@ title: Reorder_TOP
 ---
 
 # Reorder TOP
+
 ## Summary
 
 The Reorder TOP is a multi-input TOP which lets you choose any of the input channels for the R, G, B, and A output. It also gives the option of outputting one, zero or the input luminance to any of the output channels.
+
 See also [Channel Mix TOP](https://docs.derivative.ca/Channel_Mix_TOP "Channel Mix TOP").
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [reorderTOP_Class](https://docs.derivative.ca/ReorderTOP_Class "ReorderTOP Class")
 
 ## Parameters - Reorder Page
+
 - Output Red `outputred` - Specify which input and channel is used as the red channel in the output image.
 - Output Red Channel `outputredchan` - The channel to use from the selected input to use as the red channel in the output image.
 - Ouput Green `outputgreen` - Specify which input and channel is used as the green channel in the output image.
@@ -23,6 +28,7 @@ See also [Channel Mix TOP](https://docs.derivative.ca/Channel_Mix_TOP "Channel M
 - Output Alpha Channel `outputalphachan` - The channel to use from the selected input to use as the alpha channel in the output image.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -102,15 +108,20 @@ See also [Channel Mix TOP](https://docs.derivative.ca/Channel_Mix_TOP "Channel M
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
   * Input 3:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Reorder TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -124,7 +135,9 @@ Extra Information for the Reorder TOP can be accessed via an [Info CHOP](https:/
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

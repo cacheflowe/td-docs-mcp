@@ -5,16 +5,23 @@ title: Lookup_Channel_POP
 ---
 
 # Lookup Channel POP
+
 ## Summary
 
 The Lookup Channel POP in its simplest form takes an attribute (the Lookup Attribute) with values in the 0-1 range and for each point, uses the attribute value as an index into the channels of a CHOP, pulling one interpolated value for each channel, and placing those values into POP attributes.
+
 If the index is 0, it pulls values from the first sample of the CHOP, and if the index is 1 it pulls from the last sample of the CHOP. If the Lookup Index Units menu is set to Sample Index, the lookup index can be expressed as sample number, going from 0 to number_of_samples-1.
+
 If the index is out of range, the Extend Left and Right menus determine what to do to the index before doing the lookup, such as holding it at 0 or 1, or cycling the value between 0 and 1.
+
 Sequential blocks determine what to do with each of the channel values when they are retrieved - you can re-range the value before putting it in the specified output attribute.
+
 See also [Lookup Texture POP](https://docs.derivative.ca/Lookup_Texture_POP "Lookup Texture POP"), [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP") (Lookup page), [Lookup Attribute POP](https://docs.derivative.ca/Lookup_Attribute_POP "Lookup Attribute POP")
+
 [lookupchannelPOP_Class](https://docs.derivative.ca/LookupchannelPOP_Class "LookupchannelPOP Class")
 
 ## Parameters - Lookup Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -74,19 +81,27 @@ See also [Lookup Texture POP](https://docs.derivative.ca/Lookup_Texture_POP "Loo
   * Default Value `lookup0attrdefaultval3` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Lookup Channel POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

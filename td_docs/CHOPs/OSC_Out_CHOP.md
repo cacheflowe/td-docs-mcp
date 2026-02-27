@@ -5,16 +5,23 @@ title: OSC_Out_CHOP
 ---
 
 # OSC Out CHOP
+
 ## Summary
 
 The OSC Out CHOP sends all input channels to a specified network address and port. Each channel name and associated data is transmitted together to the specified location. TouchDesigner time stamps all outgoing Open Sound Control messages with the time of the outgoing frame relative to the system time when the first message was sent. OSC CHOPs in TouchDesigner use the UDP transport protocol.
+
 OSC Out will either send all the channels each cook or it will only send each channel depending on if it has changed at all since the last time it was sent. This is determined by the Send Events Every Cook flag.
+
 OSC bundles allows you to send a group of messages in a single command rather than as separate, individual messages. The [OSC Out DAT](https://docs.derivative.ca/OSC_Out_DAT "OSC Out DAT") has a `sendOSC()` function that will accept a list of messages and send as a bundle.
+
 See also [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP"), [OSC Out DAT](https://docs.derivative.ca/OSC_Out_DAT "OSC Out DAT"), [OSC In DAT](https://docs.derivative.ca/OSC_In_DAT "OSC In DAT"), [iOS and OSC](https://docs.derivative.ca/IOS_and_OSC "IOS and OSC"), [Touch Out CHOP](https://docs.derivative.ca/Touch_Out_CHOP "Touch Out CHOP"), [UDP Out DAT](https://docs.derivative.ca/UDP_Out_DAT "UDP Out DAT"), [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [oscoutCHOP_Class](https://docs.derivative.ca/OscoutCHOP_Class "OscoutCHOP Class")
 
 ## Parameters - OSC Out Page
+
 - Active `active` - While On, the CHOP sends information to the network port. When Off, data is not sent.
 - Protocol `protocol` - ⊞ - Selects the network protocol to use. Refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Messaging (UDP) `msging` -
@@ -41,6 +48,7 @@ See also [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP"), [O
 - Send Events Every Cook `sendevents` - When on, OSC Out will send all channels every cook regardless if the value has changed. When off, OSC Out only sends data which has changed.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -59,17 +67,25 @@ See also [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP"), [O
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the OSC Out CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -83,7 +99,9 @@ Extra Information for the OSC Out CHOP can be accessed via an [Info CHOP](https:
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

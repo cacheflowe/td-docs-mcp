@@ -5,20 +5,31 @@ title: Math_POP
 ---
 
 # Math POP
+
 ## Summary
 
 The Math POP takes one attribute of its input, does some math operations, and outputs to any existing attribute or a new attribute.
+
 The attribute you specify can be any type, including float2, float3, float4. For Input Attribute Scope you can specify a subset of the components, like `P(1) P(0)` which has the effect of re-ordering Y and X.
+
 Math operation include simple Multiply and Add, as well as 30+ math functions including the trigonometry functions, exponential, log, power, and combining multiple components of an attribute into one like `length()`.
+
 The result can then be re-ranged (see the standalone [ReRange POP](https://docs.derivative.ca/ReRange_POP "ReRange POP") and quantized (see the standalone [Quantize POP](https://docs.derivative.ca/Quantize_POP "Quantize POP")).
+
 If you set Parameter Size to 3 and your attribute is a float3 like `P`, then for each component of `P` you can have separate Multiply, Add and Operation parameters.
+
 The Math POP operates on either point, vertex or primitive attributes.
+
 Angle Units can be specified in degrees, radians or rotations (cycles). One cycle is 360 degrees or 6.283 (2 Pi) radians.
+
 When creating new attribute, the Math POP will determine what data type it will be, but you can override it with the >>> expansion parameters. You can cause the output parameter to be integers.
+
 See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"), [Math Combine POP](https://docs.derivative.ca/Math_Combine_POP "Math Combine POP"), [ReRange POP](https://docs.derivative.ca/ReRange_POP "ReRange POP"), [Quantize POP](https://docs.derivative.ca/Quantize_POP "Quantize POP")
+
 [mathPOP_Class](https://docs.derivative.ca/MathPOP_Class "MathPOP Class")
 
 ## Parameters - Math Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -174,19 +185,27 @@ See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"),
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Math POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

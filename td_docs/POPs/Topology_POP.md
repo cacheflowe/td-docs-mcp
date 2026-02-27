@@ -5,15 +5,21 @@ title: Topology_POP
 ---
 
 # Topology POP
+
 ## Summary
 
 The Topology POP gives finer control on how to combine existing points and topology (vertices and primitives), as well as their memory allocation.
+
 Any unsigned int attribute from the input POP or another POP, interpreted as a list of point indices, can be used to describe the topology of the POP, alongside a manual description of the number of primitives (Topology Info), either using the parameters when the number of primitives of each type are known on the CPU, or using values coming from attributes, when the number of primitives of each type are only known on the GPU. This allows to combine multiple buffers created with GLSL and GLSL Advanced POP to describe geometry for example.
+
 Alternatively the Topology and Topology info can be provided from another POP. Primitives and Vertices attributes can also be merged in from other POPs.
+
 Last but not least, for POPs whose numbers of points and primitives are known on the GPU, the maximum numbers can be updated here, if the user knows them to be smaller, to reduce the memory allocation of downstream POPs. Alternatively if the exact counts are known they can also be entered manually and the POP updated to know that its point count info and topology info are now known on the CPU, without incurring the cost and stall of a download. (Refer to Learning about POPs, Information known on CPU/GPU)
+
 [topologyPOP_Class](https://docs.derivative.ca/TopologyPOP_Class "TopologyPOP Class")
 
 ## Parameters - Points Page
+
 - Max Points `maxpointsmode` - ⊞ - Specifies how to set the maximum number of points.
   * Max Points `maxpointsmode` -
   * Max Points `maxpoints` - Sets the max number of points. If the POP point count info is on the CPU, that's the actual number of points.
@@ -29,6 +35,7 @@ Last but not least, for POPs whose numbers of points and primitives are known on
   * Point Count Attribute `pointcountattr` - Attribute that holds the point count.
 
 ## Parameters - Topology Page
+
 - Render `render` - Enables rendering in the viewer. Disable when output data is in an intermediate or non-renderable state
 - Primitive Source Mode `primsourcemode` - ⊞ - Whether the input POP is the primitive source or a different POP is used as the primitive source. Other parameters refer to the primitive source.
   * Input `input` -
@@ -148,19 +155,27 @@ Last but not least, for POPs whose numbers of points and primitives are known on
   * Point Prim Count Attrib `pointprimcountattr` - Specifies the attribute to use for the point primitive count.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Topology POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

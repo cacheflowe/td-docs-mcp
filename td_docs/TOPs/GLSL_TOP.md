@@ -5,18 +5,23 @@ title: GLSL_TOP
 ---
 
 # GLSL TOP
+
 ## Summary
 
 The GLSL TOP renders a GLSL [shader](https://docs.derivative.ca/Shader "Shader") into a TOP image. Use the Info DAT to check for compile errors in your shaders.
+
 The GLSL TOP can act as a pixel shader, or the more general and complex [Compute Shader](https://docs.derivative.ca/Compute_Shader "Compute Shader"). Caveat: Compute Shaders need GLSL 4.30 or later.
+
 The GLSL TOP has one docked compute shader as well as a normal GLSL shader. Change he Mode to Compute Shader. it will use the `glsl1_compute` DAT.
 
 **Refer to the[Write a GLSL TOP](https://docs.derivative.ca/Write_a_GLSL_TOP "Write a GLSL TOP") article for more info on using this TOP.**
 
 See the [GLSL Category](https://docs.derivative.ca/Category:GLSL "Category:GLSL") for more information, and [Compute Shader](https://docs.derivative.ca/Compute_Shader "Compute Shader").
+
 [glslTOP_Class](https://docs.derivative.ca/GlslTOP_Class "GlslTOP Class")
 
 ## Parameters - GLSL Page
+
 - GLSL Version `glslversion` - ⊞ - Pick what version of GLSL to compile the shader with.
   * 1.20 `glsl120` -
   * 3.30 `glsl330` -
@@ -93,13 +98,16 @@ See the [GLSL Category](https://docs.derivative.ca/Category:GLSL "Category:GLSL"
   * Mirror `mirror` -
 
 # of Color Buffers `numcolorbufs` - Any shader you write can output to more than one RGBA buffer at a time. Turn up this value to have more color buffers allocated for you, and refer to [Write_a_GLSL_TOP#Outputting_to_Multiple_Color_Buffers Write a GLSL TOP] for more information on using this feature.
+
 TOPs `tops` -
+
 TDSimplexNoise() `simplexnoise` - ⊞ - Pick between Performance vs Quality Simplex noise. Performance mode picks the existing TDSimplexNoise(). Quality noise reduces certain artifacts and axis alignment issues with the existing simplex noise at the cost of speed.
   * Performance `performance` - Performant noise.
 
   * Quality `quality` - Quality noise.
 
 ## Parameters - Colors Page
+
 Like the Vectors page, these are simple uniforms. These uniforms should always be declared as `vec4`. However, the values in these parameters are interpreted according to the Parameter Color Space menus for this node. They will convert the color values in the parameters to the [Working Color Space](https://docs.derivative.ca/Working_Color_Space "Working Color Space") before passing them to the shader, if a Working Color Space is active.
 - Pre-Multiply RGB by Alpha `premultrgbbyalpha` - Multiplies the RGB values in all the Color parameters by their Alpha value, before passing them to the shader.
 - Color `color` -
@@ -112,6 +120,7 @@ Like the Vectors page, these are simple uniforms. These uniforms should always b
 - Alpha `color0alpha` - The Alpha value for this uniform.
 
 ## Parameters - Vectors Page
+
 These are passed as uniforms into your shader. Depending on how the uniform is declared only some of the values of the 4 available per parameter as passes to the shader. For example, if the uniform is declared as a vec2, then only the first 2 values are passed to the shader, the other 2 are ignored.
 - Vector `vec` - Sequence of vector uniforms
 - Name `vec0name` - The uniform name, as declared in the shader
@@ -122,6 +131,7 @@ These are passed as uniforms into your shader. Depending on how the uniform is d
   * Value `vec0valuew` -
 
 ## Parameters - Arrays Page
+
 CHOP Uniforms allow you to send CHOP channel data into a GLSL shader as an array. Depending on the array type used, the number of values you can send into the shader may be limited. If you are using Uniform Arrays, you can use the Built-In variable `int(var('SYS_GFX_GLSL_MAX_UNIFORMS'))` to get an idea of how many values you can pass to the shader. Current GPUs are vec4 based for uniform arrays, so the maximum array size is `int(var('SYS_GFX_GLSL_MAX_UNIFORMS')) / 4`. Other uniforms will take away from this maximum. If you are using Texture Buffers the maximum array size is far bigger, `int(var('SYS_GFX_MAX_TEXTURE_BUFFER_SIZE'))` will tell you the max for this. The max for texture buffer is per texture buffer, and having multiple texture buffers does not take away from the max for each array.
 - Array `array` - Sequence of array uniforms
 - Name `array0name` - The name of the uniform. You can send up to 4 channels into the GLSL shader in a single uniform. The number of channels is determined by the float/vec2/vec3/vec4 menu to the right of the name. For a CHOP with a single channel declare your uniform as a float, for one with two channels declare your uniform as a vec2, etc. The data is interleaved in the uniform. I.e the .x component is the 1st channel, .y is the 2nd channel, etc.
@@ -139,23 +149,23 @@ CHOP Uniforms allow you to send CHOP channel data into a GLSL shader as an array
 Declare them:
 ```
 uniform samplerBuffer <uniformname>;
-
 ```
 
 And sample them like this
 ```
 vec4 val = texelFetch(<uniformname>, i);
-
 ```
 
 Where i is the 0-based index (an integer) into the buffer that you want to get a value for.
 
 ## Parameters - Matrices Page
+
 - Matrix `matrix` - Sequence of matrix uniforms
 - Name `matrix0name` - The name of the matrix uniform.
 - Matrix `matrix0value` - The value to assign the matrix. For valid ways to specify this, see the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") article.
 
 ## Parameters - Atomic Counters Page
+
 - Atomic Counter `ac` - Sequence of atomic counter uniforms
 - Name `ac0name` - The name of the uniform.
 - Initial Value Type `ac0initvalue` - ⊞ - Specifies how the atomic counters receive their initial value, either through a single default value or a CHOP.
@@ -166,12 +176,14 @@ Where i is the 0-based index (an integer) into the buffer that you want to get a
 - Initial Values CHOP `ac0chopvalue` - A reference to the CHOP that will determine the initial values of the atomic counters in this binding. The CHOP will be spanned in track order, so the values from the first track will be read in order first, then the next track (if there is one) and so on. If there are more initial values to fill than there are values in the CHOP then they will all be set to 0. Atomic counters will be initialized from low to high offsets.
 
 ## Parameters - Constants Page
+
 [Specialization Constants](https://docs.derivative.ca/Write_a_GLSL_TOP#Specialization_Constants "Write a GLSL TOP") can optionally have their values assigned here.
 - Constant `const` - Sequence of constant uniforms
 - Name `const0name` - The constant name, as declared in the shader.
 - Value `const0value` - The value to give the constant.
 
 ## Parameters - Buffers Page
+
 This page allows you to pass entire attribute buffers from POPs into the shader. A function is declared to access each attribute buffer, see [POP Attributes](https://docs.derivative.ca/Write_a_GLSL_TOP#POP_Attributes "Write a GLSL TOP") for syntax.
 - Buffer `buffer` -
 - POP `buffer0pop` - The path to the POP to get the attribute buffer from.
@@ -184,6 +196,7 @@ This page allows you to pass entire attribute buffers from POPs into the shader.
 - Name `buffer0name` - The name you want to reference this attribute by inside the shader.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -303,7 +316,9 @@ This page allows you to pass entire attribute buffers from POPs into the shader.
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 [Parameter Color Space Parameters](https://docs.derivative.ca/index.php?title=Parameter_Color_Space_Parameters&action=edit&redlink=1 "Parameter Color Space Parameters \(page does not exist\)")
+
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -423,14 +438,19 @@ This page allows you to pass entire attribute buffers from POPs into the shader.
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the GLSL TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -444,7 +464,9 @@ Extra Information for the GLSL TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

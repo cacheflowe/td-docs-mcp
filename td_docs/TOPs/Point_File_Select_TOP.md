@@ -5,12 +5,15 @@ title: Point_File_Select_TOP
 ---
 
 # Point File Select TOP
+
 ## Summary
 
 The Point File Select TOP allows you to create additional output images from a point file loaded into a [Point File In TOP](https://docs.derivative.ca/Point_File_In_TOP "Point File In TOP"). This TOP is useful if your point data file has more than 4 channels e.g. XYZ position and RGB colors. It is more efficient to use a Point File Select TOP rather than a second [Point File In TOP](https://docs.derivative.ca/Point_File_In_TOP "Point File In TOP") since the file will only be loaded once.
+
 [pointfileselectTOP_Class](https://docs.derivative.ca/PointfileselectTOP_Class "PointfileselectTOP Class")
 
 ## Parameters - Point File Select Page
+
 - Point File In TOP `pointfileintop` - A link to the [Point File In TOP](https://docs.derivative.ca/Point_File_In_TOP "Point File In TOP") that contains the original point file data.
 - Red `red` - Select one of the available point data channels to place it into the red channel of the output image. Selecting One or Zero will place the constance value into the output channel.
 - Green `green` - Select one of the available point data channels to place it into the green channel of the output image. Selecting One or Zero will place the constance value into the output channel.
@@ -18,6 +21,7 @@ The Point File Select TOP allows you to create additional output images from a p
 - Alpha `alpha` - Select one of the available point data channels to place it into the alpha channel of the output image. Selecting One or Zero will place the constance value into the output channel.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -97,9 +101,13 @@ The Point File Select TOP allows you to create additional output images from a p
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Point File Select TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -113,7 +121,9 @@ Extra Information for the Point File Select TOP can be accessed via an [Info CHO
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

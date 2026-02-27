@@ -5,13 +5,17 @@ title: Flip_TOP
 ---
 
 # Flip TOP
+
 ## Summary
 
 The Flip TOP will Flip an image in X and/or Y. It also offers a Flop option to turn each row of pixels into a column.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [flipTOP_Class](https://docs.derivative.ca/FlipTOP_Class "FlipTOP Class")
 
 ## Parameters - Flip Page
+
 - Flip X `flipx` - Flips the image in X.
 - Flip Y `flipy` - Flips the image in Y.
 - Flip Z `flipz` - Flips the image in Z.
@@ -25,6 +29,7 @@ The Flip TOP will Flip an image in X and/or Y. It also offers a Flop option to t
   * Front Up Right `frontupright` - The image is flipped in Z and then rotated 90 degrees clockwise about the y-axis. The X resolution is becomes the Z depth. The Z becomes the X. The (x,y,z) direction of the 0th slice's bottom left pixel is (front, up, right).
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -104,12 +109,17 @@ The Flip TOP will Flip an image in X and/or Y. It also offers a Flop option to t
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Flip TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -123,7 +133,9 @@ Extra Information for the Flip TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

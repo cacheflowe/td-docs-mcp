@@ -5,12 +5,15 @@ title: Line_Thick_POP
 ---
 
 # Line Thick POP
+
 ## Summary
 
 The Line Thick POP is the engine that generates polygons for the [Line MAT](https://docs.derivative.ca/Line_MAT "Line MAT") before it's rendered. We're not sure how useful it is yet, but Vincent Houze thought we'd make a POP of it and see what happens. It takes line strips or points plus a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and generates triangles for the camera-facing distance-dependent thickened, colored lines, the rounded corners at each junction, the optional circles at each point, and vectors that you can create in the Line MAT.
+
 [linethickPOP_Class](https://docs.derivative.ca/LinethickPOP_Class "LinethickPOP Class")
 
 ## Parameters - Setup Page
+
 - Camera Name `camera` -
 - Camera Aspect `cameraaspect` - ⊞ -
   * Camera Aspect `cameraaspectx` -
@@ -41,6 +44,7 @@ The Line Thick POP is the engine that generates polygons for the [Line MAT](http
 - Thread Id `id` -
 
 ## Parameters - Line Page
+
 - Draw Lines `drawlines` -
 - Line Joint Type `linejointtype` - ⊞ -
   * Round `round` -
@@ -77,6 +81,7 @@ The Line Thick POP is the engine that generates polygons for the [Line MAT](http
 - Line Far Alpha `linefaralpha` -
 
 ## Parameters - Vector Page
+
 - Draw Vectors `drawvectors` -
 - Attribute `attribute` - ⊞ -
   * N (Point Normal X, Y, Z) `N` -
@@ -115,6 +120,7 @@ The Line Thick POP is the engine that generates polygons for the [Line MAT](http
 - Vector Far Alpha `vectorfaralpha` -
 
 ## Parameters - Caps Page
+
 - Round Width `roundwidth` -
 - Round Height `roundheight` -
 - Square Width `squarewidth` -
@@ -130,6 +136,7 @@ The Line Thick POP is the engine that generates polygons for the [Line MAT](http
 - End Caps Pullback `endcappullback` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -214,14 +221,21 @@ The Line Thick POP is the engine that generates polygons for the [Line MAT](http
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Line Thick POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

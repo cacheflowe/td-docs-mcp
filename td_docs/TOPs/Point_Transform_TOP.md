@@ -5,15 +5,21 @@ title: Point_Transform_TOP
 ---
 
 # Point Transform TOP
+
 ## Summary
 
 The Point Transform TOP treats the RGB values of the input image as a point cloud of XYZ positions or vectors and performs 3D transformations and alignments. When the input type is set to 'Vector', translations are ignored and only rotation and scaling operations are performed. The alpha channel, if present, is passed along to the output image unchanged.
+
 Transformations can be defined directly on the Transform page, taken from an input CHOP (see [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP")), using the Look At parameter, or as a combination of any of those methods.
+
 The Align page allows you to move or scale the point cloud relative to the origin, a 1x1x1 cube, or to a reference object. For example, you can scale the cloud to fit inside another point cloud or piece of geometry, or you can align the point cloud to sit on the XZ plane, or directly beside another cloud.
+
 The second input can optionally be used as a weight map to control how much of the transformation is applied to each individual point.
+
 [pointtransformTOP_Class](https://docs.derivative.ca/PointtransformTOP_Class "PointtransformTOP Class")
 
 ## Parameters - Transform Page
+
 - Input Type `inputtype` - ⊞ - Choose if the RGB channels of the input texture should be treated as positions or vectors. Vectors will not have the translation portion of the transform applied to them, and can be normalized before and/or after the transformation is applied.
   * Position `position` - The RGB values represent XYZ positions.
   * Vector `vector` - The RGB values represent XYZ directions.
@@ -78,6 +84,7 @@ The second input can optionally be used as a weight map to control how much of t
   * Transform Page, then Input `xformpageinput` -
 
 ## Parameters - Weights Page
+
 - Weight Channel `weightchannel` - ⊞ - Select how to use the colors of the second input image as weights for transforming the points of the first input.
   * Luminance `luminance` -
   * Red `red` -
@@ -95,6 +102,7 @@ The second input can optionally be used as a weight map to control how much of t
   * Weight Range `weightrange2` -
 
 ## Parameters - Align Page
+
 These operations allow you to align the input points to the origin or to another reference object before or after the transformation has been applied. For example, you can recenter the transformed point cloud on the origin or position it directly next to another point cloud. **Note:** Align operations incur additional performance costs because they must calculate the dimensions of all points in the input.
 - Align Transform Order `alignxformorder` - ⊞ - Determines the order that align operations are performed on the input points. **Note** : Unlike Scaling on the transform page, the alignment scale is always done relative to the center of the point cloud so that the point cloud's center does not change.
   * Transform, then Align `transformalign` -
@@ -178,6 +186,7 @@ These operations allow you to align the input points to the origin or to another
   * Reference Proportional `referenceprop` - The point cloud is resized to match the depth of the reference object. Other axes are scaled accordingly to maintain proportions.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -257,14 +266,19 @@ These operations allow you to align the input points to the origin or to another
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0: points - The first input contains the position data of the points represented in the red, green, and blue channels.,
 
   * Input 1: weights - The second input contains an optional weight map that controls how much of the transformation is applied to each point. The weight channel and weight range parameters control how the color channels of the image are converted into weights.
 
 ## Info CHOP Channels
+
 Extra Information for the Point Transform TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -278,7 +292,9 @@ Extra Information for the Point Transform TOP can be accessed via an [Info CHOP]
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

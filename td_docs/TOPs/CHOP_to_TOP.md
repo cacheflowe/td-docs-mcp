@@ -5,16 +5,23 @@ title: CHOP_to_TOP
 ---
 
 # CHOP to TOP
+
 ## Summary
 
 The CHOP to TOP puts CHOP channels into a TOP image. By default the texture created will be 32-bit floating point to match the precision of the CHOP data. This can be changed setting the TOP's Pixel Format to something other than 'Input'.
+
 The Data Format parameter determines how the input channels are converted into pixel colors in the output image. For example, when the Data Format is set to 'R', each channel will be interpreted as a row of red pixel data. Likewise, if the Data Format is RGBA, then the first 4 channels will become a set of red, blue, green and alpha data for one row of pixels and each subsequent set of 4 channels will become additional rows. _Note:_ Channels are grouped by their order in the CHOP rather than their names i.e. just because a channel is named g0 or b1 does not mean it will necessarily be be placed in a blue or green pixel.
+
 The Image Layout parameter controls how the pixel rows are arranged in the output image. By default, the width of the image will be equal to the number of samples in the CHOP, clamped to a maximum texture width (often 32768) (the sample rate is ignored), and the height will be equal to the number of channel sets. For example, when the Data Format is RGB and the there are 9 input channels (for example, r0 g0 b0 r1 g1 b1 r2 g2 b2), there will be 3 rows of pixels using the default image layout.
+
 If the channel length is longer than the image width, the wrapped layout option can be used to continue the channel data onto additional rows of pixels. Each new set of channels will still begin on a new row of pixels.
+
 If the Image Layout parameter is set to Fit to Square, the TOP determines the image resolution based on the total number of samples across all channel sets (approximately the square root of the number of samples + 1) in width and height. This layout is most often used for point cloud data, where an efficient layout is preferred and the position of a pixel is not generally important. Unlike in the wrapped layout, channel sets in this mode are appended immediately to the end of the previous set, so that any empty pixels will appear at the end of the image. Where there are some unused pixels, you can fill the unused pixels at the top with a special value based on the Extra Pixel Values parameter, (0, 0, 0, 0) by default. To put (0, 0, 0, -1) you have to set the pixel format to 32-bit float so you can represent negative and positive numbers of any value.
+
 [choptoTOP_Class](https://docs.derivative.ca/ChoptoTOP_Class "ChoptoTOP Class")
 
 ## Parameters - CHOP to TOP Page
+
 - CHOP `chop` - The path of the CHOP being referenced.
 - Data Format `dataformat` - ⊞ - Determines how the input CHOP channels will be turned into an image. If the CHOP is missing channels required to provide all the data for a scanline, the extra channels are ignored.
   * R `r` - Each channel is treated as the Red channel for a new scanline. Using the default Image Layout, the height of the image will be equal to the number of channels in the CHOP.
@@ -37,6 +44,7 @@ If the Image Layout parameter is set to Fit to Square, the TOP determines the im
   * Alpha `rgba4` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -116,9 +124,13 @@ If the Image Layout parameter is set to Fit to Square, the TOP determines the im
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the CHOP to TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -132,7 +144,9 @@ Extra Information for the CHOP to TOP can be accessed via an [Info CHOP](https:/
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

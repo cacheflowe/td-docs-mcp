@@ -5,15 +5,21 @@ title: Tone_Map_TOP
 ---
 
 # Tone Map TOP
+
 ## Summary
 
 Tone Mapping is the process of taking HDR content, that may have pixel brightness values much higher than 1, and re-ranging it down to the [0, 1] range, so it can be displayed on an SDR monitor. Without Tone Mapping, HDR content will look washed out on an SDR monitor, as all of the pixels that are >=1 will have the same brightness. So the sun will be the same brightness as a glossy highlight, for example.
+
 Tone Mapping does not aim to maintain the true brightness of the pixels when shown on the output display. That is what a true HDR display attempts to do. Instead is tries to re-range the values so different HDR brightness values still result in different SDR brightness values, even though initially they were both >= 1. This is entirely an artistic choice, so there is no 'right' Tone Mapping type to use. Each will give a different look, and the best one will depend on your content and what you prefer visually.
+
 An example project using this node can be found [here](https://www.dropbox.com/scl/fi/evrngv2ocpxe5fforyw22/ToneMapExample.zip?rlkey=k4qclh6syq5o57cv5mqno9htp&dl=0):
+
 This node should not be used if you are outputting to an HDR display with HDR mode enabled.
+
 [tonemapTOP_Class](https://docs.derivative.ca/TonemapTOP_Class "TonemapTOP Class")
 
 ## Parameters - Tone Map Page
+
 - Type `type` - ⊞ - The type of tone map operation to apply. There is no 'best' tone mappping operation. The choice is largely an artistic choice, and may also depend on the content you are looking to tone map.
   * ACES Approx (SDR) `acesapprox` - An approximation of the standard ACES tonemapping, with a tradeoff focused on more speed. From <https://knarkowicz.wordpress.com/2016/01/06/aces-filmic-tone-mapping-curve>.
   * Lottes (SDR) `lottes` - From <https://gpuopen.com/download/GdcVdrLottes.pdf>. Starting around page 39.
@@ -29,6 +35,7 @@ This node should not be used if you are outputting to an HDR display with HDR mo
 - Exposure Bias `exposurebias` - An artistic exposure bias that can be applied to Hable Filmic tone map.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -108,12 +115,17 @@ This node should not be used if you are outputting to an HDR display with HDR mo
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Tone Map TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -127,7 +139,9 @@ Extra Information for the Tone Map TOP can be accessed via an [Info CHOP](https:
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

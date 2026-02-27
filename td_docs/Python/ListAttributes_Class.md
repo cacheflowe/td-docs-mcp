@@ -5,7 +5,9 @@ title: ListAttributes_Class
 ---
 
 # ListAttributes Class
+
 The ListAttributes class describes a set of [list attribute objects](https://docs.derivative.ca/ListAttribute_Class "ListAttribute Class") for cells, rows, columns or table. It can be accessed from a [List Component](https://docs.derivative.ca/ListCOMP_Class "ListCOMP Class").
+
 Access to individual List Attributes depends on what type: row, col, or cell:
 
 ```
@@ -23,13 +25,14 @@ cellAttribs = op('list1').cellAttribs	# get the ListAttributes object for column
 print(len(cellAttribs))					# total number of cells
 print(colAttribs[0,2].bgColor)			# cells are accessed by [row, col].
 										# This prints the background color settings for the cell in the first row, third column
-
 ```
 
 **Note:** The attributes above are the settings for List Component's hierarchical layout technique. This means that cell settings override row settings, which override column settings, which override table settings. If you want to know the final value in a given cell, use `listCOMP.displayAttribs[row, col]`.
 
 ## Members
+
 No operator specific members.
 
 ## Methods
+
 No operator specific methods.

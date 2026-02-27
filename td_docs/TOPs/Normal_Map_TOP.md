@@ -5,13 +5,17 @@ title: Normal_Map_TOP
 ---
 
 # Normal Map TOP
+
 ## Summary
 
 The Normal Map TOP takes an input image and creates a normal map by finding edges in the image. This can then be used for bump mapping (See [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT") and [PBR MAT](https://docs.derivative.ca/PBR_MAT "PBR MAT")).
+
 See also [Normal Mapping](https://docs.derivative.ca/Normal_Mapping "Normal Mapping").
+
 [normalmapTOP_Class](https://docs.derivative.ca/NormalmapTOP_Class "NormalmapTOP Class")
 
 ## Parameters - Normal Map Page
+
 - Source `source` - ⊞ - This menu selects how the edges in the image are found. The edges will appear raised or depressed in the output image depending on their slope.
   * Luminance `luminance` - Pulls edges from the luminance values of the image.
   * Red `red` - Pulls edges from the red channel of the image.
@@ -34,6 +38,7 @@ See also [Normal Mapping](https://docs.derivative.ca/Normal_Mapping "Normal Mapp
 - Heightmap in Alpha Channel `heightmap` - Creates a Height Map in the Alpha Channel.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -113,12 +118,17 @@ See also [Normal Mapping](https://docs.derivative.ca/Normal_Mapping "Normal Mapp
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Normal Map TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -132,7 +142,9 @@ Extra Information for the Normal Map TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

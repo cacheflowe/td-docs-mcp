@@ -5,12 +5,19 @@ title: Initialize_Start
 ---
 
 # Initialize Start
+
 Initialize Start is an approach in TouchDesigner to prepare and run timed processes. It applies to any system in TouchDesigner where there first needs be an initialization (the "`initializing`" state), like reading files into memory, querying servers, pre-simulating dynamics or starting external processes. When initializing is complete, it goes into the "`ready`" state. Then it is signaled to start via a "Start" pulse parameter. For example, before starting a show, you may want to initialize all your generative components at their first frame.
+
 Upon Start, it goes into the "`running`" state, and when complete (when timer reaches its length and it's not looping, or when Go to Done is pulsed) it goes into a "`done`" state.
+
 The `ready` state has to be fully-primed and ready-to-go such that when Start is pressed, the first frame is perfectly valid and suffers no frame drops or delays.
+
 Initialization often takes more than one frame to complete, so there is usually provision to initialize over several frames without substantially stalling TouchDesigner. The `initializing` state may last several frames.
+
 Note: The convention is, if you press Start when it is already `running` or when it is `done`, it is equivalent to going to done, pressing Initialize and then starting. That is, the Initialize stage automatially goes to completion before it starts again.
+
 Initialize Start is based on the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP").
+
 Examples of parts of TouchDesigner where the Initialize Start approach is used are:
   * [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP")
   * [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP")
@@ -26,10 +33,13 @@ Examples of parts of TouchDesigner where the Initialize Start approach is used a
   * [Particle POP](https://docs.derivative.ca/Particle_POP "Particle POP")
 
 There is a component in the palette called [initalizeStart](https://docs.derivative.ca/Palette:initializeStart "Palette:initializeStart") that you can use to convert any of your components to use the same mechanism.
+
 Initialize Start follows the model of the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP").
+
 See also [Event](https://docs.derivative.ca/Event "Event").
 
 ###  Control Parameters
+
   * Initialize (pulse) - prepares all data, in `initializing` state
   * Start (pulse) - starts all the timers, puts in `running` state
   * Play (toggle) - used to pause while playing
@@ -41,7 +51,9 @@ See also [Event](https://docs.derivative.ca/Event "Event").
   * Go to Done (pulse) - stops all the timers, possibly goes to an end-state, puts in `done` state.
 
 ###  Info Channels
+
 This is often achieved by attaching an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to the operator. It is the actual output in the Timer CHOP and the [initializeStart](https://docs.derivative.ca/Palette:initializeStart "Palette:initializeStart") palette COMP.
+
 States -
   * `initializing` (0 if operator currently initializes in the same-frame)
   * `ready` (after Initialize complete and before Start pressed)
@@ -60,8 +72,11 @@ Counters - used to drive animations, index lookups, etc.
   * ``cycles`` (where applicable)
 
 ###  Behavior
+
 Fixed-length vs infinite (unknown) length. An example of infinite length would be a particle simulation. There are two flavors of fixed-length - user-specified length or media-determined length (like an audio file).
+
 ###  Callbacks
+
 In some cases, like the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), there are callbacks where you can run python code when events occur, such as the end of initialization, or the end of a fixed-length behavior. The common ones are:
   * `onInitialize()` called when the Initialize is pulsed, and is called every frame thereafter until you return 0, in order for multi-frame initializations to occur.
   * `onReady()` is called when initialization is complete.
@@ -69,8 +84,13 @@ In some cases, like the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Time
   * `onDone()` is called when fixed-length systems complete, and when Go to Done is pulsed.
 
 ###  Errors and Warnings
+
 In some cases, the operator reports errors or warnings, like failure to initialize.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+
 A built-in panel in TouchDesigner that contains a library of components and media that can be dragged-dropped into a TouchDesigner network.
+
 To "pulse" a parameter is to send it a signal from (1) an [exported](https://docs.derivative.ca/Export "Export") CHOP channel or (2) a python command or (3) a mouse click that causes a new action to occur immediately. A pulse via python is via the `.pulse()` function on a pulse-type parameter, such as Reset parameter in a [Speed CHOP](https://docs.derivative.ca/Speed_CHOP "Speed CHOP"). A pulse from a CHOP is typically a 0 to 1 to 0 signal in an exported channel.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

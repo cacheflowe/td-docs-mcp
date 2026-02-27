@@ -5,6 +5,7 @@ title: Object_CHOP
 ---
 
 # Object CHOP
+
 ## Summary
 
 The Object CHOP compares two objects and outputs channels containing their raw or relative positions and orientations. The information that can be output is:
@@ -16,16 +17,20 @@ The Object CHOP compares two objects and outputs channels containing their raw o
   * Inverse Square of the Distance between two objects
 
 The optional two inputs allow you to compare X,Y,Z points in world space with objects or each other. The inputs are expected to have three channels containing XYZ points (three channels with the suffix x, y and z). Alternatively, they can be in the standard transform formats as described by the [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP") help. These inputs replace the target and/or reference objects. Object and points can be compared with each other, but "Rotation" mode will always return zero.
+
 See also the [SOP to CHOP](https://docs.derivative.ca/SOP_to_CHOP "SOP to CHOP") and the [Parameter CHOP](https://docs.derivative.ca/Parameter_CHOP "Parameter CHOP"). They retrieve other information from [objects](https://docs.derivative.ca/Object "Object") and [SOPs](https://docs.derivative.ca/SOP "SOP").
+
 [objectCHOP_Class](https://docs.derivative.ca/ObjectCHOP_Class "ObjectCHOP Class")
 
 ## Parameters - Object Page
+
 - DAT Table `dat` - Uses a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") to specify the target and reference objects to use. The first column will be the target objects while the second column will be the reference objects. No headers are used.
 - Target Object `target` - The object that is being compared to the position of the reference object. The Target Object can be expressed as a text string. This can be useful when the object name needs to be a variable - it allows you to type in a name which may include expressions or variables.
 - Reference Object `reference` - The object that acts as the origin of the comparison. The Reference Object can be expressed as a text string.
 - Swap Target/Reference `swaptargetreference` - Swap the objects defined above in the Target Object and Reference Object parameters.
 
 ## Parameters - Output Page
+
 - Compute `compute` - ⊞ - Specify the information to output from the objects as described in the parameters below. Except for 'measurements', these match the standard transform formats as described by the [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP").
   * Transform (Euler) `transform` - A transform using euler (rx ry rz) for the rotation.
   * Transform (Quaternion) `transformquat` - A transform using quaternion (qx qy qz qw) for the rotation.
@@ -76,6 +81,7 @@ See also the [SOP to CHOP](https://docs.derivative.ca/SOP_to_CHOP "SOP to CHOP")
 - Smooth Rotation `smoothrotate` - When on outputs a smooth rotation curve without graphical jumps at 0, 90, etc.
 
 ## Parameters - Channel Page
+
 - Channel Names `nameformat` - ⊞ - Sets how the created channels are named.
   * Channel Name `channel` - Automatically names channels. **For example** : `tx, ty, tz`.
   * Target and Channel Names `target` - Names channels with target prefix. **For example** : if target = `obj1`, then `obj1:tx, obj1:ty, obj1:tz`.
@@ -109,6 +115,7 @@ See also the [SOP to CHOP](https://docs.derivative.ca/SOP_to_CHOP "SOP to CHOP")
 **Note:** When creating rotation channels, the [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP") and Object CHOP will select values which minimize frame-to-frame discontinuity. The graphs will appear continuous and free of 180 degree shifts.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -126,13 +133,18 @@ See also the [SOP to CHOP](https://docs.derivative.ca/SOP_to_CHOP "SOP to CHOP")
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Object CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -146,7 +158,9 @@ Extra Information for the Object CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

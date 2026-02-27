@@ -5,29 +5,28 @@ title: Cube_Map_TOP
 ---
 
 # Cube Map TOP
+
 ## Summary
 
 The Cube Map TOP builds a texture map in the [Cube Map](https://docs.derivative.ca/Cube_Map "Cube Map") internal texture format. It accepts a vertical cross image, or 1 input per side of the cube. The [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT") can use the cube maps from the Cube Map TOP for reflections. The [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") can also create cube maps. You can sample a cube map in a GLSL shader by declaring them like this
 ```
 uniform samplerCube <name>;
-
 ```
 
 and sampling them using this in GLSL 3.30+
 ```
 texture(samplerCube name, vec3 texcoords)
-
 ```
 
 or this in GLSL 1.20
 ```
 textureCube(samplerCube name, vec3 texcoords)
-
 ```
 
 [cubemapTOP_Class](https://docs.derivative.ca/CubemapTOP_Class "CubemapTOP Class")
 
 ## Parameters - Cube Map Page
+
 - Mode `mode` - ⊞ - Determine how the cube map is created from the input images.
   * One Input Per Side to Cube Map `onepersidetocubemap` - Use all 6 inputs on the TOP to assign an image to each face of the cube map. The inputs are ordered: Positive X, Negative X, Positive Y, Negative Y, Positive Z, Negative Z.
   * Vertical Cross to Cube Map `verticalcrosstocubemap` - Use an input texture in the vertical cross cube format. For some vertical cross examples, see [Paul Debevec's site](http://www.debevec.org/probes).
@@ -38,6 +37,7 @@ textureCube(samplerCube name, vec3 texcoords)
   * Cube Map to Horizontal Cross `cubemaptohorizontalcross` - Use an input in Cube Map format and it will be converted to a Horizontal Cross.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -117,6 +117,7 @@ textureCube(samplerCube name, vec3 texcoords)
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
@@ -125,9 +126,13 @@ textureCube(samplerCube name, vec3 texcoords)
   * Input 5:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Cube Map TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -141,7 +146,9 @@ Extra Information for the Cube Map TOP can be accessed via an [Info CHOP](https:
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

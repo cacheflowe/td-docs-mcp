@@ -5,14 +5,19 @@ title: Slope_TOP
 ---
 
 # Slope TOP
+
 ## Summary
 
 The Slope TOP generates pixels that represent the difference between its value and its neighbouring pixels' values. Given that default RGBA pixel values are between 0 and 1, the value of .5 means the neighbor's values are the same as the pixel's value. Values output in the red channel that are above .5 indicate the values are increasing left-to-right. Values output in the green channel that are above .5 indicate the values are increasing bottom-to-top. Values output in the blue channel that are above 0.5 indicate the values are increasing front-to-back where w = 0 is the frontmost slice.
+
 However it's more clear if you switch the Pixel Format parameter to 32-bit float RGBA so you get a proper representation of negative numbers. Also set the Zero Point parameter to 0, and view the TOP view as Normalized Split to see a good representation of negative numbers.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [slopeTOP_Class](https://docs.derivative.ca/SlopeTOP_Class "SlopeTOP Class")
 
 ## Parameters - Slope Page
+
 - Red `red` - ⊞ - Select which method is used to calculate the slope of the Red channel. Horizontal, Vertical, and Z options let you calculate the slope by sampling points horizontally, vertically, or in the z direction.
   * Horizontal Luminance `hluminance` - Uses the luminance values of the image to calculate slope.
   * Horizontal Red `hred` - Uses the red channel of the image to calculate slope.
@@ -137,6 +142,7 @@ However it's more clear if you switch the Pixel Format parameter to 32-bit float
   * Mirror `mirror` - The slope is calculated as if the image was mirrored and repeating.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -216,12 +222,17 @@ However it's more clear if you switch the Pixel Format parameter to 32-bit float
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Slope TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -235,7 +246,9 @@ Extra Information for the Slope TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,18 +5,27 @@ title: Copy_POP
 ---
 
 # Copy POP
+
 ## Summary
 
 The Copy POP makes copies of its input using (1) the Number of Copies parameter that specifies the number of copies to make with the transform applied to each copy, and (2) a second-input Template POP where a copy is placed at each point of the template.
+
 For each copy in (1), the transforms are cumulative, that is, the transform is applied to the transform of the previous copy, with no transform applied to the first copy.
+
 Once (1) is done, then (2) is applied to the result.
+
 The Template page chooses which attributes of the template are used to define the transform for each copy-per-template point.
+
 The Template Attributes page determines what attributes are added to the output, and how the attributes are combinations of the first input and the template input, multiplying or adding them together.
+
 If the number of copies is greater than 1, The Dimension of the first input is increased by one, and the number of dimensions is increased by the second (template) input's dimension. See [Dimension](https://docs.derivative.ca/Dimension "Dimension").
+
 See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy POP").
+
 [copyPOP_Class](https://docs.derivative.ca/CopyPOP_Class "CopyPOP Class")
 
 ## Parameters - Copy Page
+
 - Number of Copies `ncy` - Sets the number of copies. If the template input is used, that's the number of copies per template point.
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations.
   * Scale Rotate Translate `srt` -
@@ -79,6 +88,7 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * Always `always` -
 
 ## Parameters - Template Page
+
 - Template Matrix Transform `dotemplatematrix` - ⊞ - Whether to use a transform matrix attribute on the template points.
   * Template Matrix Transform `dotemplatematrix` -
   * Transform Attribute `transformattr` - Specifies the scope of the template attribute that holds the transform matrices.
@@ -145,6 +155,7 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * TemplateId Attrib Name `templateidname` - Output attribute scope for the template Id.
 
 ## Parameters - Template Attributes Page
+
 - Use Template Point Attribs `doattr` - Enable additional operations on template input attributes.
 - Template Attribute `templateattr` - Start of Sequential Parameter Blocks for attributes as combinations of the first input and the template input.
 - Operation `templateattr0op` - ⊞ - Choose how to combine the template attribute with the matching attribute on the copy if it exists.
@@ -162,20 +173,28 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * * `*` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Copy POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

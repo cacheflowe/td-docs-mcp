@@ -276,6 +276,230 @@ def ensure_blockquote_spacing(content: str) -> str:
     return '\n'.join(result)
 
 
+def _is_plain_text(line: str) -> bool:
+    """Return True if *line* looks like a plain prose paragraph line.
+
+    Returns False for blank lines, markdown structural elements (headers,
+    list items, code fences, blockquotes, images, tables, horizontal rules),
+    and indented lines (which may be continued list content).
+    """
+    stripped = line.strip()
+    if not stripped:
+        return False
+    # Headers
+    if stripped.startswith('#'):
+        return False
+    # List items (unordered and ordered) and sub-bullets
+    if re.match(r'^[-*+]\s', stripped) or re.match(r'^\d+\.\s', stripped):
+        return False
+    # Code fences
+    if stripped.startswith('```'):
+        return False
+    # Blockquotes
+    if stripped.startswith('>'):
+        return False
+    # Images / image-links standing alone
+    if stripped.startswith('[![') or stripped.startswith('!['):
+        return False
+    # Table rows (contain | pipe separators) and table separator lines
+    if '|' in stripped:
+        return False
+    # Horizontal rules
+    if re.match(r'^[-*_]{3,}$', stripped):
+        return False
+    # Indented content (continuation of list items, etc.)
+    if line.startswith('  '):
+        return False
+    return True
+
+
+def separate_paragraphs(content: str) -> str:
+    """Insert blank lines between consecutive plain-text paragraph lines.
+
+    Crawl4AI collapses HTML ``<p>`` boundaries into adjacent lines with no
+    blank line in between.  Markdown renderers then treat them as a single
+    paragraph.  This function detects runs of consecutive plain prose lines
+    (ignoring headers, lists, code, blockquotes, tables, etc.) and inserts a
+    blank line between each pair.
+
+    Code-fenced regions and frontmatter are left untouched.
+    """
+    lines = content.split('\n')
+    result: list[str] = []
+    in_code_block = False
+    frontmatter_count = 0
+
+    for line in lines:
+        stripped = line.strip()
+
+        # Track frontmatter — pass through unchanged
+        if stripped == '---':
+            frontmatter_count += 1
+        if frontmatter_count < 2:
+            result.append(line)
+            continue
+
+        # Track code blocks — pass through unchanged
+        if stripped.startswith('```'):
+            in_code_block = not in_code_block
+            result.append(line)
+            continue
+        if in_code_block:
+            result.append(line)
+            continue
+
+        # If the previous line was plain text and this line is also plain
+        # text, insert a blank line so markdown sees them as separate
+        # paragraphs.
+        if result and _is_plain_text(result[-1]) and _is_plain_text(line):
+            result.append('')
+
+        result.append(line)
+
+    return '\n'.join(result)
+
+
+def ensure_header_spacing(content: str) -> str:
+    """Ensure blank lines before and after markdown header lines.
+
+    Headers (lines starting with ``#``) should have a blank line above and
+    below them for proper rendering and readability.  Frontmatter delimiters
+    and code-fenced regions are left untouched.
+    """
+    lines = content.split('\n')
+    result: list[str] = []
+    in_code_block = False
+    frontmatter_count = 0
+
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+
+        # Track frontmatter — pass through unchanged
+        if stripped == '---':
+            frontmatter_count += 1
+        if frontmatter_count < 2:
+            result.append(line)
+            continue
+
+        # Track code blocks — pass through unchanged
+        if stripped.startswith('```'):
+            in_code_block = not in_code_block
+            result.append(line)
+            continue
+        if in_code_block:
+            result.append(line)
+            continue
+
+        is_header = stripped.startswith('#')
+
+        # Ensure blank line before header
+        if is_header and result and result[-1].strip() != '':
+            result.append('')
+
+        result.append(line)
+
+        # Ensure blank line after header: peek ahead at next non-appended
+        # line.  We insert a blank after the header if the next source line
+        # is non-empty and not itself a header.  The blank-line contraction
+        # step later will collapse any duplicates.
+        if is_header and i + 1 < len(lines):
+            next_stripped = lines[i + 1].strip()
+            if next_stripped and not next_stripped.startswith('#'):
+                result.append('')
+
+    return '\n'.join(result)
+
+
+def clean_code_block_blanks(content: str) -> str:
+    """Remove blank lines immediately before closing code fences.
+
+    Crawl4AI often inserts a blank line before the closing ````` ```,
+    producing code blocks with trailing whitespace that looks untidy.
+    """
+    lines = content.split('\n')
+    result: list[str] = []
+    in_code_block = False
+
+    for line in lines:
+        stripped = line.strip()
+
+        if stripped.startswith('```'):
+            if in_code_block:
+                # Closing fence — remove trailing blank lines
+                while result and result[-1].strip() == '':
+                    result.pop()
+            in_code_block = not in_code_block
+
+        result.append(line)
+
+    return '\n'.join(result)
+
+
+def compact_tables(content: str) -> str:
+    """Remove blank lines inside markdown tables.
+
+    Markdown tables break if there are blank lines between rows.  This
+    function finds table regions (identified by a separator row matching
+    ``---|---``) and removes any blank lines between table rows.
+    """
+    lines = content.split('\n')
+
+    # First pass: find separator row indices
+    sep_indices: set[int] = set()
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        # Table separator: consists of |, -, :, and spaces only
+        if stripped and '|' in stripped and re.match(r'^[\s|:\-]+$', stripped):
+            sep_indices.add(i)
+
+    if not sep_indices:
+        return content
+
+    # Second pass: for each separator, find the full table extent and
+    # collect indices of blank lines within it.
+    blank_to_remove: set[int] = set()
+
+    for sep_idx in sep_indices:
+        # Walk upward from separator to find start of table
+        top = sep_idx
+        while top > 0:
+            prev = top - 1
+            if lines[prev].strip() == '':
+                # Check if there is a table row above the blank line
+                above = prev - 1
+                if above >= 0 and '|' in lines[above]:
+                    blank_to_remove.add(prev)
+                    top = above
+                else:
+                    break
+            elif '|' in lines[prev]:
+                top = prev
+            else:
+                break
+
+        # Walk downward from separator to find end of table
+        bottom = sep_idx
+        while bottom < len(lines) - 1:
+            nxt = bottom + 1
+            if lines[nxt].strip() == '':
+                # Check if there is a table row below the blank line
+                below = nxt + 1
+                if below < len(lines) and '|' in lines[below]:
+                    blank_to_remove.add(nxt)
+                    bottom = below
+                else:
+                    break
+            elif '|' in lines[nxt]:
+                bottom = nxt
+            else:
+                break
+
+    if not blank_to_remove:
+        return content
+
+    return '\n'.join(line for i, line in enumerate(lines) if i not in blank_to_remove)
+
+
 def clean_td_markdown(content: str, is_python_doc: bool = False) -> str:
     """Clean TouchDesigner documentation markdown."""
     lines = content.split('\n')
@@ -380,6 +604,18 @@ def clean_td_markdown(content: str, is_python_doc: bool = False) -> str:
 
     # Ensure blank lines around blockquote lines
     result = ensure_blockquote_spacing(result)
+
+    # Ensure blank lines before and after headers
+    result = ensure_header_spacing(result)
+
+    # Separate consecutive plain-text lines into distinct paragraphs
+    result = separate_paragraphs(result)
+
+    # Remove trailing blank lines inside code blocks
+    result = clean_code_block_blanks(result)
+
+    # Remove stray blank lines inside markdown tables (which break rendering)
+    result = compact_tables(result)
 
     # Remove operator family link list footer (CHOPs, TOPs, etc.)
     result = remove_operator_family_footer(result)

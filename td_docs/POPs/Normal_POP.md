@@ -5,18 +5,27 @@ title: Normal_POP
 ---
 
 # Normal POP
+
 ## Summary
 
 The Normal POP lets you create “normal vectors” and “tangent vectors” based on the incoming set of triangles or quads.
+
 You can create normals or tangents as point attributes, vertex attributes or primitive attributes.
+
 You can choose from several strategies for computing normals and tangents, based on each point being a member of several primitives.
+
 You usually use the P position attribute to compute the normals and tangents, but you can use any vec3 attribute.
+
 The results are placed in the N and (optionally) T attributes, but you can name the new attribute anything.
+
 If the incoming geometry already has normal or tangent vectors, you can choose to do nothing, re-compute values, error, or delete the attributes.
+
 Because this runs on the GPU that needs pre-determined sizes, you need to set the Max Number of Primitives per Point, the default 6 being typically sufficient.
+
 [normalPOP_Class](https://docs.derivative.ca/NormalPOP_Class "NormalPOP Class")
 
 ## Parameters - Normals Page
+
 - Normals Action `nml` - ⊞ - Choose what to do regarding normals.
   * No Action `noaction` -
   * Always Compute `alwayscompute` -
@@ -72,6 +81,7 @@ Because this runs on the GPU that needs pre-determined sizes, you need to set th
   * Default Value `attrdefaultvaln3` -
 
 ## Parameters - Tangents Page
+
 - Tangents Action `tang` - ⊞ - Sets the tangent operation.
   * No Action `noaction` -
   * Always Compute `alwayscompute` -
@@ -118,19 +128,27 @@ Because this runs on the GPU that needs pre-determined sizes, you need to set th
   * Default Value `attrdefaultvalt3` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Normal POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

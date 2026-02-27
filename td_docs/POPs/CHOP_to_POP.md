@@ -5,11 +5,15 @@ title: CHOP_to_POP
 ---
 
 # CHOP to POP
+
 ## Summary
 
 The CHOP to POP takes CHOP channels and lets you convert them to attributes of a POP. Each CHOP sample becomes one POP point.
+
 You can manually list the CHOP channels you want to convert, and then list the names of the POP attributes you want create, matching channels to attributes one by one. Built-in attributes like `P`, `N`, `Color` and `Tex` are assumed to be their multi-component forms. Other channel names will be assumed to be converted to scalar float attributes.
+
 Channel to attribute mapping can be done through sequential blocks which give you more control over the type of attribute you create, for example, an array of 5 integers.
+
 Alternately, channels can be automatically converted to attributes based on a naming standard. Set the Channels Selection menu to Autoconvert Precise Names. This is the same channel naming standard that [POP to CHOP](https://docs.derivative.ca/POP_to_CHOP "POP to CHOP") produces when POP to CHOP's Name Format menu is set to Precise, which handles attributes that have `()` and `[]`:
   * the attribute name is the same including maintaining capital letters
   * components of a vector attribute have `_0 _1 _2` suffixed i.e. `Tex_0 Tex_1 Tex_2`
@@ -17,12 +21,17 @@ Alternately, channels can be automatically converted to attributes based on a na
   * The channel name optionally has a single character at the end to signify data type: `f` (float), `F` (double), `i` int, `I` double int, `u` unsigned, `U` double unsigned.
 
 You can get the `P` position attribute from the CHOP, or you can create your own line for `P` with a start-end position that you specify.
+
 The POP points can be connected as an open or closed linestrip, or be created as single-point primitives, or have no primitives.
+
 You can override the number of points that it produces and CHOP to POP will optionally interpolate from samples of the input.
+
 See also [POP to CHOP](https://docs.derivative.ca/POP_to_CHOP "POP to CHOP")
+
 [choptoPOP_Class](https://docs.derivative.ca/ChoptoPOP_Class "ChoptoPOP Class")
 
 ## Parameters - CHOP to Page
+
 - CHOP `chop` - The CHOP to convert to POP attributes.
 - Connectivity `surftype` - ⊞ - Determines the primitive used to connect the points.
   * None `none` -
@@ -90,6 +99,7 @@ See also [POP to CHOP](https://docs.derivative.ca/POP_to_CHOP "POP to CHOP")
   * Default Value `attr0defaultval3` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -114,11 +124,17 @@ See also [POP to CHOP](https://docs.derivative.ca/POP_to_CHOP "POP to CHOP")
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the CHOP to POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

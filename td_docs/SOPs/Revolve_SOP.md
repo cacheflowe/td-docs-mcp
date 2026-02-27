@@ -5,16 +5,21 @@ title: Revolve_SOP
 ---
 
 # Revolve SOP
+
 ## Summary
 
 The Revolve SOP revolves faces to create a surface of revolution. The revolution's direction and origin are represented by guide geometry that resembles a thick line with a cross hair at the centre. The cross hair represents the origin of the revolve as entered in the dialog and the stick represents the direction. Changing any of these parameters will cause the guide to change appropriately.
+
 If the guide geometry is too distracting, you can disable it by entering the Viewport options dialog and clicking on the Guide geometry button so that it no longer appears indented. This procedure is global and will disable the guide geometry of other SOPs as well.
+
 [revolveSOP_Class](https://docs.derivative.ca/RevolveSOP_Class "RevolveSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this `SOP` to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 
 ## Parameters - Revolve Page
+
 - Connectivity `surftype` - ⊞ - This option is used to select the type of surface, when using a Mesh Primitive Type.
   * Rows `rows` - Creates horizontal lines.
   * Columns `cols` - Creates vertical lines.
@@ -37,6 +42,7 @@ If the guide geometry is too distracting, you can disable it by entering the Vie
 - Imperfect `imperfect` - Applies to splines only. If selected, the results are approximated nonrational curves, otherwise they are perfect rational curves.
 
 ## Parameters - Detail Page
+
 - Revolve Type `type` - ⊞ - Determines how the revolve should be generated.
   * Closed `closed` - An enclosed curve.
   * Open Arc `openarc` - An open curve segment.
@@ -51,12 +57,17 @@ If the guide geometry is too distracting, you can disable it by entering the Vie
 - End Caps `cap` - If selected, it adds faceted end caps.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Revolve SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -68,7 +79,9 @@ Extra Information for the Revolve SOP can be accessed via an [Info CHOP](https:/
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

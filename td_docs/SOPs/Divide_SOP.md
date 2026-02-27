@@ -5,12 +5,15 @@ title: Divide_SOP
 ---
 
 # Divide SOP
+
 ## Summary
 
 The Divide SOP divides incoming polygonal geometry. It will smooth input polygons, dividing polygons, as well as sub-divide input polygons using the Bricker option. Bricker is also useful for polygon faces with more than four edges to chop them up into quads and triangles allowing for proper shading when using deformation tools.
+
 [divideSOP_Class](https://docs.derivative.ca/DivideSOP_Class "DivideSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Convex Polygons `convex` - When checked, this option will convex all incoming polygons to the maximum number of sides as specified in the field below. This is useful for reducing the number of sides of polygons that are concave and not shading properly, e.g. to generate triangles from all incoming geometry, check this option and change the Maximum Edges field below to `3`. You will see that all of the polygons are reduced to three sides maximum (triangles).
 - Maximum Edges `numsides` - Input value determines the maximum number of edges that all of the input polygons will be reduced to if they exceed this number. Sets the maximum number of sides for convexed polygons. There must be at least three sides. Using small numbers in the range of 3-6 gives the best results; the resulting polygons are not so long and thin. If input polygons have fewer edges than specified, no change will be executed on those polygons.
@@ -43,12 +46,17 @@ It can also be used to divide a planar surface into smaller pieces to apply poin
 - Compute Dual `dual` - Convert the polyhedron into its point/face dual.Convert the polyhedron into its point/face dual.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Divide SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -60,7 +68,9 @@ Extra Information for the Divide SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

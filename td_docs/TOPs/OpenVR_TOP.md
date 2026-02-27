@@ -5,19 +5,25 @@ title: OpenVR_TOP
 ---
 
 # OpenVR TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The OpenVR TOP takes two images, one for the left eye and one for the right eye, and outputs it to the connected VR device. You usually want to have SteamVR running when using the OpenVR TOP, to ensure everything is connected and functioning properly.
+
 See also [OpenVR](https://docs.derivative.ca/OpenVR "OpenVR"), [OpenVR CHOP](https://docs.derivative.ca/OpenVR_CHOP "OpenVR CHOP"), [OpenVR SOP](https://docs.derivative.ca/OpenVR_SOP "OpenVR SOP"), [Audio Render CHOP](https://docs.derivative.ca/Audio_Render_CHOP "Audio Render CHOP")
+
 [openvrTOP_Class](https://docs.derivative.ca/OpenvrTOP_Class "OpenvrTOP Class")
 
 ## Parameters - OpenVR Page
+
 - Active `active` - Control if this node is outputting data to the OpenVR driver.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -97,13 +103,18 @@ See also [OpenVR](https://docs.derivative.ca/OpenVR "OpenVR"), [OpenVR CHOP](htt
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the OpenVR TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -117,7 +128,9 @@ Extra Information for the OpenVR TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

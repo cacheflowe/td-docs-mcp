@@ -5,18 +5,27 @@ title: Audio_Render_CHOP
 ---
 
 # Audio Render CHOP
+
 ## Summary
 
 **Note:** For Apple Silicon Macs, this operator only works starting with build 2022.33910.
+
 The Audio Render CHOP uses the [Steam Audio SDK](https://steamcommunity.com/games/596420/announcements/detail/521693426582988261) to spatially render audio based on the full transforms (translation, rotation, scale) of a listener and an audio source. The Audio Render CHOP takes sound audio sources as input, and spatially outputs the sound in the format specified from the Output Format parameter. The number of channels outputted by the Audio Render CHOP depends on the Output Format.
+
 You specify a 3D component for the transform of the listener, plus a 3D component for the transform of a source.
+
 The sample rate of the output is determined by the audio source, which must be either 44100 or 48000.
+
 An [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") can be used to populate the position and radius of baked probes in Simulation mode.
+
 Look at the Audio Render CHOP example in Help -> Operator Snippets.
+
 See also [Oculus Audio CHOP](https://docs.derivative.ca/Oculus_Audio_CHOP "Oculus Audio CHOP").
+
 [audiorenderCHOP_Class](https://docs.derivative.ca/AudiorenderCHOP_Class "AudiorenderCHOP Class")
 
 ## Parameters - Audio Render Page
+
 - Active `active` - Turns the Audio Render on or off.
 - Mode `mode` - ⊞ - This menu determines which Steam Audio mode to use.
   * Simple Positional `simple` - Sound simulation for only a mono source.
@@ -49,6 +58,7 @@ See also [Oculus Audio CHOP](https://docs.derivative.ca/Oculus_Audio_CHOP "Oculu
 - Attenuation Curve CHOP `source0chop` - The path of the custom attenuation curve CHOP being referenced. The CHOP must have exactly one channel to represent the curve. The vertical axis represents the attenuation level, and the horizontal axis represents the distance. Attenuation levels are clamped between [0, 1]. The distance should always be non-negative and assumes the CHOP is using samples as the unit.
 
 ## Parameters - Meshes Page
+
 - Update Meshes `update` - When enabled, any static mesh changes will automatically be updated in the simulation
 - Update Meshes Pulse `updatepulse` - When pulsed, will update the static meshes in the simulation if they changed.
 - Mesh `mesh` - Sequence of static meshes.
@@ -65,6 +75,7 @@ See also [Oculus Audio CHOP](https://docs.derivative.ca/Oculus_Audio_CHOP "Oculu
   * Transmission `mesh0trans3` - Transmission at high frequencies (8 kHz and above).
 
 ## Parameters - Simulation Page
+
 - Enable Air Absorption `airabsorb` - Turns air absorption on or off for all sources. Air absorption is how much sound is lost over the distance travelling from source to listener.
 - Enable Occlusion `occlusion` - Turns raycast occlusion on or off for all meshes. If a single ray from listener to source is occluded, then the source is considered occluded.
 - Number of Surfaces `numsurfaces` - Maximum number of surfaces, starting from closest surface to the listener, whose transmission coefficients will be considered when calculating the total sound transmission.
@@ -103,6 +114,7 @@ See also [Oculus Audio CHOP](https://docs.derivative.ca/Oculus_Audio_CHOP "Oculu
 - Batch Size `batchsize` - Number of probes to bake simultaneously.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -121,16 +133,23 @@ See also [Oculus Audio CHOP](https://docs.derivative.ca/Oculus_Audio_CHOP "Oculu
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Audio Render CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Audio Render CHOP Info Channels
   * audioposition_full_time -
 
@@ -139,7 +158,9 @@ Specific Audio Render CHOP Info Channels
   * distance_attenuation -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -153,7 +174,9 @@ Specific Audio Render CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

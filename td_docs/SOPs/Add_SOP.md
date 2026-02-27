@@ -5,13 +5,17 @@ title: Add_SOP
 ---
 
 # Add SOP
+
 ## Summary
 
 The Add SOP can both create new Points and Polygons on its own, or it can be used to add Points and Polygons to an existing input.
+
 If an input is specified, this SOP adds points and polygons to it as specified below. If no input is specified, then it generates the points and polygons below as a new entity. It can read points and vertices from DATs. See also [DAT to SOP](https://docs.derivative.ca/DAT_to_SOP "DAT to SOP").
+
 [addSOP_Class](https://docs.derivative.ca/AddSOP_Class "AddSOP Class")
 
 ## Parameters - Points Page
+
 - Points DAT `pointdat` - Path to a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") containing point data. By default, x, y, z, and w can be defined in the first 4 columns of the table using un-named columns.
 If the `Named Attributes` parameter below is turned on, the following attributes can be defined in the Points Table DAT using named columns:
   * `P(0) P(1) P(2) P(3)`
@@ -20,6 +24,7 @@ If the `Named Attributes` parameter below is turned on, the following attributes
   * `uv(0) uv(1) uv(2)`
 
 Any other columns are added as single-float attributes.
+
 **NOTE:** Turn off `Compute Normals` on the Polygon parameter page when supplying `N(0) N(1) N(2)` in the Points Table DAT.
 - Named Attributes `namedattribs` - Allows extra attributes to be defined in the Point Table DAT above.
 - Delete Geometry, Keep Points `keep` - Use this option to remove any unused points. When checked, existing geometry in the input are discarded, but the polygons created by this SOP are kept, as well as any points in the input.
@@ -28,18 +33,15 @@ Any other columns are added as single-float attributes.
 - Position `point0pos` - ⊞ - The three input fields represent the X, Y and Z coordinates of the point. These values can be constants (numbers) or variables. Below are three examples:
 ```
 0.2    0.42    1.3
-
 ```
 
 ```
 0.2    op('xform1').par.tx    1.36
-
 ```
 
 ```
 # read the sixth point (first point is 0) from the SOP, grid1
 op('grid1').points[5].x    op('grid1').points[5].y    op('grid1').points[5].z
-
 ```
 
   * Position `point0posx` -
@@ -51,6 +53,7 @@ op('grid1').points[5].x    op('grid1').points[5].y    op('grid1').points[5].z
 Weight `point0weight` - The spline weight of the point. If the point is later used to create a spline (nurbs or Bezier) primitive, the weight will influence the shape of the primitive and may cause that primitive to become rational. Polygons and metaballs are not affected by this weight.
 
 ## Parameters - Polygons Page
+
 - Method `method` - ⊞ - Specify to create polygons from the points by using a Group method or Pattern Method.
   * By Group `group` - Create as many polygons as determined by the group field and by the grouping / skipping rules.
   * By Pattern `pattern` - Specify the points to use to create polygons using the parameters Polygon Table or Polygon 0 below.
@@ -72,27 +75,33 @@ Examples of Valid Connection Lists:       `1 2 3 4` - Makes a polygon by connect
 - Closed `poly0closed` - To create a closed polygon, check the Closed button.
 
 ## Parameters - Post Page
+
 - Remove Unused Points `remove` - Keep only the connected points, and discard unused points.
 - Compute Normals `normals` - Creates normals on the geometry.
 
 Uses
+
 Used in conjunction with a point expression, the Add SOP can be useful for extracting a specific point from another SOP. For example, to extract the X, Y and Z value of the fifth point, from a Grid SOP in geo1:
 ```
 op('geo1/grid1').points[5].x
 op('geo1/grid1').points[5].y
 op('geo1/grid1').points[5].z
-
 ```
 
 Points added in this way are appended to the end of the point list if a Source is specified. Middle-mouse click on the SOP node to find out how many points there are. For example, if you have added two points and there are 347 points (from 0 to 346), you have added the last two point numbers: 345 and 346.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Add SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -104,7 +113,9 @@ Extra Information for the Add SOP can be accessed via an [Info CHOP](https://doc
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

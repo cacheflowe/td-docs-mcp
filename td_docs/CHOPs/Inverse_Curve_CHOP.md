@@ -5,20 +5,31 @@ title: Inverse_Curve_CHOP
 ---
 
 # Inverse Curve CHOP
+
 ## Summary
 
 The Inverse Curve CHOP calculates an inverse kinematics simulation for [bone objects](https://docs.derivative.ca/Bone_COMP "Bone COMP") using a curve object.
+
 The Inverse Curve CHOP will stretch and position a set of bones to follow a curve defined by another set of [objects](https://docs.derivative.ca/Object "Object") (guide).
+
 Specify the first and last bone in the chain with Bone Start / Bone End.
+
 Specify the Guide by listing them in order, space separated, in the Guide Components field. This parameter also accepts patterns and wildcards. Example: `null[1-5] null17 null4`. You can also specify bones in this group as well.
+
 The CHOP will then create a set of rotate and bone-length channels for each bone. Additionally, the CHOP will also output 3 translate channels for the first bone in the chain. It will also setup the export links automatically, so you just have to turn on the export flag for this CHOP.
+
 The way the CHOP solves this system is by creating a guide curve between the supplied Guide objects. Use the Interpolation and Order parameters to define what type of curve it will use. By default, the control vertices of the curve will be the centroids of the object. The curve is also given orientation, by adopting the orientation of each guide object. The bones line up their X axes with this orientation.
+
 You can view this curve by using the [Inverse Curve SOP](https://docs.derivative.ca/Inverse_Curve_SOP "Inverse Curve SOP"). Just supply it with the name of the Inverse Curve CHOP and it will extract the geometry for viewing/debugging purposes. It actually will contain 3 curves (the original guide, and the guide displaced in +X and +Y). These curves can be skinned with a [Skin SOP](https://docs.derivative.ca/Skin_SOP "Skin SOP") for better feedback, etc.
+
 The span parameters can be used to trim out the beginning and end of the guide curve if so needed. For example Span 0.3 0.7 will lay the bones along the middle 40% of the curve.
+
 In the rare case that the user has setup a curve with all the X axes (twists) pointing along the same direction of the curve, then the Up Vector parameter is used to break the tie, so to speak. However, this curve setup is likely degenerate to start with and should be avoided by twisting all the objects 90 degrees.
+
 [inversecurveCHOP_Class](https://docs.derivative.ca/InversecurveCHOP_Class "InversecurveCHOP Class")
 
 ## Parameters - Inverse Curve Page
+
 - Guide Components `guide` - The set of objects describing the curve.
 - Bone Start `bonestart` - The first bone in the chain to place.
 - Bone End `boneend` - The last bone in the chain to place.
@@ -40,6 +51,7 @@ In the rare case that the user has setup a curve with all the X axes (twists) po
 - Map Exports `mapexports` - Export the calculated transform values directly onto the bone chain parameters.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -57,12 +69,17 @@ In the rare case that the user has setup a curve with all the X axes (twists) po
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Inverse Curve CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -76,7 +93,9 @@ Extra Information for the Inverse Curve CHOP can be accessed via an [Info CHOP](
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

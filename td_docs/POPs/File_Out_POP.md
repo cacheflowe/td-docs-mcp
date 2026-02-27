@@ -5,10 +5,13 @@ title: File_Out_POP
 ---
 
 # File Out POP
+
 ## Summary
 
 The File Out POP allows you to write out POP contents to different file types. This includes point cloud and geometry file types.
+
 You can record a sequence of files by setting the Type parameter to File Sequence. You can toggle the Record parameter which will start to create files or, when paused, add single files at a time with the Add Frame pulse parameter.
+
 Some file formats have fixed attributes that File Out POP will look for such as the SPZ and OBJ file format. While other formats allow arbitrary point attribute writing such as the EXR and PLY file format. Only the OBJ format supports writing vertex attributes for Normal and Texture only, while no primitive attributes are written for any format.
   * `OBJ` - Requires `P(float3)`. Supports point and vertex Normals (`N` written as `vn`) and Texture (specified by Tex Coord Attrib parameter `vt`) attributes. Point Normals and Textures will be converted to vertex attributes while vertex attributes stay unchanged. Supports writing RGB Color attribute as an unofficial extension. Supports writing triangles and quads (`f`) and linestrips (`l`).
   * `SPZ` - Requires `P(float3)`, `Color(float4)`, `Scale(float3)`, and `Rot(float4)`. The spherical harmonics attribute `Sh` is optional and if present must be size 3, 8, or 15 corresponding with the [spherical harmonics degree](https://github.com/nianticlabs/spz?tab=readme-ov-file#spherical-harmonics)
@@ -17,10 +20,13 @@ Some file formats have fixed attributes that File Out POP will look for such as 
   * `EXR` - Supports arbitrary point attribute writing.
 
 When array attributes are written, if an array index is not specified (i.e. `Arr` instead of `Arr[4]`). It will loop through and replace `$i` in the output channel with the array index similar to Point File In POP.
+
 FPS determines the number of files to output per second of the timeline.
+
 [fileoutPOP_Class](https://docs.derivative.ca/FileoutPOP_Class "FileoutPOP Class")
 
 ## Parameters - File Out Page
+
 - Type `type` - ⊞ - Choose to output to a single file per Record/Add, or a sequentially-named sequence of files while it is recording.
   * File `file` - Records a single file.
   * File Sequence `filesequence` - Records a sequence of files.
@@ -70,6 +76,7 @@ FPS determines the number of files to output per second of the timeline.
   * Passthrough `passthrough` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -94,14 +101,21 @@ FPS determines the number of files to output per second of the timeline.
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Box POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,17 +5,25 @@ title: Parameter_COMP
 ---
 
 # Parameter COMP
+
 ## Summary
 
 The Parameter Component allows any operator's parameter dialog to be a panel with full interactivity. You specify which operator whose parameters you want to appear in the panel.
+
 You can optionally have it display the header and the page names, and include built-in or [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters").
+
 You can specify a scope of pages and individual parameters to display, for example two entire pages plus four parameters on other pages. When specifying parameters only, the order of the parameters is the order you specify them in.
+
 You can shrink the UI so it fits into a smaller panel, using the Compress parameter.
+
 You can control whether users can open the parameter for editing (via the + on the left of the parameter) using the Allow Expansion toggle. You can prevent users from going in and editing expressions.
+
 You can specify page or parameter names using pattern matching: `scale*` `^tx`, etc, with page names that contain spaces specified in quotes. `'Cue 1' 'Cue 2'`, or specified as a python list.
+
 [parameterCOMP_Class](https://docs.derivative.ca/ParameterCOMP_Class "ParameterCOMP Class")
 
 ## Parameters - Parameter Page
+
 - Operator `op` - Path to the operator whose parameters will be used.
 - Header `header` - Include the header of the parameter dialog. This is the section with OP type, name, and help buttons.
 - Page Names `pagenames` - Include the tabs for the parameter pages in the display.
@@ -81,7 +89,9 @@ You can specify page or parameter names using pattern matching: `scale*` `^tx`, 
 - Sync Page Selection `syncpage` -
 - Order by Scope `scopeorder` - Displays the parameters in the order they are defined in the Parameter Scope parameter above. Only available when Page Name parameter is Off.
 - Allow Expansion `allowexpend` - Controls whether or not parameters can be expanded to reveal parameter modes and expression fields.
+
 ## Parameters - Layout Page
+
 The Layout parameter page controls the size and position of the panel.
 - X `x` - Specify the horizontal position in pixels relative to its parent.
 - Y `y` - Specify the vertical position in pixels relative to its parent.
@@ -127,7 +137,9 @@ The Layout parameter page controls the size and position of the panel.
   * Y `postoffsety` -
 
 - Size from Window `sizefromwindow` - When enabled the panel component's width and height are set by resizing its floating viewer window.
+
 ## Parameters - Panel Page
+
 The Panel parameter page controls panel attributes such as display on/off, enable on/off, panel help, and interactions with the cursor.
 - Display `display` - Specifies if the panel is displayed or hidden. Changing this parameter may incur some layout processing costs. For simple cases, such as overlays it is more performant to adjust the opacity parameter instead.
 - Enable `enable` - Allows you to prevent all interaction with this panel.
@@ -193,6 +205,7 @@ The Panel parameter page controls panel attributes such as display on/off, enabl
   * Ignore and Draw Over `ignoreover` - Panel will not move when scrollbar is moved. Panel is drawn over scrollbars and sibling panels.
 
 ## Parameters - Look Page
+
 The Color parameter page sets the panel's background, border, and disabled colors.
 - Background Color `bgcolor` - ⊞ - RGB values for the background. (default: black (0,0,0))
   * Red `bgcolorr` -
@@ -253,7 +266,9 @@ The Color parameter page sets the panel's background, border, and disabled color
   * Multiply `multiply` -
 
 - Opacity `opacity` - Allows you to control the transparency of the panel.
+
 ## Parameters - Children Page
+
 The Children parameter page controls aspects of the Panel's children alignment, size, and position.
 - Align `align` - ⊞ - This menu allows you to specify how the children inside the Panel Component will be laid out. The options **Layout Grid Rows**, **Layout Grid Columns** and **Match Network Nodes** will scale the Panel Component's children to fit the Component. They use the Align Order of each of the children to determine the ordering of the children.
   * None `none` -
@@ -320,7 +335,9 @@ The Margin is defined in absolute pixels and does not stretch with the window, a
   * Automatic `auto` - Include scrollbar only when child height is greater than this panel's height.
 
 - Thickness `scrollbarthickness` - Set the thickness of the scrollbars in pixels.
+
 ## Parameters - Drag/Drop Page
+
 Please refer to [Drag-and-Drop](https://docs.derivative.ca/Drag-and-Drop "Drag-and-Drop") for a full explanation on how Drag and Drop between Panel Components functions.
 - When Dragging This `drag` - ⊞ - Specify if this Panel Component can be dragged.
   * Use Parent's Drag Settings `dragparent` - Follow the parent Panel Components Drag setting.
@@ -344,7 +361,9 @@ Please refer to [Drag-and-Drop](https://docs.derivative.ca/Drag-and-Drop "Drag-a
 Alternatively specify a Table DAT in the drop script field. TouchDesigner will automatically look for 2 columns in the table. The first column should indicate the data type and the second should indicate the Text DAT that holds the script to process that data type. Please refer to the Drop Script - Tables section of the [Drag and Drop](https://docs.derivative.ca/Drag-and-Drop#Drop_Script_-_Tables "Drag-and-Drop") page.
 - Drop Parameter `dropparm` - When 'On Dropping Into' is set to _Fill Custom Parameter_ this specifies which parameter to fill. This option together with turning off 'Built-In Drop Options' allows quickly dropping any node onto this viewer and filling a custom parameter with that dropped path.
 - Drag/Drop Callbacks `dragdropcallbacks` - Specify which DAT holds the custom drag/drop scripts. If blank, press 'Add' to create a DAT with default scripts.
+
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -352,7 +371,9 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Object `ext0object` - A number of class instances that can be attached to the component.
 - Name `ext0name` - Optional name to search by, instead of the instance class name.
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
+
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -462,8 +483,11 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Parameter COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Parameter COMP Info Channels
   * select -
 
@@ -566,11 +590,15 @@ Specific Parameter COMP Info Channels
   * screenhm -
 
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

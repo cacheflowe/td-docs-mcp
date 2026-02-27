@@ -5,12 +5,15 @@ title: Convert_DAT
 ---
 
 # Convert DAT
+
 ## Summary
 
 The Convert DAT changes the text format from simple text to table form and vice-versa.
+
 [convertDAT_Class](https://docs.derivative.ca/ConvertDAT_Class "ConvertDAT Class")
 
 ## Parameters - Convert Page
+
 - How `how` - ⊞ - Convert text format.
   * To Text `text` - Converts table format into regular text.
   * To Table `table` - Converts regular text into table format.
@@ -20,6 +23,7 @@ The Convert DAT changes the text format from simple text to table form and vice-
 - Concatenate with `spacers` - Insert this string between each cell when converting from a table to text.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -46,18 +50,25 @@ The Convert DAT changes the text format from simple text to table form and vice-
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Convert DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

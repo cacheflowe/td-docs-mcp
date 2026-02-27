@@ -5,14 +5,19 @@ title: Level_TOP
 ---
 
 # Level TOP
+
 ## Summary
 
 The Level TOP adjusts image contrast, brightness, gamma, black level, color range, quantization, opacity and more. See also the [Luma Level TOP](https://docs.derivative.ca/Luma_Level_TOP "Luma Level TOP") which preserves hue and saturation more accurately, but is slower.
+
 The Level TOP's features have been built into one TOP to maximize performance in a single pass. It takes all its parameters to make a lookup table on the CPU, so animating parameters in the Level TOP will decrease its performance as the lookup table is recreated each frame that a parameter changes.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [levelTOP_Class](https://docs.derivative.ca/LevelTOP_Class "LevelTOP Class")
 
 ## Parameters - Pre Page
+
 - Clamp Input `clampinput` - ⊞ - This option will clamp pixel values in between 0 and 1. When using higher bit depth floating pixel formats, it is recommended to set it to Unclamped to allow the full range of values to be operated on. Auto should detect the pixel format as set accordingly.
   * Automatic `automatic` - Detects pixel format and clamps if 8-bit fixed or leaves unclamped for floating point pixel formats.
   * Clamp [0-1] `clamp` - Clamps data to values between 0 and 1. Recommended for 8-bit fixed default pixel format for better performance.
@@ -25,12 +30,14 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - Contrast `contrast` - Contrast applies a scale factor (gain) to the RGB channels. Increasing contrast will brighten the light areas and darken the dark areas of the image, making the difference between the light and dark areas of the image stronger.
 
 ## Parameters - Range Page
+
 - In Low `inlow` - Any pixel below this value appears black.
 - In High `inhigh` - Any pixel above this value appears white.
 - Out Low `outlow` - Clamps pixel values to this value or higher.
 - Out High `outhigh` - Clamps pixel values to this value or lower.
 
 ## Parameters - RGBA Page
+
 - Low R `lowr` - Clamps the minimum level of the red channel.
 - High R `highr` - Clamps the maximum level of the red channel.
 - Low G `lowg` - Clamps the minimum level of the green channel.
@@ -41,6 +48,7 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - High A `higha` - Clamps the maximum level of the alpha channel.
 
 ## Parameters - Step Page
+
 - Apply Stepping `stepping` - Turns on stepping (posterizing) and enables the parameters below.
 - Step Size `stepsize` - Posterizes the image into bands or stripes. Number of bands equal to the inverse of this parameter (i.e., 0.25 = 4 bands). Use a default Ramp TOP to easily see this parameter's effect.
 - Threshold `threshold` - Offsets the position of the step boundaries.
@@ -49,6 +57,7 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - Soften `soften` - Softens or blends the boundaries between steps.
 
 ## Parameters - Post Page
+
 - Gamma 2 `gamma2` - A second gamma correction that is added after the Range, RGBA, and Step page adjustments have been applied.
 - Opacity `opacity` - Adjust the opacity, or transparency, of the image.
 - Brightness 2 `brightness2` - A second brightness adjustment that is added after the Range, RGBA, and Step page adjustments have been applied.
@@ -58,6 +67,7 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - Pre-Multiply RGB by Alpha `premultrgbbyalpha` - This option makes the color channels pre-multiplied by alpha.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -137,12 +147,17 @@ The Level TOP's features have been built into one TOP to maximize performance in
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Level TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -156,7 +171,9 @@ Extra Information for the Level TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

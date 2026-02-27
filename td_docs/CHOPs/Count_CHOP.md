@@ -5,16 +5,23 @@ title: Count_CHOP
 ---
 
 # Count CHOP
+
 ## Summary
 
 The Count CHOP counts the number of times a channel crosses a trigger or release threshold. It operates in either static or realtime ("Cook to Current Frame") mode.
+
 The trigger value by default is 0, so the count occurs when the input goes from below (or equal to) 0 to a value that is greater than zero.
+
 Crossing the trigger threshold (increasing past the trigger level) creates a trigger event. Similarly, crossing the release threshold (decreasing past the release level) creates a release event. Operations may also be performed while the input remain above or below the trigger or release levels. On each event, the count may be increased or decreased by 1 or the time, or reset to zero. The time per sample varies with the sample rate (i.e. for 100 samples/second, the time for each sample would be 1/100th of a second).
+
 The optional second input is a reset input. The first channel is interpreted as a channel containing reset pulses. Whenever this channel is non-zero, the count for all channels is reset.
+
 The third input is labeled "Increment Value". It allows you to specify a value other than the default +-1 to count. If you want to count by Fives, then put a channel with a value of 5 in this input. It will increment by 5 each count, or by 5 per second depending on the On / Off menus on the second page.
+
 [countCHOP_Class](https://docs.derivative.ca/CountCHOP_Class "CountCHOP Class")
 
 ## Parameters - Trigger Page
+
 - Release = Trigger Threshold `threshold` - If on, the trigger threshold is also used as the release threshold.
 - Trigger Threshold `threshup` - The channel level that must be exceeded in order to trigger a count.
 - Release Threshold `threshdown` - A release count is triggered when the channel level drops below this threshold.
@@ -25,6 +32,7 @@ The third input is labeled "Increment Value". It allows you to specify a value o
   * Decreasing Values `decrease` -
 
 ## Parameters - Count Page
+
 - Limit `output` - ⊞ - Select limit options such as loop and/or clamp from the menu. The value will remain in the range from Min to Max.
   * Off `off` - No limits.
   * Loop Min/Max `loop` - Will cycle in a loop between the values given by Limit Minimum / Maximum.
@@ -79,6 +87,7 @@ The third input is labeled "Increment Value". It allows you to specify a value o
 - Reset Pulse `resetpulse` - Instantly resets the channel(s) to the Reset Value.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -97,19 +106,27 @@ The third input is labeled "Increment Value". It allows you to specify a value o
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Count CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -123,7 +140,9 @@ Extra Information for the Count CHOP can be accessed via an [Info CHOP](https://
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

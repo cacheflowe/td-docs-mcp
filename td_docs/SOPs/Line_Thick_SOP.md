@@ -5,12 +5,15 @@ title: Line_Thick_SOP
 ---
 
 # Line Thick SOP
+
 ## Summary
 
 The Line Thick SOP extrudes a surface from a curved line. The line can be of polygon, NURBS, or Bezier geometry type.
+
 [linethickSOP_Class](https://docs.derivative.ca/LinethickSOP_Class "LinethickSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns.
 - Start Width `startwidth` - ⊞ - Controls the width of the surface created at the start of the line. Startwidth1 adjusts the width on the inside of the curve, Startwidth2 adjusts the width on the outside of the curve.
   * `startwidth1` -
@@ -36,12 +39,17 @@ The Line Thick SOP extrudes a surface from a curved line. The line can be of pol
 - Symmetric `symmetric` - When this is selected, the Endwidth is positioned at the middlepoint on the curve between Domain1 and Domain2. Startwidth is placed at Domain1 and Domain2. The result is a symmetric surface.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Line Thick SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -53,7 +61,9 @@ Extra Information for the Line Thick SOP can be accessed via an [Info CHOP](http
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

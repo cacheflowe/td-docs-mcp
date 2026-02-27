@@ -5,13 +5,17 @@ title: Copy_SOP
 ---
 
 # Copy SOP
+
 ## Summary
 
 The Copy SOP lets you make copies of the geometry of other SOPs and apply a transformation to each copy.
+
 It also allows you to copy geometry to points on an input template.
+
 [copySOP_Class](https://docs.derivative.ca/CopySOP_Class "CopySOP Class")
 
 ## Parameters - Copy Page
+
 Specifies a subset of template primitives from which to copy onto. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Source Group `sourcegrp` - Specifies a subset of input primitives to copy from. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Template Group `templategrp` - Specifies a subset of template primitives from which to copy onto. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
@@ -67,6 +71,7 @@ If an up attribute exists on the template geometry, then this will be used (alon
   * Z `upvectorz` -
 
 ## Parameters - Stamp Page
+
 Stamping is allowed in any parameter in TouchDesigner. The only requirement is that the stamped parameter is upstream in some fashion from the Copy SOP doing the stamping.
 - Stamp Inputs `stamp` - When enabled, it will Stamp proceeding variables for each input copied.
 - Copy `copy` - Sequence of stamp variables
@@ -74,6 +79,7 @@ Stamping is allowed in any parameter in TouchDesigner. The only requirement is t
 - Value `copy0value` - Value of each stamp variable. Stamped parameters are accessible via the global `fetchStamp()` method in the [td Module](https://docs.derivative.ca/Td_Module "Td Module") in python, or `param()` in tscript. See the example, below.
 
 ## Parameters - Attributes Page
+
 This page allows you to determine how point attributes on template geometry affect attributes on the source geometry. The template attribute can modify the source in four ways:
   * Set - Override the source attribute.
   * Multiply - Multiply the source attribute.
@@ -119,12 +125,17 @@ The template point attributes are able to affect point, primitive, or vertex att
   * * `*` -
 
 Tips
+
 You can use the `me.copyTotal` python member to calculate the degrees of rotation for a given number of copies. For example, if you have 28 copies, you can set the rotation to be: `360/me.copyTotal` - this would automatically give you 12.8571 degrees, evenly spacing your 28 copies around the full circumference of the circle.
+
 Using a Particle SOP as the Template object, you can copy objects defined in the Copy Data input to each particle template. This allows you, for example, to copy a Bee to each particle to create a swarm of bees.
+
 Make a series of copies about an axis, and skin them to achieve lathe-like effects, similar to the results achieved with the Revolve SOP.
 
 ## Examples
+
 ###
+
 Creating Stamped Geometry
   1. Place a Circle SOP, and set its type to Polygon.
   2. Set the number of Divisions in the Circle to: `fetchStamp("sides",3)` The method `fetchStamp()` returns the value of the global parameter sides. If it is not yet defined it will return a value of 3.
@@ -136,13 +147,18 @@ Creating Stamped Geometry
 You can set multiple stamp Params at once and they can be used anywhere in the ancestry of the copy's input.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Copy SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -154,7 +170,9 @@ Extra Information for the Copy SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

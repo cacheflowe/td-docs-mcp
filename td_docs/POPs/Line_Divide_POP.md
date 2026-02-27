@@ -5,19 +5,29 @@ title: Line_Divide_POP
 ---
 
 # Line Divide POP
+
 ## Summary
 
 The Line Divide POP takes any set of line strips, and for each it generates a new line strip that is subdivided using various interpolation methods. The default is linear interpolation with 4 divisions between incoming points.
+
 You can choose the Interpolation Method, the default being Linear interpolation, but you can also choose spline types like Cardinal, BSpline, Beziers and Quadratic. With the spline types, it can use incoming attributes (like those set in the [Line POP](https://docs.derivative.ca/Line_POP "Line POP")) that specify the spline properties like `Weight`, tangents (`TanIn` and `TanOut`), tangent constraints (`TanInConstraint`) and/or tension. It will also interpret an interpolation method per-point if a `SegMethod` attribute exists.
+
 There are two stages of doing divisions, The first stage allows setting the total divisions for the line strip, or divisions per-segment, dividing by distance along the curves, or by curvature of the line strip. It interpolates all the attributes.
+
 The second stage lets you further re-sample the line strip with one of three methods: Divisions per Line Strip, Distance between Points, or Points as Keyframes.
+
 Points as Keyframes interpolates by treating one attribute as an independent variable (like `Time`, or `U`), like a `y = f(x)` mathematical function. (For example, if you have an attribute `Time` on the points, you can resample curves at equal steps of time, assuming you curves express values over time.)
+
 NOTE: The Maximum Number of Vertices parameter is required because it is not known on the GPU how many points you will end up with, and the GPU needs to pre-allocate enough memory to do the job. Oherwise line strips will be truncated.
+
 To add: distinguish the different beziers, explain `TanInConstraint`. `ControlPoint` attribute (laser)
+
 See also [Line POP](https://docs.derivative.ca/Line_POP "Line POP"), [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP"), [Point POP](https://docs.derivative.ca/Point_POP "Point POP"), [Primitive POP](https://docs.derivative.ca/Primitive_POP "Primitive POP"), [Pattern POP](https://docs.derivative.ca/Pattern_POP "Pattern POP").
+
 [linedividePOP_Class](https://docs.derivative.ca/LinedividePOP_Class "LinedividePOP Class")
 
 ## Parameters - Divide Page
+
 - Divisions Method `divmethod` - ⊞ - The method to apply the divisions.
   * None `none` -
   * Divisions per Line Strip `linestrip` -
@@ -34,6 +44,7 @@ See also [Line POP](https://docs.derivative.ca/Line_POP "Line POP"), [Curve POP]
 - Maximum Number of Vertices `maxverts` - Sets the number of vertices to be allocated. It should be bigger than the actual number of vertices created (visible in info popup). More vertices allocated use more GPU memory.
 
 ## Parameters - Interpolate Page
+
 - Interpolation Method per Segment `interpmethodpersegment` - ⊞ - When toggle is on, it uses a separate interpolation method for each segment in the input line strips.
   * Interpolation Method per Segment `interpmethodpersegment` -
   * Segment Method Attribute `segmethodattr` - Attribute scope for the segment method index.
@@ -66,6 +77,7 @@ See also [Line POP](https://docs.derivative.ca/Line_POP "Line POP"), [Curve POP]
 - Tension `tension` - Controls how tightly the cardinal line strip bends through the control points
 
 ## Parameters - Resample Page
+
 - Post-Resample Method `resamplemethod` - ⊞ - Resampling method used after division.
   * None `none` -
   * Divisions per Line Strip `linestrip` -
@@ -79,20 +91,29 @@ See also [Line POP](https://docs.derivative.ca/Line_POP "Line POP"), [Curve POP]
 - Max Tries for Binary Search `maxtries` - Max number of iterations for binary search when linearly resampling.
 - Remove Unused Points `rmvunusedpts` - Removes unused points not referenced by primitives.
 - Max Distance `resamplemaxdist` - Maximum Distance between Points
+
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Line Divide POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

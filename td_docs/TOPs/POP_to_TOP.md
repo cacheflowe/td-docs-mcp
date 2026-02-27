@@ -5,16 +5,23 @@ title: POP_to_TOP
 ---
 
 # POP to TOP
+
 ## Summary
 
 The POP to TOP converts the points of a POP to the pixels of a TOP. By default it treats the POP points as one unstructured list of points and chooses a square TOP resolution that fits all the points into the image. It by default converts the `P` position attribute to pixels in 32-bit float image channels. The alpha of the image is set to a value of 1, except for the pixels that do not represent any point, where the pixels are set to 0 (the "active" channel).
+
 The Mode menu lets you convert attributes other than `P`, frequently a `Color` attribute. With the Extract menu you can convert primitive attributes or vertex attributes.
+
 With the Pixel Layout menu set to Wrapped or Cropped, you can set the Dimension menu to 3D and set the number of slices manually.
+
 **Tip** : Pixel Layout menu set to Use POP Dimension: Much more automated and streamlined however, if the input POP has points arranged as rows and columns, and you change the Layout menu to be POP Dimension, then it uses its POP [Dimension](https://docs.derivative.ca/Dimension "Dimension") to set the width and height of the image. If there are three or more dimensions, it will create a 3D texture type of TOP.
+
 See also [TOP to POP](https://docs.derivative.ca/TOP_to_POP "TOP to POP"), [Dimension](https://docs.derivative.ca/Dimension "Dimension"), [POP to CHOP](https://docs.derivative.ca/POP_to_CHOP "POP to CHOP"), [CHOP to POP](https://docs.derivative.ca/CHOP_to_POP "CHOP to POP"), [POP to DAT](https://docs.derivative.ca/POP_to_DAT "POP to DAT")
+
 [poptoTOP_Class](https://docs.derivative.ca/PoptoTOP_Class "PoptoTOP Class")
 
 ## Parameters - TOP To Page
+
 - POP `pop` -
 - Mode `rgbamode` - ⊞ -
   * Position and Active `pactive` -
@@ -48,6 +55,7 @@ See also [TOP to POP](https://docs.derivative.ca/TOP_to_POP "TOP to POP"), [Dime
   * Extra Pixel Values (RGBA) `rgba4` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -127,9 +135,13 @@ See also [TOP to POP](https://docs.derivative.ca/TOP_to_POP "TOP to POP"), [Dime
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the POP to TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -143,7 +155,9 @@ Extra Information for the POP to TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

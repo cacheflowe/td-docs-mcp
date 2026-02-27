@@ -5,13 +5,17 @@ title: Polyloft_SOP
 ---
 
 # Polyloft SOP
+
 ## Summary
 
 The Polyloft SOP generates meshes of triangles by connecting (i.e. lofting/stitching) the points of open or closed faces without adding any new points. Polyloft can also connect groups of unrelated points in a similar fashion. The faces and the point groups need not have the same number of points.
+
 The optional input specifies the rest geometry, typically the copy of the main input at a specific face (usually 1). This forces the point order to remain constant throughout the animation and prevents the triangular stitch from popping as the geometry deforms. If you specify face or point groups for lofting using rest geometry, make sure they are defined in the second input.
+
 [polyloftSOP_Class](https://docs.derivative.ca/PolyloftSOP_Class "PolyloftSOP Class")
 
 ## Parameters - Polyloft Page
+
 - Connect Closest Ends `proximity` - Start stitching at the two closest points, and handle arbitrary face orientation and start vertices.
 - Consolidate Points `consolidate` - Fuse neighbouring points before stitching.
 - Distance `dist` - Threshold distance for consolidation.
@@ -39,18 +43,24 @@ The optional input specifies the rest geometry, typically the copy of the main i
 - Keep Primitives `prim` - Preserve the cross-sections after stitching.
 
 ## Parameters - Point Groups Page
+
 Stitch sets of points, each set acting as a cross-section.
 - Point Group `point` - Sequence of point sets to be stitched.
 - Point Group `point0group` - Point groups.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Polyloft SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -62,7 +72,9 @@ Extra Information for the Polyloft SOP can be accessed via an [Info CHOP](https:
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

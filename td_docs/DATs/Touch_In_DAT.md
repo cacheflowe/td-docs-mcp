@@ -5,13 +5,17 @@ title: Touch_In_DAT
 ---
 
 # Touch In DAT
+
 ## Summary
 
 The Touch In DAT receives full tables across the network from the [Touch Out DAT](https://docs.derivative.ca/Touch_Out_DAT "Touch Out DAT"), as opposed to messages with the other network based DATs.
+
 See also [UDP Out DAT](https://docs.derivative.ca/UDP_Out_DAT "UDP Out DAT").
+
 [touchinDAT_Class](https://docs.derivative.ca/TouchinDAT_Class "TouchinDAT Class")
 
 ## Parameters - Touch In Page
+
 - Protocol `protocol` - ⊞ - Select which protocol to use, refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Streaming (TCP/IP) `streaming` -
   * Messaging (UDP) `msging` -
@@ -23,6 +27,7 @@ See also [UDP Out DAT](https://docs.derivative.ca/UDP_Out_DAT "UDP Out DAT").
 - Active `active` - While on, the DAT receives information sent to the network port. While Off, no updating occurs. Data sent to the port is lost.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -39,19 +44,26 @@ See also [UDP Out DAT](https://docs.derivative.ca/UDP_Out_DAT "UDP Out DAT").
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Touch In DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Touch In DAT Info Channels
   * messages_pending -
 
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

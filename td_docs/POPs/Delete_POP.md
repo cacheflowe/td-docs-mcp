@@ -5,17 +5,25 @@ title: Delete_POP
 ---
 
 # Delete POP
+
 ## Summary
 
 The Delete POP removes (or keeps) points or primitives using 5 methods found on the Attribute, Thin, Pattern, Group and Bounding pages. You can choose to delete points or primitives. On the Attribute page you can delete based on the values of point or primitive attributes. On the Thin page you can delete based on parameter-defined ranges, steps or randomly. You can delete based on patterns using [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") on the Pattern page. You can delete based on point or primitive groups on the Group page. You can delete based on bounding ranges on any attribute on the Bounding page.
+
 Four of the methods let you build the logic using sequential blocks of parameters. For example on the Attribute page, one block selects `P(0) > 0` and another that selects `P(1) < 0` and ANDed together they will delete points in a quarter of the space. Otherwise is common to build an attribute in a [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP") and use it in the Delete POP.
+
 When deleting primitives, if points or vertices are no longer used, they are deleted. When deleting points, the vertices and primitives that use them can be deleted in part or entirely. Deleted points can cause like strips to be split, trimmed or deleted entirely.
+
 For pattern matching on the Pattern page, see [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
+
 Note: Deleting attributes can be done with the [Attribute POP](https://docs.derivative.ca/Attribute_POP "Attribute POP"), the [Select POP](https://docs.derivative.ca/Select_POP "Select POP") and all the Math POPs.
+
 See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Field POP](https://docs.derivative.ca/Field_POP "Field POP") also can delete points.
+
 [deletePOP_Class](https://docs.derivative.ca/DeletePOP_Class "DeletePOP Class")
 
 ## Parameters - Delete Page
+
 - Operation `invert` - ⊞ - Inverts the selection of elements being deleted.
   * Delete Selected `dele` -
   * Delete Non-Selected `keep` -
@@ -33,6 +41,7 @@ See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Fie
 - Copy Topology Info Back to CPU `cpureadback` - Enable copying the point count and topology information held on the GPU to the CPU.
 
 ## Parameters - Attribute Page
+
 - Attribute `attr` - Start of Sequential Parameter Blocks to create new attributes.
 - Combine `attr0combine` - ⊞ - Specify how to combine the current attribute condition block with the one above.
   * And `and` -
@@ -54,6 +63,7 @@ See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Fie
 - Invert `attr0invert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Thin Page
+
 - Enabled `thinenabled` - Enable thinning by index range, index step or random index.
 - Thin Out Range `thinoutrange` - Enable index-based point filtering.
 - Thin Range Start `thinrangestart` - Determines the starting index for range-based point filtering.
@@ -64,6 +74,7 @@ See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Fie
 - Invert `thininvert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Pattern Page
+
 - Pattern `pattern` - Start of Sequential Parameter Blocks for index-matching pattern.
 - Combine `pattern0combine` - ⊞ - Specify how to combine the current pattern block with the one above.
   * And `and` -
@@ -88,6 +99,7 @@ See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Fie
 - Invert `pattern0invert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Group Page
+
 - Group `group` - Start of Sequential Parameter Blocks for input groups, specifying a group name in this field will cause this POP to act only upon the group specified.
 - Combine `group0combine` - ⊞ - Specify how to combine the current group block with the one above.
   * And `and` -
@@ -100,6 +112,7 @@ See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Fie
 - Invert `group0invert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Bounding Page
+
 - Bound `bound` - Start of Sequential Parameter Blocks for bounding volumes.
 - Combine `bound0combine` - ⊞ - Specify how to combine the current bounding volume block with the one above.
   * And `and` -
@@ -129,7 +142,9 @@ See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Fie
   * Scale `bound0scalez` -
 
 - Invert `bound0invert` - Invert the selection resulting from the current conditions in the block.
+
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -154,14 +169,21 @@ See also [Group POP](https://docs.derivative.ca/Group_POP "Group POP"). The [Fie
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Delete POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

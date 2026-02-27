@@ -5,16 +5,23 @@ title: OSC_In_CHOP
 ---
 
 # OSC In CHOP
+
 ## Summary
 
 The OSC In CHOP is used to accept Open Sound Control Messages. OSC In can be used to accept messages from either a 3rd party application which adheres to the Open Sound Control specification (<http://www.cnmat.berkeley.edu/OpenSoundControl/>). OSC In is based on a connection-less system, meaning that it can accept multiple messages for any number of sources at the same time. The user must specify a port number which OSC In will look for incoming messages. This port must not have anything running on it before OSC In attempts to use it. OSC CHOPs in TouchDesigner use the UDP transport protocol.
+
 See also [OSC In DAT](https://docs.derivative.ca/OSC_In_DAT "OSC In DAT"), [OSC Out CHOP](https://docs.derivative.ca/OSC_Out_CHOP "OSC Out CHOP"), [iOS and OSC](https://docs.derivative.ca/IOS_and_OSC "IOS and OSC"), [Touch In CHOP](https://docs.derivative.ca/Touch_In_CHOP "Touch In CHOP").
+
 There are options which allow the user to adjust the default message queuing system to optimize it for their specific network conditions and usage needs. The Min/Max Target size specifies a range which the queue attempts to keep the buffer size at in seconds. Increasing the Queue Adjust Time will determine how long the queue can be outside that range before it tries to correct it.
+
 If the user wishes to use OSC In to detect when messages are arriving, there is a Pulse Mode toggle which will read a single sample of any incoming message when it arrives and displays the pulse reset values any other time. This is useful for syncing beats between TouchDesigner and another applications.
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [oscinCHOP_Class](https://docs.derivative.ca/OscinCHOP_Class "OscinCHOP Class")
 
 ## Parameters - OSC In Page
+
 - Active `active` - While on, the CHOP receives information sent to the network port. While Off, no updating occurs. Data sent to the port is lost.
 - Protocol `protocol` - ⊞ - The network protocol to use. Refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Messaging (UDP) `msging` -
@@ -40,6 +47,7 @@ If the user wishes to use OSC In to detect when messages are arriving, there is 
 - Reset Channels Pulse `resetchannelspulse` - Instantly resets all channels to 0.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -57,8 +65,11 @@ If the user wishes to use OSC In to detect when messages are arriving, there is 
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the OSC In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific OSC In CHOP Info Channels
   * queue_length -
 
@@ -73,7 +84,9 @@ Specific OSC In CHOP Info Channels
   * total_bumped -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -87,7 +100,9 @@ Specific OSC In CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

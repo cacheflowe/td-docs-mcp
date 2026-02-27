@@ -5,13 +5,17 @@ title: Corner_Pin_TOP
 ---
 
 # Corner Pin TOP
+
 ## Summary
 
 The Corner Pin TOP can perform two operations. The Extract page lets you specify a sub-section of the image to use by moving 4 points. The Corner Pin page let you move the corner points of the extracted image to any location.
+
 See also [Projection Mapping](https://docs.derivative.ca/Projection_Mapping "Projection Mapping").
+
 [cornerpinTOP_Class](https://docs.derivative.ca/CornerpinTOP_Class "CornerpinTOP Class")
 
 ## Parameters - Extract Page
+
 - Bottom Left `extractp3` - ⊞ - The x and y position of the bottom left corner of the extraction.
   * `extractp31` -
   * `extractp32` -
@@ -42,6 +46,7 @@ See also [Projection Mapping](https://docs.derivative.ca/Projection_Mapping "Pro
   * Perspective `perspective` - Perspective Mapping.
 
 ## Parameters - Pin Page
+
 - Bottom Left `pinp3` - ⊞ - The x and y position of the bottom left corner of the extraction.
   * `pinp31` -
   * `pinp32` -
@@ -72,6 +77,7 @@ See also [Projection Mapping](https://docs.derivative.ca/Projection_Mapping "Pro
 - Pre-Multiply RGB by Alpha `premultrgbbyalpha` - This option allows the Background Color to be pre-multiplied by alpha.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -171,12 +177,17 @@ See also [Projection Mapping](https://docs.derivative.ca/Projection_Mapping "Pro
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Corner Pin TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -190,7 +201,9 @@ Extra Information for the Corner Pin TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,13 +5,17 @@ title: Monochrome_TOP
 ---
 
 # Monochrome TOP
+
 ## Summary
 
 The Monochrome TOP changes an image to greyscale colors. You can choose from a number of different methods to convert the image to greyscale using the RGB and Alpha menus.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [monochromeTOP_Class](https://docs.derivative.ca/MonochromeTOP_Class "MonochromeTOP Class")
 
 ## Parameters - Monochrome Page
+
 - Monochrome `mono` - Adjust the amount of color left in the image. 0 is full color, 1 is full greyscale.
 - RGB `rgb` - ⊞ - This menu selects how the monochrome conversion is calculated for the RGB channels.
   * Luminance `luminance` - Uses the luminance values in the image to convert the RGB channels to monochrome.
@@ -32,6 +36,7 @@ The Monochrome TOP changes an image to greyscale colors. You can choose from a n
   * RGBA Average `average` - Uses and average of the RGBA channels in the image to convert the alpha channel to monochrome.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -111,12 +116,17 @@ The Monochrome TOP changes an image to greyscale colors. You can choose from a n
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Monochrome TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -130,7 +140,9 @@ Extra Information for the Monochrome TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

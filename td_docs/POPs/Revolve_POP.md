@@ -5,15 +5,21 @@ title: Revolve_POP
 ---
 
 # Revolve POP
+
 ## Summary
 
 The Revolve POP generates a surface of revolution from any set of line strips. The points of the line strip are swept around a chosen axis, generating a mesh of points that are connected together according to the Connectivity menu.
+
 The default Connectivity is quads, suitable for surface rendering, but the mesh can be connected as line strips in either direction, or simply unconnected points.
+
 The axis can be the X Y or Z axis, but the default axis is formed by the first and last point of the line strip. (Auto-Pivot on)
+
 Each line strip generates its own surface of revolution.
+
 [revolvePOP_Class](https://docs.derivative.ca/RevolvePOP_Class "RevolvePOP Class")
 
 ## Parameters - Revolve Page
+
 - Axis `axis` - ⊞ - The axis around which to revolve the input curve to create the output geometry.
   * Auto `auto` -
   * X `x` -
@@ -48,19 +54,27 @@ Each line strip generates its own surface of revolution.
   * Vertex `vertNormals` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Revolve POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

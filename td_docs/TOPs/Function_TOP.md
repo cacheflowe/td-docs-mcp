@@ -5,11 +5,15 @@ title: Function_TOP
 ---
 
 # Function TOP
+
 ## Summary
 
 The Function TOP can perform mathematical operations like sin, cos, or exp on the color values of the input image. Different functions can be performed on each color channel. Some functions will take an additional value from the Base, Exponent or Constant Value parameters, and some functions take an additional input value from the second input image.
+
 For some functions, you can use the 'Replace Errors' parameter to insert a new value for values that would otherwise be undefined e.g. log(-1)
+
 ##### Supported functions:
+
   * _Input_ - Pass along the input value unchanged
   * _Constant_ - Replace the input with the value of the 'Constant' parameter.
   * _Square Root_ - Find the square root of the input value i.e. sqrt(x).
@@ -41,11 +45,15 @@ For some functions, you can use the 'Replace Errors' parameter to insert a new v
   * _Amplitude to dB_ - Converts amplitude to decibels. The result will be an error if the value is less than or equal to zero.
 
 1 The unit of the input for this function is determined by the 'Angle Units' parameter e.g. degrees, radians, etc.
+
 2 Using a negative exponent i.e. pow(x, -2) will produce an error value since negative exponents are undefined according to the GLSL specifications.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [functionTOP_Class](https://docs.derivative.ca/FunctionTOP_Class "FunctionTOP Class")
 
 ## Parameters - Function Page
+
 - Re-Range Integers `rerange` - ⊞ - Applies a scale and shift to the input values before the function is calculated i.e. input = (input * rerange2) + rerange1. **Note:** This feature only affects integer texture formats and is not used on floating point formats.
   * Re-Range Integers `rerange1` -
   * Re-Range Integers `rerange2` -
@@ -248,6 +256,7 @@ For some functions, you can use the 'Replace Errors' parameter to insert a new v
 - Error Value `errval` - The output value to use when an input error is detected e.g. log(-1).
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -327,13 +336,18 @@ For some functions, you can use the 'Replace Errors' parameter to insert a new v
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Function TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -347,7 +361,9 @@ Extra Information for the Function TOP can be accessed via an [Info CHOP](https:
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

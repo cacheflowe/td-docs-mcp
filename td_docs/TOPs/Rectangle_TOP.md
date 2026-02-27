@@ -5,13 +5,17 @@ title: Rectangle_TOP
 ---
 
 # Rectangle TOP
+
 ## Summary
 
 The Rectangle TOP can be used to generate Rectangles with rounded corners.
+
 The shapes can be customized with different sizes, rotation and positioning. An optional border can be added to the shape. Background, border and fill colors can all be set independently. Anti-aliasing can be turned on or off.
+
 [rectangleTOP_Class](https://docs.derivative.ca/RectangleTOP_Class "RectangleTOP Class")
 
 ## Parameters - Rectangle Page
+
 - Size `size` - ⊞ - Width and Height of the rectangle to draw.
   * X `sizex` -
   * Y `sizey` -
@@ -62,6 +66,7 @@ The shapes can be customized with different sizes, rotation and positioning. An 
 - Softness Unit `softnessunit` - Select the units for this parameter from Pixels, Fraction (0-1), Fraction Aspect (0-1 considering aspect ratio).
 
 ## Parameters - Output Page
+
 - Comp Over Input `compoverinput` - Turning this On will composite the input with the image.
 - Operation `operand` - ⊞ - Choose which composite operation is performed from this menu. Search the web for 'blend modes' for more detailed information on the effects of each type.
   * Add `add` - input1.rgba + input2.rgba
@@ -114,6 +119,7 @@ The shapes can be customized with different sizes, rotation and positioning. An 
 - Swap Order `swaporder` - Swaps the order of the composite with the input.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -253,12 +259,17 @@ The shapes can be customized with different sizes, rotation and positioning. An 
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0: Composite Input - Control the Composite operation via the parameters on the Output Page of this operator.
 
 ## Info CHOP Channels
+
 Extra Information for the Rectangle TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -272,7 +283,9 @@ Extra Information for the Rectangle TOP can be accessed via an [Info CHOP](https
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

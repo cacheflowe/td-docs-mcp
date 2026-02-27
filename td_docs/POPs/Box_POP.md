@@ -5,18 +5,27 @@ title: Box_POP
 ---
 
 # Box POP
+
 ## Summary
 
 The Box POP creates 6-sided boxes. The box can have 8 points - one at each corner with each face sharing a point with two other faces. Or the box can have 24 points with each of the 6 faces using 4 unique points (Unique Points toggle parameter).
+
 Where the box has 8 points, the user can choose to have vertex normals or primitive normals, which renders the cube "faceted" (flat-looking). Or the user can choose point normals (or no normals) which will make corners look non-faceted.
+
 The Connectivity menu allows for no primitives to be output (just points) (None), or the points connected with 4-point Quadrelaterals (quads) or 3-point Triangles, or output one Point Primitive for every point.
+
 The box can have optional rounded corners with control over radius and the amount of subdivision at the corners.
+
 Tip: To subdivide the faces send the Box POP to a [Subdivide POP](https://docs.derivative.ca/Subdivide_POP "Subdivide POP") with Crease Weight 1.
+
 Texture coordinates can be created with different placement - per-face, or one cube map that is wrapped over all the faces, etc. Point or vertex colors can be applied.
+
 The Anchor parameters can shift the lower or upper side of the box to X=0, Y=0, Z=0. The box can be post-translated/rotated.
+
 [boxPOP_Class](https://docs.derivative.ca/BoxPOP_Class "BoxPOP Class")
 
 ## Parameters - Box Page
+
 - Connectivity `surftype` - ⊞ - Determines the primitive used to connect the points.
   * None `none` -
   * Point Primitives `points` -
@@ -74,19 +83,27 @@ The Anchor parameters can shift the lower or upper side of the box to X=0, Y=0, 
   * Primitive `primColor` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Box POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

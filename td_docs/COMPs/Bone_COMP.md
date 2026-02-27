@@ -5,17 +5,25 @@ title: Bone_COMP
 ---
 
 # Bone COMP
+
 ## Summary
 
 The Bone Component is the foundation of all of the [Character Tools](https://docs.derivative.ca/Character_Tools "Character Tools"). It is a Component with most of the properties of a [Geometry Component](https://docs.derivative.ca/Geometry_COMP "Geometry COMP"). It also has some extra features such as length, two types of geometry, end-to-end linking, and kinematic parameters.
+
 The Bone Component is used to create hierarchies of limb-like objects that form part of a hierarchy or chain of Bone Components that are parented to one another. The movement of the chain of Bone Components is "solved" or computed based on several methods including Inverse Kinematics. The parenting attribute of bones is unique in that each bone attaches to the end, not the origin, of the parent bone.
+
 It is recommended that you use the Bone Creation state, accessed through the state icons above the Viewport, to construct such a chain because placing individual Bone Components and establishing their parenting relationships from operator to operator is extremely time consuming and not at all intuitive. In addition, a chain created using the Bone state will produce a better behaved bone chain.
+
 By default, bones do not render. They contain two types of display geometry: "link geometry" and "capture region geometry". The former consists of a narrow diamond shape which has been stretched to the length specified in _Bone Length_ , and placed along the Bone Component's negative Z-axis. The latter consists of two or more user-controllable ellipses that are used to define capture regions used in skeleton sops. You can specify whether either of the two types of geometry are displayed.
+
 The actual movement of the Bone Components is controlled through an IK CHOP (when using the standard Capture/Deform model). This is effected through an expression in the **Transform** channels of the Bone Component. If you want to override this behaviour, then you need to delete the bone's translate channels such that they are no longer over-ridden by chop control.
+
 If you make a bone the child of a non-bone Component, then it will attach to the origin of that Component. If you want to reposition the bone relative to its non-bone parent, you must remove the expression in the bone's translate parameters.
+
 [boneCOMP_Class](https://docs.derivative.ca/BoneCOMP_Class "BoneCOMP Class")
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -99,6 +107,7 @@ In the example above, rotations performed on an Component with different pivot p
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
 
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -143,6 +152,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
 
 ## Parameters - Bone Page
+
 - Display Link `displaylink` - Enabling this option allows you to toggle the display of the link geometry in the Viewport on and off.
 - Rest Angles `restangles` - ⊞ - Defines the relative weighting of rotations about Rx, Ry, Rz, the bone's x,y,z axis for the Inverse Kinematics solver.
   * X `restanglesx` -
@@ -165,7 +175,9 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Y Damping Rolloff `yrolloff` - Specifes the rate at which the damping increases as the rotation varies through the angle specifed by X / Y Angle Range.
 
 ## Parameters - Capture Page
+
 The Capture page is used to automatically create a capture region used by either the Capture or Deform sops (see [Capture SOP](https://docs.derivative.ca/Capture_SOP "Capture SOP") and [Deform SOP](https://docs.derivative.ca/Deform_SOP "Deform SOP") of the SOPs section). The capture region consists of at least two ellipses, and they may be translated along the bone's length.
+
 Region Centre / Top Bottom Cap Heights
 [![Objects13.gif](https://docs.derivative.ca/images/5/5d/Objects13.gif)](https://docs.derivative.ca/File:Objects13.gif)
 All the geometry that is generated by the Bone Component is created using regular SOPs. Therefore, it is customisable by simply changing the Bone Component's SOP network. The bone's display can be easily altered by changing its contained SOPs.
@@ -188,6 +200,7 @@ All the geometry that is generated by the Bone Component is created using regula
   * Z `crbotcapz` -
 
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -201,6 +214,7 @@ The Display parameter page controls the component's [material](https://docs.deri
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -210,6 +224,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -258,13 +273,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Bone COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

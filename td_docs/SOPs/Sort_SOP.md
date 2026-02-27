@@ -5,12 +5,15 @@ title: Sort_SOP
 ---
 
 # Sort SOP
+
 ## Summary
 
 The Sort SOP allows you to sort points and primitives in different ways. Sometimes the primitives are arranged in the desired order, but the point order is not. There are many possible combinations. To sort vertices, use the [Primitive SOP](https://docs.derivative.ca/Primitive_SOP "Primitive SOP").
+
 [sortSOP_Class](https://docs.derivative.ca/SortSOP_Class "SortSOP Class")
 
 ## Parameters - Point Page
+
 - Point Sort `ptsort` - ⊞ - Sort the points in the input geometry, according to the following criteria:
   * No change `none` - No sorting is applied.
   * By vertex order `vtxord` - Order points in same order as vertices.
@@ -39,6 +42,7 @@ The Sort SOP allows you to sort points and primitives in different ways. Sometim
   * Z `pointdirz` -
 
 ## Parameters - Primitive Page
+
 - Primitive Sort `primsort` - ⊞ - Sort the primitives according to the following criteria:
   * No change `none` - No sorting is applied.
   * By x `byx` - Sort according to X position.
@@ -66,6 +70,7 @@ The Sort SOP allows you to sort points and primitives in different ways. Sometim
   * Z `primdirz` -
 
 ## Parameters - Particle Page
+
 Particles are sorted on a per-particle system basis. That is if you have a SOP with 2 different particle system primitives, they are sorted independently of each other.
 - Particle Sort `partsort` - ⊞ - Sort the primitives according to the following criteria:
   * No change `none` - No sorting is applied.
@@ -92,12 +97,17 @@ Particles are sorted on a per-particle system basis. That is if you have a SOP w
   * Z `partdirz` -
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Sort SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -109,7 +119,9 @@ Extra Information for the Sort SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

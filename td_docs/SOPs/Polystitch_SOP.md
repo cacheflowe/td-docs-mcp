@@ -5,14 +5,19 @@ title: Polystitch_SOP
 ---
 
 # Polystitch SOP
+
 ## Summary
 
 The Polystitch SOP attempts to stitch polygonal surfaces together, thereby eliminating cracks that result from evaluating the surfaces at differing levels of detail.
+
 First, the boundaries of all the polygons to be stitched are found. An edge is a boundary edge if it is shared by no other polygon. The uniqueness of edges is determined by point numbers, and not by spatial positioning. Each boundary is then split at each "corner" into a number of pieces. A list of corner points can be manually specified, or any point at which the boundary changes direction by a certain amount can be flagged as a corner.
+
 Finally, any two boundary pieces that are within the tolerance of each other are stitched together. This is performed by snapping the points of the high detail edge to those of the low detail edge.
+
 [polystitchSOP_Class](https://docs.derivative.ca/PolystitchSOP_Class "PolystitchSOP Class")
 
 ## Parameters - Page
+
 - Polygons to Stitch `stitch` - The polygons to consider for stitching.
 - Corner Points `corners` - A list of point numbers that are to be considered breaks in the boundary edges.
 - Max Dist to Stitch `tol3d` - The maximum distance two edges can be from each other and still be stitched.
@@ -21,12 +26,17 @@ Finally, any two boundary pieces that are within the tolerance of each other are
 - Corner Angle `angle` - The maximum angle a boundary point can change before it is considered a corner.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Polystitch SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -38,7 +48,9 @@ Extra Information for the Polystitch SOP can be accessed via an [Info CHOP](http
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

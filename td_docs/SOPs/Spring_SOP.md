@@ -5,15 +5,21 @@ title: Spring_SOP
 ---
 
 # Spring SOP
+
 ## Summary
 
 The Spring SOP deforms and moves the input geometry using spring "forces" on the edges of polygons and on masses attached to each point.
+
 Geometry is deformed using forces that simulate simple physics on the points and edges. A simulated "mass" is assigned to each point. Its primitive edges act as "springs" which oppose the forces, and pull the points back toward their original positions. When the springs are stretched by the forces, they try to pull the points back. The points do not stop moving when they return to their original positions, however, but continue to oscillate because of their mass, until the oscillation dies out.
+
 Forces which act upon the points are as follows:      external force (gravity)     wind (similar to external force)     turbulence (chaotic forces)
+
 The greater the drag value, or smaller the mass, the faster the oscillation dies out.
+
 [springSOP_Class](https://docs.derivative.ca/SpringSOP_Class "SpringSOP Class")
 
 ## Parameters - State Page
+
 - Preroll Time `timepreroll` - How many seconds of the simulation to bypass, after the reset time is reached. For example, if you put the number 33 into this field (and reset is at `$TSTART`), frame one will show the simulation that was at a time of 33 seconds. In other words, the first thirty-two seconds have been bypassed, and the time at thirty-three seconds is shifted to frame one. The first thirty-two seconds must still be calculated in order to compute the status of the points, so you will notice some delay upon reset.
 - Time Inc `timeinc` - The Time Inc parameter determines how often to cook the SOP. By default, this parameter is set to `1/$FPS`. This means that the SOP will cook once for every frame. When complex dynamics are involved, the SOP may require more frequent cooking for increased mathematical accuracy. To get sub-frame accuracy in the cooking, set the Time Inc to something smaller than `1/$FPS` . For example, setting the Time Inc to `0.5/$FPS` will mean that the SOP gets cooked twice for every frame.
 **Note:** Never set this parameter greater than `1/$FPS`.
@@ -26,6 +32,7 @@ The greater the drag value, or smaller the mass, the faster the oscillation dies
 - Reset Pulse `resetpulse` - Instantly reset the spring effect.
 
 ## Parameters - Forces Page
+
 - External Force `external` - ⊞ - Forces of gravity acting on the points. When drag is zero, the points can accelerate with no limit on their speed.
   * X `externalx` -
   * Y `externaly` -
@@ -45,6 +52,7 @@ The greater the drag value, or smaller the mass, the faster the oscillation dies
 - Seed `seed` - Random number seed for the simulation.
 
 ## Parameters - Nodes Page
+
 - Fixed Points `fixed` - This is a point group. All points in the point group will remain unaffected by the forces. Also see the [Group SOP](https://docs.derivative.ca/Group_SOP "Group SOP") for notes on how to specify point ranges.
 - Fixed Points go to Source Positions `revertfixed` - Determines whether or not points in the Fixed Points group should be moved to the positions of the corresponding points in the Source geometry.
 - Copy Groups from Source `copygroups` - Determines if the Spring SOP should copy groups from the Source geometry at each frame. This lets you specify the name of an animating group in the Fixed Points field, and the contents of this group will be kept up to date.
@@ -62,6 +70,7 @@ The greater the drag value, or smaller the mass, the faster the oscillation dies
 - Initial Tension `tension` - The Initial k constant of the geometry before being deformed by the spring operation.
 
 ## Parameters - Limits Page
+
 + Limit Plane `limitpos` - ⊞ - The points will bounce off the limit planes when it reaches them. The six limit plane fields define a bounding cube. The default settings are one thousand units away, which is very large. Reduce the values to about one to see the effect.
   * X `limitposx` -
   * Y `limitposy` -
@@ -80,14 +89,19 @@ The greater the drag value, or smaller the mass, the faster the oscillation dies
 - Gain Normal `gainnorm` - Friction parameters which can be regarded as energy-loss upon collision. The first parameter affects the energy loss (gain) perpendicular to the surface. 0 means all energy (velocity) is lost, 1 means no energy is lost perpendicular to surface. The second parameter is the energy gain tangent to the surface.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Spring SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -99,7 +113,9 @@ Extra Information for the Spring SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

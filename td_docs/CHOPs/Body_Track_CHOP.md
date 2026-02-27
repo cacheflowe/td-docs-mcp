@@ -5,19 +5,27 @@ title: Body_Track_CHOP
 ---
 
 # Body Track CHOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This operator uses the [Augmented Reality (AR) SDK](https://docs.nvidia.com/deeplearning/maxine/ar-sdk-programming-guide/index.html) of the Nvidia Maxine system and requires a 20, 30, 40 or 50 series Nvidia RTX GPU.
+
 **The models for this operator are not included with TouchDesigner. To use this operator you will need to download the 0.8.7 version AR SDK for your GPU from <https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/>.
 
 **The Body Track CHOP can track bounding boxes and 34 key points of one or more human bodies, with optional joint angles, in 2D or 3D.
+
 The input image is taken from a provided TOP and can be of any resolution or format, and either a still image or video.
+
 The coordinates of the detected features are given in u, v positions relative to the bottom-left corner of the input image. By default, the values range from 0 to 1, but the 'Aspect Correct' parameter can be enabled to scale the values so that they can be used as 3D coordinates while maintaining the aspect ratio of the original image.
+
 [bodytrackCHOP_Class](https://docs.derivative.ca/BodytrackCHOP_Class "BodytrackCHOP Class")
 
 ## Parameters - BodyTrack Page
+
 - Active `active` - Enables the body tracking features.
 - Model Folder `modelfolder` - The location of the AI model files used for body detection. By default these files are located in the Config/Models folder.
 - TOP `top` - A path to the TOP operator that provides the image to perform body tracking on.
@@ -37,6 +45,7 @@ The coordinates of the detected features are given in u, v positions relative to
 - Probation Age `probationage` - This option is the length of the tracker's probationary period. After a body reaches this age, it is considered to be valid and is appointed an ID. This will help with false positives, where false bodies are detected only for a few frames. This is measured by the number of frames, and the default is 10.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -54,9 +63,13 @@ The coordinates of the detected features are given in u, v positions relative to
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -70,7 +83,9 @@ Extra Information for the CHOP can be accessed via an [Info CHOP](https://docs.d
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

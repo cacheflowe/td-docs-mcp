@@ -5,13 +5,17 @@ title: CHOP_Execute_DAT
 ---
 
 # CHOP Execute DAT
+
 ## Summary
 
 The CHOP Execute DAT will run its script when the channel values of a specified CHOP change. You can specify which channels to look at, and trigger based on their values changing in various ways. The script gets called for every sample that changes, so when rendering one frame, it may get called 2 or more times per channel, depending on how many frames forward TouchDesigner has stepped (see [Time Slicing](https://docs.derivative.ca/Time_Slicing "Time Slicing")).
+
 CHOP Execute DATs are created with [default python method placeholders](https://docs.derivative.ca/ChopexecuteDAT_Class "ChopexecuteDAT Class"). For each monitored condition in the parameters, there is a matching python method in the DAT. When a condition is turned on in the parameters, each time that condition is satisfied the corresponding python method will be executed.
+
 [chopexecuteDAT_Class](https://docs.derivative.ca/ChopexecuteDAT_Class "ChopexecuteDAT Class")
 
 ## Parameters - CHOP Execute Page
+
 - Active `active` - While on, the DAT will respond to the CHOP that is referenced.
 - Execute from `executeloc` - ⊞ - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) Determines the location the script is run from.
   * Current Node `current` - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) The script is executed from the current node location.
@@ -33,6 +37,7 @@ CHOP Execute DATs are created with [default python method placeholders](https://
 - Edit.. `edit` - Clicking this opens a text editor to edit text in the DAT.
 
 ## Parameters - File Page
+
 - File `file` - The filesystem path and name of the file to load. Accepts `.txt` and `.dat` files.
 - Sync to File `syncfile` - When On, loads the file from disk into the DAT when the projects starts. A filename must be specified. Turning on the option will load the file from disk immediately. If the file does not exist, it will be created the first time the DAT is updated. The file is monitored so that any changes made to the file will update the DAT, and any changes made to the DAT will be written to the file right away. If the file is removed, the DAT will retain its current contents.
 - Load on Start `loadonstart` - When On, reloads the file from disk into the DAT when the projects starts.
@@ -41,6 +46,7 @@ CHOP Execute DATs are created with [default python method placeholders](https://
 - Write File `writepulse` - Instantly write the file to disk.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -57,18 +63,25 @@ CHOP Execute DATs are created with [default python method placeholders](https://
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the CHOP Execute DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

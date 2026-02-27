@@ -5,21 +5,28 @@ title: Time_Machine_TOP
 ---
 
 # Time Machine TOP
+
 ## Summary
 
 The Time Machine TOP combines pixels in a sequence of images stored in a [Texture 3D TOP](https://docs.derivative.ca/Texture_3D_TOP "Texture 3D TOP"). Whereas "morphing" warps an image "spatially" (in xy), Time Machine warps images only in time.
+
 Time Machine, originally known as "tima" in PRISMS, was first used in 1995 for warping effects in [Ghost in the Shell](https://en.wikipedia.org/wiki/Ghost_in_the_Shell_\(1995_film\)), a Japanese anime film that heavily used PRISMS for camera perspective effects, compositing, 3D and effects.
+
 You must connect a Texture 3D TOP to the Time Machine's first input. It uses this array of images and displays different depths of the 3D texture.
+
 The second input determines the time offset of the output image. The second input is expected to be monochrome, but uses the red channel when it is not monochrome. By default, where there is a black pixel in the second input, it gets the oldest layer of the 3D texture. Where there is a white pixel in the second input, it gets the most recent layer of the 3D texture. Black Offset and White Offset adjust the range of time that the black to white parts of the image are offset within. For example, if Black Offset is -10 and White Offset is 0, then a black pixel would be 10 frames behind in time, a white pixel the current frame, and a 50% grey pixel would be 5 frames behind in time (in between the Black and White Offsets).
+
 [timemachineTOP_Class](https://docs.derivative.ca/TimemachineTOP_Class "TimemachineTOP Class")
 
 ## Parameters - TimeMachine Page
+
 - Black Offset `blackoffset` - Sets the time offset for black areas of the Input 2 image.
 - Black Offset Unit `blackoffsetunit` - Set the units for this parameter to index, frames, seconds or a fraction.
 - White Offset `whiteoffset` - Sets the time offset for white areas of the Input 2 image.
 - White Offset Unit `whiteoffsetunit` - Set the units for this parameter to index, frames, seconds or a fraction.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -99,13 +106,18 @@ The second input determines the time offset of the output image. The second inpu
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Time Machine TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -119,7 +131,9 @@ Extra Information for the Time Machine TOP can be accessed via an [Info CHOP](ht
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

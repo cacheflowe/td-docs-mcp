@@ -5,14 +5,19 @@ title: Handle_COMP
 ---
 
 # Handle COMP
+
 ## Summary
 
 The Handle Component is a new IK tool designed for manipulating groups of bones. Whereas the previous IK tools only allowed for a single end-affector per bone chain, this new method allows for several end-affectors per bone. Furthermore, the bones need not be a chain. Any setup, including branches, are handled.
+
 One typical example is the use of motion capture data. In higher-end systems, you could have a cloud of marker positions and a skeleton to be driven by it.
+
 This Handle Component works in tandem with the [Handle CHOP](https://docs.derivative.ca/Handle_CHOP "Handle CHOP"). The following setup is commonly used: Given a hierarchy of bones, attach one or more Handle Components to specific locations on each Bone Component. Assign each handle a target in space to follow. Create a Handle CHOP which collects this information and calculates the rotation channels for the bones. Export these values back to the bones.
+
 [handleCOMP_Class](https://docs.derivative.ca/HandleCOMP_Class "HandleCOMP Class")
 
 ## Parameters - Handle Page
+
 - Target `target` - Where the Handle will pull the bone towards (like an end-affector).
 - Translate `t` - ⊞ - Displacement tx,ty,tz relative to the origin of the bone where the handle is anchored.
   * X `tx` -
@@ -38,6 +43,7 @@ This Handle Component works in tandem with the [Handle CHOP](https://docs.deriva
   * `lrzmax` -
 
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -51,6 +57,7 @@ The Display parameter page controls the component's [material](https://docs.deri
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -60,6 +67,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -108,13 +116,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Handle COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

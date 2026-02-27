@@ -5,12 +5,15 @@ title: Twist_SOP
 ---
 
 # Twist SOP
+
 ## Summary
 
 The Twist SOP performs non-linear deformations such as bend, linear taper, shear, squash and stretch, taper and twist. Each deformation will distort the object in one or more axes.
+
 [twistSOP_Class](https://docs.derivative.ca/TwistSOP_Class "TwistSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Operation `op` - ⊞ - This menu allows you to select a type of non-linear deformation. Select from the following options:
   * Twist `twist` - Rotates the input geometry around the Primary Axis.
@@ -57,12 +60,17 @@ The Twist SOP performs non-linear deformations such as bend, linear taper, shear
 **Note:** To be certain to see the effects of the Twist SOP, make sure you have enough divisions along the edges. By using a centre that is different from that of the object you can improve your control of the object. Try moving the pivot point to the bottom of an object that you are squashing and stretching.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Twist SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -74,7 +82,9 @@ Extra Information for the Twist SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

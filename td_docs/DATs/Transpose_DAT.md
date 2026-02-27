@@ -5,13 +5,17 @@ title: Transpose_DAT
 ---
 
 # Transpose DAT
+
 ## Summary
 
 The Transpose DAT converts rows into columns. The number of rows becomes the number of columns, and vice versa.
+
 [transposeDAT_Class](https://docs.derivative.ca/TransposeDAT_Class "TransposeDAT Class")
 
 ## Parameters - Transpose Page
+
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -38,18 +42,25 @@ The Transpose DAT converts rows into columns. The number of rows becomes the num
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Transpose DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

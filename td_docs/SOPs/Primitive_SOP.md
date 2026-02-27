@@ -5,26 +5,37 @@ title: Primitive_SOP
 ---
 
 # Primitive SOP
+
 ## Summary
 
 The Primitive SOP is like the [Point SOP](https://docs.derivative.ca/Point_SOP "Point SOP") but manipulates a [primitive](https://docs.derivative.ca/Primitive "Primitive")'s position, size, orientation, color, alpha, in addition to primitive-specific attributes, such as reversing primitive normals. The Primitive SOP also lets you create custom primitive attributes.
+
 You can also apply parametric affine transformations to a profile by using this SOP. You can also use it to open, close, reverse, and cycle the profile curves.
+
 **Note:** When applying transformations to a profile, you can only rotate about the Z axis because the projected curve is a planar curve that lives in the domain of the surface. Therefore it wouldn't make any sense to allow rotations in X or Y for profiles.
+
 ###
+
 Transformation of Primitives vs Profiles
+
 A Bezier surface is a single primitive, as is a NURBS surface, while a polygon mesh can consist of hundreds of individual primitives. Care must be taken to ensure the desired result. Profiles can be translated, rotated, and scaled along with 3D primitives. The Z component of translation and scaling is ignored. The X and Y components would be interpreted as U and V values because they apply to the space in which profiles are defined.
 
 ###
+
 Example - Mapping a Texture Inside a Sphere
+
 There are many uses for the Primitive SOP. Normally, if you apply a texture onto a sphere, it is mapped onto the outside surface because the U surface normals point outwards by default. If you wanted to map the texture onto the inside of the sphere instead, you could simply run the sphere geometry through a Primitive SOP, and select Reverse U (i.e. the surface normals) in the Face/Hull page > Vertex menu.
+
 [primitiveSOP_Class](https://docs.derivative.ca/PrimitiveSOP_Class "PrimitiveSOP Class")
 
 ## Parameters - Primitive Page
+
 - Source Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. You can specify profile curves within the group by providing a profile pattern (e.g. *.3 specifies the fourth profile in all spline surfaces).
 **Tip:** By specifying both a primitive and a profile here (example: 0 0.* ), you can affect a transformation of both the parent surface and a profile curve.
 - Template Group `templategrp` - A subset of template points to transform to.
 
 ## Parameters - Transform Page
+
 - Do Transformation `doxform` - When checked, allows transformations to occur.
 - Rotate to Template `dorot` - ⊞ - A template can be specified using the second input of the Primitive SOP. When set to On, this template can be used to transform each primitive to the location and orientation of the template point. This is similar to what the [Copy SOP](https://docs.derivative.ca/Copy_SOP "Copy SOP") does except that the actual primitives are transformed, not copies made.
   * Off `off` - Don't rotate.
@@ -76,6 +87,7 @@ The Up Vector determines how a primitive orients itself with respect to the targ
   * Z `upvectorz` -
 
 ## Parameters - Attributes Page
+
 - Color `doclr` - ⊞ - If Keep is selected, the color attribute is left unchanged. If Add is selected, this parameter changes the color of input primitives according to diffuse color field. If No is selected, the color attribute is removed.
   * Keep Color `off` -
   * Add Color `on` -
@@ -108,6 +120,7 @@ The Up Vector determines how a primitive orients itself with respect to the targ
   * Value 1 `attr0value4` -
 
 ## Parameters - Face/Hull Page
+
 - Preserve Shape U `pshapeu` - These options only become available once a type of clamping or closure has been selected.
 **Closure** - Change the closure and clamping of a face or hull.
 - Preserve Shape V `pshapev` - These options only become available once a type of clamping or closure has been selected.
@@ -150,10 +163,12 @@ The Up Vector determines how a primitive orients itself with respect to the targ
 - V Offset `vtxvoff` - Cycles face or hull columns / rows when the Shift operation is selected.
 
 ## Parameters - Meta Page
+
 - Meta-Surface Weight `metaweight` - When selected, allows meta-surface weighting.
 - Weight `doweight` - Enter weight of meta-surface here when Meta-surface Weight is selected.
 
 ## Parameters - Particles Page
+
 - Particle Render Type `doprender` - When On the Particle Type menu below allows section of particle render type.
 - Particle Type `prtype` - ⊞ - Selects how the particles are rendered.
   * Render as Lines `lines` - Each particle will be rendered as a 2-point line, with the length determined based on the particles velocity. If the particle has no velocity it will just be a single pixel in size.
@@ -161,13 +176,18 @@ The Up Vector determines how a primitive orients itself with respect to the targ
   * Render as Point Sprites `pointsprites` -
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Primitive SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -179,7 +199,9 @@ Extra Information for the Primitive SOP can be accessed via an [Info CHOP](https
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

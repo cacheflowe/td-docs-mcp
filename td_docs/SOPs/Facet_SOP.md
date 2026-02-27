@@ -5,13 +5,17 @@ title: Facet_SOP
 ---
 
 # Facet SOP
+
 ## Summary
 
 The Facet SOP lets you control the smoothness of faceting of a given object. It also lets you consolidate points or surface normals.
+
 The Facet SOP, like [Divide SOP](https://docs.derivative.ca/Divide_SOP "Divide SOP"), works as a pipeline to change geometry in stages. For this reason, Compute Normals appears twice. For example, you can compute surface normals before making vertices (the points of each polygon) unique, which gives you the unusual result of smooth shading and unique point, as the normals get computed while the points are still shared.
+
 [facetSOP_Class](https://docs.derivative.ca/FacetSOP_Class "FacetSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Make Normals Unit Length `unit` - Checking this option will normalize the length of normals to a length of one unit.
 - Compute Normals `prenml` - Checking this option means that the surface normals will be computed. Where points are shared between polygons, smooth shading results, and where points are not shared (unique), faceted edges result. If you compute normals at this stage, they are computed based on the incoming geometry.
@@ -34,12 +38,17 @@ Usually very small numbers, such as `0.01` should be used here. If the value is 
 - Compute Normals `postnml` - Again, allows you to compute the normals after the consolidation or cusping stages. You should select this if you have set either the Cusp or Consolidate option.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Facet SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -51,7 +60,9 @@ Extra Information for the Facet SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,14 +5,19 @@ title: Serial_DAT
 ---
 
 # Serial DAT
+
 ## Summary
 
 The Serial DAT is used for serial communication through an external port, using the RS-232 protocol. These ports are usually a 9 pin connector, or a USB port on new machines. (Using a USB port requires a USB-to-serial adapter and driver.) All of a computer's available serial ports can be found in the Device Manager in the Windows operating system under Computer –> Manage -> Devices -> Serial… -> COM ports. Their names begin with 'COM'. Example: COM1, COM2, COM3.
+
 To send bytes out this connection, see the send methods in the [serialDAT_Class](https://docs.derivative.ca/SerialDAT_Class "SerialDAT Class"), or in Tscript the `send` Command.
+
 See also [Arduino](https://docs.derivative.ca/Arduino "Arduino") and [Serial CHOP](https://docs.derivative.ca/Serial_CHOP "Serial CHOP").
+
 [serialDAT_Class](https://docs.derivative.ca/SerialDAT_Class "SerialDAT Class")
 
 ## Parameters - Connect Page
+
 - Active `active` - This check box enables the serial connection.
 - Row/Callback Format `format` - ⊞ - Interpret the incoming data as binary or ASCII data. If the format is Per Byte, one row is appended for each binary byte received. If the format is Per Line, one row is appended for each null or newline delimited message received.
   * One Per Byte `perbyte` - (formerly called 'binary').
@@ -60,6 +65,7 @@ See also [Arduino](https://docs.derivative.ca/Arduino "Arduino") and [Serial CHO
   * Toggle `toggle` - Line high only when bytes available.
 
 ## Parameters - Received Data Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message received.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -73,6 +79,7 @@ See also [Arduino](https://docs.derivative.ca/Arduino "Arduino") and [Serial CHO
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -89,8 +96,11 @@ See also [Arduino](https://docs.derivative.ca/Arduino "Arduino") and [Serial CHO
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Serial DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Serial DAT Info Channels
   * bytes_read -
 
@@ -103,13 +113,17 @@ Specific Serial DAT Info Channels
   * messages_pending -
 
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

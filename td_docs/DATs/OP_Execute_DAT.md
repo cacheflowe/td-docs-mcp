@@ -5,13 +5,17 @@ title: OP_Execute_DAT
 ---
 
 # OP Execute DAT
+
 ## Summary
 
 The OP Execute DAT runs a script when the state of an [operator](https://docs.derivative.ca/Operator "Operator") changes.
+
 OP Execute DATs are created with default python method placeholders. For each monitored condition in the parameters, there is a [matching python method](https://docs.derivative.ca/OpexecuteDAT_Class "OpexecuteDAT Class") in the DAT. When a condition is turned on in the parameters, each time that condition is satisfied the corresponding python method will be executed.
+
 [opexecuteDAT_Class](https://docs.derivative.ca/OpexecuteDAT_Class "OpexecuteDAT Class")
 
 ## Parameters - OP Execute Page
+
 - Active `active` - While on, the DAT will respond to the OP that is referenced.
 - Execute from `executeloc` - ⊞ - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) Determines the location the script is run from.
   * Current Node `current` - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) The script is executed from the current node location.
@@ -35,6 +39,7 @@ OP Execute DATs are created with default python method placeholders. For each mo
 - Edit.. `edit` - Clicking this opens a text editor to edit text in the DAT.
 
 ## Parameters - File Page
+
 - File `file` - The filesystem path and name of the file to load. Accepts `.txt` and `.dat` files.
 - Sync to File `syncfile` - When On, loads the file from disk into the DAT when the projects starts. A filename must be specified. Turning on the option will load the file from disk immediately. If the file does not exist, it will be created the first time the DAT is updated. The file is monitored so that any changes made to the file will update the DAT, and any changes made to the DAT will be written to the file right away. If the file is removed, the DAT will retain its current contents.
 - Load on Start `loadonstart` - When On, reloads the file from disk into the DAT when the projects starts.
@@ -43,6 +48,7 @@ OP Execute DATs are created with default python method placeholders. For each mo
 - Write File `writepulse` - Instantly write the file to disk.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -59,18 +65,25 @@ OP Execute DATs are created with default python method placeholders. For each mo
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the OP Execute DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,6 +5,7 @@ title: Extrude_SOP
 ---
 
 # Extrude SOP
+
 ## Summary
 
 The Extrude SOP can be used for:
@@ -13,19 +14,28 @@ The Extrude SOP can be used for:
   * Making primitives thicker or thinner
 
 The default is a 1 unit extrusion directly backwards from the input geometry's normals.
+
 It uses the normal of the surface to determine the direction of extrusion. In the case of planar or open polygons, the normal is difficult to determine, and may not always provide the result that you expect. Turn on the Primitive Normals display in the [Viewer](https://docs.derivative.ca/Viewer "Viewer") display options to see the normals.
+
 The extrusion is created by extending surfaces from the vertices of the input geometry along the cross-section curve given in the second input (Input 1). The first vertex of the cross-section curve is placed by default at the vertices of the input geometry and aligned so that the curve's positive Y axis extends opposite to the input geometry's normal. The cross-section's positive X axis by default extends outwards from center of the input geometry.
+
 If no cross-section curve is given, a vertical line going from (0,0,0) to (0,1,0) is used. This results in a 1 unit extrusion directly backwards from the input geometry's normals. As another example, using a straight line from (0,0,0) to (.1,.1,0) will result in an extrusion that extends 1 unit backwards from the input and flares .1 unit outwards on all sides. The Thickness and Depth parameters can be used to shift and scale the cross-section without directly changing the curve.
+
 **Note:** The shape of the cross-section is always relative to its first vertex, so shifting the entire cross-section curve will have no effect. Also, only the X and Y axes of the curve are used i.e. Z position values are ignored.
+
 After the new geometry is created, normals are computed by default.
+
 **Warning:** If you take a default output from a [Text SOP](https://docs.derivative.ca/Text_SOP "Text SOP") and Extrude it, it may have bad rendering artifacts (and too many polygons) as it's extruding each of the triangles of the triangulated letters. You need to change the Output parameter of the Text SOP to Closed Polygons. See [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets").
+
 [extrudeSOP_Class](https://docs.derivative.ca/ExtrudeSOP_Class "ExtrudeSOP Class")
 
 ## Parameters - Page
+
 - Source Group `sourcegrp` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified for the source. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - X-Section Group `xsectiongrp` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified for the cross-section. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 
 ## Parameters - Values Page
+
 - Fuse Points `dofuse` - ⊞ - This should almost always be turned on when cross-sections are used. It consolidates points of polygons that would otherwise cross or overlap when the bevel takes place.
   * No fusion `off` -
   * Clamp all points `all` -
@@ -66,26 +76,37 @@ Cusping lets you specify at which angle between adjacent polygons, a sharp edge 
 - Remove Shared Sides `removesharedsides` - Prevents the creation of duplicate sides.
 
 ## Parameters - Groups Page
+
 - Create Output Groups `newg` - When this option is checked, it causes the Extrude SOP to generate three new groups representing the primitives belonging to the front faces, back faces, and the side bevel/extrusion. The name of the groups are determined by the three option fields below.
 - Front Group `frontgrp` - Output group name to create for front face geometry.
 - Back Group `backgrp` - Output group name to create for back face geometry.
 - Side Group `sidegrp` - Output group name to create for side bevel/extrude geometry.
 
 Production Tips
+
 This SOP is mainly used for generating bevels and extrusions of text where the input cross-sections are fed from a [Font SOP](https://docs.derivative.ca/Font_SOP "Font SOP"). Any curve or group of curves can also be used as input.
+
 Offsets - This SOP can be used for generating two offsetting curves where the distance between the two curves remains constant. To do this, make sure that you set Side Mesh to No Output, the first thickness to zero and adjust the second to increase or decrease the distance of the offset.
+
 Fixing Stray Normals - If your geometry contains normals that are pointed in many directions (say after reading geometry from a [File In SOP](https://docs.derivative.ca/File_In_SOP "File In SOP"), or if you have a lot of open or non-planar polygons), you can fix it so that they are suitable for extrusion.
+
 Do this by appending a [Group SOP](https://docs.derivative.ca/Group_SOP "Group SOP") to the SOP that contains your geometry, enable Normal, and reduce the Spread Angle to something less than 180. Then append a [Primitive SOP](https://docs.derivative.ca/Primitive_SOP "Primitive SOP"), which should work on the group made in the Group SOP. In the Face/Hull page, set the Vertex menu to Reverse.
+
 Now the normals in your geometry will all be oriented in the roughly the same direction, and ready for extrusion. To narrow the tolerance, decrease the Spread Angle further.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Extrude SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -97,7 +118,9 @@ Extra Information for the Extrude SOP can be accessed via an [Info CHOP](https:/
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

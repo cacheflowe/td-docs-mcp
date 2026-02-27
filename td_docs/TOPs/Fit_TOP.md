@@ -5,12 +5,15 @@ title: Fit_TOP
 ---
 
 # Fit TOP
+
 ## Summary
 
 The Fit TOP re-sizes its input to the resolution set on the Common Page using the method specified in the Fit parameter menu. This is useful for changing the aspect ratio of an image without distorting it horizontally or vertically. It will crop the image or fill with the background color depending on the Fit parameter options.
+
 [fitTOP_Class](https://docs.derivative.ca/FitTOP_Class "FitTOP Class")
 
 ## Parameters - Fit Page
+
 - Fit `fit` - ⊞ - Determines how the input is fit to the specified resolution.
   * Fill `fill` - The input is stretched/squashed to fill the resolution and aspect ratio specified on the Common page.
   * Fit Horizontal `fithorz` - The input is uniformly scaled to fit horizontally.
@@ -63,6 +66,7 @@ For example, during a scaling operation, if the pivot point of a TOP image is lo
 - Legacy Transform `legacyxform` - When enabled, will use the legacy method of building the transform matrix, which has inverted rotation and transform order.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -162,12 +166,17 @@ For example, during a scaling operation, if the pivot point of a TOP image is lo
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Fit TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -181,7 +190,9 @@ Extra Information for the Fit TOP can be accessed via an [Info CHOP](https://doc
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,16 +5,21 @@ title: CPlusPlus_TOP
 ---
 
 # CPlusPlus TOP
+
 ## Summary
 
 The CPlusPlus TOP allows you to make custom TOP operators by writing your own plugin using C++.
+
 See [Write a CPlusPlus Plugin](https://docs.derivative.ca/Write_a_CPlusPlus_Plugin "Write a CPlusPlus Plugin") and the other articles in the [ C++ Category](https://docs.derivative.ca/Category:C%2B%2B "Category:C++") for more detailed information on how to make plugins for use with this node and how to access example projects.
+
 For upgrading your CPlusPlus TOP compiled using headers from TouchDesigner builds before and including 2021.10000 to work in builds 2022.20000 and after, refer to [CPlusPlus TOP Upgrades For 2022.20000 Builds](https://docs.derivative.ca/CPlusPlus_TOP_Upgrades_For_2022.20000_Builds "CPlusPlus TOP Upgrades For 2022.20000 Builds")
 
 See also: [CPlusPlus CHOP](https://docs.derivative.ca/CPlusPlus_CHOP "CPlusPlus CHOP"), [CUDA](https://docs.derivative.ca/CUDA "CUDA")
+
 [cplusplusTOP_Class](https://docs.derivative.ca/CplusplusTOP_Class "CplusplusTOP Class")
 
 ## Parameters - Load Page
+
 - Plugin Path `plugin` - The path to the plugin you want to load.
 - Re-Init Class `reinit` - When this parameter is On, it will delete the instance of the class created by the plugin, and create a new one.
 - Re-Init Class `reinitpulse` - Instantly reinitialize the class.
@@ -33,9 +38,11 @@ See also: [CPlusPlus CHOP](https://docs.derivative.ca/CPlusPlus_CHOP "CPlusPlus 
   * 32-Bit Floating-Point `float32` -
 
 - Stencil Buffer `stencilbuffer` - Turn on if you want a stencil buffer.
+
 # of Color Buffers `numcolorbufs` - Any shader you write can output to more than one RGBA buffer at a time. Instead of writing to gl_FragColor in your shader, you write to gl_FragData[i] where i is the color buffer index you want to write the value to.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -115,12 +122,17 @@ See also: [CPlusPlus CHOP](https://docs.derivative.ca/CPlusPlus_CHOP "CPlusPlus 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the CPlusPlus TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -134,7 +146,9 @@ Extra Information for the CPlusPlus TOP can be accessed via an [Info CHOP](https
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,14 +5,19 @@ title: Circle_TOP
 ---
 
 # Circle TOP
+
 ## Summary
 
 The Circle TOP can be used to generate circles, ellipses and N-sided polygons.
+
 The shapes can be customized with different sizes, rotation and positioning. An optional border can be added to the shape. Background, border and fill colors can all be set independently. Anti-aliasing can be turned on or off.
+
 You can use the arc angles to cut out part of the shape. In the case of polygons, the number of visible sides will be preserved no matter how much is cut out.
+
 [circleTOP_Class](https://docs.derivative.ca/CircleTOP_Class "CircleTOP Class")
 
 ## Parameters - Circle Page
+
 - Radius `radius` - ⊞ - X and Y radii of the Circle. For polygons, only the X radius is used.
   * X `radiusx` -
   * Y `radiusy` -
@@ -67,6 +72,7 @@ You can use the arc angles to cut out part of the shape. In the case of polygons
 - Sides `sides` - When drawing a polygon, this corresponds to the number of sides the polygon should have.
 
 ## Parameters - Output Page
+
 - Comp Over Input `compoverinput` - Turning this On will composite the input with the image.
 - Operation `operand` - ⊞ - Choose which composite operation is performed from this menu. Search the web for 'blend modes' for more detailed information on the effects of each type.
   * Add `add` - input1.rgba + input2.rgba
@@ -119,6 +125,7 @@ You can use the arc angles to cut out part of the shape. In the case of polygons
 - Swap Order `swaporder` - Swaps the order of the composite with the input.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -258,12 +265,17 @@ You can use the arc angles to cut out part of the shape. In the case of polygons
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0: Composite Input - Control the Composite operation via the parameters on the Output Page of this operator.
 
 ## Info CHOP Channels
+
 Extra Information for the Circle TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -277,7 +289,9 @@ Extra Information for the Circle TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

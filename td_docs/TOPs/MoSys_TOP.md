@@ -5,17 +5,23 @@ title: MoSys_TOP
 ---
 
 # MoSys TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The MoSys TOP works with [MoSys](https://docs.derivative.ca/MoSys "MoSys") camera tracking systems to perform simulated lens distortion using channels from a connected [MoSys CHOP](https://docs.derivative.ca/MoSys_CHOP "MoSys CHOP").
+
 [mosysTOP_Class](https://docs.derivative.ca/MosysTOP_Class "MosysTOP Class")
 
 ## Parameters - MoSys Page
+
 - CHOP Node `chop` - The path to a MoSys CHOP that contains the channel data used to calculate the lens distortion.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -95,12 +101,17 @@ The MoSys TOP works with [MoSys](https://docs.derivative.ca/MoSys "MoSys") camer
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

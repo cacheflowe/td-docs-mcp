@@ -5,15 +5,21 @@ title: Parameter_CHOP
 ---
 
 # Parameter CHOP
+
 ## Summary
 
 The Parameter CHOP gets parameter values, including custom parameters, from all OP types.
+
 (This replaces the Fetch CHOP.)
+
 Retrieve from parameters alternatively using a `node.par.Customname` expression of the [Par Class](https://docs.derivative.ca/Par_Class "Par Class"), or the [Parameter Execute DAT](https://docs.derivative.ca/Parameter_Execute_DAT "Parameter Execute DAT").
+
 See the [Select CHOP](https://docs.derivative.ca/Select_CHOP "Select CHOP") for retrieving channels from the output of other CHOPs.
+
 [parameterCHOP_Class](https://docs.derivative.ca/ParameterCHOP_Class "ParameterCHOP Class")
 
 ## Parameters - Source Page
+
 - Operators `ops` - The operators determine where to obtain the channels. Specify or more operator names or paths. Examples: `wave1`, `slider*`, `constant[1-9] constant[10-19:2]`, `../base1`. Or select the operators using the menu.
 - Fetch `fetch` - ⊞ - Pick between fetching Parameters or Sequences.
   * Parameters `partypes` - When set to Parameters, use the ParGroups and Parameters parameters to pick.
@@ -34,6 +40,7 @@ If the number of blocks of the selected sequences is more than one, the channel 
 - Rename to `renameto` - See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.

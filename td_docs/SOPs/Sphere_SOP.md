@@ -5,13 +5,17 @@ title: Sphere_SOP
 ---
 
 # Sphere SOP
+
 ## Summary
 
 The Sphere SOP generates spherical objects of different geometry types. It is capable of creating non-uniform scalable spheres of all geometry types.
+
 If an input is provided, the sphere's radius is automatically determined as a function of the input's bounding geometry.
+
 [sphereSOP_Class](https://docs.derivative.ca/SphereSOP_Class "SphereSOP Class")
 
 ## Parameters - Page
+
 - Primitive Type `type` - ⊞ - Select from the following types. For information on the different types, see the [Geometry](https://docs.derivative.ca/Category:Geometry "Category:Geometry") category articles. Depending on the primitive type chosen, some SOP options may not apply. Using the 'Primitive' primitive type is not recommended when using instancing.
   * Primitive `prim` -
   * Polygon `poly` -
@@ -80,12 +84,17 @@ If an input is provided, the sphere's radius is automatically determined as a fu
 - Compute Normals `normals` - Creates normals on the geometry.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Sphere SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -97,7 +106,9 @@ Extra Information for the Sphere SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,17 +5,25 @@ title: Rectangle_POP
 ---
 
 # Rectangle POP
+
 ## Summary
 
 The Rectangle POP creates a 4-point rectangle with optional rounded corners, and outputs it as a line strip, a pair of triangles, a quad, separate 2-point lines, unconnected point primitives, or without any primitives.
+
 The mode Fill Camera View uses a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and extra viewing information (aspect ratio) to put the four points of the rectangle at the corners of the camera view at a certain distance away from the camera. This is useful for rendering a background plate that fills the field of view of a camera, behind the geometry of a scene, or for aligning geometry in the field of view of a camera.
+
 If a POP is connected to the input, it will translate / scale the rectangle to the bounding box of the input. If a POP is connected to the input and if Modify Bounds is set, it will scale / translate the rectangle to the bounding box of the input, and you can further translate/scale/rotate the rectangle.
+
 You can add texture coordinates (`Tex`), or normal (`N`) attributes to the points or to the vertices.
+
 Orientation is in the XY plane. The left, middle or right side of the rectangle can be anchored to X=0. Similar for Y, and then the rectangle can be further scaled, rotated and translated.
+
 See also [Circle POP](https://docs.derivative.ca/Circle_POP "Circle POP"), [Primitive POP](https://docs.derivative.ca/Primitive_POP "Primitive POP"), [Line POP](https://docs.derivative.ca/Line_POP "Line POP"), [Point POP](https://docs.derivative.ca/Point_POP "Point POP").
+
 [rectanglePOP_Class](https://docs.derivative.ca/RectanglePOP_Class "RectanglePOP Class")
 
 ## Parameters - Rectangle Page
+
 - Connectivity `surftype` - ⊞ - Determines the primitive used to connect the points.
   * None `none` -
   * Point Primitives `point` -
@@ -72,19 +80,27 @@ See also [Circle POP](https://docs.derivative.ca/Circle_POP "Circle POP"), [Prim
   * Fit Outside `outside` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Rectangle POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

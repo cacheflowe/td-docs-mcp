@@ -5,21 +5,31 @@ title: SICK_TOP
 ---
 
 # SICK TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 **OS:** This operator is only supported under the **Windows** operating system.
 
 The SICK TOP can be used to retrieve point cloud data from a LIDAR sensor made by [SICK](https://docs.derivative.ca/SICK "SICK"). Sensor results are packed into a floating point texture where each pixel represents one point of data and each color channel stores one field such as x, y or z position. The TOP utilizes the ['sick_scan_xd' SDK](https://github.com/SICKAG/sick_scan_xd/tree/master) and [supported sensors](https://github.com/SICKAG/sick_scan_xd/blob/master/REQUIREMENTS.md) are listed on the project's GitHub page.
+
 The point cloud texture can be further manipulated using other TOPs such as the [Point Transform TOP](https://docs.derivative.ca/Point_Transform_TOP "Point Transform TOP") or [Math TOP](https://docs.derivative.ca/Math_TOP "Math TOP") and then used to generate geometry instances using a [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP"), and optionally rendered using a [Line MAT](https://docs.derivative.ca/Line_MAT "Line MAT").
+
 Communication with the LIDAR sensor is done over an Ethernet connection and the Device Address parameter can be used to enter the sensor's IP address on your network. The SOPAS Engineering Tool software available from SICK can be used to auto-detect the IP address of connected sensors.
+
 Sensor configuration is handled using an external launch file that can be [downloaded from SICK](https://github.com/SICKAG/sick_scan_xd/tree/master/launch). This file is required for any connection and must match the SDK version and model of your sensor. TouchDesigner currently uses version 3.0.x of the SDK. The version can also be viewed in the TOP's info box by middle-clicking on the node.
+
 **Important:** The 'sick_scan_xd' SDK only supports **one** sensor per CPU process, so you may only have one active SICK TOP in a TouchDesigner project file. If multiple SICK TOPs are used, only the first node to cook will activate. To **access multiple sensors** in the same project, use the [ sickEngine](https://docs.derivative.ca/Palette:sickEngine "Palette:sickEngine") component in the Point Cloud folder of the palette. It utilizes the [Engine COMP](https://docs.derivative.ca/Engine_COMP "Engine COMP") to launch each SICK TOP in a separate process.
+
 **Tip:** To obtain additional debugging and status information you can use the `'TOUCH_TEXT_CONSOLE=1'` environment variable to see output from the SICK SDK in the console window. Note: this only works for SICK TOPs in the primary TouchDesigner project, there is no output for TOPs inside [Engine COMPs](https://docs.derivative.ca/Engine_COMP "Engine COMP").
+
 [sickTOP_Class](https://docs.derivative.ca/SickTOP_Class "SickTOP Class")
 
 ## Parameters - Connection Page
+
 - Active `active` - Activate the connection to the sensor. Only one SICK node can be active in a project at time. If a second node is activated it will cause an error message.
 - Reinitialize `reinitialize` - Restart the connection with the sensor. This will shutdown the connection and reinitialize using the current parameters. You can also toggle the Active parameter off and on again to reinitialize the sensor.
 - Launch File `launchfile` - A path to the launch file to configure the sensor. A valid launch file is necessary to connect to the sensor. Sample launch files for each sensor can be downloaded from SICK's website. Advanced configuration options can be set in the launch file.
@@ -32,6 +42,7 @@ Sensor configuration is handled using an external launch file that can be [downl
 - Alpha `alpha` - The name of the data field that will be assigned to the alpha component of the output image e.g. 'one'. The available fields will vary depending on the sensor and can be selected from the flyout menu to the right of the parameter. 'one' or 'zero' can be used to assign a constant value.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -111,9 +122,13 @@ Sensor configuration is handled using an external launch file that can be [downl
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

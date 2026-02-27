@@ -5,18 +5,25 @@ title: Particle_SOP
 ---
 
 # Particle SOP
+
 ## Summary
 
 The Particle SOP is used for creating and controlling motion of "particles" for particle systems simulations. Particle systems are often used to create simulations of natural events such as rain and snow, or effects such as fireworks and sparks. In Touch, the points of the input geometry are used as the starting positions of the particles. Each point of the input can be affected by external force (gravity) and wind. Particles can collide and bounce off another object, set by the Collision Source. They can also bounce off, or die at, limit planes set in X, Y and Z.
+
 Particles are created with an initial velocity/direction that comes from the source geometry’s point normals, and that velocity can be controlled by modifying the normals using, for instance, a [Point SOP](https://docs.derivative.ca/Point_SOP "Point SOP"), [Facet SOP](https://docs.derivative.ca/Facet_SOP "Facet SOP") or [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP"). A point with a Normal of magnitude 1 emit bear particles with a velocity of 1 unit per second in the direction of the normal.
+
 Particles have various [Attributes](https://docs.derivative.ca/Attribute "Attribute") that regular geometry do not have, such as velocity, life expectancy and age. These attributes must be carried with each point in order to carry out the simulation.
+
 The fourth input is Surface Attractors that cause the particles to be attached to areas of a surface. Each particle's id is used to determine a random target primitive, and random u,v on that primitive. That target position is used to modify the current velocity.
+
 [particleSOP_Class](https://docs.derivative.ca/ParticleSOP_Class "ParticleSOP Class")
 
 ## Parameters - Page
+
 - Source Group `sourcegrp` - Limit the particle emission to the points found in the specified point groups.
 
 ## Parameters - State Page
+
 - Particle Type `prtype` - ⊞ - Selects how the particles are rendered.
   * Render as Lines `lines` - Each particle will be rendered as a 2-point line, with the length determined based on the particles velocity. If the particle has no velocity it will just be a single pixel in size.
   * Render as Point Sprites `pointprites` - For use with the [Point Sprite MAT](https://docs.derivative.ca/Point_Sprite_MAT "Point Sprite MAT"). Each particle is a square of pixels that always face the camera. The size of the square is determined by parameters in the Point Sprite and the `pscale` vertex/point attribute. The point sprites will have texture coordinates generated for them automatically also ((0,0) in the bottom left and (1,1) in the top right).
@@ -35,6 +42,7 @@ The fourth input is Surface Attractors that cause the particles to be attached t
 - Preroll Time `timepreroll` - How many seconds of the simulation to bypass, after the reset time is reached. For example, if you put the number `33` into this field (and reset is at `Tstart`), frame one will show the simulation that was at a time of 33 seconds. In other words, the first thirty-two seconds have been bypassed, and the time at thirty-three seconds is shifted to frame one. The first thirty-two seconds must still be calculated in order to compute the status of the points, so you will notice some delay upon reset.
 - Time Inc `timeinc` - The Time Inc parameter determines how often to cook the SOP. By default, this parameter is set to `1/me.time.rate`. This means that the SOP will cook once for every frame. When complex dynamics are involved, the SOP may require more frequent cooking for increased mathematical accuracy. To get sub-frame accuracy in the cooking, set the Time Inc to something smaller than `1/me.time.rate`.
 **For example:** Setting the Time Inc to `0.5/me.time.rate` will mean that the SOP gets cooked twice for every frame.
+
 **Note:** Never set this parameter to be greater than `1/me.time.rate`.
 - Max Steps `maxsteps` - Limits how far back in time TouchDesigner calculates particle positions for proper interactions. If frame rates are slow this computation back in time can become high, this parameter limits that effect.
 - Jitter Births `jitter` - This allows you to jitter the location pixels of each particle as they are born.
@@ -48,14 +56,18 @@ The fourth input is Surface Attractors that cause the particles to be attached t
 - Reset Pulse `resetpulse` - Instantly reset the particle system to its starting state.
 
 ## Parameters - Forces Page
+
 - External Force `external` - ⊞ - Forces of gravity acting on the particles. When drag is zero, the particles can accelerate with no limit on their speed.
   * X `externalx` -
   * Y `externaly` -
   * Z `externalz` -
 
 - Wind `wind` - ⊞ - Wind forces acting on the particles. Similar to External Force. Using Wind (and no other forces, such as Turbulence), the particles will not exceed the wind velocity.
+
 #### Discussion - Wind vs External Force
+
 The application of External Force directly affects a particles' acceleration, the rate of which is determined by the mass (F = Mass Acceleration). Wind is an additional force, but one that is velocity sensitive. If a particle is already travelling at wind velocity, then it shouldn't receive any extra force from it. This implies a maximum velocity when using Wind on its own.
+
 An increase in mass impedes acceleration for a given constant force. Drag is a force opposing the direction of motion which is velocity sensitive, i.e. the larger the velocity, the greater the effect of drag. Its useful for limiting the velocity of particles.
   * X `windx` -
   * Y `windy` -
@@ -70,6 +82,7 @@ An increase in mass impedes acceleration for a given constant force. Drag is a f
 - Seed `seed` - Random number seed for the particle simulation.
 
 ## Parameters - Particles Page
+
 - Add Particle ID `doid` - Adds an ID number to each particle as it is born. **Note:** New attributes only appear once the particle system is reset via the `reset` parameter or loads for first time.
 - Add Mass Attribute `domass` - When selected, calculates the mass of the particle, as specified in the Mass field.
 - Mass `mass` - The relative mass of each particle. Heavier particles take longer to start moving, and longer to slow down.
@@ -84,6 +97,7 @@ An increase in mass impedes acceleration for a given constant force. Drag is a f
 - Birth `birthpulse` - Manually create n particles when pulsed. The number of particles created is controlled by the Birth Count parameter.
 
 ## Parameters - Limits Page
+
 + Limit Plane `limitpos` - ⊞ - The particles will die or bounce off the limit planes when it reaches them. The six limit plane fields define a bounding cube. The default settings are `1000` units away, which is very large. Reduce the values to about one to see the effect.
   * X `limitposx` -
   * Y `limitposy` -
@@ -127,15 +141,20 @@ An increase in mass impedes acceleration for a given constant force. Drag is a f
   * Z `splitvarz` -
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
   * Input 3:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Particle SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -147,7 +166,9 @@ Extra Information for the Particle SOP can be accessed via an [Info CHOP](https:
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

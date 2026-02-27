@@ -5,12 +5,15 @@ title: Switch_DAT
 ---
 
 # Switch DAT
+
 ## Summary
 
 The Switch DAT is a multi-input operator which lets you choose which input is output by using the Input parameter.
+
 [switchDAT_Class](https://docs.derivative.ca/SwitchDAT_Class "SwitchDAT Class")
 
 ## Parameters - Switch Page
+
 - Index `index` - Selects which input to pass though to the output. The first input is 0.
 - Extend `extend` - ⊞ - Determines extend behaviour when index is out of range. Allows negative indices.
   * Clamp `clamp` -
@@ -18,6 +21,7 @@ The Switch DAT is a multi-input operator which lets you choose which input is ou
   * ZigZag `zigzag` -
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -44,18 +48,25 @@ The Switch DAT is a multi-input operator which lets you choose which input is ou
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Switch DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

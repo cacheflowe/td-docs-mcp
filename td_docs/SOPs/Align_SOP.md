@@ -5,14 +5,17 @@ title: Align_SOP
 ---
 
 # Align SOP
+
 ## Summary
 
 The Align SOP aligns a group of primitives to each other or to an auxiliary input, by translating or rotating each primitive along any pivot point.
+
 **Left and Right Primitives** - The notions of "left" and "right" which follow depend on context. If an auxiliary input is used, it is always the right primitive and the primary input geometry are all left primitives. If only one input is used, then for each pair being aligned, there is a left and a right primitive. This means that relative to neighbouring primitives, one primitive can be both left and right.
 [![TouchGeometry72.gif](https://docs.derivative.ca/images/2/25/TouchGeometry72.gif)](https://docs.derivative.ca/File:TouchGeometry72.gif)
 [alignSOP_Class](https://docs.derivative.ca/AlignSOP_Class "AlignSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - A subset of primitives to align (accepts patterns, as described in Pattern Matching in the [Scripting Guide](http://www.derivativeinc.com/Tools/Touch000/Manual/Guides/ScriptingGuide/ScriptingGuide.pdf)). If blank, it aligns the entire input.
 - Align `align` - ⊞ - Can optionally align subgroups of _n_ primitives or every _n_ th primitive in a cyclical manner.
   * All Primitives `all` -
@@ -21,10 +24,13 @@ The Align SOP aligns a group of primitives to each other or to an auxiliary inpu
 
 - N `inc` - Determines the number of primitives to be either grouped or skipped.
 Example: Assume there are six primitives numbered for 0 - 5, and N = 2. Then:
+
 **a)**
+
 **b)**
 
 ## Parameters - Align Page
+
 - Bias `bias` - Determines which primitive remains unaffected: 0 Left, 1 Right.
 - Left UV `leftuv` - ⊞ - Pivot Location for each "left" primitive.
   * U `leftuv1` -
@@ -43,6 +49,7 @@ Example: Assume there are six primitives numbered for 0 - 5, and N = 2. Then:
 - Rotate `dorotate` - When enabled, rotates primitives during alignment by aligning the left UV tangents (at the left UV position) to the right UV tangents (at the right UV position).
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform and rotation order for the transformations. The transform and rotation order determines the order in which transformations take place. Depending on the order, you can achieve different results using the exact same values.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -80,13 +87,18 @@ Example: Assume there are six primitives numbered for 0 - 5, and N = 2. Then:
   * Z `pz` -
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Align SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -98,7 +110,9 @@ Extra Information for the Align SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

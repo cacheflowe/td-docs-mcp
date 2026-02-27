@@ -5,23 +5,32 @@ title: NVIDIA_Flex_TOP
 ---
 
 # NVIDIA Flex TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This feature is only available on systems with a Nvidia GPU.
+
 The Nvidia Flex TOP can grab the Nvidia Flex simulation data of an [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"). The Actor COMP must be in a valid [Nvidia Flex](https://docs.derivative.ca/Flex "Flex") simulation (ie. controlled by an [Nvidia Flex Solver COMP](https://docs.derivative.ca/Nvidia_Flex_Solver_COMP "Nvidia Flex Solver COMP")).
+
 The data will be stored in the texture with each color channel storing a data component. Eg. For positional data the resulting texture is 32-bit float RGBA with x positions in the red channel, y positions in the green channel, and z positions in the blue channel.
+
 See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Nvidia Flex Solver COMP](https://docs.derivative.ca/Nvidia_Flex_Solver_COMP "Nvidia Flex Solver COMP"), [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"), [Force COMP](https://docs.derivative.ca/Force_COMP "Force COMP")
+
 [flexTOP_Class](https://docs.derivative.ca/FlexTOP_Class "FlexTOP Class")
 
 ## Parameters - General Page
+
 - Actor COMP `comp` - The Actor COMP to grab simulation data from.
 - Output `output` - ⊞ - The simulation data to return.
   * Position `position` - Will return the position of each particle in the Actor COMP
   * Velocity `velocity` - Will return the velocity of each particle in the Actor COMP
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -101,9 +110,13 @@ See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Nvidia Flex Solver CO
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Nvidia Flex TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -117,7 +130,9 @@ Extra Information for the Nvidia Flex TOP can be accessed via an [Info CHOP](htt
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

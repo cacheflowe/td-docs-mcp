@@ -5,17 +5,21 @@ title: PreFilter_Map_TOP
 ---
 
 # PreFilter Map TOP
+
 ## Summary
 
 The PreFilter TOP uses spherical harmonics to calculate a Pre-Filtered Diffuse Map or Pre-Filtered Specular Map for use in the [Environment Light COMP](https://docs.derivative.ca/Environment_Light_COMP "Environment Light COMP"). The output of the PreFilter Map TOP can not have further processing done to them before being used by the Environment Light.
+
 [prefiltermapTOP_Class](https://docs.derivative.ca/PrefiltermapTOP_Class "PrefiltermapTOP Class")
 
 ## Parameters - PreFilterMap Page
+
 - Output `output` - ⊞ - Select between calculating the PreFilter for the Diffuse Map or Specular Map.
   * Environment Light Diffuse Map `envlightdiffuse` -
   * Environment Light Specular Map `envlightspecular` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -95,12 +99,17 @@ The PreFilter TOP uses spherical harmonics to calculate a Pre-Filtered Diffuse M
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the PreFilter Map TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -114,7 +123,9 @@ Extra Information for the PreFilter Map TOP can be accessed via an [Info CHOP](h
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

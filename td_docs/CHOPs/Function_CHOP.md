@@ -5,15 +5,21 @@ title: Function_CHOP
 ---
 
 # Function CHOP
+
 ## Summary
 
 The Function CHOP provides more complicated math functions than found in the [Math CHOP](https://docs.derivative.ca/Math_CHOP "Math CHOP") : trigonometic functions, logarithmic functions and exponential functions, and also audio decibels (dB)-power-amplitude conversions.
+
 Most of the functions require only one parameter, and they are applied as a unary operator to each input channel. Some functions take two parameters, and these require the use of the second input. The first parameter, X, is always a value from a channel in the first input. The second parameter, Y, is a value from a corresponding channel in the second input. Channels from each input are paired by name or index.
+
 Since many of these functions can produce math errors, an error handling tab is provided for error handling and recovery. Errors can be handled by replacing the bad sample with a pre-defined value or by using the value of the previous sample. Alternatively, cooking can be aborted upon error for debugging networks.
+
 Function types in decibels: as you would employ for audio or other signal strengths. -10dB means 1/10 the power, -20dB means 1/100 the power. It turns out that each 3dB means almost exactly double the power, so +12dB is 2*2*2*2 = 16 times the power. Power is proportional to the square of the amplitude. So -20dB means 1/10 the amplitude, and 6dB is double the amplitude.
+
 [functionCHOP_Class](https://docs.derivative.ca/FunctionCHOP_Class "FunctionCHOP Class")
 
 ## Parameters - Function Page
+
 - Function `func` - ⊞ - Which math function to apply to the channels. All of the functions are unary functions except for the binary functions 'arctan (Input1/Input2)' and 'Input1 ^ Input2'. In the cases of power functions, a negative base is inverted first to avoid imaginary numbers, and the result is negated.
   * sqrt(x) Square Root `sqrt` - Square Root of Input 1.
   * abs(x) Absolute Value `abs` - Absolute Value of Input 1.
@@ -53,6 +59,7 @@ Function types in decibels: as you would employ for audio or other signal streng
   * Channel Name `name` -
 
 ## Parameters - Error Page
+
 - Error Handling `error` - ⊞ - How to correct samples with math errors:
   * Abort With Error Message `abort` - Cooking aborts.
   * Replace With Specified Values `replace` - Values specified below.
@@ -64,6 +71,7 @@ Function types in decibels: as you would employ for audio or other signal streng
 - Divide Error Value `divval` - Value to use when a divide by zero error occurs. Caused by pow(x,y).
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -82,18 +90,26 @@ Function types in decibels: as you would employ for audio or other signal streng
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Function CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -107,7 +123,9 @@ Extra Information for the Function CHOP can be accessed via an [Info CHOP](https
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

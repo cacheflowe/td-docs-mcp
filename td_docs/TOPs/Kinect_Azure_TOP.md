@@ -5,21 +5,31 @@ title: Kinect_Azure_TOP
 ---
 
 # Kinect Azure TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows 10 April 2018 or newer** operating system.
 
 The Kinect Azure TOP can be used to configure and capture data from a Microsoft Kinect Azure camera or a Kinect compatible [Orbbec](https://docs.derivative.ca/Orbbec "Orbbec") camera (Femto Mega, Femto Bolt, etc).
+
 The TOP can be used to configure the settings of the camera (resolution, frame rate, synchronization, etc) as well to retrieve captured images from either its color or depth cameras. Image data from one camera can be remapped (aligned) to the other camera in order to match color and depth information. Only one Kinect Azure TOP can be connected to a single Kinect camera. To retrieve additional images from the same camera, use a [Kinect Azure Select TOP](https://docs.derivative.ca/Kinect_Azure_Select_TOP "Kinect Azure Select TOP").
+
 The Kinect Azure can also extract body tracking information and skeleton positions using the depth camera image. To access this data, use a [Kinect Azure CHOP](https://docs.derivative.ca/Kinect_Azure_CHOP "Kinect Azure CHOP") and set its Kinect TOP parameter to the primary Kinect Azure TOP that is connected to the device. **Note:** While both Microsoft and Orbbec hardware can be used in the same project, only one hardware type can have body tracking enabled at any one time. Body tracking is required for the Player Index image or to obtain skeleton data. If body tracking is not required from the Orbbec, it is recommended to use the native [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP") instead.
+
 **Note:** The Orbbec Femto Mega does not automatically support ethernet connections using the Kinect Azure TOP or CHOP. However, you can enable detection of ethernet devices using an external configuration file places alongside your toe file. Ethernet connections only support depth and IR images, color video is only supported over USB. For further information on the file see the [Orbbec documentaion](https://www.orbbec.com/documentation-mega/k4a-access-femtomega-network-mode/).
+
 **Warning:** When working with Orbbec hardware, using both Kinect Azure and Orbbec nodes in the same project may lead to instability. It is recommended to use either all Kinect Azure or all Orbbec nodes depending on project requirements.
+
 **TIP:** See Elburz' video on using KinectAzure's point clouds and a bunch of Azure general tips. [Kinect Azure Point Cloud in TouchDesigner Tutorial](https://www.youtube.com/watch?v=P_PjAr2Yzao) on the Interactive and Immersive HQ.
+
 See also [Kinect Azure CHOP](https://docs.derivative.ca/Kinect_Azure_CHOP "Kinect Azure CHOP"), [Kinect Azure Select TOP](https://docs.derivative.ca/Kinect_Azure_Select_TOP "Kinect Azure Select TOP"), [Palette:pointRender](https://docs.derivative.ca/Palette:pointRender "Palette:pointRender"), [Palette:kinectCalibration](https://docs.derivative.ca/Palette:kinectCalibration "Palette:kinectCalibration"), [Palette:kinectRecorder](https://docs.derivative.ca/index.php?title=Palette:kinectRecorder&action=edit&redlink=1 "Palette:kinectRecorder \(page does not exist\)"), [Palette:kinectPointcloud](https://docs.derivative.ca/Palette:kinectPointcloud "Palette:kinectPointcloud").
+
 [kinectazureTOP_Class](https://docs.derivative.ca/KinectazureTOP_Class "KinectazureTOP Class")
 
 ## Parameters - Kinect Azure Page
+
 - Active `active` - Enable or disable the camera. **Note** Disabling this TOP will also disable any other operators ([Kinect Azure Select TOP](https://docs.derivative.ca/Kinect_Azure_Select_TOP "Kinect Azure Select TOP") or [Kinect Azure CHOP](https://docs.derivative.ca/Kinect_Azure_CHOP "Kinect Azure CHOP")) that rely on it.
 - Hardware Type `library` - ⊞ - Choose whether you are using Microsoft Kinect Azure hardware or a Kinect compatible Orbbec camera (Femto Mega, Femto Bolt, etc). Both camera types can be used together in the same project, but only one hardware type can enable body tracking at any one time.
   * Microsoft Kinect Azure `microsoft` - Select this option if you are using an original Microsoft Kinect Azure camera.
@@ -78,6 +88,7 @@ The current depth mode and color resolution will be used to do the remapping. No
 - CPU Body Tracking `cpu` - When enabled, body tracking calculations will be done on the CPU rather than on the graphics card. This method is much slower, but does not require a high-powered graphics card to function.
 
 ## Parameters - Color Page
+
 Use the controls on the Color page to adjust the output of the color camera.
 - Reset Color Controls `resetcolors` - Reset all of the color controls to the camera's defaults. These vary per camera and may be different than the parameter defaults.
 - Enable Color Controls `enablecolors` - Turn on to enable adjustment controls for the color camera. When disabled, the previous color settings will remain in place. Use the Reset Color Controls button to switch the camera back to its default settings.
@@ -98,6 +109,7 @@ Note: This feature may not work correctly due to issues in the current Kinect SD
   * 60Hz `60hz` -
 
 ## Parameters - Timing Page
+
 - Depth Image Delay `depthdelay` - A delay in microseconds between when the depth and color images are captured. The delay must be less than one frame in length based on the current framerate.
 - Wired Sync Mode `syncmode` - ⊞ - When using more than one Kinect Azure camera, this setting can be used to determine which unit is the master and which are subordinates.
   * Standalone `standalone` -
@@ -107,6 +119,7 @@ Note: This feature may not work correctly due to issues in the current Kinect SD
 - Subordinate Delay `subdelay` - A delay in microseconds between when the master unit captures an image and when this device captures an image. (Only applicable for subordinate devices).
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -186,8 +199,11 @@ Note: This feature may not work correctly due to issues in the current Kinect SD
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Kinect Azure TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Kinect Azure TOP Info Channels
   * image_frame - The number of image frames processed by the camera.
 
@@ -204,7 +220,9 @@ Specific Kinect Azure TOP Info Channels
   * bodytracking_errors - The total number of errors procuded by the body tracking system.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -218,7 +236,9 @@ Specific Kinect Azure TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

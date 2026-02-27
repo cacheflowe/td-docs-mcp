@@ -5,15 +5,21 @@ title: RealSense_TOP
 ---
 
 # RealSense TOP
+
 ## Summary
 
 **NOTE**
+
 **Hardware:** The [librealsense SDK v2.50.0](https://github.com/IntelRealSense/librealsense/releases) does not look like it will be updated for Apple Silicon, so it is not an option to add to these builds.
+
 [RealSense](https://docs.derivative.ca/RealSense "RealSense") is a tracking device from Intel. The RealSense TOP connects to Intel [RealSense](https://docs.derivative.ca/RealSense "RealSense") devices and outputs color, depth and IR data from it.
+
 See also [RealSense](https://docs.derivative.ca/RealSense "RealSense") for hardware information and installation instruction, and the [RealSense CHOP](https://docs.derivative.ca/RealSense_CHOP "RealSense CHOP").
+
 [realsenseTOP_Class](https://docs.derivative.ca/RealsenseTOP_Class "RealsenseTOP Class")
 
 ## Parameters - Setup Page
+
 - Active `active` - When set to 1 the TOP captures the image stream from the camera.
 - Model `model` - ⊞ - Select the model of device to use.
   * F200 `f200` -
@@ -56,6 +62,7 @@ See also [RealSense](https://docs.derivative.ca/RealSense "RealSense") for hardw
 - Skeleton Tracking Model File `modelfile` - Specify the model file (.cubemos)
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -135,13 +142,18 @@ See also [RealSense](https://docs.derivative.ca/RealSense "RealSense") for hardw
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the RealSense TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific RealSense TOP Info Channels
   * last_processing_time -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -155,7 +167,9 @@ Specific RealSense TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

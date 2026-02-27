@@ -5,23 +5,37 @@ title: Video_Stream_In_TOP
 ---
 
 # Video Stream In TOP
+
 ## Summary
 
 The Video Stream In TOP creates a client to receive video and audio across the network from RTSP, HLS, or SRT protocol sources; or from a WebRTC peer via a [WebRTC DAT](https://docs.derivative.ca/WebRTC_DAT "WebRTC DAT").
+
 The URL to connect to a RTSP server is in the form:
+
 `rtsp://<ipaddress>:<port>/<streamName>` for example `rtsp://192.168.0.1:554/tdvidstream`
+
 If the server requires a username/password, those can be specified using the form.
+
 `rtsp://username:password@192.168.0.1:554/tdvidstream`
+
 Access **[HLS/DASH](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)** input streams via URLs that point to m3u8 files.
+
 Access streams using **[SRT (Secure Reliable Transport)](https://en.wikipedia.org/wiki/Secure_Reliable_Transport)** protocol with `srt://` URLs. For more information on SRT URLs, please see [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP").
+
 See also [Audio Stream In CHOP](https://docs.derivative.ca/Audio_Stream_In_CHOP "Audio Stream In CHOP"), [WebRTC DAT](https://docs.derivative.ca/WebRTC_DAT "WebRTC DAT").
+
 SRT sent in the Video Stream In TOP can include per-frame metadata making it easy to send and receive CHOP/DAT data in sync with video. Attach an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") to the TOP.
+
 The video codecs that can be streamed in via SRT are H.264 and H.265.
+
 For other protocols over IP see [NDI (Network Data Interface)](https://docs.derivative.ca/NDI "NDI"), and [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP") / [Touch In TOP](https://docs.derivative.ca/Touch_In_TOP "Touch In TOP").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [videostreaminTOP_Class](https://docs.derivative.ca/VideostreaminTOP_Class "VideostreaminTOP Class")
 
 ## Parameters - Play Page
+
 - Active `active` - When set to one, the TOP captures the image stream from the specified url.
 - Mode `mode` - ⊞ - Select the mode: either a Server (for RTSP, HLS or SRT URLs), or WebRTC.
   * Server `server` - Use a RTSP, HLS, or SRT server source.
@@ -34,6 +48,7 @@ For other protocols over IP see [NDI (Network Data Interface)](https://docs.deri
 - Force Re-buffer `forcerebuffer` - Force the stream to re-buffer if possible.
 
 ## Parameters - Image Page
+
 - Deinterlace `deinterlace` - ⊞ - For movies that are stored as fields, where each image is made of two images interleaved together. A 30-frame per second movie would contain 60 fields per second. For each image, the even scanlines of the first field are interleaved with the odd scanlines of the second field. The Video Stream In TOP has several ways of dealing with this:
   * Off `off` - Output the images unchanged.
   * Even `even` - Take only the even scanlines of the file's images and create the odd scanlines by interpolating between the even scanlines. (For historic reasons, scanline 0 is at the top of the images for the purpose of the deinterlacing.)
@@ -47,6 +62,7 @@ For other protocols over IP see [NDI (Network Data Interface)](https://docs.deri
 - Bottom Half is Alpha (AAA) `bottomhalfalpha` - This is a way of encoding alpha into RGB-only formats like H.264. and several other QuickTime formats. You need to create your movies so that the bottom half of the image is the alpha (RGB = AAA). Turning on this features tells the Video Stream In TOP to take the bottom half of the image and put it into the alpha channel of the output. The image height will be cut in half.
 
 ## Parameters - Tune Page
+
 - Pre-Read Frames `prereadframes` - Sets how many video frames TouchDesigner reads ahead and stores in memory. Using this, smooth reading of an image stream is possible even when the disk files are fragmented. The Movie File In TOP will read frames of the movie into memory before they are used, this can eliminate pops or stutters in playback that occur from fragmented files, other resources accessing the hard drive, or movie looping.
 - Video Buffer Frames `videobufferframes` - Sets how many video frames TouchDesigner reads ahead and stores in memory. Using this, smooth reading of an image stream is possible even when the disk files are fragmented. The Movie File In TOP will read frames of the movie into memory before they are used, this can eliminate pops or stutters in playback that occur from fragmented files, other resources accessing the hard drive, or movie looping.
 - Max Decode CPUs `maxdecodecpus` - Limit the maximum number of CPUs that will be used to decode certain codecs that are capable of multi-CPU decoding, such as H264.
@@ -56,10 +72,13 @@ For other protocols over IP see [NDI (Network Data Interface)](https://docs.deri
 - Hardware Decode `hwdecode` - Enables hardware decoding on Nvidia GPUs.
 
 ## Parameters - WebRTC Page
+
 - WebRTC DAT `webrtc` - Set the [WebRTC DAT](https://docs.derivative.ca/WebRTC_DAT "WebRTC DAT") (ie. peer) to get the video stream from. Setting this will automatically populate the WebRTC Connection parameter menu with available connections.
 - WebRTC Connection `webrtcconnection` - Select the [WebRTC](https://docs.derivative.ca/WebRTC "WebRTC") peer-to-peer connection. Selecting this will automatically population the WebRTC Track parameter menu with available video input tracks.
 - WebRTC Track `webrtctrack` - Select the video input track that's a part of the WebRTC peer-to-peer connection.
+
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -139,8 +158,11 @@ For other protocols over IP see [NDI (Network Data Interface)](https://docs.deri
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Video Stream In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Video Stream In TOP Info Channels
   * frame_time -
 
@@ -173,7 +195,9 @@ Specific Video Stream In TOP Info Channels
   * network_mbit_rate -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -187,7 +211,9 @@ Specific Video Stream In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

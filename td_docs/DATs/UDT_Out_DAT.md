@@ -5,18 +5,27 @@ title: UDT_Out_DAT
 ---
 
 # UDT Out DAT
+
 ## Summary
 
 **NOTE This DAT has been removed from TouchDesigner 2021 Official builds and later.**
+
 The UDT Out DAT is used for sending information over a [UDT](https://docs.derivative.ca/UDT "UDT") connection between remotely located computers.
+
 Send messages using the [udtoutDAT_Class](https://docs.derivative.ca/UdtoutDAT_Class "UdtoutDAT Class"). Handle received messages using the callback DAT attached to the [UDT In DAT](https://docs.derivative.ca/UDT_In_DAT "UDT In DAT"). See [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols").
+
 Although it is an 'Out' node, it can receive reply messages from the machine(s) it sends to. The messages will appear in the DAT's contents (just like the [UDT In DAT](https://docs.derivative.ca/UDT_In_DAT "UDT In DAT")).
+
 [Tscript](https://docs.derivative.ca/Tscript "Tscript") uses the `send` Command to initiate the data output.
+
 See also: [UDT In DAT](https://docs.derivative.ca/UDT_In_DAT "UDT In DAT")
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [udtoutDAT_Class](https://docs.derivative.ca/UdtoutDAT_Class "UdtoutDAT Class")
 
 ## Parameters - Connect Page
+
 - Protocol `protocol` - ⊞ - Selects the network protocol to use. Refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Fast Streaming `faststreaming` -
   * Reliable Messaging `reliablemsging` -
@@ -31,6 +40,7 @@ See also: [UDT In DAT](https://docs.derivative.ca/UDT_In_DAT "UDT In DAT")
 - Active `active` - This check box enables the connection.
 
 ## Parameters - Received Data Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message coming in.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -44,6 +54,7 @@ See also: [UDT In DAT](https://docs.derivative.ca/UDT_In_DAT "UDT In DAT")
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.

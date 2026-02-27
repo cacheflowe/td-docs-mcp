@@ -5,15 +5,19 @@ title: Convolve_TOP
 ---
 
 # Convolve TOP
+
 ## Summary
 
 The Convolve TOP uses a DAT table containing numeric coefficients. For each pixel, it combines its RGBA values and it's neighboring pixels' RGBA values by multiplying the values by the corresponding coefficients in the table, adding the results together. For example, if the table is 5 rows and 5 columns, the pixel and its 24 neighbors are combined.
+
 Example coefficient for 3x3 blur, edge, emboss, sharpen and vertical slope kernels. Be sure to turn on 'Normalize Coefficients' to use these coefficients as -is:
 [![ConvolveTOP.1.jpg](https://docs.derivative.ca/images/6/67/ConvolveTOP.1.jpg)](https://docs.derivative.ca/File:ConvolveTOP.1.jpg)
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [convolveTOP_Class](https://docs.derivative.ca/ConvolveTOP_Class "ConvolveTOP Class")
 
 ## Parameters - Convolve Page
+
 - Coefficients DAT `dat` - The DAT containing the rows and columns of coefficients.
 - Normalize Coefficients `normalize` - This will normalize the coefficients before using them in the convolve. Normaliziation is done by summing all the coefficients and dividing every coefficient by that sum. Note: If the coefficients add up to 0, then this parameter does nothing.
 - Apply to Alpha `applytoalpha` - When off, the alpha channel will not be convolved.
@@ -22,6 +26,7 @@ Example coefficient for 3x3 blur, edge, emboss, sharpen and vertical slope kerne
 - Convolve Z `convolvez` - When on, the DAT table will be defined as a 3D kernel. The size of the 3D kernel must be cubic where the width, height, and depth are equal in size. For example, for a 5x5x5 kernel, there must be 25 rows and 5 columns. The first 5 rows define the coefficients for the first slice of the 3D convolution in a 3D texture. The next 5 rows define the 2nd slice and so on.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -101,12 +106,17 @@ Example coefficient for 3x3 blur, edge, emboss, sharpen and vertical slope kerne
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Convolve TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -120,7 +130,9 @@ Extra Information for the Convolve TOP can be accessed via an [Info CHOP](https:
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

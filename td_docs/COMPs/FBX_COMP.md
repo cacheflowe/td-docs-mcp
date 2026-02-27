@@ -5,22 +5,35 @@ title: FBX_COMP
 ---
 
 # FBX COMP
+
 ## Summary
 
 The FBX COMP imports geometry, animations and scenes using the FBX file format from Maya, 3DS Max, Cinema4D, Houdini and others. The FBX COMP currently uses the 2020.3.7 (VS2022) version of the FBX SDK.
+
 [FBX](https://www.autodesk.com/products/fbx/overview) is a file format and set of libraries from Autodesk that is used to exchange models, animations and image/texture data between applications. The FBX COMP reads FBX files and supports most of its features. You can drag-drop a `.fbx` into a TouchDesigner network or import it via the File > Import File... menu. The FBX COMP can also import meshes from .obj and .4ds files, see also [File Types](https://docs.derivative.ca/File_Types "File Types").
+
 The assets from the FBX file are saved into a "`.tdc`" file with the same name as the FBX file inside the `TDImportCache` folder, which is created next to your `.toe` file. Assets are read from the "`.tdc`" file using Import Select OPs ([Import Select TOP](https://docs.derivative.ca/Import_Select_TOP "Import Select TOP") / [Import Select SOP](https://docs.derivative.ca/Import_Select_SOP "Import Select SOP") / [Import Select CHOP](https://docs.derivative.ca/Import_Select_CHOP "Import Select CHOP")). Upon reloading a `.toe` file, the assets can be imported directly from the "`.tdc`" cache, and the FBX file will not need to be re-imported. However, if there is no existing "`.tdc`" (for instance, if the toe file changed computers) then the FBX file will be reopened to grab the assets and a new "`.tdc`" will be saved out.
+
 To open an FBX file in an FBX COMP:
+
 1) Specify a valid file path in the "FBX File" parameter, including the name of the file with correct `.fbx` extension.
+
 2) This step is varied depending on whether the FBX COMP is just created and if any changes in the default values of parameters are required or not. If the file is being loaded for the first time in the network and the default parameter values are accepted then simply press the "Import" button to generate the FBX network and import the assets. Note that we recommend changing the "Import Method" to to other modes (less work) can significantly improve performance. Generally, any changes in the parameters above the "Import" button requires the network to be built again.
+
 3) With the "Import Method" menu set to "Merge with Existing", the "Import" pulse will reload the internal assets (e.g. meshes, etc.) and this is specifically useful if the file has moved to another location and when the `.toe` file is opened the assets were not found and reloaded properly.
+
 4) With the "Import Method" menu set to "Import Assets (Import Selects)", the "Import" button is used when some changes on FBX file are made and we want to merge those changes into the current network without fully rebuilding it.
+
 **Animation channels** : When there is animation in the FBX file, use the controls on the Play page to initialize, start and guide the animation. Also create an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") and attach it to the FBX COMP to watch its animation timing. The Info CHOP channels are similar to those of the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP").
+
 **Textures** : Textures can either be embedded within the FBX file or external and referenced by a path to a texture file. For example, Blender has an option during FBX export to embed, otherwise they'll be external. If they're external then they may be exported with an absolute path to the texture file, which means if you move the FBX file to a different machine or relocate the file, then the textures will fail to load. In this case, if you are unable to re-export to embed the textures, then you can instead specify a search directory using the Texture Directory parameter so that the FBX COMP knows where to locate the texture files at import.
+
 See also: [FBX](https://docs.derivative.ca/FBX "FBX"), [Import Select CHOP](https://docs.derivative.ca/Import_Select_CHOP "Import Select CHOP"), [Import Select TOP](https://docs.derivative.ca/Import_Select_TOP "Import Select TOP"), [Import Select SOP](https://docs.derivative.ca/Import_Select_SOP "Import Select SOP"), [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP")
+
 [fbxCOMP_Class](https://docs.derivative.ca/FbxCOMP_Class "FbxCOMP Class")
 
 ## Parameters - FBX Page
+
 **NOTE:** changes to any of the below parameters aren’t applied until the FBX File is rebuilt, either through "Build Network" or "Update".
 - FBX File `file` - The FBX file to import.
 - Import Method `importmethod` - ⊞ - Determines what to do when clicking the 'Import' button below.
@@ -46,6 +59,7 @@ See also: [FBX](https://docs.derivative.ca/FBX "FBX"), [Import Select CHOP](http
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute during import or update allowing for modification and customization of the imported operators and resulting network.
 
 ## Parameters - Play Page
+
 - Animation `animation` - Specifies the animation name (if any is specified) to playback from the imported FBX.
 - Shift Animation Start `shiftanimationstart` - A toggle to specify whether to shift the animation to the start of animation indicated in the importing file.
 - Sample Rate Mode `sampleratemode` - ⊞ - Select between using the 'File FPS' embedded in the FBX file or setting a 'Custom' sample rate.
@@ -106,6 +120,7 @@ See also: [FBX](https://docs.derivative.ca/FBX "FBX"), [Import Select CHOP](http
   * Mirror `mirror` -
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -187,7 +202,9 @@ In the example above, rotations performed on an Component with different pivot p
   * Z `upz` -
 
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
+
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -230,7 +247,9 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Reset Transform `preset` - This button will reset this page's transform so it has no translate/rotate/scale.
 - Commit to Main Transform `pcommit` - This button will copy the transform from this page to the main Xform page, and reset this page's transform.
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
+
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -242,7 +261,9 @@ The Display parameter page controls the component's [material](https://docs.deri
   * Blue `wcolorb` -
 
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
+
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -250,7 +271,9 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Object `ext0object` - A number of class instances that can be attached to the component.
 - Name `ext0name` - Optional name to search by, instead of the instance class name.
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
+
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -299,8 +322,11 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the FBX COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific FBX COMP Info Channels
   * fbx_file_version -
 
@@ -341,11 +367,15 @@ Specific FBX COMP Info Channels
   * end_index -
 
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

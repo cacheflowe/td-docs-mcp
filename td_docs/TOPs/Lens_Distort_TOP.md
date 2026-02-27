@@ -5,10 +5,13 @@ title: Lens_Distort_TOP
 ---
 
 # Lens Distort TOP
+
 ## Summary
 
 The Lens Distort TOP applies or removes lens distortion from an image using the [Brown-Conrady model](https://en.wikipedia.org/wiki/Distortion_\(optics\)). This can be used to rectify images taken from a physical camera, to apply distortion to a rendering for use in augmented reality (AR), or as a visual effect.
+
 The distortion algorithm used by the Lens Distort TOP can be broken down into three components: radial distortion, tangential distortion and the camera matrix.
+
 Radial distortion shifts pixels in the output relative to their distance from the center of the image (defined by the Optical Center parameter). Radial distortion is controlled by the k1, k2 and k3 constants, with k1 having the greatest effect and k3 the least. Positive k values create a barrel or fisheye effect as if the image was wrapped around the surface of a sphere. Negative k values will bend the image inward to create a pincushion or pillow effect. The equations for radial distortion are:
 ```
 x_distorted = x * (1 + k1 * r^2 + k2 * r^4 + k3 * r^6)
@@ -34,7 +37,6 @@ The camera matrix is defined by the Optical Center and Focal Length parameters a
 fx 0  cx
 0  fy cy
 0  0  1
-
 ```
 
 Distortion values for a camera lens can be determined using [OpenCV calibration routines](https://docs.opencv.org/master/dc/dbb/tutorial_py_calibration.html) or through functions for a particular camera (see [kinectazureTOP class](https://docs.derivative.ca/KinectazureTOP_Class "KinectazureTOP Class")).
@@ -48,11 +50,15 @@ Tangential Distortion, p1 < 0
 Tangential Distortion, p2 < 0
 
 The Layout page has parameters to control how the distorted (or undistorted) image is arranged inside the output image frame. These features can be helpful to preserve parts of the input image that might otherwise be projected offscreen, to preserve input image resolution, or to establish a consistent output frame when lens distortion parameters are changing.
+
 For example, setting the Post Transform parameter to Optimal and keeping Optimal Alpha at 1, the distorted image will be scaled and shifted so that the entire input image is kept within the output frame. Switching the Layout parameter to Native Resolution, will then scale the output resolution so that no detail from the input image is lost. Attaching an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") will provide Region of Interest (ROI) bounds that can be used to crop out the original distorted image from the output image.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [lensdistortTOP_Class](https://docs.derivative.ca/LensdistortTOP_Class "LensdistortTOP Class")
 
 ## Parameters - LensDistort Page
+
 - Invert Distortion `invert` - Reverse the lens distortion. This will *mostly* undo the distortion applied by another Lens Distort TOP with the same parameters and Inverse disabled. The lens distortion algorithm does not have a precise inverse solution, so an approximate method is used which may not match the original image precisely. The quality of the approximation varies depending on the magnitude of the distortion. Additionally, the approximation aglorithm does not use the k3 constant and any content that was lost outside the bounds of the image cannot be recreated.
 - K1 `k1` - The first radial distortion constant. The k constants move pixels towards or away from the center of the image. Values greater than 0 produce a barrel or fisheye effect, while values less than zero produce a pillow or pincushion effect. k1 has a larger effect than k3.
 - K2 `k2` - The second radial distortion constant. See K1.
@@ -78,6 +84,7 @@ For example, setting the Post Transform parameter to Optimal and keeping Optimal
   * P `pixels` - The focal length is described in pixels.
 
 ## Parameters - Layout Page
+
 - Layout `layout` - ⊞ - Determines how the transformed image is arranged inside the final output image space. This value can be useful to preserve the native pixel resolution of the input image, or ensuring a final output resolution and aspect ratio.
   * Scale to Fit `scale` - The transformed image is scaled to fill the full resolution and aspect ratio of the output image. This mode is useful if you want a specific output resolution or aspect ratio.
   * Native Resolution `native` - The transformed image is arranged in the output in a way that preserves its original resolution and aspect ratio. This may mean the image is cropped if the output resolution is smaller than the input resolution.
@@ -145,6 +152,7 @@ For example, setting the Post Transform parameter to Optimal and keeping Optimal
   * P `pixels` - The scale is described in pixels.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -224,11 +232,15 @@ For example, setting the Post Transform parameter to Optimal and keeping Optimal
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Lens Distort TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Lens Distort TOP Info Channels
   * optimal_center_x -
 
@@ -247,7 +259,9 @@ Specific Lens Distort TOP Info Channels
   * roi_top -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -261,7 +275,9 @@ Specific Lens Distort TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

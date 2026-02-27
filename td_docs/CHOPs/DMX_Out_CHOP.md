@@ -5,22 +5,33 @@ title: DMX_Out_CHOP
 ---
 
 # DMX Out CHOP
+
 ## Summary
 
 The DMX Out CHOP sends channels to [DMX](https://docs.derivative.ca/DMX "DMX"), [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [sACN](https://docs.derivative.ca/SACN "SACN"), [KiNET](https://www.colorkinetics.com/global/learn/optics-matter), or FTDI devices. Channel values for DMX are 0-255.
+
 The first channel you send into the DMX Out will correspond to the first DMX address (DMX channel) As you add channels to the DMX Out, you will access the next DMX channels in order. For example, if you input 12 channels into the DMX out, you will be controlling DMX channels 1 thru 12.
+
 The DMX in TouchDesigner was developed on the [ENTTEC](http://www.enttec.com) device, namely their [DMX USB Pro](http://www.enttec.com/?main_menu=Products&pn=70304) and DMX over Ethernet devices, but it should work for many devices and software that support DMX/Art-Net/sACN/KiNET.
+
 A Routing Table can be provided in a DAT where addresses can be specified by adding rows for each channel and specifying net, subnet and universe.
+
 **ENTTEC NOTE:** - Use ENTTEC's [NMU (Node Management Utility)](http://www.enttec.com/us/products/controls/dmx-over-ethernet/nmu/) to configure and inspect the ENTTEC devices found on your network.
+
 **macOS NOTE:** - ENTTEC USB Pro may not connect automatically, to enable it enter the following command in the Terminal:
+
 `sudo kextunload -b com.apple.driver.AppleUSBFTDI`
+
 **Tip** : See the [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") for setup and usage examples.
+
 **Tip** : Use [WireShark](https://www.wireshark.org/) to watch your DMX network traffic.
 
 See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [sACN](https://docs.derivative.ca/SACN "SACN"), [DMX In CHOP](https://docs.derivative.ca/DMX_In_CHOP "DMX In CHOP"), [DMX](https://docs.derivative.ca/DMX "DMX")
+
 [dmxoutCHOP_Class](https://docs.derivative.ca/DmxoutCHOP_Class "DmxoutCHOP Class")
 
 ## Parameters - DMX Page
+
 - Active `active` - Connects to the device while On.
 - Interface `interface` - ⊞ - Select the type of interface to connect to the device with.
   * Enttec Generic Serial `serial` - Uses the operating system's serial calls to write data.

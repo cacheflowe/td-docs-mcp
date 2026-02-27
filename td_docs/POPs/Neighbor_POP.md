@@ -5,19 +5,29 @@ title: Neighbor_POP
 ---
 
 # Neighbor POP
+
 ## Summary
 
 The Neighbor POP uses the `P` attribute to find, for each point of the input, the closest points to it. It puts the indexes of the closest points in an array attribute `Nebr`. You specify the max number of neighbors, and you choose the Max Neighbors Distance to look for neighbors.
+
 The size of the attribute `Nebr` is the Max Neighbors parameter. If fewer than that number is found, it puts a special number `4294967295` as the value for the neighbor index. The attribute `NumNebrs` holds the number of neighbors found for each point.
+
 You can output the average distance to the found neighbors, optionally including the point's position. Alternately you can output the Inverse Distance Weighted Average, where the closest points have the highest influence on the average.
+
 Instead of outputting the indexes of the neighbors, you can output any set of attributes of the neighbors (careful, this can produce a lot of data).
+
 An alternate form of the Neighbor POP takes a second input, where the each point of the first input is compared to points of the second input.
+
 Neighbors are determined by distance between points, but via the Neighbors Type menu, they can also be determined by connectivity along any primitive connecting edges to neighboring points (only one step currently). For example, two points adjacent to each other in a line strip or quad are neighbors of each other.
+
 ( Distribution - Default, Unique, Closest )
+
 Internally it is using a unbounded spatial hashing algorithm nad put into one of Num Hash Buckets.
+
 [neighborPOP_Class](https://docs.derivative.ca/NeighborPOP_Class "NeighborPOP Class")
 
 ## Parameters - Neighbor Page
+
 - Neighbors Type `nebrtype` - ⊞ - When checking for neighbors, choose to use edge connectivity or only distance to neighbor points.
   * By Distance `distance` -
   * Connected `connected` -
@@ -56,20 +66,28 @@ Internally it is using a unbounded spatial hashing algorithm nad put into one of
   * * `*` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Neighbor POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

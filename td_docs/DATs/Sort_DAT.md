@@ -5,12 +5,15 @@ title: Sort_DAT
 ---
 
 # Sort DAT
+
 ## Summary
 
 The Sort DAT will sort table DAT data by row or column.
+
 [sortDAT_Class](https://docs.derivative.ca/SortDAT_Class "SortDAT Class")
 
 ## Parameters - Sort Page
+
 - Sort `sortmethod` - ⊞ - Determines how the table will be sorted.
   * Rows (Specify Column Name) `colname` - Sort rows using the column specified under the Name parameter.
   * Rows (Specify Column Index) `colindex` - Sort rows using the column specified under the Index parameter.
@@ -38,6 +41,7 @@ The Sort DAT will sort table DAT data by row or column.
 - Reverse Output `reverse` - Reverses the sort order.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -64,18 +68,25 @@ The Sort DAT will sort table DAT data by row or column.
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Sort DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

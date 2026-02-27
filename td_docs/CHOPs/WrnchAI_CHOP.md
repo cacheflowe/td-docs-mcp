@@ -5,28 +5,34 @@ title: WrnchAI_CHOP
 ---
 
 # WrnchAI CHOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 **Note: Wrnch has be acquired by another company and it is no longer possible to obtain a license to use it anymore. This CHOP has been removed in 2022.20000+ builds.**
+
 Using the [wrnchAI](https://docs.derivative.ca/WrnchAI "WrnchAI") engine to track human motion in any video stream, this CHOP will output channels for Body, Face and Hand positions. Multiple people can be tracked at the same time with low-latency, and the system compatible with all cameras and video feeds. TouchDesigner used the wrnchAI Edge SDK and all computation is done locally in realtime utilizing Nvidia GPUs and the NVIDIA CUDA® Deep Neural Network library ([cuDNN](https://developer.nvidia.com/cudnn)). This can offer skeletal tracking of multiple people at 60fps or higher (90-120fps etc).
 ```
 **Requires a separate license from wrnchAI** to run in TouchDesigner. Requires **Nvidia GPU on Windows OS** and TouchDesigner Pro.
 Make sure to install TouchDesigner from the Full Installer, the Lite Installer does not include wrnchAI libraries.
-
 ```
 
 #####  Quickstart Guide
+
 Once you have a wrnchAI license (purchased or trial), you will have access to your **wrnchAI licenses** page and the **wrnchAI Edge Releases** page.
   1. Go to your [wrnchAI licenses page](https://devportal.wrnch.ai/licenses). Click on the 'key' icon and copy the **Edge License Key** into the CHOP's 'wrnchAI License' parameter.
   2. Go to [wrnchAI Edge Releases page](https://devportal.wrnch.ai/wrnchai_edge/releases) and download the **wrnchAI Engine for Win10**. The file will be something like `wrnchAI-Engine-1.17.0-GPU-Win10.zip`
   3. Once downloaded, extract the .zip file and locate the **wrnchAI trained models folder** for use in the CHOP's 'Model Folder' parameter. It should be located here: `wrnchAI-engine-GPU-1.17.0-Windows-amd64/bin/wrModels`
 
 The wrnchAI CHOP will take a few moments to initialize and then will be ready for tracking. Initializing is only required when a new Model Folder is introduced, it will not need to re-initialize each time the project is started.
+
 [wrnchaiCHOP_Class](https://docs.derivative.ca/WrnchaiCHOP_Class "WrnchaiCHOP Class")
 
 ## Parameters - Setup Page
+
 - wrnchAI License `license` - Add the Edge License Key from your wrnchAI account here. Requires a separate license from [wrnchAI](https://wrnch.ai/).
 - Model Folder `modelfolder` - Specify the path the the folder that contains the trained models. See Quickstart Guide above for details.
 - GPU Device `gpu` - ⊞ - A menu of available GPU(s) to run wrnchAI on. Selecting 'Default' uses the same GPU TouchDesigner is currently running on.
@@ -45,6 +51,7 @@ The wrnchAI CHOP will take a few moments to initialize and then will be ready fo
 - Aspect Correct UVs `aspectcorrectuv` - Adjusts the values of u and v channels to take the TOP's aspect ratio into account. When using non-square input TOP, turn this on to line up u and v position with the image.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -62,8 +69,11 @@ The wrnchAI CHOP will take a few moments to initialize and then will be ready fo
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the wrnchAI CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific wrnchAI CHOP Info Channels
   * initializing -
 
@@ -74,7 +84,9 @@ Specific wrnchAI CHOP Info Channels
   * processing_time -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -88,7 +100,9 @@ Specific wrnchAI CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

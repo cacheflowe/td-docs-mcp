@@ -5,19 +5,25 @@ title: Art-Net_DAT
 ---
 
 # Art-Net DAT
+
 ## Summary
 
 The Art-Net DAT polls and lists all devices on the network.
+
 **Tip** : If you are having trouble inspecting the Art-Net packets that are or aren’t being read by a device, use the [Wireshark](https://www.wireshark.org/) utility to capture a network stream for comparison.
+
 See [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [DMX In CHOP](https://docs.derivative.ca/DMX_In_CHOP "DMX In CHOP"), [DMX Out CHOP](https://docs.derivative.ca/DMX_Out_CHOP "DMX Out CHOP").
+
 [artnetDAT_Class](https://docs.derivative.ca/ArtnetDAT_Class "ArtnetDAT Class")
 
 ## Parameters - ArtNet Page
+
 - Callbacks DAT `callbacks` - Runs this script when polling the network for devices. See [artnetDAT_Class](https://docs.derivative.ca/ArtnetDAT_Class "ArtnetDAT Class") for usage.
 - Columns `columns` - Select which columns are included in the table. Click the drop menu to the right to see all that are available.
 - Poll Devices `poll` - Poll the network for devices.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -34,15 +40,21 @@ See [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [DMX In CHOP](https
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Art-Net DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

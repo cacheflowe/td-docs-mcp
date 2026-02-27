@@ -5,12 +5,15 @@ title: Panel_CHOP
 ---
 
 # Panel CHOP
+
 ## Summary
 
 The Panel CHOP reads [Panel Values](https://docs.derivative.ca/Panel_Value "Panel Value") from [Panel Components](https://docs.derivative.ca/Panel_Component "Panel Component") into CHOP channels. Panel values can also be accessed by using the `panel` Member of the [PanelCOMP Class](https://docs.derivative.ca/PanelCOMP_Class "PanelCOMP Class").
+
 [panelCHOP_Class](https://docs.derivative.ca/PanelCHOP_Class "PanelCHOP Class")
 
 ## Parameters - Panel Page
+
 - Component `component` - The path of the Component being referenced.
 - Select `select` - Specify which panel values to create channels for. Use * to select all panel values. Add individual values using the drop down menu on the right.
 - Rename `rename` - Rename the panel value channels selected with the Select parameter here. For example, if "u v" are selected in the Select parameter, you can rename these channels to horizontal and vertical by entering "horizontal vertical".
@@ -18,6 +21,7 @@ The Panel CHOP reads [Panel Values](https://docs.derivative.ca/Panel_Value "Pane
 - Queue Size `queuesize` - Size of queue. If the number of events is larger than the queue size, earlier events will be discarded.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -35,9 +39,13 @@ The Panel CHOP reads [Panel Values](https://docs.derivative.ca/Panel_Value "Pane
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Panel CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -51,7 +59,9 @@ Extra Information for the Panel CHOP can be accessed via an [Info CHOP](https://
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

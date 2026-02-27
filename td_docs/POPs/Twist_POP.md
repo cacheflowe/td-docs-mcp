@@ -5,15 +5,21 @@ title: Twist_POP
 ---
 
 # Twist POP
+
 ## Summary
 
 The Twist POP performs non-linear deformations on points such as Twist, Bend, Shear, Taper, Linear Taper, and Squash & Stretch.
+
 You set up one or two axes (X, Y or Z) and a pivot point to determine the direction and center of deformation. The amount of deformation is set by the Strength parameter, and the rolloff away from the pivot point and/or axes is affected by the Rolloff parameter.
+
 The amount of deformation can also be increased or decreased using a Weight attribute, which multiplies the Strength per-point.
+
 You can deform any point, vertex or primitive attribute.
+
 [twistPOP_Class](https://docs.derivative.ca/TwistPOP_Class "TwistPOP Class")
 
 ## Parameters - Twist Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -79,19 +85,27 @@ You can deform any point, vertex or primitive attribute.
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Twist POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

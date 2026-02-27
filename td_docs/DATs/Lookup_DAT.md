@@ -5,13 +5,17 @@ title: Lookup_DAT
 ---
 
 # Lookup DAT
+
 ## Summary
 
 The Lookup DAT outputs values from a lookup Table. The first input is an index into the second input.
+
 The Lookup DAT allows you to select rows from its second input by referencing data either via row/column indices or row/column names. The advantage of the Lookup DAT is such that the order the data is selected is independent from the order in the Lookup Table, rather the Index Table dictates the order therefore allowing for reordering of data and selecting rows/columns multiple times.
+
 [lookupDAT_Class](https://docs.derivative.ca/LookupDAT_Class "LookupDAT Class")
 
 ## Parameters - Lookup Page
+
 - Index `index` - ⊞ - Select how the index values are interpreted: as values/indices contained in a column or contained in a row.
   * Row Indices `rowindices` - Rows selected in the Lookup DAT are represented as numerical indices in the Index input.
   * Col Indices `colindices` - Columns selected in the Lookup DAT are represented as numerical indices in the Index input.
@@ -27,6 +31,7 @@ The Lookup DAT allows you to select rows from its second input by referencing da
 - Include Header `includeheader` - Include the first row or column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -53,18 +58,25 @@ The Lookup DAT allows you to select rows from its second input by referencing da
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Lookup DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

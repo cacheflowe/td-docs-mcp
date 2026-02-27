@@ -5,32 +5,55 @@ title: Actor_COMP
 ---
 
 # Actor COMP
+
 ## Summary
 
 An Actor COMP is analogous to a body (or bodies) in a physics system. An Actor COMP must be used in conjunction with a physics solver: either a [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP") or [Nvidia Flex Solver COMP](https://docs.derivative.ca/Nvidia_Flex_Solver_COMP "Nvidia Flex Solver COMP"), which in turn is analogous to the world/simulation that the actors/bodies operate in. An Actor COMP can either be static, meaning it is not affected by any forces in the simulation and cannot move (ie. has infinite mass), or it can be dynamic, meaning it is moved by forces and collides with other bodies (either static or dynamic) in the world.
+
 See also: [Flex](https://docs.derivative.ca/Flex "Flex"), [Bullet Dynamics](https://docs.derivative.ca/Bullet_Dynamics "Bullet Dynamics"), [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP"), [Force COMP](https://docs.derivative.ca/Force_COMP "Force COMP"), [Constraint COMP](https://docs.derivative.ca/Constraint_COMP "Constraint COMP"), [Bullet Solver CHOP](https://docs.derivative.ca/Bullet_Solver_CHOP "Bullet Solver CHOP"), [Nvidia Flex Solver COMP](https://docs.derivative.ca/Nvidia_Flex_Solver_COMP "Nvidia Flex Solver COMP"), [Nvidia Flex TOP](https://docs.derivative.ca/Nvidia_Flex_TOP "Nvidia Flex TOP").
+
 [actorCOMP_Class](https://docs.derivative.ca/ActorCOMP_Class "ActorCOMP Class")
 
 ## Usage
+
 ###
+
 Actors in Bullet
+
 Static bodies can be concave or convex, but dynamic bodies must be convex. However, dynamic collision shapes can be compound, meaning it is a collision shape made of other collision shapes. So, a concave collision shape can be created in the dynamic case by building it out of a group of convex shapes. This can be done using multiple SOPs. Each SOP must be convex, but combination of the SOPs does not need to be. If Automatic mode is selected, then a compound collision shape will be created from these SOPs.
+
 All bodies in an Actor COMP have a corresponding collision shape. The collision shape is what determines how objects will collide with one another, and it is important to note that what is seen in the viewer/render will not necessarily directly match the collision shape.
+
 Collision shapes are created using SOPs, either through the "Collision SOPs" parameter or by putting them inside the Actor COMP itself. If the "Collision SOPs" parameter is filled in, then the Actor COMP will create a single body from all the SOPs at that given paths (if the path is a COMP then it will recursively grab all the SOPs in the COMP). If there is nothing filled in for the "Collision SOPs" parameter, then the Actor COMP will instead recursively search inside itself for any SOPs that have both their display and render flags on. The Actor COMP will create a single body and corresponding collision shape from these SOPs.
+
 There are several options when it comes to creating a collision shape out of the SOPs. These options can be chosen from the "Collision Shape" parameter. For instance, the option "Oriented Bounding Box" will create a minimum volume bounding box around the selected SOPs.
+
 To create multiple bodies, use the instancing on the "Instance" page of the Actor COMP. This will create any number of identical bodies, each with their own identical collision shape. Currently there is no way to create multiple non-identical bodies in a single Actor COMP.
+
 Bodies are initialized using the "Initialize Actor" parameter, so if any changes are made to the SOPs that create the bodies, then the Actor COMP must be reinitialized. Bodies will automatically be re-initialized if the Kinematic State, Shape, or Center of Mass is changed.
+
 Transforms can be applied to an Actor COMP using the Xform and Pre-Xform pages, much like on a Geometry COMP or Camera COMP. The transforms on the Xform and Pre-Xform pages create the initial transform of the actor in the simulation, but they can also be used to modify the transform of an actor during a simulation. Changing scale on either page will require a reinitialization of the actor since it changes the collision shape itself. Modifying any of the transforms while instancing will automatically reinitialize the actor.
+
 Actor COMPs cannot be nested; however, Actor COMPs can be nested inside Geometry COMPs and vice versa. Geometry COMPs with a nested Actor COMPs cannot have any scale transform; however, Geometry COMPs nested inside an Actor COMP can have scale. An Actor COMP nested inside Geometry COMPs will use their transform only when it is initialized. Therefore, any changes to the transform of these Geometry COMPs will require a reinitialization of the Actor COMP.
+
 ###
+
 Actors in Flex
+
 [Flex](https://docs.derivative.ca/Flex "Flex") actors can either be fluid particles, a fluid particle emitter, or a static shape.
+
 Static shapes in Flex are built in the same way that concave (ie. static) shapes are built in Bullet. Static shapes require a triangle mesh SOP to build up their collision shape. However, box/sphere collision shape options can also be used to create a bounding box/sphere of the collision shape SOP.
+
 Fluid particles behave much the same way as instancing on a Bullet actor. The number of fluid particles is equal to the number of instances created from an instance OP. The instance parameters are used to give the particle an initial transform, but once the simulation is running the transform is updated from the simulation results.
+
 One key difference of a fluid particle Actor COMP is that no SOP is needed to create a fluid particle since their size/behaviour is defined through the simulation parameters on the [Nvidia Flex Solver COMP](https://docs.derivative.ca/Nvidia_Flex_Solver_COMP "Nvidia Flex Solver COMP"). A SOP in the Actor COMP can be used to the render/display the positions of the particles. Alternatively, the particle positions can be fetched using the [Nvidia Flex TOP](https://docs.derivative.ca/Nvidia_Flex_TOP "Nvidia Flex TOP").
+
 Fluid emitters add particles to the scene at the emission point (ie. the transform of the Actor COMP). Particles are added up until the emission maximum is reached, at which point emission particles will be recycled from already existing particles.
+
 ###
+
 Using an Actor COMP
+
 When creating an Actor COMP there are some important questions to consider:
   * **Will this Actor be in a Bullet or Flex simulation?** There are many commonalities between Bullet actors and Flex actors, however they do differ in their functionality, meaning that not all parameters overlap. For Bullet specific parameters see the Bullet page of the Actor COMP and for Flex specific parameters see the Flex page of the Actor COMP.
   * **Will the bodies move?** A moving body's Kinematic State must be dynamic. A static body can "move" by overriding its position, but this is not recommended since clipping can easily occur and and collisions will be incorrect (because the bodies won't have momentum).
@@ -39,14 +62,19 @@ When creating an Actor COMP there are some important questions to consider:
   * **Will the collision shape be concave?** If the collision shape is concave and static, simply select Concave from the drop-down menu. If the collision shape is to be concave and dynamic then there is an extra step: convex decomposition. The collision shape must be a Compound collision shape (ie. a group of convex collision shapes) where each part of the compound shape is convex, but combined together create a concave shape. Each part of the compound shape is represented using a single SOP. Consider the letter "T" as an example. "T" is concave so it will need to be split into two separate convex parts: the top line and the bottom line. 2 SOPs would be created (one for each line) for the collision shape that when combined together form the full concave "T". If the "T" were static however, it could remain as 1 SOP.
 
 ###
+
 Why are my bodies not colliding?
+
 To understand why two bodies might not collide it is important to understand that Bullet simulates discretely. Speed, position, constraints, collisions are all calculated on a frame by frame basis, as opposed to continuously. In the case of Bullet, collisions are calculated at the beginning and the end of a frame. What this means is that if a body is moving a large distance every frame it can clip through other bodies, because it's not colliding with it at the beginning or the end of the frame when collision is calculated. In the same vein, if an object is very thin then other bodies will be able to clip through it easier than something with more depth because bodies won't have to move as far in a frame to completely jump over it.
+
 Continuous collision detection (see parameter) helps to fix this by performing collision detection along the movement vector (between start/end of frame) so that collisions happening between the start/end of frame will be caught. This helps significantly with high linear velocity bodies, but not so much high angular velocity bodies.
+
 A couple other things to consider changing to fix body "leaking":
   1. Manually limit the velocity of bodies, or lower the strength of the forces being applied.
   2. Add depth to very thin collision surfaces. If you're using a Grid SOP as a collision surface, consider using a Box SOP instead. Or, if you're using a Box SOP as the collision shape to contain other bodies inside, consider making the collision shape out of 6 individual Box SOPs (one for each side of the box) combined together.
 
 ## Parameters - General Page
+
 - Initialize Actor `initialize` - Recreates the collision shapes for all the bodies in the Actor COMP. Also resets all velocities and position to their default state. Initialize Actor should be pulsed when any changes are made to the SOPs used for creating the collision shape, or for any changes to the instancing OP.
 - Update Collision Shape `updatecs` - If enabled the Actor COMP will automatically update collision shapes. This will occur when the "Collision SOPs" or "Collision Shape" parameters are changes or the underlying SOPs used to create the collision shape are changed (ie. when their cook count increases).
 - Update Collision Shape `updatecspulse` - When clicked this will instantly update the collosion shape.
@@ -81,6 +109,7 @@ A couple other things to consider changing to fix body "leaking":
   * Angular Velocity `angvelz` -
 
 ## Parameters - Bullet Page
+
 - Forces `forces` - A list of local forces, meaning forces (ie. Force COMPs) that will only be applied to this actor.
 - Use Global Gravity `globalgrav` - Toggle for whether to use the Bullet Solver COMP's gravity (global), or its own local gravity.
 - Gravitational Acceleration `gravity` - ⊞ - Actor's local gravity in m/s^2. Will only be applied if the actor is not using the Bullet Solver COMP's global gravity ie. the "Use Global Gravity" parameter above is turned off.
@@ -101,6 +130,7 @@ A couple other things to consider changing to fix body "leaking":
 - Bullet Feedback CHOP `bulletfb` - A reference to a CHOP from which to feedback. The Actor COMP will read transformation and velocity data (in the correct format, see Bullet Solver CHOP for more information) from the CHOP, and overwrite the current values at the beginning of the next frame. A feedback loop can be created with this parameter and the Bullet Solver CHOP. See Bullet Solver CHOP. NOTE: scale cannot be feedbacked. force[xyz] and torque[xyz] can be used to apply forces to specific bodies.
 
 ## Parameters - Flex Page
+
 - Triangle Collision Direction `tricolldir` - ⊞ -
   * Outward `outward` -
   * Inward `inward` -
@@ -119,7 +149,9 @@ A couple other things to consider changing to fix body "leaking":
 - Max Emission Particles `emitmax` - Sets the maximum number of particles in the Actor COMP. Once this number is reached, emission will be done by recycling existing particles in the Actor COMP.
 - Position Feedback TOP `flexposfb` - A reference to a TOP to feedback position. The TOP should be encoded with the position data that will be used to override position in the simulation. The texture data will be read to correspond with the Flex TOP's position texture.
 - Velocity Feedback TOP `flexvelfb` - A reference to a TOP to feedback velocity. The TOP should be encoded with the velocity data that will be used to override velocity in the simulation. The texture data will be read to correspond with the Flex TOP's velocity texture.
+
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -203,6 +235,7 @@ In the example above, rotations performed on an Component with different pivot p
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
 
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -247,7 +280,9 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
 
 ## Parameters - Instance Page
+
 The Instance parameter page provides the ability to create hardware instances of geometry. Each instance has an instance ID which can be passed into a [MAT](https://docs.derivative.ca/MAT "MAT") shader via a uniform value. The instance ID can be retrieved by the [Render Pick CHOP](https://docs.derivative.ca/Render_Pick_CHOP "Render Pick CHOP"). Any code in a vertex shader can customize the instance based on the instance ID.
+
 Instance's attributes can be individually driven by the data from any type of OP. When the instance data is supplied by a TOP, the TOP's RGBA channels are assigned to instance attributes, when data is supplied by a CHOP, the CHOP's channels are assigned to instance attributes, when from a SOP then the SOP's attributes are assigned to instance attributes, and when a DAT is used then a column is assigned to the instances attributes. The mapping of operator data to instance attributes is setup on the parameters below and on the Instance 2 and Instance 3 parameter pages.
 - Instancing `instancing` - Turns on instancing for the Geometry Component.
 - Instance Count Mode `instancecountmode` - ⊞ - Two modes to determine how many instances will be created.
@@ -296,6 +331,7 @@ Instance's attributes can be individually driven by the data from any type of OP
 - Pivot Z `instancepz` - Select what data to use for the pivot of the instances, use the drop-down menu on the right to easily select from the available options.
 
 ## Parameters - Instance 2 Page
+
 When the instance data is supplied by a TOP, the TOP's RGBA channels are assigned to instance attributes; when data is supplied by a CHOP, the CHOP's channels are assigned to instance attributes; when from a SOP then the SOP's attributes are assigned to instance attributes; and when a DAT is used then a column is assigned to the instances attributes.
 - Rotate to Vector: Order `instancerottoorder` - ⊞ - Controls where in the transform equation the Rotate To Vector operation is applied.
   * Default `default` - The Rotate to Vector operation will be applied before all other transform operations (except the pivot offset), regardless of their order of operation. E.g ` T * R * S * (RotToVector) * Position `, ` R * S * T * (RotToVector) * Position `.
@@ -373,14 +409,18 @@ When the instance data is supplied by a TOP, the TOP's RGBA channels are assigne
   * 16x `16x` -
 
 ###
+
 Instance Texturing
+
 This feature allows for arbitrary textures to be applied to instances. The textures do not need to be the same resolution, and they don't need to be combined into an grouped format such as a 3D Texture or a 2D Texture array. Multiple TOPs can be specified using the "Instance Textures" parameter, and the texture that is applied per-instance is specified using the channel chosen in the "Texture Index" parameter. This is different from a 3D Texture or 2D Texture Array, which would use the W texture coordinate to select a texture from within a single texture. By default this texture will be used as the "Base Color Map" texture for a [PBR MAT](https://docs.derivative.ca/PBR_MAT "PBR MAT"), and the Color Map for all other materials such as the [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT"). For materials that support more than one map, the map that this this feature replaces can be chosen in the material's parameters. Currently on Windows at most 16384 textures can be used at once, and on macOS at most 128 textures can be used at once. These numbers are reduced by other textures that are used by the render such as other maps, cone light lookup map etc.
 
 - Tex Index OP `instancetexindexop` - Select a specific operator to get data from for the Texture Index instance attribute below. If not specified, the the operator specified in the 'Default Instance OP' on the Instance parameter page can be used.
 - Texture Index `instancetexindex` - Select what data to select which texture to use for the instances, use the drop-down menu on the right to easily select from the available options.
 
 ## Parameters - Instance 3 Page
+
 Custom attributes allow arbitrary attributes to be assigned to instances, usable in a [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT"). They can be accessed using `TDInstanceCustomAttrib0()`, `TDInstanceCustomAttrib1()` etc. For more information refer to [Write a GLSL Material](https://docs.derivative.ca/Write_a_GLSL_Material "Write a GLSL Material"). These attributes will be ignored in other materials such as the [PBR MAT](https://docs.derivative.ca/PBR_MAT "PBR MAT").
+
 Below you can add more parameters as you require more custom attributes. Different GPUs will have a different number of maximum custom attributes supported.
 - Custom Instance `instance` - Sequence of arbitrary attributes to be assigned to instances
 - OP `instance0customop` - Select a specific operator to get data from for the instance attributes below. If not specified, the the operator specified in the 'Default Instance OP' on the Instance parameter page can be used.
@@ -390,6 +430,7 @@ Below you can add more parameters as you require more custom attributes. Differe
 - W `instance0customw` - Select what data to use for this instance attribute, use the drop-down menu on the right to easily select from the available options.
 
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -403,6 +444,7 @@ The Display parameter page controls the component's [material](https://docs.deri
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -412,6 +454,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -460,19 +503,26 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Actor COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Actor COMP Info Channels
   * num_bodies -
 
   * num_active_bodies -
 
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

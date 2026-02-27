@@ -5,14 +5,19 @@ title: Geometry_Viewer
 ---
 
 # Geometry Viewer
+
 The Geometry Viewer lets you view and manipulate 3D objects in the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP"), [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP"), [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and all other 3D [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer"), plus in Geometry Viewer [Panes](https://docs.derivative.ca/Pane "Pane") (alt+3 in any pane).
+
 Through the [right-click](https://docs.derivative.ca/RMB_Menu "RMB Menu") menu you can get at viewing options like wireframe (w) and the Display Options (d) like point numbers, normals, grids, axes and more. You can also change your navigation modes.
+
 **TIP:** It has its own lighting for viewing your 3D scene that is separate from the the light objects you create. To duplicate the default lighting in a geometry viewer, create two [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP") objects. Translate one to (30, 30, 100) and set its Light Color to (0.9, 0.9, 0.9). Translate the other to (-100, 0, 30) and set its Light Color to (0.3, 0.3, 0.3).
 
 ##  Display Options
+
 Right-click on the viewer to open the view options menu. (You must be in **View** state if using the Geometry Viewer in a pane.)
 [![](https://docs.derivative.ca/images/thumb/c/c3/GeoViewMenu2.png/300px-GeoViewMenu2.png)](https://docs.derivative.ca/File:GeoViewMenu2.png)
 [](https://docs.derivative.ca/File:GeoViewMenu2.png "Enlarge")
+
 Right-clicking brings up the geo view options menu
   * [Camera Navigation Modes](#Camera_Navigation_Modes) - change how the mouse controls the camera movement.
   * [3D SpaceMouse Navigation Modes](#3D_SpaceMouse_Navigation_Modes) - change how a SpaceMouse device controls the camera movement.
@@ -38,54 +43,70 @@ Right-clicking brings up the geo view options menu
   * Help - open this help page.
 
 ##  Camera Navigation Modes
+
 The geometry viewer has 4 Camera Navigation Modes selectable from the right-click menu in the viewer. For the first 3 modes the camera dolly always moves towards the cursor position, each of these modes differ in the the way they set a pivot. The pivot determines the point in 3D space that the camera tumbles (rotates) around as well as the speed of camera movement i.e. if the pivot point is far away, the camera will move further for each movement of the mouse. The last mode, Camera Mode, moves and pivots from the perspective of the camera and is more similar to the movement possible using a real-world camera (ie pan, tilt, dolly, track, crane), or in a game engine such as Unreal.
 [![CameraNavigationModes.png](https://docs.derivative.ca/images/6/6a/CameraNavigationModes.png)](https://docs.derivative.ca/File:CameraNavigationModes.png)
 **Viewport Mode**
+
 This standard control scheme always uses the center of the view for the pivot for tumble. Dolly will always move in and out towards the position of the cursor.
   * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - tumble around pivot
   * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - dolly using MMB-drag or scroll wheel
   * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane)
 
 **Cursor Mode**
+
 If the cursor is placed on a piece of geometry, that specific point on the geometry will become the new pivot and will determine the center of rotation for tumbling and the speed of camera movements i.e. if you hold the cursor over a distant piece of geometry and scroll the mouse wheel, it will move quickly towards that point, whereas if you hold it over a closer piece of geometry it would move more slowly. If the cursor is not over a piece of geometry, it uses the center of the view for a pivot at the same distance as the previous pivot (like viewport mode above).
   * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - tumble around pivot
   * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move towards or away from the pivot (dolly) using MMB-drag or scroll wheel
   * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane) perpendicular to the camera direction
 
 **Object Mode**
+
 The pivot is the center of all geometry in the viewer, or just the selected geometry if the viewer supports selection (see Geometry [Pane](https://docs.derivative.ca/Pane "Pane")). If no geometry is present, the origin 0,0,0 is used as the pivot.
   * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - tumble around pivot
   * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - dolly using MMB-drag or scroll wheel
   * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane)
 
 **Camera Mode**
+
 The controls are from the perspective of the camera and the pivot is the camera's position. This is most like camera moves that are possible with a real-world camera, or in a first-person game engine such as Unreal.
   * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - look up and down (tilt), or left and right (pan)
   * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move the camera forward or back in the XZ plane (dolly), or look left and right (pan)
   * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane). **NOTE:** reversed from other modes above since movement is based on the camera's perspective.
 
 **Connection Problems** : If you are having trouble with the Spacemouse on macOS, there is a setting under “Privacy & Security” called ‘Input Monitoring’ which could block input from certain devices. It’s worth checking that TouchDesigner is not listed there. Or do an OSX update, which may prompt you to to re-validate the 3Dxware permissions.
+
 ##  3D SpaceMouse Navigation Modes
+
 The camera in the geometry viewer can also be controlled using a [3DConnexion SpaceMouse](https://3dconnexion.com/ca/spacemouse/). The SpaceMouse supports full 3D movement in 6 axes (XYZ Translation and XYZ Rotation) and works independently of the mouse cursor. The Geometry viewer supports 3 different navigation modes for the SpaceMouse that are independent from the regular mouse-driven navigation modes. The mode can be selected by right-clicking on the active viewer and choosing a mode from the menu.
+
 **Object Mode**
+
 Object Mode is the default navigation mode and acts like the SpaceMouse is directly manipulating the geometry in the viewer. For example, nudging the SpaceMouse right will move the geometry to the right in the viewer and tilting the SpaceMouse forward will rotate the geometry away from the camera. Note that the geometry is not actually moving in the scene, but rather the camera is moving around the object in way that makes it feel like you are moving the geometry directly.
+
 **Camera Mode**
+
 In Camera Mode, the SpaceMouse controls the camera's position and orientation directly rather than the objects. For example, nudging the SpaceMouse forward will move the camera forwards in the scene and twisting the SpaceMouse to the right will turn the camera to the right. This mode generally feels like the reverse of the Object Mode.
+
 **Target Camera Mode**
+
 This mode is somewhat of a hybrid of the other two camera modes. Twisting the SpaceMouse will rotate (tumble) the camera around the center of the geometry, while pushing the SpaceMouse will directly move the camera.
 
-
 ##  In Node Viewers
+
 [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer") of 3D object type Components and SOPs are also geometry viewers. These geometry viewers do not include all the toolbars of a Geometry Viewer in a pane, however you can access many viewer options using the right-click menu over the viewer while in [Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active") mode.
 [![Geometry Component.jpg](https://docs.derivative.ca/images/0/04/Geometry_Component.jpg)](https://docs.derivative.ca/File:Geometry_Component.jpg)
+
 ##  In Panes
+
 Any [Pane](https://docs.derivative.ca/Pane "Pane") can be set to Geometry Viewer using the pane type menu or by using the shortcut alt+3.
 [![Pane Type Menu Geo Viewer.jpg](https://docs.derivative.ca/images/a/ac/Pane_Type_Menu_Geo_Viewer.jpg)](https://docs.derivative.ca/File:Pane_Type_Menu_Geo_Viewer.jpg)
 [![Geometry Viewer.png](https://docs.derivative.ca/images/2/2b/Geometry_Viewer.png)](https://docs.derivative.ca/File:Geometry_Viewer.png)
 
-
 ###  Using the Geometry Viewer Pane
+
 ###
+
 Camera and Geometry Picking
 
 [![GeometryViewerMenuBar.png](https://docs.derivative.ca/images/0/0b/GeometryViewerMenuBar.png)](https://docs.derivative.ca/File:GeometryViewerMenuBar.png)
@@ -97,9 +118,8 @@ Camera and Geometry Picking
 
   * **Pick** - [![MenuPick.png](https://docs.derivative.ca/images/3/32/MenuPick.png)](https://docs.derivative.ca/File:MenuPick.png) - This menu lets you select any [Object Component](https://docs.derivative.ca/Object_Component "Object Component") in the scene. The field to the right can be used for [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") to select multiple objects quickly.
 
-
-
 ###
+
 Viewer States
 
 [![GeometryViewerStateBar.png](https://docs.derivative.ca/images/f/f7/GeometryViewerStateBar.png)](https://docs.derivative.ca/File:GeometryViewerStateBar.png)
@@ -109,9 +129,8 @@ The Geometry Viewer state bar lets you switch viewer states. Click one of the bu
   * **Construction Plane** - [![StateCplane.png](https://docs.derivative.ca/images/f/f2/StateCplane.png)](https://docs.derivative.ca/File:StateCplane.png) - Display and position the construction plane
   * **Bones** - [![StateBone.png](https://docs.derivative.ca/images/e/e9/StateBone.png)](https://docs.derivative.ca/File:StateBone.png) - Create bones.
 
-
-
 ###
+
 Viewer Tools
 
 [![GeometryViewerOptionsBar.png](https://docs.derivative.ca/images/b/b0/GeometryViewerOptionsBar.png)](https://docs.derivative.ca/File:GeometryViewerOptionsBar.png)
@@ -128,8 +147,13 @@ Viewer Tools
   * **Snap Options** - [![OptionsSnap.png](https://docs.derivative.ca/images/9/93/OptionsSnap.png)](https://docs.derivative.ca/File:OptionsSnap.png) - Ajusts the viewport's snap options and priority.
 
 A 3D viewport for viewing and manipulating 3D scenes or objects interactively. A geometry viewer can be found in [Panes](https://docs.derivative.ca/Pane "Pane") (alt+3 in any pane) or the [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer") of all Geometry Object components.
+
 In the [Node Viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") of a Geometry COMP or any POP, the Adaptive Homing option will continually keep in-view the 3D geometry being displayed, even when the geometry changes shape, size and animated position.
+
 Privacy of TouchDesigner Components (`.tox` files) or Projects (`.toe` files) is the protection of networks that enables them to be used but not be visible or editable.
+
 A work area in TouchDesigner's layout that includes the [Network Editor](https://docs.derivative.ca/Network_Editor "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

@@ -5,11 +5,15 @@ title: Photoshop_In_TOP
 ---
 
 # Photoshop In TOP
+
 ## Summary
 
 The Photoshop In TOP can stream the output from Photoshop into TouchDesigner. Photoshop can be running on the same computer as TouchDesigner or any other computer on the network. Photoshop can be running on a Windows or Mac computer. If the Lock Document Name parameter is left empty, then the TOP will grab whichever document is currently active in Photoshop.
+
 ###
+
 Photoshop Setup
+
 To connect to the Photoshop In TOP, a remote connection must be setup in the Photoshop application.
   1. Open a file in Photoshop.
   2. Under the **Edit** menu, select **Remote Connections...**
@@ -20,6 +24,7 @@ To connect to the Photoshop In TOP, a remote connection must be setup in the Pho
 [photoshopinTOP_Class](https://docs.derivative.ca/PhotoshopinTOP_Class "PhotoshopinTOP Class")
 
 ## Parameters - Photoshop In Page
+
 - Active `active` - While on, the TOP will receive data from Photoshop.
 - Address `address` - The IP address of the computer that Photoshop is running on. If Photoshop is running on the same computer as TouchDesigner, `localhost` can be used in this parameter. Otherwise, Photoshop's Remote Connection dialog (shown above) will show the IP address required.
 - Password `password` - Enter the password specified in Photoshop's Remote Connection dialog.
@@ -38,6 +43,7 @@ To connect to the Photoshop In TOP, a remote connection must be setup in the Pho
 - Update `update` - Click to anually update the image.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -117,18 +123,24 @@ To connect to the Photoshop In TOP, a remote connection must be setup in the Pho
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Photoshop In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Photoshop In TOP Info Channels
   * connected -
 
   * receiving_updates -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -142,7 +154,9 @@ Specific Photoshop In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,31 +5,53 @@ title: Engine_COMP
 ---
 
 # Engine COMP
+
 ## Summary
 
 The Engine COMP will run a `.tox file` (component) in a separate process. It uses [TouchEngine](https://docs.derivative.ca/TouchEngine "TouchEngine") to manage these processes and pass data between the loaded component and the main project.
+
 The Engine COMP also allows components loaded in the Engine COMP to open a [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") (and go into Perform Mode). The Clock Mode must be set Independent (on the Tune page) to enable this - which is required to allow UI events to be serviced.
+
 **Inputs and Outputs**
+
 The chosen component's top-level Inputs and Outputs are exposed as inputs and outputs on the Engine COMP. Only [TOP](https://docs.derivative.ca/TOP "TOP"), [CHOP](https://docs.derivative.ca/CHOP "CHOP") and [DAT](https://docs.derivative.ca/DAT "DAT") inputs and outputs are supported.
+
 **Custom Parameters**
+
 Any [custom parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters") on the top-level component are added to the Engine COMP's parameters. Custom parameters which refer to other nodes in the network, such as [TOP](https://docs.derivative.ca/TOP "TOP"), [CHOP](https://docs.derivative.ca/CHOP "CHOP") and [DAT](https://docs.derivative.ca/DAT "DAT") parameters, are not supported - you should use inputs to connect those nodes instead.
+
 Note that parameters work in one direction only - you cannot set a parameter from within the loaded `.tox`.
+
 **External File Paths**
+
 By default, relative paths on OPs or in scripts **inside** the loaded component are relative to the `.tox` file's location. This can be changed with the 'Asset Paths' parameter. Relative paths as file or folder custom parameters **of** the component - those that show up on the Engine COMP - are always relative to the main project.
+
 **Monitoring Engine Status**
+
 It is useful to monitor the state and performance of the Engine COMP. By default, an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") is docked to the Engine COMP and contains file path and process ID. A docked [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") contains three sets of monitoring channels: The Info Type menu is by default set to TouchEngine Status which gives loading / running / error status of the Engine process. Changing the menu to TouchEngine Perform gives the engine's performance statistics, and changing the menu to Initialize/Start give ready / running state information specifically about your loaded component since it can be paused, timed and re-initialized.
+
 **Controlling Engine State**
+
 The Engine process will be started by the TouchDesigner process and it will run your `.tox` component automatically. But you can have more control over the time/memory management of multiple components using the Unload, Reload pulse parameters for the currently-loaded `.tox` file. On the Advanced page, the Launch and Quit Engine Process parameters give you terminate/restart control of the entire Engine process.
+
 **Component Lifetime**
+
 Under TouchEngine, components are loaded into an already-running instance. For this reason, an [Execute DAT](https://docs.derivative.ca/Execute_DAT "Execute DAT")'s `onStart()` and `onExit()` method will never be executed under TouchEngine. The `onCreate()` method will be executed when the component is loaded, and is a good place to do any setup you would normally do in `onStart()`.
+
 **Time in TouchEngine**
+
 When the Engine COMP starts the component (after it has loaded, if 'Start when Initialized' is On), the component time in TouchEngine is `0`. It will then increase either in sync with the Engine COMP or according to TouchEngine's internal clock, depending on the setting of the 'Clock' parameter on the Tune parameter page.
+
 An input buffer and output buffer are used to allow for differences in cook rate between the Engine COMP and TouchEngine. Often you may want to adjust the parameters on the Tune page to suit your particular setup. The Engine COMP will cook frames to fill its input buffer, if required, prior to starting to cook the component in TouchEngine - then will cook frames in TouchEngine to fill its output buffer prior to emitting output from the Engine COMP. The Auto setting will attempt to keep small buffers sufficient to avoid dropped frames, but you may wish to set a fixed buffer size to suit your setup, particularly if working with audio.
+
 **TouchEngine Versions**
+
 TouchEngine is installed as part of TouchDesigner, and the currently running version will be used to load the given `.tox`. If you wish to use a different version of TouchEngine you can either set the [environment variable](https://docs.derivative.ca/Variables#System_Environment_Variables "Variables") `TOUCHENGINE_APP_PATH` to the path to a TouchDesigner installation (an installation directory on Windows, or a TouchDesigner app on macOS) _or_ install TouchDesigner into a folder named `TouchEngine` alongside the `.tox` (on macOS rename an application from TouchDesigner to TouchEngine) _or_ create a link named `TouchEngine` alongside the `.tox` which points to an installation directory or TouchDesigner app.
+
 [engineCOMP_Class](https://docs.derivative.ca/EngineCOMP_Class "EngineCOMP Class")
 
 ## Parameters - Engine Page
+
 - Tox File `file` - Specify the `.tox` file to load with TouchEngine.
 - Unload `unload` - Unload the currently loaded component.
 - Reload `reload` - Reload the currently loaded component.
@@ -41,6 +63,7 @@ TouchEngine is installed as part of TouchDesigner, and the currently running ver
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute for events related to the TouchEngine instance.
 
 ## Parameters - Tune Page
+
 - Clock `clock` - ⊞ - Specify the temporal connection to the TouchEngine instance.
   * Synchronized `synced` - Time is strictly synchronized between the Engine COMP and the TouchEngine instance.
   * Independent `independent` - The TouchEngine instance runs according to its own internal clock.
@@ -58,6 +81,7 @@ To accommodate potential fluctuations in time-slice in the TouchEngine instance,
 To accommodate potential fluctuations in time-slice in the Engine COMP, CHOP outputs must send a number of frames ahead of time.
 
 ## Parameters - InitStart Page
+
 - Pre-Roll `preroll` - At initialization, run for this long before entering the ready state.
 - Pre-Roll Units `prerollunits` - ⊞ - The units in which the Pre-Roll is measured.
   * F `frames` - The Pre-Roll is measured in frames.
@@ -82,6 +106,7 @@ To accommodate potential fluctuations in time-slice in the Engine COMP, CHOP out
   * Quit Engine Process `quit` - TouchEngine is completely shut down.
 
 ## Parameters - Advanced Page
+
 - On Engine COMP Create `oncompcreate` - ⊞ - Specify what happens when the Engine COMP is created, for example when the project is loaded.
   * Do Nothing `nothing` - Nothing happens when the Engine COMP is created.
   * Launch Engine `launch` - TouchEngine is started when the Engine COMP is created. Any specified component is not loaded.
@@ -92,6 +117,7 @@ To accommodate potential fluctuations in time-slice in the Engine COMP, CHOP out
 - Allow UI `allowui` - When enabled, components loaded in TouchEngine may open Window COMPs or enter perform mode. Use a parameter on the top-level component or a script to do this.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -101,6 +127,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -125,8 +152,11 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * Relative to External COMP File (.tox) `externaltox` - The path, when specified as a relative path, will be relative to the .tox file. When no external COMP file is specified, or when Enable External .tox is not toggled on, this doesn't have any impact.
 
 ## Info CHOP Channels
+
 Extra Information for the Engine COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Engine COMP Info Channels
   * input_buffer_frames - The number of frames in the input buffer. This is affected by parameters on the Tune parameter page.
 
@@ -215,11 +245,15 @@ Specific Engine COMP Info Channels
   * engine_cached_expressions - The number of python expressions that have been cached in TouchEngine.
 
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

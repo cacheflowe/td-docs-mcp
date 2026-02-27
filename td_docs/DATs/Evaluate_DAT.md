@@ -5,11 +5,15 @@ title: Evaluate_DAT
 ---
 
 # Evaluate DAT
+
 ## Summary
 
 The Evaluate DAT changes the cells of the incoming DAT using string-editing and math expressions.
+
 In its simplest form, without an input DAT attached, you can put any python expression in the Expression parameter of an Evaluate DAT. To evaluate the expression every frame you may need to put the parameter into Expression [Parameter Mode](https://docs.derivative.ca/Parameter_Mode "Parameter Mode").
+
 With a DAT attached, it outputs a table with the same number of rows and columns as the input.
+
 The Scope page can be used to restrict which rows and columns of cells are affected.
   * When the Output menu is set to Expressions, it causes the input cells to be evaluated as Pythong expressions. `me.inputCell.val` is the value of the input cell.
 
@@ -18,6 +22,7 @@ The Scope page can be used to restrict which rows and columns of cells are affec
   * **Expressions are optimized by storing a compiled internal version, which runs much faster.** Use this where possible. If you are reusing expressions by repeating them in a table, having an input table with the few expressions you will cycle through separate from the data will also improve performance.
 
 If the second DAT is one cell, like the Expression parameter, it applies its expression to all the input cells. A one-cell second DAT with `me.inputCell.val+1` adds 1 to all the first input's cells.
+
 If the second DAT is
 `me.inputCell.val` |  `me.inputCell.val`
 ---|---
@@ -25,11 +30,15 @@ If the second DAT is
 then the first row and first column are left intact and the rest of the cells get their `sin()` computed.
 [![EvaluateDAT ex.png](https://docs.derivative.ca/images/f/f6/EvaluateDAT_ex.png)](https://docs.derivative.ca/File:EvaluateDAT_ex.png)
 The Evaluate DAT maintains the format of the first input DAT (table or text) unless the Output Table Size parameter is used.
+
 See also the [Substitute DAT](https://docs.derivative.ca/Substitute_DAT "Substitute DAT"), [Expression CHOP](https://docs.derivative.ca/Expression_CHOP "Expression CHOP").
+
 [evaluateDAT_Class](https://docs.derivative.ca/EvaluateDAT_Class "EvaluateDAT Class")
 
 Expressions
+
 The Evaluate DAT can be used to (1) build strings or (2) do math operations.
+
 `me.inputCell` refers to the corresponding input cell that is used to evaluate the current cell. [evaluateDAT_Class](https://docs.derivative.ca/EvaluateDAT_Class "EvaluateDAT Class") has a list of members that refer to incoming data. You can use [Python](https://docs.derivative.ca/Python "Python") to fetch data, like `op('datpath')[row,col]` to access DAT data and `op('choppath')['channame'][sampleindex]` to access CHOP data. A few examples:
 ```
 # access data from a particular row from the input table at the currently evaluated column
@@ -50,12 +59,14 @@ op('datpath')[me.inputRow,'colname'] + ' ' + str(me.inputRow)
 
 # concatenate a sample at the currrent row index from a chop channel with the current cell
 me.inputCell + ':' + str(op('choppath')['channame'][me.inputRow])
-
 ```
 
 See [Working with DATs in Python](https://docs.derivative.ca/Working_with_DATs_in_Python "Working with DATs in Python") and [Working with CHOPs in Python](https://docs.derivative.ca/Working_with_CHOPs_in_Python "Working with CHOPs in Python") for more examples of accessing data in other operators.
+
 You can also use any [Tscript Expressions](https://docs.derivative.ca/Tscript_Expressions "Tscript Expressions") to fetch data, like ``tab("_tabpath_",_row_,_col_)``and``chop(" _choppath_")``. A list of local variables, such as`$V` for the value of the corresponding input cell, is available, and you can use other Tscript [Variables](https://docs.derivative.ca/Variables "Variables") like `$F` and `$SYS_XRES`.
+
 A few Tscript expressions `v()` and `vs()` are special to the Evaluate DAT and can access all cells in the input. `vs()` differs from `v()` as it always output strings, not floats.
+
 The expressions `v(row,col)` and `vs(row,col)` can use the local variables `R` (the cell's row) and `C` (the cell's column).
   * `v($R,$C)` is the same as `$V`.
   * `v($C,$R)` transposes the cells.
@@ -72,9 +83,11 @@ and the string versions of the above:
   * `vsrc(_rowname_,_colname_)`
 
 Example: `vrc("john","august")`
+
 The local variables `NR` and `NC` give the number of rows and columns of the input table.
 
 ## Parameters - Evaluate Page
+
 - Input Data DAT `dat` - An alternative DAT table to be used in place of an input table.
 - Expressions DAT `datexpr` - An alternative DAT table to be used in place of a formula table.
 - Output `output` - ⊞ - Determines what format will be used for output from the DAT.
@@ -91,6 +104,7 @@ The local variables `NR` and `NC` give the number of rows and columns of the inp
 - Convert Backslash Characters `backslash` - Will convert things like \n to newlines, \t to tabs etc. Note that \n, \t will be converted to spaces if the input DAT is a table.
 
 ## Parameters - Scope Page
+
 - Exclude First Row `xfirstrow` - Forces the first row to be selected even if it is not specified by the Select Rows settings.
 - Exclude First Col `xfirstcol` - Forces the first column to be selected even if it is not specified by the Select Cols settings.
 - Select Rows `extractrows` - ⊞ - This parameter allows you to pick different ways of specifying the rows selected.
@@ -111,6 +125,7 @@ The local variables `NR` and `NC` give the number of rows and columns of the inp
 Expand the parameter and you will see that it is in [expression mode](https://docs.derivative.ca/Parameter_Mode "Parameter Mode").
 [![SelectDAT rowselectexpr.png](https://docs.derivative.ca/images/f/ff/SelectDAT_rowselectexpr.png)](https://docs.derivative.ca/File:SelectDAT_rowselectexpr.png)
 By default, the [Python](https://docs.derivative.ca/Python "Python") expression is `re.match('.*',me.inputCell.val) != None`. `'.*'` means match any character multiple times, so this expression matches all values. If you want to match the parent's operator name followed by any numeric number you can use `parent().name+'[0-9]*'`, where `'[0-9]*'` matches any numerical string. `'.*'+parent().name+'.*'` will match any cell that contains the operator's parent name. You can check [Regular Expression Operations](https://docs.python.org/3.3/library/re.html) for additional information on how to use the Python Regular Expression module.
+
 In Tscript, you can access the cell value with the local variable `$V`, and the row and column with `$R` and `$C`
 - From Column `fromcol` - When selecting rows by values, this parameter selects which column to use when matching cell values to Selected Row Values to determine which rows are selected.
 - Select Cols `extractcols` - ⊞ - This parameter allows you to pick different ways of specifying the columns selected.
@@ -131,6 +146,7 @@ In Tscript, you can access the cell value with the local variable `$V`, and the 
 - From Row `fromrow` - When extracting columns by Specified Names, this parameter selects which row to use when matching cell values to Selected Col Values to determine which columns are selected.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -147,19 +163,26 @@ In Tscript, you can access the cell value with the local variable `$V`, and the 
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Evaluate DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

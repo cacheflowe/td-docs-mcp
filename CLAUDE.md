@@ -55,10 +55,17 @@ python -m src.td_docs_mcp.cleaner --dry-run            # Preview changes
 **Processing order within `clean_td_markdown()`:**
 1. Line-by-line pass (frontmatter preservation, junk removal, header fixing)
 2. Python-specific blockquote cleaning (for `_Class.md` files)
-3. Operator family footer removal
-4. Parameter bullet formatting
-5. Blank line contraction (max 2 consecutive)
-6. Trailing whitespace removal
+3. Self-anchor link conversion
+4. Blockquote spacing
+5. Header spacing
+6. Paragraph separation
+7. Code block trailing blank removal
+8. Table compaction
+9. Operator family footer removal
+10. Page footer removal
+11. Parameter bullet formatting
+12. Blank line contraction (max 2 consecutive)
+13. Trailing whitespace removal
 
 ## Cleaning Rules Reference
 
@@ -86,6 +93,10 @@ Rules are applied in the order listed. When adding new rules, consider where in 
 | **Python blockquote cleanup** | `clean_python_blockquotes()` | Removes `> ` prefix from description lines in Python class docs; preserves code blocks; adds spacing before member definitions |
 | **Self-anchor link conversion** | `convert_self_anchor_links()` | Converts absolute anchor links that point to the same page (matched via frontmatter `title`) to relative `#fragment` links so TOC entries and self-references work in local markdown viewers |
 | **Blockquote spacing** | `ensure_blockquote_spacing()` | Ensures blank lines before and after `>` blockquote lines (or blocks of consecutive `>` lines) for proper markdown rendering. Skips code-fenced regions |
+| **Paragraph separation** | `separate_paragraphs()` | Inserts blank lines between consecutive plain-text lines so markdown renders them as distinct paragraphs. Skips headers, lists, code, blockquotes, tables, images, and indented lines |
+| **Header spacing** | `ensure_header_spacing()` | Ensures blank lines before and after markdown header lines (`#`, `##`, etc.) for proper rendering. Skips frontmatter and code-fenced regions |
+| **Code block blank removal** | `clean_code_block_blanks()` | Removes blank lines immediately before closing code fences (` ``` `). Crawl4AI often inserts a trailing blank line inside code blocks |
+| **Table compaction** | `compact_tables()` | Removes blank lines between markdown table rows (which would break table rendering). Identifies tables by their `---|---` separator rows |
 | **Operator family footer removal** | `remove_operator_family_footer()` | Detects a bare family name line (CHOPs/TOPs/etc.) followed by `---`, and truncates everything from there to EOF. Removes the redundant link list and glossary definitions |
 | **Page footer removal** | `remove_page_footer()` | Keeps `__setstate__()` and its description line, discards all glossary/boilerplate after. Falls back to truncating at "TouchDesigner Build" if no `__setstate__` is found |
 | **Parameter bullet formatting** | `format_parameter_bullets()` | Inside `## Parameters` sections: prefixes top-level param lines matching `ParamName \`id\` - description` with `- `. Removes blank lines between consecutive sub-bullet (`* `) items for tight nested lists |

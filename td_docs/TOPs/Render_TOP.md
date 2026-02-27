@@ -5,20 +5,31 @@ title: Render_TOP
 ---
 
 # Render TOP
+
 ## Summary
 
 The Render TOP is used to render all 3D scenes in TouchDesigner. You need to give it a [Camera](https://docs.derivative.ca/Camera_COMP "Camera COMP") object and a [Geometry](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") object as a minimum.
+
 The Geometry object needs to have a [Material](https://docs.derivative.ca/MAT "MAT") assigned to it. Materials can be pre-packaged ones like the [Phong](https://docs.derivative.ca/Phong_MAT "Phong MAT") material, or they can be OpenGL GLSL shaders. All textures and bump maps in TouchDesigner materials are TOPs, i.e. files must be read in via [Movie File In TOPs](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP").
+
 Rendering in TouchDesigner ties in nicely with compositing via the Render TOP and all other TOPs.
+
 The Render TOP renders in many RGBA and single-channel formats, in 8-bit fixed-point up to to 32-bit floating point per pixel component.
+
 It can render transparent surfaces correctly using Multi-Pass Depth Peeling. See below: Order Independent Transparency.
+
 Multiple Cameras: The Render TOP is able to render multiple cameras (more quickly than separately) in a single node. You specify multiple cameras in one Camera parameter, and use Render Select TOP to pull out those camera results. This feature is even faster on GPUs that support [Multi-Camera Rendering](https://docs.derivative.ca/Multi-Camera_Rendering "Multi-Camera Rendering").
+
 Multiple Images out: The Render TOP, working with the GLSL MATs, can output multiple image at arbitrary formats, through the Images page.
+
 See also [Rendering](https://docs.derivative.ca/Rendering "Rendering"), all the articles in the [Rendering Category](http://www.derivative.ca/wiki/index.php?title=Category:Rendering), the [Render Pass TOP](https://docs.derivative.ca/Render_Pass_TOP "Render Pass TOP"), and the troubleshooting page [Why is My Render Black](https://docs.derivative.ca/Why_is_My_Render_Black "Why is My Render Black").
+
 NOTE: If you are doing non-realtime GPU-intensive renders (ones that take multiple seconds to render a single SOP), see the note in Windows GPU Driver Timeouts in the [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP").
+
 [renderTOP_Class](https://docs.derivative.ca/RenderTOP_Class "RenderTOP Class")
 
 ## Parameters - Render Page
+
 - Camera(s) `camera` - Specifies which [Cameras](https://docs.derivative.ca/Camera_COMP "Camera COMP") to look through when rendering the scene. You can specify multiple cameras and retrieve each camera image using the Render Select TOP.
 - Multi-Camera Hint `multicamerahint` - ⊞ - Helps the Render TOP optimize rendering when multiple cameras are used. Controls the [Multi-Camera Rendering](https://docs.derivative.ca/Multi-Camera_Rendering "Multi-Camera Rendering") behavior for this node.
   * Automatic `automatic` - The node will decide based on the GPU and setup if [Multi-Camera Rendering](https://docs.derivative.ca/Multi-Camera_Rendering "Multi-Camera Rendering") can be used and enable it if possible. Currently Multi-Camera rendering works for 2D and Cube Map renders on supported GPUs. For 2D renders multiple cameras can not be rendered in a single pass if their 'Camera Light Mask' parameters don't result in the same lights being used in the scene. Use of Depth Peeling or Order Independent Transparency will also disable Multi-Camera rendering.
@@ -84,13 +95,17 @@ See also the [Cube Map TOP](https://docs.derivative.ca/Cube_Map_TOP "Cube Map TO
 - Transparency/Peel Layers `transpeellayers` - Number of passes the renderer will use when Order Independant Transparency is turned on.
 
 ## Parameters - Advanced Page
+
 - Render `render` - Enables rendering; 1 = on, 0 = off.
 - Render Pulse `renderpulse` - The the 'Render' toggle above is Off, click this to render a sinlge frame.
 - Dither `dither` - Dithers the rendering to help deal with banding and other artifacts created by precision limitations of 8-bit displays.
 - Color Output Needed `coloroutputneeded` - This is an optimization if you don't actually need the color result from this pass. Turning this off avoids a copy from the offscreen render buffer to the TOP's texture. When anti-aliasing is enabled, turning this off will also avoid 'resolving' the anti-aliasing.
 - Draw Depth Only `drawdepthonly` - This will cause the render to only draw depth values to the depth buffer. No color values will be created. To make use of the depth buffer, use the [Depth TOP](https://docs.derivative.ca/Depth_TOP "Depth TOP").
+
 # of Color Buffers `numcolorbufs` - Any shader you write can output to more than one RGBA buffer at a time. For GLSL 3.3+ you would use the layout(location = 1) specifier on an out variable in the pixel shader to write to the 2nd buffer. In GLSL 1.2 instead of writing to `gl_FragColor` in your shader, you write to `gl_FragData[i]` where i is the color buffer index you want to write the value to.
+
 Allow Blending for Extra Buffers `allowbufblending` - Controls if blending (as enabled by the MAT common page setting) will be enabled for extra buffers beyond the first one. Often the extra buffers are used to write other types of information such as normals or positions, where blending wouldn't be desirable.
+
 Depth Buffer Format `depthformat` - ⊞ - Use either a 24-bit Fixed-Point or 32-bit Floating-Point depth buffer (single channel image).
   * 24-Bit Fixed-Point `fixed24` -
 
@@ -106,13 +121,19 @@ Cull Face `cullface` - ⊞ - Front Faces, Back Faces, Both Faces, Neither. Will 
   * Both Faces `bothfaces` -
 
 Override Material `overridemat` - This allows you to specify a material that will be applied to every Geometry that is rendered in the Render TOP. It is useful for pre-processing passes where we are outputting information about the geometry rather then lighting them and outputting RGB.
+
 Polygon Depth Offset `polygonoffset` - This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly ontop of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing shadows.
+
 Offset Factor `polygonoffsetfactor` - Adds an offset to the Z value that depends on how sloped the surface is to the viewer.
+
 Offset Units `polygonoffsetunits` - Adds a constant offset to the Z value.
+
 Display Overdraw `overdraw` - This feature visually shows the overdraw in the scene. Refer to the [Early Depth-Test](https://docs.derivative.ca/Early_Depth-Test "Early Depth-Test") article for more information. In particular the Analyzing Overdraw section.
+
 Overdraw Limit `overdrawlimit` - This value quantizes the outputted color value to some # of overdraws. Refer to the [Early Depth-Test](https://docs.derivative.ca/Early_Depth-Test "Early Depth-Test") for more information.
 
 ## Parameters - Crop Page
+
 Cropping here occurs using the projection matrix. It reduces the amount of the output render that is visible, without changing the resolution. It's particuarly useful to create sub-portion of an overall render in different buffers, such as for rendering across multiple instances of TouchDesigner. Be careful to set the aspect ratio of the Render TOP to match the 'real' aspect of the overall output image, not the aspect of this subsection. Otherwise the projection will be stretched incorrectly.
 - Crop Left `cropleft` - Positions the left edge of the rendered image.
 - Crop Left Unit `cropleftunit` - ⊞ - Select the units for this parameter from Pixels, Fraction (0-1), Fraction Aspect (0-1 considering aspect ratio).
@@ -139,6 +160,7 @@ Cropping here occurs using the projection matrix. It reduces the amount of the o
   * A `fractionaspect` -
 
 ## Parameters - Vectors Page
+
 These vectors will be passed to all GLSL MATs used in the render. They allow for global parameters to more easily be passed to many GLSL MATs from a single spot.
 - Vector `vec` - Sequence of uniform name and value pairs.
 - Uniform Name `vec0name` - The uniform name, as declared in the shader.
@@ -149,6 +171,7 @@ These vectors will be passed to all GLSL MATs used in the render. They allow for
   * Value `vec0valuew` -
 
 ## Parameters - Samplers Page
+
 These samplers will be passed to all GLSL MATs used in the render. They allow for global parameters to more easily be passed to many GLSL MATs from a single spot.
 - Uniform Name `uni0name` - The uniform name, as declared in the shader.
 - Sampler `sampler` - Sequence of sampler parmaeters, including uniform name, TOP reference, and sampling parameters.
@@ -185,6 +208,7 @@ These samplers will be passed to all GLSL MATs used in the render. They allow fo
   * 16x `16x` -
 
 ## Parameters - Images Page
+
 Images are texture data that can be both read and written to at arbitrary pixels during a render operation, using a [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT"), via the `TDImageStore_Name()` and `TDImageLoad_Name()`. Refer to [Write_a_GLSL_Material#Image_Outputs](https://docs.derivative.ca/Write_a_GLSL_Material#Image_Outputs "Write a GLSL Material") for more information. You can obtain the results of the Image after the render is completed using a [Render Select TOP](https://docs.derivative.ca/Render_Select_TOP "Render Select TOP"). The images will automatically be declared for you inside of the shader, you should not declare them yourself (as you do for other uniforms). This is because there is a lot of extra decoration required for the image uniforms. Currently when compiling in the [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") itself your code will result in an error, since the images are not available there. However when you apply your MAT to a geometry and render it via the Render TOP, a new version of your shader will be included that has that image declared.
 - Image `image` - A sequence of parameters to control image outputs available for the GLSL MATs.
 - Name `image0name` - The uniform name for the image.
@@ -232,6 +256,7 @@ Images are texture data that can be both read and written to at arbitrary pixels
   * Read-Write `readwrite` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -331,9 +356,13 @@ Images are texture data that can be both read and written to at arbitrary pixels
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Render TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -347,7 +376,9 @@ Extra Information for the Render TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

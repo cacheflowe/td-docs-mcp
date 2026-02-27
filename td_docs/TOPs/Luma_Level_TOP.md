@@ -5,15 +5,21 @@ title: Luma_Level_TOP
 ---
 
 # Luma Level TOP
+
 ## Summary
 
 The Luma Level TOP adjusts image brightness, gamma, black level, quantization, opacity and more. It has similar parameters to the [Level TOP](https://docs.derivative.ca/Level_TOP "Level TOP"), but it maintains the hue and saturation more accurately when you use Gamma and Black Level.
+
 In the Level TOP, lowering the gamma will raise the saturation and shift the hue. Luma Level preserves saturation and hue.
+
 It also includes a Source parameter which allows the level adjustment to be applied only to certain parts of the image. For example, if source is set to Luminance, then the adjustments made with the Luma Level's parameters will be applied to the luminance of the image (ie. Invert = 1 would invert the luminance of the image, not the color).
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [lumalevelTOP_Class](https://docs.derivative.ca/LumalevelTOP_Class "LumalevelTOP Class")
 
 ## Parameters - Pre Page
+
 - Source `source` - ⊞ - Determines the source of the image that is adjusted by the parameters. The output is determined by: ```
 InColor * 1/Source * Lookup(Source)
 

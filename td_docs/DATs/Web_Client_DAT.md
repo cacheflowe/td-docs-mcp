@@ -5,14 +5,21 @@ title: Web_Client_DAT
 ---
 
 # Web Client DAT
+
 ## Summary
 
 The Web Client DAT allows you to send HTTP requests to web servers from TouchDesigner. It supports GET, POST, PUT, DELETE, HEAD, OPTIONS and PATCH http methods.
+
 The Web Client DAT supports various authentication types such as: basic, oauth1, oauth2.
+
 The Web Client DAT allows for streaming from web servers.
+
 The Web Client DAT sends HTTP requests to web servers and then outputs the response in the DAT. With streaming enabled it can stream data from a web server.
+
 When streaming is enabled, Clamp Output as Rows should be enabled. This turns the output of the DAT into a FIFO table instead of raw text. Only the last N lines will be displayed, where N is the value of the Maximum Lines parameter. This will prevent the text in the DAT from getting too larger and will keep cook-times down as a result.
+
 The Web Client DAT supports sending of GET, POST, PUT, DELETE, HEAD, OPTIONS, and PATCH request methods. The Web Client DAT also supports 4 authentication methods: Basic, Digest, OAuth1, and OAuth2.
+
 The first input is the extra headers to send in the request. It should be a table with 2 columns, structured as name/value pairs. For example:
 Content-Type  | application/json
 ---|---
@@ -22,10 +29,13 @@ name  | joe
 ---|---
 month  | May
 The Web Client DAT is the successor to the [Web DAT](https://docs.derivative.ca/Web_DAT "Web DAT").
+
 See also: [Web Server DAT](https://docs.derivative.ca/Web_Server_DAT "Web Server DAT"), [SocketIO DAT](https://docs.derivative.ca/SocketIO_DAT "SocketIO DAT"), [XML DAT](https://docs.derivative.ca/XML_DAT "XML DAT"), [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT"), [WebSocket DAT](https://docs.derivative.ca/WebSocket_DAT "WebSocket DAT"), [Web DAT](https://docs.derivative.ca/Web_DAT "Web DAT").
+
 [webclientDAT_Class](https://docs.derivative.ca/WebclientDAT_Class "WebclientDAT Class")
 
 ## Parameters - Web Client Page
+
 - Active `active` - Toggles the operator on/off.
 - Request Method `reqmethod` - ⊞ - Selects the [HTTP request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
   * GET `get` - The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
@@ -46,6 +56,7 @@ See also: [Web Server DAT](https://docs.derivative.ca/Web_Server_DAT "Web Server
 - Include Header in Output `includeheader` - Includes the header in the output of the response.
 
 ## Parameters - Authentication Page
+
 - Authentication Type `authtype` - ⊞ - The type of authentication.
   * None `none` - No authentication
   * Basic `basic` - Basic authentication is base-64 encoded username and password.

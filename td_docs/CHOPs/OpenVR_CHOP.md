@@ -5,20 +5,29 @@ title: OpenVR_CHOP
 ---
 
 # OpenVR CHOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The OpenVR CHOP receives positional data, frame rendering info, and action data from the [OpenVR](https://docs.derivative.ca/OpenVR "OpenVR") SDK. Each CHOP can output in one of 5 modes: Sensors, Projection Matrices, Trackers, Frame Timings, Actions and Skeletons.
+
 ### Actions
+
 Actions are described in more details in [OpenVR Actions](https://docs.derivative.ca/OpenVR_Actions "OpenVR Actions").
+
 ### Getting Sensor Data at Higher Rates
+
 By default when running a VR system the file will be throttled to the speed of the VR devices refresh rate by the OpenVR SDK. This helps ensure the low latency output required for a good VR experience. If only controllers/Vive trackers are being used for tracking in a non-VR situation, the file can run and sample those devices at a higher sample rate as long as no [OpenVR TOP](https://docs.derivative.ca/OpenVR_TOP "OpenVR TOP") in the project. If an [OpenVR TOP](https://docs.derivative.ca/OpenVR_TOP "OpenVR TOP") is present anywhere in the project, then playback will be throttled to the VR devices refresh rate.
+
 See also [OpenVR](https://docs.derivative.ca/OpenVR "OpenVR"), [OpenVR TOP](https://docs.derivative.ca/OpenVR_TOP "OpenVR TOP"), [OpenVR SOP](https://docs.derivative.ca/OpenVR_SOP "OpenVR SOP"), [Audio Render CHOP](https://docs.derivative.ca/Audio_Render_CHOP "Audio Render CHOP")
+
 [openvrCHOP_Class](https://docs.derivative.ca/OpenvrCHOP_Class "OpenvrCHOP Class")
 
 ## Parameters - Setup Page
+
 - Active `active` - Control if this node is querying data from the OpenVR driver.
 - Output `output` - ⊞ - Controls what kind of category of data will be output from this node.
   * Sensor `sensor` - Output data such as sensor orientation and general information such as render resolution.
@@ -43,6 +52,7 @@ See also [OpenVR](https://docs.derivative.ca/OpenVR "OpenVR"), [OpenVR TOP](http
   * Without Controller `withoutcontroller` - Output the skeleton as if the controller dose not exist. This allows the skeleton to create a fully closed fist.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -60,9 +70,13 @@ See also [OpenVR](https://docs.derivative.ca/OpenVR "OpenVR"), [OpenVR TOP](http
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the OpenVR CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -76,7 +90,9 @@ Extra Information for the OpenVR CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

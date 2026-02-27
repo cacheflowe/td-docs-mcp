@@ -5,16 +5,23 @@ title: Constraint_COMP
 ---
 
 # Constraint COMP
+
 ## Summary
 
 A Constraint COMP is used to restrict the movement of the bodies in a set of [Actor COMPs](https://docs.derivative.ca/Actor_COMP "Actor COMP"). Currently this can be done in a few ways: point to point, hinge or slider. Constraints can either be applied on a single body or between two bodies. Constraints can be used to create connectivity between bodies, or to create bodies that can move but need to have that movement restricted in some way. Some examples of constraints in the real world: a train, a door, an arm.
+
 If a point to point constraint is applied to a single body, then that body will be restricted to 3 degrees of freedom (DOF). It will still have all 3 degrees of freedom for rotation (ie. All 3 axes), but the 3 degrees of freedom for translation will all be constrained. If a point to point constraint is applied between two bodies, then they will both be similarly constrained to 3 DOF. However, they will be able to move (translate) along all 3 axes but they will do it connected to each other at their pivot points. By using this constraint method, a chain of bodies can be created. For instance, point to point constraints can be used to simulate train cars connected to each other.
+
 If a hinge constraint is applied to a single body, then that body will be restricted to 1 DOF relative to the other body. It will only be able to rotate around 1 axis, and that axis is defined using the Axis parameter on the Constraint COMP. Much like the point to point constraint, the hinge also as a pivot point around which it will rotate. If a hinge constraint is applied between two bodies, then they will both be able to move with 3 DOF but they will do it connected to each other at their pivot points. However, they will still only be able to rotate around their respective axis. The simplest example of a hinge constraint is a door.
+
 If a slider constraint is applied to a single body, then that body's translation/rotation will be constrained to just that axis. In other words, the body can only move along that axis (either direction) and can only rotate along that axis (either direction).
+
 See also: [Bullet Dynamics](https://docs.derivative.ca/Bullet_Dynamics "Bullet Dynamics"), [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP"), [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"), [Force COMP](https://docs.derivative.ca/Force_COMP "Force COMP"), [Impulse Force COMP](https://docs.derivative.ca/Impulse_Force_COMP "Impulse Force COMP"), [Bullet Solver CHOP](https://docs.derivative.ca/Bullet_Solver_CHOP "Bullet Solver CHOP").
+
 [constraintCOMP_Class](https://docs.derivative.ca/ConstraintCOMP_Class "ConstraintCOMP Class")
 
 ## Parameters - Constraint Page
+
 - Active `active` - Toggle the constraint on/off in the simulation.
 - Type `type` - ⊞ - The type of constraint to create: point to point, hinge, or slider.
   * Point To Point `p2p` -
@@ -59,6 +66,7 @@ See also: [Bullet Dynamics](https://docs.derivative.ca/Bullet_Dynamics "Bullet D
   * Z `sliderrot2z` -
 
 ## Parameters - Limits Page
+
 - Enable Limits `enablelimits` - Enables limits on the constraint. Without constraints, the bodies will be able to rotate a full 360 degrees, or translate any distance.
 - Lower Linear Limit `lowerlinlim` - The lower limit for translation of the body along the constraint. Only used with slider constraints.
 - Upper Linear Limit `upperlinlim` - The upper limit for translation of the body along the constraint. Only used with slider constraints.
@@ -66,6 +74,7 @@ See also: [Bullet Dynamics](https://docs.derivative.ca/Bullet_Dynamics "Bullet D
 - Upper Angular Limit `upperanglim` - The upper limit for rotation of the body around its axis. Used with slider constraints or hinge constraints.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -75,6 +84,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -103,13 +113,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * Relative to External COMP File (.tox) `externaltox` - The path, when specified as a relative path, will be relative to the .tox file. When no external COMP file is specified, or when Enable External .tox is not toggled on, this doesn't have any impact.
 
 ## Info CHOP Channels
+
 Extra Information for the Constraint COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

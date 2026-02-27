@@ -5,15 +5,21 @@ title: UDP_Out_DAT
 ---
 
 # UDP Out DAT
+
 ## Summary
 
 The UDP Out DAT is used to send information over a UDP connection to/from a remotely-located computer. Use the `sendBytes()` or `send()` methods of the [udpoutDAT_Class](https://docs.derivative.ca/UdpoutDAT_Class "UdpoutDAT Class") to send messages.
+
 Although is it an 'Out' node, it can receive reply messages from the machine(s) it sends to. The messages will appear in the DAT's contents (just like the [UDP In DAT](https://docs.derivative.ca/UDP_In_DAT "UDP In DAT")).
+
 See also [UDP In DAT](https://docs.derivative.ca/UDP_In_DAT "UDP In DAT"), [Touch Out DAT](https://docs.derivative.ca/Touch_Out_DAT "Touch Out DAT") and [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [udpoutDAT_Class](https://docs.derivative.ca/UdpoutDAT_Class "UdpoutDAT Class")
 
 ## Parameters - Connect Page
+
 - Active `active` - This check box enables the connection.
 - Protocol `protocol` - ⊞ - Selects the network protocol to use. Refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Messaging (UDP) `msging` -
@@ -35,6 +41,7 @@ See also [UDP In DAT](https://docs.derivative.ca/UDP_In_DAT "UDP In DAT"), [Touc
 - Local Port `localport` - When the above parameter is set to 'Manual', enter the port number to use here.
 
 ## Parameters - Received Data Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message coming in.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -48,6 +55,7 @@ See also [UDP In DAT](https://docs.derivative.ca/UDP_In_DAT "UDP In DAT"), [Touc
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -64,19 +72,26 @@ See also [UDP In DAT](https://docs.derivative.ca/UDP_In_DAT "UDP In DAT"), [Touc
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the UDP Out DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific UDP Out DAT Info Channels
   * messages_pending -
 
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

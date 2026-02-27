@@ -5,12 +5,17 @@ title: Wave_CHOP
 ---
 
 # Wave CHOP
+
 ## Summary
 
 The Wave CHOP makes repeating waves with a variety of shapes. It is by default 10-seconds of 1-second sine waves, a total of 600 frames. You can adjust period (frequency), phase, shape, amplitude and offset.
+
 The Wave CHOP gives a set of waves in channels of a specifiable time-range. It is superceded by the [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP") which gives an endless stream of waves that is [Time Sliced](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)"), and the [Pattern CHOP](https://docs.derivative.ca/Pattern_CHOP "Pattern CHOP") that has more control over shaping waveform samples (and is time-independent). The [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CHOP "Audio Oscillator CHOP") also creates waveforms that are continually repeated, but its defaults are for higher-frequency waves at higher (audio) sample rates.
+
 Because the Extend Conditions of the Wave CHOP are set to Repeat, the wave will repeat outside the 10-second range.
+
 Applied to the actual waveform can be an offset, decay and ramp.
+
 Multiple channels can be generated in the Channel Name parameter using [Pattern Expansion](https://docs.derivative.ca/Pattern_Expansion "Pattern Expansion"). A few examples of name pattern name expansion:
   * `tx ty tz`
   * `t[xyz]` - expands to `tx ty tz`
@@ -18,9 +23,11 @@ Multiple channels can be generated in the Channel Name parameter using [Pattern 
   * `c[xyz][1-5:2]` - expands to `cx1 cx3 cx5 cy1 cy3 cy5 cz1 cz3 cz5`
 
 See also: [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"), [Pattern CHOP](https://docs.derivative.ca/Pattern_CHOP "Pattern CHOP"), [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CHOP "Audio Oscillator CHOP").
+
 [waveCHOP_Class](https://docs.derivative.ca/WaveCHOP_Class "WaveCHOP Class")
 
 ## Parameters - Wave Page
+
 - Type `wavetype` - ⊞ - There is a choice of waveforms shapes:
   * Constant `const` - [![TouchChannels69.gif](https://docs.derivative.ca/images/6/6c/TouchChannels69.gif)](https://docs.derivative.ca/File:TouchChannels69.gif)(1) A constant-valued "wave".
   * Sine `sin` - [![TouchChannels71.gif](https://docs.derivative.ca/images/a/ad/TouchChannels71.gif)](https://docs.derivative.ca/File:TouchChannels71.gif)(-1 to 1) A Sine wave.
@@ -34,7 +41,6 @@ See also: [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"), [Pattern C
 The Sine formula is:
 ```
 out = Amplitude * (Offset + sin ((Period*index - Phase)*360))
-
 ```
 - Period `period` - The period is the number of seconds, frames or samples that the waveform repeats in. It is expressed in the chop's Units (default is Seconds), found on the Common page.
 - Period Unit `periodunit` - Select the units to use for this parameter, Samples, Frames, or Seconds.
@@ -49,6 +55,7 @@ out = Amplitude * (Offset + sin ((Period*index - Phase)*360))
 - Expression `exprs` - If the waveform type is Expression, the Expression parameter is used to input a math expression. Some local variables are available: $I (Index), $L (the loop variable over the period 0 to 1), $C (the cycle variable, the integer number of cycles the waveform has passed at the current index).
 
 ## Parameters - Channel Page
+
 - Channel Names `channelname` - You can creates many channels with simple patterns like "`chan[1-20]`", which generates 20 channels from chan1 to chan20. See the section, Common CHOP Parameters for a description of this and all Options. See [Scope and Channel Name Matching](https://docs.derivative.ca/CHOP_Common_Page#Scope "CHOP Common Page") Options.
 - Start `start` - Start of the interval, expressed in Units (seconds, frames or samples).
 - Start Unit `startunit` - Select the units to use for this parameter, Samples, Frames, or Seconds.
@@ -72,6 +79,7 @@ out = Amplitude * (Offset + sin ((Period*index - Phase)*360))
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -89,9 +97,13 @@ out = Amplitude * (Offset + sin ((Period*index - Phase)*360))
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Wave CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -105,7 +117,9 @@ Extra Information for the Wave CHOP can be accessed via an [Info CHOP](https://d
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,12 +5,15 @@ title: DAT_to_CHOP
 ---
 
 # DAT to CHOP
+
 ## Summary
 
 The DAT to CHOP will create a set of CHOP channels with values derived from a [DAT](https://docs.derivative.ca/DAT "DAT").
+
 [dattoCHOP_Class](https://docs.derivative.ca/DattoCHOP_Class "DattoCHOP Class")
 
 ## Parameters - DAT to Page
+
 - DAT `dat` - The DAT to be used to retrieve values. This DAT should be in _table_ format. For table format, use either a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") or a [Convert DAT](https://docs.derivative.ca/Convert_DAT "Convert DAT") set to **To Table**.
 - Select Rows `extractrows` - ⊞ - This parameter allows you to pick different ways of specifying the rows selected.
   * All `all` - All rows selected.
@@ -64,6 +67,7 @@ By default, the [Python](https://docs.derivative.ca/Python "Python") expression 
   * Values `values` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -81,9 +85,13 @@ By default, the [Python](https://docs.derivative.ca/Python "Python") expression 
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the DAT to CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -97,7 +105,9 @@ Extra Information for the DAT to CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

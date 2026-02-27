@@ -5,12 +5,15 @@ title: Render_Select_TOP
 ---
 
 # Render Select TOP
+
 ## Summary
 
 The Render Select TOP allows you to select one of the color buffers from any [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP").
+
 [renderselectTOP_Class](https://docs.derivative.ca/RenderselectTOP_Class "RenderselectTOP Class")
 
 ## Parameters - Render Select Page
+
 - TOP `top` - Specify the TOP to use as a source. Currently [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"), [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") and [CPlusPlus TOPs](https://docs.derivative.ca/CPlusPlus_TOP "CPlusPlus TOP") are valid TOPs to select from.
 - Color Buffer Index `colorbufindex` - Specify which color buffer to select. Refer to the "# of Color Buffers" parameter in the Render TOP for more information.
 - Camera Index `cameraindex` - When multiple cameras are listed in the Render TOP's Camera parameter, this selects which cameras's output to select.
@@ -18,6 +21,7 @@ The Render Select TOP allows you to select one of the color buffers from any [Re
 - Image Output `imageoutput` - Accesses the Image Output of the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). Image Output must be enabled on the GLSL page of the Render TOP.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -97,9 +101,13 @@ The Render Select TOP allows you to select one of the color buffers from any [Re
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Render Select TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -113,7 +121,9 @@ Extra Information for the Render Select TOP can be accessed via an [Info CHOP](h
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,36 +5,59 @@ title: Timer_CHOP
 ---
 
 # Timer CHOP
+
 ## Summary
 
 The Timer CHOP is an engine for running timed processes. It outputs channels such as timing fractions, counters, pulses and timer states, and it calls python functions (callbacks) when various timing events occur.
+
 Examples using the Timer CHOP include triggering multiple timed cues, running playlists, timelines, state machines, and driving pre-animated animation components in 3D scenes. See Help -> Operator Snippets for numerous examples.
+
 You set a timer to a number of seconds (or unlimited), frames or samples, and trigger it to start via the Start parameter or the second input CHOP. The Timer CHOP outputs in seconds, frames, samples, fraction and on-off states as it’s counting, including a `done` channel that goes on when it is complete. When it reaches certain states like end-of-cycles or when it’s done, various python callbacks are called allowing you to customize its behavior.
+
 The Timer CHOP gets triggered by events (via pulsing its parameters or driving its two inputs). It takes events in, counts time, changes state. Via its python callback functions, you can send events out to other nodes, set parameters, get/set values in DATs, CHOPs and storage, restart itself, or trigger other nodes. As such, it can operate as a state machine.
+
 It has play/pause, plus a speed control to slow down or speed up the timer.
+
 It can also cycle indefinitely and then can be signaled to end immediately or at the end of the current cycle.
+
 **Recommended** : the **OP Snippets for Timer CHOP**. See the channel descriptions in [Initialize Start](https://docs.derivative.ca/Initialize_Start "Initialize Start").
+
 **Multiple Timer segments** - One Timer CHOP can also have multiple timers within it. By attaching a Table DAT you can define one timer (segment) per row. In Serial Timers mode it allows for one time segment followed by another. In Parallel Timers mode, the timers all run in parallel, each with its own begin time and length, and its own set of output channels.
 [![Timer CHOP.2.png](https://docs.derivative.ca/images/8/82/Timer_CHOP.2.png)](https://docs.derivative.ca/File:Timer_CHOP.2.png)
 The Timer CHOP can be Locked to Timeline in a deterministic way, or run more freely in Sequential Mode. When run independently from the timeline, you can jump ahead, break out of cycles, pause, `goTo()` exact position or timecode in the timer, and dynamically adjust the speed.
+
 Attach an Info DAT to the Timer CHOP to see the timecodes, or use the `.timecode` members. Custom text strings can be placed in the Info DAT for each segment, and custom animated channels can be created.
+
 To make an entire Timer CHOP loop after the last segment, set the On Done menu to Re-Start.
+
 **Tip: What happens when you press Start** - The timers are at 0 when you Initialize, for example `timer_frames` = 0. On the frame when you press Start, by default, the `running` channel goes from 0 to 1, and all the `timer_` counter channels step forward by 1 frame. If you want the timers to hold at 0 until the next frame, set the Run Value parameter to Zero. This is useful when you are cutting from black or other media to a visible first-frame of a movie when `running` goes to 1.
+
 **Chaining Timers** - The Timer CHOPs can be chained together, so that when one ends, the next can begin. They just need to all be Initialized together, where the `ready_pulse` channel of one Timer CHOP is exported to the Initialize parameter of the next Timer CHOP. Then they can be run in sequence, where the output of one Timer CHOP’s `done_pulse` channel is wired to the Start input (or exported to the Start parameter) of the next Timer CHOP. You start the chain of timers by starting the first Timer CHOP. By using some Timer CHOPs to loop awaiting input or response, or by adding logic to decide which CHOP to start next, state machines can be implemented.
+
 ### Callbacks
+
 The callbacks are called at different moments during the timer progression.
+
 `onInitialize()` gets called when you pulse the Initialize parameter. Here you can prepare any part of your setup prior to starting. At the end of Initialize the timer goes into a "ready" state.
+
 `onStart()` gets called on the frame that the Start parameter is pulsed. The timer then goes into a "running" state.
+
 `onTimerActive()` gets called every frame that the timer is running and there is no Delay or Play is off.
+
 `onCycleStart()` gets called if the timer is set to cycle via the Cycle parameters.
+
 Before a cycle or segment ends, an `onCycleEndAlert()` callback based on the Cycle End Alert parameter can be called to allow you to prepare for the next cycle, segment or Timer CHOP.
+
 `onSegmentEnter()` and `onSegmentExit()` get called if the timer is being driven by a Segments DAT which acts like several timers in one. The argument `segment` in these callbacks is actually an object with useful members including any custom columns you have in your segment table: In `onSegmentEnter()`, put the code `print(help(segment))`
+
 `onDone()` gets called when the timer reaches its finished state.
+
 You can initialize at a specific time by using `.masterSeconds` in `onInitialize()`.
 **See also** : [Trigger CHOP](https://docs.derivative.ca/Trigger_CHOP "Trigger CHOP"), [Event CHOP](https://docs.derivative.ca/Event_CHOP "Event CHOP"), [Speed CHOP](https://docs.derivative.ca/Speed_CHOP "Speed CHOP"), [Count CHOP](https://docs.derivative.ca/Count_CHOP "Count CHOP"), [Beat CHOP](https://docs.derivative.ca/Beat_CHOP "Beat CHOP"), [Event CHOP](https://docs.derivative.ca/Event_CHOP "Event CHOP"), [Clock CHOP](https://docs.derivative.ca/Clock_CHOP "Clock CHOP"), [Delay CHOP](https://docs.derivative.ca/Delay_CHOP "Delay CHOP"), [CHOP Execute DAT](https://docs.derivative.ca/CHOP_Execute_DAT "CHOP Execute DAT"), [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"). time measurements{| class="wikitable"|+ Time Measurements and what affects them|- ! Name !! Speed !! Play !! Cycles !! Go To and Cueing !! Subrange !! Delay Between Segments|-| Cumulative Time Count | | slows if speed<1 | | pauses when off | | keeps counting | | jumps | | jumps | | pauses|-| Playing Time Count | | unaffected | | pauses when off | | keeps counting | | keeps counting | | keeps counting | | keeps counting|-| Running Time Count | | unaffected | | unaffected | | keeps counting | | keeps counting | | keeps counting | | keeps counting|-| Master Time Count | | slows if speed<1 | | pauses when off | | see note * | | jumps | | jumps | | keeps counting|-| Segment + Fraction | | 0 to 1 per-segment | | pauses when off | | see note * | | jumps | | jumps | | pauses|} **note: jumps back every cycle if Cycle Limit is off. keeps counting up if Cycle Limit is on.**
 [timerCHOP_Class](https://docs.derivative.ca/TimerCHOP_Class "TimerCHOP Class")
 
 ## Parameters - Timer Page
+
 - Active `active` - ⊞ - The Timer cooks: Never / Always / While Running (while in "running" state) / While Playing (while in "running" state and Play is on).
   * Never `never` -
   * Always `always` -
@@ -116,6 +139,7 @@ You can initialize at a specific time by using `.masterSeconds` in `onInitialize
   * S `seconds` -
 
 ## Parameters - Segments Page
+
 You can specify multiple timers in one Timer CHOP. A "segment" acts as one timer, with its own length, delay time, number of cycles to repeat and other conditions.
 - Segments DAT `segdat` - A table DAT that contains one row per timer (segment). The column headings can be `delay` or `begin`, `length`, `cycle`, `cyclelimit`, `maxcycles` and `cycleendalert`, which override the equivalent parameters. (These are the internal names for the corresponding parameters.) `begin` is unique as it replaces `delay`, and it represents the time from Start that the timer will begin counting, whether the CHOP is set to Serial Timers or Parallel Timers (see Segment Method).
 The Segments DAT also can include any number of custom columns. See Columns to Custom Channels and Columns to Info DAT below.
@@ -153,6 +177,7 @@ _Lingo_
   * Running Time – Zero at Start, the wall-clock time since Start was called no matter what are the delays, speeds, cycles or premature clicking of Go To Segment End. It stops counting when Done has been reached.
 
 ## Parameters - Sub Range Page
+
 Operate the timer within a sub range of the total length.
 - Sub Range `subrange` - Turn this parameter on to limit the timer output to a subrange of the full length.
 - Sub Start `substart` - ⊞ - The beginning point of the sub range.
@@ -178,6 +203,7 @@ Operate the timer within a sub range of the total length.
   * S `seconds` -
 
 ## Parameters - Outputs Page
+
 - Timer Fraction `outfraction` - Outputs channel `timer_fraction` for each segment.
 - Timer Count `outtimercount` - ⊞ - Outputs the elapsed Seconds channel as `timer_seconds`, Frames outputs channel as `timer_frames`, or Samples outputs channel as `timer_samples`. Because this is elapsed time, `timer_frames` starts at 0, as do the others.
   * Off `off` -
@@ -244,6 +270,7 @@ Operate the timer within a sub range of the total length.
   * All `all` -
 
 ## Parameters - External Page
+
 - External CHOP `extchop` - The CHOP used to control the current point in the timer.
 - External Units `extunits` - ⊞ - Choose between using Samples, Frames, or Seconds as the units for this parameter.
   * I `samples` -
@@ -259,6 +286,7 @@ Operate the timer within a sub range of the total length.
 - External Timecode Object `exttcobj` - Time is specified using a timecode. Should be a reference to either a CHOP with channels 'hour', 'second', 'minute', 'frame', a DAT with a timecode string in its first cell, or a [Timecode Class](https://docs.derivative.ca/Timecode_Class "Timecode Class") object.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -276,12 +304,16 @@ Operate the timer within a sub range of the total length.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Timer CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Timer CHOP Info Channels
   * frames_timer -
 
@@ -292,7 +324,9 @@ Specific Timer CHOP Info Channels
   * frames_running -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -306,7 +340,9 @@ Specific Timer CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

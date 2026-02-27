@@ -5,13 +5,17 @@ title: HSV_Adjust_TOP
 ---
 
 # HSV Adjust TOP
+
 ## Summary
 
 The HSV Adjust TOP adjust color values using hue, saturation, and value controls. If you change the Hue Offset, Saturation Multiplier and Value Multiplier without changing any of the other parameters then you will modify the color of all pixels in the image. The other parameters are used to narrow the range of pixels you want to modify based on their hue, saturation and value. For example if you leave the Hue Range untouched but reduce the saturation range, you will cause the TOP to modify only pixels who fall into the new saturation range. The range is the Start Color's saturation + the Range + the Falloff, in this example.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [hsvadjustTOP_Class](https://docs.derivative.ca/HsvadjustTOP_Class "HsvadjustTOP Class")
 
 ## Parameters - HSV Tweak Page
+
 [![HSVadjust.jpg](https://docs.derivative.ca/images/4/4a/HSVadjust.jpg)](https://docs.derivative.ca/File:HSVadjust.jpg)
 - Start Color `startcolor` - ⊞ - The start color is the hue that the HSV adjustment is centered around. When adjusting a small hue range, this is the color that will be altered. In the example image above, the Start Color color is cyan with a hue value of 180.
   * Red `startcolorr` -
@@ -29,6 +33,7 @@ The HSV Adjust TOP adjust color values using hue, saturation, and value controls
 - Value Multiplier `valuemult` - Adjusts the values selected above. This will multiply the values specified by Value Range and Falloff parameters above.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -128,12 +133,17 @@ The HSV Adjust TOP adjust color values using hue, saturation, and value controls
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the HSV Adjust TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -147,7 +157,9 @@ Extra Information for the HSV Adjust TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

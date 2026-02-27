@@ -5,16 +5,23 @@ title: Limit_TOP
 ---
 
 # Limit TOP
+
 ## Summary
 
 The Limit TOP can limit the pixel values of the input image to fall between a minimum and maximum value, and can quantize the pixels by value or position.
+
 Limiting a channel causes all of its values to lie within the given range. Several different methods are available to determine what happens to values outside of the Minimum/Maximum range.
+
 Quantizing pixel values will snap each channel to the closest allowable value (the "quantized values"). Quantizing methods are: Floor, Ceiling, and Round.
+
 Quantizing pixel positions will cause all pixels within the quantization step to take the same value. This is equivalent to lowering the image resolution and then scaling the image back to its original size with no filtering applied.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [limitTOP_Class](https://docs.derivative.ca/LimitTOP_Class "LimitTOP Class")
 
 ## Parameters - Limit Page
+
 - Minimum Function `minop` - ⊞ - The wrapping method used when applying limits to the pixel values in the image.
   * Off `off` - No limits are applied to the pixel values.
   * Clamp `clamp` - Pixel values are constrained to the ranged defined by the Minimum and Maximum parameters. Values outside of the range are replaced with the Minimum or Maximum value.
@@ -35,6 +42,7 @@ Quantizing pixel positions will cause all pixels within the quantization step to
 - Normalize Maximum `normmax` - The maximum value for pixels after normalization.
 
 ## Parameters - Quantize Page
+
 - Quantize Value `quantvalue` - ⊞ - The function used to quantize the pixel values in the output image.
   * Off `off` - Pixel values are not quantized.
   * Ceiling `ceiling` - Pixel values are rounded up to the nearest quantization step.
@@ -53,6 +61,7 @@ Quantizing pixel positions will cause all pixels within the quantization step to
 - Position Offset `posoffset` - An offset applied to the spacial quantization so that the steps do not have to start at 0,0 (measured in 0-1 UV space).
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -132,12 +141,17 @@ Quantizing pixel positions will cause all pixels within the quantization step to
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Limit TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -151,7 +165,9 @@ Extra Information for the Limit TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

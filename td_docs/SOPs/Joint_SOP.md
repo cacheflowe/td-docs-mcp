@@ -5,12 +5,15 @@ title: Joint_SOP
 ---
 
 # Joint SOP
+
 ## Summary
 
 The Joint SOP will aid in the creation of circle-based skeletons by creating a series of circles between each pair of input circles. This SOP requires at least a pair of circles in order to work correctly.
+
 [jointSOP_Class](https://docs.derivative.ca/JointSOP_Class "JointSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field causes the SOP to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Divisions `divs` - Allows you to specify the number of circles between each pair of input circles.
 - Preserve First Input `preserve1` - Preserves the first input circle being fed into the SOP.
@@ -29,12 +32,17 @@ The Joint SOP will aid in the creation of circle-based skeletons by creating a s
   * `lroffset2` -
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Joint SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -46,7 +54,9 @@ Extra Information for the Joint SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

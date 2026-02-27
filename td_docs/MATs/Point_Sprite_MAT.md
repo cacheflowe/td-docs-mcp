@@ -5,13 +5,17 @@ title: Point_Sprite_MAT
 ---
 
 # Point Sprite MAT
+
 ## Summary
 
 The Point Sprite MAT allows you to control some attributes of Point Sprites (creatable using the [Particle SOP](https://docs.derivative.ca/Particle_SOP "Particle SOP"), [DAT to SOP](https://docs.derivative.ca/DAT_to_SOP "DAT to SOP"), or [Convert SOP](https://docs.derivative.ca/Convert_SOP "Convert SOP")). You can apply color, a color map, change the size of the created point sprite from a square to a rectangle, and scale the size of the point sprite.
+
 A point sprite's final size controls the number of pixels wide/high it is, regardless of how far it is from the camera (unless you are using attenuation).
+
 [pointspriteMAT_Class](https://docs.derivative.ca/PointspriteMAT_Class "PointspriteMAT Class")
 
 ## Parameters - Point Sprite Page
+
 - Color `color` - ⊞ - The color of the light reflected from the material.
   * Red `colorr` -
   * Green `colorg` -
@@ -67,6 +71,7 @@ Points that are closer than or at the Near distance from the camera will use the
 - Size Affected by FOV/OrthoWidth `sizeaffectedbyfov` - With this off (default), looking at a rendered image of a certain resolution, the size of the sprite will remain the same # of pixels wide as you change the field-of-view or ortho width. With this parameter on, the size of the sprite will be half the number of pixels wide if you double the field-of-view or double the ortho width. Relevant if you are animating camera zoom, for instance. This toggle only works when the Sizing Model is set to 'Perspective Correct'.
 
 ## Parameters - Deform Page
+
 Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(Skinning\) "Deforming Geometry \(Skinning\)") for more information on doing deforms in TouchDesigner.
 - Deform `dodeform` - Enables deforms on this material.
 - Get Bone Data: `deformdata` - ⊞ - Specifies where the deform bone data will be obtained.
@@ -81,8 +86,11 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
 
 ## Parameters - Common Page
+
 ###
+
 Blending
+
 [Blending](https://docs.derivative.ca/Blending "Blending") is summing the color value of the pixel being drawn and the pixel currently present in the Color-Buffer. Blending is typically used to simulate [Transparency](https://docs.derivative.ca/Transparency "Transparency"). The blending equation is: `Final Pixel Value = (Source Blend * Source Color) + (Dest Blend * Destination Color)`
 
 - Blending (Transparency) `blending` - This toggle enables and disables blending. However see the wiki article [Transparency](https://docs.derivative.ca/Transparency "Transparency").
@@ -188,8 +196,11 @@ Blending
   * Always `always` -
 
 ###
+
 Depth Test
+
 Depth-Testing is comparing the depth value of the pixel being drawn with the pixel currently in the [Frame-Buffer](https://docs.derivative.ca/index.php?title=Frame-Buffer&action=edit&redlink=1 "Frame-Buffer \(page does not exist\)"). A pixel that is determined to be in-front of the pixel currently in the Frame-Buffer will be drawn over it. Pixels that are determined to be behind the pixel currently in the Frame-Buffer will not be drawn. Depth-Testing allows geometry in a 3D scene to occlude geometry behind it, and be occluded by geometry in-front of it regardless of the order the geometry was drawn.
+
 For a more detailed description of Depth-Testing, refer to the [Depth-Test](https://docs.derivative.ca/Depth-Test "Depth-Test") article.
 
 - Write Depth Values `depthwriting` - If Write Depth Values is on, pixels that pass the depth-test will write their depth value to the Depth-Buffer. If this isn't on then no changes will be made to the Depth-Buffer, regardless of if the pixels drawn pass or fail the depth-test.
@@ -207,7 +218,9 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Topology Wire Frame `topology` -
 
 ###
+
 Alpha Test
+
 Alpha-testing allows you to choose to draw or not draw a pixel based on its alpha value.
 
 - Line Width `wirewidth` - This value is the width that the wires will be. This value is in pixels.
@@ -221,16 +234,23 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
 - Polygon Depth Offset `polygonoffset` - Turns on the polygon offset feature.
 - Offset Factor `polygonoffsetfactor` -
 - Offset Units `polygonoffsetunits` -
+
 ###
+
 Wire Frame
+
 The wire-frame feature will render the geometry as wire-frame, using the actual primitive type used in the render. What this means is surfaces like Metaballs, NURBs and Beziers will become a wire-frame of the triangles/triangle-strips used to render them (since these types of primitives can't be natively rendered in OpenGL).
 
 ###
+
 Cull Face
+
 The cull face parameter will cull faces from the render output. This can be used as an optimization or sometimes to remove artifacts. See [Back-Face Culling](https://docs.derivative.ca/Back-Face_Culling "Back-Face Culling") for more infomation.
 
 ###
+
 Polygon Depth Offset
+
 This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly on-top of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing [shadows](https://docs.derivative.ca/Shadows "Shadows").
 
 - Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
@@ -274,11 +294,17 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Point Sprite MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common MAT Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

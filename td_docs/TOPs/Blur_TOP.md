@@ -5,15 +5,21 @@ title: Blur_TOP
 ---
 
 # Blur TOP
+
 ## Summary
 
 The Blur TOP blurs the image with various kernel filters and radii. It can do multi-pass blurs and can do horizontal, vertical, or z-direction blurs.
+
 Use Pre-shrink when the blurs are high and you want to optimize performance.
+
 **Tip:** Filter Size is expressed in pixels. If you want resolution-independent blurs, use an expression like `me.par.resolutionw/100` in the Filter Size parameter, which gives a 1% image blur.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [blurTOP_Class](https://docs.derivative.ca/BlurTOP_Class "BlurTOP Class")
 
 ## Parameters - Blur Page
+
 - Type `type` - ⊞ - Determines the mathematical function used to create the blur.
   * Catmull-Rom `catmull` - A spline approximation to a Gaussian kernel. Gives sharper textures and more accurate edges.
   * Gaussian `gaussian` - A normal distribution where pixels at the center have more effect on the resulting pixel. Gaussian lacks sharpness but handles ringing and aliasing well.
@@ -49,6 +55,7 @@ Use Pre-shrink when the blurs are high and you want to optimize performance.
 - Dither `dither` - Enabling makes 8-bit blurs look smoother. This can help if the blur operation introduces banding or other unexpected artifacts.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -128,12 +135,17 @@ Use Pre-shrink when the blurs are high and you want to optimize performance.
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Blur TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -147,7 +159,9 @@ Extra Information for the Blur TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,11 +5,15 @@ title: TouchDesigner_Python_Classes
 ---
 
 # Python Classes and Modules
+
 (Redirected from [TouchDesigner Python Classes](https://docs.derivative.ca/index.php?title=TouchDesigner_Python_Classes&redirect=no "TouchDesigner Python Classes"))
 
 The following list of important Python classes and modules is roughly grouped together by subject.
+
 [Python Reference](https://docs.derivative.ca/Category:Python_Reference "Category:Python Reference") has an alphabetical list of all TouchDesigner Python pages on this wiki.
+
 ###  Operator Related Classes
+
 The following classes are Python interfaces for operators and objects that operators use. Individual operator classes (e.g. [TextTOP Class](https://docs.derivative.ca/TextTOP_Class "TextTOP Class") and [RampTOP Class](https://docs.derivative.ca/RampTOP_Class "RampTOP Class")) are not listed but do exist in the [`td` module](https://docs.derivative.ca/Td_Module "Td Module"), and links to each can be found [here](https://docs.derivative.ca/Category:Python_Reference "Category:Python Reference") or by clicking on the Python Help button in their [parameter dialog](https://docs.derivative.ca/Parameter_Dialog "Parameter Dialog"). These classes are found in the [td module](https://docs.derivative.ca/Td_Module "Td Module") so do not need to be imported.
   * **[OP Class](https://docs.derivative.ca/OP_Class "OP Class")** - a TouchDesigner [operator](https://docs.derivative.ca/Operator "Operator").
     * **[Connector Class](https://docs.derivative.ca/Connector_Class "Connector Class")** - a wire connector for an OP. Lists of these can be found in `OP.inputConnectors` and `OP.outputConnectors`. Components also have `COMP.inputCOMPConnectors` and `COMP.outputCOMPConnectors`.
@@ -62,6 +66,7 @@ The following classes are Python interfaces for operators and objects that opera
       * **[TextLine Class](https://docs.derivative.ca/TextLine_Class "TextLine Class")** - a line of text in the [Text TOP](https://docs.derivative.ca/Text_TOP "Text TOP") or [Text SOP](https://docs.derivative.ca/Text_SOP "Text SOP"), after it has been formatted. Contains various members about the line such as it's text, position etc.
 
 ###  Helper Classes
+
 The following helper objects are part of the [td module](https://docs.derivative.ca/Td_Module "Td Module") and can thus be accessed anywhere, including expressions, without imports (e.g. `absTime.frame`).
   * **[AbsTime Class](https://docs.derivative.ca/AbsTime_Class "AbsTime Class")** (`absTime`) - information about [absolute time](https://docs.derivative.ca/Absolute_Time "Absolute Time")
   * **[App Class](https://docs.derivative.ca/App_Class "App Class")** (`app`) - information about the TouchDesigner app, including version, installation folders, etc.
@@ -98,6 +103,7 @@ The following helper objects are part of the [td module](https://docs.derivative
     * **[Undo Class](https://docs.derivative.ca/Undo_Class "Undo Class")** (`ui.undo`) - tools for interacting with the undo system, including creating script-based undo steps
 
 ###  Standard Python Modules
+
 The [`td` module](https://docs.derivative.ca/Td_Module "Td Module") also automatically imports a number of helpful standard modules, allowing them to be accessed in expressions through their namespace (e.g. `math.cos(math.pi)`):
   * [`collections`](https://docs.python.org/3.7/library/collections.html) - container datatypes
   * [`enum`](https://docs.python.org/3.7/library/enum.html) - support for enumerations
@@ -109,15 +115,15 @@ The [`td` module](https://docs.derivative.ca/Td_Module "Td Module") also automat
   * [`warnings`](https://docs.python.org/3.7/library/warnings.html) - warning control
 
 ###  TouchDesigner Utility Modules and Python Utilities
+
 The following contain extended Python utilities for use with TouchDesigner.
   * **[TDFunctions](https://docs.derivative.ca/TDFunctions "TDFunctions")** - A variety of utilities for advanced Python coding in TouchDesigner.
   * **[TDJSON](https://docs.derivative.ca/TDJSON "TDJSON")** - JSON utilities specific to TouchDesigner.
   * **[TDStoreTools](https://docs.derivative.ca/TDStoreTools "TDStoreTools")** - utilities for use with TouchDesigner's [Storage](https://docs.derivative.ca/Storage "Storage") and [Dependency](https://docs.derivative.ca/Dependency "Dependency") system.
   * **[TDResources](https://docs.derivative.ca/TDResources "TDResources")** (`op.TDResources...`) - not a module, but does contain system resources that can be accessed via Python. It includes system [pop-up menu](https://docs.derivative.ca/TDResources#Pop-Up_Menu "TDResources"), [button pop-up menu](https://docs.derivative.ca/TDResources#Button_Pop-Up_Menu "TDResources"), [pop-up dialog](https://docs.derivative.ca/TDResources#Pop-Up_Dialog "TDResources"), and [mouse](https://docs.derivative.ca/TDResources#Mouse "TDResources") resources.
 
-
-
 ###  3rd Party Packages
+
 **The following 3rd party packages are automatically installed with TouchDesigner.** They are not in the [td module](https://docs.derivative.ca/Td_Module "Td Module"), so must be imported explicitly to be used in scripts. The name in parentheses is the actual package name used (e.g. to use OpenCV, write this at top of script: `import cv2`). For information on adding or installing other Python modules, see [Importing Modules](https://docs.derivative.ca/Introduction_to_Python_Tutorial#Importing_Modules).
   * **[asn1crypto](https://pypi.org/project/asn1crypto/)** (`asn1crypto`) - Parsing and serializing ASN.1 structures.
   * **[attr](https://www.attr.org)** (`attr`) - Classes without boilerplate.
@@ -153,13 +159,23 @@ The following contain extended Python utilities for use with TouchDesigner.
   * **[whats-that-code](https://pypi.org/project/whats-that-code/)** (`whats_that_code`) - programming language detection library.
 
 ###  Installing Custom Packages and Modules
+
 You can also install your own Python packages that are not included with TouchDesigner. For instructions, go [here](https://docs.derivative.ca/Category:Python#Installing_Custom_Python_Packages "Category:Python").
+
 Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+
 Lets you embed files inside a `.tox[](https://docs.derivative.ca/.tox ".tox")` or `.toe[](https://docs.derivative.ca/.toe ".toe")` file. Operators like the Movie File In TOP that read regular files can also read the embedded VFS files using a `vfs:` syntax.
+
 A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+
 A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+
 Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off or the root timeline is paused.
+
 is the [Procedural](https://docs.derivative.ca/Procedural "Procedural") mechanism in TouchDesigner, where if one piece of data changes, it automatically causes other operators and expressions to re-[Cook](https://docs.derivative.ca/Cook "Cook").
+
 TouchDesigner is a hierarchy of components. "root" is the top-most network in the hierarchy. The [Network Path](https://docs.derivative.ca/Network_Path "Network Path") or Path for root is simply `/`. A typical path is `/project1/moviein1`.

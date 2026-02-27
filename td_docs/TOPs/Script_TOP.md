@@ -5,22 +5,31 @@ title: Script_TOP
 ---
 
 # Script TOP
+
 ## Summary
 
 The Script TOP can be used to generate a TOP image using a Python script. The core feature it exposes is `copyNumpyArray`, which takes a NumPy array as input, and fills the TOP with the given image. How the NumPy array is generated is entirely up to the script writter, custom code, OpenCV, etc.
+
 The source can be 3 or 4 channels for `copyNumpyArray()`.
+
 The [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP") enables numPy arrays to be converted into the CHOP's channels. Also any CHOP can get its channels converted into numPy arrays. (May 2021)
+
 See `numPyArray()` in [TOP Class](https://docs.derivative.ca/TOP_Class "TOP Class")., [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT").
+
 See also [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP"), [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP")
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [scriptTOP_Class](https://docs.derivative.ca/ScriptTOP_Class "ScriptTOP Class")
 
 ## Parameters - Setup Page
+
 - Callbacks DAT `callbacks` - Specifies the DAT which holds the callbacks.
 - Setup Parameters `setuppars` - Clicking the button runs the `setupParameters()` callback function.
 - Modify Outside of Cook `modoutsidecook` - Allows TOP to be updated by external script without having to lock the TOP
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -100,12 +109,17 @@ See also [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP"), [S
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Script TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -119,7 +133,9 @@ Extra Information for the Script TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

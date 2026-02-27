@@ -5,16 +5,23 @@ title: TOP_to_CHOP
 ---
 
 # TOP to CHOP
+
 ## Summary
 
 The TOP to CHOP converts pixels in a [TOP](https://docs.derivative.ca/TOP "TOP") image to [CHOP](https://docs.derivative.ca/CHOP "CHOP") channels. Each pixel color element (RGBA) is placed in a separate channel. Depending on the parameter options, the node will either create a single set of channels for the whole image or it can create a separate set of channels for each scanline (row).
+
 A single pixel, rows of pixels, columns of pixels or rectangular regions can be extracted from the image. It is therefore important to be aware of how many pixels your source image is composed of.
+
 The Exclude NaN and Active Mask parameters can be used to skip certain pixels so they are not included in the chop channels.
+
 There is an optional input which supplies UV coordinates to sample the image. The input CHOP must contain 2 channels, for U and V. The first channel is always assumed to be U. The channels produced (red, green, blue and alpha) will be exactly as long as the input channel's length, with a value for each UV coordinate.
+
 If you are grabbing pixels from a [Depth TOP](https://docs.derivative.ca/Depth_TOP "Depth TOP"), you will only get a single channel (the depth). This will be placed in the R channel.
+
 [toptoCHOP_Class](https://docs.derivative.ca/ToptoCHOP_Class "ToptoCHOP Class")
 
 ## Parameters - Image Page
+
 - TOP `top` - Specify the TOP operator whose image will be sampled.
 - Download Type `downloadtype` - ⊞ - Gives the option for a delayed data download from the GPU, which is much faster and does not stall the render.
   * Immediate (Slow) `immediate` -
@@ -61,6 +68,7 @@ If you are grabbing pixels from a [Depth TOP](https://docs.derivative.ca/Depth_T
   * 0 to 65535 `u65536` -
 
 ## Parameters - Crop Page
+
 - Crop `crop` - ⊞ - Specifies what to extract from the image.
   * Pixel (U,V) `pixel` - Extract a single pixel at the given U and V value.
   * Row (U) `row` - Extract a single row at the given U value, cropped by the V Start and V End on the left and right.
@@ -81,6 +89,7 @@ If you are grabbing pixels from a [Depth TOP](https://docs.derivative.ca/Depth_T
   * Linear `linear` -
 
 ## Parameters - Extend Page
+
 - Image Left `imageleft` - ⊞ - The image extend conditions when sampling the image with U less than 0.
   * Hold `hold` -
   * Cycle `cycle` -
@@ -113,6 +122,7 @@ The extend conditions are:
   * Alpha `defcolora` -
 
 ## Parameters - Channel Page
+
 - Start `start` - The start position of the channel, expressed in units set by the units menu to the right (samples, frames or seconds). The channel length is determined by the number of pixels in each scanline that is converted into a channel.
 - Start Unit `startunit` - ⊞ - Select the units to use for this parameter, Samples, Frames, or Seconds.
   * I `samples` -
@@ -137,6 +147,7 @@ The extend conditions are:
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -173,4 +184,5 @@ The extend conditions are:
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -

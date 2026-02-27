@@ -5,32 +5,45 @@ title: Out_POP
 ---
 
 # Out POP
+
 ## Summary
 
 The Out POP outputs data to POPs outside its parent component. For each Out POP inside a component, there is one output connector added to the Out POP's parent component.
+
 You can wire a POP to its input, or reference another POP with the Select POP parameter.
+
 By putting a string in the Label parameter, when you roll your cursor over the parent component's output, it will display the label.
+
 [outPOP_Class](https://docs.derivative.ca/OutPOP_Class "OutPOP Class")
 
 ## Parameters - Out Page
+
 - Select POP `selectpop` - POP reference to output when no input is connected.
 - Label `label` - Creates a pop-up label when the cursor rolls over this Component output.
 - Connect Order `connectorder` - All the connect orders from the Out OPs are sorted to determine the order of the connectors on the parent COMP.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Out POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

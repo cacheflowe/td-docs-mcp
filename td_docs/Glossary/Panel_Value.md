@@ -5,7 +5,9 @@ title: Panel_Value
 ---
 
 # Panel Value
+
 **Panel Values** hold the current states of [Panel Components](https://docs.derivative.ca/Panel_Component "Panel Component"). Panel Values change based on users interactions with control panels.
+
 Panel values are accessed in 4 ways:
   * Panel values can be viewed by middle-clicking on a panel component to bring up its info box. Note that string values and values that are _instant_ (set to X and then reverted to 0 or empty) will not display on a Panel CHOP. These values are denoted as _string_ and _instant_ below.
 
@@ -21,6 +23,7 @@ Panel values are changed:
   * when in [Tscript](https://docs.derivative.ca/Tscript "Tscript") the click command or the Tscript controlpanel command.
 
 ## General Panel Values
+
 The list below gives a brief description of all the panel values. Some of the values do not have an effect on some panel types, they are described below.
   * **`select`→`int`** - 1 when left, middle, or right mouse button is pressed over the panel.
   * **`lselect`→`int`** - 1 when left mouse button is pressed.
@@ -59,9 +62,11 @@ The list below gives a brief description of all the panel values. Some of the va
   * **`scrollu`,`scrollv`** → `float` - get or set the normalized (0-1) scroll position of the panel.
 
 ## Slider Only Panel Values
+
   * **`stateu`,`statev` → `float`** - (may be obsolete, use `u`, `v`, `trueu`, `truev`) corresponds to the x and y position of the cursor. Updated whenever any mouse button is pressed over the slider panel. `stateu`/`statev` differ from `u`/`v` in that the Slider's 'Slider Page' parameters (Zone, Range, Clamp, etc.) are used to determine the result of `stateu`/`statev`.
 
 ## Button and Table Only Panel Values
+
   * **`state`→`int`** - (button only) For momentary or toggle buttons, the value toggles on=1/off=0 with any mouse click over the panel. For Sliders, the value matches `stateu` when the slider type is 'Slider U', and `statev` when the slider type is 'Slider V'. state does nothing for slider type 'Slider UV'.
   * **`lstate`→`int`** - (button only) value toggles on=1/off=0 with a left mouse click over the panel.
   * **`mstate`→`int`** - (button only) value toggles on=1/off=0 with a middle mouse click over the panel.
@@ -69,6 +74,7 @@ The list below gives a brief description of all the panel values. Some of the va
   * **`picked`→`int`** - (button only) the `picked` panel value works in conjunction with shift or ctrl clicking a button component. When shift or ctrl clicking multiple momentary buttons the last one clicked will hold the `state` panel value where all others state panel values will be set to 1. Here is where the `picked` panel value helps out as it remains at 1 until you click select a single button.
 
 ## Radio and Exclusive Buttons Only Panel Values
+
   * **`radio`→`int`** - index of which radio/exclusive button is selected by any mouse click. The index starts at 0 and the radio buttons are sorted in alphanumeric order. When using the exclusive button type, a value of -1 is used to indicate no button is selected after clicking a button twice in succession.
   * **`lradio`→`int`** - index of which radio/exclusive button is selected by a left mouse click.
   * **`mradio`→`int`** - index of which radio/exclusive button is selected by a middle mouse click.
@@ -79,15 +85,15 @@ The list below gives a brief description of all the panel values. Some of the va
   * **`rradioname`→`str`** - returns the name (string) of the button selected in the `rradio` value. Use this in an expression or function.
 
 ## Field Only Panel Values
+
   * **`key`→`int`** - (instant) this value is set with the ASCII code of the key when it is hit on the keyboard. it is immediately followed by the value of 0. To monitor keys with no ASCII value please use the [Keyboard In DAT](https://docs.derivative.ca/Keyboard_In_DAT "Keyboard In DAT").
   * **`invalidkey`→`int`** - (instant) value is pulsed whenever an invalid key is pressed. An example is pressing an _alphanumeric_ key 'a' on a field set to _numeric_ , the `invalidkey` panel value would pulse to 97 then 0 in this case.
   * **`focus`→`int`** - `focus` is set when you click on a field. when `focus` is 1, you can type if the field is editable.
   * **`field`→`str`** - (string) this is the current saved value of the field.
   * **`fieldediting`→`str`** - (string) this is the contents of the field as it is being edited.
 
-
-
 ## Table Only Panel Values
+
 Cell IDs are numeric values, beginning at 0 for the first defined cell.
   * **`celloverid`→`int`** - Cell ID cursor is over. -1 when the cursor is not over any cell.
   * **`cellfocusid`→`int`** - Cell ID currently being edited. -1 when no cell is being edited.
@@ -100,4 +106,5 @@ Cell IDs are numeric values, beginning at 0 for the first defined cell.
   * **`celldropid`→`int`** - Cell ID that something dropped onto.
 
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+
 TouchDesigner's original built-in Command scripting language prior to [Python](https://docs.derivative.ca/Python "Python").

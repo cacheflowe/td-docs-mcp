@@ -5,20 +5,31 @@ title: Window_COMP
 ---
 
 # Window COMP
+
 ## Summary
 
 The Window Component allows you to create and maintain a separate floating or fixed window displaying the contents of any [Panel](https://docs.derivative.ca/Panel "Panel") or any [Node Viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer").
+
 Most frequently you are setting up the Window COMP `/perform` in the default TouchDesigner project. `/perform` is the default window for [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode"). In the Parameter dialog of the Window component you adjust its settings such as resolution, centering, and which monitor(s) the window will get displayed on.
+
 You then press F1 to go into [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode") and operate/display the panel standalone.
+
 Press Esc over a window to close it and go back to [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode").
+
 You can create more Window Components, point them to panels or other Operators like TOPs, adjust their parameters and then pulse the parameter Open as Separate Window to see its effect.
+
 Use the Dialog-> [Window Placement Dialog](https://docs.derivative.ca/Window_Placement_Dialog "Window Placement Dialog") which controls which window COMPs get displayed on startup. All Window COMPS in your project are listed there and you can test them individually.
+
 A window can be fit to a single monitor, or span several monitors.
+
 Attach an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to the Window component - it will show you the window's current location and size, and whether the window is actually open.
+
 See also [Window](https://docs.derivative.ca/Window "Window"), [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors").
+
 [windowCOMP_Class](https://docs.derivative.ca/WindowCOMP_Class "WindowCOMP Class")
 
 ## Parameters - Window Page
+
 - Window Operator `winop` - Specifies the operator the window will display.
 - Title `title` - Specify the window's title.
 - Justisy and Offset to... `justifyoffsetto` - ⊞ - All the positioning parameters below are done relative to the location you specify here. Your window can span more than the specified 'area', it's just used as the reference for positioning. **Note for macOS** : When using 'Bounds of all Monitors' you must turn off the 'Displays have separate Spaces' toggle in System Preferences > Desktop & Dock > Mission Control, see [Multiple_Monitors#macOS](https://docs.derivative.ca/Multiple_Monitors#macOS "Multiple Monitors") for details.
@@ -94,6 +105,7 @@ See also [Window](https://docs.derivative.ca/Window "Window"), [Multiple Monitor
 - Hardware Frame-Lock `hwframelock` - Use of this feature in the Window COMP is deprecated. It is highly recommended that [Direct Display Out TOPs](https://docs.derivative.ca/Direct_Display_Out_TOP "Direct Display Out TOP") be used for Frame-Lock. This feature provides multi-GPU frame-lock sync using [Nvidia Quadro Sync](https://www.nvidia.com/en-us/design-visualization/solutions/quadro-sync/) sync cards. For more information, see [Syncing Multiple Computers](https://docs.derivative.ca/Syncing_Multiple_Computers "Syncing Multiple Computers") and [Hardware Frame Lock](https://docs.derivative.ca/Hardware_Frame_Lock "Hardware Frame Lock").
 
 ## Parameters - Open/Close Page
+
 - Open as Perform Window `performance` - Opens this Window COMP in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode"). Any Window COMP can be set as default Perform Window (opens using F1 shortcut) using the [Window Placement Dialog](https://docs.derivative.ca/Window_Placement_Dialog "Window Placement Dialog"). This button allows you to open this Window COMP in Perform Mode without changing what is currently selected as the 'default' Perform Window.
 - Open as Separate Window `winopen` - Opens this Window COMP as its own floating window, not as the Perform Window. Useful for things such as dialog boxes, popups, or testing, but should not be used for putting final rendered content to outputs. Use a single large Perform Window for that instead of separate windows.
 - Close `winclose` - Closes the window, if it's open.
@@ -102,7 +114,9 @@ See also [Window](https://docs.derivative.ca/Window "Window"), [Multiple Monitor
 - Include in Placement Dialog `includedialog` - When 'On' this Window COMP will be displayed in the Window Placement Dialog.
 - Prevent Display Sleep `blocksleep` - When 'On' the display will not go to sleep regardless of the system's power and sleep settings.
 - Close on Escape Key `closeescape` - When 'On' pressing the escape key over this window will close it. **TIP** : Shift-Escape will always close it, whether this parameter is on or off.
+
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -110,7 +124,9 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Object `ext0object` - A number of class instances that can be attached to the component.
 - Name `ext0name` - Optional name to search by, instead of the instance class name.
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
+
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -135,8 +151,11 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * Relative to External COMP File (.tox) `externaltox` - The path, when specified as a relative path, will be relative to the .tox file. When no external COMP file is specified, or when Enable External .tox is not toggled on, this doesn't have any impact.
 
 ## Info CHOP Channels
+
 Extra Information for the Window COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Window COMP Info Channels
   * winx -
 
@@ -153,11 +172,15 @@ Specific Window COMP Info Channels
   * borders -
 
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

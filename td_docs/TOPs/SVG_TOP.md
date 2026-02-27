@@ -5,13 +5,17 @@ title: SVG_TOP
 ---
 
 # SVG TOP
+
 ## Summary
 
 The SVG TOP has been deprecated and no longer works. Try [palette:webSvg](https://docs.derivative.ca/Palette:webSvg "Palette:webSvg") as an alternative.
+
 See also the [Web Render TOP](https://docs.derivative.ca/Web_Render_TOP "Web Render TOP").
+
 [svgTOP_Class](https://docs.derivative.ca/SvgTOP_Class "SvgTOP Class")
 
 ## Parameters - Load Page
+
 - File `file` - The path and name of the SVG file to load. File format .svg supported.
 - DAT `dat` - Not currently used.
 - Reload `reload` - Change from 0 to 1 to force the file to reload, useful when the file changes or did not exist at first.
@@ -34,6 +38,7 @@ See also the [Web Render TOP](https://docs.derivative.ca/Web_Render_TOP "Web Ren
 - Background Alpha `bgalpha` - Sets the background alpha in the image.
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - The menu attached to this parameter allows you to specify the order in which the changes to your TOP will take place. Changing the Transform order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -72,6 +77,7 @@ For example, during a scaling operation, if the pivot point of a TOP image is lo
 - Pivot Unit `punit` - Select the units for this parameter from Pixels, Fraction (0-1), Fraction Aspect (0-1 considering aspect ratio).
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -171,9 +177,13 @@ For example, during a scaling operation, if the pivot point of a TOP image is lo
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the SVG TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -187,7 +197,9 @@ Extra Information for the SVG TOP can be accessed via an [Info CHOP](https://doc
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

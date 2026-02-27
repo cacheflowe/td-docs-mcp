@@ -5,12 +5,15 @@ title: Torus_SOP
 ---
 
 # Torus SOP
+
 ## Summary
 
 The Torus SOP generates complete or specific sections of torus shapes (like a doughnut).
+
 [torusSOP_Class](https://docs.derivative.ca/TorusSOP_Class "TorusSOP Class")
 
 ## Parameters - Torus Page
+
 - Primitive Type `type` - ⊞ - Select from the following types. For information on the different types, see the [Geometry](https://docs.derivative.ca/Category:Geometry "Category:Geometry") category articles.
   * Polygon `poly` -
   * Mesh `mesh` -
@@ -49,6 +52,7 @@ The Torus SOP generates complete or specific sections of torus shapes (like a do
 - Columns `cols` - The columns determine the number of divisions along the torus' cross-section.
 
 ## Parameters - Detail Page
+
 - Angle Offset `angleoffset` - Rotates the torus along the minor radius. For example, if using 4 rows set this value to 45 to create flat top + bottom surfaces.
 - Imperfect `imperfect` - This option applies only to Bezier and NURBS types. If selected, the tube is an approximated nonrational curve, otherwise it is a perfect rational curve.
 - U Order `orderu` - If a spline curve is selected, it is built at this order for U and V.
@@ -73,13 +77,19 @@ For more capping options, turn this parameter off, and append a Cap SOP.
   * Row & Columns `rowcol` - uv coordinates added based on Rows and Columns in the geometry.
 
 - Compute Normals `normals` - Checking this option On will compute surface normals.
+
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Torus SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -91,7 +101,9 @@ Extra Information for the Torus SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

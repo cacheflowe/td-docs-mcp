@@ -5,13 +5,17 @@ title: OAK_Select_TOP
 ---
 
 # OAK Select TOP
+
 ## Summary
 
 The OAK Select can receive images of many different formats from the OAK Camera. These formats include RGB, monochrome, depth images, and XYZ [Point Clouds](https://docs.derivative.ca/Point_Clouds "Point Clouds").
+
 See Also: [OAK-D](https://docs.derivative.ca/OAK-D "OAK-D") [OAK Device CHOP](https://docs.derivative.ca/OAK_Device_CHOP "OAK Device CHOP") [OAK Select CHOP](https://docs.derivative.ca/OAK_Select_CHOP "OAK Select CHOP")
+
 [oakselectTOP_Class](https://docs.derivative.ca/OakselectTOP_Class "OakselectTOP Class")
 
 ## Parameters - OAK Page
+
 - Active `active` -
 - OAK Device CHOP `chop` -
 - Stream `stream` -
@@ -28,6 +32,7 @@ See Also: [OAK-D](https://docs.derivative.ca/OAK-D "OAK-D") [OAK Device CHOP](ht
   * Point Cloud `pointcloud` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -107,8 +112,11 @@ See Also: [OAK-D](https://docs.derivative.ca/OAK-D "OAK-D") [OAK Device CHOP](ht
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the oakselect TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific oakselect TOP Info Channels
   * sequence_num - see "sequenceNum" in the depthai [documentation](https://docs.luxonis.com/projects/api/en/latest/components/messages/img_frame/)
 
@@ -117,7 +125,9 @@ Specific oakselect TOP Info Channels
   * fps - the effective frames-per-second of this stream, i.e., how quickly TouchDesigner is receiving messages. This is not the target FPS of the stream.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -131,7 +141,9 @@ Specific oakselect TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

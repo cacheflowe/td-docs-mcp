@@ -5,12 +5,15 @@ title: Orbbec_Select_TOP
 ---
 
 # Orbbec Select TOP
+
 ## Summary
 
 The Orbbec Select TOP can be used to retrieve additional video streams from an Orbbec camera that is configured and controlled by a primary [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP").
+
 [orbbecselectTOP_Class](https://docs.derivative.ca/OrbbecselectTOP_Class "OrbbecselectTOP Class")
 
 ## Parameters - Orbbec Page
+
 - Active `active` - Use this parameter to disable recieving video data from the Orbbec camera. The primary [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP") must also be active to receive video data.
 - Orbbec TOP `top` - A reference to the primary [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP") that is configuring and controlling the camera. This parameter must be valid to receive any video data.
 - Image `image` - ⊞ - Select which of the camera's video streams to display in the node's output image. The resolution and frame rate of the image are controlled by the parameters on the primary [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP").
@@ -20,6 +23,7 @@ The Orbbec Select TOP can be used to retrieve additional video streams from an O
   * Point Cloud `pointcloud` - A 3D point cloud where the x, y and z positions are stored in meters in the red, blue and green channels of a 32 bit floating point image.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -99,9 +103,13 @@ The Orbbec Select TOP can be used to retrieve additional video streams from an O
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,11 +5,15 @@ title: Ouster_TOP
 ---
 
 # Ouster TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 [Ouster](https://docs.derivative.ca/Ouster "Ouster") makes LIDAR devices for scanning 3D environments. The Ouster TOP sends and receives data with an Ouster Imaging Lidar, converting to point cloud data on the GPU. For more information see the user guides at [Ouster.io](https://www.ouster.io/resources)
+
 **Requirements:**
   * The TOP only supports Windows and macOS ARM builds of TouchDesigner.
   * The TOP supports Ouster devices using version 2.x or 3.x firmware.
@@ -23,17 +27,27 @@ title: Ouster_TOP
   * Auto startup features.
 
 **Connection Instructions:**
+
 To connect to the sensor, you will need either the IP addressed assigned by the local DHCP server or the name of the device. The name is based on the serial number that is usually printed on the top of the sensor in the format "os-############". This name can be entered directly into the Device Address parameter (see parameter help below). You can also connect to the device through a web browser using the IP or name in the format `http://os-###########/[](http://os-###########/)`. The web interface allows you to check the status of the device and gives additional error information.
+
 **Note:** If the "os-############" syntax isn't able to connect, you can also try "os-############.local".
+
 Once the device is configured, it will continue to send output to the target IP address so it is not required to enter the device address again unless you need to change the configuration.
+
 Range data collected from the device is presented as 32bit floating point values in the RGBA channels of the output image. The output is arranged as a panoramic image. IMU data from the device can be accessed by connecting an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). If more than 4 output channels are needed, you can use a [Ouster Select TOP](https://docs.derivative.ca/Ouster_Select_TOP "Ouster Select TOP") to create additional output images.
+
 **Ouster Outputs:**
+
 Range, Signal, Reflectivity, Near IR, and Flags are raw data channels coming from the sensor, while XYZ position values are calculated by using the range data and the look up table of beam azimuth and altitude angles. Range is measured in millimeters, while XYZ positions are in meters. If you need more than 4 channels of data, use a [Ouster Select TOP](https://docs.derivative.ca/Ouster_Select_TOP "Ouster Select TOP") to create a second output image from the same sensor data. In addition to the sensor data, you can also assign a constant value of one or zero to a channel by selecting the corresponding entry from the menu.
+
 **Note:** All 3D coordinates are transformed into TouchDesigner space where Y is up and X and Z represent the ground plane. This is different from the original coordinate space defined in the Ouster documentation.
+
 See also: [Ouster Select TOP](https://docs.derivative.ca/Ouster_Select_TOP "Ouster Select TOP")
+
 [ousterTOP_Class](https://docs.derivative.ca/OusterTOP_Class "OusterTOP Class")
 
 ## Parameters - Connection Page
+
 - Active `active` - Enables connections with the device.
 - Re-Init `reinitialize` - Manually reinitialize the device.
 - Device Address `deviceaddress` - The IP address or the name of the Ouster device. The address is only required during configuration. The device will request an address from the local DHCP server when it is connected to the network. The name of the device is printed on the top of the sensor in the format "os-#####", where ##### is the serial number e.g. "os-991900123456". If you want to use the name of the device, you may have to input "os-#####.local" in this parameter to connect to your sensor. You can determine the IP address using the ping command and the device name e.g. ping -4 os-991900123456. For more information see the Ouster User Guide at [Ouster.io](https://www.ouster.io/downloads).
@@ -134,6 +148,7 @@ See also: [Ouster Select TOP](https://docs.derivative.ca/Ouster_Select_TOP "Oust
   * Constant 0 `zero` -
 
 ## Parameters - Timing Page
+
 - Time Sync Mode `timemode` - ⊞ - Select how the sensor generates timestamp information.
   * Internal OSC `internalosc` - Timestamps are generated from an internal oscillator. This is the default setting.
   * Sync Pulse In `syncpulsein` - Timing is synced to pulses on the SYNC_PULSE_IN input.
@@ -172,6 +187,7 @@ See also: [Ouster Select TOP](https://docs.derivative.ca/Ouster_Select_TOP "Oust
 - Phase Lock Offset `phaselockoffset` - The angle to synchronize the sensor's rotation at an input pulse.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -251,8 +267,11 @@ See also: [Ouster Select TOP](https://docs.derivative.ca/Ouster_Select_TOP "Oust
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Ouster TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Ouster TOP Info Channels
   * imu_read_time - The time the measurement was take in nanoseconds since the device was booted.
 
@@ -273,7 +292,9 @@ Specific Ouster TOP Info Channels
   * vel_rz - Angular velocity around the z-axis (deg per sec)
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -287,7 +308,9 @@ Specific Ouster TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,19 +5,29 @@ title: NDI_In_TOP
 ---
 
 # NDI In TOP
+
 ## Summary
 
 The NDI In TOP will obtain its image data over IP from other DI® (Network Data Interface) enabled applications. The [NDI®](https://docs.derivative.ca/NDI "NDI") protocol is created by [Newtek](http://www.newtek.com/ndi/applications/).
+
 Attach an [Audio NDI CHOP](https://docs.derivative.ca/Audio_NDI_CHOP "Audio NDI CHOP") to the NDI In DAT to extract audio from the NDI stream.
+
 Metadata can also be sent to the NDI In TOP from an [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") or another system that has attached metadata to the NDI stream. Attach an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") to the NDI In DAT to get the metadata as text. It is in an XML format. To better see and access the XML, attach an [XML DAT](https://docs.derivative.ca/XML_DAT "XML DAT") to the Info DAT.
+
 But you can also send a table-format DAT in the [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and it will be received in the Info DAT as a table.
+
 To send metadata in an NDI stream, see the NDI Out TOP's Metadata DAT parameter.
+
 To see details of the available NDI streams, use the [NDI DAT](https://docs.derivative.ca/NDI_DAT "NDI DAT").
+
 See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and [NDI DAT](https://docs.derivative.ca/NDI_DAT "NDI DAT").
+
 **NOTE for Windows OS - If experiencing connection issues, check Windows firewall settings.**
+
 [ndiinTOP_Class](https://docs.derivative.ca/NdiinTOP_Class "NdiinTOP Class")
 
 ## Parameters - NDI In Page
+
 - Active `active` - Receives image data while Active is on.
 - Source Name `name` - Select which source stream to use.
 - Extra Search IPs `extraips` - By default NDI searches using mDNS, which is usually limited to locate networks. To find sources available on machines not reachable by mDNS, this parameter can be filled with a space-separated list of one or more IP address.
@@ -57,6 +67,7 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs
 - Audio Buffer Length `audiobuflen` - The length of the audio buffer in seconds. Audio output is delayed by this amount. For example, if the Buffer Length is 0.1 then the sound will occur 100ms = 0.1 seconds later than received (to keep the buffer full).
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -136,6 +147,7 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
   * `connected` - 1 if this node is connected to it's source, 0 otherwise.
   * `receive_fps` - The rate at which new frames are being received.
   * `num_source` - The number of avialable NDI sources that have been found.
@@ -144,8 +156,11 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs
   * `missed_frames` - Total number of frames send from the source but not received by this receiver.
 
 ## Info CHOP Channels
+
 Extra Information for the NDI In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific NDI In TOP Info Channels
   * connected -
 
@@ -160,7 +175,9 @@ Specific NDI In TOP Info Channels
   * missed_frames -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -174,7 +191,9 @@ Specific NDI In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

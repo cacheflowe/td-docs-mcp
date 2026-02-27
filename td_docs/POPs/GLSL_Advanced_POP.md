@@ -5,15 +5,21 @@ title: GLSL_Advanced_POP
 ---
 
 # GLSL Advanced POP
+
 ## Summary
 
 **Refer to the[Write GLSL POPs](https://docs.derivative.ca/Write_GLSL_POPs "Write GLSL POPs") article for more info on using this POP.**
+
 In single shader dispatch mode, runs a single compute shader that can read and write to points, verts, and primitive attributes simultaneously.
+
 In per primitive batch mode, runs the shader once per primitive batch.
+
 The number of threads mode defines how many threads are used.
+
 [glsladvancedPOP_Class](https://docs.derivative.ca/GlsladvancedPOP_Class "GlsladvancedPOP Class")
 
 ## Parameters - Main Page
+
 - Compute Shader `computedat` - Points to the DAT holding the Compute Shader. Drag & Drop a DAT here, or manually enter the path to the DAT.
 - Shader Dispatch Mode `shaderdispatchmode` - ⊞ - Specifies the compute shader dispatch mode.
   * Single Shader Dispatch `single` -
@@ -75,6 +81,7 @@ The number of threads mode defines how many threads are used.
   * Manual Number of Threads `manual` -
 
 ## Parameters - Output Page
+
 - Render `render` - Enables rendering in the viewer. Disable when output data is in an intermediate or non-renderable state
 - Max Points `maxpointsmode` - ⊞ - Determines if the maximum number of points is determined by the input or by a custom value.
   * Max Points `maxpointsmode` -
@@ -179,6 +186,7 @@ The number of threads mode defines how many threads are used.
   * Point Prim Count Attrib `pointprimcountattr` - Specifies the attribute to use for the point primitive count.
 
 ## Parameters - Extra Outputs Page
+
 - Extra Output `extraout` - Start of Sequential Parameter Blocks to declare additional POP outputs that can be picked with GLSL Select.
 - Name `extraout0name` - The name of the extra output.
 - POP `extraout0pop` - POP reference.
@@ -193,6 +201,7 @@ The number of threads mode defines how many threads are used.
 - Copy Input Attributes `extraout0copyinputattrs` - For allocated output attributes, whether to initialize them with the input values.
 
 ## Parameters - Create Attribs Page
+
 - New Attribute `attr` - Start of Sequential Parameter Blocks to create new attributes.
 - New Attribute Class `attr0class` - ⊞ - The attribute class for the new attribute.
   * Point `point` -
@@ -231,6 +240,7 @@ The number of threads mode defines how many threads are used.
   * Transform Matrix `transformMatrix` -
 
 ## Parameters - Colors Page
+
 - Pre-Multiply RGB by Alpha `premultcolor` - Enable RGB values pre-multiplication with the Alpha.
 - Color `color` - Start of Sequential Parameter Blocks for color uniforms.
 - Name `color0name` - The name of the color uniform.
@@ -242,6 +252,7 @@ The number of threads mode defines how many threads are used.
 - Alpha `color0alpha` - Alpha value.
 
 ## Parameters - Vectors Page
+
 - Vector `vec` - Start of Sequential Parameter Blocks to define uniform variables.
 - Name `vec0name` - The name of the vector uniform.
 - Type `vec0type` - ⊞ - The numeric representation of the attribute values.
@@ -269,6 +280,7 @@ The number of threads mode defines how many threads are used.
   * Value `vec0valuew` -
 
 ## Parameters - Samplers Page
+
 - Sampler `sampler` - Start of Sequential Parameter Blocks for Samplers to read from the shader.
 - Name `sampler0name` - The name of the sampler uniform.
 - TOP `sampler0top` - ⊞ - Sets reference to a TOP to sample.
@@ -295,6 +307,7 @@ The number of threads mode defines how many threads are used.
   * Interpolate Pixels `linear` -
 
 ## Parameters - Arrays Page
+
 - Array `array` - Start of Sequential Parameter Blocks for array uniforms.
 - Name `array0name` - The name of the array uniform.
 - Type `array0type` - ⊞ - The number of components for the array.
@@ -309,11 +322,13 @@ The number of threads mode defines how many threads are used.
   * Texture Buffer `texturebuffer` -
 
 ## Parameters - Matrices Page
+
 - Matrix `matrix` - Start of Sequential Parameter Blocks of matrix uniforms.
 - Name `matrix0name` - The name of the matrix uniform.
 - Matrix `matrix0value` - The value to assign the matrix. For valid ways to specify this, see the Matrix Parameters article.
 
 ## Parameters - Temp Buffers Page
+
 - Temp Buffer `tempbuffer` - Start of Sequential Parameter Blocks for Temporary buffers used to pass information to the shader as uniforms.
 - Name `tempbuffer0name` - The name of the temporary buffer.
 - Initial Value `tempbuffer0initval` - Initial value for the current temporary buffer.
@@ -322,7 +337,9 @@ The number of threads mode defines how many threads are used.
 - Value `const0value` - Constant value.
 
 ## Parameters - Page
+
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -367,14 +384,21 @@ The number of threads mode defines how many threads are used.
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the GLSL Advanced POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

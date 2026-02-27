@@ -5,12 +5,15 @@ title: Video_Device_In_TOP
 ---
 
 # Video Device In TOP
+
 ## Summary
 
 The Video Device In TOP can be used to capture video from an external camera, capture card, capture dongle, IP camera, or video decoder connected to the system. Multiple devices can simultaneously stream video into TouchDesigner by using multiple Device In TOPs. HD-SDI video can be streamed into TouchDesigner through capture cards such and those from [Blackmagic Design](https://docs.derivative.ca/Blackmagic_Design "Blackmagic Design"), [AJA](https://docs.derivative.ca/AJA "AJA") and [Deltacast](https://docs.derivative.ca/Deltacast "Deltacast").
 [![Magewell.2.jpg](https://docs.derivative.ca/images/8/84/Magewell.2.jpg)](https://docs.derivative.ca/File:Magewell.2.jpg) [![Webcam2.png](https://docs.derivative.ca/images/1/1c/Webcam2.png)](https://docs.derivative.ca/File:Webcam2.png) [![CaptureCard.jpg](https://docs.derivative.ca/images/b/bd/CaptureCard.jpg)](https://docs.derivative.ca/File:CaptureCard.jpg) [![DVcam.jpg](https://docs.derivative.ca/images/1/17/DVcam.jpg)](https://docs.derivative.ca/File:DVcam.jpg) [![WebcamMan.jpg](https://docs.derivative.ca/images/4/4f/WebcamMan.jpg)](https://docs.derivative.ca/File:WebcamMan.jpg)
 If the device does not seem to provide a video stream but it is visible in the Cameras parameter menu, make sure no other applications are currently using the device.
+
 **TIP** : Create an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") and point it to the Video Device In TOP to see what devices are currently attached. The [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") gives data for analyzing the performance of Video Device In and Out TOPs. Additionally, the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") can be used to obtain timecode embeded into the source signal on some device, as indicated in the below list.
+
 Major capture devices vendors currently supported:
   * [Blackmagic Design](https://docs.derivative.ca/Blackmagic_Design "Blackmagic Design") - Supports Timecode. Windows and macOS.
   * [AJA](https://docs.derivative.ca/AJA "AJA") - Supports Timecode. Windows only and macOS.
@@ -18,8 +21,11 @@ Major capture devices vendors currently supported:
   * [Bluefish444](https://docs.derivative.ca/Bluefish444 "Bluefish444") - Windows only.
 
 Also supported with native drivers are some models from Datapath SDI, Allied Vision, Imaging Development Systems (IDS), FLIR/Point Grey, and Ximea.
+
 AJA and Blackmagic Design devices support 12-bit input and output formats, including AJA’s ability to capture at a full 12-bit RGB 4:4:4.
+
 For Magewell HDMI-to-USB3 capture (highly recommended, no drivers, plug-and-play), see [Magewell](http://www.magewell.com/usb-capture-hdmi).
+
 **IP Cameras and USB3** include models from:
   * [Allied Vision](https://www.alliedvision.com/en/products/cameras.html) - PvAPI SDK models only, not Vimba SDK. Prosilica Series and Manta cameras. Windows only.
   * [Point Grey FLIR Flycapture2 and Spinnaker](https://www.ptgrey.com/) - Windows only.
@@ -27,10 +33,13 @@ For Magewell HDMI-to-USB3 capture (highly recommended, no drivers, plug-and-play
   * [Ximea](https://www.ximea.com/) - Windows only.
 
 Only a small subset of cameras from each manufacturer has been tested in-house, however it's expected that any modern camera from the supported manufacturer should work. If any issues are encountered please contact `support@derivative.ca`.
+
 See also [Video Device Out TOP](https://docs.derivative.ca/Video_Device_Out_TOP "Video Device Out TOP").
+
 [videodeviceinTOP_Class](https://docs.derivative.ca/VideodeviceinTOP_Class "VideodeviceinTOP Class")
 
 ## Parameters - Video In Page
+
 - Active `active` - When set to one the TOP captures the image stream from the camera or decoder.
 - Driver `driver` - ⊞ - Selects the library to use to interface with the cameras.
   * DirectShow (WDM) `directshow` -
@@ -114,6 +123,7 @@ See also [Video Device Out TOP](https://docs.derivative.ca/Video_Device_Out_TOP 
 - Reset Stats `resetstats` - A pulse to reset the statistics in an attached [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
 
 ## Parameters - Options Page
+
 Currently all of these options are only available for [Ximea](https://docs.derivative.ca/index.php?title=Ximea&action=edit&redlink=1 "Ximea \(page does not exist\)") cameras.
 - Preset `preset` - ⊞ -
   * Externally Configured `externallyconfigured` -
@@ -153,6 +163,7 @@ Currently all of these options are only available for [Ximea](https://docs.deriv
 - GPU Demosaic `gpudemosaic` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -252,8 +263,11 @@ Currently all of these options are only available for [Ximea](https://docs.deriv
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Video Device In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Video Device In TOP Info Channels
   * connected - 1 if the node is successfully connected to the device, 0 if not. This does not necessarily mean there is valid input coming to the device.
 
@@ -290,7 +304,9 @@ Specific Video Device In TOP Info Channels
   * frame_timestamp - Time in seconds of the last frame displayed. -1 if this is not provided by the device.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -304,7 +320,9 @@ Specific Video Device In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

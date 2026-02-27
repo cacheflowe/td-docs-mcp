@@ -5,12 +5,15 @@ title: Examine_DAT
 ---
 
 # Examine DAT
+
 ## Summary
 
 The Examine DAT lets you inspect an operator's python storage, locals, globals, expressions, and extensions.
+
 [examineDAT_Class](https://docs.derivative.ca/ExamineDAT_Class "ExamineDAT Class")
 
 ## Parameters - Examine Page
+
 - Operator `op` - Path to the operator to examine.
 - Source `source` - ⊞ - Specifies what part of the operator to examine.
   * Operator Storage `storage` - Examine the operator's [storage](https://docs.derivative.ca/Storage "Storage").
@@ -38,6 +41,7 @@ The Examine DAT lets you inspect an operator's python storage, locals, globals, 
 - Output Value `outputvalue` - Turn this on to output the **Value** column of the results.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -54,15 +58,21 @@ The Examine DAT lets you inspect an operator's python storage, locals, globals, 
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Examine DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

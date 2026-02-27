@@ -5,19 +5,26 @@ title: Stype_TOP
 ---
 
 # Stype TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The Stype TOP works with [Stype](https://docs.derivative.ca/Stype "Stype") (**RedSpy**) camera trackers to perform simulated lens distortion using channels from a connected CHOP.
+
 **NOTE:** This CHOP works with [Stype](https://www.stype.tv) hardware. See also [Stype](https://docs.derivative.ca/Stype "Stype") and [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP").
+
 [stypeTOP_Class](https://docs.derivative.ca/StypeTOP_Class "StypeTOP Class")
 
 ## Parameters - Stype Page
+
 - CHOP Node `chop` - Reference to a CHOP that outputs the lens distortion parameters. This can be a [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP") or another operator that has the channels _k1_ , _k2_ , _centerx_ , _centery_ , _pawidth_ and _paheight_ defined. See [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP") for more information on these channels.
 - Padding `padding` - Only enabled when the _CHOP Node_ parameter does not reference a [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP"). This parameter indicates if any padding has been provided on the source image and then crops the output accordingly. See the [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP") for more information on padding.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -97,12 +104,17 @@ The Stype TOP works with [Stype](https://docs.derivative.ca/Stype "Stype") (**Re
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Stype TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -116,7 +128,9 @@ Extra Information for the Stype TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

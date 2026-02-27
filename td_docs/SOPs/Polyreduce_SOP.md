@@ -5,19 +5,24 @@ title: Polyreduce_SOP
 ---
 
 # Polyreduce SOP
+
 ## Summary
 
 The Polyreduce SOP reduces a high detail polygonal model into one consisting of fewer polygons. The second input's polygons represent feature edges. They are matched to the input mesh by point numbers.
+
 The methods to reduce polygonal models are:
   * A percentage of their former size
   * A specfic number of polys (within a few)
   * According to distance from a camera
 
 Note that as it requires (and outputs) a triangular mesh, the polygon count may increase as a result of this operation.
+
 A second input for feature edges is provided.
+
 [polyreduceSOP_Class](https://docs.derivative.ca/PolyreduceSOP_Class "PolyreduceSOP Class")
 
 ## Parameters - Reduce Page
+
 - Polygons `reduce` - The polygons which will be candidates for simplification. Other polygons which share points with these might also be affected.
 - Features `creases` - Which polygons are feature edges.
 - Method `method` - ⊞ - Select how to reduce the number of polygons from the following methods.
@@ -32,6 +37,7 @@ A second input for feature edges is provided.
 - Minimum % `minpercent` - A lower bound to the level of reduction.
 
 ## Parameters - Clean Page
+
 - Stiffen Border `borderweight` - Without any constraints, the edges of planar surfaces can erode. This controls a bias which penalizes such erosion.
 - Stiffen Features `creaseweight` - The amount of penalty to add to the feature edges being eroded.
 - Equalize Edges `lengthweight` - This bias penalizes the removal of long edges. It tends to reduce high aspect ratio triangles at the expense of more uniform reduction.
@@ -41,13 +47,18 @@ A second input for feature edges is provided.
 - Use Original Points `originalpoints` - When it collapses edges, it will use one of the two original points instead of finding the optimal interior point.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Polyreduce SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -59,7 +70,9 @@ Extra Information for the Polyreduce SOP can be accessed via an [Info CHOP](http
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

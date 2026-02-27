@@ -5,19 +5,29 @@ title: SOP_to_POP
 ---
 
 # SOP to POP
+
 ## Summary
 
 The SOP to POP converts the SOP 3D geometry to POP geometry.
+
 The attributes of the SOP point list are converted to point attributes, with `P` position converted to `P`, but `uv` renamed to `Tex`, and `Cd` (color in SOPs) renamed to `Color` in POPs, `width` to `LineWidth` and `pscale` to `PointScale`.
+
 For primitives, the triangles and quads are converted intact as triangles and quads. Because POPs do not support polygons with 5 or more points, a menu lets you choose between creating line strips, converting to triangles, or ignoring these primitives.
+
 Mesh primitives in SOPs are converted to a choice of quad, line strip or point primitives. It does not preserve the row/column [Dimension](https://docs.derivative.ca/Dimension "Dimension") but the [Dimension POP](https://docs.derivative.ca/Dimension_POP "Dimension POP") can be used to preserve that information.
+
 SOP primitives like sphere are converted only as points in POPs. and the more rarely used SOP Bezier/NURBS primitives are also converted to points with no primitives.
+
 The vertices of the primitives are converted to POP vertices intact, including all vertex attributes with the same `uv`, `Cd` and other renaming.
+
 Primitive attributes are converted intact, again with `Cd` renamed as `Color`.
+
 The attributes in POPs are 32-bit float to float4 attributes.
+
 [soptoPOP_Class](https://docs.derivative.ca/SoptoPOP_Class "SoptoPOP Class")
 
 ## Parameters - SOP to Page
+
 - SOP `sop` - Reference to a SOP that will have its geometry converted to POP geometry.
 5+ Points Polygons `polygons` - ⊞ - Select what to do with 5+ points polygons.
   * Ignore `ignore` -
@@ -57,16 +67,23 @@ The attributes in POPs are 32-bit float to float4 attributes.
   * UI `ui` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
+
 Extra Information for the SOP to POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

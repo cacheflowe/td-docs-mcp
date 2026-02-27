@@ -5,17 +5,25 @@ title: DMX_In_CHOP
 ---
 
 # DMX In CHOP
+
 ## Summary
 
 The DMX In CHOP receives channels from DMX, [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [sACN](https://docs.derivative.ca/SACN "SACN") or [KiNET](https://www.colorkinetics.com/global/learn/optics-matter) devices. Channel values for DMX are 0-255. Note that input rate is limited to the DMX maximum refresh rate of 44Hz.
+
 A Filter Table can be provided in a DAT where addresses can be specified by adding rows for each channel and specifying **net** , **subnet** and **universe**. Optionally, packets can be filtered using the **srcaddress** and **destaddress** columns; only packets that have a matching source IP address and destination IP address will be accepted. The cell values for these columns should be a single IP address (ie. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") **not** supported); if left blank then all packets will be accepted.
+
 The **srcaddress** column is useful for when there is DMX noise on the network that needs to be filtered out; the IP of the desired controller can be specified in the **srcaddress** cell. The **id** column should be used in conjunction with **srcaddress** and **destaddress** to provide a unique channel suffix.
+
 [Wireshark](https://www.wireshark.org/) is a useful tool for debugging network issues. In the Art-Net case, packets can easily be filtered using **artnet** , **dmx** , or **dmx_chan**.
+
 **ENTTEC NOTE:** - Use ENTTEC's [NMU (Node Management Utility)](http://www.enttec.com/us/products/controls/dmx-over-ethernet/nmu/) to configure and inspect the ENTTEC devices found on your network.
+
 See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [DMX Out CHOP](https://docs.derivative.ca/DMX_Out_CHOP "DMX Out CHOP"), [DMX](https://docs.derivative.ca/DMX "DMX")
+
 [dmxinCHOP_Class](https://docs.derivative.ca/DmxinCHOP_Class "DmxinCHOP Class")
 
 ## Parameters - Port Page
+
 - Active `active` - Connects to the device while On.
 - Interface `interface` - ⊞ - Select the type of interface to connect to the device with.
   * Enttec Generic Serial `serial` - Uses the operating system's serial calls to read data.
@@ -51,6 +59,7 @@ See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [
 - Rate `rate` - Resample the incoming data to this rate.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -68,9 +77,13 @@ See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the DMX In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -84,7 +97,9 @@ Extra Information for the DMX In CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

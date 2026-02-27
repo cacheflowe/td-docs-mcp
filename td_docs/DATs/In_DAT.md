@@ -5,15 +5,19 @@ title: In_DAT
 ---
 
 # In DAT
+
 ## Summary
 
 The In DAT is used to create a DAT input in a Component. Component inputs are positioned alphanumerically on the left side of the Component. Disconnecting an input to an In DAT will still keep the contents instanced to the original input.
+
 [inDAT_Class](https://docs.derivative.ca/InDAT_Class "InDAT Class")
 
 ## Parameters - In Page
+
 - Label `label` - Creates a pop-up label when the cursor rolls over this Component input.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -40,18 +44,25 @@ The In DAT is used to create a DAT input in a Component. Component inputs are po
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the In DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

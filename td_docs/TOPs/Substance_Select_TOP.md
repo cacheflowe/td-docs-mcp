@@ -5,16 +5,20 @@ title: Substance_Select_TOP
 ---
 
 # Substance Select TOP
+
 ## Summary
 
 The Substance Select TOP allows you to select a single texture out of the [Substance TOP](https://docs.derivative.ca/Substance_TOP "Substance TOP") for further filtering and manipulation in TOPs.
+
 [substanceselectTOP_Class](https://docs.derivative.ca/SubstanceselectTOP_Class "SubstanceselectTOP Class")
 
 ## Parameters - Setup Page
+
 - Substance TOP `substance` - Reference a specific [Substance TOP](https://docs.derivative.ca/Substance_TOP "Substance TOP") from which to select a texture.
 - Output Channel `output` - Choose which texture is being grabbed from the [Substance TOP](https://docs.derivative.ca/Substance_TOP "Substance TOP").
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -94,12 +98,17 @@ The Substance Select TOP allows you to select a single texture out of the [Subst
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Substance Select TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -113,7 +122,9 @@ Extra Information for the Substance Select TOP can be accessed via an [Info CHOP
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,30 +5,41 @@ title: Point_File_In_TOP
 ---
 
 # Point File In TOP
+
 ## Summary
 
 The Point File In TOP loads 3D point data into TOPs from either a single file or a sequence of files. Points are composed of one or more floating point values such as XYZ positions, RGB color values, 3D normals, scanner intensity, etc. The Point File in TOP will load all available point data, but only four channels can be placed into the output image. By default, the first four point data channels are placed into the red, green, blue and alpha channels respectively; however, you can assign any point channel to a colour channel using the parameters on the Point Data page. Attach a [Point File Select TOP](https://docs.derivative.ca/Point_File_Select_TOP "Point File Select TOP") to create additional output images from the same source file.
+
 The Point File In TOP will read point data from various mesh and floating point data files including: `.obj`, `.ply`, `.fits` (astronomy format), and `.exr`. It can also load ASCII point files (`.xyz`, `.pts`, `.csv`, `.txt`, etc) with one point per line and comma or space separated fields. The first line in ASCII point files can either be the number of points, the names of the point fields or the first point in the file.
+
 For a complete list, see [File Types](https://docs.derivative.ca/File_Types "File Types"). The [OpenEXR](https://docs.derivative.ca/OpenEXR "OpenEXR") file format is generally best to use as it is binary, can be read in multi-frame file sequences that uses TouchDesigner's movie file pre-reading and buffering, and can be written from TouchDesigner's [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") with unlimited numbers of channels.
+
 Examine the state of a Point File In TOP by attaching an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). This will show information like the number of points, fields per point and the number of frames. It also shows dynamic information like the file open status, current frame, readahead frames and queue size, dropped frame count, CPU decode time and GPU upload time.
+
 **Headers** : If the file contains any additional header data, this can be viewed by attaching an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT"). Header data is stored as key-value pairs with the keys in the first column and the corresponding data in the second column, which can easily be interpreted with python.
+
 All of the ASCII point list formats are loaded the same way whether their extention is `txt`, `csv`, `xyz`, etc. The parser looks for the first separating character (comma, space or tab) and then uses that to delimit the rest of the file. It will ignore delimiters that are inside single or double quotes. There are a few special rules depending on the delimiter style e.g. multiple spaces are merged together, but a comma at the end of a line indicates a blank field afterwards. Once a delimiter is established, The first line can be the number of points, but it is ignored. If the next line are strings then it is treated as a row of headers (channel names). Each row after that is considered a point.
+
 See also [OpenEXR](https://docs.derivative.ca/OpenEXR "OpenEXR").
+
 [pointfileinTOP_Class](https://docs.derivative.ca/PointfileinTOP_Class "PointfileinTOP Class")
 
 ## Parameters - Point Data Page
+
 Control how the point's field data is placed into the output image.
+
 The custom toggles control whether to use a custom field name to select which field is placed in the corresponding color channel. If false, the fields are selected in order e.g. the first field goes in red, the second in green, etc.
+
 When set to custom, you can select the field from the dropdown menu or enter it directly. This parameter will be disabled if the color channel is not available in the output image format (see Pixel Format parameter).
 - File `file` - The path and name of the point file to load. Point file formats are those found in [File Types](https://docs.derivative.ca/File_Types "File Types"). You can specify files on the internet using `http://` ...
 To treat a folder of files as an animation, specify the folder containing the files instead of a filename. All of the files must be the same resolution. It will treat each file in that folder as one frame in the animation. The order of the files is alphanumeric. By default the first file has an index of 0, second is 1, etc, regardless of their file names. Overriding the sample rate on the Trim parameter page will let you playback the animation at any frame rate.
+
 Using an `info.xml` file in the directory containing a sequence of files allows you to specify the frames per second. Example xml file:
 ```
 <?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
   <Settings>
       <attributes fps="30.0" />
   </Settings>
-
 ```
 
 URLs can be used to fetch files. The file is downloaded to the user's Derivative temp directory and is read into the Point File In TOP.
@@ -51,6 +62,7 @@ URLs can be used to fetch files. The file is downloaded to the user's Derivative
   * One `One` -
 
 ## Parameters - Play Page
+
 - Play Mode `playmode` - ⊞ - Specifies the method used to play the animation, there are 3 options.
   * Locked to Timeline `locked` - This mode locks the animation to the timeline. Scrubbing or jumping in the timeline will change the animation position accordingly. The parameters Play, Reset, Speed, and Index are disabled in this mode since the timeline is directly tied to position.
   * Specify Index `specify` - This mode allows the user to specify a particular position in the animation using the Index parameter below. Use this mode for random access to any location in the movie.
@@ -101,6 +113,7 @@ URLs can be used to fetch files. The file is downloaded to the user's Derivative
   * Zero `zero` -
 
 ## Parameters - Trim Page
+
 - Trim `trim` - Enables the parameters below to set trim in and out points.
 - Trim Start `tstart` - Trim the starting point of the movie.
 - Trim Start Unit `tstartunit` - ⊞ - Select the units for this parameter from Index, Frames, Seconds, and Fraction (percentage).
@@ -134,6 +147,7 @@ URLs can be used to fetch files. The file is downloaded to the user's Derivative
 - Sample Rate `samplerate` - Set the sample rate for playback when 'Override Sample Rate' above is On.
 
 ## Parameters - Tune Page
+
 - Pre-Read Frames `prereadframes` - Sets how many animation frames TouchDesigner reads ahead and stores in memory. The Point File In TOP will read and decode frames of the animation into CPU memory before they are used, this can eliminate pops or stutters in playback that occur from some frames taking too long to decode, other resources accessing the hard drive, or looping. When reading a sequence of files, having more Pre-Read Frames will allow multiple files to be decode at the same time. This allows playback of heavy file formats such as .exr in real-time, assuming the machine has enough CPU cores.
 - Frame Read Timeout `frametimeout` - The time (in milliseconds) TouchDesigner will wait for a frame from the hard drive before giving up. If the Disk Read Timeout time is reached, that frame is simply skipped. This also works for network files that are downloaded via http://.
 - Frame Timeout Strategy `frametimeoutstrat` - ⊞ - When on, if the Disk Read Timeout is reached TouchDesigner will use the latest available frame in place of the skipped frame.
@@ -151,6 +165,7 @@ URLs can be used to fetch files. The file is downloaded to the user's Derivative
 - Hardware Decode `hwdecode` - Controls if this node should use hardware decoding via the Nvidia hardware decoder chip. You can check if hardware decoding is being used using the Info CHOP, 'hardware_decode' channel. This parameter does nothing for Hap and NotchLC codecs, which are always hardware decoded.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -230,8 +245,11 @@ URLs can be used to fetch files. The file is downloaded to the user's Derivative
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Point File In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Point File In TOP Info Channels
   * num_points -
 
@@ -310,7 +328,9 @@ Specific Point File In TOP Info Channels
   * hardware_decode -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -324,7 +344,9 @@ Specific Point File In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,18 +5,27 @@ title: Joystick_CHOP
 ---
 
 # Joystick CHOP
+
 ## Summary
 
 The Joystick CHOP outputs values for all 6 possible axes on any game controller (joysticks, game controllers, driving wheels, etc.), as well as up to 32 button, 2 sliders and 4 POV Hats.
+
 It handles game controllers connected to the gameport or USB ports, including the [3D Connexion](http://www.3dconnexion.com/) mouse. You can have several devices attached, and any number of Joystick CHOPs in a project per device.
+
 Before you use the game controller on your computer, calibrate them using Start -> Settings -> Control Panel -> Gaming Options -> Properties.
+
 The main two outputs, the X-axis and Y-axis are output through channels called xaxis and yaxis. The other four axes are output through channels with similar names.
+
 The range of the values for each channel is 0 to 1. For any axis, a value 0.5 is considered "centered". A value of 0 is given if the axis doesn't exist.
+
 For any button, a value of 0 means the button is up or doesn't exist. A value of 1 means the button is pressed.
+
 POV Hats behave like an X and Y axis. A POV axis only has 3 values though, 0, 0.5 and 1.
+
 [joystickCHOP_Class](https://docs.derivative.ca/JoystickCHOP_Class "JoystickCHOP Class")
 
 ## Parameters - Control Page
+
 - Active `active` - While on, the CHOP receives information from joysticks and gamepads. While Off, no updating occurs.
 - Joystick Source `source` - This menu will list up to 4 game controllers currently attached to the computer presented to the operating system as Player 1 through Player 4. The selected game controller is the one the CHOP reads data from. If set to 'Default', the CHOP will adopt the first game controller it finds.
 - Axis Range `axisrange` - ⊞ - Select between and axis range of 0 to 1 or -1 to 1.
@@ -40,6 +49,7 @@ POV Hats behave like an X and Y axis. A POV axis only has 3 values though, 0, 0.
 - Axis Dead Zone `axisdeadzone` - This value defines how much of the area in the center of the joystick is considered 'dead zone'. When a joystick axis is in this dead zone it is considered to be centered. This value applies to all normal axes and rotation axes. This value is a percentage that defaults to 7%.
 
 ## Parameters - Channel Page
+
 This sets the [Sample Rate](https://docs.derivative.ca/CHOP_Channel_Page#Sample_Rate "CHOP Channel Page") and the [Extend Conditions](https://docs.derivative.ca/CHOP_Channel_Page#Extend_Conditions "CHOP Channel Page").
 - Sample Rate `rate` - The sample rate of the channels, in samples per second.
 - Extend Left `left` - ⊞ - The left extend conditions (before range).
@@ -59,6 +69,7 @@ This sets the [Sample Rate](https://docs.derivative.ca/CHOP_Channel_Page#Sample_
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -76,9 +87,13 @@ This sets the [Sample Rate](https://docs.derivative.ca/CHOP_Channel_Page#Sample_
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Joystick CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -92,7 +107,9 @@ Extra Information for the Joystick CHOP can be accessed via an [Info CHOP](https
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

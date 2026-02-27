@@ -5,14 +5,19 @@ title: MoSys_CHOP
 ---
 
 # MoSys CHOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The MoSys CHOP receives data from a [MoSys](https://docs.derivative.ca/MoSys "MoSys") camera tracking system. The channels can be used to control a virtual [camera](https://docs.derivative.ca/Camera_COMP "Camera COMP") and to implement lens distortion via the [MoSys TOP](https://docs.derivative.ca/MoSys_TOP "MoSys TOP") as part of a virtual production system.
+
 [mosysCHOP_Class](https://docs.derivative.ca/MosysCHOP_Class "MosysCHOP Class")
 
 ## Parameters - MoSys Page
+
 - Active `active` - While on, the CHOP receives information sent to the network port. While Off, no updating occurs. Data sent to the port is lost.
 - Protocol `protocol` - ⊞ - The network protocol to use. Refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Messaging (UDP) `msging` -
@@ -25,6 +30,7 @@ The MoSys CHOP receives data from a [MoSys](https://docs.derivative.ca/MoSys "Mo
 - Screen Width `screenwidth` - The width of the camera image in pixels. It is used to convert the focal distance received by the camera into a FOV value.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -42,9 +48,13 @@ The MoSys CHOP receives data from a [MoSys](https://docs.derivative.ca/MoSys "Mo
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

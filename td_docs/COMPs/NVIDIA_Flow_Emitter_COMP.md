@@ -5,17 +5,25 @@ title: NVIDIA_Flow_Emitter_COMP
 ---
 
 # NVIDIA Flow Emitter COMP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This operator only works with **Nvidia GPUs**.
+
 NVIDIA Flow is a volumetric fluid based simulation of a burning gas system. The user controls the 3 main factors of temperature, fuel, and smoke to create fire and smoke simulations.
+
 The Nvidia Flow COMP is the fuel emitter for the Flow simulation and can be placed anywhere in the 3D scene.
+
 See also [Nvidia Flow TOP](https://docs.derivative.ca/Nvidia_Flow_TOP "Nvidia Flow TOP"), [Nvidia Flow](https://docs.derivative.ca/Nvidia_Flow "Nvidia Flow").
+
 [flowEmitterCOMP_Class](https://docs.derivative.ca/FlowEmitterCOMP_Class "FlowEmitterCOMP Class")
 
 ## Parameters - Emitter Page
+
 - Active `active` - Turns the emitter On or Off.
 - Mode `mode` - ⊞ - Select Emitter or Collider mode.
   * Emitter `emitter` - Emitter will act as a fuel emitter for the system injecting a specific amount of fluw into the simulation each step.
@@ -77,6 +85,7 @@ The effect of this parameter can be visualized by turning 'Show Blocks' paramete
 The effect of this parameter can be visualized by turning 'Show Blocks' parameter On in the [Nvidia Flow TOP](https://docs.derivative.ca/Nvidia_Flow_TOP "Nvidia Flow TOP").
 
 ## Parameters - Material Page
+
 - Color `color` - ⊞ - The base color of the combustion.
   * Red `colorr` -
   * Green `colorg` -
@@ -89,6 +98,7 @@ The effect of this parameter can be visualized by turning 'Show Blocks' paramete
 - Intensity Bias `intensitybias` - A mulitplier for the color contribution. Useful to use with the Additive Factor parameter below.
 - Additive Factor `additivefactor` - Controls an additive effect in the rendering ie. transparency is added together giving hotspots and brighter color where there is more gas burning.
 Flow simulation color has 3 independant parts: color, alpha, and intensity which are based on the burn, smoke, temperature and fuel levels. The masks below control how much each value influences the color.
+
 The final color value is calculated using ((Burn * Burn Mask) + (Smoke * Smoke Mask) + (Temp * Temp Mask) + (Fuel * Fuel Mask)) Intensity brightens the respective Color and Alpha like a multiplier.
 
 - Burn Color Mask `burncolormask` - Controls the color contribution of the ignition point of the fuel in the system. The value determines which position in the Color Ramp to use for Burn color.
@@ -105,6 +115,7 @@ The final color value is calculated using ((Burn * Burn Mask) + (Smoke * Smoke M
 - Fuel Intensity Mask `fuelintensitymask` - Controls the intensity of the Fuel Color above. This value is a multiplier and accepts values greater than 1.0.
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -188,6 +199,7 @@ In the example above, rotations performed on an Component with different pivot p
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
 
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -232,7 +244,9 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
 
 ## Parameters - Instance Page
+
 The Instance parameter page provides the ability to create hardware instances of geometry. Each instance has an instance ID which can be passed into a [MAT](https://docs.derivative.ca/MAT "MAT") shader via a uniform value. The instance ID can be retrieved by the [Render Pick CHOP](https://docs.derivative.ca/Render_Pick_CHOP "Render Pick CHOP"). Any code in a vertex shader can customize the instance based on the instance ID.
+
 Instance's attributes can be individually driven by the data from any type of OP. When the instance data is supplied by a TOP, the TOP's RGBA channels are assigned to instance attributes, when data is supplied by a CHOP, the CHOP's channels are assigned to instance attributes, when from a SOP then the SOP's attributes are assigned to instance attributes, and when a DAT is used then a column is assigned to the instances attributes. The mapping of operator data to instance attributes is setup on the parameters below and on the Instance 2 and Instance 3 parameter pages.
 - Instancing `instancing` - Turns on instancing for the Geometry Component.
 - Instance Count Mode `instancecountmode` - ⊞ - Two modes to determine how many instances will be created.
@@ -281,6 +295,7 @@ Instance's attributes can be individually driven by the data from any type of OP
 - Pivot Z `instancepz` - Select what data to use for the pivot of the instances, use the drop-down menu on the right to easily select from the available options.
 
 ## Parameters - Instance 2 Page
+
 When the instance data is supplied by a TOP, the TOP's RGBA channels are assigned to instance attributes; when data is supplied by a CHOP, the CHOP's channels are assigned to instance attributes; when from a SOP then the SOP's attributes are assigned to instance attributes; and when a DAT is used then a column is assigned to the instances attributes.
 - Rotate to Vector: Order `instancerottoorder` - ⊞ - Controls where in the transform equation the Rotate To Vector operation is applied.
   * Default `default` - The Rotate to Vector operation will be applied before all other transform operations (except the pivot offset), regardless of their order of operation. E.g ` T * R * S * (RotToVector) * Position `, ` R * S * T * (RotToVector) * Position `.
@@ -358,13 +373,16 @@ When the instance data is supplied by a TOP, the TOP's RGBA channels are assigne
   * 16x `16x` -
 
 ###
+
 Instance Texturing
+
 This feature allows for arbitrary textures to be applied to instances. The textures do not need to be the same resolution, and they don't need to be combined into an grouped format such as a 3D Texture or a 2D Texture array. Multiple TOPs can be specified using the "Instance Textures" parameter, and the texture that is applied per-instance is specified using the channel chosen in the "Texture Index" parameter. This is different from a 3D Texture or 2D Texture Array, which would use the W texture coordinate to select a texture from within a single texture. By default this texture will be used as the "Base Color Map" texture for a [PBR MAT](https://docs.derivative.ca/PBR_MAT "PBR MAT"), and the Color Map for all other materials such as the [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT"). For materials that support more than one map, the map that this this feature replaces can be chosen in the material's parameters. Currently on Windows at most 16384 textures can be used at once, and on macOS at most 128 textures can be used at once. These numbers are reduced by other textures that are used by the render such as other maps, cone light lookup map etc.
 
 - Tex Index OP `instancetexindexop` - Select a specific operator to get data from for the Texture Index instance attribute below. If not specified, the the operator specified in the 'Default Instance OP' on the Instance parameter page can be used.
 - Texture Index `instancetexindex` - Select what data to select which texture to use for the instances, use the drop-down menu on the right to easily select from the available options.
 
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -378,6 +396,7 @@ The Display parameter page controls the component's [material](https://docs.deri
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -387,6 +406,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -455,13 +475,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Nvidia Flow Emitter COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,22 +5,29 @@ title: RenderStream_Out_TOP
 ---
 
 # RenderStream Out TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 Send image data out to [RenderStream](https://docs.derivative.ca/RenderStream "RenderStream"). The actual setup and sync of the RenderStream connection is done with the [RenderStream In CHOP](https://docs.derivative.ca/RenderStream_In_CHOP "RenderStream In CHOP").
+
 See also [RenderStream In CHOP](https://docs.derivative.ca/RenderStream_In_CHOP "RenderStream In CHOP"), [RenderStream In TOP](https://docs.derivative.ca/RenderStream_In_TOP "RenderStream In TOP"), [RenderStream](https://docs.derivative.ca/RenderStream "RenderStream").
+
 [renderstreamoutTOP_Class](https://docs.derivative.ca/RenderstreamoutTOP_Class "RenderstreamoutTOP Class")
 
 ## Parameters - RenderStream Out Page
+
 - Active `active` - Controls if this node sends data out to RenderStream.
 - Stream Index `streamindex` - The stream index to send to.
 - Profile Output CHOP `profilechop` - A CHOP that contains channels of information that will be sent along with the image to be shown for profiling information in the D3 user interface.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -100,12 +107,17 @@ See also [RenderStream In CHOP](https://docs.derivative.ca/RenderStream_In_CHOP 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the RenderStream Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -119,7 +131,9 @@ Extra Information for the RenderStream Out TOP can be accessed via an [Info CHOP
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

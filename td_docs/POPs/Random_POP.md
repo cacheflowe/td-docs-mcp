@@ -5,20 +5,31 @@ title: Random_POP
 ---
 
 # Random POP
+
 ## Summary
 
 The Random POP takes its input and either (1) generates a new attribute containing random values, or (2) sets, adds or multiplies an existing attribute by a random value for each point.
+
 The random values can be applied to point, vertex or primitive attributes.
+
 By default, the random values are uniformly distributed between 0 and 1, but there is a variety of alternate distributions controlled with the Type menu. These include Gaussian (also known as Normal) distribution (where most points are near the center of the range), two values randomly chosen with a fraction probability of each (Two Values), a random Direction vector (within a certain cone angle) which always has length of 1, random float3 vectors within a unit Sphere, and Exponential which is an exponential dropoff above 0 separately in each axis.
+
 The random values can be generated within a specified range (Value A and Value B), and then optionally clamped between two values.
+
 There is an option to generate 2 or more points for every input point to increase the density of points around the source points. (Extra Points per Source Point)
+
 The random values can also be restricted to certain point, vertex or primitive Groups.
+
 Tip: You can get random distributions radially around a point by using the [Projection POP](https://docs.derivative.ca/Projection_POP "Projection POP") by generating random numbers in polar space and converting to Cartesian.
+
 **Per-point mapping of parameters** - The Random POP has a Map page, which allows every point to get a different value for Amplitude, Offset, Exponent, Period, Value A and B and other parameters. In this mechanism, a separate attribute in the input contains values that override (or add to / multiply by) the parameter value. See [Mapping POP Attributes to Parameters](https://docs.derivative.ca/Mapping_POP_Attributes_to_Parameters "Mapping POP Attributes to Parameters").
+
 See also [Point Generator POP](https://docs.derivative.ca/Point_Generator_POP "Point Generator POP"), [Noise POP](https://docs.derivative.ca/Noise_POP "Noise POP")
+
 [randomPOP_Class](https://docs.derivative.ca/RandomPOP_Class "RandomPOP Class")
 
 ## Parameters - Random Page
+
 - Extra Points per Source Point `extrapts` - Determines how many additional random points are generated per input point.
 - Type `type` - ⊞ - Determines the random type.
   * Constant `constant` -
@@ -112,6 +123,7 @@ See also [Point Generator POP](https://docs.derivative.ca/Point_Generator_POP "P
 - Compute Point Normals `computenormals` - Whether to compute point normals as a post operation.
 
 ## Parameters - Map Page
+
 - Mapping `map` - Start of Sequential Parameter Blocks for attribute-to-parameter mapping.
 - OP `map0op` - Source OP for parameter mapping. The default of _in0 means the input POP.
 - Element `map0element` - The attribute (or component of an attribute) that will be mapped to a parameter per-point.
@@ -137,19 +149,27 @@ See also [Point Generator POP](https://docs.derivative.ca/Point_Generator_POP "P
   * Add `add` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Random POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

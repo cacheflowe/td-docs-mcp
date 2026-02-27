@@ -5,19 +5,29 @@ title: Kinect_TOP
 ---
 
 # Kinect TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This TOP only supports the **Kinect for Windows** hardware and the **Kinect 2** , _not_ Kinect for Xbox hardware.
+
 The Kinect TOP captures video from the [Kinect](https://docs.derivative.ca/Kinect "Kinect") depth camera or RGB color camera.
+
 To use a Kinect 2 device you need to install the [Kinect for Windows 2.0 SDK](https://www.microsoft.com/en-ca/download/details.aspx?id=44561) or [runtime](https://www.microsoft.com/en-ca/download/details.aspx?id=44559).
+
 To use the original Kinect 1 device you will need to install the [Kinect Runtime 1.8](http://www.microsoft.com/en-ca/download/details.aspx?id=40277) for builds greater than 12000, or [Kinect Runtime 1.7](http://www.microsoft.com/en-us/download/details.aspx?id=36997) for builds below 12000.
+
 Kinect 2 supports color point clouds - getting the camera space positions of the color pixels, outputted as a 32-bit float RGB texture with XYZ in RGB. For use in making point clouds renders.
+
 See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [Kinect](https://docs.derivative.ca/Kinect "Kinect") and [Kinect1](https://docs.derivative.ca/Kinect1 "Kinect1").
+
 [kinectTOP_Class](https://docs.derivative.ca/KinectTOP_Class "KinectTOP Class")
 
 ## Parameters - Kinect Page
+
 - Active `active` - When 'On' data is captured from the Kinect sensor.
 - Hardware Version `hwversion` - ⊞ - Choose between Kinect v1 or Kinect v2 sensors.
   * Version 1 `version1` -
@@ -52,6 +62,7 @@ See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [K
   * (-INF, -INF, -INF) `neginfinite` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -131,9 +142,13 @@ See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [K
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Kinect TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -147,7 +162,9 @@ Extra Information for the Kinect TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

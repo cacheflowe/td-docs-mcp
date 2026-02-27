@@ -5,12 +5,15 @@ title: Angle_CHOP
 ---
 
 # Angle CHOP
+
 ## Summary
 
 The Angle CHOP is a general purpose converter between degrees, radians, quaternions and vectors. Different formats assume a specific ordering of input channels.
+
 [angleCHOP_Class](https://docs.derivative.ca/AngleCHOP_Class "AngleCHOP Class")
 
 ## Parameters - Angle Page
+
 - Input Units `inunit` - ⊞ - Units of incoming channels:
   * Degrees `degrees` -
   * Radians `radians` - (a radian is 57.29 degrees, with 3.14 (Pi) radians in a half-circle).
@@ -40,6 +43,7 @@ The Angle CHOP is a general purpose converter between degrees, radians, quaterni
   * Rz Ry Rx `zyx` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -58,17 +62,25 @@ The Angle CHOP is a general purpose converter between degrees, radians, quaterni
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Angle CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -82,7 +94,9 @@ Extra Information for the Angle CHOP can be accessed via an [Info CHOP](https://
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

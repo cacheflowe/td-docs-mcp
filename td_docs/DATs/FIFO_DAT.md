@@ -5,18 +5,20 @@ title: FIFO_DAT
 ---
 
 # FIFO DAT
+
 ## Summary
 
 The FIFO DAT maintains a user-set maximum number of rows in a table. You add rows using the `appendRow()` method found in [DAT Class](https://docs.derivative.ca/DAT_Class "DAT Class"). When its capacity is reached, the first row is removed. After the maximum number of rows is reached, the oldest row is discarded when a new row is added.
+
 Example:
 ```
 op('fifo1').appendRow(['a','b','c'])
-
 ```
 
 [fifoDAT_Class](https://docs.derivative.ca/FifoDAT_Class "FifoDAT Class")
 
 ## Parameters - FIFO Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each row added to the FIFO DAT.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location (for example, where 'cc' points to).
@@ -30,6 +32,7 @@ op('fifo1').appendRow(['a','b','c'])
 - Keep First Row `firstrow` - Keeps first row in table.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -46,15 +49,21 @@ op('fifo1').appendRow(['a','b','c'])
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the FIFO DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

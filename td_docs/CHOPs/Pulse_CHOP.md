@@ -5,21 +5,33 @@ title: Pulse_CHOP
 ---
 
 # Pulse CHOP
+
 ## Summary
 
 The Pulse CHOP generates pulses in one channel at regular intervals. The amplitude of each pulse can be edited with the CHOP sliders or with handles on the graph.
+
 The Pulse CHOP gives a set of pulses in a static channel of a specifiable length.
+
 See also the [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP") to get an endless stream of pulses that is [Time Sliced](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)"), and the [Pattern CHOP](https://docs.derivative.ca/Pattern_CHOP "Pattern CHOP") for a string of static pulses.
+
 The Pulse CHOP can be used as triggers to the [Copy CHOP](https://docs.derivative.ca/Copy_CHOP "Copy CHOP"), and can represent regularly-timed events.
+
 By default, the pulses are a single sample long, but you can increase the Pulse Width so that the pulses are steps to the next pulse. You can also interpolate the values between pulses, as Linear, Ease In Ease Out, Cubic or other curves.
+
 The pulses can be restricted to a minimum / maximum limit. If the Limit Type is Clamp, the graph has additional convenient handles at the minimum and maximum for each pulse.
+
 The Pulse CHOP generates a single channel, and you can merge several Pulse CHOPs into a multi-channel CHOP.
+
 The Pulse CHOP uses its optional first input as a start/end reference, so a number of Pulse CHOPs can be stretched to the same interval.
+
 The optional second input is used to specify pulses at specific sample locations. Every single-sampel input channel is then interpreted as the location of a pulse.
+
 In order to set the value at the last sample, the option, Last Pulse at Last Sample is provided. Otherwise, the last pulse is prior to the last sample.
+
 [pulseCHOP_Class](https://docs.derivative.ca/PulseCHOP_Class "PulseCHOP Class")
 
 ## Parameters - Pulse Page
+
 - Number of Pulses `number` - The number of pulses to generate.
 - Interpolate `interp` - ⊞ - You can interpolate the values between pulses using the following function curves:
   * Off `nointerp` - Disables interpolation.
@@ -51,10 +63,12 @@ In order to set the value at the last sample, the option, Last Pulse at Last Sam
 - Last Pulse at Last Sample `lastpulse` - In order to set the value at the last sample, the option Last Pulse at Last Sample is provided. Otherwise, the last pulse is prior to the last sample.
 
 ## Parameters - Values Page
+
 - Pulse `pulse` - Sequence of pulse values
 - Pulse 0 `pulse0value` - The value of the sequence pulse.
 
 ## Parameters - Channel Page
+
 - Channel Names `channelname` - You can creates many channels with simple patterns like "`chan[1-20]`", which generates 20 channels from chan1 to chan20. See the section, Common CHOP Parameters for a description of this and all Options. See [Scope and Channel Name Matching](https://docs.derivative.ca/CHOP_Common_Page#Scope "CHOP Common Page") Options.
 - Start `start` - Start of the interval, expressed in Units (seconds, frames or samples).
 - Start Unit `startunit` - ⊞ - Select the units to use for this parameter, Samples, Frames, or Seconds.
@@ -86,6 +100,7 @@ In order to set the value at the last sample, the option, Last Pulse at Last Sam
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -103,14 +118,19 @@ In order to set the value at the last sample, the option, Last Pulse at Last Sam
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0: Start/End/Rate Reference -
 
   * Input 1: Pulse Sample Index -
 
 ## Info CHOP Channels
+
 Extra Information for the Pulse CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -124,7 +144,9 @@ Extra Information for the Pulse CHOP can be accessed via an [Info CHOP](https://
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

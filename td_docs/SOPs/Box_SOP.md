@@ -5,13 +5,17 @@ title: Box_SOP
 ---
 
 # Box SOP
+
 ## Summary
 
 The Box SOP creates cuboids. These can be used as geometries by themselves, or they can be sub-divided for use with the Lattice SOP.
+
 If it has an input then it will create a box that bounds the incoming geometry. Otherwise, the parameters determine the size and location of the box.
+
 [boxSOP_Class](https://docs.derivative.ca/BoxSOP_Class "BoxSOP Class")
 
 ## Parameters - Page
+
 - Orient Bounds `orientbounds` - Available only when an input is connected to the Box SOP to set bounds for the box. When Orient Bounds = On it will rotate the geometry to match the orientation of the input SOP used for bounds.
 - Modify Bounds `modifybounds` - Available only when an input is connected to the Box SOP to set bounds for the box. When Modify Bounds = On to enable the transform parameters below to further modify the position and scale of the bounds.
 - Rotate Order `rord` - ⊞ - Sets the order in which the rotations are applied.
@@ -62,16 +66,23 @@ If it has an input then it will create a box that bounds the incoming geometry. 
 - Compute Normals `normals` - Checking this option on will compute surface normals.
 
 Uses
+
 To create boxes.
+
 You can use the points as an input geometry for the Lattice and Spring SOPs.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Box SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -83,7 +94,9 @@ Extra Information for the Box SOP can be accessed via an [Info CHOP](https://doc
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

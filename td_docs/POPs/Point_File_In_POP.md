@@ -5,20 +5,31 @@ title: Point_File_In_POP
 ---
 
 # Point File In POP
+
 ## Summary
 
 The Point File In POP loads 3D point data into POPs from either a single file or a sequence of files. The Point File In POP will load all available point data after you select field names and give them attribute names. Fields include standard ones like XYZ position, normal vectors, texture coordinates and RGBA color. More specialized fields are read in via any number of sequential blocks that map fields to attributes.
+
 By default, field `x`, `y` and `z` are placed into the `P` attribute, and `r g b a` into the `Color` attribute, but that can be all re-assigned. The sequential blocks can create float, float2, float3 and float4 attributes, as well as arrays of values (no matrices or double at the moment).
+
 The Thin page lets you skip points in the file, either randomly or in patterns. The ReRange page lets you scale/offset attribute values without having to create a temporary version of an attribute.
+
 The Point File In POP will read point data from various mesh and floating point data files including: `.obj`, `.ply`, `.fits` (astronomy format), and `.exr`. It can also load ASCII point files (`.xyz`, `.pts`, `.csv`, `.txt`, etc) with one point per line and comma- or space-separated fields. The first line in ASCII point files can either be the number of points, the names of the point fields or the first point in the file.
+
 For a complete list, see [File Types](https://docs.derivative.ca/File_Types "File Types"). The OpenEXR file format is generally best to use as it is binary, can be read in multi-frame file sequences that uses TouchDesigner's movie file pre-reading and buffering, and can be written from TouchDesigner's [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") with unlimited numbers of channels.
+
 **Gaussian Splat files** : The Point File In POP can read in all the specialized attributes of Gaussian Splat files. Give there are over 45 components of attributes, there is an example file in POPs `Examples / GaussianSplats/` with a full setup, and there is an example in Help -> Browse Samples : `PointClouds/`
+
 (TBD: Examine the state of a Point File In POP by attaching an Info CHOP. This will show information like the number of points, fields per point and the number of frames. It also shows dynamic information like the file open status, current frame, readahead frames and queue size, dropped frame count, CPU decode time and GPU upload time.)
+
 Headers: If the file contains any additional header data, this can be viewed by attaching an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT"). Header data is stored as key-value pairs with the keys in the first column and the corresponding data in the second column, which can easily be interpreted with python.
+
 All of the ASCII point list formats are loaded the same way whether their extension is `txt`, `csv`, `xyz`, etc. The parser looks for the first separating character (comma, space or tab) and then uses that to delimit the rest of the file. It will ignore delimiters that are inside single or double quotes. There are a few special rules depending on the delimiter style e.g. multiple spaces are merged together, but a comma at the end of a line indicates a blank field afterwards. Once a delimiter is established, The first line can be the number of points, but it is ignored. If the next line are strings then it is treated as a row of headers (channel names). Each row after that is considered the attributes of point.
+
 [pointfileinPOP_Class](https://docs.derivative.ca/PointfileinPOP_Class "PointfileinPOP Class")
 
 ## Parameters - Point File In Page
+
 - File `file` - The path and name of the point file to load.
 - Reload `reload` - ⊞ - Re-import and load the geometry.
   * Reload `reload` -
@@ -121,6 +132,7 @@ All of the ASCII point list formats are loaded the same way whether their extens
   * UI `ui` -
 
 ## Parameters - Thin Page
+
 - Thin Out Range `thinoutrange` - Enable index-based point filtering.
 - Thin Range Start `thinrangestart` - Determines the starting index for range-based point filtering.
 - Thin Range Length `thinrangelength` - Determines the number of points being filtered by index range.
@@ -129,6 +141,7 @@ All of the ASCII point list formats are loaded the same way whether their extens
 - Thin Random Seed `thinrandomseed` - Sets the random seed for points being randomly filtered.
 
 ## Parameters - ReRange Page
+
 - Rerange `rerange` - Start of Sequential Parameter Blocks to re-range created attributes.
 - Scope `rerange0scope` - ⊞ - Rerange any attribute from the file.
   * P `P` -
@@ -147,7 +160,9 @@ All of the ASCII point list formats are loaded the same way whether their extens
 - Map from High `rerange0fromhigh` - Reranges the attribute value.
 - Map to Low `rerange0tolow` - Reranges the attribute value.
 - Map to High `rerange0tohigh` - Reranges the attribute value.
+
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -172,11 +187,17 @@ All of the ASCII point list formats are loaded the same way whether their extens
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Point File In POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

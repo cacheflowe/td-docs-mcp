@@ -5,6 +5,7 @@ title: Beat_CHOP
 ---
 
 # Beat CHOP
+
 ## Summary
 
 The Beat CHOP generates a variety of ramps, pulses and counters that are timed to the beats per minute and the sync as produced by the [Beat Dialog](https://docs.derivative.ca/Beat_Dialog "Beat Dialog").
@@ -16,14 +17,21 @@ The Beat CHOP generates a variety of ramps, pulses and counters that are timed t
   * If Play Mode is set to Local Sequential, it doesn't look at start/end of the timeline (i.e. doesn't reset when the timeline loops), so is more appropriate for long improvised playing.
 
 **Note:** for the purposes of this dialog, a _bar_ is 4 beats and the _period_ is the number of beats set by the Period parameter.
+
 The [Beat Dialog](https://docs.derivative.ca/Beat_Dialog "Beat Dialog") is used to manually tap the beat to set the beats-per-minute (BPM). The Beat CHOP converts the BPM into a repeating ramp or pulse that keeps time with the music after you stop tapping.
+
 You can set the global beats-per-minute with the python command: `op('/local/time').tempo = 140`
+
 The phase can be controlled with the Beat CHOP's Reset parameters.
+
 The Beat CHOP's timing is defined by the [Component Time](https://docs.derivative.ca/Component_Time "Component Time") of the Reference Node. If the Reference Node parameter is left blank, then the time defined at the Beat CHOP's location is used. The default is in `/local/time`.
+
 See also: [Timeline CHOP](https://docs.derivative.ca/Timeline_CHOP "Timeline CHOP"), [Time COMP](https://docs.derivative.ca/Time_COMP "Time COMP").
+
 [beatCHOP_Class](https://docs.derivative.ca/BeatCHOP_Class "BeatCHOP Class")
 
 ## Parameters - Beat Page
+
 - Reference Operator `op` - This node is used to specify the time settings referenced by the Beat CHOP. The time is defined by the Time COMP found at `timepath("_reference_node_")`
 - Use Reference Time Slice `reftimeslice` - Turn on this checkbox to use the [Time Slicing](https://docs.derivative.ca/Time_Slicing "Time Slicing") used by the Reference Node.
 - Play Mode `playmode` - ⊞ - Specifies the method used to playback the output.
@@ -50,6 +58,7 @@ See also: [Timeline CHOP](https://docs.derivative.ca/Timeline_CHOP "Timeline CHO
 - Update Global `updateglobal` - Any Beat CHOP can be made the "global beat source" by turning on Update Global. A reference Beat CHOP is created at /local/master_beat (if it doesn't already exist) and all Beat CHOPs can synchronize to this by setting 'Play Mode: Locked to Global'. That master Beat CHOP also needs 'Update Global' turned on, if not already on. This means you require exactly one master Beat CHOP per toe. You can turn switch back to 'Play Mode: Locked to Sequential' when desired. $MASTER_BEAT is set to whatever Beat CHOP has this option turned on.
 
 ## Parameters - Output Page
+
 - Ramp `ramp` - Outputs a 0-1 ramp each period.
 - Pulse `pulse` - Outputs a pulse each period.
 - Sine `sine` - Outputs a sine wave each period.
@@ -63,6 +72,7 @@ See also: [Timeline CHOP](https://docs.derivative.ca/Timeline_CHOP "Timeline CHO
 - BPM `bpm` - Outputs the current BPM.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -80,13 +90,18 @@ See also: [Timeline CHOP](https://docs.derivative.ca/Timeline_CHOP "Timeline CHO
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Beat CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -100,7 +115,9 @@ Extra Information for the Beat CHOP can be accessed via an [Info CHOP](https://d
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

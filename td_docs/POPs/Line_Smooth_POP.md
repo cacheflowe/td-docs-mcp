@@ -5,18 +5,27 @@ title: Line_Smooth_POP
 ---
 
 # Line Smooth POP
+
 ## Summary
 
 The Line Smooth POP smooths line strips by blending the positions of adjacent points along a line strip.
+
 It blends based on a choice of two methods: In the Smooth by Edge Distance method you give it a distance and it will find the points within that distance along the edge in both directions and blend them using either a Gaussian weighting or a Box weighting. With the Gaussian weighting, points farther from the computed point are given a lower weight. With a Box weighting, all points that are found along the adjacent edges up to the specified distance are give equal weight in computing the resulting point position.
+
 In the second Smooth by Point Steps method you give a number of adjacent points in each direction to include in the smoothing calculation. In this method, points that are far from a given points may be included in the smoothing.
+
 In the End Points Fixed option, it assures that the original end points of each line strip do not move.
+
 In the Pre-Divide stage, it optionally adds more points by subdividing, similar to how the [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divide POP") adds new points, and it can add points based on the curvature of adjacent points.
+
 **Per-point mapping of parameters** - The Line Smooth POP has a Map page, which allows every point to get a different value for Edge Distance and Point Step Filter Size parameters. In this mechanism, a separate attribute in the input contains values that override (or add to / multiply by) the parameter value. See [Mapping POP Attributes to Parameters](https://docs.derivative.ca/Mapping_POP_Attributes_to_Parameters "Mapping POP Attributes to Parameters").
+
 See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divide POP"), [Line Resample POP](https://docs.derivative.ca/Line_Resample_POP "Line Resample POP")
+
 [linesmoothPOP_Class](https://docs.derivative.ca/LinesmoothPOP_Class "LinesmoothPOP Class")
 
 ## Parameters - Line Smooth Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -70,6 +79,7 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Resample Page
+
 - Resample Method `resamplemethod` - ⊞ - Line strip resample method.
   * None `none` -
   * Distance between Points `dist` -
@@ -81,6 +91,7 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
 - Max Tries for Binary Search `maxtries` - Max number of iterations for binary search when linearly resampling.
 
 ## Parameters - Map Page
+
 - Mapping `map` - Start of Sequential Parameter Blocks for attribute-to-parameter mapping.
 - OP `map0op` - Source OP for parameter mapping. The default of _in0 means the input POP.
 - Element `map0element` - The attribute (or component of an attribute) that will be mapped to a parameter per-point.
@@ -94,19 +105,27 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
   * Add `add` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Line Smooth POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

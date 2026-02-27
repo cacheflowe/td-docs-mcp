@@ -5,13 +5,17 @@ title: GLSL_MAT
 ---
 
 # GLSL MAT
+
 ## Summary
 
 The GLSL MAT allows you to write or import custom materials into TouchDesigner. When there are compile errors in a GLSL [shader](https://docs.derivative.ca/Shader "Shader"), a blue/red checkerboard _error_ shader will be displayed.
+
 For more information on writing a shader, see [Write a GLSL Material](https://docs.derivative.ca/Write_a_GLSL_Material "Write a GLSL Material"), and the [GLSL Category](https://docs.derivative.ca/Category:GLSL "Category:GLSL").
+
 [glslMAT_Class](https://docs.derivative.ca/GlslMAT_Class "GlslMAT Class")
 
 ## Parameters - Load Page
+
 - GLSL Version `glslversion` - ⊞ - Pick what version of GLSL to compile the shader with.
   * 1.20 `glsl120` -
   * 3.30 `glsl330` -
@@ -52,6 +56,7 @@ For more information on writing a shader, see [Write a GLSL Material](https://do
 - Two Sided Coloring `twocolor` - Enables support for two-sided coloring. When this is enabled the Vertex and/or Geometry shader can write to gl_FrontColor, gl_BackColor, gl_FrontSecondaryColor and gl_BackSecondaryColor and the correct color will be placed into gl_Color and gl_SecondaryColor in the Pixel shader depending on if the primitive's front face or back face is facing the camera. When this is disabled the values placed into gl_FrontColor and gl_FrontSecondaryColor are passed to gl_Color and gl_SecondaryColor regardless of which side of the primitive is facing the camera.
 
 ## Parameters - Attributes Page
+
 - Attribute `attr` - A sequence of attributes that should be made accesible in the shader. In the past these would be manually declared inside the shader, but to add support for POP based workflows, they need to be setup via these parameters instead. You can access the shaders using `TDAttrib_<attribName>()`.
 - Name `attr0name` - The name to give the attribute.
 - Type `attr0type` - ⊞ - The type, both vector size as well as if it's a float, double (d), integer (i), or unsigned integer (u).
@@ -75,10 +80,12 @@ For more information on writing a shader, see [Write a GLSL Material](https://do
 - Array Size `attr0size` - The size of the array. Currently a Size == 1 means it's not an array.
 
 ## Parameters - Samplers Page
+
 - Sampler `sampler` - Sequence of samplers for use in the shader
 - Name `sampler0name` - This is the sampler name that the GLSL program will use to sample from this TOP. The samplers need to be declared at the same dimentions as the TOP (sampler2D for a 2D TOP, sampler3D for 3D TOP).
 - TOP `sampler0top` - ⊞ - This is the TOP that will be referenced by the above sampler name above it.
 **Exposed by the + Button, texture sampling parameters** :
+
 Refer to the [Texture Sampling Parameters](https://docs.derivative.ca/Texture_Sampling_Parameters "Texture Sampling Parameters") article for more information on the parameters exposed by pressing the + button. The _parameter_ prefix for each of the parameters is _top[digit]_.
 - Extend U `sampler0extendu` - ⊞ -
   * Hold `hold` -
@@ -111,6 +118,7 @@ Refer to the [Texture Sampling Parameters](https://docs.derivative.ca/Texture_Sa
   * 16x `16x` -
 
 ## Parameters - Vectors Page
+
 - Vector `vec` - Sequence of vectors to be used as uniforms
 - Name `vec0name` - The name of the vector.
 - Value `vec0value` - ⊞ - The value to assign to the uniform. If the uniform is a float the first entry of the four is used, if the uniform is a vec2 the first two entries are used, etc.
@@ -120,11 +128,13 @@ Refer to the [Texture Sampling Parameters](https://docs.derivative.ca/Texture_Sa
   * Value `vec0valuew` -
 
 ## Parameters - Arrays Page
+
 CHOP Uniforms allow you to send CHOP channel data into a GLSL shader as an array. Depending on the array type used, the number of values you can send into the shader may be limited. If you are using Uniform Arrays, you can use the Built-In variable $SYS_GFX_GLSL_MAX_UNIFORMS to get an idea of how many values you can pass to the shader. Current GPUs are vec4 based for uniform arrays, so the maximum array size is $SYS_GFX_GLSL_MAX_UNIFORMS / 4. Other uniforms will take away from this maximum. If you are using Texture Buffers the maximum array size is far bigger, $SYS_GFX_MAX_TEXTURE_BUFFER_SIZE will tell you the max for this. The max for texture buffer is per texture buffer, and having multiple texture buffers does not take away from the max for each array.
 - Name `array` - Sequence of arrays to be used as uniforms
 - Array `array` - Sequence of arrays to be used as uniforms
 
 ## Parameters - Matrices Page
+
 Relative Xforms are matrices that will transform points and vectors from one space to another space.
 - Matrix `matrix` - Sequence of matrices to be used as uniforms
 - Name `matrix0name` - The name of the uniform. The uniform should be declared as a mat4.
@@ -135,12 +145,14 @@ Relative Xforms are matrices that will transform points and vectors from one spa
 - To `rel0to` - Transform to this COMPs world transform.
 
 ## Parameters - Constants Page
+
 [Specialization Constants](https://docs.derivative.ca/Write_a_GLSL_Material#Specialization_Constants "Write a GLSL Material") can optionally have their values assigned here.
 - Constant `const` - Sequence of constant uniforms.
 - Name `const0name` - The constant name, as declared in the shader.
 - Value `const0value` - The value to give the constant.
 
 ## Parameters - Deform Page
+
 Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(Skinning\) "Deforming Geometry \(Skinning\)") for more information on doing deforms in TouchDesigner.
 - Deform `dodeform` - Enables deforms on this material.
 - Get Bone Data: `deformdata` - ⊞ - Specifies where the deform bone data will be obtained.
@@ -155,8 +167,11 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
 
 ## Parameters - Common Page
+
 ###
+
 Blending
+
 [Blending](https://docs.derivative.ca/Blending "Blending") is summing the color value of the pixel being drawn and the pixel currently present in the Color-Buffer. Blending is typically used to simulate [Transparency](https://docs.derivative.ca/Transparency "Transparency"). The blending equation is: `Final Pixel Value = (Source Blend * Source Color) + (Dest Blend * Destination Color)`
 
 - Blending (Transparency) `blending` - This toggle enables and disables blending. However see the wiki article [Transparency](https://docs.derivative.ca/Transparency "Transparency").
@@ -262,8 +277,11 @@ Blending
   * Always `always` -
 
 ###
+
 Depth Test
+
 Depth-Testing is comparing the depth value of the pixel being drawn with the pixel currently in the [Frame-Buffer](https://docs.derivative.ca/index.php?title=Frame-Buffer&action=edit&redlink=1 "Frame-Buffer \(page does not exist\)"). A pixel that is determined to be in-front of the pixel currently in the Frame-Buffer will be drawn over it. Pixels that are determined to be behind the pixel currently in the Frame-Buffer will not be drawn. Depth-Testing allows geometry in a 3D scene to occlude geometry behind it, and be occluded by geometry in-front of it regardless of the order the geometry was drawn.
+
 For a more detailed description of Depth-Testing, refer to the [Depth-Test](https://docs.derivative.ca/Depth-Test "Depth-Test") article.
 
 - Write Depth Values `depthwriting` - If Write Depth Values is on, pixels that pass the depth-test will write their depth value to the Depth-Buffer. If this isn't on then no changes will be made to the Depth-Buffer, regardless of if the pixels drawn pass or fail the depth-test.
@@ -281,7 +299,9 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Topology Wire Frame `topology` -
 
 ###
+
 Alpha Test
+
 Alpha-testing allows you to choose to draw or not draw a pixel based on its alpha value.
 
 - Line Width `wirewidth` - This value is the width that the wires will be. This value is in pixels.
@@ -295,16 +315,23 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
 - Polygon Depth Offset `polygonoffset` - Turns on the polygon offset feature.
 - Offset Factor `polygonoffsetfactor` -
 - Offset Units `polygonoffsetunits` -
+
 ###
+
 Wire Frame
+
 The wire-frame feature will render the geometry as wire-frame, using the actual primitive type used in the render. What this means is surfaces like Metaballs, NURBs and Beziers will become a wire-frame of the triangles/triangle-strips used to render them (since these types of primitives can't be natively rendered in OpenGL).
 
 ###
+
 Cull Face
+
 The cull face parameter will cull faces from the render output. This can be used as an optimization or sometimes to remove artifacts. See [Back-Face Culling](https://docs.derivative.ca/Back-Face_Culling "Back-Face Culling") for more infomation.
 
 ###
+
 Polygon Depth Offset
+
 This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly on-top of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing [shadows](https://docs.derivative.ca/Shadows "Shadows").
 
 - Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
@@ -348,11 +375,17 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the GLSL MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common MAT Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

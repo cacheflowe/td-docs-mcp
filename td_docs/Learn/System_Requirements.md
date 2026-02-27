@@ -5,11 +5,15 @@ title: System_Requirements
 ---
 
 # System Requirements
+
 System requirements for [TouchDesigner](https://docs.derivative.ca/TouchDesigner_Products "TouchDesigner Products") and [TouchPlayer](https://docs.derivative.ca/TouchPlayer "TouchPlayer").
 
 #####  Basic Requirements
+
 _Older than hereafter specified configurations might work but some features will not be available._
+
 ##  Windows
+
 **Operating System**
   * Microsoft Windows 10 / Windows 11
 
@@ -18,6 +22,7 @@ _Older than hereafter specified configurations might work but some features will
   * The most recent [Nvidia drivers](http://www.nvidia.com/Download/index.aspx?lang=en-us), [AMD drivers](http://support.amd.com/us/gpudownload/Pages/index.aspx) or Intel drivers are recommended.
 
 TouchDesigner requires a GPU and drivers that support Vulkan 1.1.
+
 **Nvidia GPUs**
   * Nvidia Geforce 1000-series or better.
   * Nvidia Quadro/RTX Pascal series or better.
@@ -30,6 +35,7 @@ TouchDesigner requires a GPU and drivers that support Vulkan 1.1.
   * Intel 500 and newer GPUs (not the 5000, 6000 series). You can look for your GPU [here.](https://www.intel.ca/content/www/ca/en/support/articles/000005524/graphics.html)
 
 ##  Apple Mac
+
 **Operating System**
   * Apple macOS 13 (Ventura) and up (See also [macOS](https://docs.derivative.ca/MacOS "MacOS"))
 
@@ -39,9 +45,11 @@ TouchDesigner requires a GPU and drivers that support Vulkan 1.1.
   * We highly recommend a Mac with Apple Silicon for TouchDesigner. For Intel-based Macs we require a model with a discrete AMD GPU.
 
 ##  Input Devices
+
   * A three-button mouse with scroll-wheel is required.
 
 ##  Feature Specific Requirements
+
   * [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") - H.264 and H.265 hardware accelerated decoding
     * On Windows Nvidia GPU only, or macOS for codecs the hardware supports.
   * [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") - H.264 and H.265 encoding
@@ -100,8 +108,13 @@ TouchDesigner requires a GPU and drivers that support Vulkan 1.1.
     * Windows OS
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
+
 A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+
 POPs (**Point Operators**) is a new [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.

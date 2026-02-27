@@ -5,11 +5,15 @@ title: File_In_CHOP
 ---
 
 # File In CHOP
+
 ## Summary
 
 The File In CHOP reads in channel and audio files for use by CHOPs. The file can be read in from disk or from the web. Use `http://` when specifying a URL.
+
 ###
+
 Valid Formats
+
 For a complete listing of all valid formats for CHOPs, see the [File Types](https://docs.derivative.ca/File_Types "File Types") section. The types of files that can be read into CHOPs include:
   * `**.chan**`- Raw ASCII channel files; a row of numbers per frame. The channels are named automatically.
   * `**.clip .bclip**`- TouchDesigner native CHOP clip files.
@@ -17,14 +21,21 @@ For a complete listing of all valid formats for CHOPs, see the [File Types](http
   * `**.wav**`- Audio files.
 
 ###
+
 Outputting Channel Files
+
 The same files can be output from the [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") menu on the CHOP by selecting **Save Data Channels**.
+
 ###
+
 Other Input Devices
+
 For MIDI files (`.mid` or `.midi`), see the [MIDI In CHOP](https://docs.derivative.ca/MIDI_In_CHOP "MIDI In CHOP").
+
 [fileinCHOP_Class](https://docs.derivative.ca/FileinCHOP_Class "FileinCHOP Class")
 
 ## Parameters - File In Page
+
 - Channel File `file` - The name of the file to load. Use http:// when specifying a URL.
 - Name Options `nameoption` - ⊞ - Use this menu to control the names of the loaded channels.
   * Use Names In File `infile` - Use the channel names stored in the file.
@@ -63,6 +74,7 @@ For MIDI files (`.mid` or `.midi`), see the [MIDI In CHOP](https://docs.derivati
 - Refresh Pulse `refreshpulse` - Instantly reload the file from disk.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -80,9 +92,13 @@ For MIDI files (`.mid` or `.midi`), see the [MIDI In CHOP](https://docs.derivati
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the File In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -96,7 +112,9 @@ Extra Information for the File In CHOP can be accessed via an [Info CHOP](https:
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

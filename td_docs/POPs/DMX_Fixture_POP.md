@@ -5,10 +5,13 @@ title: DMX_Fixture_POP
 ---
 
 # DMX Fixture POP
+
 ## Summary
 
 The DMX Fixture POP constructs DMX universes from a POP input, and is used in conjunction with a [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP") to send DMX to a device.
+
 In the POP input, each primitive is analogous to a fixture. Each fixture is iterated over and the DMX profile defined on the Channels page is used to construct the DMX universes for each fixture. The fixture/primitives are iterated over in the order they're defined in the POP.
+
 The following primitive attributes, as unsigned integers, can be used to specify net, subnet, universe, channel, and netaddress, allowing for per-fixture customization without needing to use the Routing Table:
   * `DMXFixtureNet`
   * `DMXFixtureSubnet`
@@ -17,25 +20,43 @@ The following primitive attributes, as unsigned integers, can be used to specify
   * `DMXFixtureNetAddress`
 
 The [DMX Map DAT](https://docs.derivative.ca/DMX_Map_DAT "DMX Map DAT") can be used to inspect the DMX universes created.
+
 ### Creating the DMX Profile
+
 The DMX Profile is defined by the Channel sequence on the DMX Profile page.
+
 DMX Channels are sequenced in the universe output in the same order they're defined on the DMX Profile page.
+
 For any given Channel sequence, all attribute components will be interleaved together. Eg. '`P`' will be interleaved as 'Px Py Pz'. If the DMX profile requires them to not be interleaved then they will instead need to be separated into their own Channel sequence blocks.
+
 Multiple attributes can be specified together: Eg. '`P Color`' will interleave P and Color together like so: 'Px Py Pz Colorr Colorg Colorb Colora'. If the interleaved components are of different resolutions, then they will need to be separated into their own Channel sequence blocks, but by enabling Merge with Above Block they can be interleaved together.
+
 For Point Value Types, all points will be iterated over before the next Channel Sequence.
+
 Individual attribute components can also be specified. Eg. '`P(0) P(1)`' to use just position x and y.
+
 Attribute components are interleaved by value unless Interleave Bytes is enabled for the attribute grouping. Example: Position attribute P with 16-bit resolution will be interleaved as `Px[0] Px[1] Py[0] Py[1] Pz[0] Pz[1] ...` when the Interleave Bytes toggle is disabled, but interleave as `Px[0] Py[0] Pz[0] Px[1] Py[1] Pz[1] ...` when the Interleave Bytes toggle is enabled.
+
 ### Auto Layout Mode
+
 The DMX Fixture POP is in Auto Layout mode when the Auto Layout toggle is enabled, or as a default when the toggle is disabled and no routing table is referenced, or the routing table has no rows.
+
 Auto Layout mode auto-increments channel and universe values from a defined starting point (using the net, subnet, universe, and channel parameters). Primitives are iterated over in primitive order (eg. prim 0 is first) and each primitive's points are iterated over in point order (eg. point 0 is first).
+
 The DMX Profile page defines the channel layout for each primitive. It is executed once per primitive, and then a channel gap is added (specified by parameter) between each primitive channel layout.
+
 If Quantize Universe is set to off, then the next primitive will begin immediately after the channel gap. But if Quantize Universe is set to By Fixture, it will first check to see if the next primitive (ie. fixture) can fit in the remaining channels of the universe, and if not, it will jump to the next universe at channel=1. Similarly, if Quantize Universe is set to By Components, and a multi-component DMX Channel entry on the DMX Profile page cannot fit all components in the remaining channels of the universe (eg. `P` has 3 components x y z so with 8-bit resolution would require 3 remaining channels), then it will jump to the next universe at channel=1.
+
 When the `DMXFixtureNetAddress` attribute is set, each specific net address value will have their own independently incrementing channel values. Eg. if there are 8 primitives each of exactly 512 channels, and there are 4 with `DMXFixtureNetAddress=192.168.0.1` and 4 with `DMXFixtureNetAddress=192.168.0.2`, then the resulting channel layout will be 4 universes [0-3] with `netaddress=192.168.0.1` and 4 universes [0-3] with `netaddress=192.168.0.2`.
+
 When the `DMXFixtureUniverse` attribute is set, the channel value is set to 1 for that universe, unless `DMXFixtureChannel` is also set. If the `DMXFixtureUniverse` is greater than 15 then the `DMXFixtureNet` and `DMXFixtureSubnet` attribute values will not be used if set.
+
 See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [DMX Map DAT](https://docs.derivative.ca/DMX_Map_DAT "DMX Map DAT"), [DMX](https://docs.derivative.ca/DMX "DMX")
+
 [dmxfixturePOP_Class](https://docs.derivative.ca/DmxfixturePOP_Class "DmxfixturePOP Class")
 
 ## Parameters - Fixture Page
+
 - Active `active` - When enabled, will actively update the fixture and universe data, and if used in a DMX Out POP will be sent out to the device. If disabled, the DMX Out POP will not merge the DMX universes constructed by this POP for sending.
 - Auto Layout `autolayout` - When enabled, the universes will be constructed sequentially starting from net, subnet, universe, and channel specified in the parameters. For example, if starting a net=0, subnet=0, universe=1, channel=0, then the DMX Fixture POP will iterate through all 512 channels using the profile at which point it will move to universe 2. When disabled, a Routing Table must be used instead, and the universes manually assigned to a primindex.
 - Routing Table `routingtable` - Use a Routing Table to assign specific net, subnet, universe values to a fixture/primitive. Additionally, netaddress may optionally be specified to override those on the DMX Out POP. The routing table will override use of parameters, as well as any of the reserved attributes: DMXFixtureNet, DMXFixtureSubnet, DMXFixtureUniverse, DMXFixtureChannel, and DMXFixtureNetAddress.
@@ -50,6 +71,7 @@ See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [
   * By Component `component` - When set to By Component, multi-component DMX Channel entries (eg. `P` has 3 components x y z which requires 3 channels with 8-bit resolution) cannot bridge universes. If it cannot fit into the remaining channels of a universe, then it will be moved to the next one.
 
 ## Parameters - DMX Profile Page
+
 - DMX Channel `dmxchan` - Start of Sequential Parameter Blocks used to define the DMX profile
 - Name `dmxchan0name` - Specify the unique DMX Channel identifier.
 - Value Type `dmxchan0valuetype` - ⊞ - Specify how the channels values are iterated, and how the attributes are sourced.
@@ -85,6 +107,7 @@ See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [
 - Interleave Bytes `dmxchan0interleavebytes` - When enabled, attribute component values will be interleaved by byte order, instead of value order. Example: Position attribute P with 16-bit resolution will be interleaved as `Px[0] Px[1] Py[0] Py[1] Pz[0] Pz[1] ...` when the toggle is disabled, but interleave as `Px[0] Py[0] Pz[0] Px[1] Py[1] Pz[1] ...` when the Interleave Bytes toggle is enabled. This also means that if the components have an 8-bit value resolution, then the toggle will have no effect. Interleave Bytes can only be enabled at the root (ie. top) DMX Channel in the case where multiple DMX Channel blocks are merged together with Merge Above Block.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -109,14 +132,21 @@ See also: [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the DMX Fixture POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

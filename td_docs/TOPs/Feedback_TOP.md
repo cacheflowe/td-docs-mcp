@@ -5,19 +5,25 @@ title: Feedback_TOP
 ---
 
 # Feedback TOP
+
 ## Summary
 
 The Feedback TOP can be used to create feedback effects in TOPs. It can give fake motion blur by not clearing the color buffer. The Feedback TOP's input image will be passed through whenever Feedback is bypassed (by setting the Bypass Feedback parameter = 1). When feedback is activated (Bypass Feedback parameter = 0) the Feedback TOP will output an image stream sourced from its Target TOP. By selecting a Target TOP downstream in the feedback network, other filter TOPs can be added in between the Feedback TOP and its Target TOP to achive feedback effects. See the example networks below.
+
 See [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") for some examples on how to use the Feedback TOP.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [feedbackTOP_Class](https://docs.derivative.ca/FeedbackTOP_Class "FeedbackTOP Class")
 
 ## Parameters - Feedback Page
+
 - Target TOP `top` - Specifies a TOP for feedback to use as its source when activated.
 - Reset `reset` - Activates feedback when set to 0. Disables feedback when set to 1. When disabled, the Feedback TOP passes thru the image connected to its input.
 - Reset Pulse `resetpulse` - Resets the feedback in a single frame when clicked.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -97,12 +103,17 @@ See [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") for some
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Feedback TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -116,7 +127,9 @@ Extra Information for the Feedback TOP can be accessed via an [Info CHOP](https:
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

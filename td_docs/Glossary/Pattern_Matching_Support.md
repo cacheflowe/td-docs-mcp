@@ -6,10 +6,12 @@ title: Pattern_Matching_Support
 
 # Pattern Matching Support
 
-
 ##  Group Name Expansion
+
 **Note** : Operator Patterns support the `@groupname` pattern expansion.
+
 ##  COMP
+
 Node | Parameter Name | Pattern Type | Supports Set Matching
 ---|---|---|---
 [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP") | Forces | Operator | ✅
@@ -30,7 +32,9 @@ Light Mask | Operator | ✅
 Global Forces | Operator | ✅
 Light Mask | Operator | ✅
 [NVIDIA Flow Emitter COMP](https://docs.derivative.ca/NVIDIA_Flow_Emitter_COMP "NVIDIA Flow Emitter COMP") | Light Mask | Operator | ✅
+
 ##  POP
+
 Node | Parameter Name | Pattern Type | Supports Set Matching
 ---|---|---|---
 [Analyze POP](https://docs.derivative.ca/Analyze_POP "Analyze POP") | Input Attributes | Basic | ✅
@@ -78,7 +82,9 @@ Vertex Attribute Scope | Basic | ✅
 Point Attribute Scope | Basic | ✅
 Primitive Attribute Scope | Basic | ✅
 Vertex Attribute Scope | Basic | ✅
+
 ##  DAT
+
 Node | Parameter Name | Pattern Type | Supports Set Matching
 ---|---|---|---
 [Art-Net DAT](https://docs.derivative.ca/Art-Net_DAT "Art-Net DAT") | Local IP Pattern | Basic |
@@ -124,7 +130,9 @@ Col Select Values | Basic | ✅
 [Touch Out DAT](https://docs.derivative.ca/Touch_Out_DAT "Touch Out DAT") | Local IP PatternF | Basic |
 [UDP In DAT](https://docs.derivative.ca/UDP_In_DAT "UDP In DAT") | Local IP Pattern | Basic |
 [UDP Out DAT](https://docs.derivative.ca/UDP_Out_DAT "UDP Out DAT") | Local IP Pattern | Basic | ✅
+
 ##  CHOP
+
 Node | Parameter Name | Pattern Type | Supports Set Matching
 ---|---|---|---
 [Audio Render CHOP](https://docs.derivative.ca/Audio_Render_CHOP "Audio Render CHOP") | Mesh SOPs | Operator | ✅
@@ -170,7 +178,9 @@ Channel Indices | Index | ✅
 [Stype Out CHOP](https://docs.derivative.ca/Stype_Out_CHOP "Stype Out CHOP") | Local IP Pattern | Basic |
 [Sync In CHOP](https://docs.derivative.ca/Sync_In_CHOP "Sync In CHOP") | Local IP Pattern | Basic |
 [Sync Out CHOP](https://docs.derivative.ca/Sync_Out_CHOP "Sync Out CHOP") | Local IP Pattern | Basic |
+
 ##  TOP
+
 Node | Parameter Name | Pattern Type | Supports Set Matching
 ---|---|---|---
 [Composite TOP](https://docs.derivative.ca/Composite_TOP "Composite TOP") | TOPs | Operator | ✅
@@ -181,7 +191,9 @@ Node | Parameter Name | Pattern Type | Supports Set Matching
 [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") | Geometry | Operator | ✅
 Lights | Operator | ✅
 Cameras | Operator | ✅
+
 ##  SOP
+
 Node | Parameter Name | Pattern Type | Supports Set Matching
 ---|---|---|---
 [DAT to SOP](https://docs.derivative.ca/DAT_to_SOP "DAT to SOP") | Add Float Attributes | Basic | ✅
@@ -190,29 +202,53 @@ Add String Attributes | Basic | ✅
 [Merge SOP](https://docs.derivative.ca/Merge_SOP "Merge SOP") | SOPs | Operator | ✅
 [Object Merge SOP](https://docs.derivative.ca/Object_Merge_SOP "Object Merge SOP") | SOP | Operator | ✅
 [Select SOP](https://docs.derivative.ca/Select_SOP "Select SOP") | SOPs | Operator | ✅
+
 ##  See Also
+
   * [Pattern Expansion](https://docs.derivative.ca/Pattern_Expansion "Pattern Expansion"), [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement"), Pattern Matching Support
 
 A Group in POPs and SOPs is a named subset of points or primitives. It is created with the [Group POP](https://docs.derivative.ca/Group_POP "Group POP") or Group SOP. Numerous operations in POPs and SOPs (using a Group parameter) can be restricted to affect the points or primitives in selected groups, and not affect others.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+
 The generic thing that holds an [Operator](https://docs.derivative.ca/Operator "Operator"), and includes [Flags](https://docs.derivative.ca/Flag "Flag") (display, bypass, lock, render, immune) and its position/size in the network. Whether you "lay down an Operator" or "lay down an Node", you're doing the same thing.
+
 Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+
 (1) A [Geometry Component](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") can instance and render its SOP geometry many times: once for each sample in a CHOP, row of a DAT table, pixel in a TOP, or point of a SOP, (2) An instance is an OP that doesn't actually have its own data, but rather just refers to an OP (or has an input) whose data it uses. This includes Null OPs, Switch OPs and in some cases Select OPs.
+
 POPs (**Point Operators**) is a new [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
+
 Attributes are data associated with [POP](https://docs.derivative.ca/POP "POP") geometry. [Points](https://docs.derivative.ca/Point "Point"), [Vertex (Vertices)](https://docs.derivative.ca/Vertex "Vertex") and [Primitives](https://docs.derivative.ca/Primitive "Primitive") (polygons, lines, etc) can have any number of attributes.
+
 A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+
 A surface type in [SOPs](https://docs.derivative.ca/SOP "SOP") that includes polygon, curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like sphere, tube and metaball. [Points](https://docs.derivative.ca/Point "Point") and Primitives are part of the [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), which is a part of a [SOP](https://docs.derivative.ca/SOP "SOP").
+
 A parameter in most CHOPs that restricts which channels of that CHOP will be affected. Normally all channels of a CHOP are affected by the operator. TOPs have Channel Mask, a similar feature.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+
 Operators that need 1 or more inputs are called Filters in TouchDesigner, like a Math CHOP. See [Generator](https://docs.derivative.ca/Generator "Generator").
+
 A Parent Shortcut is a parameter on a component that contains a name that you can use anywhere inside the component to refer to that component using the syntax `parent.Name`, for example `parent.Effect.width` to obtain panel width.
+
 Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
+
 The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](https://docs.derivative.ca/Root "Root"). This path is displayed at the top of every [Pane](https://docs.derivative.ca/Pane "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](https://docs.derivative.ca/Folder "Folder").
+
 The connection of an output of one node to the input of another node in a network. In contrast, see [Link](https://docs.derivative.ca/Link "Link").
+
 A text string that contains data (string, float, list, boolean, etc.) and operators (+ * < etc) that are evaluated by the node's language (python or Tscript) and returns a string, float list or boolean, etc. Expressions are used in parameters, [DATs](https://docs.derivative.ca/DAT "DAT") and in scripts.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
 The 3D data held in SOPs and passed for rendering by the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP").
+
 A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.

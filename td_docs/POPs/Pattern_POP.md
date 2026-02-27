@@ -5,10 +5,13 @@ title: Pattern_POP
 ---
 
 # Pattern POP
+
 ## Summary
 
 The Pattern POP is a generator that makes simple line strip shapes using elementary math functions in X, Y and Z. Alternately it can add a new attribute to an input POP using the elementary math functions.
+
 The math functions include sine, cos, triangles, square waves, as well as ease in/out and random. Parameters control phase, repeats and re-ranging.
+
 The Pattern POP can:
   * make one or more 3D line strips generating a `P` attribute containing a different curve in X, Y and Z. (it can create `Tex` at the same time). (generator)
   * add a new attribute (1-4 components) to an input POP, each component containing a separate type of curve. (filter)
@@ -16,9 +19,11 @@ The Pattern POP can:
   * create a POP that has no P attribute - just a curve in a new attribute. (generator)
 
 See also: [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP"), [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP")
+
 [patternPOP_Class](https://docs.derivative.ca/PatternPOP_Class "PatternPOP Class")
 
 ## Parameters - Pattern Page
+
 - Number of Points `numpoints` - Sets the number of points.
 - Cyclic `cyclic` - Enable having completes cycle correspond to Number of Points + 1 values.
 - Connectivity `connectivity` - ⊞ - Determines whether and how to connect the points.
@@ -145,20 +150,29 @@ See also: [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP"), [Math M
   * Primitive `primitive` -
 
 - Group `group` - If there are input groups, specifying a group name in this field will cause this POP to act only upon the group specified.
+
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Pattern POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

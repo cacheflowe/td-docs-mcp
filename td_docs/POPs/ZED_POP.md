@@ -5,17 +5,23 @@ title: ZED_POP
 ---
 
 # ZED POP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The ZED POP uses the [ZED](https://docs.derivative.ca/ZED "ZED") StereoLabs SDK to scan and create geometry meshes (triangles) by moving it around the room or an object of interest. It also has the option to display a live point cloud from the depth image passed to it from the ZED TOP.
+
 After pressing start the ZED POP uses each frame of video to build up the mesh, with the preview of the captured points in the viewer.
+
 To know what ZED SDK we are using, refer to the [ZED](https://docs.derivative.ca/ZED "ZED") page. See also [ZED](https://docs.derivative.ca/ZED "ZED"), [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED CHOP](https://docs.derivative.ca/ZED_CHOP "ZED CHOP") and [ZED SOP](https://docs.derivative.ca/ZED_SOP "ZED SOP")
+
 [zedPOP_Class](https://docs.derivative.ca/ZedPOP_Class "ZedPOP Class")
 
 ## Parameters - Zed Page
+
 - Active `active` - Extra pass to free unused GPU memory.
 - ZED TOP `zedtop` - Reference to a ZED TOP.
 - Output Mode `outputmode` - ⊞ - Whether to output a mesh or a point cloud.
@@ -81,16 +87,23 @@ To know what ZED SDK we are using, refer to the [ZED](https://docs.derivative.ca
 - Far Depth `depthfar` - Depth of the far clipping plane.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
+
 Extra Information for the ZED POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

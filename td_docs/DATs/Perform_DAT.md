@@ -5,12 +5,15 @@ title: Perform_DAT
 ---
 
 # Perform DAT
+
 ## Summary
 
 The Perform DAT logs various performance times in a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") format. These benchmarks are similar to those reported by the [Performance Monitor](https://docs.derivative.ca/Performance_Monitor_Dialog "Performance Monitor Dialog").
+
 [performDAT_Class](https://docs.derivative.ca/PerformDAT_Class "PerformDAT Class")
 
 ## Parameters - Perform Page
+
 - Active `active` - ⊞ - Turns logging on/off. The DAT will continuously log while Active is On.
   * Active `active` -
   * Active Pulse `activepulse` -
@@ -38,6 +41,7 @@ The Perform DAT logs various performance times in a [Table DAT](https://docs.der
 - Active Pulse `activepulse` - Use resetpulse button to grab a single frame snapshot.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -54,15 +58,21 @@ The Perform DAT logs various performance times in a [Table DAT](https://docs.der
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Perform DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

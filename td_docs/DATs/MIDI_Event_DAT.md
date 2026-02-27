@@ -5,17 +5,23 @@ title: MIDI_Event_DAT
 ---
 
 # MIDI Event DAT
+
 ## Summary
 
 The MIDI Event DAT logs all [MIDI](https://docs.derivative.ca/MIDI "MIDI") messages coming into or out of TouchDesigner from all MIDI In/Out operators. Note: no messages will be logged if there are no active MIDI In or Out operators set to receive them. It outputs columns in a table format: message, type, channel, index, value.
+
 The table is FIFO "first-in first-out" and limited to parameter-set number of lines. An optional script may be run for each packet received.
+
 See also the [MIDI In DAT](https://docs.derivative.ca/MIDI_In_DAT "MIDI In DAT"), [MIDI In Map CHOP](https://docs.derivative.ca/MIDI_In_Map_CHOP "MIDI In Map CHOP"), [MIDI In CHOP](https://docs.derivative.ca/MIDI_In_CHOP "MIDI In CHOP"), [MIDI Out CHOP](https://docs.derivative.ca/MIDI_Out_CHOP "MIDI Out CHOP"), Tscript `midi()` Command.
+
 [midieventDAT_Class](https://docs.derivative.ca/MidieventDAT_Class "MidieventDAT Class")
 
 ## Parameters - Connect Page
+
 - Active `active` - Logs MIDI events when turned on.
 
 ## Parameters - Filter Page
+
 - Skip Sense `skipsense` - Does not log sense messages when this is turned on.
 - Skip Timing `skiptiming` - Does not report timing messages when this is turned on.
 - Filter Messages `filter` - Turning this on enables the message filtering parameters below.
@@ -26,6 +32,7 @@ See also the [MIDI In DAT](https://docs.derivative.ca/MIDI_In_DAT "MIDI In DAT")
 - Dir `dir` - Filter by the message direction, "input" or "output".
 
 ## Parameters - Received Messages Page
+
 - Callbacks DAT `callbacks` - Runs this script once for each row added to the table (ie. MIDI event recieved). See [midieventDAT_Class](https://docs.derivative.ca/MidieventDAT_Class "MidieventDAT Class") for usage.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -39,6 +46,7 @@ See also the [MIDI In DAT](https://docs.derivative.ca/MIDI_In_DAT "MIDI In DAT")
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -55,15 +63,21 @@ See also the [MIDI In DAT](https://docs.derivative.ca/MIDI_In_DAT "MIDI In DAT")
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the MIDI Event DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

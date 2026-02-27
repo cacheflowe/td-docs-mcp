@@ -5,21 +5,33 @@ title: Point_Generator_POP
 ---
 
 # Point Generator POP
+
 ## Summary
 
 The Point Generator POP creates a specified number of points, either randomly or in a pattern, on the surface of shape or within the volume of a closed shape.
+
 The Shape is not a set of polygons (see [Sprinkle POP](https://docs.derivative.ca/Sprinkle_POP "Sprinkle POP") for that) but is a common mathematical shape like a sphere, circle, box, cylinder, torus, rectangle or line, whose shape and position/scale/rotation is controlled with POP parameters.
+
 A menu chooses between points on a surface, or points within its volume.
+
 Volumes should be closed surfaces, but Point Generator still gives a distribution of points around holes of non-closed surfaces.
+
 A Random toggle, when off, gives predictable but patterned distribution of points on/in surfaces.
+
 There are controls of orientation axis and angles of the basic shapes.
+
 Note: Presently there is no option to make the distribution of points be uniform per unit of surface area. For example, triangles get approximately the same number of points on small triangles as on large triangles. (future option)
+
 A Random distribution of points along a line segment in Line mode is controlled with two points in XYZ.
+
 You can add normal (`N` float3) and tangent (`T` float4) attribute vectors on points, vertices or primitives, with some choices of further randomization of these attributes.
+
 See also [Sprinkle POP](https://docs.derivative.ca/Sprinkle_POP "Sprinkle POP"), [Random POP](https://docs.derivative.ca/Random_POP "Random POP"), [Noise POP](https://docs.derivative.ca/Noise_POP "Noise POP")
+
 [pointgeneratorPOP_Class](https://docs.derivative.ca/PointgeneratorPOP_Class "PointgeneratorPOP Class")
 
 ## Parameters - Point Generator Page
+
 - Shape `shape` - ⊞ - Sets the points generated shape.
   * Sphere `sphere` -
   * Box `box` -
@@ -93,6 +105,7 @@ See also [Sprinkle POP](https://docs.derivative.ca/Sprinkle_POP "Sprinkle POP"),
   * Random `random` -
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -130,16 +143,23 @@ See also [Sprinkle POP](https://docs.derivative.ca/Sprinkle_POP "Sprinkle POP"),
   * Pivot `pz` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
+
 Extra Information for the Point Generator POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

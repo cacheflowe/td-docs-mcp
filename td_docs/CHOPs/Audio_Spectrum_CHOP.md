@@ -5,17 +5,25 @@ title: Audio_Spectrum_CHOP
 ---
 
 # Audio Spectrum CHOP
+
 ## Summary
 
 The Audio Spectrum CHOP calculates and displays the frequency spectrum of the input channels.
+
 In the default Visualization Mode the CHOP is set to display the spectrum in a more understandable way by emphasizing the higher frequency levels and the lower frequency ranges.
+
 In another Mode, the Time to Magnitude and Phase mode, the audio can be converted to the frequency spectrum domain, manipulated and then converted back to get a filtered audio signal. When converting a signal to its spectrum, two channels are created from the one containing the audio signal. One channel contains the magnitude of the frequency components, and the other contains the phase. The channels are named, for example `chan1_m` and `chan1_p` where `_m` and `_p` are the suffixes for the magnitude and phase channels.
+
 **Tip** : You can reduce cook time if you decrease the FFT Size from its default 8192 samples. The fastest form of this CHOP is by setting the Output Length parameter to "Output Length Manually". For example set the output buffer size to 2048 samples and the FFT Size to 2048. Each time it cooks, the CHOP is looking at the latest 2028 samples (at 44.1 KHz that amounts to the 50 msec, or 3 frames), which is plenty. Note the default form of the CHOP gives you 22,000 samples: 1 Hz to 22,050 Hz in steps of 1 Hz (when set to Frequency vs Logarithmic scaling), designed for clear interpretation: sample 1000 is the level of audio at 1000 Hz.
+
 **Tip** : To find the exact frequency of a wave entering the Audio Spectrum CHOP, look at the Info pop-up for that node (MMB on the node). It says: Set "Frequency <-> Logarithmic Scaling" to 0, then multiply any sample to xxxx to get the Frequency at that sample. xxxx depends on the sample rates etc and isn't a constant.
+
 See [Audio Filter CHOP](https://docs.derivative.ca/Audio_Filter_CHOP "Audio Filter CHOP"), [Audio Para EQ CHOP](https://docs.derivative.ca/Audio_Para_EQ_CHOP "Audio Para EQ CHOP"), [Audio Band EQ CHOP](https://docs.derivative.ca/Audio_Band_EQ_CHOP "Audio Band EQ CHOP"), [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CHOP "Audio Oscillator CHOP") set to White Noise.
+
 [audiospectrumCHOP_Class](https://docs.derivative.ca/AudiospectrumCHOP_Class "AudiospectrumCHOP Class")
 
 ## Parameters - Spectrum Page
+
 - Mode `mode` - ⊞ - Select which mode to use, modes described below.
   * Visualization `visual` - Show the spectrum in a way that more useful, with (by default) high frequencies boosted in level, and lower frequencies boosted in horizontal range.
   * Time to Magnitude and Phase `timetoraw` - Calculate the frequency spectrum assuming input is a signal.
@@ -41,6 +49,7 @@ See [Audio Filter CHOP](https://docs.derivative.ca/Audio_Filter_CHOP "Audio Filt
 - Set Output Length `outlength` - Number of Samples desired in output. The fewer the samples, the less the frequency resolution.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -59,26 +68,38 @@ See [Audio Filter CHOP](https://docs.derivative.ca/Audio_Filter_CHOP "Audio Filt
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Notes
+
 A reasonable scenario (in terms of CPU usage) is an FFT size of 2048. You get good definition with the spectrum, and also enough padding to (almost) deal with two dropped frames.
+
 An [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") can be attached and the channel `hz_per_sample` can be viewed. Applicable only of the Frequency axis is set to Linear. With it set to output to normal FFT, to determine the frequency that a given sample represents, use the formula:
+
 In order to convert back to a signal, both channels are required. The suffixes should be the same as those used in the previous Audio Spectrum CHOP.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Audio Spectrum CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Audio Spectrum CHOP Info Channels
   * hz_per_sample -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -92,7 +113,9 @@ Specific Audio Spectrum CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

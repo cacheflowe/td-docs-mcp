@@ -5,21 +5,28 @@ title: DirectX_Out_TOP
 ---
 
 # DirectX Out TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The DirectX Out TOP creates textures that a DirectX application can access, or any instance of TouchDesigner with a DirectX In TOP. This features is accessed though the DirectX Sharing Resources feature. This supports DirectX 9.0 and higher.
+
 See also: [DirectX In TOP](https://docs.derivative.ca/DirectX_In_TOP "DirectX In TOP")
+
 [directxoutTOP_Class](https://docs.derivative.ca/DirectxoutTOP_Class "DirectxoutTOP Class")
 
 ## Parameters - DirectX Out Page
+
 - Active `active` - Enable or disable DirectX output.
 - Queue Size `queuesize` - Number of DirectX textures created. These textures are updated in a cycle, 1 per frame. Use an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") to inspect the list of textures.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -99,12 +106,17 @@ See also: [DirectX In TOP](https://docs.derivative.ca/DirectX_In_TOP "DirectX In
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the DirectX Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -118,7 +130,9 @@ Extra Information for the DirectX Out TOP can be accessed via an [Info CHOP](htt
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

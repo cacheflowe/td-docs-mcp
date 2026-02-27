@@ -5,12 +5,15 @@ title: Polypatch_SOP
 ---
 
 # Polypatch SOP
+
 ## Summary
 
 The Polypatch SOP creates a smooth polygonal patch from a mesh primitive or a set of faces (polygons, NURBS or Bezier curves).
+
 [polypatchSOP_Class](https://docs.derivative.ca/PolypatchSOP_Class "PolypatchSOP Class")
 
 ## Parameters - Polypatch Page
+
 - Group `group` - Subset of input to use. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Basis `basis` - ⊞ - Select spline type: Cardinal or BSpline.
   * Cardinal `cardinal` -
@@ -62,12 +65,17 @@ The Polypatch SOP creates a smooth polygonal patch from a mesh primitive or a se
 - Output Polygons `polys` - Force polygonal rather than mesh output.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Polypatch SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -79,7 +87,9 @@ Extra Information for the Polypatch SOP can be accessed via an [Info CHOP](https
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

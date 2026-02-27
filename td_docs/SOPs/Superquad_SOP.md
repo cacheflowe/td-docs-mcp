@@ -5,12 +5,15 @@ title: Superquad_SOP
 ---
 
 # Superquad SOP
+
 ## Summary
 
 The Superquad SOP generates an isoquadric surface. This produces a spherical shape that is similar to a metaball, with the difference that it doesn't change it's shape in response to what surrounds it. You can change the XY Exponent of an isoquadric surface to define it to be more "squarish" or "starish" in shape. Also, an isoquadric surface is always defined as a polygonal or mesh type geometry.
+
 [superquadSOP_Class](https://docs.derivative.ca/SuperquadSOP_Class "SuperquadSOP Class")
 
 ## Parameters - Page
+
 - Primitive Type `type` - ⊞ - Select from the following types. For information on the different types, see the [Primitive](https://docs.derivative.ca/Primitive "Primitive") article. Depending on the primitive type chosen, some SOP options may not apply.
   * Polygon `poly` -
   * Mesh `mesh` -
@@ -57,12 +60,17 @@ The Superquad SOP generates an isoquadric surface. This produces a spherical sha
 - Compute Normals `normals` - Creates normals on the geometry.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Superquad SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -74,7 +82,9 @@ Extra Information for the Superquad SOP can be accessed via an [Info CHOP](https
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,21 +5,28 @@ title: Shared_Mem_In_TOP
 ---
 
 # Shared Mem In TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The Shared Mem In TOP will read image data from a shared memory block. This memory block can be created by another TouchDesigner process or a 3rd party application.
+
 See [Using Shared Memory in TouchDesigner](https://docs.derivative.ca/Using_Shared_Memory_in_TouchDesigner "Using Shared Memory in TouchDesigner") and [Shared Mem Out TOP](https://docs.derivative.ca/Shared_Mem_Out_TOP "Shared Mem Out TOP").
+
 [sharedmeminTOP_Class](https://docs.derivative.ca/SharedmeminTOP_Class "SharedmeminTOP Class")
 
 ## Parameters - SharedMemIn Page
+
 - Shared Mem Name `name` - The name of the memory block it reads from.
 - Shared Mem Type `memtype` - ⊞ - Reads from a **Local** or a **Global** memory location.
   * Local `local` - This node will use a shared memory segment unique for the given name. This mode must be used for sharing with applications other than TouchDesigner.
   * Global `global` - This mode uses a combined shared memory segment that all of the nodes will read for. More details in the [Global Shared Memory](https://docs.derivative.ca/Shared_Memory#Global_Shared_Memory "Shared Memory") article.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -99,9 +106,13 @@ See [Using Shared Memory in TouchDesigner](https://docs.derivative.ca/Using_Shar
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Shared Mem In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -115,7 +126,9 @@ Extra Information for the Shared Mem In TOP can be accessed via an [Info CHOP](h
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

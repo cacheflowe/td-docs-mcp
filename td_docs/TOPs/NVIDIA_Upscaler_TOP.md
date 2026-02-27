@@ -5,20 +5,27 @@ title: NVIDIA_Upscaler_TOP
 ---
 
 # NVIDIA Upscaler TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This TOP uses the AI Green Screening module from the [Nvidia Maxine Video Effects](https://developer.nvidia.com/maxine) engine and requires a 20, 30, 40, and 50 series Nvidia RTX card to operate.
+
 **The models for this node must be separately downloaded via the Video Effects SDK for your GPU from <https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/>.
 
 Note that this feature can not be used in the same project as the [ZED](https://docs.derivative.ca/ZED "ZED") device, due to version conflicts with TensorRT.
 
 **The Nvidia Upscaler TOP upscales the resolution of an input video. It can run either the [Upscale Filter](https://docs.nvidia.com/deeplearning/maxine/vfx-sdk-programming-guide/index.html#upscale-filter) or [Super-Resolution Filter](https://docs.nvidia.com/deeplearning/maxine/vfx-sdk-programming-guide/index.html#super-res-filter). The Upscale Filter is faster and offers a Strength parameter. The Super Resolution mode is higher quality and doesn't offer a Strength parameter, but it does have an optional Artifact Reduction toggle. Refer to the Table [Scale and Resolution Support for Input Videos](https://docs.nvidia.com/deeplearning/maxine/vfx-sdk-programming-guide/index.html#upscale-filter) for the requirements of the input resolution.
+
 The upscale and super-resolutions engines have varying video width and height requirements depending on the selected mode. Refer to the Mode parameter for resolution requirements.
+
 [nvidiaupscalerTOP_Class](https://docs.derivative.ca/NvidiaupscalerTOP_Class "NvidiaupscalerTOP Class")
 
 ## Parameters - Upscaler Page
+
 - Mode `mode` - ⊞ - Choose the mode (Upscale or Super-Resolution) and factor by which the resolution will increase.
   * Upscale 4/3 `upscale4_3` - The video width and height must be multiples of 3.
   * Upscale 3/2 `upscale3_2` - The video width and height must be multiples of 2.
@@ -35,6 +42,7 @@ The upscale and super-resolutions engines have varying video width and height re
 - Artifact Reduction `artifactreduction` - Toggle artifact reduction. This should be enabled when the input image has undergone lossy video compression.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -114,12 +122,17 @@ The upscale and super-resolutions engines have varying video width and height re
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

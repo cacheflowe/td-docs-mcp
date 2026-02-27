@@ -5,13 +5,17 @@ title: Error_DAT
 ---
 
 # Error DAT
+
 ## Summary
 
 The Error DAT lists the most recent TouchDesigner errors in its FIFO (first in/first out) table.
+
 You can filter our messages using pattern matching on some of the columns like Severity, Type and path of the node containing the error. One column contains the absolute frame (`absTime.frame`) in which the error occurred.
+
 [errorDAT_Class](https://docs.derivative.ca/ErrorDAT_Class "ErrorDAT Class")
 
 ## Parameters - Error Page
+
 - Active `active` - Inhibits and allows message to be added to log.
 - Severity `severity` - Filter pattern for the output. Can be a combination or one of: `message`, `warning` or `abort`
 - Type `type` - Filter pattern for the output where the source operator family is specified. Can be a combination or one of the operator families.
@@ -20,6 +24,7 @@ You can filter our messages using pattern matching on some of the columns like S
 - Log Current Errors `logcurrent` - Traverse through all nodes and captures all current errors.
 
 ## Parameters - Log Page
+
 - Callbacks DAT `callbacks` - The DAT's script will execute once for each message coming in. See [errorDAT_Class](https://docs.derivative.ca/ErrorDAT_Class "ErrorDAT Class") for usage.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -32,6 +37,7 @@ You can filter our messages using pattern matching on some of the columns like S
 - Clear Output `clear` - Deletes all lines except the heading.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -48,15 +54,21 @@ You can filter our messages using pattern matching on some of the columns like S
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Error DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

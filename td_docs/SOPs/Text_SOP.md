@@ -5,13 +5,17 @@ title: Text_SOP
 ---
 
 # Text SOP
+
 ## Summary
 
 The Text SOP creates text geometry from any [TrueType](http://en.wikipedia.org/wiki/TrueType) or [OpenType](http://en.wikipedia.org/wiki/OpenType) font that is installed on the system, or any TrueType/OpenType font file on disk. [Unicode](https://docs.derivative.ca/Unicode "Unicode") is supported.
+
 See also: [Text TOP](https://docs.derivative.ca/Text_TOP "Text TOP"), [Unicode](https://docs.derivative.ca/Unicode "Unicode").
+
 [textSOP_Class](https://docs.derivative.ca/TextSOP_Class "TextSOP Class")
 
 ## Parameters - Text Page
+
 - Font `font` - Select the font for the text from this drop down menu. All fonts are provided by the OS, any [TrueType](http://en.wikipedia.org/wiki/TrueType) font that is loaded into the OS can be used.
 - Font File `fontfile` - Specify any TrueType or OpenType font file (`.ttf, .otf file`) to use for the text. When using a font file, the Font menu above is disabled.
 - Bold `bold` - Displays the text in **bold**.
@@ -48,6 +52,7 @@ See also: [Text TOP](https://docs.derivative.ca/Text_TOP "Text TOP"), [Unicode](
 - Legacy Parsing `legacyparsing` - **Note, it's recommended to use a Python expression in the Text parameter instead of enabling legacy parsing, as this parsing can easily run into issues with more complex strings.** When enabled and if the Text parameter is in Constant Mode, \t and \n character sequences will be turned into tab and newline characters respectively. Otherwise the \t and \n sequences will be left as literal \ and t and \ and n.
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations. The transform order determines the order in which transformations take place. Depending on the order, you can achieve different results using the exact same values. Choose the appropriate order from the menu.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -86,9 +91,13 @@ For example, during a scaling operation, if the pivot point of an object is loca
   * Z `pz` -
 
 ## Info CHOP Channels
+
 Extra Information for the Text SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -100,7 +109,9 @@ Extra Information for the Text SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

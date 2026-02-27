@@ -5,14 +5,19 @@ title: Font_SOP
 ---
 
 # Font SOP
+
 ## Summary
 
 **Note** : Font SOP deprecated build 2019.14650, use [Text SOP](https://docs.derivative.ca/Text_SOP "Text SOP").
+
 The Font SOP allows you to create text in your model from Adobe Type 1 Postscript Fonts.
+
 To install fonts, copy the font files to the `$TFS/touch/fonts` directory of your installation path. They will be ready to be used in the Font SOP after restarting TouchDesigner.
+
 [fontSOP_Class](https://docs.derivative.ca/FontSOP_Class "FontSOP Class")
 
 ## Parameters - Page
+
 - Primitive Type `type` - ⊞ - Select from the following types. For information on the different types, see the Geometry Types section. Bzier Curves and Polygons provide the most efficient use of memory, because they use polygons for letters containing straight segments, and Bzier curves for all others.
 **Note:** Due to an Open GL bug, holes in Bzier fonts may shade incorrectly.
   * Bezier Curves and Polygons `bezierpoly` -
@@ -28,13 +33,21 @@ Your text can contain the following special characters:
   * ` \xxx ` - Specify a character by it's ascii code (e.g. \007).
 
 **For Example:** If you put something like `\\$F3` in the text string, you should see all the possible characters of a font as you play the animation (set the last frame to 256).
+
 **Entering Expressions as Text** - You can also use expressions for the text.
+
 **For Example:**`me.time.frame` - will display the current frame.
+
 `op('null1')['chan1']` - will display the current value of channel chan1 in CHOP `null1`.
+
 `'hello world'[int(me.time.frame)%11]` - causes the eleven letters of the text to appear in succession during the first eleven frames.
+
 **Other Methods of Entering Text -** You can use the `\xxx` decimal notation to specify characters. The available characters will depend on the font type used.
+
 **For Example:** \065 - will display '`a`'.
+
 You can also use the [Par Class](https://docs.derivative.ca/Par_Class "Par Class") to set text in the Font SOP. This can be done from the textport, a [Logic CHOP](https://docs.derivative.ca/Logic_CHOP "Logic CHOP") or [Expression CHOP](https://docs.derivative.ca/Expression_CHOP "Expression CHOP"), or any script. (See [Scripting](https://docs.derivative.ca/Introduction_to_Python_Tutorial "Introduction to Python Tutorial") articles)
+
 **For Example:**`op('font1').par.text = 'hello world'` - will display the words: hello world
 - Center Text Horizontally `hcenter` - This check box allows you to center the text horizontally about X = 0.
 - Center Text Vertically `vcenter` - This check box allows you to center the text vertically about Y = 0.

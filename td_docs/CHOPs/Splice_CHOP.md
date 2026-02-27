@@ -5,18 +5,27 @@ title: Splice_CHOP
 ---
 
 # Splice CHOP
+
 ## Summary
 
 The Splice CHOP inserts CHOP channels connected to the second input into the channels of the first input. You can specify the start sample and length of where to remove samples.
+
 Then the inserted data from the second input can be stretched in various ways, then spliced into the trimmed point in the channels.
+
 You can match by channel number or channel name. Un-matched channels will have the samples in their gaps interpolate in one of three selectable ways.
+
 To extract a sample from a CHOP, modify it and replace it at its original index, connect a Splice CHOP to the original, set Start and Trim Length where you want, turn on Output Trimmed Section, modify the result, then send that as second input to another Splice CHOP with first input from the the original CHOP, and with Start set to `op('splice1').par.start` and Trim Length set to `op('splice1').par.trimlength`.
+
 The Splice CHOP can also smooth a section of a CHOP: Set the Start and Trim Length to that section. Give it a second input with no matching channels. Set Insert Method to Set to Trim Length, and adjust the Insert Interpolate menu.
+
 Check [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") for these and other tricks.
+
 See also [Delete CHOP](https://docs.derivative.ca/Delete_CHOP "Delete CHOP"), [Trim CHOP](https://docs.derivative.ca/Trim_CHOP "Trim CHOP"), [Select CHOP](https://docs.derivative.ca/Select_CHOP "Select CHOP")
+
 [spliceCHOP_Class](https://docs.derivative.ca/SpliceCHOP_Class "SpliceCHOP Class")
 
 ## Parameters - Splice Page
+
 - Output Trimmed Section `outputtrimmed` - When Off the output is the spliced and trimmed channels based and on the parameters below. When On the output is the opposite and contains the trimmed out portion of the channels.
 - Direction `direction` - ⊞ - Specify which direction the Start and Trim parameters below work.
   * First to Last `firsttolast` - Start and Trim are specified in units from the beginning going towards the end of the channel.
@@ -54,6 +63,7 @@ See also [Delete CHOP](https://docs.derivative.ca/Delete_CHOP "Delete CHOP"), [T
   * Cubic `cubic` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -72,18 +82,26 @@ See also [Delete CHOP](https://docs.derivative.ca/Delete_CHOP "Delete CHOP"), [T
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Splice CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -97,7 +115,9 @@ Extra Information for the Splice CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

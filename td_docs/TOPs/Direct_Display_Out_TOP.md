@@ -5,42 +5,52 @@ title: Direct_Display_Out_TOP
 ---
 
 # Direct Display Out TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The Direct Display Out TOP uses new technology available in [Vulkan](https://docs.derivative.ca/Vulkan "Vulkan") which allows directly outputting the DisplayPort/HDMI ports on the GPU, without interacting with the Windows Desktop. This avoids the need for a Window COMP, avoids cases where other windows and the mouse cursor will go in front of the content window, and avoids a lot of the issues caused by the Windows Compositor, as described [Perfect Playback](https://docs.derivative.ca/Perfect_Playback "Perfect Playback"). Up to 3 outputs can be controlled via Direct Display.
+
 Requirements:
   * A TouchDesigner Educational, Commercial or Pro license.
   * Workstation Nvidia GPU (Nvidia RTX/Quadro). Geforce will not be able to remove displays from the desktop using configureDdisplay.exe.
   * Windows 11 Pro For Workstations or Windows 11 Enterprise version. Needed to remove the output from the desktop.
 
 Once the above requirements are met, the next step is to setup the outputs. If using indiviual outputs, you can setup the resolution/refresh rate in the Nvidia Control Panel.
+
 To sync up multiple outputs on a single machine, use the [configureMosaic.exe tool from Nvidia](https://www.nvidia.com/en-us/drivers/mosaic-utility/) or the Nvidia Control Panel first to setup your Mosaic configuration. Make sure the resolution/refresh rate of the display is what is desired.
+
 Next remove the display(s) from the desktop so they can be directly controlled by Direct Display. This must be done using [configureDdisplay.exe tool from Nvidia](https://www.nvidia.com/en-us/drivers/ddisplay-utility/).
+
 For example you can list the monitors using
 ```
  configureDdisplay status
-
 ```
 
 and then remove monitor index 1 using
 ```
  configureDdisplay remove-from-desktop -i 1
-
 ```
 
 If you want to use Quadro Sync/Hardware Frame Lock, use the [QSync Utility](https://www.nvidia.com/en-us/drivers/qsync-utility/) to configure that now. Quadro Sync [Hardware Frame Lock](https://docs.derivative.ca/Hardware_Frame_Lock "Hardware Frame Lock") is supported in Pro versions, allowing multiple GPUs to output in sync across multiple TouchDesigner instances.
+
 Once this is all done, the Direct Display Out TOP will be able to find and output to the outputs.
+
 Some additional information can be found in [this talk](https://www.nvidia.com/en-us/on-demand/session/gtc24-s62208/) starting at 32:42. Or on page 72 in the .pdf attached to the talk.
+
 [directdisplayoutTOP_Class](https://docs.derivative.ca/DirectdisplayoutTOP_Class "DirectdisplayoutTOP Class")
 
 ## Parameters - Direct Display Out Page
+
 - Active `active` - Controls if the output is currently active.
 - Display `display` - Select which display to output to.
 - Hardware Frame-Lock `hwframelock` - Enables [Hardware Frame Lock](https://docs.derivative.ca/Hardware_Frame_Lock "Hardware Frame Lock"). Only available with Pro licenses.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -120,12 +130,17 @@ Some additional information can be found in [this talk](https://www.nvidia.com/e
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

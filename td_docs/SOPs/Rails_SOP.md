@@ -5,12 +5,15 @@ title: Rails_SOP
 ---
 
 # Rails SOP
+
 ## Summary
 
 The Rails SOP generates surfaces by stretching cross-sections between two rails. This is similar to the [Sweep SOP](https://docs.derivative.ca/Sweep_SOP "Sweep SOP"), but it gives more control over the orientation and scaling of the cross-sections. The first SOP input is the cross-section which will be replicated, and is typically placed in the XY plane. The second input SOP source is the rails along which the cross-section is replicated.
+
 [railsSOP_Class](https://docs.derivative.ca/RailsSOP_Class "RailsSOP Class")
 
 ## Parameters - Page
+
 - X-Section Groups `xsectgrp` - You can use a subset of primitives from the Cross-section input by specifying a group here. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rail Groups `railgrp` - You can use a subset of primitives from the Rails input by specifying a group here. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Cycle Type `cycle` - ⊞ - Select how the cross=section is applied along the rails.
@@ -39,13 +42,18 @@ The Rails SOP generates surfaces by stretching cross-sections between two rails.
 - Group Name `railname` - Specify the name of your output groups in this field. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Rails SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -57,7 +65,9 @@ Extra Information for the Rails SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

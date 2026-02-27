@@ -5,12 +5,15 @@ title: Grid_SOP
 ---
 
 # Grid SOP
+
 ## Summary
 
 The Grid SOP allows you to create grids and rectangles using polygons, a mesh, Bzier and NURBS surfaces, or multiple lines using open polygons.
+
 [gridSOP_Class](https://docs.derivative.ca/GridSOP_Class "GridSOP Class")
 
 ## Parameters - Page
+
 - Primitive Type `type` - ⊞ - Select from the following types. For information on the different types, see the Geometry Types section. Depending on the primitive type chosen, some SOP options may not apply.
   * Polygon `poly` -
   * Mesh `mesh` -
@@ -58,12 +61,17 @@ For NURBS and Bzier surfaces, the Rows & Cols refer to the surface hull construc
 - Compute Normals `normals` - Checking this option On will compute surface normals.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Grid SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -75,7 +83,9 @@ Extra Information for the Grid SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

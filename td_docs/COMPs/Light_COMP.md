@@ -5,14 +5,19 @@ title: Light_COMP
 ---
 
 # Light COMP
+
 ## Summary
 
 The Light Components are objects which cast light into a 3D scene. With the light parameters you can control the color, brightness, and atmosphere of geometry lit by the light. A scene can also be viewed through a light's perspective, similar to a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP").
+
 **Tip** : To avoid a light from consuming compute time when it's off, make the Dimmer parameter less than .001.
+
 See [Geometry Viewer](https://docs.derivative.ca/Geometry_Viewer "Geometry Viewer") to learn about how you can inspect from a light.
+
 [lightCOMP_Class](https://docs.derivative.ca/LightCOMP_Class "LightCOMP Class")
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -96,6 +101,7 @@ In the example above, rotations performed on an Component with different pivot p
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
 
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -140,6 +146,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
 
 ## Parameters - Light Page
+
 - Light Color `c` - ⊞ - You can modify the color of a light here by adjusting the red, green, and blue parameters. Alternatively, clicking on the color swatch will open a dialog with HSV and/or RGB sliders allowing interactive color picking with a preview of the selected color.
   * Red `cr` -
   * Green `cg` -
@@ -208,6 +215,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
   * Back Lit `backlit` -
 
 ## Parameters - Shadows Page
+
 Enabling shadows will cause this node to render the scene in a depth-only pass to create a shadow map. This map will then be used by [Render TOPs](https://docs.derivative.ca/Render_TOP "Render TOP") when rendering to create shadows for objects lit by this light. The shadow map that is created can be obtained using a [Depth TOP](https://docs.derivative.ca/Depth_TOP "Depth TOP"), for cases where custom rendering is being done.
 - Shadow Type `shadowtype` - ⊞ - Sets the type of shadows cast by the light.
   * Off `off` - Shadow casting off.
@@ -232,6 +240,7 @@ Enabling shadows will cause this node to render the scene in a depth-only pass t
 - Custom Shadow Map `shadowmap` - The path to a [TOP](https://docs.derivative.ca/TOP "TOP") used for the light's shadow map. See also [Rendering Shadows](https://docs.derivative.ca/Rendering_Shadows "Rendering Shadows").
 
 ## Parameters - View Page
+
 - Projection `projection` - ⊞ - A pop-up menu lets you choose the projection type.
   * Perspective `perspective` - Uses a perspective projection.
   * Orthographic `ortho` - Uses an orthographic projection.
@@ -263,7 +272,6 @@ Enabling shadows will cause this node to render the scene in a depth-only pass t
       vec4 projP = uTDMat.proj * p;
       return projP;
   }
-
 ```
 
 The other convenience variations of these functions such as `vec3 TDCamToProj(vec3 p)` will automatically call the correct one of either of the two above functions. You can use uniforms/samplers in this shader code by declaring them here and providing them in the GLSL page of the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP").
@@ -274,6 +282,7 @@ The other convenience variations of these functions such as `vec3 TDCamToProj(ve
   * Alpha `bgcolora` -
 
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -287,6 +296,7 @@ The Display parameter page controls the component's [material](https://docs.deri
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -296,6 +306,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -384,13 +395,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Light COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

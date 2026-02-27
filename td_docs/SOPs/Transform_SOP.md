@@ -5,12 +5,15 @@ title: Transform_SOP
 ---
 
 # Transform SOP
+
 ## Summary
 
 The Transform SOP translates, rotates and scales the input geometry in "object space" or local to the SOP. The Model Editor and the Transform SOP both work in "object space", and change the X Y Z positions of the points. In contrast, animating the transformation channels of an object in the Geometry Viewer Pane moves/scales the entire object in "world space" and does not affect the XYZ point positions of the geometry.
+
 [transformSOP_Class](https://docs.derivative.ca/TransformSOP_Class "TransformSOP Class")
 
 ## Parameters - Transform Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations. The transform order determines the order in which transformations take place. Depending on the order, you can achieve different results using the exact same values. Choose the appropriate order from the menu.
   * Scale Rotate Translate `srt` -
@@ -69,6 +72,7 @@ In the example above, rotations performed on an object with different pivot poin
   * -Z `negz` -
 
 ## Parameters - Post Page
+
 The transforms on this page are apllied after the settings made on the Transform page (see above).
 - Post Transform Order `postxord` - ⊞ - Set the order in which scale and transform is applied in the post transform.
   * Scale Translate `st` -
@@ -146,13 +150,18 @@ The transforms on this page are apllied after the settings made on the Transform
   * Reference Proportional `referenceprop` - Scale the geometry to fit the Reference Input in this axis while keeping the input geometry's original proportions.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Transform SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -164,7 +173,9 @@ Extra Information for the Transform SOP can be accessed via an [Info CHOP](https
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

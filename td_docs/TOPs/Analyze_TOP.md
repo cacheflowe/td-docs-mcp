@@ -5,16 +5,23 @@ title: Analyze_TOP
 ---
 
 # Analyze TOP
+
 ## Summary
 
 The Analyze TOP takes any image and determines various characteristics of it, such as the average pixel color, the pixel with the maximum luminance, or the min and max values in each channel. The result is stored in a 1x1, 1xN or Nx1 image depending on the chosen scope (See Scope parameter below). If the input is a 3D texture, the result is stored in a 1x1x1, 1xNxD, Nx1xD, or 1x1xD image depending on the chosen scope. The calculated values can be brought into CHOPs using the [TOP to CHOP](https://docs.derivative.ca/TOP_to_CHOP "TOP to CHOP") node.
+
 **Note:** When using the minimum and maximum operators, the default behaviour is to select the pixel with the highest value as chosen in the Analyze Channel parameter. For example, if Luminance is selected, the output will be the RGBA values of the pixel with the highest luminance, not the luminance value itself. Similarly, if a single channel is selected e.g. Red, Green, Blue, etc, then the output will be the pixel with the highest red value, rather than the highest values in each channel. To find the min or max values in each channel separately, set the Analyze Channel to RGBA Independent.
+
 **Note:** When the operation is set to Count Pixels or Sum, the output image will default to a 32 bit floating point format in order to properly store the output data. For all other operations, the default output format will match the input format. The image format can be set manually using the parameter on the Common page.
+
 **Note:** Using the Exclude NaNs or Mask features will slow down the performance of the node and should only be enabled if they are necessary.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [analyzeTOP_Class](https://docs.derivative.ca/AnalyzeTOP_Class "AnalyzeTOP Class")
 
 ## Parameters - Analyze Page
+
 - Operation `op` - ⊞ - The operation to perform on the input image.
   * Average `average` - Find the average value in each channel of the input image. This operation is notably slower when the Exclude NaNs or Mask features are used as the node must perform two passes to calculate the results.
   * Minimum Pixel `minimum` - Find the pixel with the lowest value as determined by the 'Analyze Channel' parameter. See Notes in the summary for more details.
@@ -54,6 +61,7 @@ The Analyze TOP takes any image and determines various characteristics of it, su
   * RGBA Independent `independent` - Each channel will act as its own mask, so that only pixels will non-zero values will be used in the output calculations.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -133,12 +141,17 @@ The Analyze TOP takes any image and determines various characteristics of it, su
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Analyze TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -152,7 +165,9 @@ Extra Information for the Analyze TOP can be accessed via an [Info CHOP](https:/
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,15 +5,21 @@ title: ST2110_In_TOP
 ---
 
 # ST2110 In TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 Support for Blackmagic IP range and Deltacast DELTA-ip-ST2110 devices.
+
 See also [ST2110 Out TOP](https://docs.derivative.ca/ST2110_Out_TOP "ST2110 Out TOP"), [ST2110 Device CHOP](https://docs.derivative.ca/ST2110_Device_CHOP "ST2110 Device CHOP").
+
 [st2110inTOP_Class](https://docs.derivative.ca/St2110inTOP_Class "St2110inTOP Class")
 
 ## Parameters - ST2110 In Page
+
 - Active `active` - Controls if this input has it's connection open and is capturing data.
 - ST2110 Device CHOP `st2110devicechop` - Since a NIC has one set of settings such as DHCP/IP settings, that is controlled for each device using the [ST2110 Device CHOP](https://docs.derivative.ca/ST2110_Device_CHOP "ST2110 Device CHOP"). This node will use that device to discover available input channels, and use the settings configured in that node for it's operation.
 - Device `device` - Will be populated when the [ST2110 Device CHOP](https://docs.derivative.ca/ST2110_Device_CHOP "ST2110 Device CHOP") is active and configured properly. Select which input channel on the device to use.
@@ -74,6 +80,7 @@ See also [ST2110 Out TOP](https://docs.derivative.ca/ST2110_Out_TOP "ST2110 Out 
 - Reset Stats `resetstats` - Reset the stats given from the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -153,8 +160,11 @@ See also [ST2110 Out TOP](https://docs.derivative.ca/ST2110_Out_TOP "ST2110 Out 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the ST2110 In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific ST2110 In TOP Info Channels
   * connected - 1 if the node is successfully connected to the device, 0 if not. This does not necessarily mean there is valid input coming to the device.
 
@@ -201,7 +211,9 @@ Specific ST2110 In TOP Info Channels
   * frame_timestamp - Time in seconds of the last frame displayed. -1 if this is not provided by the device.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -215,7 +227,9 @@ Specific ST2110 In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

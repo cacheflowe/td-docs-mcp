@@ -5,14 +5,19 @@ title: Stitch_SOP
 ---
 
 # Stitch SOP
+
 ## Summary
 
 The Stitch SOP is used to stretch two curves or surfaces to cover a smooth area. It can also be used to create certain types of upholstered fabrics such as cushions and parachutes.
+
 If a second input is given, it must contain one surface that the primitives in the first input can stitch to. The left input can contain either faces or surfaces; in either case, each primitive in the first input is stitched to a parametric area of the surface in the second input in such a way that the parametric area allocated to each primitive is the same and the size of all areas added together equals the parametric range specified in the R Width (see below).
+
 Please refer to the [Align SOP](https://docs.derivative.ca/Align_SOP "Align SOP") for a discussion of "left" and "right" primitives as well as the option of an auxiliary input.
+
 [stitchSOP_Class](https://docs.derivative.ca/StitchSOP_Class "StitchSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - Which primitives to stitch. If blank, it stitches the entire input. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Stitch `stitchop` - ⊞ - Stitches sub-groups of n primitives or patterns of primitives.
   * All Primitives `all` -
@@ -48,13 +53,18 @@ Please refer to the [Align SOP](https://docs.derivative.ca/Align_SOP "Align SOP"
   * `lrscale2` -
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Stitch SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -66,7 +76,9 @@ Extra Information for the Stitch SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

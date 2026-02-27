@@ -5,17 +5,25 @@ title: Cache_Blend_POP
 ---
 
 # Cache Blend POP
+
 ## Summary
 
 The Cache Blend POP takes a reference to a [Cache POP](https://docs.derivative.ca/Cache_POP "Cache POP") and outputs a blend of its cached data sets based on a Cache Index parameter and the Cache Weight parameter of the each of the sequential blocks.
+
 The blend is done on each point separately, so the results of one point is not affected by any other point.
+
 This is useful for doing time-blurs of geometry data, and calculating slope or speed of a point (assuming the number of points in the input is not changing).
+
 A Cache Index value of 0 blends the Cache POP's current frame's data, -1 blends in its previous cached data (the second newest set), and so on.
+
 The weights are normalized.
+
 See also: [Cache POP](https://docs.derivative.ca/Cache_POP "Cache POP"), [Cache Select POP](https://docs.derivative.ca/Cache_Select_POP "Cache Select POP"), [Blend POP](https://docs.derivative.ca/Blend_POP "Blend POP")
+
 [cacheblendPOP_Class](https://docs.derivative.ca/CacheblendPOP_Class "CacheblendPOP Class")
 
 ## Parameters - Cache Blend Page
+
 - Cache POP `cachepop` - The Cache POP to retrieve from.
 - CHOP `chop` - Weight and index can be channels of a CHOP versus being parameters.
 - Index Channel `indexchan` - Name of the channel to use for cache index when using a CHOP.
@@ -34,16 +42,23 @@ See also: [Cache POP](https://docs.derivative.ca/Cache_POP "Cache POP"), [Cache 
 - Cache Weight `cache0weight` - Weight to use for the POP in the cache at the index.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
+
 Extra Information for the Cache Blend POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

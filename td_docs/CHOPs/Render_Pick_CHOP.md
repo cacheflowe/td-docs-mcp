@@ -5,15 +5,21 @@ title: Render_Pick_CHOP
 ---
 
 # Render Pick CHOP
+
 ## Summary
 
 The Render Pick CHOP samples a rendering (from a [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or a [Render Pass TOP](https://docs.derivative.ca/Render_Pass_TOP "Render Pass TOP")) and returns 3D information from the geometry at that particular pick location. Values sampled can include position, normals, point color, texture coordinates, depth and the object's path. An [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") should be used to retrieve the object's path.
+
 The pick location is specified through uv coordinates of the rendering. These uv coordinates can be selected by clicking on a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") or explicitly setting them in the U and V parameters in the Render Pick CHOP.
+
 Along with the geometric data returned, this node has two channels 'picked' and 'trigger' that inform the picked status. 'picked' will be 1 when an object has been found at the search location. 'trigger' will be 1 when both an object has been found, and the 'Picking By' condition has been met. That is, either the 'Panel Value' is 1, or the 'Select' parmeter is 'On.
+
 See also the multi-sample [Render Pick DAT](https://docs.derivative.ca/Render_Pick_DAT "Render Pick DAT").
+
 [renderpickCHOP_Class](https://docs.derivative.ca/RenderpickCHOP_Class "RenderpickCHOP Class")
 
 ## Parameters - Render Pick Page
+
 - Strategy `strategy` - ⊞ - Decides when to update values based on pick interactions.
   * While Select `select` -
   * Hold First Picked `holdfirst` - Holds the values first returned when geometry picked.
@@ -44,6 +50,7 @@ See also the multi-sample [Render Pick DAT](https://docs.derivative.ca/Render_Pi
 - Callbacks DAT `callbacks` - Path to a DAT containing callbacks for pick event received.
 
 ## Parameters - Options Page
+
 - Fetch Position `position` - ⊞ - Returns the position of the point picked on the geometry. Channels _tx, ty, tz_.
   * No `no` - Do not return position values.
   * In SOP Space `sopspace` - Return position of point picked in SOP transform space.
@@ -74,6 +81,7 @@ See also the multi-sample [Render Pick DAT](https://docs.derivative.ca/Render_Pi
 - Custom Attrib 4 Type `customattrib4type` - The type of attribute is selected from this menu.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -91,9 +99,13 @@ See also the multi-sample [Render Pick DAT](https://docs.derivative.ca/Render_Pi
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Render Pick CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -107,7 +119,9 @@ Extra Information for the Render Pick CHOP can be accessed via an [Info CHOP](ht
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

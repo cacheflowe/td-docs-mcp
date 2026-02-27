@@ -5,18 +5,25 @@ title: Point_SOP
 ---
 
 # Point SOP
+
 ## Summary
 
 The Point SOP allows you to get right into the geometry and manipulate the position, color, texture coordinates, and normals of the points in the Source, and other attributes. The Point SOP also lets you create custom point attributes. It is the complement to the [Primitive SOP](https://docs.derivative.ca/Primitive_SOP "Primitive SOP"). Using a second input allows for combining of two SOPs using their respective expressions (see: [PointSOP Class](https://docs.derivative.ca/PointSOP_Class "PointSOP Class")). If the second input has less points than the first input, the points in the second input will be cycled.
+
 For example, you can create point coloring, or flip the normals of incoming geometry. Using expressions in Position X, Y and Z, you can move any given input point to a new place as defined by the expression with any standard attributes.
+
 The Width (width) attribute affects the line width in the [Line MAT](https://docs.derivative.ca/Line_MAT "Line MAT"). The Scale attribute (pscale) affects particle size, and in the [Line MAT](https://docs.derivative.ca/Line_MAT "Line MAT") it affects the dot size at each point.
+
 **Tip** : For greater flexibility, use the [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP").
+
 [pointSOP_Class](https://docs.derivative.ca/PointSOP_Class "PointSOP Class")
 
 ## Parameters - Point Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this `SOP` to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Position `t` - ⊞ - Expressions to translate the XYZ coordinates of a given point can be entered here. The attributes to modify here are: `me.inputPoint.x`, `me.inputPoint.y` and `me.inputPoint.z`.
 Simply entering `me.inputPoint.x` into the Position X field means that the X coordinate of each point that comes in is passed straight through with no modification.
+
 Changing this entry to `me.inputPoint.x+5` means that the X coordinate of each point that comes in will be displaced by 5 units. This expression can be expanded to produce many useful effects. Transformations can also be effected in the Y and Z fields.
   * Position `tx` -
   * Position `ty` -
@@ -51,17 +58,17 @@ If you select 'No Normal' from the menu above, the N normal attribute will be re
   * Normals `nz` -
 
 ###
+
 Flipping Normals
+
 You can flip the point normals of incoming geometry by entering:
 ```
 (-me.inputNormal[0] -me.inputNormal[1] -me.inputNormal[2])
-
 ```
 
 in the fields with this parameter set to Add Normals. This works, because it takes the existing normals
 ```
 (me.inputNormal[0] me.inputNormal[1] me.inputNormal[2])
-
 ```
 
 and inverts them (the preceding - ).
@@ -91,6 +98,7 @@ If you select 'No Texture' from the menu above, the uv texture coordinate attrib
 If you select 'No Scale' from the menu above, the pscale attribute will be removed from the SOP.
 
 ## Parameters - Custom Page
+
 - Custom Attribute `attr` - Sequence of custom attributes to add
 - Name `attr0name` - Creates a custom attribute with this name.
 - Type `attr0type` - ⊞ - The type of attribute created can be selected from this menu.
@@ -110,6 +118,7 @@ If you select 'No Scale' from the menu above, the pscale attribute will be remov
   * Value `attr0value4` -
 
 ## Parameters - Particle Page
+
 - Point Mass/Drag `domass` - ⊞ - Retains, adds, or removes mass and drag attributes for points.
   * Keep Mass/Drag `off` -
   * Add Mass/Drag `on` -
@@ -146,6 +155,7 @@ If you select 'No Scale' from the menu above, the pscale attribute will be remov
   * Z `upz` -
 
 ## Parameters - Force Page
+
 - Radius `doradius` - ⊞ - Retains, adds, or removes radiusf attributes for points, used to modify the distance roll-off effect. The roll-off is: `r /(r+d^2)` Where `r` is radius, and `d` is distance from attractor point. If no radius is set, no attenuation is performed.
   * Keep Radius `off` -
   * Add Radius `on` -
@@ -154,6 +164,7 @@ If you select 'No Scale' from the menu above, the pscale attribute will be remov
 - Radius `radiusf` - If you select 'Add Radius' from the menu above, radiusf attribute will be added/modified in the SOP. Enter expressions here to control the values of the distance roll-off here. If you select 'No Radius' from the menu above, the radiusf attribute will be removed from the SOP.
 - F Scale `doscale` - ⊞ - Retains, adds, or removes scalef attributes for points, a multiplier for total force associated with this attractor point.
 Both Radius and Force Scale will default to 1 if not created as point attributes.
+
 **Radial / Normal / Edge / Directional Force** - These four parameters introduce a type of force when created and each has a corresponding multiplier associated with it.
   * Keep F Scale `off` -
   * Add F Scale `on` -
@@ -174,6 +185,7 @@ Both Radius and Force Scale will default to 1 if not created as point attributes
 - Normal F `normalf` - If you select 'Add Normal F' from the menu above, normalf attribute will be added/modified in the SOP. Enter expressions here to control the values of the force in the normal direction here. If you select 'No Normal F' from the menu above, the normalf attribute will be removed from the SOP.
 - Edge F `doedgef` - ⊞ - Retains, adds, or removes edgef attributes for points, which only works on primitive face types. The force is directed in the direction of the edge leading from that point. If multiple vertices reference the same point, then the direction is the edge direction of the last primitive referencing the point.
 If the face open, then the end point has an edge direction equal to that of the preceding point in that primitive.
+
 **Note:** When edge forces are added using the Point SOP, the force directions are computed in the Point SOP itself. Thus, any following transformations do not effect these. If you wish for the edge directions to be transformed as well, all transformations must be done before the Point SOP. Only the edge forces function like this.
   * Keep Edge F `off` -
   * Add Edge F `on` -
@@ -191,13 +203,18 @@ If the face open, then the end point has an edge direction equal to that of the 
   * Z `dirfz` -
 
 ## Operator Inputs
+
   * Input 0: Source 1 -
   * Input 1: Source 2 -
 
 ## Info CHOP Channels
+
 Extra Information for the Point SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -209,7 +226,9 @@ Extra Information for the Point SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,16 +5,23 @@ title: Clip_Blender_CHOP
 ---
 
 # Clip Blender CHOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The Clip Blender CHOP is a an engine for blending, sequencing and scripting animation clips. It loads animation channel data that is formatted using Clip CHOPs. It reads clip CHOP paths from a specified DAT list which can be dynamically scripted. The Clip Blender plays clips from the list DAT; each time it reads a clip, it pop's the item off the list, and when the next clip plays through it will continue playing and popping clips off the list until it is empty. Once the list is empty the last animation in the sequence is looped.
+
 Animation clips will typically come from an FBX or USD asset but can also be read using the Houdini bclip format or raw chan format. Animation clips found in FBX assets must be extracted from the asset hierarchy and then loaded speerately into a [Clip CHOP](https://docs.derivative.ca/Clip_CHOP "Clip CHOP"). All [Clip CHOP](https://docs.derivative.ca/Clip_CHOP "Clip CHOP")'s loaded into the same clipblender must have the same number of channels, all channel names must match and the all clips must be the same sample rate. If any of these 3 important requirements are not met, there will likely be animation glitches.
+
 Use the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") and [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") to extract information about its current state. See also the [Clip CHOP](https://docs.derivative.ca/Clip_CHOP "Clip CHOP") and [Clip DAT](https://docs.derivative.ca/Clip_DAT "Clip DAT").
+
 [clipblenderCHOP_Class](https://docs.derivative.ca/ClipblenderCHOP_Class "ClipblenderCHOP Class")
 
 ## Parameters - ClipBlender Page
+
 - Default Clip CHOP `default` - Operator path to a valid [Clip CHOP](https://docs.derivative.ca/Clip_CHOP "Clip CHOP").
 - DAT List `datlist` - Operator path to a valid [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT").
 - Target `target` - ⊞ - This parameter works in conjunction with the root transform channels as defined on the Channels page of the clpblender CHOP as well as the [Clip CHOP](https://docs.derivative.ca/Clip_CHOP "Clip CHOP") parameter called Position Type. When Position Type is set to "Blend To Target" it will blend the root transform channels for the current clip to the new position defined in this parameter.
@@ -31,6 +38,7 @@ Use the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") and [Info 
 - Reset Pulse `resetpulse` - Instantly reset the cliblender and start playing the clip defined by the Default Clip CHOP parameter.
 
 ## Parameters - Channels Page
+
 - Output Time Remaining `timeremaining` - A channel of the name defined in this parameter will return the time remaining in the current clip.
 - Time Channel `timechannel` - A channel of the name defined in this parameter will return the time elapsed in the current clip.
 - X Root Trans `xtrans` - The translate X channel of the animation hierarchy that defines the [Clipblender Motion Root](https://docs.derivative.ca/index.php?title=Clipblender_Motion_Root&action=edit&redlink=1 "Clipblender Motion Root \(page does not exist\)").
@@ -44,6 +52,7 @@ Use the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") and [Info 
 - Pre-Rotate Adds `prerotate` - Unknown
 
 ## Parameters - Transform Page
+
 - Transform Next Clip `doxform` -
 - Translate `t` - ⊞ -
   * X `tx` -
@@ -64,6 +73,7 @@ Use the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") and [Info 
 - Log `logpulse` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -81,13 +91,17 @@ Use the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") and [Info 
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Clip Blender CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Clip Blender CHOP Info Channels
   * queue_state -
 
@@ -136,7 +150,9 @@ Specific Clip Blender CHOP Info Channels
   * total_jumps -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -150,7 +166,9 @@ Specific Clip Blender CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,19 +5,24 @@ title: Delay_CHOP
 ---
 
 # Delay CHOP
+
 ## Summary
 
 The Delay CHOP delays the input. Multiple channels can be fed in to delay each separately. Each channel can have a separate delay time using `me.chanIndex`.
+
 Echoes can be created by chains of Delay CHOPs with Math CHOPs between, or by using the [Feedback CHOP](https://docs.derivative.ca/Feedback_CHOP "Feedback CHOP").
+
 [delayCHOP_Class](https://docs.derivative.ca/DelayCHOP_Class "DelayCHOP Class")
 
 ## Parameters - Delay Page
+
 - Delay `delay` - Delay in seconds, or in units determined by its [Units](https://docs.derivative.ca/Units "Units") menu. To get a delay per channel, use `me.chanIndex`. From a table where each row has a delay amount, use `op('delaysTable')[me.chanIndex,0]`.
 - Delay Unit `delayunit` -
 - Reset `reset` - When On resets (bypasses) the delay, and clears out the delay cache.
 - Reset Pulse `resetpulse` - Instantly resets the delay and clears the delay cache.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -36,17 +41,25 @@ Echoes can be created by chains of Delay CHOPs with Math CHOPs between, or by us
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Delay CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -60,7 +73,9 @@ Extra Information for the Delay CHOP can be accessed via an [Info CHOP](https://
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

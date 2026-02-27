@@ -5,10 +5,13 @@ title: Audio_File_In_CHOP
 ---
 
 # Audio File In CHOP
+
 ## Summary
 
 The Audio File In CHOP reads audio from files on disk or at `http://` addresses. File types `.mp3`, `.aif`, `.aiff`, `.au`, and `.wav` files are supported. It always outputs time sliced audio data. If you want to record the data, use a [Record CHOP](https://docs.derivative.ca/Record_CHOP "Record CHOP") or [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP").
+
 See [Audio Movie CHOP](https://docs.derivative.ca/Audio_Movie_CHOP "Audio Movie CHOP") for reading from movie files. See [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP") for receiving audio streams via OSC.
+
 For large files the Audio File In CHOP streams the file from disk so loading the entire file into memory is not needed.
   * It streams files from disk and from `http:` locations (latter copies to local disk first) - It only keeps a few seconds in memory at a time.
   * The supported audio files are `.mp3 .aif .aiff .wav` and other [audio formats](https://docs.derivative.ca/File_Types "File Types").
@@ -18,6 +21,7 @@ For large files the Audio File In CHOP streams the file from disk so loading the
 [audiofileinCHOP_Class](https://docs.derivative.ca/AudiofileinCHOP_Class "AudiofileinCHOP Class")
 
 ## Parameters - Audio File In Page
+
 - File `file` - Path of source.
 - Reload `reloadpulse` - Instantly reload the file from disk.
 - Play `play` - Audio will playback when this is set to 1 and stop when set to 0.
@@ -51,6 +55,7 @@ For large files the Audio File In CHOP streams the file from disk so loading the
 - Volume `volume` - Set the level the file is read in at. A setting of 1 is full signal while 0 is muted.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -68,8 +73,11 @@ For large files the Audio File In CHOP streams the file from disk so loading the
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Audio File In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Audio File In CHOP Info Channels
   * sample -
 
@@ -92,7 +100,9 @@ Specific Audio File In CHOP Info Channels
   * open_failed -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -106,7 +116,9 @@ Specific Audio File In CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

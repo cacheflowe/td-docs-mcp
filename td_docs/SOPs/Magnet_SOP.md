@@ -5,18 +5,24 @@ title: Magnet_SOP
 ---
 
 # Magnet SOP
+
 ## Summary
 
 The Magnet SOP allows you to affect deformations of the input geometry with another object using a "magnetic field" of influence, defined by a metaball field. It allows the creation of animated bumps and dents within objects, and other special effects.
+
 It is important to note that the actual deformation comes from the Translate parameters of the Magnet SOP, and not from the metaball. The metaball defines the area of effect for the Translate parameters of the Magnet SOP. The weight of the metaball determines the effectiveness of the Translate within the Magnet SOP.
+
 The power of the magnet is greatest at the centre of a metaball field and diminishes to nothing at the edge of the field.
+
 [magnetSOP_Class](https://docs.derivative.ca/MagnetSOP_Class "MagnetSOP Class")
 
 ## Parameters - Page
+
 - Deform Group `deformgrp` - Allows you to specify a group of geometry to be deformed, and a group that will act as the magnet respectively. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Magnet Group `magnetgrp` - Allows you to specify a group of geometry to be deformed, and a group that will act as the magnet respectively. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 
 ## Parameters - Deform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations. The transform order determines the order in which transformations take place. Depending on the order, you can achieve different results using the exact same values. Choose the appropriate order from the menu.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -55,21 +61,28 @@ The power of the magnet is greatest at the centre of a metaball field and dimini
   * Z `pz` -
 
 ## Parameters - Attributes Page
+
 - Affect Position `position` - Allow the magnet to affect the position of the input geometry. This is enabled by default.
 - Affect Point Color `color` - Allow the magnet to affect the point color of the input geometry.
 **Tip:** To control the contribution of each magnet on the surface's Point Color when the **Affect Point Color** option is enabled, set your point colors to black (0,0,0) before the Magnet SOP by using a [Point SOP](https://docs.derivative.ca/Point_SOP "Point SOP"). The Translate fields in the Magnet SOP will then add per-point rgb color with values of 2,2,2 approaching white.
+
 The scale and rotate channels of the magnet move you about in 3D color space. This is not recommended.
 - Affect Point Normal `nml` - Allow the magnet to affect the point normals of the input geometry.
 - Affect Point Velocity `velocity` - Allow the magnet to affect the velocity of the input geometry.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Magnet SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -81,7 +94,9 @@ Extra Information for the Magnet SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

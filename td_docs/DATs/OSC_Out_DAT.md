@@ -5,15 +5,21 @@ title: OSC_Out_DAT
 ---
 
 # OSC Out DAT
+
 ## Summary
 
 The OSC Out DAT is used for sending information over a OSC connection between remotely located computers. Use the [`.sendOSC()`](https://docs.derivative.ca/OscoutDAT_Class "OscoutDAT Class") python method to output the OSC messages.
+
 OSC bundles allows you to send a group of messages in a single command rather than as separate, individual messages. The OSC Out DAT `sendOSC()` function will accept a list of messages and send as a bundle when you set the kwarg `asBundle=True`. Bundles were created as a performance optimization for real-time control of synthesizers with a large number of parameters. (thx Jesse Gilbert)
+
 See also [OSC](https://docs.derivative.ca/OSC "OSC"), [OSC In DAT](https://docs.derivative.ca/OSC_In_DAT "OSC In DAT"), [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP"), [OSC Out CHOP](https://docs.derivative.ca/OSC_Out_CHOP "OSC Out CHOP"), [iOS and OSC](https://docs.derivative.ca/IOS_and_OSC "IOS and OSC"), [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols"), [Sync](https://docs.derivative.ca/Sync "Sync").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [oscoutDAT_Class](https://docs.derivative.ca/OscoutDAT_Class "OscoutDAT Class")
 
 ## Parameters - Connect Page
+
 - Active `active` - While on, the DAT receives/sends information from/to the network port. While Off, no updating occurs. Data sent to the port is lost.
 - Protocol `protocol` - ⊞ - Selects the network protocol to use. Refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Messaging (UDP) `msging` -
@@ -31,6 +37,7 @@ See also [OSC](https://docs.derivative.ca/OSC "OSC"), [OSC In DAT](https://docs.
 - Bundle Timestamp Column `bundletimestamp` - When On, each bundle timestamp value is included in a column.
 
 ## Parameters - Received Messages Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message received.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -44,6 +51,7 @@ See also [OSC](https://docs.derivative.ca/OSC "OSC"), [OSC In DAT](https://docs.
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -60,22 +68,30 @@ See also [OSC](https://docs.derivative.ca/OSC "OSC"), [OSC In DAT](https://docs.
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the OSC Out DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific OSC Out DAT Info Channels
   * messages_pending -
 
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

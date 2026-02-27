@@ -5,12 +5,15 @@ title: File_In_SOP
 ---
 
 # File In SOP
+
 ## Summary
 
 The File In SOP allows you to read a geometry file that may have been previously created in the Model Editor, output geometry from a SOP, or generated from other software such as [Houdini](http://www.sidefx.com). The geometry file can be read in from disk or from the web. Use http:// when specifying a URL.
+
 [fileinSOP_Class](https://docs.derivative.ca/FileinSOP_Class "FileinSOP Class")
 
 ## Parameters - Page
+
 - Geometry File `file` - Contains the full pathname of the geometry file to be read in.
 Some of the geometry formats that can be read:
   * TouchDesigner : .tog
@@ -23,9 +26,13 @@ Some of the geometry formats that can be read:
 - Refresh Pulse `refreshpulse` - Instantly reload the file from disk.
 
 ## Info CHOP Channels
+
 Extra Information for the File In SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -37,7 +44,9 @@ Extra Information for the File In SOP can be accessed via an [Info CHOP](https:/
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

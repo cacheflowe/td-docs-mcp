@@ -5,23 +5,31 @@ title: Render_Pick_DAT
 ---
 
 # Render Pick DAT
+
 ## Summary
 
 The Render Pick DAT lets you get information about the 3D surface at any pixel of any 3D render, allowing you to implement multi-touch on a 3D rendered scene. It samples a rendering (from a [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or a [Render Pass TOP](https://docs.derivative.ca/Render_Pass_TOP "Render Pass TOP")) and returns 3D information from the geometry at the specified pick locations.
+
 You feed it a DAT with minimum three columns: `select`, `u` and `v`. A [Multi Touch In DAT](https://docs.derivative.ca/Multi_Touch_In_DAT "Multi Touch In DAT") is usually connected to the Render Pick DAT, where the Multi Touch In DAT points to a container that is displaying the output of the Render TOP.
 
 You can pick from multiple cameras simultaneously. You can specify a `camera` which allows the pick to occur from the point of a view other than the first camera listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). The value in the column can either be a path (relative to the Render Pick DAT, or absolute) to a Camera COMP, or it can be an integer index, started at 0. If it's an index it will select the camera to use if there are multiple cameras listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"), or if there are cameras listed in the 'Custom Pick Camera(s)' parameter. This is useful for various [Multi-Camera Rendering](https://docs.derivative.ca/Multi-Camera_Rendering "Multi-Camera Rendering") setups, and cases such as VR where your picking isn't coming from the point of view of your eye cameras, but instead hand controllers.
+
 The pick location is a u,v (horizontal, vertical) coordinate placed in the table that you connect to the Render Pick DAT input. Each row of the input table represents one pick point to be sampled, except for the first row which contains column headings `select`, `u` and `v` (plus any other unused columns you want). The `select`, `u` and `v` columns are what you would get from a [Panel CHOP](https://docs.derivative.ca/Panel_CHOP "Panel CHOP"). The u and v values goes 0 to 1 left to right and bottom to top, no matter what the aspect ratio of the render is.
+
 When Strategy is Always, that u,v location is always sampled and the results are displayed in the corresponding row in the Render Pick DAT output.
+
 The output table will show the path of the geometry that was picked, its position (in a choice of reference frames), surface normal (excluding bump mapping), distance from camera, texture UV coordinate, color, alpha and instance id. It properly picks surfaces with deforming vertices.
+
 There are some examples here:
   * [geoPanel](https://docs.derivative.ca/Palette:geoPanel "Palette:geoPanel") in the palette.
   * [multiTouch](https://docs.derivative.ca/Palette:multiTouch "Palette:multiTouch") in the palette under Techniques.
 
 See also the single-sample [Render Pick CHOP](https://docs.derivative.ca/Render_Pick_CHOP "Render Pick CHOP").
+
 [renderpickDAT_Class](https://docs.derivative.ca/RenderpickDAT_Class "RenderpickDAT Class")
 
 ## Parameters - Render Pick Page
+
 - Strategy `strategy` - ⊞ - Decides when to update values based on pick interactions.
   * While Select `select` - Continuously updates values when being selected/picked.
   * Hold First Picked `holdfirst` - Holds the values first returned when geometry picked.
@@ -46,6 +54,7 @@ See also the single-sample [Render Pick CHOP](https://docs.derivative.ca/Render_
 - Callbacks DAT `callbacks` - Path to a DAT containing callbacks for pick event received.
 
 ## Parameters - Options Page
+
 - Fetch Position `position` - ⊞ - Returns the position of the point picked on the geometry. Columns _tx, ty, tz_.
   * No `no` - Do not return position values.
   * In SOP Space `sopspace` - Return position of point picked in SOP transform space.
@@ -75,6 +84,7 @@ See also the single-sample [Render Pick CHOP](https://docs.derivative.ca/Render_
 - Custom Attrib 4 Type `customattrib4type` - The type of attribute is selected from this menu.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -91,18 +101,25 @@ See also the single-sample [Render Pick CHOP](https://docs.derivative.ca/Render_
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Render Pick DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

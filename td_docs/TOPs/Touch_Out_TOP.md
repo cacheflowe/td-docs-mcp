@@ -5,17 +5,25 @@ title: Touch_Out_TOP
 ---
 
 # Touch Out TOP
+
 ## Summary
 
 The Touch Out TOP sends a TOP image stream over TCP/IP to a Touch In TOP. The Touch In TOP can be in another TouchDesigner session on the same computer or on a computer anywhere on the connected network.
+
 It can output [Hap Q](https://docs.derivative.ca/Hap "Hap"), Hap Q Alpha, and Uncompressed video.
+
 Make sure Windows Firewall settings are set to UNBLOCK for TouchDesigner, otherwise the data will be blocked.
+
 See also [Touch In TOP](https://docs.derivative.ca/Touch_In_TOP "Touch In TOP").
+
 For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP"), [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP"), [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and [NDI In TOP](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [touchoutTOP_Class](https://docs.derivative.ca/TouchoutTOP_Class "TouchoutTOP Class")
 
 ## Parameters - Touch Out Page
+
 - Network Port `port` - Which TCP/IP port to send the images on.
 - Active `active` - Sends image data over the TCP/IP connection when active is on.
 - FPS `fps` - This specifies how many frames pass before sending another frame. This effectively lowers frame rate and bandwidth of the output. For example, if the input frame rate is 60 and Send Step Size is 2, the output frame rate will be 30.
@@ -27,6 +35,7 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
 - Cook Always `alwayscook` - Forces the TOP to cook every frame.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -106,11 +115,15 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Touch Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Touch Out TOP Info Channels
   * num_sent_frames -
 
@@ -119,7 +132,9 @@ Specific Touch Out TOP Info Channels
   * send_fps -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -133,7 +148,9 @@ Specific Touch Out TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

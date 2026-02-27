@@ -5,16 +5,23 @@ title: Leuze_ROD4_CHOP
 ---
 
 # Leuze ROD4 CHOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The Leuze ROD4 CHOP connects to the [Leuze ROD4](https://www.leuze.com/en-int/products/switching-sensors/area-scanners?p=1) laser scanner via TCP/IP. Blob Tracking mode allows for turning the measured distances into blobs for use as an interaction surface. It should work with any of the ROD4 scanners currently available.
+
 The 'object detection' mode available on some of the models is not currently supported.
+
 The Leuze can be used with the [Blob Track CHOP](https://docs.derivative.ca/Blob_Track_CHOP "Blob Track CHOP") to detect objects in its field. See the OP Snippet for Blob Track.
+
 [leuzerod4CHOP_Class](https://docs.derivative.ca/Leuzerod4CHOP_Class "Leuzerod4CHOP Class")
 
 ## Parameters - ROD4 Page
+
 - Active `active` - While on, the CHOP receives information from the scanner. While off, the network connection is disconnected and no updating occurs.
 - Network Address `netaddress` - The IP address of the ROD4 scanner.
 - Network Port `port` - The network port of the scanner.
@@ -52,6 +59,7 @@ The Leuze can be used with the [Blob Track CHOP](https://docs.derivative.ca/Blob
 - Rotate Incoming Coordinates `rotate` - Rotates all incoming coordinates where the tx and ty values are rotated around a perpendicular z-axis.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -69,9 +77,13 @@ The Leuze can be used with the [Blob Track CHOP](https://docs.derivative.ca/Blob
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Leuze ROD4 CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -85,7 +97,9 @@ Extra Information for the Leuze ROD4 CHOP can be accessed via an [Info CHOP](htt
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

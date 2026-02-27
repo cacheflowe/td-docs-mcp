@@ -5,14 +5,19 @@ title: Line_Metrics_POP
 ---
 
 # Line Metrics POP
+
 ## Summary
 
 You can add metrics attributes to Line Strips. They can be created as point attribute or the vertex attributes.
+
 This gives good information about the points and the context they are in. For each point you can get the direction to the next and previous points, or the distance back to the start of the line strip, or the line strip number it is in… things useful for Math POPs or Lookup POPs.
+
 A convenience of the Line Metrics POP is to give nice values to awkward situations like co-incident points (two or more consecutive points in the same location), especially direction vectors. That’s what the Continuous Direction parameter does. It would work with Direction to Next, Direction to Previous, and do nice things to the Tangent vectors by keeping them in line.
+
 [linemetricsPOP_Class](https://docs.derivative.ca/LinemetricsPOP_Class "LinemetricsPOP Class")
 
 ## Parameters - Neighbor Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -57,6 +62,7 @@ A convenience of the Line Metrics POP is to give nice values to awkward situatio
 - Max Neighbors `maxneighbors` - When computing Direction vector, how far to look when points are in same position as next or previous points.
 
 ## Parameters - Line Strip Page
+
 - Distance from Start `diststart` - ⊞ - Whether to output an attribute with the distance from the start of the line strip.
   * Distance from Start `diststart` -
   * Distance from Start Attrib Name `diststartname` - Specifies the attribute scope used to output the Distance from Start attribute
@@ -80,6 +86,7 @@ A convenience of the Line Metrics POP is to give nice values to awkward situatio
 - Length Attrib Primitive Attribute `primlenprim` - When on, the attribute created for the length of the line strip is a primitive attribute.
 
 ## Parameters - Index Page
+
 - Vert Index in Line Strip `pointindex` - ⊞ - Output the vertex index for each point, assuming unique.
   * Vert Index in Line Strip `pointindex` -
   * Vert Index Attrib Name `pointindexname` - The name of the vertex index attribute.
@@ -101,19 +108,27 @@ A convenience of the Line Metrics POP is to give nice values to awkward situatio
   * Line Strip Index Normalized Attrib Name `lsindexnormname` - Attribute name for the normalized index of the line strip.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Line Metrics POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,13 +5,17 @@ title: Outside_TOP
 ---
 
 # Outside TOP
+
 ## Summary
 
 The Outside TOP places Input1 'outside' Input2. Input1 is visible in the output wherever Input2's alpha is <1. This is the opposite operation to the Inside TOP.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [outsideTOP_Class](https://docs.derivative.ca/OutsideTOP_Class "OutsideTOP Class")
 
 ## Parameters - Transform Page
+
 - Fixed Layer `size` - ⊞ - The selected input will become the fixed layer and the other input will be the overlay. This does not change the order of the composite (Input1 + Input2), only which layer is considered fixed and which layer is adjustable by the parameters on the Transform page. The resolution and aspect ratio of the Fixed Layer is used as the composite's final resolution and aspect ratio unless manually on the [Common Page](#Parameters_-_Common_Page)
   * Input 1 `input1` -
   * Input 2 `input2` -
@@ -60,6 +64,7 @@ The Outside TOP places Input1 'outside' Input2. Input1 is visible in the output 
 - Legacy Transform `legacyxform` - When enabled, will use the legacy method of building the transform matrix, which has inverted rotation and transform order.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -139,13 +144,18 @@ The Outside TOP places Input1 'outside' Input2. Input1 is visible in the output 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Outside TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -159,7 +169,9 @@ Extra Information for the Outside TOP can be accessed via an [Info CHOP](https:/
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

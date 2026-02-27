@@ -5,6 +5,7 @@ title: Transform_XYZ_CHOP
 ---
 
 # Transform XYZ CHOP
+
 ## Summary
 
 The Transform XYZ CHOP is used to transform positions and vector. The difference between transforming a position vs. a vector is that a vector won't have the translation portion of the transformation applied to it.
@@ -12,10 +13,13 @@ The Transform XYZ CHOP is used to transform positions and vector. The difference
 The Transform XYZ CHOP first groups the channels from the first input by looking for '`x`', '`y`' and '`z`' as the last character in the channel names. Then it treats each of the sets created as either a Position or a Vector depending on the parameter choice. The second input can be connected, and must describe a transform in the same format of channels that the [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP") supports. The second input is combined with the 'Transform' page parameters, and the resulting transform is applied to the input positions and vectors.
 
 CHOPs with multiple-samples can be provided, which allows for larger amount of positional data to be transformed in a single CHOP.
+
 See also the [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP").
+
 [transformxyzCHOP_Class](https://docs.derivative.ca/TransformxyzCHOP_Class "TransformxyzCHOP Class")
 
 ## Parameters - Input Page
+
 This page defines how the inputs are treated.
 - Input 0 Type `input0type` - ⊞ - Choose if the input 0 values should be treated as a position or a vectors. Vectors will not have the translation portion of the transform applied to them, and can be normalized before and/or after the transformation is applied.
   * Position `position` - Treat the input 0 values a positions.
@@ -46,6 +50,7 @@ This page defines how the inputs are treated.
   * Invert Transpose `inverttranspose` - Invert and Transpose the transform. The transpose will only be done if the input is a matrix format transform.
 
 ## Parameters - Transform Page
+
 This page defines the transform that is applied to the input positions or vectors.
 - Transform Order `xord` - ⊞ - See description from earlier Transform Order parameter.
   * Scale Rotate Translate `srt` -
@@ -89,6 +94,7 @@ This page defines the transform that is applied to the input positions or vector
   * Transform Page, then Input `xformpageinput` - The transforms will be combined as `Input * Transform Page`.
 
 ## Parameters - Output Page
+
 - Un-matched Channels `unmatchedchans` - ⊞ - Controls how channels that don't match the naming convention for the various transform format are treated.
   * Warn `warn` - Give a warning if transform channels that don't match any of the naming convenstions are found.
   * Ignore `ignore` - Ignore (give no warning) if channels that don't match the naming convention are found.
@@ -97,6 +103,7 @@ This page defines the transform that is applied to the input positions or vector
 - Normalize `normalize` - If the input data is being treated as vectors, they can be re-normalized after the transform by turning this on.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -115,18 +122,26 @@ This page defines the transform that is applied to the input positions or vector
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0: Position/Vectors - One or more sets of channels with 'x', 'y' and 'z' as the last character in their names, to be transformed.
   * Input 1: Transform - An optional additional transform that can be applied. Valid formats are the same as the [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP").
 
 ## Info CHOP Channels
+
 Extra Information for the Transform XYZ CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -140,7 +155,9 @@ Extra Information for the Transform XYZ CHOP can be accessed via an [Info CHOP](
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

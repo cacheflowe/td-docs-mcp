@@ -5,21 +5,33 @@ title: Trigger_CHOP
 ---
 
 # Trigger CHOP
+
 ## Summary
 
 The Trigger CHOP starts an audio-style attack/decay/sustain/release (ADSR) envelope to all trigger pulses in the input channels. A trigger point occurs whenever the first input's channel increases across the trigger threshold value. Most commonly, an ADSR starts when the input goes from 0 to 1.
+
 **Note** : To get a channel with the full waveform, turn off the Time Slice parameter on the Common page, and don't connect an input.
+
 The envelope consists of six major sections: delay, attack, peak, decay, sustain and release.
+
 From the time the threshold is reached and while the channel's value is above the release threshold, the envelope is in its sustain phase during which it will delay, attack, peak-hold, decay and then maintain its sustain value.
+
 After the inputs drops below the release threshold, the envelope start its release phase and will drop to 0.
+
 The peak and sustain levels can be set independently, but peak value can never be less than sustain.
+
 This CHOP works with both time-sliced inputs or with static input channels.
+
 For jittery inputs, if you don't want it to trigger until its input has been On for some period, see the [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") for the Trigger CHOP, example "trigger after a time threshold", which uses the Count CHOP.
+
 **Note** : See examples in OP Snippets.
+
 See also: [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), [Count CHOP](https://docs.derivative.ca/Count_CHOP "Count CHOP"), [Speed CHOP](https://docs.derivative.ca/Speed_CHOP "Speed CHOP"), [Event CHOP](https://docs.derivative.ca/Event_CHOP "Event CHOP")
+
 [triggerCHOP_Class](https://docs.derivative.ca/TriggerCHOP_Class "TriggerCHOP Class")
 
 ## Parameters - Trigger Page
+
 - Release = Trigger Threshold `threshold` - If on, the trigger and release thresholds are the same value.
 - Trigger Threshold `threshup` - The trigger threshold (see above).
 - Release Threshold `threshdown` - The release threshold (see above).
@@ -54,6 +66,7 @@ See also: [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), [Cou
 - Reset Pulse `resetpulse` - Instantly resets the envelope.
 
 ## Parameters - Attack Page
+
 - Delay Length `delay` - ⊞ - The amount of time to delay the envelope after the trigger point.
   * Delay Length `delay` -
   * Delay Length Unit `delayunit` -
@@ -74,6 +87,7 @@ See also: [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), [Cou
   * Peak Length Unit `peaklenunit` -
 
 ## Parameters - Sustain Page
+
 - Decay Length `decay` - ⊞ - The amount of decay time from the peak level to the sustain level.
   * Decay Length `decay` -
   * Decay Length Unit `decayunit` -
@@ -100,6 +114,7 @@ See also: [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), [Cou
   * Ease in Ease out `halfcos` -
 
 ## Parameters - Chan Page
+
 - Channel Name `channame` - Name of channels output.
 - Specify Rate `specifyrate` - Allows you to specify the sample rate in the Sample Rate parameter below.
 - Enable Remap Length `enableremaplength` - Enables remapping of the total envelope to a specific length. Note that ‘held sustain’ length is not remapped, only Delay, Attack, Peak, and Release lengths are remapped.
@@ -110,6 +125,7 @@ See also: [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), [Cou
 - Sample Rate `rate` - Sets the sample rate of the output. Only used when Specify Rate is turned on.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -128,17 +144,25 @@ See also: [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), [Cou
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Trigger CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -152,7 +176,9 @@ Extra Information for the Trigger CHOP can be accessed via an [Info CHOP](https:
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

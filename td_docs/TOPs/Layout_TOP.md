@@ -5,14 +5,19 @@ title: Layout_TOP
 ---
 
 # Layout TOP
+
 ## Summary
 
 The Layout TOP positions multiple input TOPs into rows, columns, or grids. It can either fit all the TOPs into a specific resolution (determined by the Common page) by scaling the inputs, or it can scale its own resolution to be larger to accomodate the native resolution of the inputs.
+
 Each input image gets equal area of the output, and the Fit menu determines how each image fits into its designated area.
+
 Multiple inputs can be wired into the Layout TOP, or the TOP parameter can contain paths to multiple TOPs. In the final layout, the TOPs specified in the TOP parameter will appear before the TOPs of the wired inputs if both are used.
+
 [layoutTOP_Class](https://docs.derivative.ca/LayoutTOP_Class "LayoutTOP Class")
 
 ## Parameters - Layout Page
+
 - TOP `top` - Specify the path(s) to a TOP to include in the layout.
 - Scale Resolution `scaleres` - When 'off', the resolution of the first wired input is used, or a custom resolution can be specified on the Common page. When 'on' and the output resolution is 'Use Input', the Layout TOP's resolution is the first input's resolution scaled up by number of columns horiontally, and the number of rows vertically. For example, if there are 4 input textures and the first one is 1280x720 and Align Left to Right is selected, then the grid size is 4x1 and so the final resolution will be 5120x720 (ie. (1280*4)x(720*1)). However whether off or on, each texture gets an allotted space of the same size. How the texture fits into that space is determined using the Fit parameter.
 - Align `align` - ⊞ - The menu determines how the inputs are laid out, in row, column , or grid format.
@@ -56,6 +61,7 @@ Multiple inputs can be wired into the Layout TOP, or the TOP parameter can conta
 - Comp Over Background Color `compover` - Fill any area with the background color if it has alpha less than 1.
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - The menu attached to this parameter allows you to specify the order in which the changes to your inputs will take place. Changing the Transform order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -77,6 +83,7 @@ Multiple inputs can be wired into the Layout TOP, or the TOP parameter can conta
 - Legacy Transform `legacyxform` - When enabled, will use the legacy method of building the transform matrix, which has inverted rotation and transform order.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -196,12 +203,17 @@ Multiple inputs can be wired into the Layout TOP, or the TOP parameter can conta
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Layout TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -215,7 +227,9 @@ Extra Information for the Layout TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

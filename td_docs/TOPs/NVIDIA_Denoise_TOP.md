@@ -5,20 +5,27 @@ title: NVIDIA_Denoise_TOP
 ---
 
 # NVIDIA Denoise TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This TOP uses the AI Green Screening module from the [Nvidia Maxine Video Effects](https://developer.nvidia.com/maxine) engine and requires a 20, 30, 40, or 50 series Nvidia RTX card to operate.
+
 **The models for this node must be separately downloaded via the Video Effects SDK for your GPU from <https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/>.
 
 Note that this feature can not be used in the same project as the [ZED](https://docs.derivative.ca/ZED "ZED") device, due to version conflicts with TensorRT.
 
 **The Nvidia Denoise TOP uses AI models to remove different types of noise from a still image or movie while retaining original details and crispness. The TOP will reduce different types of noise depending on the setting of the Mode parameter. Each mode can also be set to a low or high strength level to control how much noise is removed.
+
 The denoising engine only supports videos with a _width from 80-1920 pixels_ and _height from 80-1080 pixels_. The artifact reduction engine only supports videos with a _width from 160-1920 pixels_ and _height from 90-1080 pixels_.
+
 [nvidiadenoiseTOP_Class](https://docs.derivative.ca/NvidiadenoiseTOP_Class "NvidiadenoiseTOP Class")
 
 ## Parameters - Denoise Page
+
 - Mode `mode` - ⊞ - Choose the type of noise to remove from the source image.
   * Denoising `denoise` - Use an AI model tuned to remove low-light camera noise.
   * Artifact Reduction `artifactreduction` - Use an AI model tuned to remove H264 compression artifacts.
@@ -28,6 +35,7 @@ The denoising engine only supports videos with a _width from 80-1920 pixels_ and
   * High `high` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -107,12 +115,17 @@ The denoising engine only supports videos with a _width from 80-1920 pixels_ and
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Nvidia Denoise TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -126,7 +139,9 @@ Extra Information for the Nvidia Denoise TOP can be accessed via an [Info CHOP](
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

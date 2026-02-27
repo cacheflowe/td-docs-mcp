@@ -5,18 +5,27 @@ title: Lookup_CHOP
 ---
 
 # Lookup CHOP
+
 ## Summary
 
 The Lookup CHOP outputs values from a lookup table. The first input (the Index Channel) is an index into the second input (the Lookup Table). Lookup outputs interpolated values from the lookup table.
+
 Both the Index and Lookup Tables can contain any number of channels.
+
 An Index sample with value 0 maps to the beginning (first sample) of the lookup table, and an index sample with value of 1 maps to the end (last sample) of the lookup table.
+
 The output CHOP is the same length as the Index input. It is the same number of channels as the Lookup Table input, and has the same channel names as the Lookup Table input. The output is filled with the data extracted from the lookup tables. Indexes that fall between two lookup table samples are interpolated. The lookup table can be sampled outside its range.
+
 NOTE: The Extend Conditions of the lookup table are used in this case where the index is less than 0 or greater than 1.
+
 The sample rate of the output is the sample rate of the Index input.
+
 The Lookup CHOP can be used to fetch values from a color lookup table, where a single index produces red, green and blue channels. It can also be used for rolloff or decay tables, where it specifies how much a parameter drops with distance.
+
 [lookupCHOP_Class](https://docs.derivative.ca/LookupCHOP_Class "LookupCHOP Class")
 
 ## Parameters - Lookup Page
+
 - Index Range `index` - ⊞ - The Index Range maps the index channel's values to the lookup table's start and end and defaults to 0 and 1. The first parameter represents the start of the lookup table. When the index channel has this value, it will index the start of the lookup table. The second parameter represents the end of the lookup table and behaves in the same way.
   * `index1` -
   * `index2` -
@@ -52,6 +61,7 @@ The Lookup CHOP can be used to fetch values from a color lookup table, where a s
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -70,18 +80,26 @@ The Lookup CHOP can be used to fetch values from a color lookup table, where a s
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Lookup CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -95,7 +113,9 @@ Extra Information for the Lookup CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,18 +5,27 @@ title: Orbbec_TOP
 ---
 
 # Orbbec TOP
+
 ## Summary
 
 The Orbbec TOP can be used to retrieve video streams and IMU data from an [Orbbec camera](https://docs.derivative.ca/Orbbec "Orbbec"). The available video streams depend on the connected camera, but typically include color, depth, IR and point cloud data. This node uses the Orbbec SDK and a list of [compatible camera models](https://github.com/orbbec/OrbbecSDK) can be found on the project's Github page.
+
 Skeleton tracking data can be obtained from compatible Kinect Orbbec cameras (Femto Mega, Femto Bolt, etc) using the [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP") and [Kinect Azure CHOP](https://docs.derivative.ca/Kinect_Azure_CHOP "Kinect Azure CHOP"). **Note:** if using the Kinect Azure nodes with Orbbec hardware, you should not use the Orbbec TOP in the same project or it could lead to instabilities.
+
 The cameras may be connected either by USB or ethernet depending on the model.
+
 **Note:** Obtaining color video images over ethernet may not be supported for older firmware. We recommend you update your camera firmware to the latest version that is compatible with the Orbbec SDK that your TouchDesigner build is using.
+
 **MacOS:** Connecting to Orbbec cameras on Mac OS systems requires root privileges. You can launch TouchDesigner with root privileges by opening a Terminal window and using the sudo command i.e. `sudo "/Applications/TouchDesigner.app/contents/MacOS/TouchDesigner"`
+
 To obtain more than one video stream from a camera, you can use one or more [Orbbec Select TOPs](https://docs.derivative.ca/Orbbec_Select_TOP "Orbbec Select TOP") linked to the primary Orbbec TOP. All resolution and configuration is handled by the primary Orbbec TOP.
+
 An [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") can be used to view the current value of each supported camera property, and an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") can be used to see the minimum, maximum, and default value of each supported camera property.
+
 [orbbecTOP_Class](https://docs.derivative.ca/OrbbecTOP_Class "OrbbecTOP Class")
 
 ## Parameters - Orbbec Page
+
 - Active `active` - Turn this parameter off to disable communication with the camera. This will also stop any [Orbbec Select TOPs](https://docs.derivative.ca/Orbbec_Select_TOP "Orbbec Select TOP") that rely on this TOP.
 - Device Source `devicesource` - ⊞ - Specifies which mode to use to connect to a camera. **Note:** We generally recommend users to connect to cameras through the Device menu parameter instead of specifying the IP address.
   * Auto-Detect `auto` - Connect to enumerated cameras through the Device menu.
@@ -52,6 +61,7 @@ An [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") can be used to 
 - Properties CHOP `propschop` - The path of the properties CHOP being referenced. Each channel of the CHOP represents an [OBPropertyID](https://orbbec.github.io/OrbbecSDK/doc/api/English/Property_8h.html#a9e7aac1ea041c8958ea8c6e3aa53bbab) which can be used to control camera settings. The channel name must be all lowercase and cannot include the 'OB_PROP_' prefix. For example, a valid channel name for 'OB_PROP_COLOR_MIRROR_BOOL' would be 'color_mirror_bool'. Supported properties differ between each Orbbec camera model. The current value of each supported property can be viewed in an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). The minimum, maximum, and default values of each supported property can be viewed in an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT").
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -131,9 +141,13 @@ An [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") can be used to 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Orbbec TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -147,7 +161,9 @@ Extra Information for the Orbbec TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

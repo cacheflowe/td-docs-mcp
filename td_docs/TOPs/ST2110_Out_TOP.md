@@ -5,16 +5,23 @@ title: ST2110_Out_TOP
 ---
 
 # ST2110 Out TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 Support for Blackmagic IP range and Deltacast DELTA-ip-ST2110 devices.
+
 To obtain the SDPs generated for the output essences, use an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") and choose which SDP to obtain.
+
 See also [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP"), [ST2110 Device CHOP](https://docs.derivative.ca/ST2110_Device_CHOP "ST2110 Device CHOP").
+
 [st2110outTOP_Class](https://docs.derivative.ca/St2110outTOP_Class "St2110outTOP Class")
 
 ## Parameters - Video Page
+
 - Active `active` - Controls if this node is sending out data over the ST2110 device.
 - ST2110 Device CHOP `st2110devicechop` - Since a NIC has one set of settings such as DHCP/IP settings, that is controlled for each device using the ST2110 Device CHOP. This node will use that device to discover available output channels, and use the settings configured in that node for it's operation.
 - Device `device` - Will be populated when the ST2110 Device CHOP is active and configured properly. Select which output channel on the device to use.
@@ -34,6 +41,7 @@ See also [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP
   * Regular `regular` - Use regular CPU RAM memory allocation.
 
 ## Parameters - Audio Page
+
 - Audio CHOP `audiochop` - A timesliced audio CHOP that is either 44110 or 48000 Hz, but not all devices support both of those sample rates. This will be sent out over the audio essence.
 - Audio Buffer Length `audiobufferlength` - How long of an audio buffer queue to hold. This helps avoid audio pops in the event video generation stutters.
 - Audio Dest IP `audiodestip` - The multicast IP address that the audio essence should be sent on.
@@ -42,6 +50,7 @@ See also [ST2110 In TOP](https://docs.derivative.ca/ST2110_In_TOP "ST2110 In TOP
 - Audio Payload Id `audiopayloadid` - The Payload Id number to assign to the RTP packets for the audio essence. Usually 97 for audio.
 
 ## Parameters - SPS Page
+
 SPS, which stands for Seamless Protection Switching is supported on some cards like the Deltacast IP cards. This allows for a second parallel path for the same data to be sent, as a backup incase the primary path fails.
 - Enable SPS `enablesps` - Controls if the SPS stream is active or not.
 - SPS Video Destination IP `spsvideodestip` - The multicast IP address that the video SPS essence should be sent on.
@@ -54,6 +63,7 @@ SPS, which stands for Seamless Protection Switching is supported on some cards l
 - SPS Audio Payload Id `spsaudiopayloadid` - The Payload Id number to assign to the RTP packets for the audio SPS essence. Usually 97 for audio.
 
 ## Parameters - Color Page
+
 - Output Color Space `outputcolorspace` - ⊞ - Controls what color space the data will be converted to before output. If the output (file/SDI/ST2110 etc) supports metadata, will also attempt to include the color space in that. Some output forms only support a limited number of color spaces in their metadata. If the color space is unknown to the output form, then no metadata will be included.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
@@ -77,6 +87,7 @@ SPS, which stands for Seamless Protection Switching is supported on some cards l
   * High (HDR) `hdr` - Will treat the Output Color Space as HDR for it's reference white value.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -156,11 +167,15 @@ SPS, which stands for Seamless Protection Switching is supported on some cards l
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the ST2110 Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific ST2110 Out TOP Info Channels
   * connected - 1 if the device is connected/active, 0 if not.
 
@@ -179,7 +194,9 @@ Specific ST2110 Out TOP Info Channels
   * frame_hw_queue_length - The number of video frames queued in the device hardware for output.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -193,7 +210,9 @@ Specific ST2110 Out TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

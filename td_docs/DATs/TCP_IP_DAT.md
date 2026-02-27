@@ -5,17 +5,25 @@ title: TCP/IP_DAT
 ---
 
 # TCP/IP DAT
+
 ## Summary
 
 The TCP/IP DAT is used for sending and receiving information over a TCP/IP connection between two remotely located computers. It captures all the messages without any queuing or buffering, and allows you to send it any messages you want.
+
 Send messages using the [tcpipDAT_Class](https://docs.derivative.ca/TcpipDAT_Class "TcpipDAT Class"). Handle received messages using the callback DAT attached to the TCP/IP DAT. See [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols").
+
 This DAT can be used to intercept all the raw information being sent from a Pipe Out CHOP for example. The [Pipe In CHOP](https://docs.derivative.ca/Pipe_In_CHOP "Pipe In CHOP") and [Pipe Out CHOP](https://docs.derivative.ca/Pipe_Out_CHOP "Pipe Out CHOP") also communicate through a TCP/IP connection, though they use a specific syntax.
+
 See also [Peer Class](https://docs.derivative.ca/Peer_Class "Peer Class"), [UDP In DAT](https://docs.derivative.ca/UDP_In_DAT "UDP In DAT"), [UDP Out DAT](https://docs.derivative.ca/UDP_Out_DAT "UDP Out DAT").
+
 For Tscript. see Tscript `send` Command.
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [tcpipDAT_Class](https://docs.derivative.ca/TcpipDAT_Class "TcpipDAT Class")
 
 ## Parameters - Connect Page
+
 - Connection Mode `mode` - ⊞ - Specify if this operator is communicating as a **client** or a **server**.
   * This Operator is Client `client` -
   * This Operator is Server `server` -
@@ -32,6 +40,7 @@ For Tscript. see Tscript `send` Command.
 - Active `active` - This check box enables the connection.
 
 ## Parameters - Received Data Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message received.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
@@ -45,6 +54,7 @@ For Tscript. see Tscript `send` Command.
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -61,21 +71,28 @@ For Tscript. see Tscript `send` Command.
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the TCP/IP DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific TCP/IP DAT Info Channels
   * connections -
 
   * messages_pending -
 
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

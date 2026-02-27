@@ -5,12 +5,15 @@ title: Ray_SOP
 ---
 
 # Ray SOP
+
 ## Summary
 
 The Ray SOP is used to project one surface onto another. Rays are projected from each point of the input geometry in the direction of its normal. This can be used to drape clothes over surfaces, shrink-wrap one object with another, and other similar effects.
+
 [raySOP_Class](https://docs.derivative.ca/RaySOP_Class "RaySOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Method `method` - ⊞ - Select the method of projection for the Ray SOP.
   * Minimum Distance `minimum` - Points are placed on the closest point on the collision geometry. This method does not use point normals. Use it to shrinkwrap or project one primitve onto another.
@@ -35,6 +38,7 @@ The Ray SOP is used to project one surface onto another. Rays are projected from
 - Ray Hit Group `hitgrp` - Specifies the name of the above point group.
 
 ## Example
+
   1. Place a [Grid SOP](https://docs.derivative.ca/Grid_SOP "Grid SOP") and translate it in TZ by 2.5. Turn it's template flag on.
   2. Append a Point SOP to the Grid and enable the Create Point Normals option.
   3. Place a NURBS Sphere with a Radius of 2,2,2 and translate it in Z by -2.5 .
@@ -45,13 +49,18 @@ The Ray SOP is used to project one surface onto another. Rays are projected from
 The Ray SOP will move the points of the Grid in the direction of the point normals. The first surface of the Collision Source (right input) will be where those points of the grid will rest. You can make those points rest on the other side of the sphere by enabling the Intersect Farthest Surface option. This means that the points should continue to project to the farthest surface of the collision source.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Ray SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -63,7 +72,9 @@ Extra Information for the Ray SOP can be accessed via an [Info CHOP](https://doc
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

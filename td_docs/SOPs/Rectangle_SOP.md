@@ -5,12 +5,15 @@ title: Rectangle_SOP
 ---
 
 # Rectangle SOP
+
 ## Summary
 
 The Rectangle SOP creates a 4-sided polygon. It is a planar surface. The rectangle can be explicitly sized, or sized from other sources such as at the camera's view frustum, or the bounding box of a SOP connected to this node's input.
+
 [rectangleSOP_Class](https://docs.derivative.ca/RectangleSOP_Class "RectangleSOP Class")
 
 ## Parameters - Page
+
 - Orientation `orient` - ⊞ - Picks the major plane the rectangle's y-axis orients itself with. Set it to camera if it is to point towards a camera.
   * XY plane `xy` -
   * YZ plane `yz` -
@@ -43,12 +46,17 @@ The Rectangle SOP creates a 4-sided polygon. It is a planar surface. The rectang
 - Compute Normals `normals` - Create a normal (N) attribute for this geometry.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Rectangle SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -60,7 +68,9 @@ Extra Information for the Rectangle SOP can be accessed via an [Info CHOP](https
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

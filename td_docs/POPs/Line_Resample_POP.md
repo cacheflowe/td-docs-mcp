@@ -5,16 +5,23 @@ title: Line_Resample_POP
 ---
 
 # Line Resample POP
+
 ## Summary
 
 The Line Resample POP will take a set of line strips, and for each one, resample the line strip in one of four methods: number of Divisions per Line Strip, a specified Distance between Points, point separation based on the curvature of the line strip at each of the original points (By Curvature), and lastly, dividing based on stepping uniformly along another attribute of the line strip (Points as Keyframes) using an "Independent Variable Attribute".
+
 Using a `ControlPoint` attribute you can make the resampled curve pass through (include) the control points exactly.
+
 Resampling By Curvature has two distance parameters - the Minimum Distance where the curvature is high, and the Maximum Distance where the curvature is low (straight sections). Min Max Bias will create more or less minimum-distance points.
+
 Line Resample POP doe not change the shape of the lines, unlike [Line Smooth POP](https://docs.derivative.ca/Line_Smooth_POP "Line Smooth POP").
+
 See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divide POP"), [Line Smooth POP](https://docs.derivative.ca/Line_Smooth_POP "Line Smooth POP").
+
 [lineresamplePOP_Class](https://docs.derivative.ca/LineresamplePOP_Class "LineresamplePOP Class")
 
 ## Parameters - Resample Page
+
 - Resample Method `resamplemethod` - ⊞ - Line strip resample method.
   * None `none` -
   * Divisions per Line Strip `linestrip` -
@@ -37,19 +44,27 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
 - Remove Unused Points `rmvunusedpts` - Removes unused points not referenced by primitives.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Line Resample POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

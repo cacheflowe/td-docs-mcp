@@ -5,23 +5,37 @@ title: Plane_POP
 ---
 
 # Plane POP
+
 ## Summary
 
 The Plane POP creates rows and columns of points in a planar grid shape. The points can be connected with a variety of primitives using the Connectivity menu.
+
 The Connectivity menu lets you output triangles, alternating triangles, quads, lines, line strips, point primitives or no primitives (None, only points).
+
 You specify number of rows and columns. Columns refers to the divisions in X by default, Rows to the divisions in Y by default.
+
 In the Connectivity menu you can create lines and line strips along Rows, Columns or both merged together.
+
 The Orientation menu lets you place the grid on the YZ plane, or the ZX plane.
+
 Anchor will line up the left, center or right side of the grid to X=0, Y=0 or Z=0.
+
 The planar grid can then be post-rotated and post-translated using the Rotate and Translate parameters.
+
 Dimension: When the grid is passed to other POPs it cannot be known for certain how many rows and columns were specified. However the Plane POP (and other generator POPs) output its [Dimensions](https://docs.derivative.ca/Dimension "Dimension") as metadata to all POPs connected to it, indicating its organizations of points in the points list. A plane grid has dimensions `_numCols numRows_`, which can be used by built-in attributes like`_Dim[]` or by GLSL code.
+
 You can output point or vertex normals (creating the `N` attribute), and you can output point or vertex texture coordinates (`Tex` attribute).
+
 After the Orientation is applied, say it is YZ, texture coordinates are assigned where the first component `Tex(0)` is along the axis of the first letter (Y in the YZ orientation), and `Tex(1)` is along the axis of the second letter (Z in the YZ orientation).
+
 The Plane POP takes an input which will cause the starting grid to have the same bounding box as the bounding box of the input. Then turning on Modify Bounds lets you further transform the tube.
+
 See also [Grid POP](https://docs.derivative.ca/Grid_POP "Grid POP"), [Sphere POP](https://docs.derivative.ca/Sphere_POP "Sphere POP"), [Torus POP](https://docs.derivative.ca/Torus_POP "Torus POP"), [Revolve POP](https://docs.derivative.ca/Revolve_POP "Revolve POP"), [Dimension](https://docs.derivative.ca/Dimension "Dimension")
+
 [planePOP_Class](https://docs.derivative.ca/PlanePOP_Class "PlanePOP Class")
 
 ## Parameters - Plane Page
+
 - Connectivity `surftype` - ⊞ - Determines the primitive used to connect the points.
   * None `none` -
   * Point Primitives `points` -
@@ -72,19 +86,27 @@ See also [Grid POP](https://docs.derivative.ca/Grid_POP "Grid POP"), [Sphere POP
   * Vertex `vert` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Plane POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

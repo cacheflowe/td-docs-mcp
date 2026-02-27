@@ -5,17 +5,25 @@ title: Lookup_Attribute_POP
 ---
 
 # Lookup Attribute POP
+
 ## Summary
 
 The Lookup Attribute POP in its simplest form takes an attribute of the first input (the Lookup Index Attribute(s)) with values in the 0-1 range, and for each point of the first input, uses the value as an index into attributes of the second input (the Value Attributes of the lookup curve). It outputs those looked-up values into new or existing attributes (Output Attribute Scope).
+
 The lookup curve (second input) can be the output of a [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP"), for example.
+
 If the index is 0, it pulls values from the first point of the lookup curve, and if the index is 1 it pulls from the last sample of the lookup curve. Alternately, if the Lookup Index Units menu is set to Point Index, the lookup index is expressed as a point number of the lookup curve, going from 0 to number_of_points-1.
+
 If the index is out of range, the Extend Left and Right menus determine what to do to the index before doing the lookup, such as holding it at 0 or 1, or cycling the value between 0 and 1.
+
 Sequential blocks let you lookup and output more than one attribute. In each block you can re-range the value before putting it in the specified output attribute.
+
 See also [Lookup Texture POP](https://docs.derivative.ca/Lookup_Texture_POP "Lookup Texture POP"), [Lookup Channel POP](https://docs.derivative.ca/Lookup_Channel_POP "Lookup Channel POP"), [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP") (Lookup page).
+
 [lookupattributePOP_Class](https://docs.derivative.ca/LookupattributePOP_Class "LookupattributePOP Class")
 
 ## Parameters - Lookup Attribute Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -68,20 +76,28 @@ See also [Lookup Texture POP](https://docs.derivative.ca/Lookup_Texture_POP "Loo
   * Color.rgb `Color.rgb` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Lookup Attribute POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

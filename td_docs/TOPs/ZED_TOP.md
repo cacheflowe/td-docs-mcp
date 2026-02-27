@@ -5,22 +5,33 @@ title: ZED_TOP
 ---
 
 # ZED TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The ZED TOP captures video from the ZED depth camera.
+
 **NOTE:** This TOP works with the [Stereolabs ZED](https://www.stereolabs.com/zed/) hardware. For more information and to know what ZED SDK to install refer to the [ZED](https://docs.derivative.ca/ZED "ZED") article.
+
 It supports point clouds - getting the camera space positions of the color pixels, outputted as a 32-bit float RGB texture with XYZ in the RGB channels.
+
 When used for point cloud rendering with TOPs, it can be used directly with the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") as it is in in the format needed for instancing.
+
 It can instead pass its image data directly to the [ZED POP](https://docs.derivative.ca/ZED_POP "ZED POP") for rendering with POPs.
+
 This node is where the device it actually configured. It can output one image type (color, depth etc). To get other images from the same device, use a [ZED Select TOP](https://docs.derivative.ca/ZED_Select_TOP "ZED Select TOP").
+
 The ZED TOP can also playback pre-recorded captures of ZED to a `.svo` file. The ZED toolkit allows you to record large video datasets using H.264, H.265 or lossless compression using Stereolabs’ SVO format to store videos along with additional metadata such as timestamps and sensor data. When loading SVO files when the ZED TOP Input Source is set to SVO File, it will behave as if a ZED was connected and a live feed was available.
+
 See also [ZED Select TOP](https://docs.derivative.ca/ZED_Select_TOP "ZED Select TOP"), [ZED CHOP](https://docs.derivative.ca/ZED_CHOP "ZED CHOP"), [ZED POP](https://docs.derivative.ca/ZED_POP "ZED POP") and [ZED SOP](https://docs.derivative.ca/ZED_SOP "ZED SOP").
+
 [zedTOP_Class](https://docs.derivative.ca/ZedTOP_Class "ZedTOP Class")
 
 ## Parameters - ZED Page
+
 - Active `active` - When set to 1 the TOP captures the image stream from the camera.
 - Input Source `inputsource` - ⊞ - Select which input type to use between USB, recorded SVO file, or network streaming
   * Camera `camera` - USB.
@@ -97,6 +108,7 @@ See also [ZED Select TOP](https://docs.derivative.ca/ZED_Select_TOP "ZED Select 
   * RGBA Average `average` - Region of Interest Mask calculated based on combined RGBA average values.
 
 ## Parameters - Settings Page
+
 - Brightness `bright` - Turn on to enable brightness adjustment controls for the camera. When disabled, the camera will use default brightness.
 - Brightness `brightval` - The brightness of the camera feed.
 - Contrast `cont` - Turn on to enable contrast adjustment controls for the camera. When disabled, the camera will use default contrast.
@@ -129,6 +141,7 @@ See also [ZED Select TOP](https://docs.derivative.ca/ZED_Select_TOP "ZED Select 
 - LED Status `ledstat` - Turn on to enable the front LED of camera. When disabled, the camera LED will be disabled.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -208,15 +221,20 @@ See also [ZED Select TOP](https://docs.derivative.ca/ZED_Select_TOP "ZED Select 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the ZED TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific ZED TOP Info Channels
   * vertical_fov - The physical vertical FOV of the camera, in degrees.
 
   * horizontal_fov - The physical horizontal FOV of the camera, in degrees.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -230,7 +248,9 @@ Specific ZED TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

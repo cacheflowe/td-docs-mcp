@@ -5,27 +5,41 @@ title: Blob_Track_TOP
 ---
 
 # Blob Track TOP
+
 ## Summary
 
 The Blob Track TOP is implemented using [OpenCV](https://opencv.org//).
+
 To get the results of the Blob Track TOP, attach an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") or [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to it. The Info reports the current blob IDs, coordinates and sizes in pixels. The blob ID increases for every new blob that is detected.
+
 It converts the incoming image to monochrome (since it operates on an single color channel), but to better prepare the image, preceed it with a Monochrome TOP followed by a Luma Level TOP, and adjust Black Level, Brightness and Gamma.
+
 Typical usage is connecting a video source (such as [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP") to the Blob Track TOP).
+
 **NOTE:** can track an unlimited number of blobs in Pro and Commercial, and up to 2 blobs in the Non-Commercial version of TouchDesigner.
+
 See also [Blob Track CHOP](https://docs.derivative.ca/Blob_Track_CHOP "Blob Track CHOP")
+
 [blobtrackTOP_Class](https://docs.derivative.ca/BlobtrackTOP_Class "BlobtrackTOP Class")
 
 ## Usage
+
 There are two workflows with the Blob Track TOP.
+
 ###
+
 SimpleBlobDetector
+
 [SimpleBlobDetector](https://docs.opencv.org/3.4/d0/d7a/classcv_1_1SimpleBlobDetector.html) is a blob detection algorithm in OpenCV. This method will automatically be used if **only** the first input is connected. SimpleBlobDetector has the benefit of not requiring a known background to detect blobs but only returns blobs as a position and radius, meaning that all blobs rectangles will be square. The SimpleBlobDetector can also be quite slow so lowering the input resolution is often necessary. Generally this method should only be used if the background is not known.
 
 ###
+
 Background Subtraction
+
 Background subtraction will automatically be used if there is a second input connected. Background subtraction is less dynamic and requires a known background to function but it offers a massive performance improvement over SimpleBlobDetector, and unlike with SimpleBlobDetector the blob rectangles using this method are not restricted to squares only. The background subtraction method will create a binary image from the first and second input (based off the threshold parameter) and then use OpenCV to find contours and convert those to rectangles.
 
 ## Parameters - Blob Track Page
+
 - Reset `reset` - Resets all tracking data and learned background data while this parameter is On.
 - Reset Pulse `resetpulse` - Instantly resets all tracking data and learned background data.
 - Mono Source `monosource` - ⊞ - Blob tracking is done using a single channel. This menu controls what single channel is used to detect blobs.
@@ -49,6 +63,7 @@ Background subtraction will automatically be used if there is a second input con
   * Next Frame (Fast) `delayed` - Get the previous frame's output. Faster.
 
 ## Parameters - Constraints Page
+
 - Minimum Blob Size `minblobsize` - Blobs must be at least this big to be tracked.
 - Maximum Blob Size `maxblobsize` - Blobs larger than this will not be tracked.
 - Maximum Move Distance `maxmovedistance` - The maximum distance a blob can move in one frame and still be considered to the same blob (maintain the same ID).
@@ -59,6 +74,7 @@ Background subtraction will automatically be used if there is a second input con
 - Delete Overlap Tolerance `deleteoverlaptol` - If this parameter is 1 then only blobs that are completely overlapped will be deleted. As this value gets smaller less and less overlap is needed for a blob to get deleted.
 
 ## Parameters - Revival Page
+
 - Revive Blobs `reviveblobs` - When enabled, will revive lost blobs (ie. same ID) if they satisfy all the below parameters
 - Revive Time `revivetime` - The time (in seconds) threshold for reviving a lost blob. If a blob has been lost for longer than revive time, it will not be revived and is considered expired.
 - Revive Area Difference `revivearea` - The area difference threshold for the new blob and the lost blob.
@@ -68,6 +84,7 @@ Background subtraction will automatically be used if there is a second input con
 - Expired Time `expiredtime` - Time in seconds for blobs to remain in the Info DAT table after expiring.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -167,16 +184,22 @@ Background subtraction will automatically be used if there is a second input con
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Blob Track TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Blob Track TOP Info Channels
   * num_blobs -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -190,7 +213,9 @@ Specific Blob Track TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

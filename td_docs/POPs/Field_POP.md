@@ -5,18 +5,27 @@ title: Field_POP
 ---
 
 # Field POP
+
 ## Summary
 
 The Field POP adds a `Weight` attribute that determines how much each point is within a 3D shape. Fields are bounding regions in 3D space. The shapes include spheres (ellipsoids), cylinders, planes, paraboloids, etc, where all points within the shape (or on one side of the shape) are given a Weight of 1 and all other points are 0. The Field POP is often used to isolate or cut out sections of points in point clouds.
+
 It also can output a `Dist` attribute, which is a distance to the surface for points that are outside the shape.
+
 There are parameters that soften the `Weight` transition from 0 to 1: The Transition range is the distance over which the weight goes from 1 to 0, Transition Align determines if the transition from 1 to 0 starts at the field shape surface, or ends at the surface (default is half-way). The Transition Type allows for linear, ease-in ease-out, or smooth step transitions.
+
 **Multiple fields in one Field POP**: A parameter called Specification POP is a pointer to a POP where each point is a specification defining a separate field - one point per field. The attributes of the specification POP are named the same as parameters tokens in the Field POP, and override the parameters for each field. Menus and toggles are represented as integers, starting at 0 for the first menu entry. You need only to create a Point POP with attributes named as the Field POP parameters, and then add a point per field, and set their values. (An attribute `sizex` will override the Size X (`sizex`) parameter.) Alternately you can generate points procedurally with attributes that match the Field POP parameter names. The workflow is the same as multiple strings defined in a specification DAT of the [Geo Text COMP](https://docs.derivative.ca/Geo_Text_COMP "Geo Text COMP") and the [Text COMP](https://docs.derivative.ca/Text_COMP "Text COMP").
+
 **Using P as field position** : Although the rule is that the attribute name must be the same as the name of the parameter of the Field POP, `P` (position attribute) is a special case as it overrides `tx`, `ty` and `tz` parameters of the Field POP. If the node `point1` has attributes `radx` and `P`, they override the Field POP's `radx`, `tx`, `ty` and `tz` parameters.
+
 **Multiple weights raw or mixed** : When you specify multiple fields, their weights are mixed together into the `Weight` attribute (using a blend mode like Screen of the [Composite TOP](https://docs.derivative.ca/Composite_TOP "Composite TOP") - combining multi-fields increase the `Weight` but it never exceeds 1). Alternately the weight for each field can be output raw in a multi-value `Weights` array attribute.
+
 The `Weight` or `Distance` attribute can be added/multiplied with any another attribute, like a `PartForce` attribute to confine forces to certain regions.
+
 [fieldPOP_Class](https://docs.derivative.ca/FieldPOP_Class "FieldPOP Class")
 
 ## Parameters - Field Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -85,6 +94,7 @@ The `Weight` or `Distance` attribute can be added/multiplied with any another at
   * Delete Line Strip `dellinestrip` -
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -122,6 +132,7 @@ The `Weight` or `Distance` attribute can be added/multiplied with any another at
   * Pivot `pz` -
 
 ## Parameters - Output Page
+
 - Weight `weight` - ⊞ - Output a field weight attribute.
   * Weight `weight` -
   * Weight Output Attribute `outputattr` - Specifies the weight output attribute scope.
@@ -181,19 +192,27 @@ The `Weight` or `Distance` attribute can be added/multiplied with any another at
   * Default Value `combineattrdefaultval3` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Field POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

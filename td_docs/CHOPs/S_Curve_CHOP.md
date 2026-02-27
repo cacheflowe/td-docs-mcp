@@ -5,12 +5,15 @@ title: S_Curve_CHOP
 ---
 
 # S Curve CHOP
+
 ## Summary
 
 This CHOP generates S curves.
+
 [scurveCHOP_Class](https://docs.derivative.ca/ScurveCHOP_Class "ScurveCHOP Class")
 
 ## Parameters - S Curve Page
+
 - Curve Type `type` - ⊞ - What Curve Type to Generate.
   * Half Cosine `halfcosine` -
   * Logistic `log` -
@@ -31,6 +34,7 @@ This CHOP generates S curves.
   * `torange2` -
 
 ## Parameters - Channel Page
+
 - Channel Names `channelname` - You can creates many channels with simple patterns like "`chan[1-20]`", which generates 20 channels from chan1 to chan20. See the section, Common CHOP Parameters for a description of this and all Options. See [Scope and Channel Name Matching](https://docs.derivative.ca/CHOP_Common_Page#Scope "CHOP Common Page") Options.
 - Sample Rate `rate` - The sample rate of the channels, in samples per second. Default: `me.time.rate`
 - Extend Left `left` - ⊞ - The left extend condition (before range).
@@ -50,6 +54,7 @@ This CHOP generates S curves.
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -67,12 +72,17 @@ This CHOP generates S curves.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the S Curve CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -86,7 +96,9 @@ Extra Information for the S Curve CHOP can be accessed via an [Info CHOP](https:
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

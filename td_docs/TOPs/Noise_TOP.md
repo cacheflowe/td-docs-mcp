@@ -5,15 +5,21 @@ title: Noise_TOP
 ---
 
 # Noise TOP
+
 ## Summary
 
 The Noise TOP generates a variety of noise patterns including perlin, simplex, sparse, alligator and random. Some types of noise run on the CPU, while others are calculated on the GPU. The ones that are calculated on the GPU will have GPU in their name.
+
 The first input can be combined with the generated noise in various ways depending on the parameters.
+
 The second input can be used to specify noise coordinates per-pixel. Without a 2nd input connected, the noise coordinates are the 0-1 texture coordinates of the output texture, i.e, the position of the pixel in the output texture. With a 2nd input connected the position of the pixel in the output texture is used to look-up into the 2nd input, and the RGBA of the 2nd input for that sampled pixel will be used as the XYZ and W for the noise coordinate.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays. For this TOP to generate a 3D texture output, it requires a 3D texture type as input. You can use a [Texture 3D TOP](https://docs.derivative.ca/Texture_3D_TOP "Texture 3D TOP") or [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") to create 3D texture types.
+
 [noiseTOP_Class](https://docs.derivative.ca/NoiseTOP_Class "NoiseTOP Class")
 
 ## Parameters - Noise Page
+
 - Type `type` - ⊞ - The noise function used to generate noise. The functions available are:
   * Perlin 2D (GPU) `perlin2d` - Perlin noise function calculated on the GPU. Choose between 2, 3, and 4 dimensional functions.
   * Perlin 3D (GPU) `perlin3d` - Perlin noise function calculated on the GPU. Choose between 2, 3, and 4 dimensional functions.
@@ -31,6 +37,7 @@ The second input can be used to specify noise coordinates per-pixel. Without a 2
 - Seed `seed` - Any number, integer or non-integer, which starts the random number generator. Each number gives completely different noise patterns, but with similar characteristics.
 - Period `period` - The approximate separation between peaks of a noise cycle. It is expressed in Units. Increasing the period stretches the noise pattern out.
 Period is the opposite of frequency. If the period is 2 seconds, the base frequency is 0.5 cycles per second, or 0.5Hz for short. Hz refers to Hertz, the electrical and audio engineer of the 19th century, not the car guy.
+
 If the Type is set to Random, setting this to zero will produce completely random noise. Otherwise, the period should be greater than zero.
 - Harmonics `harmon` - The number of higher frequency components to layer on top of the base frequency. The higher this number, the bumpier the noise will be (as long as roughness is not set to zero). 0 harmonics give the base shape.
 - Harmonic Spread `spread` - The factor by which the frequency of the harmonics are increased. It is normally 2. A spread of 3 and a base frequency of 0.1Hz will produce harmonics at 0.3Hz, 0.9Hz, 2.7Hz, etc.. This parameter is only valid for the Harmonic Summation type.
@@ -44,6 +51,7 @@ The default roughness is 0.5. This means the amplitude of the first harmonic is 
 - Aspect Correct `aspectcorrect` - Controls if the noise takes aspect ratio into account when calculating it's noise coordinates. When this is off, the noise will stretch to fit a non-square aspect ratio texture.
 
 ## Parameters - Transform Page
+
 The Translate, Rotate, Scale and Pivot parameters let you sample in a different part of the 3D noise space. Imagine a different noise value for every XYZ point in space. Normally, the Noise CHOP samples the noise space from (0,0,0) along the X-axis in steps of 2/period. By changing the transform, you are translating, rotating and scaling the plane along which the Noise TOPs samples the noise space. A slight Y-rotation is like walking in a straight path in the mountains, recording your altitude along the way, then re-starting from the same initial location, walking in a slightly different direction. Your altitude starts off being similar but then diverges.
 - Transform Order `xord` - ⊞ - The menu attached to this parameter allows you to specify the order in which the transforms will take place. Changing the Transform order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block.
   * Scale Rotate Translate `srt` -
@@ -85,6 +93,7 @@ The Translate, Rotate, Scale and Pivot parameters let you sample in a different 
 - Scale 4D `s4d` - When doing 4D noise, this applies a scale to the 4th coordinate.
 
 ## Parameters - Output Page
+
 - RGB `rgb` - ⊞ - When an input is connected to the Noise TOP, the noise pattern is placed over the input image using UV coordinates and the settings from this menu.
   * Noise `noise` - Just the noise is output.
   * Input * Noise `multiply` - The noise is multiplied with the input.
@@ -109,6 +118,7 @@ The Translate, Rotate, Scale and Pivot parameters let you sample in a different 
   * Quality `quality` - Quality noise.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -188,13 +198,18 @@ The Translate, Rotate, Scale and Pivot parameters let you sample in a different 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0: Composite Input - Control the Composite operation via the parameters on the Output Page of this operator.
   * Input 1: Noise Coordinate Map - A texture specifying the 2, 3 or 4 dimensional lookup into the noise field.
 
 ## Info CHOP Channels
+
 Extra Information for the Noise TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -208,7 +223,9 @@ Extra Information for the Noise TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

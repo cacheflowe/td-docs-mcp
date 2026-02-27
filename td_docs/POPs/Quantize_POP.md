@@ -5,17 +5,25 @@ title: Quantize_POP
 ---
 
 # Quantize POP
+
 ## Summary
 
 The Quantize POP takes any attribute of its input, quantizes the values to integers or any step size, or it converts values to logical 0 or 1 values, and then outputs the resuting values to the same attribute, any other existing attribute or a new attribute. It operates on either point, vertex or primitive [attributes](https://docs.derivative.ca/Attribute "Attribute").
+
 It can round to the nearest step, or round down to the next lowest step, or round up to the next higher step. Alternately it can compare logically to any parameter-specified value and set the result to 0 or 1.
+
 If you set Parameter Size to 3 and your attribute is a float3 like `P`, then for each component of `P` you can have separate quantizing parameters for each attribute component.
+
 The attributes you specify can be any type, including float2, float3, float4, double, etc. You can cause the output parameter to be converted to integers.
+
 When creating a new attribute, you simply put the new attribute name in Output Attribute Scope. The Quantize POP will determine what data type it will be, but you can override it with the >>> expansion parameters.
+
 For Input Attribute Scope you can specify a subset of the components, like `P(0) P(1)` (same as `P.xy` in [swizzle](https://docs.derivative.ca/index.php?title=Swizzle&action=edit&redlink=1 "Swizzle \(page does not exist\)") notation)
+
 [quantizePOP_Class](https://docs.derivative.ca/QuantizePOP_Class "QuantizePOP Class")
 
 ## Parameters - Quantize Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -92,19 +100,27 @@ For Input Attribute Scope you can specify a subset of the components, like `P(0)
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Quantize POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

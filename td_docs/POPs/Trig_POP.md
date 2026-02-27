@@ -5,20 +5,31 @@ title: Trig_POP
 ---
 
 # Trig POP
+
 ## Summary
 
 The Trig POP is a simple operator that converts attributes that are angles into the trigonometry representation of angles (sine, cosine, tangent). Alternately, the Trig POP can convert from the sine, cosine, tangent representation back to angles using the asin, acos and atan functions. asin(x) can be thought of as "the angle whose sine value is x".
+
 You can choose the units your angles are expressed in - degrees (360 per rotation), radians (2 * 3.14157 per rotation) or simply rotations (1 means 1 rotation)
+
 For example if an attribute has a value of 30 (degrees) and the Operation is set to sin(A), the Trig POP will output .5 to a new attribute.
+
 sinh, cosh and tanh are the hyperbolic functions.
+
 This POP does the same thing as the sin, cos... , asin, acos ... functions in the [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"), [Math Combine POP](https://docs.derivative.ca/Math_Combine_POP "Math Combine POP"), [Math POP](https://docs.derivative.ca/Math_POP "Math POP"). where you can also choose the units of your angles.
+
 sin and cos are true "functions" because for every value of angle A, there is one and only one value for sin(A). However asin(A) etc are not functions as values of A may have an infinite number or zero numbers of values for asin(A)).
+
 The function atan2(A,B) requires that you provide two attribute values.
+
 Note: the other trig functions not included are cot(x) is equal to 1/tan(x). sec(x) = 1/cos(x), and csc(x) = 1/sin(x).
+
 See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"), [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP")
+
 [trigPOP_Class](https://docs.derivative.ca/TrigPOP_Class "TrigPOP Class")
 
 ## Parameters - Trigonometry Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -94,19 +105,27 @@ See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"),
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Trig POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

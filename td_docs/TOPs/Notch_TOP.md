@@ -5,23 +5,33 @@ title: Notch_TOP
 ---
 
 # Notch TOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Educational](https://docs.derivative.ca/TouchDesigner_Educational "TouchDesigner Educational"), [TouchDesigner Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") and [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The Notch TOP will load a Notch Block (extension `.dfxdll`) compiled from [Notch Builder](https://www.notch.one/products/notch-builder/). For Commercial and Educational licenses there is a limit of 2 active blocks at a resolution 1920x1080.
+
 **Note:[CodeMeter Runtime](https://www.wibu.com/support/user/user-software.html) v7.60+ is now required to load Notch blocks.**
+
 Loading the Notch Block into the Notch TOP will generate custom parameters for all the exposed properties in the block. They are split up by page, with each page representing a layer of the block. The output layer can be selected using the 'Layer' parameter.
+
 The custom parameter labels will be generated using the Exposed Name of the exposed property with any special characters or spaces removed. If the Unique Identifier is custom (and not the default auto-generated value) then it will be used as the name of the custom parameter instead. Using a custom Unique Identifier on all exposed properties is recommended for TouchDesigner.
+
 **Enabling Debug Logging:** To diagnose issues with Notch blocks, you can enable logging by setting a Windows Environment variable TOUCH_NOTCH_LOGGING=1.
+
 If the block fails to load and the Notch TOP throws the error: **"Failed to load the Notch Block"** , then it may be due to one of a couple reasons:
   1. The installed CodeMeter Runtime version is out of date. A minimum of v7.60 is required (see above). To verify the version number check under Help > About in the CodeMeter Control Center.
   2. WupiEngine32.dll and WupiEngine64.dll files are missing. This may occur if Notch Builder is not installed or only a Playback license is used. To resolve this: install Notch and locate the missing dll's in the install directory (default under C:\Program Files\Notch), and copy them to /bin within the desired TouchDesigner install directory (eg. C:\Program Files\Derivative\TouchDesigner.2023.12120\bin). After copying, restart TouchDesigner if it is open.
 
 #### Exposed Block Properties
+
 Exposed block properties will be added as parameters on the Notch TOP. Each parameter will be organized under parameter pages sharing a name with their respective Notch block layer.
+
 Most parameters translate easily to TouchDesigner's parameter configuration, but some may require additional context, which is appended to the parameter label in parentheses:
   * **TOP** : A TOP reference. The pixel format should be 8-bit fixed (RGBA) or 16-bit float (RGBA).
   * **Xform** : A 3D Object COMP with transform data (eg. Geometry COMP or Null COMP). The world transform translation and rotation (as a quaternion) values are sent to the Notch block.
@@ -33,9 +43,11 @@ Most parameters translate easily to TouchDesigner's parameter configuration, but
     * **Generic** (1 channel)
 
 See also: [Notch](https://docs.derivative.ca/Notch "Notch")
+
 [notchTOP_Class](https://docs.derivative.ca/NotchTOP_Class "NotchTOP Class")
 
 ## Parameters - Notch Page
+
 - Active `active` - The active state of the node/block. When active, the node will actively render the block. If disabled, the node will release its instance of the block, and unload it if there are no other instances (ie. no other Notch TOPs with the same block). This will allow the block (`.dfxdll`) to become editable again. If re-activated, the block will be reloaded along with any changes.
 - Clear Parameter Values on File Change `clearparams` - When enabled, all parameters will be cleared. When disabled, it will keep parameter values for exposed parameters of the same name when the Notch Block file changes.
 - Block `block` - Specify the .dfxdll file (ie. Notch Block).
@@ -58,6 +70,7 @@ See also: [Notch](https://docs.derivative.ca/Notch "Notch")
 - Purge GPU Mem `purge` - Purge Video RAM used by the block.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -137,8 +150,11 @@ See also: [Notch](https://docs.derivative.ca/Notch "Notch")
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Notch TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Notch TOP Info Channels
   * initializing -
 
@@ -169,7 +185,9 @@ Specific Notch TOP Info Channels
   * block_render_time -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -183,7 +201,9 @@ Specific Notch TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

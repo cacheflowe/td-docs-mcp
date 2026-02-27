@@ -5,12 +5,15 @@ title: Screen_Grab_TOP
 ---
 
 # Screen Grab TOP
+
 ## Summary
 
 The Screen Grab TOP turns the main screen output into a TOP image. It can be captured in real-time while you work.
+
 [screengrabTOP_Class](https://docs.derivative.ca/ScreengrabTOP_Class "ScreengrabTOP Class")
 
 ## Parameters - ScreenGrab Page
+
 - Active `active` - When On, the TOP will grab the screen contents.
 - Active Pulse `activepulse` - Instantly grab the frame. Useful when Active is Off to update the screen-grabbed image for an single frame capture.
 - Source `source` - Select which source to grab, the 'Full Desktop' canvas, a specific display, or an individual application (Windows only).
@@ -26,6 +29,7 @@ The Screen Grab TOP turns the main screen output into a TOP image. It can be cap
 - Delayed (Faster) `delayed` - Faster when On but may not work on some systems (Optimus equipped laptops are problematic).
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -105,9 +109,13 @@ The Screen Grab TOP turns the main screen output into a TOP image. It can be cap
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Screen Grab TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -121,7 +129,9 @@ Extra Information for the Screen Grab TOP can be accessed via an [Info CHOP](htt
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,11 +5,13 @@ title: Widget_COMP
 ---
 
 # Widget COMP
+
 ## Summary
 
 [widgetCOMP_Class](https://docs.derivative.ca/WidgetCOMP_Class "WidgetCOMP Class")
 
 ## Parameters - Layout Page
+
 The Layout parameter page controls the size and position of the panel.
 - X `x` - Specify the horizontal position in pixels relative to its parent.
 - Y `y` - Specify the vertical position in pixels relative to its parent.
@@ -57,6 +59,7 @@ The Layout parameter page controls the size and position of the panel.
 - Size from Window `sizefromwindow` - When enabled the panel component's width and height are set by resizing its floating viewer window.
 
 ## Parameters - Panel Page
+
 The Panel parameter page controls panel attributes such as display on/off, enable on/off, panel help, and interactions with the cursor.
 - Display `display` - Specifies if the panel is displayed or hidden. Changing this parameter may incur some layout processing costs. For simple cases, such as overlays it is more performant to adjust the opacity parameter instead.
 - Enable `enable` - Allows you to prevent all interaction with this panel.
@@ -122,6 +125,7 @@ The Panel parameter page controls panel attributes such as display on/off, enabl
   * Ignore and Draw Over `ignoreover` - Panel will not move when scrollbar is moved. Panel is drawn over scrollbars and sibling panels.
 
 ## Parameters - Look Page
+
 The Color parameter page sets the panel's background, border, and disabled colors.
 - Background Color `bgcolor` - ⊞ - RGB values for the background. (default: black (0,0,0))
   * Red `bgcolorr` -
@@ -184,6 +188,7 @@ The Color parameter page sets the panel's background, border, and disabled color
 - Opacity `opacity` - Allows you to control the transparency of the panel.
 
 ## Parameters - Children Page
+
 The Children parameter page controls aspects of the Panel's children alignment, size, and position.
 - Align `align` - ⊞ - This menu allows you to specify how the children inside the Panel Component will be laid out. The options **Layout Grid Rows**, **Layout Grid Columns** and **Match Network Nodes** will scale the Panel Component's children to fit the Component. They use the Align Order of each of the children to determine the ordering of the children.
   * None `none` -
@@ -252,6 +257,7 @@ The Margin is defined in absolute pixels and does not stretch with the window, a
 - Thickness `scrollbarthickness` - Set the thickness of the scrollbars in pixels.
 
 ## Parameters - Drag/Drop Page
+
 Please refer to [Drag-and-Drop](https://docs.derivative.ca/Drag-and-Drop "Drag-and-Drop") for a full explanation on how Drag and Drop between Panel Components functions.
 - When Dragging This `drag` - ⊞ - Specify if this Panel Component can be dragged.
   * Use Parent's Drag Settings `dragparent` - Follow the parent Panel Components Drag setting.
@@ -277,6 +283,7 @@ Alternatively specify a Table DAT in the drop script field. TouchDesigner will a
 - Drag/Drop Callbacks `dragdropcallbacks` - Specify which DAT holds the custom drag/drop scripts. If blank, press 'Add' to create a DAT with default scripts.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -286,6 +293,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -395,13 +403,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Widget COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

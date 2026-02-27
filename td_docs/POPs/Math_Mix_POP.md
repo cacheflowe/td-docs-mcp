@@ -5,14 +5,21 @@ title: Math_Mix_POP
 ---
 
 # Math Mix POP
+
 ## Summary
 
 The Math Mix POP can do a series of math operations in one node. It is a simpler version of the [Math Combine POP](https://docs.derivative.ca/Math_Combine_POP "Math Combine POP"). Each sequential block on Math Mix's Combine page is an operation that can combine one, two or three attributes. There are over 70 different operations to choose from, such as A + B, sin(A), or mix(A, B, C). Scope A, Scope B and Scope C are parameters containing attribute names of the incoming POPs.
+
 **Handling Inputs** : It allows multiple inputs, but unlike Math Combine, all inputs' attributes are auto-named. The first input's attributes have their names unchanged, but the second input's attributes are prefixed with `in1_`, such as `in1_Tex`. Attribute names are prefixed with `in2_` etc for the other inputs. These attribute names appear in the menus to the right of each Scope A B and C on the Combine page.
+
 On the Inputs page, Math Mix lets you choose whether you are operating on point, vertex or primitive attributes.
+
 Inputs that are a single-point are treated as constant values and can be combined with multi-point POPs.
+
 Otherwise, when the input's sizes (number of points) don’t match, it gives you a choice of erroring, warning or ignoring the mis-match, and a choice of how to make them align.
+
 **Combine** page (same for both Math Combine and Math Mix):
+
 Each sequential block is like a mini-equation that lets you operate on one, two or three attributes, and put the result in the same or another attribute.
   * **Operation** - There are over 70 possible operations.
   * Scope A - an attribute, or components of attributes like `P(1) P(2)`, or its equivalent `P.yz`
@@ -21,28 +28,45 @@ Each sequential block is like a mini-equation that lets you operate on one, two 
   * Result Scope (an existing attribute name, components, or a new attribute name)
 
 For A, B and C you can also put constant numbers, or constant vectors like `.3 .4 .5`.
+
 Also on the **Uniforms** page you can specify temporary attributes that have constant values that also can be used on the Combine page.
+
 Scope A, B or C can contain an attribute name, or individual "**components** " of a "vector attribute". A vector attribute is a 2- 3- or 4-value attribute. (e.g. The second component of a float3 vector `.3 .4 .5` is `.4`.)
+
 Since we can put in the Scope A, B or C things like `P(0) P(2) N(0)`, you can actually mix and **reorder components** and put the results in any (other) component combination of one attribute.
+
 Attribute menu - From the Scope A, B and C's menu on their right you can choose from the incoming attributes, the new attributes you created in Math Mix, and also via the **>** at the bottom of the menu the set of very useful **built-in attributes** (they all start with a `_`. Built-in attributes include the point index, normalized indexes, the time slice step time, Pi (3.14157), [Dimensions](https://docs.derivative.ca/Dimension "Dimension"), number of points, etc.
+
 The Result Scope parameter directs the results of an operation to an attribute. You specify the name of the attribute you want to create or over-write, and it will do its best to figure out its properties - type and size. It visually shows in italics what attribute that a block would be writing to, without you explicitly specifying.
+
 It handles combining floats with floats, floats with vectors, and vectors with vectors.
+
 You can specify groups of points/vertices to operate on, others being untouched or left at default values.
+
 **Output** page - lets you keep or delete temporary attributes:
   *     * Delete Attributes - which ones to delete from the output
     * Delete New Attributes toggle
 
 Note that on the **Common** page you can select to output only the attributes that were affected in the POP, useful for cases where you want to output one attribute per POP.
+
 **Pseudocode** - Note the pop-up info (middle-click on the node) contains pseudocode of the operations in this POP, for easier understanding of what the POP is doing.
+
 **Angles** are in degrees, but the Angle Units menu parameter lets you express angles in radians, cycles or degrees.
+
 It uses the primitives and vertices of the first input and other inputs' primitives and vertices are ignored.
+
 Optimized - Note that any attribute you select on the Inputs page does not copy the attribute data - it remains as a reference to the attribute arrays of the incoming POPs.
+
 Attaching an Info DAT will show you raw GLSL code that is generated.
+
 See also [Math Combine POP](https://docs.derivative.ca/Math_Combine_POP "Math Combine POP"), [Math POP](https://docs.derivative.ca/Math_POP "Math POP"), [ReRange POP](https://docs.derivative.ca/ReRange_POP "ReRange POP"), [Quantize POP](https://docs.derivative.ca/Quantize_POP "Quantize POP"), [Limit POP](https://docs.derivative.ca/Limit_POP "Limit POP")
+
 See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title=Math_Mix_Combine_Functions&action=edit&redlink=1 "Math Mix Combine Functions \(page does not exist\)")
+
 [mathmixPOP_Class](https://docs.derivative.ca/MathmixPOP_Class "MathmixPOP Class")
 
 ## Parameters - Inputs Page
+
 - Length Mismatch `lengthmismatchnotif` - ⊞ - Length mis-match motification action.
   * Length Mismatch `lengthmismatchnotif` -
   * Length Mismatch Action `lengthmismatchaction` - Specify which attribute values to use when sampling outside of the input range.
@@ -61,6 +85,7 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * Primitive `primitive` -
 
 ## Parameters - Uniforms Page
+
 - Vector `vec` - Start of Sequential Parameter Blocks to define uniform variables.
 - Name `vec0name` - The name of the uniform.
 - Type `vec0type` - ⊞ - The number of components for the array.
@@ -98,6 +123,7 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
 - Alpha `color0alpha` - Alpha value.
 
 ## Parameters - Combine Page
+
 - Combine `comb` - Start of Sequential Parameter Blocks for combines.
 - Operation `comb0oper` - ⊞ - Selects the combine operation to perform.
   * None `none` -
@@ -193,9 +219,12 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * Tex `Tex` -
 
 ## Parameters - Output Page
+
 - Delete Attributes `delattrs` - Attributes to delete from output.
 - Delete New Attributes `delnewattrs` - Enable removal of attributes created by the operator
+
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -220,14 +249,21 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Math Mix POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

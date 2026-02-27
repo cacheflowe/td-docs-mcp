@@ -5,15 +5,21 @@ title: LTC_Out_CHOP
 ---
 
 # LTC Out CHOP
+
 ## Summary
 
 The LTC Out CHOP outputs "linear timecode" which is a SMPTE timecode data encoded into an audio signal. See also [Linear Timecode](http://en.wikipedia.org/wiki/Linear_timecode).
+
 Use an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to determine which values are currently being output.
+
 The output of this CHOP can be sent to an [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP").
+
 See also: [LTC In CHOP](https://docs.derivative.ca/LTC_In_CHOP "LTC In CHOP")
+
 [ltcoutCHOP_Class](https://docs.derivative.ca/LtcoutCHOP_Class "LtcoutCHOP Class")
 
 ## Parameters - LTC Page
+
 - Play Mode `playmode` - ⊞ - Specifies the method used to output LTC, there are 2 options.
   * Sequential `sequential` - This mode continually plays forward.
   * Timecode Object/CHOP/DAT `timecodeop` - This mode allows the user to set the LTC value by reference to a timecode in the form of either a CHOP, DAT, or [Timecode Class](https://docs.derivative.ca/Timecode_Class "Timecode Class") object.
@@ -35,6 +41,7 @@ See also: [LTC In CHOP](https://docs.derivative.ca/LTC_In_CHOP "LTC In CHOP")
 - Audio Rate `audiorate` - This audio sampling rate of the output signal.
 
 ## Parameters - User Page
+
 User Data bits in LTC are reversed for transmitting of custom user data in the time code signal. This is often used for reel number and date but can be used for anything.
 - User Data 1 `user1` - Send this value in the bits reserved for User Data 1.
 - User Data 2 `user2` - Send this value in the bits reserved for User Data 2.
@@ -46,6 +53,7 @@ User Data bits in LTC are reversed for transmitting of custom user data in the t
 - User Data 8 `user8` - Send this value in the bits reserved for User Data 8.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -63,8 +71,11 @@ User Data bits in LTC are reversed for transmitting of custom user data in the t
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the LTC Out CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific LTC Out CHOP Info Channels
   * ltc_frame -
 
@@ -79,7 +90,9 @@ Specific LTC Out CHOP Info Channels
   * ltc_message_rate_df -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -93,7 +106,9 @@ Specific LTC Out CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

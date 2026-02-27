@@ -5,13 +5,17 @@ title: Math_TOP
 ---
 
 # Math TOP
+
 ## Summary
 
 The Math TOP performs specific mathematical operations on the pixels of the input image.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [mathTOP_Class](https://docs.derivative.ca/MathTOP_Class "MathTOP Class")
 
 ## Parameters - OP Page
+
 - Channel Pre OP `preop` - ⊞ - A menu of unary operations that are performed on each channel as it comes in to the Math TOP include:
   * Off `off` - Don't do anything.
   * Negate `negate` - Take the negative value of each input value.
@@ -49,6 +53,7 @@ The Math TOP performs specific mathematical operations on the pixels of the inpu
 - Combine Channels Output `outputchannels` - Select which channels are included in the output result.
 
 ## Parameters - Multi-Add Page
+
 The three steps are next performed in the following order:
 - Pre-Add `preoff` - First, add this value to each pixel of each channel.
 - Multiply `gain` - Then multiply by this value.
@@ -60,6 +65,7 @@ The three steps are next performed in the following order:
   * Divide RGB by Alpha and Fill `rgbdivalphafill` - Divides the RGB color values by the alpha values in the image and then fills the image with white pixels where alpha = 0.
 
 ## Parameters - Range Page
+
 Another way to multiply/add. This is the final step prior to output.
 - From Range `fromrange` - ⊞ - Working on all channels, converts the specified From Range (low-high range) into the To Range below.
   * `fromrange1` -
@@ -102,6 +108,7 @@ Another way to multiply/add. This is the final step prior to output.
   * `torangea2` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -181,12 +188,17 @@ Another way to multiply/add. This is the final step prior to output.
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Math TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -200,7 +212,9 @@ Extra Information for the Math TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

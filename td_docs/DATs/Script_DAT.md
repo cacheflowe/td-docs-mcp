@@ -5,19 +5,26 @@ title: Script_DAT
 ---
 
 # Script DAT
+
 ## Summary
 
 The Script DAT runs a script each time the DAT cooks and can build/modify the output table based in the optional input tables. The Script DAT is created with a [docked](https://docs.derivative.ca/Docking "Docking") (attached) DAT that contains three Python methods: `cook`, `onPulse`, and `setupParameters`. The `cook` method is run each time the Script DAT cooks. The `setupParameters` method is run whenever the Setup Parameter button on the Script page is pressed. The `onPulse` method is run whenever a custom pulse parameter is pushed.
+
 Refer to Help -> Python Examples, and Help -> [Operator Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets").
+
 Note: Because the Script DAT can get data from anywhere, it's difficult to determine what it procedurally depends on. So every time that any Script OP runs it will add to a list of operators, parameters, nodes etc that it depends upon, and when they change, the Script OP will re-cook. The list is reset when a `.toe` restarts.
+
 See also: [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP"), [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP"), [Script TOP](https://docs.derivative.ca/Script_TOP "Script TOP")
+
 [scriptDAT_Class](https://docs.derivative.ca/ScriptDAT_Class "ScriptDAT Class")
 
 ## Parameters - Script Page
+
 - Callbacks DAT `callbacks` - Specifies the DAT which holds the callbacks. See [scriptDAT_Class](https://docs.derivative.ca/ScriptDAT_Class "ScriptDAT Class") for usage.
 - Setup Parameters `setuppars` - Clicking the button runs the `setupParameters()` callback function.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -34,18 +41,25 @@ See also: [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP"), [
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Script DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

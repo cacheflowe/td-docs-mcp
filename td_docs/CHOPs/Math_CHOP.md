@@ -5,22 +5,35 @@ title: Math_CHOP
 ---
 
 # Math CHOP
+
 ## Summary
 
 The Math CHOP performs arithmetic operations on channels. The channels of a CHOP can be combined into one channel, and several CHOPs can be combined into one CHOP.
+
 The OP page lets you pre-operate on each sample, like making all samples positive or taking the square of each sample.
+
 Using **Combine Channels** , for an input CHOP with multi-channels, you can multiply the samples of one channel by the samples in the other channels, reducing N channels down to one. You can combine them by multiplying, adding, finding the maximum, etc..
+
 Using **Combine CHOPs** , where there are two or more CHOP inputs, you can multiply (or add, etc.) the channels in one CHOP with the channels in all the other CHOPs, reducing N CHOPs to 1. (otherwise channels of multi-inputs are just merged)
+
 You can then post-operate on the resulting samples - negate, square root, etc.
+
 Then using the Mult-Add page it can offset and scale the values of each sample.
+
 More conveniently you can use the Range page to do linear scaling as well by setting an output low-high range for a certain input low-high range.
+
 Finally, you can round the resulting values off to an integer.
+
 **Tip** : You can affect only certain channels of your input by using the Scope parameter on the Common page.
+
 **Note** : To do logic operations (and, or, ...) between channels or CHOPs, use the [Logic CHOP](https://docs.derivative.ca/Logic_CHOP "Logic CHOP").
+
 **Tip: Customizing each channel:** : You can use the local member `chanIndex` in a parameter like Post-Add, for example, `me.chanIndex*2` to give a different post-add value for each channel. `chanIndex` is available in numerous CHOPs like the [Pattern CHOP](https://docs.derivative.ca/Pattern_CHOP "Pattern CHOP"). (expressions are non-optimized)
+
 [mathCHOP_Class](https://docs.derivative.ca/MathCHOP_Class "MathCHOP Class")
 
 ## Parameters - OP Page
+
 The four steps are performed in the following order:
 - Channel Pre OP `preop` - ⊞ - Unary operations can be performed on individual channels. A menu of unary operations (as described above) that are performed on each channel as it comes in to the Math CHOP include:
   * Off `off` - Don't do anything to the channel.
@@ -84,12 +97,14 @@ The four steps are performed in the following order:
   * Round `round` - Round a value to the nearest integer.
 
 ## Parameters - Mult-Add Page
+
 The three steps are next performed in the following order:
 - Pre-Add `preoff` - First, add the value to each sample of each channel.
 - Multiply `gain` - Then multiply by this value.
 - Post-Add `postoff` - Then add this value.
 
 ## Parameters - Range Page
+
 This is the final step prior to output.
 - From Range `fromrange` - ⊞ - Another way to multiply/add. Converts from one low-high range to another range.
   * `fromrange1` -
@@ -100,6 +115,7 @@ This is the final step prior to output.
   * `torange2` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -118,17 +134,25 @@ This is the final step prior to output.
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Math CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -142,7 +166,9 @@ Extra Information for the Math CHOP can be accessed via an [Info CHOP](https://d
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

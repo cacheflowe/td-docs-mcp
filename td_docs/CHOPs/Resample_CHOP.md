@@ -5,13 +5,17 @@ title: Resample_CHOP
 ---
 
 # Resample CHOP
+
 ## Summary
 
 The Resample CHOP resamples an input's channels to a new sample rate and/or start/end interval. In all cases, the entire input interval is resampled to match the output interval.
+
 Resample does a simple linear interpolation of the Time Slice in [Time Slicing](https://docs.derivative.ca/Time_Slicing "Time Slicing") mode. Only the sample rate can be changed.
+
 [resampleCHOP_Class](https://docs.derivative.ca/ResampleCHOP_Class "ResampleCHOP Class")
 
 ## Parameters - Resample Page
+
 - Method `method` - ⊞ - The resample method to apply to the channels:
   * Same Rate, New Interval `strech` - Stretches or compresses the channels like the [Stretch CHOP](https://docs.derivative.ca/Stretch_CHOP "Stretch CHOP").
   * New Rate, Same Time Range `preserve` - Changes the sample rate without changing the time-length of the CHOP.
@@ -42,6 +46,7 @@ Resample does a simple linear interpolation of the Time Slice in [Time Slicing](
 - Use Last Frame Only `uselastframe` - Trim to the input CHOP's last frame and perform the resample on that
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -60,18 +65,26 @@ Resample does a simple linear interpolation of the Time Slice in [Time Slicing](
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Resample CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -85,7 +98,9 @@ Extra Information for the Resample CHOP can be accessed via an [Info CHOP](https
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

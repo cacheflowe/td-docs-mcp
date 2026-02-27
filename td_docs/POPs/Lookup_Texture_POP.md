@@ -5,17 +5,25 @@ title: Lookup_Texture_POP
 ---
 
 # Lookup Texture POP
+
 ## Summary
 
 The Lookup Texture POP in its simplest form takes two attributes (the Lookup Attribute U and the Lookup Attribute V) with values in the 0-1 range and for each point, uses the attribute value as an index into the pixels of a TOP, pulling the four RGBA values, and placing those values into POP attributes.
+
 If the U index is 0, it pulls values from the first column of the TOP, and if the index is 1 it pulls from the last column of the TOP. If the Lookup Index Units menu is set to Pixel Index, The lookup index can be expressed as pixel number, going from 0 to imagewidth-1.
+
 If the index is out of range, the Extend Left and Right menus determine what to do to the index before doing the lookup, such as holding it at 0 or 1, or cycling the value between 0 and 1.
+
 The Output Attribute Scope parameter determine what to do with each of the RGBA pixel values when they are retrieved - you can re-range the value before putting it in the specified output attribute.
+
 You can lookup into a 3D texture TOP by including an attribute component name in the Lookup Attribute W parameter.
+
 See also [Lookup Attribute POP](https://docs.derivative.ca/Lookup_Attribute_POP "Lookup Attribute POP"), [Lookup Channel POP](https://docs.derivative.ca/Lookup_Channel_POP "Lookup Channel POP"), [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP") (Lookup page)
+
 [lookuptexturePOP_Class](https://docs.derivative.ca/LookuptexturePOP_Class "LookuptexturePOP Class")
 
 ## Parameters - Lookup Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -111,19 +119,27 @@ See also [Lookup Attribute POP](https://docs.derivative.ca/Lookup_Attribute_POP 
   * Lookup Index Offset `lookupindexoffset2` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Lookup Texture POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

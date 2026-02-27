@@ -5,13 +5,18 @@ title: RealSense
 ---
 
 # RealSense
+
 RealSense is a tracking device from Intel. TouchDesigner acquires multiple data streams from Intel RealSense devices using the [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP") and [RealSense CHOP](https://docs.derivative.ca/RealSense_CHOP "RealSense CHOP").
+
 The [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP") uses the [Intel librealsense API](https://github.com/IntelRealSense/librealsense), which provides cross platform support for all camera models. The [RealSense CHOP](https://docs.derivative.ca/RealSense_CHOP "RealSense CHOP") uses the [Cubemos RealSense Skeleton Tracking API](https://www.intelrealsense.com/skeleton-tracking/) to provide skeleton tracking data. **Note:** the RealSense CHOP is now deprecated as licenses for the skeleton tracking SDK are no longer available from Cubemos.
+
 **NOTE:** The [librealsense SDK v2.50.0](https://github.com/IntelRealSense/librealsense/releases) does not look like it will be updated for Apple Silicon, so it is not an option to add to these builds.
 [![RealSenseD435.jpg](https://docs.derivative.ca/images/c/c7/RealSenseD435.jpg)](https://docs.derivative.ca/File:RealSenseD435.jpg) [![RealSenseT265.jpg](https://docs.derivative.ca/images/e/e2/RealSenseT265.jpg)](https://docs.derivative.ca/File:RealSenseT265.jpg)
 
 ##  RealSense TOP
+
 The [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP") node outputs color, depth and IR data in various forms.
+
 Various data streams can be captured by the RealSense TOP:
   1. **Color** , which is the video from the RealSense camera color sensor.
   2. **Depth** , a calculation of the depth of each pixel. 0 means the pixel is 0 meters from the camera and 1 means the pixel is the maximum distance or more from the camera.
@@ -26,7 +31,9 @@ Various data streams can be captured by the RealSense TOP:
   11. **IMU/SLAM Tracking** With the T265 model, the positional data of where the camera is in space can be retrieved using the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
 
 See the point cloud sample at: [http://www.derivative.ca/Forum/viewtopic.php?f=22&t=7977](http://www.derivative.ca/Forum/viewtopic.php?f=22&t=7977)
+
 ###  Supported Devices
+
 Currently the [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP") supports the following RealSense devices:
   * F200
   * R200
@@ -42,17 +49,29 @@ Currently the [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSens
   * D555
 
 ##  RealSense CHOP
+
 **DEPRECATED:** Skeleton tracking features no longer licensable by Cubemos.
+
 The [RealSense CHOP](https://docs.derivative.ca/RealSense_CHOP "RealSense CHOP") references a [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP") via parameter. The RealSense CHOP supports skeleton tracking on Windows.
+
 **Skeleton Tracking:** Performs [skeleton tracking](https://www.intelrealsense.com/skeleton-tracking/) using the referenced RealSense TOP's camera. Skeleton Tracking must be enabled on the RealSense TOP.
+
 The [RealSense CHOP](https://docs.derivative.ca/RealSense_CHOP "RealSense CHOP") supports skeleton tracking through the [Cubemos RealSense Skeleton Tracking API](https://www.intelrealsense.com/skeleton-tracking/). The API requires a license to use in TouchDesigner. A full license can be purchased [here](https://www.intelrealsense.com/skeleton-tracking); a trial license is also available. Installing the SDK is required to setup the license file. After installation of the SDK, the license can be setup with the `post_installation.bat` script in the Cubemos/SkeletonTracking/scripts directory. A model file (`.cubemos`) is also required for the skeleton tracking, two of which are packaged with the Cubemos Skeleton Tracking SDK, located in the `Cubemos/SkeletonTracking/models/skeleton-tracking` folder.
+
 ##  Installing Required Software
+
 ####  Camera Firmware
+
 The [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP") does *not* require drivers to be installed, but does require that the correct firmware is installed on the device. You can do this by installing the RealSense SDK from here: <https://github.com/IntelRealSense/librealsense/releases> Then use the Camera Viewer tool to update the firmware to the recommended version.
+
 The firmware downloads are available here: <https://dev.intelrealsense.com/docs/firmware-releases>
+
 The 2025.30000 series uses SDK version 2.56.5. <https://github.com/IntelRealSense/librealsense/releases/tag/v2.56.5>
 
 See [RealSense CHOP](https://docs.derivative.ca/RealSense_CHOP "RealSense CHOP"), [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP")
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
 An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

@@ -5,12 +5,15 @@ title: Render_Pass_TOP
 ---
 
 # Render Pass TOP
+
 ## Summary
 
 The Render Pass TOP is used along with a [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") to achieve multipass rendering. It can build upon its inputs render by using the existing depth/color information in the framebuffers, or it can optionally clear one or both of the depth/color buffers before it does its render.
+
 [renderpassTOP_Class](https://docs.derivative.ca/RenderpassTOP_Class "RenderpassTOP Class")
 
 ## Parameters - Render Pass Page
+
 - Render/RenderPass TOP `renderinput` - The network path to the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") used as input. This parameter can be used as an alternate to connecting a Render or Render Pass TOP to the Render Pass's input connector. Makes it easier to select a render from another network.
 - Camera `camera` - Specifies which [Cameras](https://docs.derivative.ca/Camera_COMP "Camera COMP") to look through when rendering the scene.
 - Geometry `geometry` - Specifies which [Geometry](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") will be included in the rendered scene. You can use [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") to specify objects using patterns. Example: `geo* ^geo7` will render all Geometry components whose names start with `geo` except `geo7`.
@@ -36,6 +39,7 @@ The Render Pass TOP is used along with a [Render TOP](https://docs.derivative.ca
 - Transparency/Peel Layers `transpeellayers` - Refer to to the same parameter in the [Render TOPs](https://docs.derivative.ca/Render_TOP "Render TOP") help page.
 
 ## Parameters - Advanced Page
+
 - Render `render` - Enables rendering; 1 = on, 0 = off.
 - Dither `dither` - Dithers the rendering to help deal with banding and other artifacts created by precision limitations of 8-bit displays.
 - Color Output Needed `coloroutputneeded` - This is an optimization if you don't actually need the color result from this pass. Turning this off avoids a copy from the offscreen render buffer to the TOP's texture. When anti-aliasing is enabled turning this off will also avoid 'resolving' the anti-aliasing.
@@ -59,6 +63,7 @@ The Render Pass TOP is used along with a [Render TOP](https://docs.derivative.ca
 - Overdraw Limit `overdrawlimit` - This value quantizes the outputted color value to some # of overdraws. Refer to the [Early Depth-Test](https://docs.derivative.ca/Early_Depth-Test "Early Depth-Test") for more information.
 
 ## Parameters - Crop Page
+
 - Crop Left `cropleft` - Positions the left edge of the rendered image.
 - Crop Left Unit `cropleftunit` - ⊞ - Select the units for this parameter from Pixels, Fraction (0-1), Fraction Aspect (0-1 considering aspect ratio).
   * P `pixels` -
@@ -84,6 +89,7 @@ The Render Pass TOP is used along with a [Render TOP](https://docs.derivative.ca
   * A `fractionaspect` -
 
 ## Parameters - Samplers Page
+
 - Sampler `sampler` -
 - Name `sampler0name` - This is the sampler name that the GLSL program will use to sample from this TOP. The samplers need to be declared as the same dimensions as the TOP (sampler2D for a 2D TOP, sampler3D for 3D TOP).
 - TOP `sampler0top` - ⊞ - This is the TOP that will be referenced by the above sampler name above it.
@@ -118,6 +124,7 @@ The Render Pass TOP is used along with a [Render TOP](https://docs.derivative.ca
   * 16x `16x` -
 
 ## Parameters - Vectors Page
+
 - Vector `vec` -
 - Uniform Name `vec0name` - The uniform name, as declared in the shader.
 - Value `vec0value` - ⊞ -
@@ -127,6 +134,7 @@ The Render Pass TOP is used along with a [Render TOP](https://docs.derivative.ca
   * Value `vec0valuew` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -206,12 +214,17 @@ The Render Pass TOP is used along with a [Render TOP](https://docs.derivative.ca
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Render Pass TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -225,7 +238,9 @@ Extra Information for the Render Pass TOP can be accessed via an [Info CHOP](htt
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

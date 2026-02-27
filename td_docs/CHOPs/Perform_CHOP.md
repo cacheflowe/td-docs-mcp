@@ -5,16 +5,23 @@ title: Perform_CHOP
 ---
 
 # Perform CHOP
+
 ## Summary
 
 The Perform CHOP outputs many channels like frames-per-second, describing the current state of the TouchDesigner process. As channels they can be manipulated into user interfaces and calculations to adjust real-time self-tuning of the process.
+
 It outputs the "cook time" of the prior frame that was drawn, which is a reflection of how many frames TouchDesigner cooked in the prior second. The `cook`
+
 **Tip** : Put a Trail CHOP after the Perform CHOP to watch its progress.
+
 channel, when sent to a Trail CHOP shows which frames were cooked and which were skipped, useful in optimizing your work to reach a desired frame rate.
+
 The Built-in Variables found on Dialogs -> Variables -> Built-in include more useful data on your running system. See also the Built-in Variables section of the [Variables](https://docs.derivative.ca/Variables "Variables") page.
+
 [performCHOP_Class](https://docs.derivative.ca/PerformCHOP_Class "PerformCHOP Class")
 
 ## Parameters - Perform Page
+
 This is a listing of the channels output from the Perform CHOP.
 - Frames per Second `fps` - The number of frames rendered in the last second.
 - Frame Time `msec` - Amount of time each frame takes to cook in msec.
@@ -44,6 +51,7 @@ This is a listing of the channels output from the Perform CHOP.
 - Expressions Using Cache `cachedexpressions` - The number of python expression that have been cached, see [Optimized Python Expressions](https://docs.derivative.ca/Optimized_Python_Expressions "Optimized Python Expressions").
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -61,9 +69,13 @@ This is a listing of the channels output from the Perform CHOP.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Perform CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -77,7 +89,9 @@ Extra Information for the Perform CHOP can be accessed via an [Info CHOP](https:
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

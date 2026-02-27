@@ -5,13 +5,17 @@ title: Constant_TOP
 ---
 
 # Constant TOP
+
 ## Summary
 
 The Constant TOP sets the red, green, blue, and alpha (r, g, b, and a) channels individually. It is commonly used to create a solid color TOP image.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays. For this TOP to generate a 3D texture output, it requires a 3D texture type as input. You can use a [Texture 3D TOP](https://docs.derivative.ca/Texture_3D_TOP "Texture 3D TOP") or [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") to create 3D texture types.
+
 [constantTOP_Class](https://docs.derivative.ca/ConstantTOP_Class "ConstantTOP Class")
 
 ## Parameters - Constant Page
+
 - Color `color` - ⊞ - Sets the red, green and blue color channels. Clicking on the color swatch opens a color picker with RGB and HSV (Hue, Sat, and Value) pickers.
   * Red `colorr` -
   * Green `colorg` -
@@ -25,6 +29,7 @@ The Constant TOP sets the red, green, blue, and alpha (r, g, b, and a) channels 
   * 0 to 65535 `u65536` - For each channel, 0 is black, 65535 is white.
 
 ## Parameters - Output Page
+
 - Comp Over Input `compoverinput` - Turning this On will composite the input with the image.
 - Operation `operand` - ⊞ - Choose which composite operation is performed from this menu. Search the web for 'blend modes' for more detailed information on the effects of each type.
   * Add `add` - input1.rgba + input2.rgba
@@ -77,6 +82,7 @@ The Constant TOP sets the red, green, blue, and alpha (r, g, b, and a) channels 
 - Swap Order `swaporder` - Swaps the order of the composite with the input.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -176,12 +182,17 @@ The Constant TOP sets the red, green, blue, and alpha (r, g, b, and a) channels 
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0: Composite Input - Control the Composite operation via the parameters on the Output Page of this operator.
 
 ## Info CHOP Channels
+
 Extra Information for the Constant TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -195,7 +206,9 @@ Extra Information for the Constant TOP can be accessed via an [Info CHOP](https:
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

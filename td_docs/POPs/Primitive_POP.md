@@ -5,20 +5,31 @@ title: Primitive_POP
 ---
 
 # Primitive POP
+
 ## Summary
 
 The Primitive POP lets you manually create primitives. Primitives are made from points, so it takes an optional input POP, from which you can delete its primitives and create new ones. Then you can add a set of new points manually using blocks of sequential parameters on the Points page.
+
 Next on the Primitives page you create new triangles, quads, lines, line strips and point primitives. When Method is By Set, and Primitive Type is Triangles, every 3 points creates a triangle. When Method is By Pattern, the points are selected by [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching"), for example selecting Line Strip and pattern `[0-9]` creates a 10-point line strip.
+
 On the Setup page the points can be given any new built-in or custom attributes.
+
 On the Setup page you can remove the original primitives from the input POP by turning on turn on Delete Primitives + Keep Points.
+
 On the Post page you can remove unused points in the result or turn them into point primitives.
+
 When you create new primitives from the consolidated set of points, using sequential blocks you can create any combination of primitive types, and each primitive's vertices can be manually-specified or generated using numeric patterns.
+
 See also [Point POP](https://docs.derivative.ca/Point_POP "Point POP") which is basically the Points page of the Primitive POP.
+
 You can re-connect a set of existing points by connecting a POP to the input, turning on Delete Primitives and Keep Points, adding no new points, then creating new primitives on the Primitive page.
+
 To create a Point primitive per point, on the Primitive page, change Type to Point.
+
 [primitivePOP_Class](https://docs.derivative.ca/PrimitivePOP_Class "PrimitivePOP Class")
 
 ## Parameters - Setup Page
+
 - Delete Primitives and Keep Points `keep` - Enable removal of input primitives while keeping points.
 - Add Points `addpts` - Whether to add new points.
 - Pre-Multiply RGB by Alpha `premultcolor` - Enable RGB values pre-multiplication with the Alpha.
@@ -53,6 +64,7 @@ To create a Point primitive per point, on the Primitive page, change Type to Poi
   * Default Value `attr0value3` - Attribute value(s).
 
 ## Parameters - Points Page
+
 - Point `pt` -
 - Position `pt0pos` - ⊞ -
   * Position `pt0posx` -
@@ -60,6 +72,7 @@ To create a Point primitive per point, on the Primitive page, change Type to Poi
   * Position `pt0posz` -
 
 ## Parameters - Primitives Page
+
 - Method `method` - ⊞ - How to create new primitives - specifying by ordering rules, or by using alphanumeric patterns like [0-5]
   * None `none` -
   * By Set `set` - Specifies the method to use to group points by sets.
@@ -93,6 +106,7 @@ To create a Point primitive per point, on the Primitive page, change Type to Poi
 - Point Index Pattern `prim0pattern` - Index-matching pattern.
 
 ## Parameters - Post Page
+
 - Unused Points `unusedpointsop` - ⊞ - Sets the operation to do with the points not used by primitives.
   * Do Nothing `donothing` -
   * Remove `remove` -
@@ -101,6 +115,7 @@ To create a Point primitive per point, on the Primitive page, change Type to Poi
 - Copy Topology Info Back to CPU `cpureadback` - Enable copying the point count and topology information held on the GPU to the CPU.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -145,14 +160,21 @@ To create a Point primitive per point, on the Primitive page, change Type to Poi
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Create POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

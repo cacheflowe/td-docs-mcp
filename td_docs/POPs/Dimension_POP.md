@@ -5,11 +5,15 @@ title: Dimension_POP
 ---
 
 # Dimension POP
+
 ## Summary
 
 The Dimension POP can alter the dimensions of a POP. See [Dimension](https://docs.derivative.ca/Dimension "Dimension").
+
 The product of the new dimensions has to be equal to the number of points, otherwise it will give a warning and not change anything.
+
 In all cases the points and point order does not change in any way, nor do vertices nor primitives – no data change. It only changes how the organization of points is viewed.
+
 You can add a Dimension
 ```
 20 33 -> 20 33 1 or 1 20 33
@@ -33,7 +37,9 @@ Or split a dimension into two equal dimensions
 [dimensionPOP_Class](https://docs.derivative.ca/DimensionPOP_Class "DimensionPOP Class")
 
 }}
+
 ## Parameters - Dimension Page
+
 - Mode `mode` - ⊞ - Choose to reorder dimensions or set dimensions.
   * Reorder Dimensions (Reorder Points) `reorderdims` -
   * Set Dimensions `setdims` -
@@ -43,19 +49,27 @@ Or split a dimension into two equal dimensions
 - Number `dim0number` - The size of the dimension in the current block.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Dimension POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

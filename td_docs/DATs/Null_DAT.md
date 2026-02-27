@@ -5,15 +5,19 @@ title: Null_DAT
 ---
 
 # Null DAT
+
 ## Summary
 
 The Null DAT has no effect on the data. It is an instance of the DAT connected to its input. The Null DAT is often used when making reference to a DAT network, allowing new DATs to be added to the network (upstream) without the need to update the reference.
+
 [nullDAT_Class](https://docs.derivative.ca/NullDAT_Class "NullDAT Class")
 
 ## Parameters - Null Page
+
 No parameters.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -40,18 +44,25 @@ No parameters.
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Null DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

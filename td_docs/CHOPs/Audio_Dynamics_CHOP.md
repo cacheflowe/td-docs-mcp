@@ -5,20 +5,29 @@ title: Audio_Dynamics_CHOP
 ---
 
 # Audio Dynamics CHOP
+
 ## Summary
 
 The Audio Dynamics CHOP is designed to control the dynamic range of an audio signal. Dynamic range refers to how loud and quiet the audio is over some period of time. The Operator contains two types of dynamic control: compression and limiting. It is recommended that you [link](https://docs.derivative.ca/Link "Link") this CHOP to an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"), so that you can have some visual feedback: The amount of compression or limiting which is being applied will be displayed in the Info CHOP.
+
 **Compressor** The goal of a compressor is to reduce the amplitude of a signal when it crosses a certain threshold, while introducing little to no harmonic distortion. The desired threshold is set by the user, and the amount of compression to be applied is determined by the compression ratio. The attack and release parameters determine how quickly the compression will be applied and released, as incoming signal goes above and below the threshold.
+
 **Limiter** The purpose of a limiter is to ensure a signal is within a certain dynamic range, while introducing as little harmonic distortion as possible. Unlike the compressor, the goal is not to apply a smooth or musical form of dynamic control, but instead to keep the signal within a 'safe' range that is compatible with any CHOPS that are downstream (for example, an Audio Device Out). This means that the Limiter has a much more abrupt (instant) attack value, which cannot be adjusted by the user.
+
 Input 2: **Side Chain Channels** - Other audio channels coming in can be used to determine the gains that are applied to the audio channels of the first input.
+
 **NOTE** : This is a useful article for procedurally [mixing audio for games](http://gameaudionoise.blogspot.co.uk/p/all-in-mix-importance-of-real-time.html).
+
 See [Audio Filter CHOP](https://docs.derivative.ca/Audio_Filter_CHOP "Audio Filter CHOP"), [Audio Para EQ CHOP](https://docs.derivative.ca/Audio_Para_EQ_CHOP "Audio Para EQ CHOP"), [Audio Band EQ CHOP](https://docs.derivative.ca/Audio_Band_EQ_CHOP "Audio Band EQ CHOP"), [Audio Spectrum CHOP](https://docs.derivative.ca/Audio_Spectrum_CHOP "Audio Spectrum CHOP") See also: [Envelope CHOP](https://docs.derivative.ca/Envelope_CHOP "Envelope CHOP").
+
 [audiodynamicsCHOP_Class](https://docs.derivative.ca/AudiodynamicsCHOP_Class "AudiodynamicsCHOP Class")
 
 ## Parameters - Pre Page
+
 - Input Gain (dB) `inputgain` - This parameter controls the volume of the channel before it reaches the compressor. If the signal to be compressed is not in a useful dynamic range, this parameter can be used to repair it.
 
 ## Parameters - Compressor Page
+
 - Enable Compressor `enablecompressor` - Turns the compressor on or off.
 - Compression Type `compressiontype` - ⊞ - Determines which compression method to use.
   * Automatic Gain Control `compagc` - This type of compression is suitable for passages of audio which are varying in amplitude over an extended period of time. To apply this type of compression, set the threshold to a value which is near the maximum volume that you want to hear. Apply a large compression ratio (around 1.0), and set the attack and release to high values. As the passage of audio crosses the threshold value, compression will slowly be applied, and if set properly, the signal will be compressed to a constant range. Setting the attack and release too low will cause the output volume to waver too quickly, while high values may cause the compression to be applied too slowly.
@@ -39,6 +48,7 @@ compression_gain(db) = amount_that_signal_has_crossed_threshold(dB) * compressio
 - Output Gain (dB) `gaincompressor` - After applying compression, the signal can be reduced with Gain to a lower volume level. To make up the lost volume, this parameter can be increased.
 
 ## Parameters - Limiter Page
+
 - Enable Limiter `enablelimiter` - Turns the limiter on or off.
 - Channel Linking `chanlinkinglim` - ⊞ - Same as compressor.
   * Limit Equally `compequally` -
@@ -52,9 +62,11 @@ Each channel can be different by putting expressions with the channel index, `me
 If set to '0', no limiting will be applied until a signal goes over the threshold value. When increasing the knee parameter, some limiting will be applied before a signal goes beyond the threshold value, in an attempt to smooth out the effects of limiting overall.
 
 ## Parameters - Post Page
+
 - Dry / Wet Mix `drywet` - As this parameter is reduced from 1 (Wet) toward 0 (Dry), it removes the effect of the filter.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -72,6 +84,7 @@ If set to '0', no limiting will be applied until a signal goes over the threshol
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
   * `compressor_multiplier` - the amount that the compressor reduced the loudness. 1 means no-change. expressed not in dB – linear
   * `limiter_multiplier` - the amount that the limiter reduced the loudness. not db – linear
   * `compressor_db` - same as above but expressed in decibels
@@ -81,12 +94,16 @@ If set to '0', no limiting will be applied until a signal goes over the threshol
   * `limiter_release_msec`
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Audio Dynamics CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Audio Dynamics CHOP Info Channels
   * compressor_multiplier -
 
@@ -103,7 +120,9 @@ Specific Audio Dynamics CHOP Info Channels
   * limiter_release_msec -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -117,7 +136,9 @@ Specific Audio Dynamics CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

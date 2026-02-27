@@ -5,15 +5,21 @@ title: Monitors_DAT
 ---
 
 # Monitors DAT
+
 ## Summary
 
 The Monitors DAT is a table of data about all currently detected monitors with information on the resolution, screen positioning, monitor name and description, GPU, and a flag indicating whether it is a primary monitor or not.
+
 You can also set it to display the overall bounds of all the detected monitors.
+
 It runs a callback script when a change in the monitors has been detected. These changes can be that a monitor was plugged in, a monitor was unplugged, the resolution of a monitor has changed, or the primary monitor has changed.
+
 The Monitor DAT returns top/bottom values in lower-left origin coordinates, (0,0) is the lower-left corner of the monitor.
+
 [monitorsDAT_Class](https://docs.derivative.ca/MonitorsDAT_Class "MonitorsDAT Class")
 
 ## Parameters - Monitors Page
+
 - Callbacks DAT `callbacks` - Runs this script once for each change to the table (ie. monitor state change). See [monitorsDAT_Class](https://docs.derivative.ca/MonitorsDAT_Class "MonitorsDAT Class") for usage.
 - Bounds `bounds` - While on, an additional "bounds" row will be added to the table. The dimensions correspond to a bounding box around all the detected monitors. In this row, "primary" refers to the index in the table of the primary monitor.
 - Monitors `monitors` - ⊞ - Specify which monitors to report information about.
@@ -28,6 +34,7 @@ The Monitor DAT returns top/bottom values in lower-left origin coordinates, (0,0
   * DPI Scaled `dpiscaled` -
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -44,15 +51,21 @@ The Monitor DAT returns top/bottom values in lower-left origin coordinates, (0,0
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Monitors DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

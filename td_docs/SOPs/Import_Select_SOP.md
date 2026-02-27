@@ -5,19 +5,26 @@ title: Import_Select_SOP
 ---
 
 # Import Select SOP
+
 ## Summary
 
 The Import Select SOP is used to import and load the geometry types primitives defined in [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP") and [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP"). It essentially loads any geometry type that [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP") or [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP") can support such as a Mesh, Points, NURBS Curves or Patches, Basis Curves. Each geometry represents one primitive from the loading file or it can be a set of primitives merged together for better performance.
+
 In [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP") and [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP") if the Import Select SOP renders merged geometries, an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") operator is created next to this SOP which represents the original paths of primitives within/from importing file, which can be useful for user to checkout what geometry the current SOP is made of. Import Select SOP can have its own animation controls within the Playback page or use the settings from its parent COMP.
+
 The imported geometry can be loaded directly from GPU or CPU, depending on whether the Straight To GPU toggle is set to ON or not at the parent COMP node.
+
 [importselectSOP_Class](https://docs.derivative.ca/ImportselectSOP_Class "ImportselectSOP Class")
 
 ## Parameters - General Page
+
 - Import Parent `parent` - Specify the import parent (eg. USD/FBX COMP) to search for the asset. When no COMP is specified it will by default search in the first import parent in its path.
 - Geo Path `geometry` - The geometry path from the imported file.
 - Reload `reload` - Reloads the asset from the import parent.
 - Compute Tangents `comptang` - A toggle to compute the tangents for this SOP.
+
 ## Parameters - Playback Page
+
 - Use Parent Animation `useparentanim` - A toggle to specify whether to use the parent COMP animation controls or have a custom setting for this SOP.
 - Shift Animation Start `shiftanimationstart` - A toggle to specify whether to shift the animation to the start of animation indicated in the importing file.
 - Sample Rate Mode `sampleratemode` - ⊞ - A menu to choose between the FPS or use a custom sample rate.
@@ -76,15 +83,20 @@ The imported geometry can be loaded directly from GPU or CPU, depending on wheth
   * Mirror `mirror` -
 
 ## Info CHOP Channels
+
 Extra Information for the Import Select SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Import Select SOP Info Channels
   * true_start_time -
 
   * true_end_time -
 
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -96,7 +108,9 @@ Specific Import Select SOP Info Channels
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

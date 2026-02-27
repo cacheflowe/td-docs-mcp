@@ -5,21 +5,31 @@ title: Oculus_Rift_CHOP
 ---
 
 # Oculus Rift CHOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The Oculus Rift CHOP connects to an [Oculus Rift](https://docs.derivative.ca/Oculus_Rift "Oculus Rift") device and outputs several useful sets of channels that can be used to integrate the Oculus Rift into projects.
+
 You can view the detected orientation of the device and put the rotation values directly into other operators. To help decrease latency, prediction can be used to guess what the orientation will be at some point in the future.
+
 The raw sensor data is also available, with options for both sensor acceleration and angular velocity.
+
 The devices calibration parameters are another option. These can be used to generate the projection matrices and distortion shaders, although both of these are already available (see below and [Oculus Rift TOP](https://docs.derivative.ca/Oculus_Rift_TOP "Oculus Rift TOP")). This data is constant, but may differ on future devices.
+
 The last two things the Oculus Rift CHOP can output are the left and right eye projection matrices. These can be (and will need to be) passed into a camera's "Custom Projection" parameter in order to provide a proper 3D experience with the Oculus Rift. For convenience, the channels are aligned to be passed in directly by reference.
+
 Without an Oculus Rift device connected the CHOP uses default values and will output channels corresponding to the Oculus Rift Developer Kit device. This allows you to design something for the Oculus Rift without actually having one.
+
 See also [Oculus Rift](https://docs.derivative.ca/Oculus_Rift "Oculus Rift")
+
 [oculusriftCHOP_Class](https://docs.derivative.ca/OculusriftCHOP_Class "OculusriftCHOP Class")
 
 ## Parameters - Setup Page
+
 - Active `active` - When on, this CHOP will update it's data when it cooks.
 - Output `output` - ⊞ - Switches between three different output modes.
   * HMD `hmd` - Can output orientation, acceleration, angular velocity and device info.
@@ -37,6 +47,7 @@ See also [Oculus Rift](https://docs.derivative.ca/Oculus_Rift "Oculus Rift")
 - Near `near` - Specifies the distance of the near clipping plane for the projection matrix.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -56,9 +67,13 @@ See also [Oculus Rift](https://docs.derivative.ca/Oculus_Rift "Oculus Rift")
 - Export Table `exporttable` -
 
 ## Info CHOP Channels
+
 Extra Information for the Oculus Rift CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -72,7 +87,9 @@ Extra Information for the Oculus Rift CHOP can be accessed via an [Info CHOP](ht
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

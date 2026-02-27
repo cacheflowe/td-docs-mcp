@@ -5,6 +5,7 @@ title: Transform_CHOP
 ---
 
 # Transform CHOP
+
 ## Summary
 
 The Transform CHOP takes transformations in various formats, applied operations to them, and outputs them in various formats. It can be used to:
@@ -14,12 +15,14 @@ The Transform CHOP takes transformations in various formats, applied operations 
   * Change the direction, starting point and scale of motion capture data or other data being calibrated to match other reference frames.
 
 ( See also the [Transform XYZ CHOP](https://docs.derivative.ca/Transform_XYZ_CHOP "Transform XYZ CHOP") for doing transforms on XYZ positions and vectors. )
+
 Three transform formats exists:
   * Transform with Euler angles for rotation. These are defined by channels with suffixes: `tx ty tz, rx ry rz, sx sy sz` and an optional transform and rotate order `xord and rord`.
   * Transform with Quaternion for rotation. These are defined by channels with suffixes: `tx ty tz, qx qy qx qw, sx sy sz` and an optional transform order `xord`.
   * A 4x4 or 3x3 matrix. These are defined by channels with suffixes: `m00, m10, m20, m30, m01, m11... m33`. Where the notation is `m[_row_][_col_]`. The matrix should be be in column-major order, that is to say, the translate portion should be in`m03, m13, m23`. The 4th row and column can be omitted to use a 3x3 matrix instead. Unlike the other formats, this format can not have arbitrary missing channels. Either 9 channels for 3x3 or 16 channels for 4x4 matrices must be provided.
 
 The first two transform formats can be specified with missing channels, in which case default values will be used. 0s for translates and rotates, 1s for scale, and (0,0,0,1) for quaternion.
+
 Frequently the input channels come from an [Object CHOP](https://docs.derivative.ca/Object_CHOP "Object CHOP") or [Parameter CHOP](https://docs.derivative.ca/Parameter_CHOP "Parameter CHOP"). Examples are:
   * geo1:tx geo1:ty geo1:tz geo1:rx ...
   * headtx headty headtz headrx
@@ -27,17 +30,27 @@ Frequently the input channels come from an [Object CHOP](https://docs.derivative
   * cam1:m00 cam1:m10 cam1:m20 .... cam1:m33
 
 ### Multiple Transform Sets
+
 Any of the above defines a transformation matrix. Multiple transform 'sets' can be specified by channels having different prefixes. Different sets using different formats can be all in the same CHOP. Formats can not be mixed within a set though. Each set will be combined with sets from the other input, and the transform on the 'Transform' page to create final transforms for each set.
+
 If no inputs are connected to the CHOP, it will output the transform generated from the 'Transform' page.
+
 If inputs are connected, the output will contain the same number of samples as the first input. Samples will be combined between the inputs 1:1, that is, the start/end range and the sample rate of the inputs are ignored. If the second input contains less samples than the first one, the extend conditions for that CHOP will be used to determine values for the samples coming from the 2nd CHOP that are out of range.
+
 If multiple sets are provided, they will be matched 1st-to-1st set, 2nd-to-2nd set. If there are less sets in the second input than the first one, then it will loop over the sets. E.g if the first input as 5 sets and the second input as 2 sets, the matching will be 1st-to-1st, 2nd-to-2nd, 3rd-to-1st, 4th-to-2nd and 5th-to-1st.
+
 ### Order of Operation
+
 The inputs will be combined together first, then the result from that will be combined with the transform defined on the 'Transform' page.
+
 The channels of a Transform CHOP are frequently exported back to objects.
+
 [transformCHOP_Class](https://docs.derivative.ca/TransformCHOP_Class "TransformCHOP Class")
 
 ## Parameters - Input Page
+
 This page defines what the incoming channels' transform order is assumed to be. Using the incoming channels and the transform order here, a matrix for the incoming channels in built. It is then multiplied by the transformation matrix defined by the Transform page and output.
+
 Any missing translation, rotation or scale channels will default to zero (or one in the case of scale).
 - Custom Input Orders `custinputorders` - This allows the input order, if provided, to be ignored and overridden by a custom order chosen by the following two parameters.
 - Transform Order `inxord` - ⊞ - Changing the Transform order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as T * R * S * Position
@@ -77,6 +90,7 @@ Any missing translation, rotation or scale channels will default to zero (or one
 - Input Weight `inputweight` - Specify the Blend weight for the above 'Input Operation'
 
 ## Parameters - Transform Page
+
 This page defines an additional transform that can be combined with the transform created by combining the inputs, if any. If the node has no inputs connected then the transform generated from this page will be what is output from this node.
 - Transform Order `xord` - ⊞ - See description from earlier Transform Order parameter.
   * Scale Rotate Translate `srt` -
@@ -147,6 +161,7 @@ This page defines an additional transform that can be combined with the transfor
 - Weight `weight` - Specify the Blend weight for the above 'Operation'
 
 ## Parameters - Output Page
+
 This page controls what information is output from the node.
 - Post Operation `postop` - ⊞ - Optionally applied one last operation to the final generated transform before it is output.
   * None `none` - No operation.
@@ -193,6 +208,7 @@ This page controls what information is output from the node.
   * Hint `hintz` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -211,19 +227,27 @@ This page controls what information is output from the node.
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  - One or more transform sets, as defined by the allowable formats described at the start of the article.
 
   * Input 1:  - One or more transform sets, as defined by the allowable formats described at the start of the article.
 
 ## Info CHOP Channels
+
 Extra Information for the Transform CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -237,7 +261,9 @@ Extra Information for the Transform CHOP can be accessed via an [Info CHOP](http
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,15 +5,21 @@ title: Import_Select_POP
 ---
 
 # Import Select POP
+
 ## Summary
 
 The Import Select POP is used to import and load the geometry types primitives defined in [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP") and [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP"). It essentially loads any geometry type that [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP") or [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP") can support such as a Mesh, Points, NURBS Curves or Patches, Basis Curves. Each geometry represents one primitive from the loading file or it can be a set of primitives merged together for better performance. Where the geometry primitive types are not supportable by POPs, that are converted to triangles, quads, line strips and point primitives.
+
 In [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP") and [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP") if the Import Select POP renders merged geometries, an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") operator is created next to this POP which represents the original paths of primitives within/from importing file, which can be useful for user to checkout what geometry the current POP is made of.
+
 Import Select POP can have its own animation controls within the Playback page or use the settings from its parent COMP.
+
 The imported geometry is loaded directly to the GPU.
+
 [importselectPOP_Class](https://docs.derivative.ca/ImportselectPOP_Class "ImportselectPOP Class")
 
 ## Parameters - General Page
+
 - Import Parent `parent` - Specify the import parent (eg. USD/FBX COMP) to search for the asset. When no COMP is specified it will by default search in the first import parent in its path.
 - Geo Path `geometry` - The geometry path from the imported file.
 - Reload `reload` - Re-import and load the geometry.
@@ -21,6 +27,7 @@ The imported geometry is loaded directly to the GPU.
 - Compute Tangents `comptang` - Whether to compute tangents.
 
 ## Parameters - Playback Page
+
 - Use Parent Animation `useparentanim` - Enable using the parent COMP animation controls
 - Shift Animation Start `shiftanimationstart` - A toggle to specify whether to shift the animation to the start of animation indicated in the importing file.
 - Sample Rate Mode `sampleratemode` - ⊞ - Sets the sample rate source.
@@ -69,16 +76,23 @@ The imported geometry is loaded directly to the GPU.
   * Mirror `mirror` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
+
 Extra Information for the Import Select POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

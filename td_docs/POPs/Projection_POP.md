@@ -5,9 +5,11 @@ title: Projection_POP
 ---
 
 # Projection POP
+
 ## Summary
 
 The Projection POP takes a float3 3D spatial attribute, like `P`, and outputs to a float3 attribute, transforming the attribute between cartesian (orthographic), polar, cylindrical, and perspective coordinate systems. For example, all the the points in cartesian X, Y and Z format can be converted into a polar longitude/latitude/radius format.
+
 The menu From Coordinate System lets you choose how to interpret the 3 numbers of the input attribute:
   * Cartesian treats the 3 numbers of the float3 attribute as X, Y and Z in the usual 3D "orthogonal" coordinate space. (In TouchDesigner X is horizontal left-to-right, Y is vertical bottom to top. Z is along line of sight distant to near.)
   * Spherical treats the three numbers of the attribute as longitude, latitude and radius, assuming the axis is the vertical Y axis.
@@ -16,6 +18,7 @@ The menu From Coordinate System lets you choose how to interpret the 3 numbers o
   * Normalized Device Coordinates (NDC) - For points within the field of view, the first and second components are between -1 and 1 where 0,0 is at the center. The third component is between 0 and 1 (as re-ranged to the Near and Far distances).
 
 The menu To Coordinate System lets you choose what form you want the 3 numbers of the output attribute to be in.
+
 The angles can be expressed in
   * Degrees in the usual graphics standard (360 is a full rotation), or
   * Radians (Pi 3.14157 is one full rotation)
@@ -23,9 +26,11 @@ The angles can be expressed in
   * Normalized - a 0-1 normalized form which, like Spherical longitude is like a wraparound: looking along the -Z axis, the value is 0 at the back, .25 the left, .5 is face-on, .75 at the right, and 1 at the back. For latitude the value goes from 0 at the south pole and 1 at the north pole. This is used for mapping a texture on a sphere sometimes.
 
 See also tbe [Sphere POP](https://docs.derivative.ca/Sphere_POP "Sphere POP"), [Tube POP](https://docs.derivative.ca/Tube_POP "Tube POP"), [Normalize POP](https://docs.derivative.ca/Normalize_POP "Normalize POP") and the [Texture Map POP](https://docs.derivative.ca/Texture_Map_POP "Texture Map POP").
+
 [projectionPOP_Class](https://docs.derivative.ca/ProjectionPOP_Class "ProjectionPOP Class")
 
 ## Parameters - Projection Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -95,19 +100,27 @@ See also tbe [Sphere POP](https://docs.derivative.ca/Sphere_POP "Sphere POP"), [
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Projection POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

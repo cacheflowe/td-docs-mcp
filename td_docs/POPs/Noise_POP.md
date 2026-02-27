@@ -5,27 +5,45 @@ title: Noise_POP
 ---
 
 # Noise POP
+
 ## Summary
 
 The Noise POP affects every point with a noise field, which can be thought of as smooth, randomly-rising and falling values in 3D space.
+
 By default the Noise POP moves every point's `P` attribute a distance in X, Y and Z based on the point's position in the noise space. You can visualize the field by sending a [Grid POP](https://docs.derivative.ca/Grid_POP "Grid POP") into a Noise POP. Turn on the toggle parameter Compute Point Normals to see proper shading.
+
 The Type menu lets you choose between Simplex, Perlin in 2-4 dimensions. Simplex has the least grid-like field appearance. The Period determines the approximate distance between two peaks in each dimension (if you set Harmonics to 0).
+
 Harmonics adds more detail by adding to the field another half-period noise field, and recursively for the number of "harmonics". Harmonic Spread is the ratio of period of one applied harmonic to the next. Furthermore the entire noise field can be translated, rotated or scaled via the Transform page.
+
 The noise field value averages 0 in X, Y and Z. The Amplitude and Exponent parameters affect the magnitude of the resulting value, and the Offset is added to the resulting noise values.
+
 **Output attributes** - On the Output page, you can output and name the raw noise values to an attribute named `Noise` by default. Because the Noise Size menu parameter on the Noise page defaults to Scalar, the `Noise` attribute is a single scalar float.
+
 If the Noise Size menu parameter is set to Vector, the `Noise` attribute is a 3-component float, or 4 if the Parameter Size is set to 4.
+
 On the Output page you can also output several math functions that are derived from the noise field, like Gradient and Curl.
+
 The Gradient is the rate-of-change of a scalar noise around each point in X Y and Z (aka the "first order derivative") and is a float3 named `NoiseGradient`
+
 Curl is an expression of how much the slope twists around each point. A 3D Curl is a float3 named `NoiseCurl`. A 2D Curl is float2 named `NoiseCurl2`
+
 If Combine Operation is Add (default) or Multiply, a float3 noise is always applied to `P`, even though the noise may be set to scalar. With Combine Attribute Scope, the noise can be applied to any scalar or vector attribute (one component to 4 components), and output to any new or existing attribute.
+
 With Combine Entity you can instead combine the `NoiseCurl` with any attribute.
+
 With Noise Size set to Vector, changing the Parameters Size to 2, 3 or 4 gives you individual parameter controls of Amplitude, Exponent and Offset per X Y Z W dimension.
+
 To animate the noise, put something like `absTime.seconds` in any of the Translate or Translate 4D parameters on the Transform page.
+
 **Per-point mapping of parameters** - The Noise POP has a Map page, which allows every point to get a different value for Amplitude, Offset, Exponent, Period, Harmonic Spread and Harmonic Gain parameters. In this mechanism, a separate attribute in the input contains values that override (or add to / multiply by) the parameter value. See [Mapping POP Attributes to Parameters](https://docs.derivative.ca/Mapping_POP_Attributes_to_Parameters "Mapping POP Attributes to Parameters").
+
 See also [Random POP](https://docs.derivative.ca/Random_POP "Random POP").
+
 [noisePOP_Class](https://docs.derivative.ca/NoisePOP_Class "NoisePOP Class")
 
 ## Parameters - Noise Page
+
 - Noise Lookup Attribute `noiselookupattrib` - Point input attribute to use when computing the noise.
 - Type `type` - ⊞ - Determines the noise type.
   * Perlin 2D (GPU) `perlin2d` -
@@ -63,6 +81,7 @@ See also [Random POP](https://docs.derivative.ca/Random_POP "Random POP").
 - Group `group` - If there are input groups, specifying a group name in this field will cause this POP to act only upon the group specified.
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -102,6 +121,7 @@ See also [Random POP](https://docs.derivative.ca/Random_POP "Random POP").
 - Translate 4D `t4d` - Translates the points through the 4th noise dimension.
 
 ## Parameters - Output Page
+
 - Noise `noise` - ⊞ - Enable the addition of the noise attribute.
   * Noise `noise` -
   * Noise Output Attribute Scope `noiseoutputattscope` - Output attribute scope for the noise, and based on the Noise Size parameter.
@@ -168,6 +188,7 @@ See also [Random POP](https://docs.derivative.ca/Random_POP "Random POP").
   * Quality `quality` -
 
 ## Parameters - Map Page
+
 - Mapping `map` - Start of Sequential Parameter Blocks for attribute-to-parameter mapping.
 - OP `map0op` - Source OP for parameter mapping. The default of _in0 means the input POP.
 - Element `map0element` - The attribute (or component of an attribute) that will be mapped to a parameter per-point.
@@ -185,19 +206,27 @@ See also [Random POP](https://docs.derivative.ca/Random_POP "Random POP").
   * Add `add` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Noise POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

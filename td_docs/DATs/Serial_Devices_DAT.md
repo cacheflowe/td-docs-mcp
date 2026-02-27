@@ -5,12 +5,15 @@ title: Serial_Devices_DAT
 ---
 
 # Serial Devices DAT
+
 ## Summary
 
 Provide a list of connected serial devices which can be refreshed manually or at periodic intervals. A callback DAT is provided to react to addition/removal of devices.
+
 [serialdevicesDAT_Class](https://docs.derivative.ca/SerialdevicesDAT_Class "SerialdevicesDAT Class")
 
 ## Parameters - Serial Devices Page
+
 - Callbacks DAT `callbacks` - Runs this script once for each change to the table. See [serialdevicesDAT_Class](https://docs.derivative.ca/SerialdevicesDAT_Class "SerialdevicesDAT Class") for usage.
 - Usage `usage` - ⊞ - Specify which serial devices to report information about based on their availability.
   * Any `any` - All serial devices will report information.
@@ -22,6 +25,7 @@ Provide a list of connected serial devices which can be refreshed manually or at
 - Polling Time `pollingtime` - Time in seconds to wait for the next poll.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -38,9 +42,13 @@ Provide a list of connected serial devices which can be refreshed manually or at
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

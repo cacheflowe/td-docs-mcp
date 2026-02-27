@@ -5,12 +5,15 @@ title: Sprite_SOP
 ---
 
 # Sprite SOP
+
 ## Summary
 
 The Sprite SOP creates geometry (quad sprites) at point positions defined by the CHOP referenced in the XYZ CHOP parameter.
+
 [spriteSOP_Class](https://docs.derivative.ca/SpriteSOP_Class "SpriteSOP Class")
 
 ## Parameters - Page
+
 - XYZ CHOP `xyzchop` - A CHOP with 3 channels is required to specify the X, Y, and Z position of the quad to be generated. Each sample creates 1 quad. The created quads are centered at the points defined by each sample.
 - Camera `camera` - The geometry will always face the [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") specified here.
 - Width CHOP `widthchop` - A 1 channel CHOP can be specified to set the width of the quad at that sample.
@@ -25,9 +28,13 @@ The Sprite SOP creates geometry (quad sprites) at point positions defined by the
 **NOTE** : Inbetween Falloff Start and Falloff End the width is determined using a half-cosine falloff between the two values.
 
 ## Info CHOP Channels
+
 Extra Information for the Sprite SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -39,7 +46,9 @@ Extra Information for the Sprite SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

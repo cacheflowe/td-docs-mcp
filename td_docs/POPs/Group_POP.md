@@ -5,17 +5,25 @@ title: Group_POP
 ---
 
 # Group POP
+
 ## Summary
 
 The Group POP lets you put sets of points or primitives into named groups so that you can then use the groups in other POPs, such as the [Transform POP](https://docs.derivative.ca/Transform_POP "Transform POP") to affect only the elements of particular groups.
+
 The groups are formed using 5 methods found on the Attribute, Thin, Pattern, Group and Bounding pages. You can choose to group points or primitives. On the Attribute page you can group based on the values of point or primitive attributes. On the Thin page you can group based on parameter-defined ranges, steps or randomly. You can group by [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") on the Pattern page. You can combine point or primitive groups on the Group page. You can include based on bounding ranges on any attribute on the Bounding page.
+
 Conversions of groups can be done on the Edit page- renaming, conversion from point group to primitive group, etc.
+
 Four of the grouping methods let you build the logic using sequential blocks of parameters. For example on the Attribute page, one block selects `P(0) > 0` and another that selects `P(1) < 0` and ANDed together they will group points in only a quarter of the space. Otherwise is common to build an attribute in a [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP") and use it in the Group POP.
+
 For pattern matching on the Pattern page: [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
+
 See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
+
 [groupPOP_Class](https://docs.derivative.ca/GroupPOP_Class "GroupPOP Class")
 
 ## Parameters - Create Page
+
 - Group Name `grname` - The name of the group to be created.
 - Entity `entity` - ⊞ - Sets the attribute class to use.
   * Primitives `primitive` -
@@ -24,6 +32,7 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
 - Debug Color `debugcolor` - Enable addition of a color attribute to differentiate groups.
 
 ## Parameters - Attribute Page
+
 - Attribute `attr` - Start of Sequential Parameter Blocks for attribute conditions.
 - Combine `attr0combine` - ⊞ - Specify how to combine the current attribute condition block with the one above.
   * And `and` -
@@ -45,6 +54,7 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
 - Invert `attr0invert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Thin Page
+
 - Enabled `thinenabled` - Enable thinning by index range, index step or random index.
 - Thin Out Range `thinoutrange` - Enable index-based point filtering.
 - Thin Range Start `thinrangestart` - Determines the starting index for range-based point filtering.
@@ -55,6 +65,7 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
 - Invert `thininvert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Pattern Page
+
 - Pattern `pattern` - Start of Sequential Parameter Blocks for index-matching pattern.
 - Combine `pattern0combine` - ⊞ - Specify how to combine the current pattern block with the one above.
   * And `and` -
@@ -72,6 +83,7 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
 - Invert `pattern0invert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Group Page
+
 - Group `group` - Start of Sequential Parameter Blocks for input groups, specifying a group name in this field will cause this POP to act only upon the group specified.
 - Combine `group0combine` - ⊞ - Specify how to combine the current group block with the one above.
   * And `and` -
@@ -84,6 +96,7 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
 - Invert `group0invert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Bounding Page
+
 - Bound `bound` - Start of Sequential Parameter Blocks for bounding volumes.
 - Combine `bound0combine` - ⊞ - Specify how to combine the current bounding volume block with the one above.
   * And `and` -
@@ -115,6 +128,7 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
 - Invert `bound0invert` - Invert the selection resulting from the current conditions in the block.
 
 ## Parameters - Edit Page
+
 - Convert Type `cnvttype` - ⊞ - Sets the converion operation type to apply to a group
   * Primitive to Point Group `topoint` -
   * Point to Primitive Group `toprim` -
@@ -127,6 +141,7 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
 - Delete Group `deletename` - Groups to delete.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -151,14 +166,21 @@ See also [Delete POP](https://docs.derivative.ca/Delete_POP "Delete POP")
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Group POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,15 +5,21 @@ title: Limit_CHOP
 ---
 
 # Limit CHOP
+
 ## Summary
 
 The Limit CHOP can limit the values of the input channels to be between a minimum and maximum, and can quantize the input channels in time and/or value such that the value steps over time.
+
 Limiting a channel causes all its values to lie within a range. Several different methods are for limiting are listed under the Type parameter description.
+
 Quantizing a channel value snaps its values to the closest allowable value (the "quantized values"). Quantizing methods are: Floor, Ceiling, and Round.
+
 Quantizing a channel index is like quantizing in time, and acts as a sample and hold mechanism. The channel is sampled at a quantized index, and held at that value until the next quantized index at which time the value takes on the input value at that point.
+
 [limitCHOP_Class](https://docs.derivative.ca/LimitCHOP_Class "LimitCHOP Class")
 
 ## Parameters - Limit Page
+
 - Type `type` - ⊞ - Select limit options such as loop, clamp, or zigzag from the menu. The value will remain in the range from Min to less than Max.
   * Off `off` - Do not limit the values.
   * Clamp `clamp` - Simply cut the channel value off if it is out of the Maximum/Minimum range, and replace it with the Maximum or Minimum limit value.
@@ -27,6 +33,7 @@ Quantizing a channel index is like quantizing in time, and acts as a sample and 
 - Fix Underflows `underflow` - This will cause extremely tiny numbers to be rounded to 0.
 
 ## Parameters - Quantize Page
+
 - Quantize Value `quantvalue` - ⊞ - Selects the quantization method to use:
   * Off `off` - No Value quantization is done.
   * Ceiling `ceiling` - The Ceiling function rounds a value to the closest quantized value above it.
@@ -46,6 +53,7 @@ Quantizing a channel index is like quantizing in time, and acts as a sample and 
 - Offset Unit `ioffsetunit` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -64,17 +72,25 @@ Quantizing a channel index is like quantizing in time, and acts as a sample and 
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Limit CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -88,7 +104,9 @@ Extra Information for the Limit CHOP can be accessed via an [Info CHOP](https://
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,17 +5,25 @@ title: Pipe_Out_CHOP
 ---
 
 # Pipe Out CHOP
+
 ## Summary
 
 The Pipe Out CHOP can be used to transmit data out of TouchDesigner to other processes running on a remote machine using a network connection. If the other process is another TouchDesigner process, a [Pipe In CHOP](https://docs.derivative.ca/Pipe_In_CHOP "Pipe In CHOP") in that process can be used to receive the data. Multiple PipeIn CHOPs can connect to a PipeOut CHOP.
+
 For more information on how to connect two TouchDesigner processes running on different machines with a Pipe In and Pipe Out CHOP, see the [Pipe In CHOP](https://docs.derivative.ca/Pipe_In_CHOP "Pipe In CHOP").
+
 **NOTE:** For TouchDesigner-to-TouchDesigner communication of channel data, see the [Touch In CHOP](https://docs.derivative.ca/Touch_In_CHOP "Touch In CHOP") and [Touch Out CHOP](https://docs.derivative.ca/Touch_Out_CHOP "Touch Out CHOP") which offer optimized and [Time Sliced](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)") data transfer.
+
 **TIP:** The [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT") or [UDP Out DAT](https://docs.derivative.ca/UDP_Out_DAT "UDP Out DAT") is the preferred way to send script commands and other data packets over the network.
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 See also [OSC Out CHOP](https://docs.derivative.ca/OSC_Out_CHOP "OSC Out CHOP"), [Shared Mem Out CHOP](https://docs.derivative.ca/Shared_Mem_Out_CHOP "Shared Mem Out CHOP").
+
 [pipeoutCHOP_Class](https://docs.derivative.ca/PipeoutCHOP_Class "PipeoutCHOP Class")
 
 ## Parameters - PipeOut Page
+
 - Connection Mode `mode` - ⊞ - Set operation as server or client.
   * This Operator is Client `client` -
   * This Operator is Server `server` -
@@ -38,6 +46,7 @@ See also [OSC Out CHOP](https://docs.derivative.ca/OSC_Out_CHOP "OSC Out CHOP"),
 - Callbacks DAT `callbacks` - Path to a DAT containing callback methods for each event sent. See [pipeoutCHOP_Class](https://docs.derivative.ca/PipeoutCHOP_Class "PipeoutCHOP Class") for usage.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -56,16 +65,23 @@ See also [OSC Out CHOP](https://docs.derivative.ca/OSC_Out_CHOP "OSC Out CHOP"),
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Pipe Out CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Pipe Out CHOP Info Channels
   * connected -
 
@@ -74,7 +90,9 @@ Specific Pipe Out CHOP Info Channels
   * num_cached -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -88,7 +106,9 @@ Specific Pipe Out CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,9 +5,11 @@ title: Phong_MAT
 ---
 
 # Phong MAT
+
 ## Summary
 
 The Phong MAT creates a material using the Phong Shading model. It has support for textures, reflections, bumps, cone lights, rim lights, alpha maps and more. You can output its [GLSL shader](https://docs.derivative.ca/Category:GLSL "Category:GLSL") into two [DATs](https://docs.derivative.ca/DAT "DAT") for further adaptation in a [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") by using the Output Shader parameter.
+
 Phong Shading models three types of reflected light:
   * Ambient - Ambient is considered light that does not come from any particular direction and is therefore constant across the surface. In the physical world, ambient light is created from the reflection of light off surfaces in the environment.
   * Diffuse - Diffuse models the light reflected by matte surfaces. This light is reflected equally in all directions, therefore the position of the observer does not effect the percieved illumination.
@@ -16,10 +18,13 @@ Phong Shading models three types of reflected light:
 > **NOTE:** We see the color of an object because of the color of light that the material reflects.
 
 Phong Shading produces very nice specular highlights, although it is still an approximation and not physically accurate. Contrasting with the Gouraud shading model that calculates the lighting at each vertex and interpolates the value across the polygon, Phong calculates the lighting at each pixel.
+
 To see how all of the different parts are summed together by looking at the [Phong Lighting Equation](https://docs.derivative.ca/Phong_Lighting_Equation "Phong Lighting Equation") article.
+
 [phongMAT_Class](https://docs.derivative.ca/PhongMAT_Class "PhongMAT Class")
 
 ## Parameters - RGB Page
+
 - Ambient uses Diffuse `ambdiff` - Uses the Diffuse parameter for Ambient when checked.
 - Diffuse `diff` - ⊞ - The color of the diffuse light reflected from the material.
   * Red `diffr` -
@@ -427,6 +432,7 @@ To see how all of the different parts are summed together by looking at the [Pho
 - Output Shader... `outputshader` - This button will bring up a dialog that will create a [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") and [Text DATs](https://docs.derivative.ca/Text_DAT "Text DAT") with shader code that matches whatever effect this Phong MAT is currently creating. Since shaders are dependent on the number and type of lights, it will list some possible different shader choices, based on what lighting configurations have been used in the current system. **If no shaders are listed in the dialog** , it means no shader has been rendered in the current session of TouchDesigner. Turn on the viewer for the Phong MAT, or setup a render in a Render TOP. That will create/compile some shaders and will cause the list to be populated. For example if you want to see a shader that does shadow mapping, setup a render that does shadow mapping and you will see that come up in the list.
 
 ## Parameters - Alpha Page
+
 **Note: Simply applying alpha to an object does not make it transparent. For more information refer to the[Transparency](https://docs.derivative.ca/Transparency "Transparency") article.**
 - Alpha Map `alphamap` - ⊞ - This map multiplies the alpha of the object. It uses the red channel of the map, other channels are ignored.
 - Extend U `alphamapextendu` - ⊞ -
@@ -487,19 +493,20 @@ To see how all of the different parts are summed together by looking at the [Pho
 - Mult Alpha by Light Luminance `alphamultlight` - When this is enabled, the luminance of the lighting will be multiplied by the alpha, to decrease/increase it.
 
 ## Parameters - Multi-Texturing Page
+
 On the Multi-texturing page of the Phong material, you can have up to 4 texture maps and choose any of the 8 possible texture coordinates for each map. By default the texture maps are multiplied together, but there is a field for a custom GLSL code that can be used. Here's how that works:
+
 The 4 texture maps are referred to in the parameter by t0, t1, t2 and t3 respectively. So the default equation if all 4 texture maps are used is: t0 * t1 * t2 * t3. You can use and constants and other math operators, so for example t0 + (t1 * 0.5) is valid. If they refer to a map that doesn't exist, the shader won't compile correctly (e.g. using t3 when it isn't set or the TOP doesn't exist).
+
 They can also refer to specific components of the texture using .r .g .b and .a. So for example if you want to do t0 over t1, the expression would be:
 ```
 t0 + (t1 * (1.0 - t0.a))
-
 ```
 
 **The output from your expression must be a vec4** , so for example:
 ```
  t0.rgb + t1.rgb // Error
  vec4(t0.rgb + t1.rgb, 1.0)  // Works
-
 ```
 
 The alpha from the result of these maps is used.
@@ -711,6 +718,7 @@ The alpha from the result of these maps is used.
 - GLSL Expression `multitexexpr` - GLSL code that combines the texture images (look to the start of this section for more details). This parameter can be left blank (which means the maps will just be multiplied together).
 
 ## Parameters - Rim Page
+
 Other rim lights have the same parameters, internal parameter names just have a different number instead of 1.
 - Rim Light `rimlight` - Sequence of rim light info
 - Enable `rimlight0enable` - Enables this rim light.
@@ -776,6 +784,7 @@ Other rim lights have the same parameters, internal parameter names just have a 
 - Strength Ramp `rimlight0strengthramp` - You can specify a horizontal ramp (it will sample the texture at v = 0.5), which controls the the rim lights strength.
 
 ## Parameters - Advanced Page
+
 - Shadow Strength `shadowstrength` - This parameter will control how much being in a shadow will change the color of the lighting. At 1 the object will take on the Shadow Color parameter, at 0 it will behave as if it's not in a shadow, even if it is.
 - Shadow Color `shadowcolor` - ⊞ - The color that will be used in shadowed areas.
   * Red `shadowcolorr` -
@@ -884,6 +893,7 @@ Other rim lights have the same parameters, internal parameter names just have a 
   * Normalized Shadow Strength `normalizedshadowstrength` -
 
 ## Parameters - Deform Page
+
 Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(Skinning\) "Deforming Geometry \(Skinning\)") for more information on doing deforms in TouchDesigner.
 - Deform `dodeform` - Enables deforms on this material.
 - Get Bone Data: `deformdata` - ⊞ - Specifies where the deform bone data will be obtained.
@@ -898,8 +908,11 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
 
 ## Parameters - Common Page
+
 ###
+
 Blending
+
 [Blending](https://docs.derivative.ca/Blending "Blending") is summing the color value of the pixel being drawn and the pixel currently present in the Color-Buffer. Blending is typically used to simulate [Transparency](https://docs.derivative.ca/Transparency "Transparency"). The blending equation is: `Final Pixel Value = (Source Blend * Source Color) + (Dest Blend * Destination Color)`
 
 - Blending (Transparency) `blending` - This toggle enables and disables blending. However see the wiki article [Transparency](https://docs.derivative.ca/Transparency "Transparency").
@@ -1005,8 +1018,11 @@ Blending
   * Always `always` -
 
 ###
+
 Depth Test
+
 Depth-Testing is comparing the depth value of the pixel being drawn with the pixel currently in the [Frame-Buffer](https://docs.derivative.ca/index.php?title=Frame-Buffer&action=edit&redlink=1 "Frame-Buffer \(page does not exist\)"). A pixel that is determined to be in-front of the pixel currently in the Frame-Buffer will be drawn over it. Pixels that are determined to be behind the pixel currently in the Frame-Buffer will not be drawn. Depth-Testing allows geometry in a 3D scene to occlude geometry behind it, and be occluded by geometry in-front of it regardless of the order the geometry was drawn.
+
 For a more detailed description of Depth-Testing, refer to the [Depth-Test](https://docs.derivative.ca/Depth-Test "Depth-Test") article.
 
 - Write Depth Values `depthwriting` - If Write Depth Values is on, pixels that pass the depth-test will write their depth value to the Depth-Buffer. If this isn't on then no changes will be made to the Depth-Buffer, regardless of if the pixels drawn pass or fail the depth-test.
@@ -1024,7 +1040,9 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Topology Wire Frame `topology` -
 
 ###
+
 Alpha Test
+
 Alpha-testing allows you to choose to draw or not draw a pixel based on its alpha value.
 
 - Line Width `wirewidth` - This value is the width that the wires will be. This value is in pixels.
@@ -1038,16 +1056,23 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
 - Polygon Depth Offset `polygonoffset` - Turns on the polygon offset feature.
 - Offset Factor `polygonoffsetfactor` -
 - Offset Units `polygonoffsetunits` -
+
 ###
+
 Wire Frame
+
 The wire-frame feature will render the geometry as wire-frame, using the actual primitive type used in the render. What this means is surfaces like Metaballs, NURBs and Beziers will become a wire-frame of the triangles/triangle-strips used to render them (since these types of primitives can't be natively rendered in OpenGL).
 
 ###
+
 Cull Face
+
 The cull face parameter will cull faces from the render output. This can be used as an optimization or sometimes to remove artifacts. See [Back-Face Culling](https://docs.derivative.ca/Back-Face_Culling "Back-Face Culling") for more infomation.
 
 ###
+
 Polygon Depth Offset
+
 This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly on-top of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing [shadows](https://docs.derivative.ca/Shadows "Shadows").
 
 - Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
@@ -1271,11 +1296,17 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Phong MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common MAT Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

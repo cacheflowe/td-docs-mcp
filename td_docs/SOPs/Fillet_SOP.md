@@ -5,15 +5,21 @@ title: Fillet_SOP
 ---
 
 # Fillet SOP
+
 ## Summary
 
 The Fillet SOP is used to create smooth bridging geometry between two curves / polygons or two surfaces / meshes.
+
 Filleting creates a new primitive between each input pair and never affects the original shapes. This is in contrast to the [Join](https://docs.derivative.ca/Join_SOP "Join SOP") and [Stitch SOPs](https://docs.derivative.ca/Stitch_SOP "Stitch SOP"). The [Join SOP](https://docs.derivative.ca/Join_SOP "Join SOP") converts and possibly changes the connected ends of primitives, and stitching changes the original shapes but does not change the number of resulting primitives.
+
 Please refer to the [Align SOP](https://docs.derivative.ca/Align_SOP "Align SOP") for a discussion of "left" and "right" primitives as well as the option of an auxiliary input.
+
 Note: Trim curves are not taken into account by a fillet. To do this, use the Join SOP.
+
 [filletSOP_Class](https://docs.derivative.ca/FilletSOP_Class "FilletSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - Which primitives to fillet. If blank, it fillets the entire input. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Fillet `fillet` - ⊞ - Can optionally fillet subgroups of N primitives or every nth primitive in a cyclical manner.
 **Example** : Assume there are six primitives numbered for 0 - 5, and N = 2. Then:
@@ -65,13 +71,18 @@ Note: Trim curves are not taken into account by a fillet. To do this, use the Jo
 - Cut Primitives `cut` - If selected, the primitives are trimmed at the point the fillet begins.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Fillet SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -83,7 +94,9 @@ Extra Information for the Fillet SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

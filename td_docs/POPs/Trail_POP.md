@@ -5,19 +5,29 @@ title: Trail_POP
 ---
 
 # Trail POP
+
 ## Summary
 
 The Trail POP captures and retains all the points of the input for the most recent N frames or N "slices", being a time-history of the input's points. It then optionally creates primitives that connects the points in various ways.
+
 If the number of points of the input is the same for all the slices, then it can easily skin points together using the Connectivity menu, such as maling a line strip for each point over time.
+
 If the number of points is changing per-frame, as it would with a particle system, it can still connect time-related dots by using an `Id` attribute on the points, and making sure the Id of a particle stays the same through its life. You can select which attribute it co-relates to using the Match by Attribute parameter.
+
 It ignores and does not use the connectivity (primitives) of the input.
+
 If the number of points of the input is the same for all the slices, it adds one new [Dimension](https://docs.derivative.ca/Dimension "Dimension") whose size is the number of slices.
+
 Trail Length can be expressed in Seconds or Frames. Seconds is preferable as it will remain the same if you move the Trail POP to another project with a different frame rate. Trail Increment lets you skip frames - capture a slice every Mth frame.
+
 Reset clears and restarts the trail. Oldest Point First reverses the order of the slices.
+
 The Trail POP deals with frame drops elegantly by (optionally) filling in data for missing frames and creating stand-in slices, and (optionally) tagging each slice with an `Age` attribute. This can give smoother frame-drop-resistant trail curves.
+
 [trailPOP_Class](https://docs.derivative.ca/TrailPOP_Class "TrailPOP Class")
 
 ## Parameters - Trail Page
+
 - Active `active` - When enabled, the trail POP will append the input POP to the current trails.
 - Always Cook `alwayscook` - Forces the operator to cook every frame.
 - Trail Length `length` - ⊞ - Length of trail expressed in time units.
@@ -65,6 +75,7 @@ The Trail POP deals with frame drops elegantly by (optionally) filling in data f
 - Closed `closed` - The last vertex is connected to the first vertex.
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -102,19 +113,27 @@ The Trail POP deals with frame drops elegantly by (optionally) filling in data f
   * Pivot `pz` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Trail POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

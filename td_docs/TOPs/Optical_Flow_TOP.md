@@ -5,17 +5,25 @@ title: Optical_Flow_TOP
 ---
 
 # Optical Flow TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This operator currently only works with **Nvidia GPUs** of the 3000 series or higher.
+
 Optical Flow detects patterns of motion in its input. The motion detected in the X-direction is output in the red (R) channel, while the motion in the Y-direction is output in the green (G) channel.
+
 The pixel values stored in the red and green channels are 32-bit floating point numbers. A value of 1.0 in a pixel of the red channel means that the horizontal motion of what is at that part of the image is moving left-to-right at 1 screen-width per second. In a 16x9 image, a green value of 1.0 at that pixel means the motion is upward at 1 screen-width per second, or 1 * 16/9 = 1.77 times the screen height per second.
+
 The values can be scaled with the Gain parameters. The TOP can drive forces in the particlesGpu component.
+
 [opticalflowTOP_Class](https://docs.derivative.ca/OpticalflowTOP_Class "OpticalflowTOP Class")
 
 ## Parameters - Optical Flow Page
+
 - Grid Size `gridsize` - ⊞ - Determines the output resolution. A smaller grid corresponds to a larger output image. [Turing GPUs](https://en.wikipedia.org/wiki/Turing_\(microarchitecture\)) only support `4x4`, whereas newer GPUs can use any option.
   * 1x1 `grid1x1` - The smallest grid size, which is slowest to compute. The output resolution is the same as the input resolution.
   * 2x2 `grid2x2` - The output resolution is half of the input resolution.
@@ -35,6 +43,7 @@ The values can be scaled with the Gain parameters. The TOP can drive forces in t
 - Timestamp `timestamp` - This is a timestamp in seconds of the video frame. See the discussion of Manual Timing in the parameter above.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -114,12 +123,17 @@ The values can be scaled with the Gain parameters. The TOP can drive forces in t
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Optical Flow TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -133,7 +147,9 @@ Extra Information for the Optical Flow TOP can be accessed via an [Info CHOP](ht
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

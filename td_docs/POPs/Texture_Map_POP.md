@@ -5,21 +5,33 @@ title: Texture_Map_POP
 ---
 
 # Texture Map POP
+
 ## Summary
 
 The Texture Map POP creates the `Tex` attribute which is used to apply texture maps to surfaces, or to position procedurally-generated textures to surfaces.
+
 The `Tex` attribute is a float3 3-component attribute. It can appear as a point attribute or a vertex attribute. It is created by all the generator POPs like the [Plane POP](https://docs.derivative.ca/Plane_POP "Plane POP"), [Grid POP](https://docs.derivative.ca/Grid_POP "Grid POP"), [Sphere POP](https://docs.derivative.ca/Sphere_POP "Sphere POP"), [Rectangle POP](https://docs.derivative.ca/Rectangle_POP "Rectangle POP"), [Box POP](https://docs.derivative.ca/Box_POP "Box POP") etc., but `Tex` can also created with the Texture Map POP.
+
 There are various projection methods, each useful depending on the type of geometry it is being applied to and its use-case.
+
 Equirectangular Inside and Outside is a spherical polar longitude/latitude mapping used on vertices, used in VR, either to be viewed from the inside of a sphere or outside.
+
 Domes require the mapping type Equidistant Azimuth, a fish eye projection. Projection mapping uses perspective from camera simulating what is "seen" from the position of a projector.
+
 Triplanar Coordinates is a type that generates 3 sets of texture coordinates (3 attributes) used to map 1 texture onto an object but is a blend of 3 orthographic projections onto 3 sides of an object.
+
 There is nothing special about the `Tex` attribute - any attribute can be used by a Material. The [Normalize POP](https://docs.derivative.ca/Normalize_POP "Normalize POP") and the [Projection POP](https://docs.derivative.ca/Projection_POP "Projection POP") produce attributes that can be used with a material, like doing orhtographic scaled projections, or spherical/cylindrical projections.
+
 Some materials require multiple texture coordinates, which can be created with any of these methods in creating `Tex2`, `Tex3`, etc. and provided to the materials.
+
 Note: In SOPs this was similar to the use of the `uvw` attribute for texture coordinates.
+
 See also [PBR MAT](https://docs.derivative.ca/PBR_MAT "PBR MAT"), [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT"), [Normalize POP](https://docs.derivative.ca/Normalize_POP "Normalize POP") and the [Projection POP](https://docs.derivative.ca/Projection_POP "Projection POP")
+
 [texturemapPOP_Class](https://docs.derivative.ca/TexturemapPOP_Class "TexturemapPOP Class")
 
 ## Parameters - Texture Page
+
 - Primitive Group `group` - Optional primitive group to select.
 - Transform Input Texture Coord `transforminput` - Enable transforms on the input texture coordinates.
 - Input Texture Coord Attribute `inputtexattr` - Input Texture coordinate attribute to transform.
@@ -106,6 +118,7 @@ See also [PBR MAT](https://docs.derivative.ca/PBR_MAT "PBR MAT"), [Phong MAT](ht
   * Triplanar Coordinates (Point) `triplanar` -
 
 ## Parameters - Transform Page
+
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -143,19 +156,27 @@ See also [PBR MAT](https://docs.derivative.ca/PBR_MAT "PBR MAT"), [Phong MAT](ht
   * Pivot `pz` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Texture Map POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

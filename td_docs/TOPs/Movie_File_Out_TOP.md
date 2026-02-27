@@ -5,21 +5,33 @@ title: Movie_File_Out_TOP
 ---
 
 # Movie File Out TOP
+
 ## Summary
 
 The Movie File Out TOP saves a TOP stream out to a movie file (`.mov`/`.mp4`) using a variety of codecs, including the H.264/H.265, [Hap Q](https://docs.derivative.ca/Hap "Hap"), [NotchLC](https://docs.derivative.ca/NotchLC "NotchLC"), [Apple ProRes](https://docs.derivative.ca/Apple_ProRes "Apple ProRes") and Animation video codecs. It can also save single frame images, image sequences, or stop-frame movies.
+
 For codecs that support Alpha, use the 'Movie Pixel Format' parameter to select a format that includes alpha.
+
 The [Export Movie Dialog](https://docs.derivative.ca/Export_Movie_Dialog "Export Movie Dialog") is a user interface built around the Movie File Out TOP.
+
 To record movies with audio using the Movie File Out TOP, a [Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing") CHOP with mono or stereo channels of audio is required. If TouchDesigner is running at a lower frame rate than the target video frame rate and a CHOP is specified for audio, the Movie File Out TOP will automatically repeat video frames to ensure the video and audio stay in sync.
+
 Recording a movie without frame drops can be done in non-realtime by turning off the Realtime flag at the top of the user interface. The length of the video is not predetermined and depends on the amount of time the Record parameter is on.
+
 You can record a sequence of `.tif` or `.exr` files by setting the Type parameter to Image Sequence. When Image File Type is set to OpenEXR, the EXR page has options to record any number of color channels from multiple TOPs into an EXR image file, and can create it with metadata that would get read by a [Point File In TOP](https://docs.derivative.ca/Point_File_In_TOP "Point File In TOP").
+
 The audio codecs that can be written out to file are ALAC (Apple Lossless), MP3, AAC, Vorbis, Opus, Uncompressed 16/32/64-bit (PCM).
+
 **H264/H265/AV1 NOTE:** Encoding movies in H.264/H.265/AV1 codec is only available with a [Commercial](https://docs.derivative.ca/TouchDesigner_Commercial "TouchDesigner Commercial") or [Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro") license. NVIDIA graphic hardware is also required on Windows. On macoOS H264 is supported.
+
 Recording still images and stop-frame animation can be done by changing the 'Type' parameter. Then the 'Add Frame' pulse button can be pulsed manually or via a script to cause the frames to be written.
+
 See also [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"), [Recording Movies with Audio](https://docs.derivative.ca/Recording_Movies_with_Audio "Recording Movies with Audio"), [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP").
+
 [moviefileoutTOP_Class](https://docs.derivative.ca/MoviefileoutTOP_Class "MoviefileoutTOP Class")
 
 ## Parameters - Movie Out Page
+
 - Type `type` - ⊞ - Output either a movie, image, image sequence, or stop-frame movie.
   * Movie `movie` - Records a movie file.
   * Image `image` - Records a single image.
@@ -131,8 +143,11 @@ See also [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie
 - Header Source DAT `headerdat` - The path to a Table DAT that stores header metadata that should be written to the output image or movie file. Header data is written as key-value pairs with the first column storing the keys and the second column storing the associated values. See [File Metadata](https://docs.derivative.ca/File_Metadata "File Metadata") for more information on supported metadata. **Note:** Currently only supported for EXR files. **Warning:** Files may fail to save if the header data conflicts with system headers.
 
 ## Parameters - EXR Page
+
 The Inputs page can be used to add extra channels of image data to the output file and to change the names of the base 4 channels.
+
 Each 'Additional Input TOP' is a path to a TOP containing the image data to add to the file. The associated Red, Green, Blue and Alpha parameters are the names assigned to that input's channels in the new file. If the channel parameter is left blank, that channel will not be added to the output file. Channels with duplicate names will be overwritten.
+
 **Note:** Additional inputs are currently only supported in EXR images and sequences. In EXR files, channels are stored in alphabetical order.
 - Save as Point Cloud `pointcloud` - When enabled, an additional header will be added to the file that indicates the contents are point data rather than images. This header is used to automatically load the file into a [Point File In TOP](https://docs.derivative.ca/Point_File_In_TOP "Point File In TOP") rather than a [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") when dragging and dropping.
 - Additional Input TOP `input` - Sequence of TOPs containing image data to add to the file
@@ -144,6 +159,7 @@ Each 'Additional Input TOP' is a path to a TOP containing the image data to add 
 - TOP `input0top` -
 
 ## Parameters - Settings Page
+
 - Stall for File Open `stallforopen` - When this is on playback will stall until the file is opened and ready to receive frames, to make sure the frame that was inputted when Record was turned on gets recorded. When this is off recording may start on a later frame, after the file has been opened. Turning this off can avoid a stall in playback, if missing recording some frames at the start is acceptable.
 - Start Timecode `starttimecode` -
 - Profile `profile` - ⊞ - Select the H.264 profile to use.
@@ -193,6 +209,7 @@ Each 'Additional Input TOP' is a path to a TOP containing the image data to add 
 - Include Mip Maps `mipmaps` - When saving out .dds file, mipmaps can be included if this is enabled. This is primarily used for the [PreFilter Map TOP](https://docs.derivative.ca/PreFilter_Map_TOP "PreFilter Map TOP"), which will encode special information into the mipmap levels of the texture which needs to be maintained.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -272,11 +289,15 @@ Each 'Additional Input TOP' is a path to a TOP containing the image data to add 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Movie File Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Movie File Out TOP Info Channels
   * last_frames_written - The number of frames written to the file on the last cook. This many be multiple repeats of the same image if TouchDesigner dropped frames, to ensure time stays in sync.
 
@@ -297,7 +318,9 @@ Specific Movie File Out TOP Info Channels
   * cur_seq_index - When recording sequences of images, this is the current sequence image index.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -311,7 +334,9 @@ Specific Movie File Out TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

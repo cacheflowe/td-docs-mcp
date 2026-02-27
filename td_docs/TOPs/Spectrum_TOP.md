@@ -5,12 +5,15 @@ title: Spectrum_TOP
 ---
 
 # Spectrum TOP
+
 ## Summary
 
 The Spectrum TOP uses the VkFFT library to perform discrete fourier transforms (DFT) or inverse discrete fourier transforms (IDFT) on a TOP input.
+
 [spectrumTOP_Class](https://docs.derivative.ca/SpectrumTOP_Class "SpectrumTOP Class")
 
 ## Parameters - Spectrum Page
+
 - Mode `mode` - ⊞ - Selects the transform mode (ie. direction). Either DFT or IDFT.
   * Discrete Fourier Transform `dft` - Takes 1 channel from the input (selected via Channel parameter) and performs a Discrete Fourier Transform, giving a 32-bit RG channel output.
   * Inverse Discrete Fourier Transform `idft` - Takes an 32-bit RG channel input and performs an inverse discrete fourier transform, giving a 32-bit mono channel output. This reverses the effect of the Discrete Fourier Transform.
@@ -28,6 +31,7 @@ The Spectrum TOP uses the VkFFT library to perform discrete fourier transforms (
 - Transform Rows `transrows` - When enabled, will perform the DFT/IDFT by row.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -107,12 +111,17 @@ The Spectrum TOP uses the VkFFT library to perform discrete fourier transforms (
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Spectrum TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -126,7 +135,9 @@ Extra Information for the Spectrum TOP can be accessed via an [Info CHOP](https:
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

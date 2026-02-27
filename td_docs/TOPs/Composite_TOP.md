@@ -5,14 +5,19 @@ title: Composite_TOP
 ---
 
 # Composite TOP
+
 ## Summary
 
 The Composite TOP is a multi-input TOP that will perform a composite operation for each input. Select the composite operation using the Operation parameter on the Composite parameter page.
+
 **Note:** See also the [blendModes component](https://docs.derivative.ca/Palette:blendModes "Palette:blendModes") in the Palette. Refer also to [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets").
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [compositeTOP_Class](https://docs.derivative.ca/CompositeTOP_Class "CompositeTOP Class")
 
 ## Parameters - Composite Page
+
 - TOP `top` - In addition to all the inputs attached, you can specify more using the TOPs listed in this field. Example: `ramp*` will composite all TOPs whose name starts with `ramp`.
 - Preview Grid `previewgrid` - This outputs an image showing the effect of all operation types in a grid, with the inputs swapped on the right side of each tile.
 - Select Input `selectinput` - Instead of doing the composites, this causes only one of the inputs to pass through.
@@ -68,6 +73,7 @@ The Composite TOP is a multi-input TOP that will perform a composite operation f
 - Swap Operation Order `swaporder` - Swaps the order of the input pairs. A operation B is changed to B operation A. Operations like Add don't matter, but many do, like Over and Hard Light.
 
 ## Parameters - Transform Page
+
 - Fixed Layer `size` - ⊞ - The selected input will become the fixed layer and the other input will be the overlay. This does not change the order of the composite (Input1 + Input2), only which layer is considered fixed and which layer is adjustable by the parameters on the Transform page. The resolution and aspect ratio of the Fixed Layer is used as the composite's final resolution and aspect ratio unless manually on the [Common Page](#Parameters_-_Common_Page)
   * Input 1 `input1` -
   * Input 2 `input2` -
@@ -121,6 +127,7 @@ The Composite TOP is a multi-input TOP that will perform a composite operation f
 - Legacy Transform `legacyxform` - When enabled, will use the legacy method of building the transform matrix, which has inverted rotation and transform order.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -200,12 +207,17 @@ The Composite TOP is a multi-input TOP that will perform a composite operation f
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Composite TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -219,7 +231,9 @@ Extra Information for the Composite TOP can be accessed via an [Info CHOP](https
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

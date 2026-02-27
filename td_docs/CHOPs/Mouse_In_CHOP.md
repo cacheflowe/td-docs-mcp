@@ -5,15 +5,21 @@ title: Mouse_In_CHOP
 ---
 
 # Mouse In CHOP
+
 ## Summary
 
 The Mouse In CHOP outputs X and Y screen values for the mouse device and monitors the up/down state of the three mouse buttons.
+
 When the Active flag is on, the Mouse X and Y positions are output through the channels named in the Position X and Y parameters and the button states are output through the channels named in the Left, Right and Middle Button parameters.
+
 The button values are 0 for Button Up and 1 for Button Down.
+
 The Mouse In CHOP and [Keyboard In CHOPs](https://docs.derivative.ca/Keyboard_In_CHOP "Keyboard In CHOP") are sometimes connected to the Position and Active inputs respectively of the [Record CHOP](https://docs.derivative.ca/Record_CHOP "Record CHOP") to enable the recording of channels.
+
 [mouseinCHOP_Class](https://docs.derivative.ca/MouseinCHOP_Class "MouseinCHOP Class")
 
 ## Parameters - Control Page
+
 - Active `active` - ⊞ - While **On** , the mouse movement will be output from and the CHOP will cook every frame. When set to **Off** it will not cook and the current mouse X or Y values will not be output. **While Playing** will capture mouse events only when the [Timeline](https://docs.derivative.ca/Timeline "Timeline") is playing forward.
   * Off `off` -
   * On `on` -
@@ -35,6 +41,7 @@ The Mouse In CHOP and [Keyboard In CHOPs](https://docs.derivative.ca/Keyboard_In
 - Panels `panels` - Events are only triggered when the specified panel has focus.
 
 ## Parameters - Channel Page
+
 This sets the [Sample Rate](https://docs.derivative.ca/CHOP_Channel_Page#Sample_Rate "CHOP Channel Page") and the [Extend Conditions](https://docs.derivative.ca/CHOP_Channel_Page#Extend_Conditions "CHOP Channel Page").
 - Sample Rate `rate` - The sample rate of the channels, in samples per second.
 - Extend Left `left` - ⊞ - The left extend conditions (before/after range).
@@ -54,6 +61,7 @@ This sets the [Sample Rate](https://docs.derivative.ca/CHOP_Channel_Page#Sample_
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -71,9 +79,13 @@ This sets the [Sample Rate](https://docs.derivative.ca/CHOP_Channel_Page#Sample_
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Mouse In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -87,7 +99,9 @@ Extra Information for the Mouse In CHOP can be accessed via an [Info CHOP](https
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,19 +5,29 @@ title: Select_CHOP
 ---
 
 # Select CHOP
+
 ## Summary
 
 The Select CHOP selects and renames channels from other CHOPs of any CHOP network. You can select the channels from control panel gadgets like sliders and buttons. It retrieves channels from one or more CHOPs.
+
 It selects only the channels you specify. Example: "`c2 c5 c3 c3`" will result in 4 channels, the last two identical, all in the specified order.
+
 There are two ways of getting channels - through the CHOP and Channel Name parameters or directly from a CHOP connected to its input. All extract and renaming options apply when using the CHOP and Channel Name parameters instead of the wired input.
+
 See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") for selecting CHOPs and channels.
+
 It can also rename channels by generating new channel names. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement") and [Pattern Expansion](https://docs.derivative.ca/Pattern_Expansion "Pattern Expansion") for patterns you can use.
+
 See [Channel Naming Patterns](https://docs.derivative.ca/Rename_CHOP#Channel_Naming_Patterns "Rename CHOP") for more ways to manipulate existing channel names into new ones.
+
 (The Select CHOP gets channels from any CHOP, the [Parameter CHOP](https://docs.derivative.ca/Parameter_CHOP "Parameter CHOP") gets parameters of any OP.)
+
 See also the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") (Select CHOP does most of the same things and more.)
+
 [selectCHOP_Class](https://docs.derivative.ca/SelectCHOP_Class "SelectCHOP Class")
 
 ## Parameters - Select Page
+
 - CHOP `chop` - The source(s) of the channels. (Assuming the CHOP is not directly connected).
 - Channel Names `channames` - The names of the channels to keep. Name patterns may be used. Ex: ```
  chan[1-5] *x /project1/geo1:t[xyz]

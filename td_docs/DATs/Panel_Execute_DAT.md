@@ -5,14 +5,19 @@ title: Panel_Execute_DAT
 ---
 
 # Panel Execute DAT
+
 ## Summary
 
 The Panel Execute DAT will run its script when the [Panel Values](https://docs.derivative.ca/Panel_Value "Panel Value") of a specified panel component changes. You can specify which panel values to monitor, and trigger scripts based on their values changing in various ways.
+
 Panel Execute DATs are created with [default python method](https://docs.derivative.ca/PanelexecuteDAT_Class "PanelexecuteDAT Class") placeholders. For each monitored condition in the parameters, there is a matching python method in the DAT. When a condition is turned on in the parameters, each time that condition is satisfied the corresponding python method will be executed.
+
 In the template Python script, `panelValue` is passed to each method, and you can query each call by printing `panelValue.name` and `panelValue.val`. See [PanelValue Class](https://docs.derivative.ca/PanelValue_Class "PanelValue Class").
+
 [panelexecuteDAT_Class](https://docs.derivative.ca/PanelexecuteDAT_Class "PanelexecuteDAT Class")
 
 ## Parameters - Panel Execute Page
+
 - Active `active` - While on, the DAT will respond to the Panel that is referenced.
 - Execute from `executeloc` - ⊞ - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) Determines the location the script is run from.
   * Current Node `current` - ([Tscript](https://docs.derivative.ca/Operator_Language "Operator Language") only) The script is executed from the current node location.
@@ -31,6 +36,7 @@ Scripts will execute based on a combination of the five trigger events listed be
 - Edit.. `edit` - Clicking this opens a text editor to edit text in the DAT.
 
 ## Parameters - File Page
+
 - File `file` - The filesystem path and name of the file to load. Accepts `.txt` and `.dat` files.
 - Sync to File `syncfile` - When On, loads the file from disk into the DAT when the projects starts. A filename must be specified. Turning on the option will load the file from disk immediately. If the file does not exist, it will be created the first time the DAT is updated. The file is monitored so that any changes made to the file will update the DAT, and any changes made to the DAT will be written to the file right away. If the file is removed, the DAT will retain its current contents.
 - Load on Start `loadonstart` - When On, reloads the file from disk into the DAT when the projects starts.
@@ -39,6 +45,7 @@ Scripts will execute based on a combination of the five trigger events listed be
 - Write File `writepulse` - Instantly write the file to disk.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -55,18 +62,25 @@ Scripts will execute based on a combination of the five trigger events listed be
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Panel Execute DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

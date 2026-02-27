@@ -5,16 +5,23 @@ title: Timecode_CHOP
 ---
 
 # Timecode CHOP
+
 ## Summary
 
 The Timecode CHOP generates [Timecode](https://docs.derivative.ca/Timecode "Timecode") data (channels, a `.timecode` python object and other python members). Its Mode menu provides a variety of ways to get, set and generate timecode through its parameters, including being driven from a timecode string, a set of channels, or other OPs that have timecode such as video input devices. You can also set timecode with python functions.
+
 The timecode data is output as both channel data in the CHOP, and as a [Timecode object](https://docs.derivative.ca/Timecode_Class "Timecode Class") via its [`.timecode` member](https://docs.derivative.ca/TimecodeCHOP_Class#timecode "TimecodeCHOP Class") in Python.
+
 The timecode can follow the SMPTE standard (ie. non-negative, frames-per-second up to 60, loops at 24 hours), or a more general format (ie. any number of frames per second, negative timecode allowed, loops at 100 hours).
+
 When being driven by channels, an input with channels named `negative`, `hour`, `minute`, `second`, or `frame` can be provided that is added to the Timecode CHOP's output.
+
 See also: [Timecode](https://docs.derivative.ca/Timecode "Timecode"), [Timecode Class](https://docs.derivative.ca/Timecode_Class "Timecode Class") and the OP Snippets for the Timecode CHOP.
+
 [timecodeCHOP_Class](https://docs.derivative.ca/TimecodeCHOP_Class "TimecodeCHOP Class")
 
 ## Parameters - Timecode Page
+
 - SMPTE `smpte` - When enabled the generated timecode will follow the [SMPTE timecode](https://en.wikipedia.org/wiki/SMPTE_timecode) standard, meaning no negative timecodes, and the timecode will loop at 24 hours. When disabled, the format will be more general, allowing for negative numbers and a maximum timecode of 100 hours.
 - Mode `mode` - ⊞ - The source used for generating the timecode
   * Locked to Timeline `lockedtotimeline` - Generates the timecode from the timeline's time.
@@ -69,6 +76,7 @@ See also: [Timecode](https://docs.derivative.ca/Timecode "Timecode"), [Timecode 
   * Cycle `cycle` - If selected, then the timecode will cycle to 00:00:00:00 once it reaches length.
 
 ## Parameters - Output Page
+
 - Negative Chan `negativechan` - When enabled, outputs the negative channel, which is true when the timecode is negative. Always false when using SMPTE standard.
 - Frame Chan `framechan` - When enabled, outputs the frame channel.
 - Second Chan `secondchan` - When enabled, outputs the second channel.
@@ -80,6 +88,7 @@ See also: [Timecode](https://docs.derivative.ca/Timecode "Timecode"), [Timecode 
 - FPS Chan `fpschan` - When enabled, outputs the fps channel.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -97,4 +106,5 @@ See also: [Timecode](https://docs.derivative.ca/Timecode "Timecode"), [Timecode 
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  - Optional input CHOP with some or all of following channels: negative, hour, minute, second, frame. The input timecode value is added to the Timecode CHOP's output.

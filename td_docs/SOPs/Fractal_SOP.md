@@ -5,12 +5,15 @@ title: Fractal_SOP
 ---
 
 # Fractal SOP
+
 ## Summary
 
 The Fractal SOP allows you created jagged mountain-like divisions of the input geometry. It will create random-looking deviations and sub-divisions along either a specified normal vector (the Direction xyz fields) or the vertex normals of the input geometry. This is great for the creation of terrains and landscapes.
+
 [fractalSOP_Class](https://docs.derivative.ca/FractalSOP_Class "FractalSOP Class")
 
 ## Parameters - Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Divisions `divs` - The number of subdivisions of the input geometry. Values in the range of 1 - 3 are reasonable to start with. Higher values cause excessive geometry and should be used with caution.
 - Smoothness `smooth` - The smoothness value scales the deviations. The range is usually between 0 and 1, and small numbers create larger deviations than large numbers. Smoothness and Scale have a similar effect, but there is a subtle difference. Smoothness is calculated for each iteration of the SOP. The number of Iterations is, in turn set by the number of Divisions. Scale, by contrast, is a global scaling of the amplitude of the deviations, with no consideration of the stage at which they are created. Using low values of smoothness (producing large deviations) and a small scale value will give a slightly more random looking result than doing the opposite; high roughness values (small deviations) and large scale values, providing Divisions is greater than 1.
@@ -24,12 +27,17 @@ The Fractal SOP allows you created jagged mountain-like divisions of the input g
   * Z `dirz` -
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Fractal SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -41,7 +49,9 @@ Extra Information for the Fractal SOP can be accessed via an [Info CHOP](https:/
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

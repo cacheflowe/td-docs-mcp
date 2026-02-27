@@ -5,16 +5,23 @@ title: Web_Render_TOP
 ---
 
 # Web Render TOP
+
 ## Summary
 
 The Web Render TOP takes a URL or DAT and renders a webpage via separate browser processes that uses Chromium Embedded Frameworks, and passes the result back through shared memory. The processes names starts with TouchDesigner Web Render and there may be multiple spawned per Web Render TOP. It renders non-Flash pages, including HTML, HTML5, PDF, SVG and more. Targets can be on the internet, in local files with a `file://` syntax, or a [DAT](https://docs.derivative.ca/DAT "DAT").
+
 It is implemented with the [Chromium Embedded Frameworks](https://bitbucket.org/chromiumembedded/cef) project (CEF).
+
 Attach an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to get the loaded status `loaded` of the page, and `num_handle_updates`, the number of times the page has been rendered.
+
 Attach an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") to get the shared memory `handle`, the `status` of the browser process, the `process_id`, versions for Chromium Embedded Frameworks `cef` and Chromium `chromium`, the `url` currently displayed, page `title` and `error` state of the process.
+
 See also [Palette:webBrowser](https://docs.derivative.ca/Palette:webBrowser "Palette:webBrowser"), [Audio Web Render CHOP](https://docs.derivative.ca/Audio_Web_Render_CHOP "Audio Web Render CHOP"), [Palette:SVG](https://docs.derivative.ca/Palette:SVG "Palette:SVG")
+
 [webrenderTOP_Class](https://docs.derivative.ca/WebrenderTOP_Class "WebrenderTOP Class")
 
 ## Parameters - Web Render Page
+
 - Active `active` - Enables/disables the Web Render TOP.
 - Source `source` - ⊞ - Source of the webpage, which can be an address via URL or File, or data from a DAT
   * URL or File `urlorfile` -
@@ -47,7 +54,9 @@ See also [Palette:webBrowser](https://docs.derivative.ca/Palette:webBrowser "Pal
 - Options `options` - Additional options that can be passed to the browser process. This option will restart the browser process. A list of options for the chromium browser can be found at [here](https://peter.sh/experiments/chromium-command-line-switches/). Note that these options may change without notice with version updates.
 - Restart if Process Died `autorestart` - Automatically restart the browser process if it died.
 - Restart `autorestartpulse` - Triggers the Restart immediately on button release (button-up). This can be accessed in python using the pulse() method.
+
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -127,8 +136,11 @@ See also [Palette:webBrowser](https://docs.derivative.ca/Palette:webBrowser "Pal
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Web Render TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Web Render TOP Info Channels
   * num_handle_updates - Number of updates received from cef
 
@@ -147,7 +159,9 @@ Specific Web Render TOP Info Channels
   * audio - Audio state. 1 if audio has started in the Web Render process.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -161,7 +175,9 @@ Specific Web Render TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

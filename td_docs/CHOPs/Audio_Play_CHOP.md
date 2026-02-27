@@ -5,18 +5,27 @@ title: Audio_Play_CHOP
 ---
 
 # Audio Play CHOP
+
 ## Summary
 
 The Audio Play CHOP plays back a sound file through any attached audio output device using DirectSound. It supports `.aif`, `.mp3`, `.mid`, `.wav` and `.m4a` files up to 48.000 kHz, which can have mono, stereo or even up to 5.1 channels in them. The audio channels can then be routed to any speaker location that DirectSound uses. See Outputs section below.
+
 **NOTE** : With the Audio Play CHOP, audio samples do not enter or pass through TouchDesigner, so you will not see them in CHOPs, and you cannot process them in CHOPs. The Audio Play CHOP starts an external process that opens the file and sends it directly to the the audio outputs of your computer. If you want to process the audio within TouchDesigner or output them into a [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") or [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP"), use the [Audio File In CHOP](https://docs.derivative.ca/Audio_File_In_CHOP "Audio File In CHOP").
+
 The Audio Play CHOP contains a channel called _state_. This channel is 1 whenever any file is being played, 0 otherwise.
+
 The first input (Input 0:Triggers) is used to trigger the audio file to play. The second input (Input 1: Volume) can be used to control volume, if no input is connected the Volume parameter will be used. The third input (Input 2: Pan) is for panning, no input assumes it is centered. When using the DAT List parameter, the inputs can contain mulitiple channels to manipulate each file individually. Multiple Audio Play CHOPs can output to different devices simutaneously.
+
 It can also be triggered by the Trigger parameter below, but in this case if multiple files are specified via the DAT List, then all files will be played at the same time when triggered.
+
 Sound files can also be triggered through the `play()` method [audioplayCHOP_Class](https://docs.derivative.ca/AudioplayCHOP_Class "AudioplayCHOP Class"). Some advanced options are only available through the [audioplayCHOP_Class](https://docs.derivative.ca/AudioplayCHOP_Class "AudioplayCHOP Class").
+
 The file can be read in from disk or from the web. Use `http://` when specifying a URL.
+
 [audioplayCHOP_Class](https://docs.derivative.ca/AudioplayCHOP_Class "AudioplayCHOP Class")
 
 ## Parameters - AudioPlay Page
+
 - Device `device` - A menu of available audio devices to output to. Selecting _default_ sets the audio device to that which is selected in Windows Control Panel>Sound>Playback.
 - Outputs `outputs` -
 - Sound File `file` - `.aif`, `.mp3`, `.mid`, `.wav` or `.m4a` audio file. The file can be mono or stereo.
@@ -31,8 +40,10 @@ The file can be read in from disk or from the web. Use `http://` when specifying
 - Cook Every Frame `cookalways` - Forces CHOP to cook every frame.
 
 ## Parameters - Output 1 Page
+
 - Stereo Mode `stereo` - Sets output to just 2 channels, front left and front right.
 Outputs - The outputs on this page and the following Output 2 page are for routing to an audio device's different speaker outputs. Not all devices will support all outputs. For each speaker output, you can route any of the file's channels to play through it. For example, you can easily output the front left channel of the file to the all the front left speaker outputs, or you could output the front left channel to both front and rear speaker outputs. The value of each output parameter determines which channel from the file it plays, see below.
+
 **File's channel mapping for outputs**
   * -1 - no audio plays through this output
   * 0 - File's front left channel will play
@@ -54,6 +65,7 @@ The following speaker outputs are found on this parameter page.
 - Back Center `backcenter` - Play audio on this output based on mapping table above.
 
 ## Parameters - Output 2 Page
+
 The following speaker outputs are found on this parameter page.
 - Side Left `sideleft` - Play audio on this output based on mapping table above.
 - Side Right `sideright` - Play audio on this output based on mapping table above.
@@ -66,6 +78,7 @@ The following speaker outputs are found on this parameter page.
 - Top Back Right `topbackright` - Play audio on this output based on mapping table above.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -83,13 +96,17 @@ The following speaker outputs are found on this parameter page.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Audio Play CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Audio Play CHOP Info Channels
   * device_default -
 
@@ -110,7 +127,9 @@ Specific Audio Play CHOP Info Channels
   * sample_name0_Notify -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -124,7 +143,9 @@ Specific Audio Play CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

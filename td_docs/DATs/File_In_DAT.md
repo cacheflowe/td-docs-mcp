@@ -5,19 +5,24 @@ title: File_In_DAT
 ---
 
 # File In DAT
+
 ## Summary
 
 The File In DAT reads in `.txt` text files and `.dat` table files. It will attempt to read any other file as raw text. The file can be located on disk or on the web. Use `http://` when specifying a URL.
+
 See also [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT"), [Text DAT](https://docs.derivative.ca/Text_DAT "Text DAT").
+
 [fileinDAT_Class](https://docs.derivative.ca/FileinDAT_Class "FileinDAT Class")
 
 ## Parameters - File In Page
+
 - File `file` - The filesystem path and name of the file to load. Accepts `.txt` files for regular text and `.dat` files for text in table format.
 - Convert Text to Table `converttable` - Converts the contents of the DAT from regular text to table-formatted text (tab-delimited text, each <tab> is a new column in the table).
 - Refresh `refresh` - Reload the file when this parameter is set to On.
 - Refresh Pulse `refreshpulse` - Instantly reload the file from disk.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -34,15 +39,21 @@ See also [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT"), [Text DA
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the File In DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

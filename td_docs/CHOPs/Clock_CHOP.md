@@ -5,6 +5,7 @@ title: Clock_CHOP
 ---
 
 # Clock CHOP
+
 ## Summary
 
 The Clock CHOP generates channels that reflect the time of year, month, week, day, hour, minute, second and millisecond. It also has a moon cycle channel. It provides the date as separate channels and in different units. It presents the time in two ways:
@@ -13,9 +14,11 @@ The Clock CHOP generates channels that reflect the time of year, month, week, da
   * It generates a countdown to a specific date.
 
 There are sunrise/sunset features, and you can override the day-of-year by inputting 1-6 channels into the CHOP.
+
 [clockCHOP_Class](https://docs.derivative.ca/ClockCHOP_Class "ClockCHOP Class")
 
 ## Parameters - Clock Page
+
 - Output `output` - ⊞ - Fractions or Units affects the channel data that is output from the Clock CHOP. Fraction gives convenient 0-1 ramps and Units give integers, like 0-23 for the hours of a day. For example, use Fractions and the day, hour and minute channels to drive a wall clock.
   * Units `units` - Generates **integers that reflect the day-of month** etc. In this form the year channel is 4 for 2004, etc.
   * Fractions `fractions` - Generates **0-1 ramps** that reflect the time of year, month, week, day, hour, minute, second and millisecond.
@@ -43,6 +46,7 @@ There are sunrise/sunset features, and you can override the day-of-year by input
 - Year `year` - If Output is Units, it is the integer year number relative to the Start Reference, starting at 0, so year 2009 is 9 by default. If Output is Fraction, it is the current fraction of a year, taking into account today's month, day, hour, minute and second.
 
 ## Parameters - Solar Page
+
 - Latitude `latitude` - ⊞ - Enter a latitude (hours/min north/south) of your location. (defaults to Toronto, Canada). Fractional hours are permitted. For example: 43.6532 hours and 0 minutes, is identical to 43 hours and 39 minutes. The parameter latitude1 is hours, latitude2 is minutes.
   * `latitude1` -
   * `latitude2` -
@@ -66,6 +70,7 @@ There are sunrise/sunset features, and you can override the day-of-year by input
 - Declination `declination` - (-180 to 180, degrees north/south that the sun is off the equator).
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -83,12 +88,17 @@ There are sunrise/sunset features, and you can override the day-of-year by input
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Clock CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -102,7 +112,9 @@ Extra Information for the Clock CHOP can be accessed via an [Info CHOP](https://
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,12 +5,17 @@ title: Multi_Touch_In_DAT
 ---
 
 # Multi Touch In DAT
+
 ## Summary
 
 The Multi Touch In DAT is used for receiving messages and events from the Windows standard multi-touch API. It captures all the messages, where each new message changes the table it outputs. When a messages is added to the DAT, any script can be called pointing to the new message. The Multi Touch In DAT can be sent to the [Render Pick DAT](https://docs.derivative.ca/Render_Pick_DAT "Render Pick DAT"), or used with interactTouch methods in the [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") and [Web Render TOP](https://docs.derivative.ca/Web_Render_TOP "Web Render TOP"). Multi Touch DAT is not supported on macOS.
+
 It can output either of two table formats: (1) Raw Events as a FIFO (first in - first out) list, or (2) ID Table, which is the events processed into a more usable one-row-per-finger table.
+
 The Raw Events format creates a FIFO-type DAT (see also [FIFO DAT](https://docs.derivative.ca/FIFO_DAT "FIFO DAT")) which, for each multi-touch event, has a row added to the bottom of the table while at the same time a row at the top is deleted.
+
 Note: To operate panel gadgets with multi-touch screens that send events through the Windows event stream, multi-touch works without requiring DATs. You need to use the DAT when using multiple fingers on one panel, like in a container displaying a 3D render whose objects you want to pick.
+
 The ID table format includes the columns:
   * `id` - every finger press increases the id by 1
   * `sn` - an ongoing count of each finger press.
@@ -30,11 +35,15 @@ The ID table format includes the columns:
   * `aux` - user supplied data via the [PanelCOMP_Class](https://docs.derivative.ca/PanelCOMP_Class "PanelCOMP Class") method `interactTouch()`. When the event is triggered by the mouse via the Include Mouse option, `aux` will include the mouse buttons used (`1` for left, `2` for middle, `4` for right, can be tested bitwise).
 
 You can use the attached callback DAT (named `mtouchin1_callbacks`) to react to multi-touch events. This is suitable for 2D interfaces that do not require a [Render Pick DAT](https://docs.derivative.ca/Render_Pick_DAT "Render Pick DAT").
+
 See the [Palette:multiTouch](https://docs.derivative.ca/Palette:multiTouch "Palette:multiTouch") example in the [Palette](https://docs.derivative.ca/Palette "Palette") under Tools.
+
 See also the [MultiTouch](https://docs.derivative.ca/MultiTouch "MultiTouch") page.
+
 [multitouchinDAT_Class](https://docs.derivative.ca/MultitouchinDAT_Class "MultitouchinDAT Class")
 
 ## Parameters - Multi Touch In Page
+
 - Active `active` - Registers event when Active is On.
 - Output `outputtype` - ⊞ - Sets how the output is displayed in the table.
   * Raw Events `log` - Events are added to the table in a first in - first out (FIFO) order.
@@ -53,6 +62,7 @@ See also the [MultiTouch](https://docs.derivative.ca/MultiTouch "MultiTouch") pa
 - Double Click (secs) `doubleclickthresh` - The maximum time allowed between clicks to be registered as a 'double-click'.
 
 ## Parameters - Received Messages Page
+
 - Callbacks DAT `callbacks` - Path to a DAT containing callbacks.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location (for example, where 'cc' points to).
@@ -65,6 +75,7 @@ See also the [MultiTouch](https://docs.derivative.ca/MultiTouch "MultiTouch") pa
 - Clear Output `clear` - Deletes all lines except the heading. To clear with a script command, here is an example: `opparm -c /serial1 clear`
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -81,15 +92,21 @@ See also the [MultiTouch](https://docs.derivative.ca/MultiTouch "MultiTouch") pa
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Multi Touch In DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,20 +5,26 @@ title: Basis_SOP
 ---
 
 # Basis SOP
+
 ## Summary
 
 The Basis SOP provides a set of operations applicable to the parametric space of spline curves and surfaces. The parametric space, also known as the "domain" of a NURBS or Bzier primitive, is defined by one basis in the U direction and, if the primitive is a surface, another basis in the V direction. The size of the domain is given by the values of the knots that make up the basis.
 [![BasisSOP.gif](https://docs.derivative.ca/images/b/b8/BasisSOP.gif)](https://docs.derivative.ca/File:BasisSOP.gif)
 The Basis SOP contains both ratio-preserving and non ratio-preserving operations.
+
 If the basis reparameterization does not change the distance ratios between knots, the shape of a NURBS primitive is not affected. If the ratios are not preserved, however, a NURBS primitive will change shape in the area influenced by the modified knots; furthermore, if the primitive is a NURBS or Bzier surface, any profiles it may contain will be affected as well.
+
 For more information about bases and knots see Breakpoints, Knots, and Spline Basis in the [Primitive](https://docs.derivative.ca/Primitive "Primitive") and [Spline](https://docs.derivative.ca/Spline "Spline") articles.
+
 [basisSOP_Class](https://docs.derivative.ca/BasisSOP_Class "BasisSOP Class")
 
 ## Parameters - Basis Page
+
 - Group `group` - Group of spline primitives (accepts patterns, as described in: Scripting Guide). Non-spline types are ignored.
 Two sets of pages follow, one for each parametric direction (U and V). In each set the operations are applied in tab order, starting from the left: Parameterization, Mapping, and then raising the spline Order. To disable all the operations of a set, toggle off the U or V check mark above it. The V set is meaningful only for spline surfaces, and is ignored otherwise. Channel names are given for both the U and V pages.
 
 ## Parameters - U Page
+
 - Edit the U Basis `ubasis` - Enable editing of the U Basis.
 - Parameterization `uparmtype` - ⊞ - Select the method of parameterization in u from the options below.
   * Unchanged `nochange` - Does not change the basis.
@@ -50,6 +56,7 @@ Sometimes a Bias of 0 or 1 does not clamp the knot cluster to the closest neighb
 **Production Tip:** Before applying a spline-based texture projection with the Texture SOP, remap the U and/or V bases of the spline surface between 0 and 1 to ensure a complete mapping of the texture. If a single texture map must be shared by several surfaces, the surface bases should be concatenated prior to being remapped.
 
 ## Parameters - V Page
+
 - Edit the V Basis `vbasis` - Enable editing of the V Basis.
 - Parameterization `vparmtype` - ⊞ - Select the method of parameterization in v from the options below.
   * Unchanged `nochange` -
@@ -81,12 +88,17 @@ Sometimes a Bias of 0 or 1 does not clamp the knot cluster to the closest neighb
 **Production Tip:** Before applying a spline-based texture projection with the Texture SOP, remap the U and/or V bases of the spline surface between 0 and 1 to ensure a complete mapping of the texture. If a single texture map must be shared by several surfaces, the surface bases should be concatenated prior to being remapped.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Basis SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -98,7 +110,9 @@ Extra Information for the Basis SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

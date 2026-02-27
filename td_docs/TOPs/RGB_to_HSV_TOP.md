@@ -5,15 +5,19 @@ title: RGB_to_HSV_TOP
 ---
 
 # RGB to HSV TOP
+
 ## Summary
 
 The RGV to HSV TOP converts the image from RGB to HSV colorspace. The R channel becomes Hue, the G channel becomes Saturation, and the B channel becomes Value.
+
 [rgbtohsvTOP_Class](https://docs.derivative.ca/RgbtohsvTOP_Class "RgbtohsvTOP Class")
 
 ## Parameters - RGB to HSV Page
+
 No parameters.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -93,12 +97,17 @@ No parameters.
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the RGB to HSV TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -112,7 +121,9 @@ Extra Information for the RGB to HSV TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,19 +5,29 @@ title: Ray_POP
 ---
 
 # Ray POP
+
 ## Summary
 
 The Ray POP casts a ray from each points of the input, in the direction defined by the Ray Attribute, and outputs new attributes that report what each ray hits.
+
 The second input is the set of triangles and quads that the rays are tested against. The Ray POP can count the number of primitives it hit as it transmits through all primitive in its line, and the distance to the closest primitive.
+
 It can output properties of the primitive it hit - its primitive index, the barymetric position on the primitive it hit, and the values of any attributes on the primitive it hit.
+
 It can also output information about rays that are reflected. Assuming the Collision Geometry is a closed surface, the Ray POP can report whether it is located inside or outside the volume.
+
 It can be put into a mode where it outputs line strips representing the rays that it casts, intersects and reflects.
+
 By default, the Ray POP projects the points on the collision mesh, Scale is a 0 to 1 multiplier between original position and projected position, Lift is also a control to move the point along the ray but in absolute units (to move points inside or outside a bit from the collision surface.
+
 It can leverage [Hardware Ray Tracing](https://docs.derivative.ca/Hardware_Ray_Tracing "Hardware Ray Tracing").
+
 See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP") (has ray functions)
+
 [rayPOP_Class](https://docs.derivative.ca/RayPOP_Class "RayPOP Class")
 
 ## Parameters - Ray Page
+
 - Ray Attribute `rayattrib` - Ray direction attribute.
 - Negate Ray `negateray` - Negates the direction of the ray.
 - Number of Bounces `numbounces` - The number of bounces for the rays.
@@ -81,20 +91,28 @@ See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP") 
   * * `*` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Ray POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,18 +5,27 @@ title: Touch_In_CHOP
 ---
 
 # Touch In CHOP
+
 ## Summary
 
 The Touch In CHOP can be used to create a high speed connection between two TouchDesigner processes via CHOPs.
+
 Data is sent over TCP/IP. The Touch In CHOP (client) receives its data from a [Touch Out CHOP](https://docs.derivative.ca/Touch_Out_CHOP "Touch Out CHOP") (server). The Touch In CHOP is similar to a [Pipe In CHOP](https://docs.derivative.ca/Pipe_In_CHOP "Pipe In CHOP") but highly optimized for TouchDesigner-to-TouchDesigner communication. For interfacing with other software or devices, see the [Pipe In CHOP](https://docs.derivative.ca/Pipe_In_CHOP "Pipe In CHOP") or the [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT").
+
 To receive network data from another "server" computer (e.g. from a Touch Out CHOP running remotely), a connection must be established between the server and the Touch In CHOP before data is sent.
+
 The data is received as time slices, and can be used to eliminate frame dropping if the sender or receiver is not running at its target frame rate. See [Time Slicing](https://docs.derivative.ca/Time_Slicing "Time Slicing") and the [Time Slice CHOP](https://docs.derivative.ca/Time_Slice_CHOP "Time Slice CHOP"). Can also be run non-time sliced to receive full channel data.
+
 To analyze the timing of the messages coming in, attach an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to the Touch In CHOP. It will show the internal queue size and whether it is dropping or missing data (`queue_advanced_total` and `queue_retarded_total` should not be increasing, and `queue_length` should not be zero).
+
 **NOTE for Windows OS - If experiencing connection issues, confirm Windows Firewall is disabled for TouchDesigner.**
+
 See also: [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP")
+
 [touchinCHOP_Class](https://docs.derivative.ca/TouchinCHOP_Class "TouchinCHOP Class")
 
 ## Parameters - Touch In Page
+
 - Protocol `protocol` - ⊞ - Selects which network protocol to use to transfer data. Different protocol's have methods of connecting and using the address parameter. For more information refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article.
   * Streaming (TCP/IP) `streaming` -
   * Messaging (UDP) `msging` -
@@ -39,6 +48,7 @@ See also: [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP")
   * On `on` - Uses a single global pipe for all Touch Out CHOPs using this Transfer Port Type. The global pipe uses port 10500 internally to send all the global port type data together at once. The Network Port parameter is still used to determine which Touch In CHOP gets the data on the receiving side.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -56,8 +66,11 @@ See also: [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP")
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Touch In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Touch In CHOP Info Channels
   * read_index -
 
@@ -106,7 +119,9 @@ Specific Touch In CHOP Info Channels
   * names_resent -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -120,7 +135,9 @@ Specific Touch In CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,21 +5,27 @@ title: GLSL_COMP
 ---
 
 # GLSL COMP
+
 ## Summary
 
 The GLSL COMP uses shaders to render an image in a panel directly to the screen. It is useful for rendering pixel accurate UIs as the resolution will automatically adapt to the DPI scaling of the screen it is displayed on. Panel variables can be accessed in the shader for responding to user events,
+
 For more information on writing a shader, see the [GLSL Category](https://docs.derivative.ca/Category:GLSL "Category:GLSL").
+
 [glslCOMP_Class](https://docs.derivative.ca/GlslCOMP_Class "GlslCOMP Class")
 
 ## Parameters - GLSL Page
+
 - Vertex Shader `vertexdat` - Path to the DAT that holds the vertex shader code.
 - Pixel Shader `pixeldat` - Path to the DAT that holds the pixel shader code.
 
 ## Parameters - Samplers Page
+
 - Sampler `sampler` - Sequence of TOP samplers
 - Name `sampler0name` - This is the sampler name that the GLSL program will use to sample from this TOP. The samplers need to be declared at the same dimensions as the TOP (sampler2D for a 2D TOP, sampler3D for 3D TOP).
 - TOP `sampler0top` - ⊞ - This is the TOP that will be referenced by the above sampler name above it.
 **Exposed by the + Button, texture sampling parameters** :
+
 Refer to the [Texture Sampling Parameters](https://docs.derivative.ca/Texture_Sampling_Parameters "Texture Sampling Parameters") article for more information on the parameters exposed by pressing the + button. The _parameter_ prefix for each of the parameters is _sampler[digit]_.
 - Extend U `sampler0extendu` - ⊞ -
   * Hold `hold` -
@@ -52,6 +58,7 @@ Refer to the [Texture Sampling Parameters](https://docs.derivative.ca/Texture_Sa
   * 16x `16x` -
 
 ## Parameters - Vectors Page
+
 - Vector `vec` - Sequence of named vectors to be used as uniforms in the shader
 - Name `vec0name` - The name of the uniform.
 - Value `vec0value` - ⊞ - The value to assign to the uniform. If the uniform is a float the first entry of the four is used, if the uniform is a vec2 the first two entries are used, etc.
@@ -61,11 +68,13 @@ Refer to the [Texture Sampling Parameters](https://docs.derivative.ca/Texture_Sa
   * Value `vec0valuew` -
 
 ## Parameters - Constants Page
+
 [Specialization Constants](https://docs.derivative.ca/Write_a_GLSL_TOP#Specialization_Constants "Write a GLSL TOP") can optionally have their values assigned here.
 - Constant Name `const0name` - The constant name, as declared in the shader.
 - Value `const0value` - The value to give the constant.
 
 ## Parameters - Layout Page
+
 The Layout parameter page controls the size and position of the panel.
 - X `x` - Specify the horizontal position in pixels relative to its parent.
 - Y `y` - Specify the vertical position in pixels relative to its parent.
@@ -113,6 +122,7 @@ The Layout parameter page controls the size and position of the panel.
 - Size from Window `sizefromwindow` - When enabled the panel component's width and height are set by resizing its floating viewer window.
 
 ## Parameters - Panel Page
+
 The Panel parameter page controls panel attributes such as display on/off, enable on/off, panel help, and interactions with the cursor.
 - Display `display` - Specifies if the panel is displayed or hidden. Changing this parameter may incur some layout processing costs. For simple cases, such as overlays it is more performant to adjust the opacity parameter instead.
 - Enable `enable` - Allows you to prevent all interaction with this panel.
@@ -178,6 +188,7 @@ The Panel parameter page controls panel attributes such as display on/off, enabl
   * Ignore and Draw Over `ignoreover` - Panel will not move when scrollbar is moved. Panel is drawn over scrollbars and sibling panels.
 
 ## Parameters - Look Page
+
 The Color parameter page sets the panel's background, border, and disabled colors.
 - Background Color `bgcolor` - ⊞ - RGB values for the background. (default: black (0,0,0))
   * Red `bgcolorr` -
@@ -240,6 +251,7 @@ The Color parameter page sets the panel's background, border, and disabled color
 - Opacity `opacity` - Allows you to control the transparency of the panel.
 
 ## Parameters - Children Page
+
 The Children parameter page controls aspects of the Panel's children alignment, size, and position.
 - Align `align` - ⊞ - This menu allows you to specify how the children inside the Panel Component will be laid out. The options **Layout Grid Rows**, **Layout Grid Columns** and **Match Network Nodes** will scale the Panel Component's children to fit the Component. They use the Align Order of each of the children to determine the ordering of the children.
   * None `none` -
@@ -308,6 +320,7 @@ The Margin is defined in absolute pixels and does not stretch with the window, a
 - Thickness `scrollbarthickness` - Set the thickness of the scrollbars in pixels.
 
 ## Parameters - Drag/Drop Page
+
 Please refer to [Drag-and-Drop](https://docs.derivative.ca/Drag-and-Drop "Drag-and-Drop") for a full explanation on how Drag and Drop between Panel Components functions.
 - When Dragging This `drag` - ⊞ - Specify if this Panel Component can be dragged.
   * Use Parent's Drag Settings `dragparent` - Follow the parent Panel Components Drag setting.
@@ -333,6 +346,7 @@ Alternatively specify a Table DAT in the drop script field. TouchDesigner will a
 - Drag/Drop Callbacks `dragdropcallbacks` - Specify which DAT holds the custom drag/drop scripts. If blank, press 'Add' to create a DAT with default scripts.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -342,6 +356,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -371,13 +386,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * Relative to External COMP File (.tox) `externaltox` - The path, when specified as a relative path, will be relative to the .tox file. When no external COMP file is specified, or when Enable External .tox is not toggled on, this doesn't have any impact.
 
 ## Info CHOP Channels
+
 Extra Information for the GLSL COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

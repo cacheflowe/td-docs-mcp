@@ -5,18 +5,27 @@ title: Line_POP
 ---
 
 # Line POP
+
 ## Summary
 
 The Line POP generates a line strip where you create a set of points using parameters, and then subdivide each segment using various interpolation methods. The default is two points with 20 divisions between them, linearly interpolated.
+
 You add a point by creating a new sequential block on the Points page and specifying the position `P` using its parameters. But each point can have any set of attributes: On the Setup page, use New Attribute to define all the attributes you want for the points.
+
 The points are automatically connected as a line strip. On Setup, you can choose the Interpolation Method for the Divisions page, the default being Linear interpolation, but also possible are splines including Cardinal, BSpline, Beziers and Quadratic. With the spline types, the Line POP adds extra parameters on the Point page for setting the spline weight, tangents and/or tension. You can also choose to have a different interpolation method per-point.
+
 On the Setup page, the toggle Multiple Line Strips lets you break the points into separate line strips, thus a parameter is added to the Points' sequential block that lets you indicate where the line breaks are. Also points can be repeated, and line strips can be open or closed.
+
 The Divisions page subdivides the line strips in two stages. The first stage allows setting the total divisions for the line strip, or the divisions per-segment, or lets you divide by distance along the curves. The second stage lets you further re-sample the line strip, adding or removing points.
+
 If you want to output your pre-divided point list, then do some other operations on it with other POPs, and then divide using the [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divide POP"), you can output the line strip(s) of the Line POP with the necessary attributes to be used by the Line Divide POP to control the divisions, including the interpolation type (`SegMethod`, in integer form). `SegMethod` is 0 for Linear, 1 for Cardinal and so on following the order in the Interpolation Method menu. It will also output attributes for weight and tangents etc. Look at the mclick popup info box to see the attributes it outputs.
+
 See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divide POP"), [Curve POP](https://docs.derivative.ca/Curve_POP "Curve POP"), [Point POP](https://docs.derivative.ca/Point_POP "Point POP"), [Primitive POP](https://docs.derivative.ca/Primitive_POP "Primitive POP"), [Pattern POP](https://docs.derivative.ca/Pattern_POP "Pattern POP").
+
 [linePOP_Class](https://docs.derivative.ca/LinePOP_Class "LinePOP Class")
 
 ## Parameters - Setup Page
+
 - Multiple Line Strips `multiplelinestrips` - Allows the creation of multiple line strips, adding a line break toggle per point.
 - Interpolation Method per Segment `interpmethodpersegment` - When toggle is on, it uses a separate interpolation method for each segment in the input line strips.
 - Interpolation Method `interpmethod` - ⊞ - Method to use for interpolation.
@@ -64,6 +73,7 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
   * Default Value `attr0value3` - Attribute value(s).
 
 ## Parameters - Points Page
+
 - Point `pt` -
 - Position `pt0pos` - ⊞ -
   * Position `pt0posx` -
@@ -76,6 +86,7 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
   * Position `pt1posz` -
 
 ## Parameters - Divisions Page
+
 - Output `output` - ⊞ - Whether to output the control points or the subdivided line(s)
   * Subdivided Lines `subdivlines` -
   * Control Points `ctrlpoints` -
@@ -105,6 +116,7 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
 - Max Tries for Binary Search `maxtries` - Max number of iterations for binary search when linearly resampling.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -149,11 +161,17 @@ See also [Line Divide POP](https://docs.derivative.ca/Line_Divide_POP "Line Divi
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Line POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

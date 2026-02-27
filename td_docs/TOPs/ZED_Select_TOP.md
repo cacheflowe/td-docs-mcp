@@ -5,12 +5,15 @@ title: ZED_Select_TOP
 ---
 
 # ZED Select TOP
+
 ## Summary
 
 This TOP is used to select extra images from the device configured in the [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"). Such as the depth, color image, disparity map etc.
+
 [zedselectTOP_Class](https://docs.derivative.ca/ZedselectTOP_Class "ZedselectTOP Class")
 
 ## Parameters - ZED Select Page
+
 - Active `active` - Controls whether this TOP is retrieving image data from the device. The primary [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP") must also be active to receive data.
 - ZED TOP `zedtop` - The name of the primary [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP") that is configuring the camera. The primary TOP controls which camera the select TOP receives data from.
 - Perspective `perspective` - ⊞ - Choose between Left or Right camera.
@@ -26,6 +29,7 @@ This TOP is used to select extra images from the device configured in the [ZED T
 - Mirror Image `mirrorimage` - Flips the image in the y-axis.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -105,9 +109,13 @@ This TOP is used to select extra images from the device configured in the [ZED T
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

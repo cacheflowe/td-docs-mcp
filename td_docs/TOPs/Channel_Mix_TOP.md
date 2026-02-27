@@ -5,16 +5,23 @@ title: Channel_Mix_TOP
 ---
 
 # Channel Mix TOP
+
 ## Summary
 
 The Channel Mix TOP allows mixing of the input RGBA channels to any other color channel of the output. For example, the pixels in the blue channel of the input can be added to the output's red channel, added or subtracted by the amount in Red parameter's blue column.
+
 See also [Reorder TOP](https://docs.derivative.ca/Reorder_TOP "Reorder TOP").
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [channelmixTOP_Class](https://docs.derivative.ca/ChannelmixTOP_Class "ChannelmixTOP Class")
 
 ## Parameters - Channel Mix Page
+
 The parameters below are laid out in red, green, blue, and alpha columns. The first column, or first value of 4 for each parameter, represents the red input channel. The second is the green input channel, the third is blue, and the forth is alpha of the input.
+
 The default settings in Channel Mix pass the image through unaltered. Notice that the **Red** parameter's red column is 1, so the red input channel is passing through to the red output. Change this to 0 and the output image will contain none of the red input channel. Set the Red parameter's blue column to 1, this will output any pixels in the blue channel of the input in the output's red channel.
+
 These are floating point parameters. Using negative numbers will subtract values from the channel.
 - Red `red` - ⊞ - Red output mix. Use these 4 values to mix the RGBA inputs into the output's red channel.
   * `red1` -
@@ -47,6 +54,7 @@ These are floating point parameters. Using negative numbers will subtract values
   * `constant4` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -126,12 +134,17 @@ These are floating point parameters. Using negative numbers will subtract values
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Channel Mix TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -145,7 +158,9 @@ Extra Information for the Channel Mix TOP can be accessed via an [Info CHOP](htt
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

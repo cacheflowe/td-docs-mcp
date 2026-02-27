@@ -5,18 +5,27 @@ title: Bloom_TOP
 ---
 
 # Bloom TOP
+
 ## Summary
 
 The Bloom TOP creates a glow effect around bright parts of the input image that simulates light bouncing around a lens assembly of a camera. Parameters control how much of the bright spots of your input image get bloomed, how wide the bloom gets spread, and how it rolls off into the un-bloomed areas.
+
 The bloom starts with a **preprocessing stage** (Pre-Black Level, Pre-Gamma, and Pre-Brightness), (similar to the Black Level, Brightness, and Gamma parameters of a [Level TOP](https://docs.derivative.ca/Level_TOP "Level TOP")) which help to isolate the hot spots of the image that the bloom originates from (the Black Level), and boost the hot spots (Gamma and Brightness). (Switch the Output menu for a moment to Pre-Process to make sure you have a good signal to bloom with.)
+
 The **second stage is a combination of scaled-down (blurred) levels** of the pre-processed image: The first level is the original pre-processed image, the second level is scaled down to half size (essentially 4 pixels averaged into one pixel), the third is the second level scaled down to half, and so on until the "top" level is 1x1 pixel (the average of the whole image.) For example, a 1024 x 1024 input images gives 10 levels. (These are called mipmaps.)
+
 The second stage blends a range of scaled-down blur levels using the Min Bloom Radius and Max Bloom Radius parameters, where 0 refers to the first scaled-down level and 1 refers to the top scaled-down level. The Min and Max determine how dispersed or smeared the blooming is. Note: If Max<Min, Max is set to Min.
+
 In the **third stage, the resulting bloom level is increased, reduced and shaped** using Bloom Threshold, Bloom S-Curve, Bloom Fill and Bloom Intensity. Typically the Fill and Intensity parameters should be adjusted first, and then some adjustment with Threshold, Min and Max, and with more finesse, the S-Curve if necessary.
+
 Tip: If you want to bloom something and composite it over something else or a variant of the original, set the Output parameter to Bloom with Alpha and add it ([Add TOP](https://docs.derivative.ca/Add_TOP "Add TOP")) to something else.
+
 [bloomTOP_Class](https://docs.derivative.ca/BloomTOP_Class "BloomTOP Class")
 
 [![Bloom.png](https://docs.derivative.ca/images/thumb/2/28/Bloom.png/800px-Bloom.png)](https://docs.derivative.ca/File:Bloom.png)
+
 ## Parameters - Bloom Page
+
 - Pre-Black Level `preblacklevel` - Similar to the Black Level parameter of a Luma Level TOP. Pixels with a luminosity less than this value are pushed to black.
 - Pre-Gamma `pregamma` - Similar to the Gamma parameter of a Luma Level TOP, applies a gamma adjustment to the pixel value after the Pre-Black Level stage, which makes all non-zero values closer to RGB = 1, 1, 1.
 - Pre-Brightness `prebrightness` - Similar to the Brightness parameter of a Luma Level TOP, it is a multiplier for the pixel value after the Pre-Gamma stage.
@@ -30,6 +39,7 @@ Tip: If you want to bloom something and composite it over something else or a va
 - Input Image `inputimage0` - Multiplier for the input image value that is added in to the final bloom value.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -109,12 +119,17 @@ Tip: If you want to bloom something and composite it over something else or a va
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP"). _[Info Channels Common Page](https://docs.derivative.ca/index.php?title=Info_Channels_Common_Page&action=edit&redlink=1 "Info Channels Common Page \(page does not exist\)")_
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,15 +5,20 @@ title: Luma_Blur_TOP
 ---
 
 # Luma Blur TOP
+
 ## Summary
 
 [![LumaBlurTOP.png](https://docs.derivative.ca/images/thumb/7/78/LumaBlurTOP.png/300px-LumaBlurTOP.png)](https://docs.derivative.ca/File:LumaBlurTOP.png)
 The Luma Blur TOP blurs image on a per-pixel basis depending on the luminance or greyscale value of its second input.
+
 The image is blurred with separate parameters for white and black filter sizes, which correspond to the white and black luminance values of the second input.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [lumablurTOP_Class](https://docs.derivative.ca/LumablurTOP_Class "LumablurTOP Class")
 
 ## Parameters - Luma Blur Page
+
 - Type `type` - ⊞ - Determines the mathematical function used to create the blur.
   * Catmull-Rom `catmull` - A spline approximation to a Gaussian kernel. Gives sharper textures and more accurate edges.
   * Gaussian `gaussian` - A normal distribution where pixels at the center have more effect on the resulting pixel. Guassian lacks sharpness but handles ringing and aliasing well.
@@ -43,6 +48,7 @@ The image is blurred with separate parameters for white and black filter sizes, 
   * Mirror `mirror` - The blur is calculated as if the image was mirrored and repeating.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -122,13 +128,18 @@ The image is blurred with separate parameters for white and black filter sizes, 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Luma Blur TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -142,7 +153,9 @@ Extra Information for the Luma Blur TOP can be accessed via an [Info CHOP](https
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

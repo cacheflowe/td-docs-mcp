@@ -5,21 +5,29 @@ title: In_SOP
 ---
 
 # In SOP
+
 ## Summary
 
 The In SOP creates a SOP input in a Component. Component inputs are positioned alphanumerically on the left side of the node.
+
 [inSOP_Class](https://docs.derivative.ca/InSOP_Class "InSOP Class")
 
 ## Parameters - Page
+
 - Label `label` - Creates a pop-up label when the cursor rolls over this Component input.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the In SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -31,7 +39,9 @@ Extra Information for the In SOP can be accessed via an [Info CHOP](https://docs
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

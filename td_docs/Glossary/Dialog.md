@@ -5,6 +5,7 @@ title: Dialog
 ---
 
 # Dialog
+
 TouchDesigner has a number of special dialog windows for project monitoring and setup. Most of these dialogs can be found under the **Dialogs** menu.
 [![Dialogs Menu.jpg](https://docs.derivative.ca/images/6/62/Dialogs_Menu.jpg)](https://docs.derivative.ca/File:Dialogs_Menu.jpg)
   * Explorer

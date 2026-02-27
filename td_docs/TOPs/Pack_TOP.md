@@ -5,13 +5,17 @@ title: Pack_TOP
 ---
 
 # Pack TOP
+
 ## Summary
 
 The Pack TOP can be used to pack 32-bit floating point values into a larger 8-bit texture, so it can saved in a lossless format such as .tiff or Animation codec. The Pack TOP can then later be used to unpack these values back to 32-bit floats. This is useful for things such as point cloud data from the [Kinect TOP](https://docs.derivative.ca/Kinect_TOP "Kinect TOP"), or [RealSense TOP](https://docs.derivative.ca/RealSense_TOP "RealSense TOP").
+
 Note that when using a [ Working Color Space](https://docs.derivative.ca/Color_Space "Color Space") that forces 16-bit float such as ACEScg, you'll need to set the 'Output Color Space' to 'Passthrough' when writing out the file, otherwise the color values will be modified. You also can not send the data through any other TOP between the Movie File Out, since that will re-convert the data to 16-bit floats, which destroyed the packed information. When reading the data in a [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"), you'll need to also set it's 'Input Color Space' to 'Passthrough'.
+
 [packTOP_Class](https://docs.derivative.ca/PackTOP_Class "PackTOP Class")
 
 ## Parameters - Pack Page
+
 - Pack Type `packtype` - ⊞ - Controls the direction and behavior of the packing/unpacking.
   * Pack `pack` - Will take the input texture, treat all of the channels as 32-bit floats (even if they are not), and pack those into an 8-bit fixed point texture. The width of the resulting texture will be NumberOfChannelsInInputTexture * InputWidth. This is because each channel on the input will turn into one 8-bit RGBA pixel on output. The height will remain the same. This operation will work on any input pixel format.
   * Unpack R `unpackr` - Treats the input texture as if it only has information for the Red channel, and converts each 8-bit RGBA pixels into a single 32-bit float Red channel pixel.
@@ -20,6 +24,7 @@ Note that when using a [ Working Color Space](https://docs.derivative.ca/Color_S
   * Unpack RGBA `unpackrgbA` - Like Unpack RGB, but treats the pixels as alternating RGBARGBARGBA etc, and turns them into 32-bit float RGBA pixels.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -99,12 +104,17 @@ Note that when using a [ Working Color Space](https://docs.derivative.ca/Color_S
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Pack TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -118,7 +128,9 @@ Extra Information for the Pack TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

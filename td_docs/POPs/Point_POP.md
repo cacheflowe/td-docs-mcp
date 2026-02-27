@@ -5,15 +5,21 @@ title: Point_POP
 ---
 
 # Point POP
+
 ## Summary
 
 The Point POP is similar to the [Primitive POP](https://docs.derivative.ca/Primitive_POP "Primitive POP") but it creates points only and has no inputs. It is suitable for creating single-point POPs that can act like Uniforms in a [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP") or [Math Combine POP](https://docs.derivative.ca/Math_Combine_POP "Math Combine POP") when combining with other attributes. (Math Mix and Combine let you combine single-point POPs with multi-point POPs.)
+
 It is useful for creating POPs with no `P` attribute, like for example, one `Color` attribute. it is useful for creating a simple point list for the [Field POP](https://docs.derivative.ca/Field_POP "Field POP") and [Force POP](https://docs.derivative.ca/Force_POP "Force POP") (one point per field or force).
+
 Any attributes can be created on the Setup page, then you give each point values on the Points page.
+
 For every point in the point list, it creates a Point Primitive in the primitive list (attach a [POP to DAT](https://docs.derivative.ca/POP_to_DAT "POP to DAT") to confirm, and select the class Primitive). You can create point only with no primitives by turning off Create Point Primitives.
+
 [pointPOP_Class](https://docs.derivative.ca/PointPOP_Class "PointPOP Class")
 
 ## Parameters - Setup Page
+
 - Create P Attribute `createp` - Enable adding the position attribute
 - Create Point Primitives `createpointprim` - Enable creating point primitives
 - New Attribute `attr` - Start of Sequential Parameter Blocks to create new attributes.
@@ -41,6 +47,7 @@ For every point in the point list, it creates a Point Primitive in the primitive
   * 4 `4` -
 
 ## Parameters - Points Page
+
 - Point `pt` -
 - Position `pt0pos` - ⊞ -
   * Position `pt0posx` -
@@ -48,6 +55,7 @@ For every point in the point list, it creates a Point Primitive in the primitive
   * Position `pt0posz` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -72,11 +80,17 @@ For every point in the point list, it creates a Point Primitive in the primitive
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Point POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

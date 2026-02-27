@@ -5,16 +5,23 @@ title: Scan_CHOP
 ---
 
 # Scan CHOP
+
 ## Summary
 
 **DEPRECATED:** use the [Laser CHOP](https://docs.derivative.ca/Laser_CHOP "Laser CHOP") instead.
+
 The Scan CHOP converts a [SOP](https://docs.derivative.ca/SOP "SOP") or [TOP](https://docs.derivative.ca/TOP "TOP") to oscilloscope or laser friendly control waves. The output is usually in the audible range and can be heard directly via an [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP"), or used to drive the X and Y deflector inputs of an oscilloscope, or a laser projector recreating the imagery. The output can also be visualized through use of a [Limit SOP](https://docs.derivative.ca/Limit_SOP "Limit SOP").
+
 A sample component found at: [Op to Audio CHOP example](http://www.derivative.ca/Forum/viewtopic.php?f=22&t=1201)
+
 A sample video can be found at: [Total Internal Reflection](http://vimeo.com/channels/touchdesigner#3750626)
+
 See also: [EtherDream CHOP](https://docs.derivative.ca/EtherDream_CHOP "EtherDream CHOP"), [EtherDream DAT](https://docs.derivative.ca/EtherDream_DAT "EtherDream DAT")
+
 [scanCHOP_Class](https://docs.derivative.ca/ScanCHOP_Class "ScanCHOP Class")
 
 ## Parameters - Scan Page
+
 - Source OP `source` - ⊞ - Choose the source node family.
   * TOP `top` - A raster image is converted to control signals by converting each pixel's location to X and Y amplitude values.
   * SOP `sop` - A geometry is converted to control signals by converting each point's position to X and Y amplitude values.
@@ -33,6 +40,7 @@ See also: [EtherDream CHOP](https://docs.derivative.ca/EtherDream_CHOP "EtherDre
 - Blanking Count `blankingcount` - In the case of SOP input, the number of black/off positions to insert between geometry primitives. In the case of TOP input, the number of black/off positions to insert between full raster scans. Color output must be enabled.In the case of SOP input, the number of black/off positions to insert between geometry primitives. In the case of TOP input, the number of black/off positions to insert between full raster scans. Color output must be enabled.
 
 ## Parameters - TOP Page
+
 A raster image is converted to control signals by converting each pixel's location to X and Y amplitude values. The luminance is controlled by how long each sample is "drawn" on the scope. Since the output is low bandwidth, different resampling and ordering options are available for minimizing (or enhancing) flicker.
 - TOP `top` - Path to the TOP node.
 - Width `width` - The number of columns to resample the image at.
@@ -47,6 +55,7 @@ at a constant level.
   * Max `max` - The rows are output in fully interleaved fashion.
 
 ## Parameters - SOP Page
+
 Every point in a SOP creates a frame-buffered, stereo audio sample, where the SOP vertex X is placed on the X channel and Y is placed on the Y channel. The oscilloscope output thus contains no aliased lines, just razor-sharp vectors.
 - SOP `sop` - Path to the SOP node.
 - Vertex Order `vertexorder` - Output the points in the same order as the vertices of each polygon, instead of the order in which the points are defined in the geometry.
@@ -56,6 +65,7 @@ Every point in a SOP creates a frame-buffered, stereo audio sample, where the SO
 - Camera `camera` - Project the geometry onto a 2D plane from this camera, otherwise, only the original x,y components of the geometry are used.
 
 ## Parameters - CHOP Page
+
 A waveform is converted to control signals by converting each graph into corresponding horizontal and vertical offsets, reproducing the original CHOP waveform. The CHOP should not be [Time Sliced](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)"), but instead have some length (example a [Trail CHOP](https://docs.derivative.ca/Trail_CHOP "Trail CHOP") or animated [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP")).
 - CHOP `chop` - Path to the CHOP node.
 - Trigger `trigger` - The output graph will begin where its value exceeds this value. This allows for steady 'frozen' waveforms, analagous to an oscilloscope triggered sweep.
@@ -65,6 +75,7 @@ A waveform is converted to control signals by converting each graph into corresp
 - Trim Units `trimunits` - Select the units to use for this parameter, Samples, Frames, or Seconds.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.

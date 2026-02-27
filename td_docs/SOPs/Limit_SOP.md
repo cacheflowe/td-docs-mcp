@@ -5,12 +5,15 @@ title: Limit_SOP
 ---
 
 # Limit SOP
+
 ## Summary
 
 The Limit SOP creates geometry from samples fed to it by [CHOPs](https://docs.derivative.ca/CHOP "CHOP"). It creates geometry at every point in the sample. Different types of geometry can be created using the Output Type parameter on the **Channels Page**.
+
 [limitSOP_Class](https://docs.derivative.ca/LimitSOP_Class "LimitSOP Class")
 
 ## Parameters - Channels Page
+
 - CHOP `chop` - Specifies which CHOP Network / CHOP contains the sample data to fetch.
 - Rotate Order `rord` - ⊞ - Specifies the order in which the Rotate Channel X / Y / Z channels are applied.
   * Rx Ry Rz `xyz` -
@@ -38,6 +41,7 @@ The Limit SOP creates geometry from samples fed to it by [CHOPs](https://docs.de
 - Texture W `texturew` - Controls the w texture-offset for the point(s) This is most often used as a frame-offset or time-offset, expressed in # of frames from the current frame or frame 1 of an image sequence.
 
 ## Parameters - Custom Page
+
 Allows custom attributes to be added to the geometry created. Use the + button to add additional parameters to add more custom attributes.
 - Custom Attribute `customattr` - Sequence of custom attributes to be added to the geometry created.
 - Name `customattr0name` - Specify the name of the custom attribute, for example pscale, age, or any custom name.
@@ -47,6 +51,7 @@ Allows custom attributes to be added to the geometry created. Use the + button t
 - Channel Three `customattr0chan3` - Select which channel to assign to the [3] index of the attribute. ie. pscale[3]
 
 ## Parameters - Output Page
+
 - Output Type `output` - ⊞ - The type of geometry the Limit SOP produces from its sample data.
   * Polygonal Line `line` - Creates a point for each sample and connects them with a polygonal line.
   * Polygon at Each Point `polys` - Places a polygon at each sample point. Number of points in polygon defined by Divisions.
@@ -106,9 +111,13 @@ Allows custom attributes to be added to the geometry created. Use the + button t
 - Compute Normals `normals` - Computes normals for the geometry created.
 
 ## Info CHOP Channels
+
 Extra Information for the Limit SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -120,7 +129,9 @@ Extra Information for the Limit SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

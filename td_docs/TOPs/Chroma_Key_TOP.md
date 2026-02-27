@@ -5,32 +5,40 @@ title: Chroma_Key_TOP
 ---
 
 # Chroma Key TOP
+
 ## Summary
 
 The Chroma Key TOP pulls a key matte from the image using Hue, Saturation, and Value settings. If a pixel falls between the Min and Max parameters for all three settings, then it is included in the key. It outputs an alpha map, or the image with the key color removed.
+
 See also the `chromaKey` component in the [Palette](https://docs.derivative.ca/Palette "Palette"), which is a user interface around the Chroma Key TOP that lets you grab frames on-the-fly and interactively set the key color ranges. The UI also adds edge softening and color spill controls.
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [chromakeyTOP_Class](https://docs.derivative.ca/ChromakeyTOP_Class "ChromakeyTOP Class")
 
 ## Parameters - Hue Page
+
 - Hue Min `huemin` - The minimum hue value that is added to the chroma key. 0 = min, 360 = max.
 - Hue Max `huemax` - The maximum hue value that is added to the key. 0 = min, 360 = max.
 - Hue Soft Low `hsoftlow` - The rate of falloff at the Hue Min setting.
 - Hue Soft High `hsofthigh` - The rate of falloff at the Hue Max setting.
 
 ## Parameters - Sat Page
+
 - Sat Min `satmin` - The minimum saturation value that is added to the key.
 - Sat Max `satmax` - The maximum saturation value that is added to the key.
 - Sat Soft Low `ssoftlow` - The rate of falloff at the Sat Min setting.
 - Sat Soft High `ssofthigh` - The rate of falloff at the Sat Max setting.
 
 ## Parameters - Val Page
+
 - Val Min `valmin` - The minimum value that is added to the key.
 - Val Max `valmax` - The maximum value that is added to the key.
 - Val Soft Low `vsoftlow` - The rate off falloff at the Val Min setting.
 - Val Soft High `vsofthigh` - The rate of falloff at the Val Max setting.
 
 ## Parameters - Output Page
+
 - Invert New Alpha `invert` - Inverts the key that is created.
 - RGB Output `rgbout` - ⊞ - Determines the output of the RGB channels from the Chroma Key TOP.
   * Source RGB * New Alpha `multalpha` - Multiplies the original image with the key that is created. This has the effect of removing the parts of the image that are not included in the key.
@@ -41,6 +49,7 @@ See also the `chromaKey` component in the [Palette](https://docs.derivative.ca/P
   * Source Alpha * New Alpha `multnewalpha` - Multiplies the original alpha channel with the new key that has been pulled.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -120,12 +129,17 @@ See also the `chromaKey` component in the [Palette](https://docs.derivative.ca/P
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Chroma Key TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -139,7 +153,9 @@ Extra Information for the Chroma Key TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

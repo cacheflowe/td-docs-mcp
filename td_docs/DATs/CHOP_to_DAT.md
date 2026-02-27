@@ -5,12 +5,15 @@ title: CHOP_to_DAT
 ---
 
 # CHOP to DAT
+
 ## Summary
 
 The CHOP to DAT allows you to get CHOP channel values into a DAT in table format.
+
 [choptoDAT_Class](https://docs.derivative.ca/ChoptoDAT_Class "ChoptoDAT Class")
 
 ## Parameters - CHOP To Page
+
 - CHOP `chop` - The CHOP to be used to retrieve values. A row is created for each channel's value.
 - Include Names `names` - When checked on, an extra column will be created in every row for the channel's name.
 - Latest Sample when Time Slice `latestsample` - When on and the CHOP is time sliced, only the latest sample of the CHOP will be used to create the DAT output. This prevents the table size from fluctuating as frames are dropped.
@@ -19,6 +22,7 @@ The CHOP to DAT allows you to get CHOP channel values into a DAT in table format
   * Column per Channel `colperchan` -
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -35,15 +39,21 @@ The CHOP to DAT allows you to get CHOP channel values into a DAT in table format
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the CHOP to DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,16 +5,23 @@ title: UDT_In_DAT
 ---
 
 # UDT In DAT
+
 ## Summary
 
 **NOTE This DAT has been removed from TouchDesigner 2021 Official builds and later.**
+
 The UDT In DAT is used for receiving information over a [UDT](https://docs.derivative.ca/UDT "UDT") connection between two remotely located computers. It captures all the messages without any queuing or buffering, and allows you to send it any messages you want. UDT Streaming is a reliable, streaming, connection orientated protocol. A single server can send to multiple clients at the same time.
+
 Handle received messages using the callback DAT attached to the UDT In DAT. Send replies using the [udtinDAT_Class](https://docs.derivative.ca/UdtinDAT_Class "UdtinDAT Class").
+
 See also [Peer Class](https://docs.derivative.ca/Peer_Class "Peer Class"), [UDT Out DAT](https://docs.derivative.ca/UDT_Out_DAT "UDT Out DAT"), [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [udtinDAT_Class](https://docs.derivative.ca/UdtinDAT_Class "UdtinDAT Class")
 
 ## Parameters - Connect Page
+
 - Protocol `protocol` - ⊞ - Select which protocol to use, refer to the [Network Protocols](https://docs.derivative.ca/Network_Protocols "Network Protocols") article for more information.
   * Fast Streaming `faststreaming` -
   * Reliable Messaging `reliablemsging` -
@@ -30,6 +37,7 @@ See also [Peer Class](https://docs.derivative.ca/Peer_Class "Peer Class"), [UDT 
 - Active `active` - This check box enables the connection.
 
 ## Parameters - Received Data Page
+
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message coming in. See [udtinDAT_Class](https://docs.derivative.ca/UdtinDAT_Class "UdtinDAT Class") for usage.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location
@@ -43,6 +51,7 @@ See also [Peer Class](https://docs.derivative.ca/Peer_Class "Peer Class"), [UDT 
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.

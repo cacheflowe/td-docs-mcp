@@ -5,14 +5,19 @@ title: GLSL_POP
 ---
 
 # GLSL POP
+
 ## Summary
 
 This POP allows you to modify input attributes with GLSL. It works on a single attribute class at a time, Points, Verts or Primitives, and doesn't allow to change the number of input elements (Points, Verts or Primitives).
+
 **Refer to the[Write GLSL POPs](https://docs.derivative.ca/Write_GLSL_POPs "Write GLSL POPs") article for more info on using this POP.**
+
 See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL Advanced POP")
+
 [glslPOP_Class](https://docs.derivative.ca/GlslPOP_Class "GlslPOP Class")
 
 ## Parameters - GLSL Page
+
 - Compute Shader `computedat` - Points to the DAT holding the Compute Shader. Drag & Drop a DAT here, or manually enter the path to the DAT.
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
@@ -60,6 +65,7 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
   * Quality `quality` -
 
 ## Parameters - Create Attributes Page
+
 - New Attribute `attr` - Start of Sequential Parameter Blocks to create new attributes.
 - New Attribute Name `attr0name` - ⊞ - Choose to create a predefined attribute or a custom attribute.
   * New Attribute Name `attr0name` -
@@ -88,6 +94,7 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
   * Transform Matrix `transformMatrix` -
 
 ## Parameters - Colors Page
+
 - Pre-Multiply RGB by Alpha `premultcolor` - Enable RGB values pre-multiplication with the Alpha.
 - Color `color` - Start of Sequential Parameter Blocks for color uniforms.
 - Name `color0name` - The name of the color uniform.
@@ -99,6 +106,7 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
 - Alpha `color0alpha` - Alpha value.
 
 ## Parameters - Vectors Page
+
 - Vector `vec` - Start of Sequential Parameter Blocks to define uniform variables.
 - Name `vec0name` - The name of the vector uniform.
 - Type `vec0type` - ⊞ - The number of components for the array.
@@ -126,6 +134,7 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
   * Value `vec0valuew` -
 
 ## Parameters - Samplers Page
+
 - Sampler `sampler` - Start of Sequential Parameter Blocks for Samplers to read from the shader.
 - Name `sampler0name` - The name of the sampler uniform.
 - TOP `sampler0top` - ⊞ - Sets reference to a TOP to sample.
@@ -152,6 +161,7 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
   * Interpolate Pixels `linear` -
 
 ## Parameters - Arrays Page
+
 - Array `array` - Start of Sequential Parameter Blocks for array uniforms.
 - Name `array0name` - The name of the array uniform.
 - Type `array0type` - ⊞ - The number of components for the array.
@@ -166,21 +176,25 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
   * Texture Buffer `texturebuffer` -
 
 ## Parameters - Matrices Page
+
 - Matrix `matrix` - Start of Sequential Parameter Blocks of matrix uniforms.
 - Name `matrix0name` - The name of the matrix uniform.
 - Matrix `matrix0value` - Sets a reference to a matrix to pass to the shader.
 
 ## Parameters - Temp Buffers Page
+
 - Temp Buffer `tempbuffer` - Start of Sequential Parameter Blocks forTemporary buffers used to pass information to the shader as uniforms.
 - Name `tempbuffer0name` - The name of the temporary buffer.
 - Initial Value `tempbuffer0initval` - Initial value for the current temporary buffer.
 
 ## Parameters - Constants Page
+
 - Constant `const` - Start of Sequential Parameter Blocks for Specialization Constants.
 - Name `const0name` - The name of the constant.
 - Value `const0value` - Constant value.
 
 ## Parameters - Collisions Page
+
 - Name `asname` - The name for the acceleration structure uniform.
 - Collision POP `colpop` - The POP to use to create an acceleration structure for use with hardware raytracing in the shader.
 - Build Flag `buildflag` - ⊞ - When using the ray query features with a collision POP, specify whether to try to optimize for build time or trace time.
@@ -190,6 +204,7 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
 - Opaque Collision Geometry `opaquecolgeo` - When using an acceleration structure, specify whether the collision geometry is treated as opaque (only the closest hit is returned) or not.
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -234,14 +249,21 @@ See also [GLSL Advanced POP](https://docs.derivative.ca/GLSL_Advanced_POP "GLSL 
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the GLSL POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

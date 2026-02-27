@@ -5,14 +5,19 @@ title: Lattice_SOP
 ---
 
 # Lattice SOP
+
 ## Summary
 
 The Lattice SOP allows you to create animated deformations of its input geometry by manipulating grids or a subdivided box that encloses the input source's geometry.
+
 It is much easier to deform an object by moving a few grids than trying to animate every single point of an object.
+
 This SOP has very few buttons and looks simple, but it is important to understand how it works. The first input, called **Geometry to Deform** , is for the geometry you wish to deform. The second input, called **Rest Geometry**, must be an evenly spaced grid which fully encloses the geometry to deform. The third input, called **Deformed Geometry**, is a copy of the initial grid that is altered in some way, either by moving parts of it with animation channels, dragging its points in the Model Editor, or by running it through a [Spring SOP](https://docs.derivative.ca/Spring_SOP "Spring SOP") which distorts it with the forces which simulate the laws of physics. Lattice computes a deformation based on the difference between the Rest Geometry and the Deformed Geometry, and applies it to the input geometry. The output of the SOP is the deformation of the geometry in the input source. If the Deformed Geometry is being animated, the output will also bend, twist and stretch every frame.
+
 [latticeSOP_Class](https://docs.derivative.ca/LatticeSOP_Class "LatticeSOP Class")
 
 ## Parameters - Lattice Page
+
 - Group `group` - Subset of points in the first input to be deformed. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Deform Type `deformtype` - ⊞ - Choose if deformation should be done using a regularly spaced lattice or an arbitary point cloud.
   * Lattice `lattice` - Deform with a regularly spaced lattice.
@@ -35,14 +40,19 @@ Both the Rest Geometry and the Deformed Geometry must have the same point clouds
 - Radius `radius` - The size of the points capture regions.
 
 ## Operator Inputs
+
   * Input 0:  - Geometry to deform.
   * Input 1:  - Rest Geometry.
   * Input 2:  - Deformed Geometry.
 
 ## Info CHOP Channels
+
 Extra Information for the Lattice SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -54,7 +64,9 @@ Extra Information for the Lattice SOP can be accessed via an [Info CHOP](https:/
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

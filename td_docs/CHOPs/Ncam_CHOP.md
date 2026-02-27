@@ -5,15 +5,21 @@ title: Ncam_CHOP
 ---
 
 # Ncam CHOP
+
 ## Summary
 
 **NOTE**
+
 **License:** Only available in [TouchDesigner Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro").
+
 The Ncam CHOP receives camera tracking data from an external [Ncam Reality system](https://www.ncam-tech.com/) for use in virtual production. The data is received over a network using the TCP protocol and includes information on the camera's position, orientation and optical properties. This data can be used in a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") to render content from a virtual environment that is synced to the movement of a physical camera. An [Ncam TOP](https://docs.derivative.ca/Ncam_TOP "Ncam TOP") can also be used to receive image data from the camera and to composite it with the rendered content.
+
 For additional tracking solutions, see the [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP") and [FreeD CHOP](https://docs.derivative.ca/FreeD_CHOP "FreeD CHOP").
+
 [ncamCHOP_Class](https://docs.derivative.ca/NcamCHOP_Class "NcamCHOP Class")
 
 ## Parameters - Network Page
+
 - Active `active` - Turn off this parameter to stop receiving data from the Ncam system.
 - Protocol `protocol` - ⊞ - A parameter for future options.
   * TCP `tcp` - The network protocol used to send data from the Ncam system to TouchDesigner. Only TCP is currently supported.
@@ -22,6 +28,7 @@ For additional tracking solutions, see the [Stype CHOP](https://docs.derivative.
 - Network Port `port` - The network port to connect to on the Ncam server.
 
 ## Parameters - Channels Page
+
 These parameters control how the data from the Ncam server is presented in CHOP channels.
 - Camera View `cameraview` - ⊞ - Select how the camera's orientation and position are outputted.
   * Translation & Rotation (TR) `trs` -
@@ -48,6 +55,7 @@ These parameters control how the data from the Ncam server is presented in CHOP 
   * Off `off` -
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -65,8 +73,11 @@ These parameters control how the data from the Ncam server is presented in CHOP 
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Ncam CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Ncam CHOP Info Channels
   * tracking_packets -
 
@@ -85,7 +96,9 @@ Specific Ncam CHOP Info Channels
   * packets_skipped -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -99,7 +112,9 @@ Specific Ncam CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

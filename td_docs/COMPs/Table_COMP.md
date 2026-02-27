@@ -5,13 +5,17 @@ title: Table_COMP
 ---
 
 # Table COMP
+
 ## Summary
 
 The Table Component creates a grid of user interface gadgets. These panels are laid out in a grid format where the contents of each cell are defined by DAT tables.
+
 [tableCOMP_Class](https://docs.derivative.ca/TableCOMP_Class "TableCOMP Class")
 
 Attributes
+
 Every cell in a Table component is described by attributes in a DAT table describing its font, size, color, etc. These attributes may be located in different tables. For each cell in the table, attributes are first searched in a corresponding cell attribute table, followed by a row attribute table, followed by a column attribute table, finally followed by a table attribute table.
+
 These attribute tables are themselves found using a second level of lookup tables, that use the current state of the cell for that lookup. The possible cell states are:
   * default
   * rollover
@@ -57,6 +61,7 @@ The current list of available attributes are:
   * **help** path (path to rollover popup help text, DAT)
 
 Value Tables
+
 If a path to a table of values is specified, then this table consists of one row for each cell. If your table is not in this format, it can be modified easily. For example if the value table DAT has 3x2 cells, append a [DAT to CHOP](https://docs.derivative.ca/DAT_to_CHOP "DAT to CHOP") followed by a [CHOP to DAT](https://docs.derivative.ca/CHOP_to_DAT "CHOP to DAT") . In the CHOP, set the following parameters:
   * Output: 'Single Channel'
   * First Row is: 'Values'
@@ -65,6 +70,7 @@ If a path to a table of values is specified, then this table consists of one row
 This will produce a table with 1 column and 6 rows as required, providing all the values are numeric.
 
 ## Parameters - Table Page
+
 - Cell Attributes DAT `attributes` - A list of attribute DATs, one per cell.
 - Row Attributes DAT `rowattributes` - A list of attribute DATs, one per row.
 - Col Attributes DAT `colattributes` - A list of attribute DATs, one per column.
@@ -93,6 +99,7 @@ This will produce a table with 1 column and 6 rows as required, providing all th
 - Table Reset `tablereset` - Refreshes the Table COMP. This can be useful if certain definition DATs have changed.
 
 ## Parameters - Layout Page
+
 The Layout parameter page controls the size and position of the panel.
 - X `x` - Specify the horizontal position in pixels relative to its parent.
 - Y `y` - Specify the vertical position in pixels relative to its parent.
@@ -140,6 +147,7 @@ The Layout parameter page controls the size and position of the panel.
 - Size from Window `sizefromwindow` - When enabled the panel component's width and height are set by resizing its floating viewer window.
 
 ## Parameters - Panel Page
+
 The Panel parameter page controls panel attributes such as display on/off, enable on/off, panel help, and interactions with the cursor.
 - Display `display` - Specifies if the panel is displayed or hidden. Changing this parameter may incur some layout processing costs. For simple cases, such as overlays it is more performant to adjust the opacity parameter instead.
 - Enable `enable` - Allows you to prevent all interaction with this panel.
@@ -205,6 +213,7 @@ The Panel parameter page controls panel attributes such as display on/off, enabl
   * Ignore and Draw Over `ignoreover` - Panel will not move when scrollbar is moved. Panel is drawn over scrollbars and sibling panels.
 
 ## Parameters - Look Page
+
 The Color parameter page sets the panel's background, border, and disabled colors.
 - Background Color `bgcolor` - ⊞ - RGB values for the background. (default: black (0,0,0))
   * Red `bgcolorr` -
@@ -267,6 +276,7 @@ The Color parameter page sets the panel's background, border, and disabled color
 - Opacity `opacity` - Allows you to control the transparency of the panel.
 
 ## Parameters - Children Page
+
 The Children parameter page controls aspects of the Panel's children alignment, size, and position.
 - Align `align` - ⊞ - This menu allows you to specify how the children inside the Panel Component will be laid out. The options **Layout Grid Rows**, **Layout Grid Columns** and **Match Network Nodes** will scale the Panel Component's children to fit the Component. They use the Align Order of each of the children to determine the ordering of the children.
   * None `none` -
@@ -335,6 +345,7 @@ The Margin is defined in absolute pixels and does not stretch with the window, a
 - Thickness `scrollbarthickness` - Set the thickness of the scrollbars in pixels.
 
 ## Parameters - Drag/Drop Page
+
 Please refer to [Drag-and-Drop](https://docs.derivative.ca/Drag-and-Drop "Drag-and-Drop") for a full explanation on how Drag and Drop between Panel Components functions.
 - When Dragging This `drag` - ⊞ - Specify if this Panel Component can be dragged.
   * Use Parent's Drag Settings `dragparent` - Follow the parent Panel Components Drag setting.
@@ -360,6 +371,7 @@ Alternatively specify a Table DAT in the drop script field. TouchDesigner will a
 - Drag/Drop Callbacks `dragdropcallbacks` - Specify which DAT holds the custom drag/drop scripts. If blank, press 'Add' to create a DAT with default scripts.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -369,6 +381,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -478,16 +491,23 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  - Default input which should be a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") with each row being the content of the Table COMPs cells.
 
 ## Info CHOP Channels
+
 Extra Information for the Table COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,15 +5,21 @@ title: TOP_to_POP
 ---
 
 # TOP to POP
+
 ## Summary
 
 Position and Active is a shortcut for P in RGB, and alpha is set to 1 for active pixels (pixels with a valid attribute value).
+
 The First RGBA Contains menu lets you treat the RGBA in different ways, including as depth maps, point clouds, height maps.
+
 Using Custom you specify which attribute and components you expect in the RGBA of the TOP, so max 4 could be `P(0) Color(2) N(1) P(2)`.
+
 When you Use Dimension all pixels are active since the resolution matches the TOP When using the other modes you can end up with unused pixels (you have 40 points, fit to square gives you 7x7, so you end up with 9 unused pixels), alpha is only set to 1 for used pixels.
+
 [toptoPOP_Class](https://docs.derivative.ca/ToptoPOP_Class "ToptoPOP Class")
 
 ## Parameters - Inputs Page
+
 - First RGBA Contains `rgba` - ⊞ - Determines how the TOP's pixels should be interpreted.
   * Color (RGBA) `color` -
   * Position and Active (RGBA) `pactive` -
@@ -59,6 +65,7 @@ When you Use Dimension all pixels are active since the resolution matches the TO
   * Default Value `attr0defaultval3` -
 
 ## Parameters - Detail Page
+
 - Connectivity `surftype` - ⊞ - Determines the primitive used to connect the points.
   * None `none` -
   * Point Primitives `points` -
@@ -119,6 +126,7 @@ When you Use Dimension all pixels are active since the resolution matches the TO
   * Always for Rows Cols Slices `rowscolsslicesalways` -
 
 ## Parameters - Depth Page
+
 - Rerange from Low High `rerangefromlow` - ⊞ - Range for input values.
   * Rerange from Low High `rerangefromlow` -
   * Rerange from High `rerangefromhigh` -
@@ -153,9 +161,11 @@ When you Use Dimension all pixels are active since the resolution matches the TO
   * Delete Line Strip `dellinestrip` -
 
 ## Parameters - Height Page
+
 - Displacement Scale `dispscale` - Sets the displacement scale when the pixels are interpreted as heights values
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -180,11 +190,17 @@ When you Use Dimension all pixels are active since the resolution matches the TO
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the TOP to POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

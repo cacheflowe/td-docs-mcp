@@ -5,17 +5,25 @@ title: Touch_In_TOP
 ---
 
 # Touch In TOP
+
 ## Summary
 
 The Touch In TOP will read in image data send over a TCP/IP network connection from a [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP"). The other TouchDesigner process can be on the same computer or from another computer anywhere on the connected network.
+
 It can receive [Hap Q](https://docs.derivative.ca/Hap "Hap"), Hap Q Alpha, and Uncompressed video.
+
 Make sure Windows Firewall settings are set to UNBLOCK for TouchDesigner, otherwise the data will be blocked.
+
 See also [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP").
+
 For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP"), [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP"), [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and [NDI In TOP](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [touchinTOP_Class](https://docs.derivative.ca/TouchinTOP_Class "TouchinTOP Class")
 
 ## Parameters - Touch In Page
+
 - Computer Name / IP `address` - The IP address of the computer with the transmitting Touch Out TOP. Use _localhost_ to reference the local machine.
 - Network Port `port` - The TCP/IP port that the Touch Out TOP is transmitting on.
 - Active `active` - Receives image data while Active is on.
@@ -25,6 +33,7 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
 - Queue Adjust Time `targetdelay` - The maximum amount of time allowed for a queue to be above or below the maximum or minimum target without adjusting the sampling speed.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -104,8 +113,11 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Touch In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Touch In TOP Info Channels
   * connected -
 
@@ -124,7 +136,9 @@ Specific Touch In TOP Info Channels
   * queue_culls -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -138,7 +152,9 @@ Specific Touch In TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

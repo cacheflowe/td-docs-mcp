@@ -5,19 +5,29 @@ title: Kinect_CHOP
 ---
 
 # Kinect CHOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This CHOP only supports the **Kinect for Windows** hardware and the **Kinect 2** , _not_ Kinect for Xbox hardware.
+
 The Kinect CHOP reads positional and skeletal tracking data from the Kinect and Kinect2 sensors. Up to 6 people's full skeletons can be tracked (2 on the original Kinect), and the center position of an addition 4 people in the camera view is tracked as well. Multiple Kinect devices can be used by using multiple Kinect CHOPs and changing the Camera parameter.
+
 It also supports face tracking.
+
 To use a Kinect 2 device you need to install the Kinect 2 SDK or runtime from [here](http://www.microsoft.com/en-us/kinectforwindows/).
+
 To use the original Kinect 1 you will need to install the [Kinect Runtime 1.8](http://www.microsoft.com/en-ca/download/details.aspx?id=40277) for builds greater than 12000, or [Kinect Runtime 1.7](http://www.microsoft.com/en-us/download/details.aspx?id=36997) for builds below 12000. Multiple Kinects: The Kinect 2 SDK does not allow for multiple kinects to be used on one system at a time. There is no way to connect to different devices through the SDK. The Kinect 1 can do this, but not the 2.
+
 See also [Kinect TOP](https://docs.derivative.ca/Kinect_TOP "Kinect TOP"), [Kinect](https://docs.derivative.ca/Kinect "Kinect") and [Kinect1](https://docs.derivative.ca/Kinect1 "Kinect1").
+
 [kinectCHOP_Class](https://docs.derivative.ca/KinectCHOP_Class "KinectCHOP Class")
 
 ## Parameters - Kinect Page
+
 - Active `active` - When 'On' data is captured from the Kinect sensor.
 - Hardware Version `hwversion` - ⊞ - Choose between Kinect v1 or Kinect v2 sensors.
   * Version 1 `version1` -
@@ -35,6 +45,7 @@ See also [Kinect TOP](https://docs.derivative.ca/Kinect_TOP "Kinect TOP"), [Kine
   * For the z value of the interaction hand, 0.0 means that hand is close to shoulder and 1.0 represents a fully extended arm, but values could be outside of this range.
 
 **NOTE:** Interaction mode requires a depth resolution of 640x480. As such, a [Kinect TOP](https://docs.derivative.ca/Kinect_TOP "Kinect TOP") displaying a depth image for the same sensor will output an image with a resolution of 640x480 and the Near Depth Mode setting will be set in the Kinect CHOP.
+
 For guidelines in creating applications with Kinect Interaction, download the [Kinect for Windows Human Interface Guidelines](http://download.microsoft.com/download/B/0/7/B070724E-52B4-4B1A-BD1B-05CC28D07899/Human_Interface_Guidelines_v1.7.0.pdf).
 - Relative Bone Rotations `relbonerotations` - Returns rx, ry, and rz relative rotation channels for each bone. The rotation is relative to the previous joint.
 - Absolute Bone Rotations `absbonerotations` - Returns rx, ry, and rz absolute rotation channels for each bone.
@@ -50,6 +61,7 @@ For guidelines in creating applications with Kinect Interaction, download the [K
 - Flip Face U Direction `flipfaceu` - Flips the u-axis for face channels, helpful when using a mirror image from the camera.
 
 ## Parameters - Smoothing Page
+
 - Joint Smoothing `jointsmoothing` - Activates Kinect's smoothing algorithm for joint tracking and enables the smoothing parameters below.
 - Smoothing `smoothing` - Increasing the smoothing parameter value leads to more highly-smoothed skeleton position values being returned. It is the nature of smoothing that, as the smoothing value is increased, responsiveness to the raw data decreases. Thus, increased smoothing leads to increased latency in the returned skeleton values. Values must be in the range 0 through 1.0. Passing 0 causes the raw data to be returned.
 - Correction `correction` - Lower values are slower to correct towards the raw data and appear smoother, while higher values will correct toward the raw data more quickly. Values must be in the range 0 through 1.0.
@@ -59,6 +71,7 @@ For guidelines in creating applications with Kinect Interaction, download the [K
 - Rotation Smoothing `rotationsmoothing` - Activates Kinect's smoothing algorithm for rotations. As with joint smoothing above, higher levels of smoothing will introduce more latency.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -76,9 +89,13 @@ For guidelines in creating applications with Kinect Interaction, download the [K
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Kinect CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -92,7 +109,9 @@ Extra Information for the Kinect CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

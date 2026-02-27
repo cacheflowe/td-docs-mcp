@@ -5,16 +5,23 @@ title: Skin_SOP
 ---
 
 # Skin SOP
+
 ## Summary
 
 The Skin SOP takes any number of faces and builds a skin surface over them. If given two or more surfaces, however, the SOP builds four skins, one for each set of boundary curves.
+
 All face and surface types are valid as long as the input(s) contain only faces or only surfaces. Different face types can be skinned together into one surface. For example, it is possible to skin a cubic open NURBS curve with a polygon and a quintic closed Bzier curve even if the three faces have a different number of control vertices. Similarly, this SOP can skin the boundary curves of surfaces of different types, number of rows, columns, etc.
+
 When face types are input, the number of input SOPs and the number of faces in each input establish the skinning method. If only one input exists, a "linear-skinning" operation is performed by running a skin across the cross-sections. The result is the classic ruled or skinned surface. If a second input exists, a "bi-linear skinning" is performed which computes a cross-skin between the faces in the first input (U cross-sections) and the faces in the second input (V cross-sections). The result is a surface whose name derives from the number of cross-sections in each direction: triangular, square, or multiple boundary surface, as well as a special case of swept surfaces and N-rails. When possible, cross-sections are interpolated as isoparms.
+
 If you need more control over tangency in the skin, try using the [Bridge SOP](https://docs.derivative.ca/Bridge_SOP "Bridge SOP").
+
 **Tip:** If you have problems with the results being skinned in the wrong order, try inserting a Sort SOP ahead of the Skin SOP, and Sort by Normals.
+
 [skinSOP_Class](https://docs.derivative.ca/SkinSOP_Class "SkinSOP Class")
 
 Types of Surfaces
+
 Single Boundary Surface - One face, open or closed, is converted into a surface whose boundaries match the shape of the face exactly. Basically, this operation builds an interior area for the face. The surface type will be similar to the type of the face. For example, a NURBS curve yields a NURBS surface. If the curve is highly concave, the result may look less satisfactory than expected.
 [![TouchGeometry81.gif](https://docs.derivative.ca/images/b/bd/TouchGeometry81.gif)](https://docs.derivative.ca/File:TouchGeometry81.gif)
 Patch - Two boundary faces define a ruled surface. The arrows on the two faces indicate the required parametric direction, which must be the same for both faces to avoid a bad twist in the surface. Use the Primitive SOP or the modeler to correct the problem. The surface type will be similar to the most complex type between the two cross-sections. For example, if a polygon and a NURBS curve are skinned together, the surface type will be NURBS. The surface always contains the two faces as two of its boundaries.
@@ -33,6 +40,7 @@ Multiple-Boundary Surface - Not to be confused with N-ary patches. This case gen
 [![TouchGeometry205.gif](https://docs.derivative.ca/images/e/ef/TouchGeometry205.gif)](https://docs.derivative.ca/File:TouchGeometry205.gif)
 
 ## Parameters - Page
+
 - U Cross Sections `uprims` - Empty by default, this field provides a way to specify a subset of the first input's faces and surfaces. Do so by selecting one or more primitive groups from this field's pop-up menu.
 - V Cross Sections `vprims` - Empty by default, this field provides a way to specify a subset of V faces. If a second input exists, the primitive groups available for selection are taken from the second input. If only the first input is present, the groups listed in the pop-up menu belong to the first input. This means that two inputs are not always needed for a bilinear skin as long as the first input has both U and V groups in it.
 - Connectivity `surftype` - ⊞ - (Results only viewable for polygons and meshes).
@@ -45,6 +53,7 @@ Multiple-Boundary Surface - Not to be confused with N-ary patches. This case gen
 
 - Preserve Shape `keepshape` - This parameter determines the precision of a linear skin (case c in the diagram). If enabled, it ensures that the generated surface goes through each cross-section. Here, a cross-section can be a face or a surface boundary, depending on the types being skinned. If disabled, Preserve Shape produces a surface whose CVs coincide with the CVs of the cross-sections (after they have being converted to a common type and an identical number of CVs). The skinning algorithm is faster with shape preservation OFF, but it lacks precision.
 Skinning with shape preservation ON may produce unintuitive shapes when the cross-sections have many coincident CVs or are very close to each other. In this case try to jitter the CVs, vary the V Order (see below), or simply disable shape preservation.
+
 Preserve shape is deactivated when doing bi-linear skinning.
 - V Wrap `closev` - ⊞ - This menu (menu: Off, On, If primitive does) setting determines whether the surface should be wrapped in the V parametric direction. The options are to open (Off), close (On), or inherit the closure type from the cross-sections. V Wrap is ignored when doing bilinear skinning.
   * Off `nonewv` -
@@ -67,13 +76,18 @@ Here, cross-section refers either to a face or a surface boundary, depending on 
 - Output Polygons `polys` - If set, this flag instructs the program to convert the skinned surface(s) to polygons if the surface type is Mesh.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Skin SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -85,7 +99,9 @@ Extra Information for the Skin SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

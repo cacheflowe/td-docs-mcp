@@ -5,16 +5,20 @@ title: Info_DAT
 ---
 
 # Info DAT
+
 ## Summary
 
 The Info DAT gives you string information about a node. Only some nodes contain additional string information which can be accessed by the Info DAT.
+
 [infoDAT_Class](https://docs.derivative.ca/InfoDAT_Class "InfoDAT Class")
 
 ## Parameters - Info Page
+
 - Operator `op` - The [path](https://docs.derivative.ca/Network_Path "Network Path") to the operator that the Info DAT is getting information from. You can drag & drop any node onto this path, or type the path directly into the field.
 - Passive `passive` - If this option is off, the Info DAT will update automatically when the information changes. If on, the data may or may not be out-of-date, and the Info DAT may require a forced cook to update its contents. This parameter can by useful to prevent unnecessary cooking.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -31,15 +35,21 @@ The Info DAT gives you string information about a node. Only some nodes contain 
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Info DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

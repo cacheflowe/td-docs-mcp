@@ -5,17 +5,25 @@ title: MIDI_In_CHOP
 ---
 
 # MIDI In CHOP
+
 ## Summary
 
 The MIDI In CHOP reads Note events, Controller events, Program Change events, System Exclusive messages and Timing events from both MIDI devices and files. See also [MIDI In Map CHOP](https://docs.derivative.ca/MIDI_In_Map_CHOP "MIDI In Map CHOP").
+
 The MIDI In CHOP receives [MIDI](https://docs.derivative.ca/MIDI "MIDI") events from MIDI devices connected to the serial port, reads MIDI events internal to the workstation (i.e. the built-in software synth), and interprets musical scores in MIDI files. Supported MIDI events are:      Note On, Note Off     Polyphonic Aftertouch     Channel Pressure     Program Change     Control Change (MIDI controller devices)     Pitch Wheel     Timer Events including beat pulses     Bar Messages     Start, Stop, Continue     Song Position Pointer     System Exclusive Messages
+
 MIDI events arriving on separate MIDI channels may be recorded on separate CHOP channels. Also, any number of MIDI CHOPs can read from the same or different sources. TouchDesigner can be configured such that MIDI Start, Stop, or Continue events can control the [Timeline](https://docs.derivative.ca/Timeline "Timeline") and [Beat Dialog](https://docs.derivative.ca/Beat_Dialog "Beat Dialog").
+
 The 'Simplified Output' option creates a channel for every type of MIDI event received, so number of channels expands while the devices is being used. No need to specify name, channel and index patterns.
+
 **Note** : The values of the MIDI inputs are saved into the TouchDesigner .toe file, and are restored when the file is reloaded. The physical controllers may be in a different position when the .toe is restarted, causing the values to jump when the controllers are moved. This is unavoidable.
+
 See also the [MIDI In DAT](https://docs.derivative.ca/MIDI_In_DAT "MIDI In DAT"), [MIDI Event DAT](https://docs.derivative.ca/MIDI_Event_DAT "MIDI Event DAT"), [MIDI In Map CHOP](https://docs.derivative.ca/MIDI_In_Map_CHOP "MIDI In Map CHOP"), [MIDI Out CHOP](https://docs.derivative.ca/MIDI_Out_CHOP "MIDI Out CHOP").
+
 [midiinCHOP_Class](https://docs.derivative.ca/MidiinCHOP_Class "MidiinCHOP Class")
 
 ## Parameters - Source Page
+
 - Active `active` - Enable or disable the MIDI In CHOP.
 - MIDI Source `source` - ⊞ - Get MIDI input from a device or a file.
   * Device `device` - The MIDI events come live from a device.
@@ -36,6 +44,7 @@ See also the [MIDI In DAT](https://docs.derivative.ca/MIDI_In_DAT "MIDI In DAT")
 - Channel Prefix `prefix` - When recording from multiple MIDI channels, putting a string like "ch" in this parameter causes the MIDI channel to be split into separate CHOP channels per MIDI channel. Otherwise the MIDI channels are all merged into one set of CHOP channels.
 
 ## Parameters - Record Page
+
 The parameters here are only enabled when 'Simplied Output' on the Source Page is Off.
 - Record Method `recordtype` - ⊞ - Determine what to record.
   * Single Frame `single` - This only outputs the current value of notes, controllers, etc. It does not retain prior values. It creates a CHOP at frame 1 always, so the CHOP causes cooking only when MIDI events come in.
@@ -46,6 +55,7 @@ The parameters here are only enabled when 'Simplied Output' on the Source Page i
 - Record `record` - This parameter is used as a button to start and stop recording into the CHOP channels.
 
 ## Parameters - Note Page
+
 The parameters here are only enabled when 'Simplied Output' on the Source Page is Off.
 - Note Name `notename` - Put an "n" in here to generate channels for note events. It is the base name of the CHOP channel used to record notes. If blank, notes are ignored. If the Note Output parameter is set to Separate Channels, then CHOP channels will be created for each note in the Note Scope, of the form: notename
 - Note Scope `notescope` - The scope of notes to record. Multiple ranges and notes can be recorded (i.e., "50-60", "64 65 66 70-80").
@@ -68,6 +78,7 @@ The parameters here are only enabled when 'Simplied Output' on the Source Page i
 - Pitch Wheel Name `pitchname` - The name of the Pitch Wheel CHOP channel. Pitch wheel values range from -1 to +1. If blank, this channel will not be created. Put "p" in here to generate a channel.
 
 ## Parameters - Control Page
+
 The parameters here are only enabled when 'Simplied Output' on the Source Page is Off.
 - Controller Name `controlname` - The base name of the Control Change CHOP channels. The channel names are appended with the controller index (0-127). If blank, control changes will not be recorded. It typically contains "c".
 - Controller Type `controltype` - ⊞ - There are 128 different controllers available. By choosing By Index Only, you can specify any number of controllers in the Control Index parameter. Otherwise, you can select a controller from the list from this menu. Some controllers have multiple instances, such as Sound Controllers 1-10. Selecting a controller with multiple instances allows you to use the Control Index parameter to select which instances you want. Any invalid control indices will be ignored.
@@ -112,6 +123,7 @@ The parameters here are only enabled when 'Simplied Output' on the Source Page i
 - Program Change `progname` - The name of the Program Change CHOP channel. All program change messages will be recorded onto this channel. If blank, this channel will not be created.
 
 ## Parameters - Timer Page
+
 The parameters here are only enabled when 'Simplied Output' on the Source Page is Off.
 - Timer Pulse Name `pulsename` - Record timer pulse messages.
 - Timer Ramp Name `rampname` - Record timer ramp messages.
@@ -125,12 +137,14 @@ The parameters here are only enabled when 'Simplied Output' on the Source Page i
 - Song Pos Name `songpos` - Capture song position messages.
 
 ## Parameters - Sys Page
+
 The parameters here are only enabled when 'Simplied Output' on the Source Page is Off.
 - System Exclusive `sysex` - Sequence of system exclusive message handlers
 - Channel Name `sysex0name` - Name of a specific exclusive message to be captured.
 - Message `sysex0msg` - Contents of the exclusive message. Place a V in the message to specify which value the channel should have.
 
 ## Parameters - Chan Page
+
 This is similar to other generators' Channel page. However, there are a few points to consider on how they affect the Midi In CHOP.
 - Start `start` - Defines where recording begins. In "Tie to Time Line" mode, any events received before the start time will be ignored. In "Time Line Independent" mode, recording will start at this point and continue on (not looping back). If reading from a MIDI File, Start/End will determine the start of the segment to read.
 Start and end of the interval, expressed in Units (seconds, frames or samples). The parameters are expressed in the `Units` found on the Common page. To set the CHOP to be 100 samples long, Set `Units` to Samples, `Single Frame` Off and `Start` / `End` to 0 and 99.
@@ -164,6 +178,7 @@ Start and end of the interval, expressed in Units (seconds, frames or samples). 
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -181,9 +196,13 @@ Start and end of the interval, expressed in Units (seconds, frames or samples). 
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the MIDI In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -197,7 +216,9 @@ Extra Information for the MIDI In CHOP can be accessed via an [Info CHOP](https:
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

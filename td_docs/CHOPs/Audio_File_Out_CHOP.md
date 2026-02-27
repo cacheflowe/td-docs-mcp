@@ -5,14 +5,19 @@ title: Audio_File_Out_CHOP
 ---
 
 # Audio File Out CHOP
+
 ## Summary
 
 The Audio File Out CHOP saves an audio stream out to a file using a variety of different codecs.
+
 Currently supports **.wav** , **.mp3** , **.aiff** , and **.ogg** container formats.
+
 See also: [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP").
+
 [audiofileoutCHOP_Class](https://docs.derivative.ca/AudiofileoutCHOP_Class "AudiofileoutCHOP Class")
 
 ## Parameters - Audio File Out Page
+
 - File Type `filetype` - ⊞ - Select the file type (container) of the output file.
   * WAV `wav` - .wav file type. The audio codec can be chosen using the Codec parameter.
   * OGG `ogg` - .ogg file type. The audio codec is Vorbis. Vorbis compression will have gapless playback.
@@ -39,6 +44,7 @@ See also: [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Mo
 - Header Source DAT `headerdat` - The path to a Table DAT that stores header metadata that should be written to the output image or movie file. Header data is written as key-value pairs with the first column storing the keys and the second column storing the associated values. See File Metadata for more information on supported metadata.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -56,18 +62,24 @@ See also: [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Mo
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Audio File Out CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Audio File Out CHOP Info Channels
   * last_samples_written -
 
   * total_samples_written -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -81,7 +93,9 @@ Specific Audio File Out CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

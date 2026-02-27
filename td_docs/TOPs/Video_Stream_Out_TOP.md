@@ -5,45 +5,81 @@ title: Video_Stream_Out_TOP
 ---
 
 # Video Stream Out TOP
+
 ## Summary
 
 **NOTE**
+
 **Hardware:** This TOP uses the Nvidia Hardware Encoder to create the stream and therefore requires an Nvidia GPU and Windows to operate.
+
 The Video Stream Out TOP acts as an [RTMP](https://docs.derivative.ca/RTMP "RTMP") or [SRT](https://docs.derivative.ca/SRT "SRT") sender, can create an [RTSP](https://docs.derivative.ca/RTSP "RTSP") server, to send compressed video and audio across the network. It uses Nvidia's hardware encoder. For RTSP, it can handle multiple clients connecting to it at the same time. Multiple Video Stream Out TOPs using the same port will be handled using the same underlying RTSP server. The Video Stream Out TOP can also be used to send a video stream through [WebRTC](https://docs.derivative.ca/WebRTC "WebRTC") video/audio tracks.
+
 The video codecs that can be streamed out are H.264, H.265 (HEVC) and AV1. (AV1 is supported by recent NVIDIA GPUs only.). Not every streaming protocol and/or service supports every codec option.
+
 The audio codecs that can be streamed out are MP3, AAC and Opus.
+
 ##### RTMP
+
 Enhanced RTMP is also supported.
+
 To obtain the RTMP URL stream to, you may need to search to find the correct URL depending on your location and the service you are using. This should be in the format:
+
 `{service url}/{stream key}`.
+
 For example for Twitch the URL would be something like
+
 `rtmp://live-yto.twitch.tv/app/live_1234567_sduhy3xJ1KJ34Eg6CjksdJLubFS7gtUY`
+
 For more information on different services see [RTMP](https://docs.derivative.ca/RTMP "RTMP").
+
 ##### SRT
+
 [SRT](https://en.wikipedia.org/wiki/Secure_Reliable_Transport) can use either H.264 or H.265 video codec. It can also send per-frame metadata when a CHOP or DAT is specified in the Per-Frame Metadata parameter.
+
 The SRT server is settings are controlled by URL options. E.g to create a Video Stream Out, in listener-mode you'd specify the URL:
+
 `srt://0.0.0.0:9494?mode=listener`
+
 To connect to listener in a Video Stream In TOP, you'd do:
+
 `srt://127.0.0.1:9494?mode=caller`
+
 Either side of the connection can be the listener or the caller, it doesn't matter which is sending the video and which is receiving the video. The receiver would set their mode to be the opposite of whatever the sender is setting their mode to be.
+
 All the options that are available are listed [here](https://ffmpeg.org/ffmpeg-protocols.html#srt). Multiple options can be set using a & as separator. E.g
+
 `srt://127.0.0.1:9494?mode=caller&send_buffer_size=100000`
+
 SRT sent from the Video Stream Out TOP can include per-frame metadata making it easy to send and receive CHOP/DAT data in sync with video. It can be read with the [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP").
+
 ##### RTSP
+
 Obtain the URL to connect to the Video Steam Out TOP's RTSP server by using an Info DAT or by middle clicking on the node. It will be in the form:
+
 `rtsp://<ipaddress>:<port>/<streamName>`
+
 e.g.
+
 `rtsp://192.168.0.1:554/tdvidstream`
+
 ##### Limitations
+
 RTSP streaming does not support sending directly to another RTSP server via RTP.
+
 NVIDIA Geforce level cards have a limit of 8 encoders sessions available per-system. Using a lower resolution does not avoid the encoder session limit. Quadros/RTX Pro cards have no session limit. In either case, the total amount of pixels that can be encoded will depend on the underlaying hardware, with newer/more powerful cards being able to encode more pixels. Refer to [Nvidia Video GPU Support Matrix](https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new) for more information.
+
 One test using the default TouchDesigner startup file on a M6000 was able to do 13 1080p@30hz Video Stream Out TOPs.
+
 See also the [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP"), [RTMP](https://docs.derivative.ca/RTMP "RTMP"), [RTSP](https://docs.derivative.ca/RTSP "RTSP") and [Video Streaming User Guide](https://docs.derivative.ca/Video_Streaming_User_Guide "Video Streaming User Guide"), [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP").
+
 For other protocols over IP see [NDI (Network Data Interface)](https://docs.derivative.ca/NDI "NDI"), and [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP") / [Touch In TOP](https://docs.derivative.ca/Touch_In_TOP "Touch In TOP").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [videostreamoutTOP_Class](https://docs.derivative.ca/VideostreamoutTOP_Class "VideostreamoutTOP Class")
 
 ## Parameters - Video Stream Out Page
+
 - Active `active` - Controls if the server is active or not. If this is Off then the port this server uses will not be tied up.
 - Mode `mode` - ⊞ - Selects if the mode works as an RTSP server, sends RTMP to a receiever such as a distribution service like YouTube or Twitch, or sends to an SRT destination.
   * RTSP Server `rtspserver` - Use the RTSP and RTP protocol. More information [here](https://docs.derivative.ca/index.php?title=Video_Stream_Out_TOP&action=edit&redlink=1 "Video Stream Out TOP \(page does not exist\)").
@@ -124,12 +160,14 @@ For other protocols over IP see [NDI (Network Data Interface)](https://docs.deri
 - Per-Frame Metadata `perframemetadata` - Send metadata from this OP with each frame of the video stream. This data can be received from the [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP") using an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") and [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT").
 
 ## Parameters - WebRTC Page
+
 - WebRTC `webrtc` - Set the [WebRTC DAT](https://docs.derivative.ca/WebRTC_DAT "WebRTC DAT") (ie. peer) to send the video stream over. Setting this will automatically populate the WebRTC Connection parameter menu with available connections.
 - WebRTC Connection `webrtcconnection` - Select the [WebRTC](https://docs.derivative.ca/WebRTC "WebRTC") peer-to-peer connection. Selecting this will automatically population the WebRTC Track parameter menu with available video output tracks.
 - WebRTC Video Track `webrtcvideotrack` - Select the video output track that's a part of the WebRTC peer-to-peer connection.
 - WebRTC Audio Track `webrtcaudiotrack` - Optionally select the audio output track that's a part of the WebRTC peer-to-peer connection, to be sent along with the video.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -209,11 +247,15 @@ For other protocols over IP see [NDI (Network Data Interface)](https://docs.deri
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Video Stream Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Video Stream Out TOP Info Channels
   * last_encode_time -
 
@@ -222,7 +264,9 @@ Specific Video Stream Out TOP Info Channels
   * packet_loss_ratio -
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -236,7 +280,9 @@ Specific Video Stream Out TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

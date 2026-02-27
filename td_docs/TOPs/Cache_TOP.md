@@ -5,15 +5,21 @@ title: Cache_TOP
 ---
 
 # Cache TOP
+
 ## Summary
 
 The Cache TOP stores a sequence of images into GPU memory. These cached images can be read by the graphics card much faster than an image cache in main memory or reading images off disk.
+
 The Cache TOP can be used to freeze images in the TOP by turning the Active parameter Off. (You can set the cache size too `1`.)
+
 The Cache TOP acts as a delay if you set Output Index to negative numbers and leave the Active parameter On.
+
 Once a sequence of images has been captured by turning the Active parameter On or toggling the Active Pulse parameter, they can be looped by animating the Output Index parameter.
+
 [cacheTOP_Class](https://docs.derivative.ca/CacheTOP_Class "CacheTOP Class")
 
 ## Parameters - Cache Page
+
 - Active `active` - While this is On, the Cache TOP will capture images into its memory.
 - Active Pulse `activepulse` - Captures an image for the single frame this was pulsed.
 - Get One Image on Startup `cacheonce` - Checking this On will cook the TOP once after startup to load an initial image.
@@ -32,6 +38,7 @@ Once a sequence of images has been captured by turning the Active parameter On o
 - Reset `resetpulse` - Instantly empty the cache.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -111,12 +118,17 @@ Once a sequence of images has been captured by turning the Active parameter On o
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Cache TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -130,7 +142,9 @@ Extra Information for the Cache TOP can be accessed via an [Info CHOP](https://d
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

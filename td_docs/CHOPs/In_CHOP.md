@@ -5,17 +5,21 @@ title: In_CHOP
 ---
 
 # In CHOP
+
 ## Summary
 
 The In CHOP gets channels that are connected to one of the inputs of the component. For each In CHOP inside a component, there is one input connector added to the In CHOP's parent component.
+
 [inCHOP_Class](https://docs.derivative.ca/InCHOP_Class "InCHOP Class")
 
 ## Parameters - In Page
+
 - Label `label` - The label for this input on the COMP that will show up in a popup if the mouse is held over it.
 - Num Channels `numchannels` - If On, and the number of incoming channels does not match this value, an error is generated.
 - Names `channames` - When used with Num Channels the input is scanned for channels matching these names. All other channels are ignored and not passed through. This is a way of filtering out unnecessary channels without requiring a [Select CHOP](https://docs.derivative.ca/Select_CHOP "Select CHOP") or [Delete CHOP](https://docs.derivative.ca/Delete_CHOP "Delete CHOP"). When used without Num Channels the input channels are simply renamed according to this pattern.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -34,17 +38,25 @@ The In CHOP gets channels that are connected to one of the inputs of the compone
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -58,7 +70,9 @@ Extra Information for the In CHOP can be accessed via an [Info CHOP](https://doc
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

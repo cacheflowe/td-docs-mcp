@@ -5,27 +5,39 @@ title: Pangolin_CHOP
 ---
 
 # Pangolin CHOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The Pangolin CHOP interfaces with Pangolin's [Beyond](https://pangolin.com/collections/beyond-software). Beyond is a professional laser and multimedia show control application. When Beyond is running, the Pangolin CHOP will send laser image frames to it. The image frames are created from either a POP, CHOP or SOP. See [Lasers](https://docs.derivative.ca/Lasers "Lasers") for an overview of lasers with TouchDesigner.
+
 The Pangolin CHOP should work with any version of Beyond but it is recommended to use at least Beyond v5.1.
+
 **TouchDesigner Non-Commercial licenses will only work with the demo version of Beyond. A TouchDesigner Commercial, Educational, or Pro license is required to interface with licensed versions of Beyond.**
+
 **Using a SOP Input**: input points will be grouped by primitive, and point position as well as color attributes from either vertex, point, or primitives will be used to construct the points to send to Beyond.
+
 **Using a CHOP input**: Input channels are determined by name: `x`, `y`, `z`, `r`, `g`, `b`, `id`, `zone`. Only the `x`, and `y` channels are required. Every sample will be interpreted as a point to be drawn. Points can be grouped together into different shapes using the `id` channel. If not used then all points will be considered as part of the same shape. The `zone` channel can be used to override the zone parameter value for each sample, adding the option to have more control over which sample/point goes to which zone in Beyond.
+
 **Using a POP input**: similar to SOP, input points will be grouped by primitive. A Point position attribute (`P`) is a required, and a Point color attribute (`Color`) can optionally be used. If `Color` is not specified then point color will be set to white. Additionally, a primitive `Zone` attribute can be used to control which primitive goes to which zone in Beyond.
+
 See also: [Laser CHOP](https://docs.derivative.ca/Laser_CHOP "Laser CHOP"), [Lasers](https://docs.derivative.ca/Lasers "Lasers").
+
 [pangolinCHOP_Class](https://docs.derivative.ca/PangolinCHOP_Class "PangolinCHOP Class")
 
 ## Usage
+
 Beyond must be open to use the Pangolin CHOP.
+
 The Pangolin CHOP will construct a laser image from the points of a SOP or samples of a CHOP and send it to Beyond. With Beyond open and the Pangolin CHOP active (with input) the laser image can immediately be seen in its respective zone in the zone viewer of Beyond. See below an example of sending a circle to zone 1 in Beyond from the Pangolin CHOP.
 
 [![PangolinTDZone.PNG](https://docs.derivative.ca/images/1/1e/PangolinTDZone.PNG)](https://docs.derivative.ca/File:PangolinTDZone.PNG)
 
 ## Parameters - Pangolin Page
+
 - Active `active` - When disabled, the CHOP will no longer send to Beyond. The corresponding image in Beyond will also be cleared.
 - Source `source` - ⊞ - Select the source operator.
   * SOP `sop` - Use a SOP as the source. Apart from position attributes, the SOP's point color attributes are used to determine the color output.
@@ -49,6 +61,7 @@ The Pangolin CHOP will construct a laser image from the points of a SOP or sampl
 - Blackout `blackout` - Sends a blackout command to Beyond. Has the effect as hitting the "Blackout" button in Beyond.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -66,8 +79,11 @@ The Pangolin CHOP will construct a laser image from the points of a SOP or sampl
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Pangolin CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Pangolin CHOP Info Channels
   * beyond_dll_loaded -
 
@@ -84,7 +100,9 @@ Specific Pangolin CHOP Info Channels
   * beyond_zone_count -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -98,7 +116,9 @@ Specific Pangolin CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

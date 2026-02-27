@@ -5,12 +5,17 @@ title: Alembic_SOP
 ---
 
 # Alembic SOP
+
 ## Summary
 
 The Alembic SOP loads and plays back [Alembic](http://www.alembic.io/) file geometry sequences.
+
 The supported Alembic primitives are polymesh, curves, and points for geometry. As well, Alembic transformations are supported.
+
 For Alembic files that contain animation, use the Time parameter and pay attention to the Unit menu to control it in frames, seconds, or whatever you like.
+
 An Alembic archive may contain one or more object paths for one or multiple geometries. It is possible to view these objects all at once or select them separately using the 'Object Path' parameter menu.
+
 Each object in an Alembic file schema may possess standard or custom attributes. The standard attributes are normal (`N`), velocity (`V`), and texture coordinates (`UV`). Multiple custom attributes may live in an Alembic schema with more flexible names and types. The custom attribute types can be any of the following:
   * float arrays
   * integer arrays
@@ -30,6 +35,7 @@ The Alembic SOP lets you load geometry to either the CPU or the GPU. While using
 [alembicSOP_Class](https://docs.derivative.ca/AlembicSOP_Class "AlembicSOP Class")
 
 ## Parameters - Page
+
 - Alembic File `file` - The file path to the Alembic file.
 - Object Path `objectpath` - Specify which geometry object to be loaded. Each geometry object can represent a hierarchies of multiple geometries. It is also possible to choose the "All Objects" option from the list of available objects. This option is selected by default.
 - Time `time` - Specify which part of the Alembic samples sequence is loaded. The time unit menu converts the current time units to the selected unit. The available options are Frames, Seconds, and Fraction.
@@ -49,15 +55,20 @@ The Alembic SOP lets you load geometry to either the CPU or the GPU. While using
 - Unload `loadfile` - Toggling the unload to "on" will unload the file and close it. By setting it to "off", the file will be loaded again. When the file is unloaded it can be overwritten by other applications or deleted.
 
 ## Info CHOP Channels
+
 Extra Information for the Alembic SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Alembic SOP Info Channels
   * start_time -
 
   * end_time -
 
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -69,7 +80,9 @@ Specific Alembic SOP Info Channels
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

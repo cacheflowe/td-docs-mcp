@@ -5,16 +5,23 @@ title: Camera_Blend_COMP
 ---
 
 # Camera Blend COMP
+
 ## Summary
 
 The Camera Blend Component blends the 3D object transforms and viewing settings of multiple Camera Components together. It gives you some extra flexibility in setting up parent-child relationships. It operates like the [Switch SOP](https://docs.derivative.ca/Switch_SOP "Switch SOP") and [Sequence Blend SOPs](https://docs.derivative.ca/Sequence_Blend_SOP "Sequence Blend SOP") insofar as it takes more than one input and blends or switches those into one output.
+
 The Camera Blend COMP can animate camera parameters and positions between various cameras.
+
 To set up, wire the bottom connector of a Camera COMP to the top input of the Camera Blend COMP. Then for another Camera COMP, wire its bottom connector to the top of the Camera Blend COMP. Then you can adjust the Weight parameters of the Camera Blend COMP.
+
 The View and Background parameter pages are used as the camera parameters when non-Camera COMPs are connected to the Camera Blend COMP.
+
 See also [Blend COMP](https://docs.derivative.ca/Blend_COMP "Blend COMP").
+
 [camerablendCOMP_Class](https://docs.derivative.ca/CamerablendCOMP_Class "CamerablendCOMP Class")
 
 ## Parameters - Blend Page
+
 - Type `parenttype` - ⊞ - Method in which parent transforms (i.e. Translate, Rotate, Scale) are combined to produce a unique blended transform.
   * Blend `blend` - When the type is set to _Blend_ , up to the first 4 inputs will be blended using the Weight[1-4] and Mask[1-4] parameters.
   * Sequence `sequence` - When the type is set to _Sequence_ this value controls which input parent contributes to the child's position. It can be used to animate a child from one parent to another. A sequence value outside the range of inputs is interpreted as unparenting the child.
@@ -39,6 +46,7 @@ See also [Blend COMP](https://docs.derivative.ca/Blend_COMP "Blend COMP").
 - Short Rotation `shortrot` - Does quaternion blending in cases where 2 inputs are being blended.
 
 ## Parameters - Xform Page
+
 The Xform parameter page controls the object component's transform in world space.
 - Transform Order `xord` - ⊞ - This allows you to specify the order in which the changes to your Component will take place. Changing the Transform Order will change where things go much the same way as going a block and turning east gets you to a different place than turning east and then going a block. In matrix math terms, if we use the 'multiply vector on the right' (column vector) convention, a transform order of Scale, Rotate, Translate would be written as `T * R * S * Position`.
   * Scale Rotate Translate `srt` -
@@ -122,6 +130,7 @@ In the example above, rotations performed on an Component with different pivot p
 - Auto-Bank Factor `bank` - The Auto-Bank Factor rolls the Component based on the curvature of the path at its current position. To turn off auto-banking, set the bank scale to `0`.
 
 ## Parameters - Pre-Xform Page
+
 The Pre-Xform parameter page applies a transform to the object component the same way connecting another [Object](https://docs.derivative.ca/Object "Object") as a parent of this node does. The transform is applied to the left of the [Xform](https://docs.derivative.ca/Object_COMP_Xform_Page "Object COMP Xform Page") page's parameters. In terms of matrix math, if we use the 'multiply on the right' (column vector) convention, the equation would be `preXForm * xform * Position`.
 - Apply Pre-Transform `pxform` - Enables the transformation on this page.
 - Transform Order `pxord` - ⊞ - Refer to the documentation on Xform page for more information.
@@ -166,6 +175,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Xform Matrix/CHOP/DAT `xformmatrixop` - This parameter can be used to transform using a 4x4 matrix directly. For information on ways to specify a matrix directly, refer to the [Matrix Parameters](https://docs.derivative.ca/Matrix_Parameters "Matrix Parameters") page. This transform will be applied after the regular Pre-Transform transformation. That is, it'll be applied in the oder XformMatrix * PreXForm * Position.
 
 ## Parameters - View Page
+
 - Projection `projection` - ⊞ - A pop-up menu lets you choose from Perspective and Orthographic projection types. A third option Perpective to Ortho Blend enables the Projection Blend parameter below which can be used to blend between perspectives.
   * Perspective `perspective` -
   * Orthographic `ortho` -
@@ -201,6 +211,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
   * Alpha `bgcolora` -
 
 ## Parameters - Settings Page
+
 - Fog `fog` - ⊞ - This menu determines the type of fog rendered in the viewport:
 
 > **Linear** fog uses the following equation:
@@ -237,6 +248,7 @@ The Pre-Xform parameter page applies a transform to the object component the sam
 - Material `material` -
 
 ## Parameters - Render Page
+
 The Display parameter page controls the component's [material](https://docs.derivative.ca/index.php?title=Material&action=edit&redlink=1 "Material \(page does not exist\)") and [rendering](https://docs.derivative.ca/Rendering "Rendering") settings.
 - Material `material` - Selects a [MAT](https://docs.derivative.ca/MAT "MAT") to apply to the geometry inside.
 - Render `render` - Whether the Component's geometry is visible in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"). This parameter works in conjunction (logical AND) with the Component's [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
@@ -250,6 +262,7 @@ The Display parameter page controls the component's [material](https://docs.deri
 - Light Mask `lightmask` - By default all lights used in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") will affect geometry renderer. This parameter can be used to specify a sub-set of lights to be used for this particular geometry. The lights must be listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") as well as this parameter to be used.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -259,6 +272,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -347,13 +361,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Camera Blend COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,13 +5,17 @@ title: Media_File_Info_DAT
 ---
 
 # Media File Info DAT
+
 ## Summary
 
 The Media File Info DAT encapsulates the essential metadata for a Media File. Metadata information like the codec, frame rate, audio sample rate, resolution etc is outputted.
+
 A media file can be inputted to the DAT by either specifying the File path, or by referencing a [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") or [Audio File In CHOP](https://docs.derivative.ca/Audio_File_In_CHOP "Audio File In CHOP").
+
 [mediafileinfoDAT_Class](https://docs.derivative.ca/MediafileinfoDAT_Class "MediafileinfoDAT Class")
 
 ## Parameters - Media Info Page
+
 - File `file` - The path and name of the image or movie file to load. Image and movie formats are those found in [File Types](https://docs.derivative.ca/File_Types "File Types"). You can specify files on the internet using `http://` ...
 - TOP/CHOP `topchop` - Reference to a [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") or [Audio File In CHOP](https://docs.derivative.ca/Audio_File_In_CHOP "Audio File In CHOP") to read file information from.
 - Reload Pulse `reloadpulse` - Change from 0 to 1 to force the file to reload, useful when the file changes or did not exist at first.
@@ -19,6 +23,7 @@ A media file can be inputted to the DAT by either specifying the File path, or b
 - Transpose `transpose` - The output will be changed from row per item to column per item.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -35,15 +40,21 @@ A media file can be inputted to the DAT by either specifying the File path, or b
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Media File Info DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

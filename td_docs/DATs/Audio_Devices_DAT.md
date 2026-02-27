@@ -5,14 +5,19 @@ title: Audio_Devices_DAT
 ---
 
 # Audio Devices DAT
+
 ## Summary
 
 The Audio Devices DAT provides information about all detected audio devices including driver, direction (input or output), label, and name that can be referenced in the [Audio Device In CHOP](https://docs.derivative.ca/Audio_Device_In_CHOP "Audio Device In CHOP") and [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP").
+
 You can also set it to display all available audio devices.
+
 It runs a callback script when a change in audio devices has been detected and returns a list of names corresponding to the changed devices.
+
 [audiodevicesDAT_Class](https://docs.derivative.ca/AudiodevicesDAT_Class "AudiodevicesDAT Class")
 
 ## Parameters - Audio Devices Page
+
 - Driver `driver` - ⊞ - Menu of available drivers, table will only include devices belonging to selected driver.
   * default (DirectSound/CoreAudio) `default` -
   * ASIO `asio` -
@@ -27,6 +32,7 @@ It runs a callback script when a change in audio devices has been detected and r
 - Callbacks DAT `callbacks` - Runs this script once for each change to the table (ie. device state change).
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -43,15 +49,21 @@ It runs a callback script when a change in audio devices has been detected and r
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Audio Devices DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,17 +5,21 @@ title: EtherDream_DAT
 ---
 
 # EtherDream DAT
+
 ## Summary
 
 The EtherDream DAT polls and lists all EtherDream devices connected.
+
 [etherdreamDAT_Class](https://docs.derivative.ca/EtherdreamDAT_Class "EtherdreamDAT Class")
 
 ## Parameters - EtherDream Page
+
 - Callbacks DAT `callbacks` - Runs this script when polling for devices. See [etherdreamDAT_Class](https://docs.derivative.ca/EtherdreamDAT_Class "EtherdreamDAT Class") for usage.
 - Columns `columns` - Select which columns are included in the table. Click the drop menu to the right to see all that are available.
 - Poll Devices `poll` - Poll for devices.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -32,15 +36,21 @@ The EtherDream DAT polls and lists all EtherDream devices connected.
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the EtherDream DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,14 +5,19 @@ title: Phaser_POP
 ---
 
 # Phaser POP
+
 ## Summary
 
 The Phaser POP works like the [Phaser CHOP](https://docs.derivative.ca/Phaser_CHOP "Phaser CHOP"). It does staggered (time-offset) animation interpolation on a POP attribute. Phaser outputs one new attribute `Phaser`. Each point animates `Phaser` from 0 to 1 over a cycle, but each point's value rises from 0 and arrives at 1 at different times.
+
 The new outputs attribute `Phase` can be used to blend or animate other attributes dpwnstream. `Phase` is multi-component if the input attribute is multi-component.
+
 See also [Phaser CHOP](https://docs.derivative.ca/Phaser_CHOP "Phaser CHOP")
+
 [phaserPOP_Class](https://docs.derivative.ca/PhaserPOP_Class "PhaserPOP Class")
 
 ## Parameters - Phaser Page
+
 - Phase Attribute Scope `phaseattrscope` - Input attribute scope.
 - Fraction `fract` - Sets the phase fraction.
 - Parameter Size `parsize` - ⊞ - Number of independent configurable parameter values.
@@ -70,20 +75,29 @@ See also [Phaser CHOP](https://docs.derivative.ca/Phaser_CHOP "Phaser CHOP")
 - From High `fromhigh` - Reranges the phase attribute value.
 - To Low `tolow` - Sets low value on the output range.
 - To High `tohigh` - Sets high value on the output range.
+
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Phaser POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

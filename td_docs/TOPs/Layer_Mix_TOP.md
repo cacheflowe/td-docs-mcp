@@ -5,19 +5,29 @@ title: Layer_Mix_TOP
 ---
 
 # Layer Mix TOP
+
 ## Summary
 
 The Layer Mix TOP lets you composite unlimited image layers and do adjustments, all within one node.
+
 Each of the inputs gets a block of parameters that you can use to modify the incoming images.
+
 The possible built-in controls per-layer include crop, pre-fit, justify, extend, scale, rotate, translate, pivot and then layer transparency, gamma and level, and finally the composite (blend) operation.
+
 To avoid clutter, on the first page you choose which controls you want to be per-layer.
+
 The entire mixing of layers is done with one single-pass shader that is generated on-the-fly.
+
 You can composite back to front, or front-to-back.
+
 You can specify a large background plate (image or constant) to composite your layers over. The background plate can be a constant-colored image with the resolution of the first input, or defined as a width-height on the Common page, or a separate TOP image.
+
 The inputs can be a mix of wired inputs and references to TOPs using pattern matching of names.
+
 [layermixTOP_Class](https://docs.derivative.ca/LayermixTOP_Class "LayermixTOP Class")
 
 ## Parameters - Setup Page
+
 - Background `background` - ⊞ - This menu determines which background plate to use while compositing.
   * Off `off` - No background is used. There must be at least two layer sources provided as inputs if there is no background.
   * Background TOP `backgroundtop` - Another TOP's output image will be used as the background.
@@ -85,6 +95,7 @@ The inputs can be a mix of wired inputs and references to TOPs using pattern mat
   * Back to Front `backtofront` - Compositing follows this order: (Input_2 op_2 (Input_1 op_1 (Input_0 op_0 Background))). If there is no background plate, op_0 and Background are ignored.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -184,18 +195,24 @@ The inputs can be a mix of wired inputs and references to TOPs using pattern mat
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Parameters - Layers Page
+
 - Layer `lay` - Sequence of layers.
 - TOP / Bypass `lay0top` - ⊞ - Sets the path and bypass for the layers.
   * TOP / Bypass `lay0top` - The path of inputs. If there are wired inputs, it will override and disable this parameter in sequential order.
   * Bypass `lay0bypass` - Bypassing the layer will ignore the layer when compositing. Bypassing a layer can be used to optimize the Layer Mix TOP to stop wired input nodes from cooking if it isn't being displayed.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Layer Mix TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -209,7 +226,9 @@ Extra Information for the Layer Mix TOP can be accessed via an [Info CHOP](https
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

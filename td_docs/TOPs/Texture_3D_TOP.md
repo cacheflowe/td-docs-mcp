@@ -5,17 +5,25 @@ title: Texture_3D_TOP
 ---
 
 # Texture 3D TOP
+
 ## Summary
 
 The Texture 3D TOP creates a 3D texture map. It saves a series of images in one array of pixels. This TOP can be used with [Time Machine TOP](https://docs.derivative.ca/Time_Machine_TOP "Time Machine TOP"), as well as materials. Using materials, a particular image in this array can be accessed by specifying a W texture coordinate, while the U and V coordinates are used to specify a texture location on that image. Refer to the **[3D Texture](https://docs.derivative.ca/3D_Texture "3D Texture")** article for more information.
+
 A 3D Texture can behave line a ring-buffer, or a FIFO (first-in, first-out) buffer, depending on it's usage scenario. For more information see the [3D Texture](https://docs.derivative.ca/3D_Texture "3D Texture") article.
+
 The Texture 3D TOP is similar to the [Cache TOP](https://docs.derivative.ca/Cache_TOP "Cache TOP") which holds a set of images in a different form: the images are separate and you cannot use the W texture coordinate in a material to interpolate to access all of them in a shader.
+
 The Texture 3D TOP replaces one slice of its 3D data with its input every frame. When it has filled up all of its slices it wraps around and starts overwriting the oldest slice.
+
 The Texture 3D TOP can also create a **[2D Texture Array](https://docs.derivative.ca/2D_Texture_Array "2D Texture Array")**. 2D Texture arrays are much like 3d textures, except are sampled using a non-normalized w texture coordinate. (i.e, 0 is the first slice, 1 is the 2nd slice, 2 is the 3rd slice etc.). Texture arrays also don't support blending between different slices when sampling at coordinate that falls between two slices. This a much faster alternative to 3d textures when interpolation between slices is not required. The non-normalized w coordinate makes it very easy to directly access a particular slice in the array. 2D Texture arrays also don't have a concept of w extend mode: they only work in their 0->(N-1) range.
+
 [Locking](https://docs.derivative.ca/Lock_Flag "Lock Flag") the Texture 3D TOP preserves the entire 3D and 2D array in a [.toe](https://docs.derivative.ca/.toe ".toe") or [.tox](https://docs.derivative.ca/.tox ".tox") file.
+
 [texture3dTOP_Class](https://docs.derivative.ca/Texture3dTOP_Class "Texture3dTOP Class")
 
 ## Parameters - Cache Page
+
 - Type `type` - ⊞ - Specifies the texture type to create.
   * 3D Texture `texture3d` - A series of images in an array (slices). Slices can be blended when samping a coordinate in between two slices. Slices are accessed using the W texture coordinate.
   * 2D Texture Array `texture2darray` - A series of images in an array which does not support blending between slices. The W texture coordinate is non-normalized and dosn't have a concept of w extend mode: they only work in their 0->(N-1) range.
@@ -33,6 +41,7 @@ When Prefilling you would normally setup the inputs to the Texture 3D node in so
 - Reset Pulse `resetpulse` - Instantly empty the cache.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -112,12 +121,17 @@ When Prefilling you would normally setup the inputs to the Texture 3D node in so
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Texture 3D TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -131,7 +145,9 @@ Extra Information for the Texture 3D TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

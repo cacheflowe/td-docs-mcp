@@ -5,14 +5,19 @@ title: Audio_Device_In_CHOP
 ---
 
 # Audio Device In CHOP
+
 ## Summary
 
 The Audio Device In CHOP receives audio from any of the attached audio input devices using DirectSound/CoreAudio or ASIO. It always outputs time sliced audio data.
+
 If you want to capture the data in memory, use a [Trail CHOP](https://docs.derivative.ca/Trail_CHOP "Trail CHOP") or [Record CHOP](https://docs.derivative.ca/Record_CHOP "Record CHOP"). If you want to record to a file, use [Audio File Out CHOP](https://docs.derivative.ca/Audio_File_Out_CHOP "Audio File Out CHOP") or [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP").
+
 The Audio Device In CHOP can receive analog control voltages (**CVs**) as long as your audio device's analog to digital converters can handle constant non-zero voltages.
+
 [audiodeviceinCHOP_Class](https://docs.derivative.ca/AudiodeviceinCHOP_Class "AudiodeviceinCHOP Class")
 
 ## Parameters - Audio Device In Page
+
 - Active `active` - Turns the audio input on or off.
 - Driver `driver` - ⊞ - Select between default DirectSound/CoreAudio, ASIO, or native device supported drivers.
   * DirectSound/CoreAudio `default` - The default Windows audio driver (a.k.a. WDM) or macOS CoreAudio driver, depending on your OS.
@@ -34,6 +39,7 @@ The Audio Device In CHOP can receive analog control voltages (**CVs**) as long a
 - Number of Channels `numchan` - When using Driver Blackmagic or AJA, use this parameter to set the number of channels.
 
 ## Parameters - Input 1 Page
+
 The toggles on this page are used when the Driver is set to DirectSound. The channels names are from legacy DirectSound terms, but can also be considered more simply chan1, chan2, chan3 and so on. For example, you can access the 7 microphone array from a **Kinect Azure** sensor using DirectSound and turning on the first 7 toggles here.
 - Front Left `frontleft` - Enable this input if available (or simply adds another input channel).
 - Front Right `frontright` - Enable this input if available (or simply adds another input channel).
@@ -46,6 +52,7 @@ The toggles on this page are used when the Driver is set to DirectSound. The cha
 - Back Center `backcenter` - Enable this input if available (or simply adds another input channel).
 
 ## Parameters - Input 2 Page
+
 The toggles on this page are used when the Driver is set to DirectSound. The channels names are from legacy DirectSound terms, but can also be considered more simply chan1, chan2, chan3 and so on.
 - Side Left `sideleft` - Enable this input if available (or simply adds another input channel).
 - Side Right `sideright` - Enable this input if available (or simply adds another input channel).
@@ -58,6 +65,7 @@ The toggles on this page are used when the Driver is set to DirectSound. The cha
 - Top Back Right `topbackright` - Enable this input if available (or simply adds another input channel).
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -75,8 +83,11 @@ The toggles on this page are used when the Driver is set to DirectSound. The cha
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Audio Device In CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Audio Device In CHOP Info Channels
   * queue_speed -
 
@@ -89,7 +100,9 @@ Specific Audio Device In CHOP Info Channels
   * queue_recovers -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -103,7 +116,9 @@ Specific Audio Device In CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

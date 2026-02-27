@@ -5,26 +5,36 @@ title: Text_TOP
 ---
 
 # Text TOP
+
 ## Summary
 
 The Text TOP displays text strings in an image. It allows for multiple fonts, sizes, colors, borders, character separation and line separation. The text can be displayed as bit maps, anti-aliased lines, or filled polygon characters. Any TrueType font can be rendered by the Text TOP. [Unicode](https://docs.derivative.ca/Unicode "Unicode") is supported. The new Scalable Display Method uses [Slug Library](https://docs.derivative.ca/Slug_Library "Slug Library") to render scalable, resolution independent text at the highest qulaity available in the Text TOP.
+
 It can display simple text strings with embedded numeric values. It can also format lines of text and numbers in decimal or floating point format, reading the numbers from a CHOP, using special formatting characters.
+
 It can also render text strings from a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") via the Specification DAT parameter, where column headings are the parameter names that are to ve overidden when rendering a line of text for reach row of the table.
+
 Any [TrueType](http://en.wikipedia.org/wiki/TrueType) or [OpenType](http://en.wikipedia.org/wiki/OpenType) font that has been loaded into Windows can be rendered by the Text TOP. To import a new font into your Windows system, open the **Fonts** folder in the **Control Panel** , then drag and drop your [ font files](https://docs.derivative.ca/File_Types "File Types") in (`.ttf/.otf` file format). Fonts can also be specified as `.ttf/.otf` file paths in the Font File parameter.
+
 You can render **Unicode** text by reading the text as a python string. See [Unicode](https://docs.derivative.ca/Unicode "Unicode").
+
 **Tip:** You can use the [textTOP_Class](https://docs.derivative.ca/TextTOP_Class "TextTOP Class").textWidth member to calculate the width of the text in the Text TOP.
+
 See also: [Field COMP](https://docs.derivative.ca/Field_COMP "Field COMP"), [Text SOP](https://docs.derivative.ca/Text_SOP "Text SOP"), [Unicode](https://docs.derivative.ca/Unicode "Unicode").
 [![TextTOP.jpg](https://docs.derivative.ca/images/3/36/TextTOP.jpg)](https://docs.derivative.ca/File:TextTOP.jpg)
 [textTOP_Class](https://docs.derivative.ca/TextTOP_Class "TextTOP Class")
 
 ## Parameters - Text Page
+
 - Field Component `field` - Specifies a [Field Component](https://docs.derivative.ca/Field_COMP "Field COMP") to use as the source of the text. The font and style of the text displayed in the Field Component are set using the parameters in the Text TOP.
 - DAT `dat` - Specifies a DAT to use for the source of the text. Drag and Drop a DAT onto this field, or manually enter the DAT's path.
 - DAT Row `rowindex` - The row number (starting from 0) of the cell, if the DAT is a table.
 - DAT Col `colindex` - The column number of the cell, if the DAT is a table.
 - Specification DAT `specdat` - A Table DAT that allows you to specify and position text by pixel, with the lower left corner being at 0, 0. Column headers must include `position1` or `x`, `position2` or `y`, and `text`. A sample table can be: ```
 x	y	text
+
 0	0	lower left text
+
 100	100	somewhere in the middle
 
 ```

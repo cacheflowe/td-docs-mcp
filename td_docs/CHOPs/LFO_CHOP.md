@@ -5,20 +5,31 @@ title: LFO_CHOP
 ---
 
 # LFO CHOP
+
 ## Summary
 
 The LFO CHOP (low frequency oscillator) generates waves in real-time in two ways. It synthesizes curves using a choice of common waveforms like Sine or Pulse, or it repeats a prepared incoming curve.
+
 It steps through the waveform at a rate that depends on the Frequency parameter and the Octave Control input. To watch its behavior, attach a Trail CHOP to its output and alter the Frequency parameter.
+
 Up to three input CHOPs can be connected to the LFO CHOP:
+
 **Octave Control** - Without this first (optional) input, the frequency is simply the Frequency parameter. If this input is connected, every unit doubles the frequency: When Octave Control is 1, the frequency is double, when it is 2 it is 4x, when it is -1 the frequency is half the Frequency parameter and when it is 0, there is no change in the frequency.
+
 **Reset** - The seond (optional) input contains on-off (<=0 or >0) that restarts the channels of the oscillator from the beginning of the wave. The reset depends on the setting of the Reset Condition menu. By default, when the Reset input goes from off to on, it resets the wave and starts the waveform immediately. If Reset Condition is set to "While On", the reset value will be held until the Reset input goes off. Reset means "stop the oscillator and cue it at the start of the waveform".
+
 **Source Wave** - The third (optional) input is a replacement of the waveform Type. It is a multi-sample CHOP curve and can contain any number of channels, limited to the channels defined on the Channel page. The waveform Type parameter is disabled.
+
 The LFO CHOP can serve as a general motion time-warper and repeater. If you alter the Frequency, you can control the time warp.
+
 Unlike the [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP"), this is a time-sliced CHOP, that is, it generates its waveform as it goes, and speeds/slows how it steps through the waveform Type while the Frequency changes. Unlike the [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CHOP "Audio Oscillator CHOP"), the LFO CHOP is designed for non-audio frequencies.
+
 See also: [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CHOP "Audio Oscillator CHOP"), [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP"), [Pulse CHOP](https://docs.derivative.ca/Pulse_CHOP "Pulse CHOP").
+
 [lfoCHOP_Class](https://docs.derivative.ca/LfoCHOP_Class "LfoCHOP Class")
 
 ## Parameters - LFO Page
+
 - Type `wavetype` - ⊞ - The shape of the waveform to repeat, unless overridden by the Source Wave:
   * Sine `sin` - [![TouchChannels71.gif](https://docs.derivative.ca/images/a/ad/TouchChannels71.gif)](https://docs.derivative.ca/File:TouchChannels71.gif)(-1 to 1) A Sine wave.
   * Gaussian `normal` - [![TouchChannels74.gif](https://docs.derivative.ca/images/2/2b/TouchChannels74.gif)](https://docs.derivative.ca/File:TouchChannels74.gif)(0 to 1) A Gaussian (also known as a bell or normal) curve.
@@ -43,11 +54,13 @@ See also: [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CH
 - Reset Pulse `resetpulse` - This button instantly resets the channel(s) to 0.
 
 ## Parameters - Channel Page
+
 - Channel Name `channelname` - A list of the names of the channels. You can put patterns like `chan[1-10]` to generate 10 channels. See [Pattern Expansion](https://docs.derivative.ca/Pattern_Expansion "Pattern Expansion").
 Each channel can be different by putting the channel index variable, `$C` in parameters like the frequency channel.
 - Sample Rate `rate` - The sample rate of the CHOP. The default sample rate is 60 samples per second.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -65,14 +78,19 @@ Each channel can be different by putting the channel index variable, `$C` in par
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
   * Input 2:  -
 
 ## Info CHOP Channels
+
 Extra Information for the LFO CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -86,7 +104,9 @@ Extra Information for the LFO CHOP can be accessed via an [Info CHOP](https://do
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

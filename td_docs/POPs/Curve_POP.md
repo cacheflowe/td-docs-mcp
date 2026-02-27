@@ -5,21 +5,33 @@ title: Curve_POP
 ---
 
 # Curve POP
+
 ## Summary
 
 The Curve POP is used to generate a curve in XY (Z=0) that can be used as a lookup curve for a [Lookup Attribute POP](https://docs.derivative.ca/Lookup_Attribute_POP "Lookup Attribute POP") or elsewhere. It is a "function" in that the `P(0)` X-value steps forward uniformly from point to point, while the `P(1)` Y-value takes on different interpolated shapes. The curve it generates is also in an attribute `Curve`, which you can use instead of `P(1)` for clarity.
+
 Like the [S Curve CHOP](https://docs.derivative.ca/S_Curve_CHOP "S Curve CHOP"), it defaults to an ease-in ease-out curve, but the Curve POP lets you add multiple segments (sequential blocks) that enable a greater range of curves. The curve can be made of several segments defined by [Sequential Blocks](https://docs.derivative.ca/index.php?title=Sequential_Blocks&action=edit&redlink=1 "Sequential Blocks \(page does not exist\)") of parameters, each with its own start and end values and Curve Type.
+
 The Curve Type includes Constant, Linear, the Eases and Bezier.
+
 The Alpha and Beta values affect the curve, where Alpha makes it more- or less-sloped, and Beta makes it more biased to the start or end of the segment. When Bezier is selected, Slope In and Slope Out affect the slopes at the end-points of the segment.
+
 More generally, we treat the 2 axes as U and V. The curves can output as points-only, a linestrip, or as an RGBA color curves.
+
 Because the U values can start and end at any value, you can normalize the curve so the U values (`P(0)`) are between 0 and 1.
+
 The curve can be extended to double length and made symmetric using the Symmetric toggle.
+
 The Lookup page lets you apply the curve as a lookup without first converting anything to points. This preerves maximum accuracy, and avoids interpolation problems when a lookup curve sharply steps from one value to another as may occur between two segments. In this case you attach an input POP where you want to modify one or more attributes with the curve. In this mode it behaves similar to the [Lookup Attribute POP](https://docs.derivative.ca/Lookup_Attribute_POP "Lookup Attribute POP").
+
 Tip: If you want specific points to exactly hit your U keyframe values, make sure your (Number of Points - 1) is divisible evenly by your U values.
+
 See also [S Curve CHOP](https://docs.derivative.ca/S_Curve_CHOP "S Curve CHOP"), [Line POP](https://docs.derivative.ca/Line_POP "Line POP"), [Lookup Attribute POP](https://docs.derivative.ca/Lookup_Attribute_POP "Lookup Attribute POP"), [Pattern POP](https://docs.derivative.ca/Pattern_POP "Pattern POP")
+
 [curvePOP_Class](https://docs.derivative.ca/CurvePOP_Class "CurvePOP Class")
 
 ## Parameters - Curve Page
+
 - Total Length `totallength` - Determines the number of points.
 - Output Curve `outputcurve` - ⊞ - Selects the type of primitive to output.
   * Points `points` -
@@ -54,6 +66,7 @@ See also [S Curve CHOP](https://docs.derivative.ca/S_Curve_CHOP "S Curve CHOP"),
 - Slope Out `seg0slopeout` - Bezier slope factor for the outgoing curve segment.
 
 ## Parameters - Lookup Page
+
 - Apply Lookup `applylookup` - The Lookup page lets you apply the curve as a lookup without first converting anything to points.
 - Lookup Index Attribute `lookupindexattr` - Attribute to use as the index for the lookup.
 - From Low High `fromlow` - ⊞ - Reranges the attribute value.
@@ -119,19 +132,27 @@ See also [S Curve CHOP](https://docs.derivative.ca/S_Curve_CHOP "S Curve CHOP"),
   * Mirror `mirror` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Curve POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

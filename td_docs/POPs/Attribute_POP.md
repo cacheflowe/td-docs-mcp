@@ -5,6 +5,7 @@ title: Attribute_POP
 ---
 
 # Attribute POP
+
 ## Summary
 
 The Attribute POP lets you:
@@ -15,6 +16,7 @@ The Attribute POP lets you:
   * Create matrix attributes
 
 Refer to [Attribute](https://docs.derivative.ca/Attribute "Attribute").
+
 When you create a new attribute, you specify:
   * the name (choose from built-in pre-defined names, or create your own)
   * the type (float, double, int, uint)
@@ -27,9 +29,11 @@ When you create a new attribute, you specify:
   * the default value for each component of the attribute
 
 New attributes can also be matrices (done on the Matrix page), like creating a mat4x4.
+
 [attributePOP_Class](https://docs.derivative.ca/AttributePOP_Class "AttributePOP Class")
 
 ## Parameters - Create Page
+
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -80,6 +84,7 @@ New attributes can also be matrices (done on the Matrix page), like creating a m
   * Value `attr0value3` - Attribute value(s).
 
 ## Parameters - Matrix Page
+
 - Matrix Attribute `matattr` - Start of Sequential Parameter Blocks to create new matrix attributes.
 - Matrix Name `matattr0name` - The name of the matrix attribute.
 - Rows `matattr0numrows` - Number of rows in the matrix - 2, 3 or 4.
@@ -93,16 +98,19 @@ New attributes can also be matrices (done on the Matrix page), like creating a m
   * Transform Matrix `transformMatrix` -
 
 ## Parameters - Rename Page
+
 - Rename Attribute `ren` - Start of Sequential Parameter Blocks to rename attributes.
 - From Attribute `ren0from` - The attribute to rename.
 - To Attribute `ren0to` - Sets the new attribute name.
 
 ## Parameters - Duplicate Page
+
 - Duplicate Attribute `dup` - Start of Sequential Parameter Blocks to duplicate attributes.
 - Duplicate Attribute `dup0name` - Name of attribute to duplicate.
 - New Attribute Name `dup0new` - Name of new attribute being duplicated.
 
 ## Parameters - Delete Page
+
 - Delete Point Attributes `deletepoint` - ⊞ - List of Point attributes to delete.
   * * `*` -
 
@@ -113,6 +121,7 @@ New attributes can also be matrices (done on the Matrix page), like creating a m
   * * `*` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -137,14 +146,21 @@ New attributes can also be matrices (done on the Matrix page), like creating a m
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Attribute POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

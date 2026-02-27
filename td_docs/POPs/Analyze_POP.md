@@ -5,21 +5,33 @@ title: Analyze_POP
 ---
 
 # Analyze POP
+
 ## Summary
 
 The Analyze POP analyzes any point, vertex or primitive attributes of a POP, and outputs a single point containing the resulting statistics. It typically computes an average, minimum or maximum values of any attribute.
+
 Attach an Analyze POP to a [POP to DAT](https://docs.derivative.ca/POP_to_DAT "POP to DAT") (and set its Transpose) to see what it comes up with.
+
 If you select more than one attribute, or if you select all (*), it will append the attribute names of the input POP to all the output attribute names.
+
 Tip: The results on the Analyze POP are a single point on the GPU. What you do with it next affects performance. The more you stay on the GPU the faster it will be. Pulling the results to the CPU and using them in parameters will be slower. You can get it to the CPU on the next frame (faster) by using a POP to CHOP but of course it's delayed. Or you can fully stay in the GPU’s POP world by passing the point as an input to other operators like to a Math Mix POP.
+
 In the case of an attribute with multiple components, the analysis is per component. For example for `P`, `Min(0)` is the min X value, `Min(1)` is the min Y value. `indexMin(0)` is the index of the point with the min X value, `IndexMin(1)` is the index of the point with the min Y value.
+
 It can optionaly output the sum and power of the samples of the input attribute.
+
 As noted above it can output the index of the point (the point number) of the sample with the maximum or minimum value of the selected input attribute.
+
 It is also possible to combine the components of a vector to a single component before performing the analysis, using the Combine Components menu.
+
 **Note** : Palette: popViewer can show the ranges of all attributes.
+
 See also: [Accumulate POP](https://docs.derivative.ca/Accumulate_POP "Accumulate POP"), [Histogram POP](https://docs.derivative.ca/Histogram_POP "Histogram POP")
+
 [analyzePOP_Class](https://docs.derivative.ca/AnalyzePOP_Class "AnalyzePOP Class")
 
 ## Parameters - Analyze Page
+
 - Attributes Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
@@ -62,19 +74,27 @@ See also: [Accumulate POP](https://docs.derivative.ca/Accumulate_POP "Accumulate
   * Input Attribute Maximum `max` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Analyze POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

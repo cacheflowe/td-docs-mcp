@@ -5,11 +5,13 @@ title: ParGroup_Execute_DAT
 ---
 
 # ParGroup Execute DAT
+
 ## Summary
 
 [pargroupexecuteDAT_Class](https://docs.derivative.ca/PargroupexecuteDAT_Class "PargroupexecuteDAT Class")
 
 ## Parameters - ParGroup Execute Page
+
 - Active `active` - While on, the DAT will respond to the Parameter that is referenced.
 - OPs `op` - Specify which operator(s) the triggering parameter belongs to.
 - Parameters `pars` - Specify which parameter(s) to monitor for triggering the script.
@@ -28,6 +30,7 @@ title: ParGroup_Execute_DAT
 - Edit.. `edit` - Clicking this opens a text editor to edit text in the DAT.
 
 ## Parameters - File Page
+
 - File `file` - The filesystem path and name of the file to load. Accepts `.txt` and `.dat` files.
 - Sync to File `syncfile` - When On, loads the file from disk into the DAT when the projects starts. A filename must be specified. Turning on the option will load the file from disk immediately. If the file does not exist, it will be created the first time the DAT is updated. The file is monitored so that any changes made to the file will update the DAT, and any changes made to the DAT will be written to the file right away. If the file is removed, the DAT will retain its current contents.
 - Load on Start `loadonstart` - When On, reloads the file from disk into the DAT when the projects starts.
@@ -36,6 +39,7 @@ title: ParGroup_Execute_DAT
 - Write File `writepulse` - Instantly write the file to disk.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -52,4 +56,5 @@ title: ParGroup_Execute_DAT
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -

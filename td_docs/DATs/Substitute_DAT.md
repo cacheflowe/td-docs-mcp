@@ -5,14 +5,19 @@ title: Substitute_DAT
 ---
 
 # Substitute DAT
+
 ## Summary
 
 The Substitute DAT changes the cells of the incoming DAT using pattern matching and substitution strings. It outputs a table with the same number of rows and columns.
+
 See examples below. Also you can use the second input to provide a table of strings to substitute, the first column being the "before" strings and the second column being the "after" strings.
+
 **See also** : the Python `.replace()` [[1]](https://www.w3schools.com/python/ref_string_replace.asp), which is a method you can apply to any string. You can do that in an [Evaluate DAT](https://docs.derivative.ca/Evaluate_DAT "Evaluate DAT") or [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT").
+
 [substituteDAT_Class](https://docs.derivative.ca/SubstituteDAT_Class "SubstituteDAT Class")
 
 ## Parameters - Substitute Page
+
 - Before `before` - Search term to replace. The following special characters may be used:
   * * - match any number of characters
   * ? - match a single character
@@ -32,6 +37,7 @@ To match these special characters exactly, put a backslash (`\`) before the spec
 - First Match Only `first` - Replaces only the first instance of the matching string.
 
 ## Parameters - Scope Page
+
 - Exclude First Row `xfirstrow` - Forces the first row to be ignored even if it is not specified by the Select Rows settings.
 - Exclude First Col `xfirstcol` - Forces the first column to be ignored even if it is not specified by the Select Cols settings.
 - Select Rows `extractrows` - ⊞ - This parameter allows you to pick different ways of specifying the rows scoped.
@@ -71,6 +77,7 @@ By default, the [Python](https://docs.derivative.ca/Python "Python") expression 
 - From Row `fromrow` - When scoping columns by Specified Names, this parameter selects which row to use when matching cell values to Selected Col Values to determine which columns are scoped.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -97,19 +104,26 @@ By default, the [Python](https://docs.derivative.ca/Python "Python") expression 
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  - Data to operate on.
   * Input 1:  - _(optional)_ A [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") with a `before` and `after` column containing strings to sustitute in the first input. This doesn't have to be the whole cell content but can be any partial string as well.
 
 ## Info CHOP Channels
+
 Extra Information for the Substitute DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

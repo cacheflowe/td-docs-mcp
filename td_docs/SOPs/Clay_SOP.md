@@ -5,17 +5,25 @@ title: Clay_SOP
 ---
 
 # Clay SOP
+
 ## Summary
 
 The Clay SOP deforms faces and surfaces by pulling points that lie directly on them. As opposed to the Point SOP or other SOPs that manipulate control points (CVs), the Clay SOP operates on the primitive contours themselves, providing a direct, intuitive, and unconstrained way of reshaping geometry. Thus, rather than translating CVs to change the aspect of the primitive, the Clay SOP takes the inverse approach of manipulating the primitive's skin to reposition the CVs.
+
 The point that defines the area to be modified is called a "target point" or "target" for short. It is expressed as a (u,v) pair in the parametric space of the primitive and ranges between 0 and 1 in both U and V. The image of the target point on the primitive is a 3D point which Clay can displace in several ways. Furthermore, if the primitive is a surface, there is are options to pull only the point or a whole isoparametric curve in either U or V.
+
 Clay does not refine the faces and surfaces unless asked to, so the complexity of the geometry does not increase. The area affected by the change varies with each primitive type and topology. In all cases it is possible to reduce to amount of change by inserting a Refine SOP before the Clay SOP and inserting detail around the target point. For other ways to increase the locality of the deformation as well as its sharpness, see U and V Sharpness below.
+
 If a second input is present, it is possible to snap the target (u,v) point to an (s,t) point on the first primitive of the second input. Without a second input, the primitives can be made to snap to themselves. Moreover, the Clay SOP is able to snap the target to arbitrary points in space.
+
 Both this SOP and the Align SOP can be used effectively as snapping tools and building blocks for curve networks. The main difference between the two SOPs is that Clay deforms the inputs partially, while Align translates and/or rotates the whole primitive.
+
 The Clay SOP accepts a mix of any combination of face and surface types.
+
 [claySOP_Class](https://docs.derivative.ca/ClaySOP_Class "ClaySOP Class")
 
 ## Parameters - Clay Page
+
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Accepts patterns, as described in Pattern Matching in the [Scripting Guide].
 - Warp Method `method` - ⊞ - The following describe the four types of transformations the Clay SOP can apply to the target (U, V) points or isoparametric curves (U or V). All the transformations are exclusive, and all reduce to a signed translation along a direction. The difference between the various transformations is the way the translation and the direction are specified.
   * Matrix `mat` - The matrix method relocates the target point based on a transformation matrix. For a description of transforms, see the [Transform SOP](https://docs.derivative.ca/Transform_SOP "Transform SOP").
@@ -81,12 +89,12 @@ In the example above, rotations performed on an object with different pivot poin
 
 ```
    |opFamily=SOP
-
 ```
 
 }}
 
 ## Parameters - U Page
+
 - Deform along U `uwarp` - Determines whether the clay operation affects the U parametric direction. Both faces and surfaces respond to this option. If the primitives are face types and the toggle is off, clay doesn't change the inputs at all. If the inputs are surfaces and U is off, clay will pull the surfaces along the entire V direction (if V is on) or not at all.
 - U `u` - This value defines a point in the parametric space of a face, representing the location to be affected by the clay operation. This location is referred to as the "target". For surfaces, U defines a line of constant value in the parametric space of the primitive and requires a second coordinate - V - to specify a unique location (see the V> Page below). Spline faces and surfaces have explicit parametric spaces known as domains; since domains are not restricted to the unit range [0, 1], the Clay SOP maps U to the real domain value of the primitive. For polygons and meshes, U is expressed in terms of the number or vertices and columns respectively and in terms of their relative positions.
 - U Bias `uusebias` - Indicates whether the clay algorithm should use the bias it thinks works best for the given U parameter, or take the value explicitly stated beside the toggle. Since clay affects the CVs in the neighbourhood of the given parametric location, the bias can influence the amount of pull applied to the CVs on either side of this location. The effect is a slant of the "wave" the parametric point rides on - towards one side or the other.
@@ -95,6 +103,7 @@ In the example above, rotations performed on an object with different pivot poin
 **Note:** The range of the U Sharpness slider varies with the degree of the spline (i.e. the closer it is to 1, the more knots it adds). Since the number of knots added forms a discrete sequence, the slider will automatically jump to the valid positions.
 
 ## Parameters - V Page
+
 - Deform along V `vwarp` - Determines whether the clay operation affects the V parametric direction of the surface. If the inputs are surfaces and V if off, clay will pull the surfaces along the entire U direction (if U is on) or not at all. If both U and V are on, clay will pull the surface at the target (U, V) point specified in the U and V folders below. This option does not affect face types.
 - V `v` - This value affects only surface types. V defines a line of constant value in the parametric space of the surface and together with U specifies a unique location in that space. Spline surfaces have explicit parametric spaces known as domains; since domains are not restricted to the unit range [0, 1], the Clay SOP maps V to the real domain value of the surface. For meshes, V is expressed in terms of the number or rows and their relative positions.
 - V Bias `vusebias` - Indicates whether the clay algorithm should use the bias it thinks works best for the given V parameter, or take the value explicitly stated beside the toggle. Since clay affects the CVs in the neighbourhood of the given parametric location, the bias can influence the amount of pull applied to the CVs on either side of this location. The effect is a slant of the "wave" the parametric point rides on -- towards one side or the other.
@@ -103,13 +112,18 @@ In the example above, rotations performed on an object with different pivot poin
 **Note:** The range of the V Sharpness slider varies with the degree of the spline (i.e. the closer it is to 1, the more knots it adds). Since the number of knots added forms a discrete sequence, the slider will automatically jump to the valid positions.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Clay SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -121,7 +135,9 @@ Extra Information for the Clay SOP can be accessed via an [Info CHOP](https://do
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

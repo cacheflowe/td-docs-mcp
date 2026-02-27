@@ -5,15 +5,21 @@ title: Texture_SOP
 ---
 
 # Texture SOP
+
 ## Summary
 
 The Texture SOP assigns texture UV and W coordinates to the Source geometry for use in texture and bump mapping. It generates multi-layers of texture coordinates.
+
 [textureSOP_Class](https://docs.derivative.ca/TextureSOP_Class "TextureSOP Class")
 
 Fixing Seams & Unrolling Geometry
+
 **NOTE:** the following discussing pertains only to face and hull primitives.
+
 If a texture type requires fixing of seams and the texture is applied to vertices, the wrapped primitives are unrolled before computing the texture coordinates. Unrolling a wrapped primitive turns it into an open primitive whose new vertices use the same points as the vertices they have been uniqued from. Thus, unrolling does not change the point count, nor does it allow cracks to appear further down the road. Explicit unrolling, using the [Primitive SOP](https://docs.derivative.ca/Primitive_SOP "Primitive SOP"), is not required.
+
 The seam fixing is done after computing the texture coordinates. It is required whether textures are applied to vertices or points, and it's done in u, v, or both.
+
 The following texture types require fixing of seams:
   * Cylindrical - seams fixed in u.
   * Polar - seams fixed in u and v.
@@ -23,9 +29,11 @@ The following texture types require fixing of seams:
 **Note:** When the projection type is **Cylindrical** or **Polar** , closed meshes, Bzier & NURBS surfaces will be opened. At least one row/column of vertices will be added (possibly more for NURBS<). This is to prevent poor interpolation of texture coordinates at the seam of the join.
 
 ## Parameters - Page
+
 - Primitive Group `group` - If there are input primitive groups, specifying a group name in this field will cause this SOP to act only upon the group specified. Does not work with point or vertex groups. Accepts patterns, as described in [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 
 ## Parameters - Texture Page
+
 - Texture Layer `texlayer` - If the geometry has multiple textures layers applied to it, this parameter determines which layer of UV coordinates this Texture SOP will effect.
 - Texture Type `type` - ⊞ - The Face, Uniform Spline, and Arc-Length Spline texturing methods accept spline curves as well as polygons.
 When using one of the spline-based methods, specifying a paste hierarchy in the Group field will propagate the computation of texture coordinates to all of its nodes. Projection methods will typically yield smoother texture continuity between pasted surfaces than any of the spline methods. Sometimes it helps ensuring that pasted features are Chord-length parameterized with the [Basis SOP](https://docs.derivative.ca/Basis_SOP "Basis SOP").
@@ -55,8 +63,11 @@ Since the Uniform Spline method relies heavily on the parametric fabric of the s
 - Camera Name `camera` - This is used when the Perspective From Camera Texture Type is selected. The menu is used to select which light or camera to project the perspective coordinates from.
 - Apply to `coord` - ⊞ - Select to apply texture coordinates to their Natural Location, Point textures, or Vertex textures.
 When Natural location is selected, the UV's will be applied to the verticies when using Polar, Cylindrical, Rows and Columns, and Face texture types. Orthographic, Uniform Spline, Average Spline and Arc Length Spline will always generate point UV's when you choose Natural.
+
 Natural Location will also create vertex uvs when creating new texture layers, if a vertex uv already exists for layer 0.
+
 IIf the primitive is open in both directions like a grid or a surface (so that the ends do not touch), then the advantage of vertex UV's does not apply since there are no matched seams on the single surface to worry about.
+
 Using vertex UVs gives you unique points at the closed seam whereas point UVs are shared at seams and are, by default given a value of 0 for either U or V depending on the closed direction of the surface. If you want to make a closed surface open, simply insert a [Carve SOP](https://docs.derivative.ca/Carve_SOP "Carve SOP") in the chain and place a single carve in the surface of the direction that the surface is closed.
   * Natural location `natural` -
   * Point texture `point` -
@@ -77,6 +88,7 @@ Using vertex UVs gives you unique points at the closed seam whereas point UVs ar
 - Fix Face Seams `fixseams` - Attempts to correct texture continuity at face seams.
 
 ## Parameters - Transform Page
+
 Add further transformations to the texture coordinate space.
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations. The transform order determines the order in which transformations take place. Depending on the order, you can achieve different results using the exact same values. Choose the appropriate order from the menu.
   * Scale Rotate Translate `srt` -
@@ -118,12 +130,17 @@ In the example above, rotations performed on a texture coordinates with differen
   * Z `pz` -
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Texture SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -135,7 +152,9 @@ Extra Information for the Texture SOP can be accessed via an [Info CHOP](https:/
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

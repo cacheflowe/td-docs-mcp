@@ -5,23 +5,33 @@ title: NVIDIA_Background_TOP
 ---
 
 # NVIDIA Background TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
+
 **Hardware:** This TOP uses the AI Green Screening module from the [Nvidia Maxine Video Effects](https://developer.nvidia.com/maxine) engine and requires a 20, 30, 40, or 50 series Nvidia RTX card to operate.
+
 **The models for this node must be separately downloaded via the Video Effects SDK for your GPU from <https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/>.
 
 Note that this feature can not be used in the same project as the [ZED](https://docs.derivative.ca/ZED "ZED") device, due to version conflicts with TensorRT.
 
 **The Nvidia Background TOP performs AI image segmentation to separate a person from the background of a given image. Unlike the [RGB Key TOP](https://docs.derivative.ca/RGB_Key_TOP "RGB Key TOP") or the [Chroma Key TOP](https://docs.derivative.ca/Chroma_Key_TOP "Chroma Key TOP"), the background top uses AI to identify the foreground and background portions of the image and does not require a solid background color. However, the AI model is trained to look for specific image patterns (a person in front of a webcam) and may not perform as well on generic input as the key TOPS. The output of the node is a monochrome key image where white pixels indicate the foreground person and black pixels represent the background. Commonly, this key image is used to replace the background of the source image using the [Matte TOP](https://docs.derivative.ca/Matte_TOP "Matte TOP") or other compositing nodes.
+
 Due to the time it takes to run the AI model, the output of the Background TOP will be multiple frames behind the original image when processing a video input. For accurate compositing you will want to match the output key image with the original frame that was used to produce it. An easy way to do this is to use a [Cache TOP](https://docs.derivative.ca/Cache_TOP "Cache TOP") with the Output Index set to a negative number of frames. When placed between the source video and the compositor input, this will delay the source image so that it synchronizes with the key image.
+
 The background engine only supports videos with a _minimum width of 512 pixels_ and _minimum height of 288 pixels_.
+
 Tip: The AI model is tuned for a single person sitting in front of a webcam. Videos including full body images, multiple people or indirect camera angles may not perform well.
+
 Tip: In addition to selecting Performance using the mode parameter, you can also reduce GPU load by reducing the resolution of the input image. The [Blur TOP](https://docs.derivative.ca/Blur_TOP "Blur TOP") and [Level TOP](https://docs.derivative.ca/Level_TOP "Level TOP") may also be useful to refine the output key image before compositing.
+
 [nvidiabackgroundTOP_Class](https://docs.derivative.ca/NvidiabackgroundTOP_Class "NvidiabackgroundTOP Class")
 
 ## Parameters - Background Page
+
 - Mode `mode` - ⊞ - Choose which mode to run the AI model in.
   * Quality `quality` - Run the high quality image segmentation model. This model will run slower, but may produce a better quality key image.
   * Performance `performance` - Run the high performance AI model. This model will run faster, but may produce a lower quality key image.
@@ -31,6 +41,7 @@ Tip: In addition to selecting Performance using the mode parameter, you can also
   * background `Background` - Chairs are segmented as the background, so they will not appear as a part of the monochrome output image.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -110,12 +121,17 @@ Tip: In addition to selecting Performance using the mode parameter, you can also
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Nvidia Background TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -129,7 +145,9 @@ Extra Information for the Nvidia Background TOP can be accessed via an [Info CHO
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,18 +5,27 @@ title: Line_MAT
 ---
 
 # Line MAT
+
 ## Summary
 
 The Line MAT renders 3D line segments, dots and vectors. The line width and color can be varied based on distance to the camera, using two models: a 1/z dropoff (z = distance from camera), or a near-far distance rolloff model, where you set the width and color at the near and far distances, and you vary three rolloff controls.
+
 For lines it renders different types of end caps and hinge/joints (round, box, arrow). The light model is flat-shaded (no affect from scene lighting). It draws edges (like polygon edges), points and vectors from points. There are different parameters to control the desired shape, as explained in the Parameter sections. It renders several primitive types: polygons, meshes, NURBS, quads, etc. It also manages closed polygons / open polygons.
+
 You can render a dot at each point. You can render a vector at each point which uses any attribute, like Normal (N). The points or vectors can have their own colors and alpha.
+
 Line Width is a resolution-independent quantity. A line width of 1 will draw a line that is 1/1000 the width of the image. This is true when used with orthographic cameras and perspective cameras.
+
 To make the width of a line and its points vary per-point of a SOP, the width can be set by adding a point attribute `width` on the SOP being rendered. A value of 2 scales the width at that point by 2 times its normal width. New point attributes can be created with the [Point SOP](https://docs.derivative.ca/Point_SOP "Point SOP") Custom page. To affect per-point width and not affect the line width, use the point attribute `pscale`.
+
 When you are animating Ortho Width or Field of View, you may want line widths to adjust more realistically. When the parameter "Width Affected by FOV/Ortho Width" is on, the behavior is different: For Ortho cameras, the drawn line width increases when Ortho Width drops below 1, (as if you are zooming into it), and decreases when Ortho Width increases above 1. For Perspective cameras, the drawn line width increases when Field of View drops below 90 degrees, and decreases when Field of View increases above 90 degrees. Note that when the parameter "Width Affected by FOV/Ortho Width" is on, lines are still resolution-independent.
+
 Intro article here from Interactive Immersive HQ: [new-superpowers-touchdesigners-line-mat/](https://interactiveimmersive.io/blog/3d/new-superpowers-touchdesigners-line-mat/)
+
 [lineMAT_Class](https://docs.derivative.ca/LineMAT_Class "LineMAT Class")
 
 ## Parameters - Setup Page
+
 This is a general setup page for globally control the shared features of Lines, Points, and Vectors. Every change in this page will affect all the three mentioned types.
 - Depth Interpolation Model `depthinterpolationmodel` - ⊞ - Depth Interpolation Model depthmodel – a menu to select how the width of line items changes by their distance from the camera.
   * S Curve `scurve` - a bounded range for the width between the near and far planes (Distance Near and Far) that uses S Curve for a more dramatic and yet smooth (referring to the continuity of the curve) changes. The curve shape can be controlled by Bias, Steepness, and Linearize parameters.
@@ -43,6 +52,7 @@ This is a general setup page for globally control the shared features of Lines, 
 - Num Points in Circle `numptsincircle` - When drawing Points in Circle (Polygon) mode, or drawing end-caps, or elbows between edges, this determines how many points you would draw in a full-circle arc to simulate a circular shape. The lower the number, the faster it renders.
 
 ## Parameters - Line Page
+
 - Draw Lines `drawlines` - A toggle to draw the Line polygons.
 - Line Joint Type `linejointtype` - ⊞ - A menu to select the joint type where two lines segments meet.
   * Round `round` - a round joint.
@@ -80,6 +90,7 @@ This is a general setup page for globally control the shared features of Lines, 
 - Line Far Alpha `linefaralpha` - Specifies the alpha value for the Line at the Distance Far plane and beyond (farther from camera).
 
 ## Parameters - Point Page
+
 - Draw Points `drawpoints` - A toggle to draw the Points.
 - Point Type `pointtype` - ⊞ - A menu to select the Point type.
   * Circle `circle` - draws circle on each point of the geometry.
@@ -109,6 +120,7 @@ This is a general setup page for globally control the shared features of Lines, 
 - Point Lift Scale `pointliftscale` - see parameter Lift Scale.
 
 ## Parameters - Vector Page
+
 - Draw Vectors `drawvectors` - A toggle to draw the Vectors at each point.
 - Scale `scale` - A scale value which applies on the length of the Vector.
 - Vector Start Cap Type `vectorstartcaptype` - ⊞ - A menu to Specify the end cap type at the Vector start. You can control the size of each end cap type in the Cap page.
@@ -144,6 +156,7 @@ This is a general setup page for globally control the shared features of Lines, 
 - Vector Far Alpha `vectorfaralpha` - Specifies the alpha value for the Vector at the Distance Far plane and beyond (farther from camera).
 
 ## Parameters - Caps Page
+
 - Round Width `roundwidth` - Specifies a scale to the width of Round end caps.
 - Round Height `roundheight` - Specifies a scale to the height of Round end caps.
 - Square Width `squarewidth` - Specifies a scale to the width of Square end caps.
@@ -159,6 +172,7 @@ This is a general setup page for globally control the shared features of Lines, 
 - End Caps Pullback `endcappullback` - By default (0), the end cap goes beyond the end point of the line so that the center of a circular endcap is right at the end point. Setting this to 1 makes the tip of the end cap positioned exactly at the end point.
 
 ## Parameters - Attributes Page
+
 - Line Position Attribute `lineposatt` -
 - Line Width Attribute `linewidthatt` -
 - Line Color Attribute `linecoloratt` -
@@ -179,6 +193,7 @@ This is a general setup page for globally control the shared features of Lines, 
 - Vector Instance Custom Attribute Index `vectorcusattribidx` - When instancing is used, you can get the XYZ vector from an instance attribute. This is the index of the X value in the Instance OP.
 
 ## Parameters - Deform Page
+
 Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(Skinning\) "Deforming Geometry \(Skinning\)") for more information on doing deforms in TouchDesigner.
 - Deform `dodeform` - Enables deforms on this material.
 - Get Bone Data: `deformdata` - ⊞ - Specifies where the deform bone data will be obtained.
@@ -193,8 +208,11 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
 
 ## Parameters - Common Page
+
 ###
+
 Blending
+
 [Blending](https://docs.derivative.ca/Blending "Blending") is summing the color value of the pixel being drawn and the pixel currently present in the Color-Buffer. Blending is typically used to simulate [Transparency](https://docs.derivative.ca/Transparency "Transparency"). The blending equation is: `Final Pixel Value = (Source Blend * Source Color) + (Dest Blend * Destination Color)`
 
 - Blending (Transparency) `blending` - This toggle enables and disables blending. However see the wiki article [Transparency](https://docs.derivative.ca/Transparency "Transparency").
@@ -300,8 +318,11 @@ Blending
   * Always `always` -
 
 ###
+
 Depth Test
+
 Depth-Testing is comparing the depth value of the pixel being drawn with the pixel currently in the [Frame-Buffer](https://docs.derivative.ca/index.php?title=Frame-Buffer&action=edit&redlink=1 "Frame-Buffer \(page does not exist\)"). A pixel that is determined to be in-front of the pixel currently in the Frame-Buffer will be drawn over it. Pixels that are determined to be behind the pixel currently in the Frame-Buffer will not be drawn. Depth-Testing allows geometry in a 3D scene to occlude geometry behind it, and be occluded by geometry in-front of it regardless of the order the geometry was drawn.
+
 For a more detailed description of Depth-Testing, refer to the [Depth-Test](https://docs.derivative.ca/Depth-Test "Depth-Test") article.
 
 - Write Depth Values `depthwriting` - If Write Depth Values is on, pixels that pass the depth-test will write their depth value to the Depth-Buffer. If this isn't on then no changes will be made to the Depth-Buffer, regardless of if the pixels drawn pass or fail the depth-test.
@@ -319,7 +340,9 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Topology Wire Frame `topology` -
 
 ###
+
 Alpha Test
+
 Alpha-testing allows you to choose to draw or not draw a pixel based on its alpha value.
 
 - Line Width `wirewidth` - This value is the width that the wires will be. This value is in pixels.
@@ -333,16 +356,23 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
 - Polygon Depth Offset `polygonoffset` - Turns on the polygon offset feature.
 - Offset Factor `polygonoffsetfactor` -
 - Offset Units `polygonoffsetunits` -
+
 ###
+
 Wire Frame
+
 The wire-frame feature will render the geometry as wire-frame, using the actual primitive type used in the render. What this means is surfaces like Metaballs, NURBs and Beziers will become a wire-frame of the triangles/triangle-strips used to render them (since these types of primitives can't be natively rendered in OpenGL).
 
 ###
+
 Cull Face
+
 The cull face parameter will cull faces from the render output. This can be used as an optimization or sometimes to remove artifacts. See [Back-Face Culling](https://docs.derivative.ca/Back-Face_Culling "Back-Face Culling") for more infomation.
 
 ###
+
 Polygon Depth Offset
+
 This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly on-top of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing [shadows](https://docs.derivative.ca/Shadows "Shadows").
 
 - Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
@@ -486,11 +516,17 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Line MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common MAT Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

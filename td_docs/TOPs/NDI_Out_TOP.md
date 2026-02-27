@@ -5,14 +5,19 @@ title: NDI_Out_TOP
 ---
 
 # NDI Out TOP
+
 ## Summary
 
 The NDI Out TOP will send image and audio data over IP to other [Newtek NDI® (Network Data Interface)](https://docs.derivative.ca/NDI "NDI") enabled applications. The [NDI®](https://docs.derivative.ca/NDI "NDI") protocol is created by [Newtek](http://www.newtek.com/ndi/applications/).
+
 See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI In TOP](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP") and [NDI DAT](https://docs.derivative.ca/NDI_DAT "NDI DAT").
+
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
+
 [ndioutTOP_Class](https://docs.derivative.ca/NdioutTOP_Class "NdioutTOP Class")
 
 ## Parameters - NDI Out Page
+
 - Active `active` - Makes itself available as a source and sends out image data when active.
 - Source Name `name` - Specify the name for this source.
 - Failover Source Name `failovername` - If this source fails while receivers are connected to it, they will instead try to connect to the specified Failover Source. This format of this should be `MACHINENAME (SourceName)`. This format is the same as you would see the source listed in the NDI In TOP.
@@ -52,6 +57,7 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI In TOP](https://docs.
   * High (HDR) `hdr` - Will treat the Output Color Space as HDR for it's reference white value.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -131,11 +137,15 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI In TOP](https://docs.
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the NDI Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific NDI Out TOP Info Channels
   * num_connected - The number of receivers connected to this source.
 
@@ -144,7 +154,9 @@ Specific NDI Out TOP Info Channels
   * skipped_frames - The total number of frames produced by TouchDesigner that didnt get sent out.
 
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -158,7 +170,9 @@ Specific NDI Out TOP Info Channels
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

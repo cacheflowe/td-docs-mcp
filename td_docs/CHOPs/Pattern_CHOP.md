@@ -5,18 +5,27 @@ title: Pattern_CHOP
 ---
 
 # Pattern CHOP
+
 ## Summary
 
 The Pattern CHOP generates a sequence of samples in a channel. Unlike the [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP") its purpose is generating arrays of samples that have no reference to time (seconds or frames).
+
 It is useful for curve generation like lookup tables, simple shapes that can be converted to SOPs, generating channels that are passed to the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") to generate instances, and other non-time-based curve-generation, with as little need to make expressions in Python.
+
 All defaults are in samples, not seconds or frames (though like all CHOPs, it carries with it a sample rate). There is no start-end, just Length in samples.
+
 **Tip** : To display a CHOP viewer in the units of samples, make the [Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active") and change [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") -> Units to be Samples.
+
 The Pattern CHOP optionally takes one input CHOP to match the length and sample rate, and, choosing via the Combine Channels menu, Appends or Inserts the new channel(s), Replaces the incoming channels, Adds to the incoming channels or Multiplies the incoming channels.
+
 The Pattern CHOP defaults to one cycle of the curve over the length of the CHOP, no matter how many samples long.
+
 **Tip: Customizing each channel:** The python object for the Pattern CHOP has a `chanIndex` member, so if Pattern generates three channels you can put something like `[1, 3, 7][me.chanIndex]` in any parameter to customize its value for each channel. For example, in the Type parameter, put the expression `['sin', 'cos', 'ramp'][me.chanIndex]` to get 3 different curve types.
+
 [patternCHOP_Class](https://docs.derivative.ca/PatternCHOP_Class "PatternCHOP Class")
 
 ## Parameters - Pattern Page
+
 - Type `wavetype` - ⊞ - The shape of one cycle of the pattern.
   * Constant `const` - (1)
   * Sine `sin` - (-1 to 1)
@@ -65,6 +74,7 @@ The Pattern CHOP defaults to one cycle of the curve over the length of the CHOP,
 - Randomize `randomize` - When the Type parameter above is set to Random Non-Repeating Integers, this trigger will randomize all the values.
 
 ## Parameters - Channel Page
+
 - Channel Names `channelname` - You can creates many channels with simple patterns like `chan[1-20]`, which generates 20 channels from `chan1` to `chan20`, or `t[xyz]` which generates `tx`, `ty` and `tz`. See the section, Common CHOP Parameters for a description of this and all Options. See [Scope and Channel Name Matching](https://docs.derivative.ca/CHOP_Common_Page#Scope "CHOP Common Page") Options.
 - Combine Channels `combine` - ⊞ - If an input CHOP is attached, it adopts the length and sample rate of the input CHOP, and
   * Off `off` - It only adopts the length and sample rate of the input.
@@ -92,6 +102,7 @@ The Pattern CHOP defaults to one cycle of the curve over the length of the CHOP,
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -109,12 +120,17 @@ The Pattern CHOP defaults to one cycle of the curve over the length of the CHOP,
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Pattern CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -128,7 +144,9 @@ Extra Information for the Pattern CHOP can be accessed via an [Info CHOP](https:
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,12 +5,15 @@ title: Reorder_DAT
 ---
 
 # Reorder DAT
+
 ## Summary
 
 The Reorder DAT allows you to reorder the rows and columns of the input table. You can also use In Specified Order option to get duplicate copies of rows and columns.
+
 [reorderDAT_Class](https://docs.derivative.ca/ReorderDAT_Class "ReorderDAT Class")
 
 ## Parameters - Reorder Page
+
 - Reorder `reorder` - ⊞ - This parameter allows you to reorder either rows or columns.
   * Rows `row` -
   * Columns `col` -
@@ -30,6 +33,7 @@ The Reorder DAT allows you to reorder the rows and columns of the input table. Y
 - Delete Unspecified `delete` - Only available when Method is 'In Specified Order by Name' or 'In Specified Order by Index'. It will delete any row/column not listed in the Order parameter.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -56,18 +60,25 @@ The Reorder DAT allows you to reorder the rows and columns of the input table. Y
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Reorder DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,16 +5,21 @@ title: Kinect_Azure_Select_TOP
 ---
 
 # Kinect Azure Select TOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows 10 April 2018 or newer** operating system.
 
 The Kinect Azure Select TOP can be used to capture additional images from a Microsoft Kinect Azure or Kinect compatible Orbbec camera that is controlled by a [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP").
+
 This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP").
+
 [kinectazureselectTOP_Class](https://docs.derivative.ca/KinectazureselectTOP_Class "KinectazureselectTOP Class")
 
 ## Parameters - Kinect Azure Page
+
 - Active `active` - Controls whether this TOP is retrieving image data from the device. The primary [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP") must also be active to receive data.
 - Kinect Azure TOP `top` - The name of the primary [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP") that is configuring the camera. The primary TOP controls which camera the select TOP receives data from, as well as all device configuration such as resolution, framerate, etc.
 - Image `image` - ⊞ - A list of available image types to capture from the device and display in this TOP. All image types have a second version that is mapped (aligned) to the image space of the other camera so that color and depth image data can be matched. The resolution of the image is controlled by the Color Resolution or Depth Mode parameters of the primary [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP").
@@ -34,6 +39,7 @@ This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca
 - Mirror Image `mirrorimage` - Flip the image in the horizontal axis.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -113,9 +119,13 @@ This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Info CHOP Channels
+
 Extra Information for the Kinect Azure Select TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -129,7 +139,9 @@ Extra Information for the Kinect Azure Select TOP can be accessed via an [Info C
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

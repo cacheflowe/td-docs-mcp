@@ -5,15 +5,19 @@ title: Projection_TOP
 ---
 
 # Projection TOP
+
 ## Summary
 
 The Projection TOP takes an image, often created with a [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"), in a [Cube Map](https://docs.derivative.ca/Cube_Map "Cube Map"), Equirectangular, Fish Eye or Dual Paraboloid format, and converts that to a Fisheye or Equirectangular projection suitable for domes, or a Cube Map format. For Equirectangular images, u-v horizontal-vertical is the latitude-longitude, suitable for spheres. This produces superior-quality when it's based on the cube maps.
+
 For every pixel of output, it takes one sample from the input cube map. Better anti-aliasing may be achieved by rendering double-resolution and scaling down to your desired resolution with the High Quality Resize option of the [Resolution TOP](https://docs.derivative.ca/Resolution_TOP "Resolution TOP")
+
 When converting to a Equirectangular image, it is recommended you set the output resolution to a 2x1 aspect ratio, like 4096x2038. Fish Eyes are best output as a 1x1 aspect ratio.
 [![ProjectionTOP.2.jpg](https://docs.derivative.ca/images/thumb/5/53/ProjectionTOP.2.jpg/800px-ProjectionTOP.2.jpg)](https://docs.derivative.ca/File:ProjectionTOP.2.jpg)
 [projectionTOP_Class](https://docs.derivative.ca/ProjectionTOP_Class "ProjectionTOP Class")
 
 ## Parameters - Projection Page
+
 - Input `input` - ⊞ - At this time the only option is a Cube Map input. You can generate a Cube Map by rendering one using the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"), or converting 2D images into one using the [Cube Map TOP](https://docs.derivative.ca/Cube_Map_TOP "Cube Map TOP").
   * Cube Map `cubemap` -
   * Equirectangular `equirectangular` -
@@ -32,6 +36,7 @@ When converting to a Equirectangular image, it is recommended you set the output
   * Z `rz` -
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -111,12 +116,17 @@ When converting to a Equirectangular image, it is recommended you set the output
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Projection TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -130,7 +140,9 @@ Extra Information for the Projection TOP can be accessed via an [Info CHOP](http
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

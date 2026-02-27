@@ -5,12 +5,15 @@ title: OAK_Select_CHOP
 ---
 
 # OAK Select CHOP
+
 ## Summary
 
 The OAK Select CHOP is like a [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP") combined with a [Select CHOP](https://docs.derivative.ca/Select_CHOP "Select CHOP"), and any of the other hardware-specific CHOPs. The basic operation involves providing an [OAK Device CHOP](https://docs.derivative.ca/OAK_Device_CHOP "OAK Device CHOP") and a stream name. In the simplest case, the stream's data will show up as well-named channels. For example, [ImgDetections](https://docs.luxonis.com/projects/api/en/latest/components/messages/img_detections/) messages indicating the 2D coordinates and labels of detected objects will show up as CHOP channels without any manual coding. In more complex cases such as hand landmark tracking, the stream may be of [NNData](https://docs.luxonis.com/projects/api/en/latest/components/messages/nn_data/) or [Buffer](https://docs.luxonis.com/projects/api/en/latest/components/messages/buffer/) type, requiring the user to implement a callback and parse the data.
+
 [oakselectCHOP_Class](https://docs.derivative.ca/OakselectCHOP_Class "OakselectCHOP Class")
 
 ## Parameters - OAK Page
+
 - Active `active` - Toggle whether the OAK Select CHOP cooks.
 - OAK Device CHOP `chop` - An OAK Device CHOP running a depthai pipeline.
 - Stream `stream` - The name of the stream to be received.
@@ -26,6 +29,7 @@ The OAK Select CHOP is like a [Script CHOP](https://docs.derivative.ca/Script_CH
 - Setup Parameters `setuppars` - Clicking the button runs the setupParameters() callback function.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -43,10 +47,15 @@ The OAK Select CHOP is like a [Script CHOP](https://docs.derivative.ca/Script_CH
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Operator Inputs
+
 ## Info CHOP Channels
+
 Extra Information for the oakselect CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -60,7 +69,9 @@ Extra Information for the oakselect CHOP can be accessed via an [Info CHOP](http
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,16 +5,23 @@ title: Join_CHOP
 ---
 
 # Join CHOP
+
 ## Summary
 
 The Join CHOP takes all its inputs and appends one CHOP after another. It is expected they all have the same channels.
+
 The end section of the first CHOP is overlapped with the start section of the second CHOP, and so on for the rest of the input CHOPs. The second input is shifted to line up with the end of the first.
+
 Blending allows you to splice channels together by slowly phasing out one CHOP while phasing into the next, or by inserting interpolation curves between the channels of the adjacent CHOPs.
+
 Quaternion Blend blends rotation triplets (rx ry rz) together using the shortest rotation arc. Rotation triplets are identified by "quaternion" attributes, which are set in the [Attribute CHOP](https://docs.derivative.ca/Attribute_CHOP "Attribute CHOP").
+
 Translation Blending blends translation channels together by slowly changing from the final velocity of the previous channel to the initial velocity of the next. The next channel may be shifted up or down. If this is undesirable, use cubic blending instead (in the Shape menu). Translation Blending is done on channel triplets that represent translations or positions (*tx *ty *tz).
+
 [joinCHOP_Class](https://docs.derivative.ca/JoinCHOP_Class "JoinCHOP Class")
 
 ## Parameters - Blend Page
+
 - Method `blendmethod` - ⊞ - The blend method to produce a seamless sequence:
   * Preserve Length `pre` - The total length of the CHOPs is constant.
   * Overlap Sequences `ovl` - Overlaps the current CHOP with the prior CHOP. Better for audio.
@@ -38,6 +45,7 @@ Translation Blending blends translation channels together by slowly changing fro
   * Channel Name `name` -
 
 ## Parameters - Scope Page
+
 - Step `step` - If set to 1, the next segment will be shifted up or down so that it begins where the last segment ended.
 - Step Scope `stepscope` - The names of channels that use Step.
 - Blend Scope `blendscope` - The names of the channels that should be blended. Other channels will not be blended.
@@ -46,12 +54,14 @@ Translation Blending blends translation channels together by slowly changing fro
 - Translate Z Blend `transscopez` - The names of channels that will be translation-blended. Each string field contains a list of its component channels, such as *tx, *ty and *tz.
 
 ## Parameters - Rotate Page
+
 - Quaternion Blend `quatrot` - Use quaternion blending on rotation channels.
 - Shortest Path Rotation Blending `shortrot` - If enabled, compensates.
 - Rotation Scope `rotscope` - Enabled when Shortest Path Rotation Blending is turned on.
 - Cycle Length `cyclelen` - Enabled when Shortest Path Rotation Blending is turned on.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -70,17 +80,25 @@ Translation Blending blends translation channels together by slowly changing fro
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Join CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -94,7 +112,9 @@ Extra Information for the Join CHOP can be accessed via an [Info CHOP](https://d
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

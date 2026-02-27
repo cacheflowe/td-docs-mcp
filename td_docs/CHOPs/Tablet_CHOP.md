@@ -5,17 +5,25 @@ title: Tablet_CHOP
 ---
 
 # Tablet CHOP
+
 ## Summary
 
 The Tablet CHOP gets the [Wacom](http://www.wacom.com) tablet X and Y values, and also gets pen tip pressure, X tilt and Y tilt, and the various pen buttons. Two pens can be used to output one set of channels for each pen. The Tablet CHOP will initialize/install when the CHOP is created.
+
 It supports the simultaneous use of two devices (Stylus Pen, Airbrush or 4D Mouse) on the same tablet, with the "1st Pen" folder controlling the parameters of the primary device (the first one activated), and the "2nd Pen" folder controlling the parameters of the other device.
+
 Put a channel name in a parameter to create that channel.
+
 The range of all axes is -1.0 to 1.0. The values of the Button parameters are 0 for Button Up and 1 for Button Down. All axis and button channels are active when the Active state is On.
+
 In most parameter fields of this CHOP, if you put a channel name in the parameter, it will attempt to read that parameter and output the channel. Otherwise no channel is created.
+
 For advice on setting up the tablet and tuning the sensitivity of the pen and tablet, please read the [Wacom Intuos](https://docs.derivative.ca/Wacom_Intuos_Tablet "Wacom Intuos Tablet") article.
+
 [tabletCHOP_Class](https://docs.derivative.ca/TabletCHOP_Class "TabletCHOP Class")
 
 ## Parameters - 1st Pen Page
+
 This page let you assign channels names for the inputs from the 1st Pen assigned to the tablet.
 - X Coordinate `xcoord` - The channel name for the movement of the pen in the x direction.
 - Y Coordinate `ycoord` - The channel name for the movement of the pen in the y direction.
@@ -32,9 +40,11 @@ This page let you assign channels names for the inputs from the 1st Pen assigned
 - Button 5 `button5` - The channel name for the button reported as Button 5.
 
 ## Parameters - 2nd Pen Page
+
 The second pen has the same parameters as the first pen, and the values are taken from the second device.
 
 ## Parameters - Channel Page
+
 - Active `active` - ⊞ - While **On** , the pen movement will be output from and the CHOP will cook every frame. When set to **Off** it will not cook and the values will not be updated. **While Playing** will capture pen events only when the [Timeline](https://docs.derivative.ca/Timeline "Timeline") is playing forward.
   * Off `off` -
   * On `on` -
@@ -58,6 +68,7 @@ The second pen has the same parameters as the first pen, and the values are take
 - Default Value `defval` - The value used for the Default Value extend condition.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -75,9 +86,13 @@ The second pen has the same parameters as the first pen, and the values are take
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
+
 Extra Information for the Tablet CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -91,7 +106,9 @@ Extra Information for the Tablet CHOP can be accessed via an [Info CHOP](https:/
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,14 +5,19 @@ title: Insert_DAT
 ---
 
 # Insert DAT
+
 ## Summary
 
 The Insert DAT allows you to insert a row or column into an existing table.
+
 You can add strings that will be put in the new cells, space separated. If you want a cell to include spaces, in the Contents parameter put the cell contents in quotes: `cell1 'cell 2' cell3`. Or a list in the parameter expression: `['cell1', 'cell 2']`
+
 If the input DAT is not a table, it will be converted to a table.
+
 [insertDAT_Class](https://docs.derivative.ca/InsertDAT_Class "InsertDAT Class")
 
 ## Parameters - Insert Page
+
 - Insert `insert` - ⊞ - Specify what to insert.
   * Row `row` - Insert a row.
   * Column `col` - Insert a column.
@@ -40,6 +45,7 @@ If the input DAT is not a table, it will be converted to a table.
   * op('sopname').points[me.subRow].P[me.subCol] `op('sopname').points[me.subRow].P[me.subCol]` -
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -66,18 +72,25 @@ If the input DAT is not a table, it will be converted to a table.
   * Off `off` - Turn off Word Wrap.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Insert DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

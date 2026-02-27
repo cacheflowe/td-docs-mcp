@@ -5,24 +5,39 @@ title: Force_Radial_POP
 ---
 
 # Force Radial POP
+
 ## Summary
 
 The Force Radial POP is used in a [Particle POP](https://docs.derivative.ca/Particle_POP "Particle POP") loop and outputs a float3 attribute named `PartForce` that sums a set of forces defined in the Force Radial POP.
+
 The forces include, first on the Global page, a single global force, plus a Wind Speed converted to a wind force.
+
 These forces are by default uniform for all particles, but because it can be affected by attributes on the Map page, each particle (point) can have a different global force or wind speed applied to it.
+
 Currently the conversion of wind speed to wind force is hard-wired in the Force Radial POP, but more detailed control will be provided in a future build.
+
 On the Force (Local) page, you can choose between Radial, Axial, Spiral and Planar local fore types, with position (Translate), Direction, rolloff (Radius) and Strength controls.
+
 The global and local forces are added together.
+
 In one Force Radial POP, the local force is added to the global and wind forces to generate a `PartForce` attribute. If the input of the Force Radial POP already exists, then the Force Radial POP's sum of forces is added to the input's `PartForce`.
+
 Thus you can string a bunch of Force Radial POPs together and optionally mask each one with a [Field POP](https://docs.derivative.ca/Field_POP "Field POP") by multiplying its `Weight` attribute by Force Radial's `PartForce` attribute.
+
 Assuming `PartForce` is in the (usually Null) POP at the end of the Particle POP's feedback loop, `PartForce` feeds back to the Particle POP where it is used to calculate all particles' velocity and position on the next frame of the simulation.
+
 However you can define multiple local forces in one Force Radial POP: To enable many forces to be included in one Force Radial POP, the parameter called Specification POP is a pointer to, usually, a [Point POP](https://docs.derivative.ca/Point_POP "Point POP"), where each point of the Point POP defines a separate local force, where the attribute names are matched to the the parameter names (for example, attribute `strength` represents the Strength parameter). In the Point POP you need to create the appropriate matching attributes.
+
 Then the sum of the local forces are added to the global and wind forces to generate the `PartForce` attribute.
+
 Note that you can create the `PartForce` attribute any way you want - using Noise, Math Mix, Pattern, Lookup, GLSL POPs etc. You don't need the Force POP - it is just a convenience.
+
 See also [Particle POP](https://docs.derivative.ca/Particle_POP "Particle POP"), [Field POP](https://docs.derivative.ca/Field_POP "Field POP").
+
 [forceradialPOP_Class](https://docs.derivative.ca/ForceradialPOP_Class "ForceradialPOP Class")
 
 ## Parameters - Force Page
+
 - Specification POP `specpop` - Reference to a POP where each point is a specification defining a separate force.
 - Position `pos` - ⊞ - Forces center position.
   * Position `posx` -
@@ -67,6 +82,7 @@ See also [Particle POP](https://docs.derivative.ca/Particle_POP "Particle POP"),
 - Limit Near-Range `fallofflimitrange` - The near-range limit of the falloff.
 
 ## Parameters - Global Page
+
 - Global Force `globforce` - ⊞ - Global force direction.
   * Global Force `globforcex` -
   * Global Force `globforcey` -
@@ -81,6 +97,7 @@ See also [Particle POP](https://docs.derivative.ca/Particle_POP "Particle POP"),
 - Wind Speed Multiplier `windspeedmult` - Multiplier for global wind speed.
 
 ## Parameters - Map Page
+
 - Mapping `map` - Start of Sequential Parameter Blocks for attribute-to-parameter mapping.
 - OP `map0op` - Source OP for parameter mapping. The default of _in0 means the input POP.
 - Element `map0element` - The attribute (or component of an attribute) that will be mapped to a parameter per-point.
@@ -102,19 +119,27 @@ See also [Particle POP](https://docs.derivative.ca/Particle_POP "Particle POP"),
   * Add `add` -
 
 ## Parameters - Common Page
+
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Force POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common POP Info Channels
+
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

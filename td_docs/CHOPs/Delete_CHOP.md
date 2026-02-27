@@ -5,18 +5,27 @@ title: Delete_CHOP
 ---
 
 # Delete CHOP
+
 ## Summary
 
 The Delete CHOP removes entire channels and/or individual samples of its input.
+
 For deleting channels, on the Channels page, you can specify which channels to delete by channel name or a channel number range. A second method deletes channels using a value range to select channels whose values are all within a range. The third method deletes constant-valued channels. An option selects whether to delete or retain the matched channels.
+
 For deleting individual samples (i.e. no channels are deleted), on the Samples page you can delete, for example, only the samples whose value is below 0, which will shorten the length of the CHOP.
+
 In CHOPs with two or more channels, one or more "compare" channels are used to determine which samples are to be deleted. By default it uses the first channel to compare against. Deleting a sample at a certain index deletes a value for all the channels. If there are 4 channels, `red`, `green`, `blue`, `alpha` and you specify `alpha` as the "compare" channel, you can delete all the samples with an `alpha` of `0`. If a CHOP is 3 channels with an X,Y,Z position, you can delete all samples where the XYZ length is below a threshold.
+
 This is useful, for example, for thinning your data before sending a CHOP to a Geometry component for instancing.
+
 When all the samples are deleted, the CHOP will keep one sample for all channels and will have a `length` of one sample. When this happens, if you have an Info CHOP attached to the Delete CHOP, it's
+
 See also [Splice CHOP](https://docs.derivative.ca/Splice_CHOP "Splice CHOP"), [Select CHOP](https://docs.derivative.ca/Select_CHOP "Select CHOP"), [Trim CHOP](https://docs.derivative.ca/Trim_CHOP "Trim CHOP")
+
 [deleteCHOP_Class](https://docs.derivative.ca/DeleteCHOP_Class "DeleteCHOP Class")
 
 ## Parameters - Channels Page
+
 - Delete Channels `delchannels` - Toggle to enable channel deleting.
 - Delete `discard` - ⊞ - Determines whether the scoped channels should be deleted or retained:
   * Scoped Channels `scoped` - The scoped channels are deleted. The rest are output.
@@ -45,6 +54,7 @@ Also these kinds of channel number patterns can be used to select existing chann
   * `[3-9:2]` - Matches channels at indices 3,5, 7 and 9.
 
 ## Parameters - Samples Page
+
 - Delete Samples `delsamples` - Toggle to enable sample deleting.
 - Channels to Compare `compchans` - ⊞ - How to select channels used to compare against criteria - By Name, by Numeric index, by using the First Channel, or by using the Last Channel.
   * Use First Channel `firstchan` -
@@ -82,6 +92,7 @@ Also these kinds of channel number patterns can be used to select existing chann
 - One Sample if All Deleted `onesample` - Leaves one sample even when all samples are deleted.
 
 ## Parameters - Common Page
+
 - Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
@@ -100,22 +111,31 @@ Also these kinds of channel number patterns can be used to select existing chann
 - Rename from `commonrenamefrom` - The channel pattern to rename. See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
 - Rename to `commonrenameto` - The replacement pattern for the names. The default parameters do not rename the channels. See [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement").
 **Example:**     Channel Names: `c[1-10:2] ambient`     Rename From: `c* ambient`     Rename To: `b[1-5] amb`
+
 This example fetches channels `c1 c3 c5 c7 c9` and `ambient`.
+
 They are then renamed to to `b1 b2 b3 b4 b5` and `amb`.
+
 See the [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP") for a further description of rename patterns.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Delete CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 Specific Delete CHOP Info Channels
   * actual_length -
 
 ###
+
 ## Common CHOP Info Channels
+
   * start - Start of the CHOP interval in samples.
 
   * length - Number of samples in the CHOP.
@@ -129,7 +149,9 @@ Specific Delete CHOP Info Channels
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

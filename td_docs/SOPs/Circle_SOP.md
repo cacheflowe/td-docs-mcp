@@ -5,14 +5,19 @@ title: Circle_SOP
 ---
 
 # Circle SOP
+
 ## Summary
 
 The Circle SOP creates open or closed arcs, circles and ellipses.
+
 If two NURBS circles that are non-rational (i.e. their X and Y radii are unequal) are skinned, more isoparms may be generated than expected. This is because non-rational NURBS circles parameterise their knots based on chord length, and the Skin SOP must consolidate the total number of knots between the two circles before skinning.
+
 To remedy this, you may want to use a Refine SOP, and unrefine the resulting skin, or better yet - before unrefining, start with the same circle and use a Primitive or Transform SOP to deform the second copy before skinning.
+
 [circleSOP_Class](https://docs.derivative.ca/CircleSOP_Class "CircleSOP Class")
 
 ## Parameters - Page
+
 - Primitive Type `type` - ⊞ - For information on the different types, see the [Primitive](https://docs.derivative.ca/Primitive "Primitive") and [Spline](https://docs.derivative.ca/Spline "Spline") articles. Depending on the primitive type chosen, some SOP options may not apply. Using the 'Primitive' primitive type is not recommended when using instancing.
   * Primitive `prim` -
   * Polygon `poly` -
@@ -61,12 +66,17 @@ Arc options are available for polygonal circles and some spline types. The diffe
 - Compute Normals `normals` - When On, normals are created for the surface.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Circle SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -78,7 +88,9 @@ Extra Information for the Circle SOP can be accessed via an [Info CHOP](https://
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

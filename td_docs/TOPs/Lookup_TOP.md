@@ -5,15 +5,21 @@ title: Lookup_TOP
 ---
 
 # Lookup TOP
+
 ## Summary
 
 The Lookup TOP replaces color values in the TOP image connected to its first input with values derived from a lookup table created from its second input or a lookup table created using the CHOP parameter. When using the 2nd input, the lookup table is created by defining a line (start and end position) on the TOP image. When using a CHOP the lookup table is created directly from the CHOP's values and the 2nd input is ignored.
+
 The Index Range parameter can be used to define the minimum and maximum index values that will map to the first and last values in the lookup table. When the index goes outside of this range, it will **hold** on the first or last value of the lookup table. For example if the range is set to [0.1, 0.2], a value from the first texture of 0.15 will map to the middle of the lookup. A value of 0.1 (and below) will map to the dark end of the lookup and a value of 0.2 (and above) will map to the light end of the lookup.
+
 See also [Remap TOP](https://docs.derivative.ca/Remap_TOP "Remap TOP"), [Displace TOP](https://docs.derivative.ca/Displace_TOP "Displace TOP").
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [lookupTOP_Class](https://docs.derivative.ca/LookupTOP_Class "LookupTOP Class")
 
 ## Parameters - Lookup Page
+
 - Method `method` - ⊞ - Choose to use a line from the 2nd input (defined using UV coordinates) or CHOP values to define the lookup table.
   * 2nd Input, UV Coordinates `secondinput` - Use the Dark UV and Light UV parameters to define the lookup table as a line extrated from the 2nd input.
   * CHOP Values `chop` - Use a CHOP referenced in th CHOP parameter to define the lookup table.
@@ -60,6 +66,7 @@ See also [Remap TOP](https://docs.derivative.ca/Remap_TOP "Remap TOP"), [Displac
 - Output Lookup `displaylookup` - Outputs the lookup table itself, instead of replacing the color values of the first input.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -139,13 +146,18 @@ See also [Remap TOP](https://docs.derivative.ca/Remap_TOP "Remap TOP"), [Displac
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Lookup TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -159,7 +171,9 @@ Extra Information for the Lookup TOP can be accessed via an [Info CHOP](https://
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

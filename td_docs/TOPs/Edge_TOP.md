@@ -5,14 +5,19 @@ title: Edge_TOP
 ---
 
 # Edge TOP
+
 ## Summary
 
 The Edge TOP finds edges in an image and highlights them. For each pixel, it looks at the values at neighboring pixels, and where differences are greater than a threshold, the output's value is higher.
+
 See also the [Convolve TOP](https://docs.derivative.ca/Convolve_TOP "Convolve TOP").
+
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
+
 [edgeTOP_Class](https://docs.derivative.ca/EdgeTOP_Class "EdgeTOP Class")
 
 ## Parameters - Edge Page
+
 - Select `select` - ⊞ - This menu determines how the edges are pulled from the image.
   * Luminance `luminance` - Pulls edges from the luminance values of the image.
   * Red `red` - Pulls edges from the red channel of the image.
@@ -44,6 +49,7 @@ See also the [Convolve TOP](https://docs.derivative.ca/Convolve_TOP "Convolve TO
 - Comp Over Input `compinput` - Turning this On will composite the edges over the input image.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -143,12 +149,17 @@ See also the [Convolve TOP](https://docs.derivative.ca/Convolve_TOP "Convolve TO
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Operator Inputs
+
   * Input 0:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Edge TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -162,7 +173,9 @@ Extra Information for the Edge TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

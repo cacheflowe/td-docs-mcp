@@ -5,16 +5,23 @@ title: Render_Simple_TOP
 ---
 
 # Render Simple TOP
+
 ## Summary
 
 The Render Simple TOP renders a single POP with a basic transform, light and an optional texture map or material. Other controls include orthographic/perspective, object color and background RGBA.
+
 The camera is located along the Z-axis. The Normalize Geo parameter will translate and uniformly scale the POP geometry to fit in a box of size 2 in at the origin.
+
 You can render in wireframe or substitute the material with any MAT. The POP's render/display flags are ignored.
+
 Render Simple does not require a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP"), [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") or [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP") that is required by the more full-featured [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP").
+
 See also [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP")
+
 [rendersimpleTOP_Class](https://docs.derivative.ca/RendersimpleTOP_Class "RendersimpleTOP Class")
 
 ## Parameters - Setup Page
+
 - Orthographic `ortho` - Enable this to make the project become orthograhic instead of perspective.
 - FOV `fov` - The horizontal FOV in degrees, when using perspective projection.
 - Ortho Width `orthowidth` - The orthographic width, when using orthographic projection.
@@ -62,6 +69,7 @@ See also [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP")
 - MAT `mat` - A MAT node to use as the material, instead of the Internal Phong.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -201,9 +209,13 @@ See also [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP")
   * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
 
 ## Info CHOP Channels
+
 Extra Information for the Render Simple TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -217,7 +229,9 @@ Extra Information for the Render Simple TOP can be accessed via an [Info CHOP](h
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

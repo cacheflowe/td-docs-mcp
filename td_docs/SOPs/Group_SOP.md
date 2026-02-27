@@ -5,13 +5,17 @@ title: Group_SOP
 ---
 
 # Group SOP
+
 ## Summary
 
 The Group SOP generates groups of points or primitives according to various criteria and allows you to act upon these groups. Elements can occur in more than one group. Groups are used in many parts of the SOP Editor to specify which portion(s) of input geometry you wish a SOP to act upon.
+
 You can also create ordered groups. To do so, check the Ordered button.
+
 [groupSOP_Class](https://docs.derivative.ca/GroupSOP_Class "GroupSOP Class")
 
 ## Parameters - Group Page
+
 - Group Name `crname` - The name of the group to be created. The default name is set to match the name of the SOP.
 - Entity `entity` - ⊞ - Primitives or Points.
   * Primitives `primitive` -
@@ -34,6 +38,7 @@ You can also create ordered groups. To do so, check the Ordered button.
   * Triangle Fan `trifan` -
 
 ## Parameters - Create Page
+
 - Use Number `usenumber` - Allows selection of grouping of entities by number. When the Enable button is Active, the selection options become active and can be used to select entities. The fields available are listed below.
 - Create Ordered `ordered` - When selected, elements in the group are traversed in the order they are selected; otherwise they are traversed in creation order.
 - Operation `groupop` - ⊞ - When the Number Enable button is checked, this option groups entities based on a defined Pattern or by a Range.
@@ -85,6 +90,7 @@ See [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matc
 
 - Use Normal `usenormal` - This option is used for selecting entities based on the angle of the entity normals. When the Active, the selection options become active and can be used to select entities. The fields available are listed below.
 The primary axis and the spread angle from the defined axis define a range of angles. If any entity normals lie within this range, then the associated entity is selected.
+
 **For Example:** if you want to select the polygons that are very steep in a polygon mountain terrain on the XZ axis. You would set the Direction to be 0, 1, 0 and the spread angle to around 75. This selects all the polygons with normals that lie flat to fairly sloped. You will have grouped all of the polygons that lie flat up to polys that are at a 75 angle from the axis. You are left with all of the polygons that are 76 or greater.
 - Direction `dir` - ⊞ - The default values of 0, 1, 0 create a normal vector straight up in Y, which is perpendicular to the XZ plane, which becomes the primary axis. The 1, 0, 0 points the normal in positive X, giving a normal axis perpendicular to the YZ. The plane may be positioned at an angle by using values typed in (1, 1, 0 gives a 45 angle plane) or interactively by using the direction vector jack. Values between 0 and 1 should be used.
   * X `dirx` -
@@ -104,6 +110,7 @@ The primary axis and the spread angle from the defined axis define a range of an
 These groups contain the points on each boundary of the surface. For example, if you have a grid with a hole in the middle of it, two new point groups are created - one containing the points for the outer boundary and one with the points from the hole. These new point groups are also ordered.
 
 ## Parameters - Combine Page
+
 This page of parameters lets you modify the The number of primitives or points in one of the input groups by combining groups through different operations.
 - Group = `grpequal` - Specify the group whose members you wish to edit. This can be one of the input groups or a new group created in this SOP specified in the Group Name parameter on the Group page.
 - Not `not1` - When Off, include the members of the group specified in Group 1 parameter below. When On, include all members that are not part of the group specified in Group 1 parameter below.
@@ -137,6 +144,7 @@ This page of parameters lets you modify the The number of primitives or points i
 - Group 4 `grp4` - Select one of the input groups to combine with the group combination above, noting the setting of the Not (not4) parameter above.
 
 ## Parameters - Edit Page
+
 This folder allows you to edit existing groups.
 - Convert Type `cnvtype` - ⊞ - Converts a group from a point group to a primitive group, and vice versa.
   * Primitive to Point Group `toprim` -
@@ -152,13 +160,18 @@ This folder allows you to edit existing groups.
 - Group `destroyname` - Allows you to delete an existing point or primitive group.
 
 ## Operator Inputs
+
   * Input 0:  -
   * Input 1:  -
 
 ## Info CHOP Channels
+
 Extra Information for the Group SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -170,7 +183,9 @@ Extra Information for the Group SOP can be accessed via an [Info CHOP](https://d
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

@@ -5,16 +5,21 @@ title: ZED_SOP
 ---
 
 # ZED SOP
+
 ## Summary
 
 **NOTE**
+
 **OS:** This operator is only supported under the **Microsoft Windows** operating system.
 
 The ZED SOP uses the ZED to scan and create geometry by moving it around the room or an object of interest. To know what ZED SDK we are using, refer to the [ZED](https://docs.derivative.ca/ZED "ZED") article.
+
 See [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED CHOP](https://docs.derivative.ca/ZED_CHOP "ZED CHOP"), [ZED POP](https://docs.derivative.ca/ZED_POP "ZED POP") and [ZED](https://docs.derivative.ca/ZED "ZED").
+
 [zedSOP_Class](https://docs.derivative.ca/ZedSOP_Class "ZedSOP Class")
 
 ## Parameters - Page
+
 - ZED TOP `zedtop` - The name of the primary [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP") that is configuring the camera. The primary TOP controls which camera the SOP receives data from.
 - Sample `sample` - While enabled the ZED camera samples points in space. Once disabled it will generate the surface from the points, as well as any normal or texture attributes.
 - Reset `reset` - Clears the extracted geometry and resets spatial mapping.
@@ -37,9 +42,13 @@ See [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED CHOP](https://
 - Consolidate Points `consolidatepts` - When enabled, redundant points that are closed together will be merged.
 
 ## Info CHOP Channels
+
 Extra Information for the ZED SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common SOP Info Channels
+
   * num_points - Number of points in this SOP.
 
   * num_prims - Number of primitives in this SOP.
@@ -51,7 +60,9 @@ Extra Information for the ZED SOP can be accessed via an [Info CHOP](https://doc
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

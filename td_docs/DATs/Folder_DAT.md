@@ -5,9 +5,11 @@ title: Folder_DAT
 ---
 
 # Folder DAT
+
 ## Summary
 
 The Folder DAT lists the files and subfolders found in a file system folder and monitors any changes.
+
 For each item found, a row is created in the table with optional columns for the following information:
   * Name
   * Base Name
@@ -25,6 +27,7 @@ For each item found, a row is created in the table with optional columns for the
 [folderDAT_Class](https://docs.derivative.ca/FolderDAT_Class "FolderDAT Class")
 
 ## Parameters - Folder Page
+
 - Active `active` - When off, the DAT outputs a single-row table with only the headings, useful when dormant or when sending the DAT to a [Replicator COMP](https://docs.derivative.ca/Replicator_COMP "Replicator COMP").
 - Root Folder `rootfolder` - The folder in the filesystem whose contents will be displayed in the DAT list.
 - Refresh `refresh` - When on, it monitors the specified folder(s) of the filesystem.
@@ -56,6 +59,7 @@ For each item found, a row is created in the table with optional columns for the
 - Maximum Depth `maxdepth` - Set the maximum depth for the subfolders the Folder DAT should recursively search through.
 
 ## Parameters - Columns Page
+
 - Name `namecol` - The name of the folder or file. In the case of a file this includes the extension. ie. `myfile.txt`
 - Base Name `basenamecol` - The name of the folder or file. In the case of a file this form does not includes the extension. ie. `myfile`
 - Extension `extensioncol` - The file extension of the file, blank for folders. ie. `txt`
@@ -70,6 +74,7 @@ For each item found, a row is created in the table with optional columns for the
 - Date Accessed `dateaccessedcol` - The date of most recent access or opening.
 
 ## Parameters - Common Page
+
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
@@ -86,15 +91,21 @@ For each item found, a row is created in the table with optional columns for the
   * Off `off` - Turn off Word Wrap.
 
 ## Info CHOP Channels
+
 Extra Information for the Folder DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common DAT Info Channels
+
   * num_rows - Number of rows in this DAT.
 
   * num_cols - Number of columns in this DAT.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

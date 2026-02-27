@@ -5,12 +5,15 @@ title: SSAO_TOP
 ---
 
 # SSAO TOP
+
 ## Summary
 
 The SSAO TOP performs Screen Space Ambient Occlusion on the output of a [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or [Render Pass TOP](https://docs.derivative.ca/Render_Pass_TOP "Render Pass TOP"). Because this technique requires access to the [Depth Buffer](https://docs.derivative.ca/index.php?title=Depth_Buffer&action=edit&redlink=1 "Depth Buffer \(page does not exist\)"), no other TOP can be in between the Render/RenderPass TOP and the SSAO TOP. Screen Space Ambient Occlusion is a real-time rendering trick that creates an approximation of ambient occlusion by using the [Depth Buffer](https://docs.derivative.ca/index.php?title=Depth_Buffer&action=edit&redlink=1 "Depth Buffer \(page does not exist\)") of the rendered scene. It is done as 2D post-processes, so the complexity of the scene has no bearing on how expensive it is. This is in comparison to true ambient occlusion which becomes more expensive with each new object that is rendered. There are two parts to a SSAO technique. First a SSAO pass is done that determines how much ambient occlusion each pixel is affected by. This result tends to be very noisy. A blur operation is then performed to even out this noise.
+
 [ssaoTOP_Class](https://docs.derivative.ca/SsaoTOP_Class "SsaoTOP Class")
 
 ## Parameters - SSAO Page
+
 - Quality `quality` - ⊞ - Determines the visual quality of the results. The higher the quality, the more computationally expensive it is.
   * Low `low` -
   * Medium `medium` -
@@ -32,6 +35,7 @@ The SSAO TOP performs Screen Space Ambient Occlusion on the output of a [Render 
 - Combine with Color `combinewithcolor` - By default the final ambient occlusion result will be multiplied by the color output of the Render TOP. You can just output the ambient occlusion results by turning this parameter off.
 
 ## Parameters - Common Page
+
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -111,12 +115,17 @@ The SSAO TOP performs Screen Space Ambient Occlusion on the output of a [Render 
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
 
 ## Operator Inputs
+
   * Input 0:  - Must be either a [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or a [Render Pass TOP](https://docs.derivative.ca/Render_Pass_TOP "Render Pass TOP").
 
 ## Info CHOP Channels
+
 Extra Information for the SSAO TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common TOP Info Channels
+
   * resx - Horizontal resolution of the TOP in pixels.
 
   * resy - Vertical resolution of the TOP in pixels.
@@ -130,7 +139,9 @@ Extra Information for the SSAO TOP can be accessed via an [Info CHOP](https://do
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.

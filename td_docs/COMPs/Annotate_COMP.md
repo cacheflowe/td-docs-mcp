@@ -9,6 +9,7 @@ title: Annotate_COMP
 ## Summary
 
 Annotates are displayed in the Network Editor as colored rectangles containing user-authored text and graphics. It is based on the Annotate COMP and allows you to document your networks with useful information like comments and node grouping.
+
 There are three built-in forms of the Annotate COMP: [Comments, Network Boxes, and Annotates](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates") that can be easily created:
   * **[Comments](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates")** are simple, text-only post-it notes. They can be created via the network RMB menu or with the shortcut Shift-C
   * **[Network Boxes](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates")** group nodes together for labeling/dragging. They can be created via the network RMB menu or with the shortcut Shift-B
@@ -17,19 +18,28 @@ There are three built-in forms of the Annotate COMP: [Comments, Network Boxes, a
 [annotateCOMP_Class](https://docs.derivative.ca/AnnotateCOMP_Class "AnnotateCOMP Class")
 
 Default Setup
+
 The default setup of Annotate COMPs is a full-featured comment, network box, and node viewer, designed to be a flexible network organization and documentation tool. The following features are built using internal nodes and an extension and are not inherent parts of the Annotate COMP itself.
+
 The **lock icon** in the top-right of the box locks and unlocks text editing in the Annotate. In a locked Annotate, you cannot edit text and clicking on the body area clicks through to the network below. Annotates also have a **RMB menu** for quick access to many features. It is always accessible through the title bar, and accessible through the body when the Annotate is unlocked.
+
 You can **size** Annotates by dragging the edges and **move** them by dragging the title bar. In Comment mode, which has no title bar, you can drag the Annotate by the text body. When the **Enclose OPs** feature is on, dragging an Annotate will **drag all enclosed nodes** (including other Annotates) with it. To drag an annotate without dragging its contents, you can hold down Alt while dragging.
+
 Annotates have powerful built-in **Operator Viewer features** , including positioning and interaction, which can be controlled using [Parameters - OP Viewer Page](#Parameters_-_OP_Viewer_Page). For basic **text features** see [Parameters - Text Page](#Parameters_-_Text_Page). For deeper **text editing and color features** including limiting text width, wrapping, and more, see [Parameters - Settings Page](#Parameters_-_Settings_Page).
+
 Annotates are **layered in the network** so that smaller boxes are in front of larger boxes, but you have more control with the Depth Layer parameter. Annotates are positioned behind the grid by default, but you can put them in front of the grid, or even on top of the nodes tiles. For example, put an image with transparency in the Viewer OP and turn Back Color Alpha to 0, then set Layer Zone to be Above Nodes.
+
 Because the Enter shortcut and zoom-to-enter are disabled in Annotates, to **get inside an Annotate**, use one of the following methods:
   1. Box-pick an Annotate, then right-click on the network and select "Jump Down".
   2. Find the Annotate via the path bar at the top of the network pane.
   3. Box-pick an Annotate, right-click on the "i" icon on the Parameter Dialog and select Enter Annotation from the node menu.
 
 You can switch between the three built-in Annotate modes by using the Mode parameter of the Annotate COMP or the **Mode** menu in the right-click menu. The Annotate COMP's .utility flag controls whether or not the Annotation operators are included in OP searches etc. This flag is easily accessible via the **Utility** parameter descrbed below.
+
 ###
+
 ## Parameters - Text Page
+
 Basic text features including editable/searchable parameters holding the Annotate's text.
 - Title Text `Titletext` - Text in the title bar.
 - Title Height `Titleheight` - Height of the title bar. Title font height adjusts automatically to fill.
@@ -44,7 +54,9 @@ Basic text features including editable/searchable parameters holding the Annotat
 - Max Body Text Width `Bodymaxwidth` - Width limit that will cause wraparound or cut-off. Measured in Panel units.
 
 ###
+
 ## Parameters - Settings Page
+
 More advanced text control and color parameters.
 - Mode `Mode` - ⊞ - Switch between Comment, Network Box, and Annotate Modes. For more, see [Network Utilities: Comments, Network Boxes, Annotates](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates").
   * Comment `comment` - Simple text only, no title or OP Viewer.
@@ -62,7 +74,9 @@ More advanced text control and color parameters.
 - Annotate Opacity `Opacity` - Opacity of the entire Annotate.
 
 ###
+
 ## Parameters - OP Viewer Page
+
 Controls for the embedded Operator viewer.
 - Viewer Display `Opviewerdisplay` - Turn the visibility of the viewer specified in the OP parameter below on or off.
 - OP `Opviewer` - The operator whose viewer is displayed in the Annotate.
@@ -88,13 +102,18 @@ Controls for the embedded Operator viewer.
 - Fill Alpha `Opviewerfillalpha` - Alpha value of the background area in the OP Viewer.
 
 ###
+
 ## Parameters - About Page
+
 - Version `Version` - Annotate COMP default setup version.
 - Help `Help` - Click to open this page.
 
 ###
+
 Annotate Extension
+
 #### Members
+
 `BodyColor` → `[R, G, B, A]` **(Read Only)** :
 
 > RGBA of color used for body.
@@ -136,11 +155,13 @@ Annotate Extension
 > Text in title area
 
 #### Methods
+
 `OnCreate(Mode)`:
 
 > Called on initial creation of Annotate. Mode can be "annotate", "comment", or "networkbox"
 
 ## Parameters - Annotate Page
+
 - Operator Viewer `opviewer` - The operator whose view is displayed in the Annotate area. This defines what the entire Annotate looks like and is not to be confused with the OP parameter in the OP Viewer page, which is an integrated viewer _within_ the annotate.
 - Enable Interaction `enable` - When False, disables _all_ interaction with the Annotate and passes any clicks through to the network below.
 - Enclose Operators `encloseops` - When True, other operators in the Annotate's area will move with it when it is moved.
@@ -155,6 +176,7 @@ Annotate Extension
 - Depth Layer `layer` - Last ditch layering index. AnnotateCOMPs in the same zone will always attempt to display smaller annotateCOMPs they enclose on top.
 
 ## Parameters - Extensions Page
+
 The Extensions parameter page sets the component's python extensions. Please see [extensions](https://docs.derivative.ca/Extensions "Extensions") for more information.
 - Re-Init Extensions `reinitextensions` - Recompile all extension objects. Normally extension objects are compiled only when they are referenced and their definitions have changed.
 - Init Extensions On Start `initextonstart` - Perform a Re-Init automatically when TouchDEsigner Starts
@@ -164,6 +186,7 @@ The Extensions parameter page sets the component's python extensions. Please see
 - Promote `ext0promote` - Controls whether or not the extensions are visible directly at the component level, or must be accessed through the `.ext` member. Example: `n.Somefunction` vs `n.ext.Somefunction`
 
 ## Parameters - Common Page
+
 The Common parameter page sets the component's [node viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") and [clone](https://docs.derivative.ca/Clone "Clone") relationships.
 - Parent Shortcut `parentshortcut` - Specifies a name you can use anywhere inside the component as the path to that component. See [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
 - Global OP Shortcut `opshortcut` - Specifies a name you can use anywhere at all as the path to that component. See [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut").
@@ -188,13 +211,19 @@ The Common parameter page sets the component's [node viewer](https://docs.deriva
   * Relative to External COMP File (.tox) `externaltox` - The path, when specified as a relative path, will be relative to the .tox file. When no external COMP file is specified, or when Enable External .tox is not toggled on, this doesn't have any impact.
 
 ## Info CHOP Channels
+
 Extra Information for the Annotate COMP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+
 ###
+
 ## Common COMP Info Channels
+
   * num_children - Number of children in this component.
 
 ###
+
 ## Common Operator Info Channels
+
   * total_cooks - Number of times the operator has cooked since the process started.
 
   * cook_time - Duration of the last cook in milliseconds.
