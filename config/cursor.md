@@ -1,6 +1,6 @@
 # Cursor / Windsurf Configuration
 
-This guide explains how to configure TD-MCP with Cursor and Windsurf editors.
+This guide explains how to configure TD-DOCS-MCP with Cursor and Windsurf editors.
 
 ## Cursor Setup
 
@@ -13,9 +13,9 @@ Create a `.cursor/mcp.json` file in your project root:
 ```json
 {
   "mcpServers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
     }
   }
 }
@@ -31,14 +31,14 @@ Windsurf uses a similar configuration approach:
 
 1. Open Windsurf Settings
 2. Navigate to the MCP or Extensions section
-3. Add the TD-MCP server configuration:
+3. Add the TD-DOCS-MCP server configuration:
 
 ```json
 {
   "mcpServers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
     }
   }
 }
@@ -48,15 +48,15 @@ Windsurf uses a similar configuration approach:
 
 Before configuring either editor:
 
-1. Install TD-MCP:
+1. Install TD-DOCS-MCP:
    ```bash
-   cd /path/to/td-mcp
+   cd /path/to/td-docs-mcp
    uv sync
    ```
 
 2. Crawl the documentation:
    ```bash
-   uv run python -m td_mcp.crawler
+   uv run python -m td_docs_mcp.crawler
    ```
 
 3. Ensure `uv` is in your system PATH
@@ -68,7 +68,7 @@ After configuration:
 1. Restart the editor
 2. Open a TouchDesigner-related project or Python file
 3. Ask the AI assistant about TouchDesigner (e.g., "How do I use a Noise TOP?")
-4. The assistant should use the TD-MCP tools to search documentation
+4. The assistant should use the TD-DOCS-MCP tools to search documentation
 
 ## Using the Skills File
 
@@ -91,7 +91,7 @@ Or configure it as a context file in your editor's AI settings.
 
 Use forward slashes in paths:
 ```json
-"args": ["--directory", "C:/Users/you/td-mcp", "run", "td-mcp"]
+"args": ["--directory", "C:/Users/you/td-docs-mcp", "run", "td-docs-mcp"]
 ```
 
 ### uv not found

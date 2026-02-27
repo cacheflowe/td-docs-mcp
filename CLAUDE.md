@@ -1,13 +1,13 @@
-# TD-MCP Project Instructions
+# TD-DOCS-MCP Project Instructions
 
 ## Overview
 
-TD-MCP is an MCP (Model Context Protocol) server that provides AI assistants with searchable access to TouchDesigner documentation. The docs are scraped from `docs.derivative.ca`, converted to markdown, cleaned up, and served via MCP tools.
+TD-DOCS-MCP is an MCP (Model Context Protocol) server that provides AI assistants with searchable access to TouchDesigner documentation. The docs are scraped from `docs.derivative.ca`, converted to markdown, cleaned up, and served via MCP tools.
 
 ## Project Structure
 
 ```
-src/td_mcp/
+src/td_docs_mcp/
   crawler.py    # Scrapes docs.derivative.ca -> raw markdown files
   cleaner.py    # Post-processes markdown for quality and consistency
   server.py     # MCP server exposing search and read tools
@@ -22,9 +22,9 @@ td_docs/        # Generated markdown output (not hand-edited)
 Uses **Crawl4AI** (headless browser) to fetch pages from `docs.derivative.ca` and convert HTML to markdown via Crawl4AI's built-in converter.
 
 ```bash
-python -m src.td_mcp.crawler                     # Full crawl
-python -m src.td_mcp.crawler -c TOPs CHOPs       # Specific categories
-python -m src.td_mcp.crawler --retry-failed       # Re-crawl 403/error pages
+python -m src.td_docs_mcp.crawler                     # Full crawl
+python -m src.td_docs_mcp.crawler -c TOPs CHOPs       # Specific categories
+python -m src.td_docs_mcp.crawler --retry-failed       # Re-crawl 403/error pages
 ```
 
 **Key behaviors:**
@@ -40,9 +40,9 @@ python -m src.td_mcp.crawler --retry-failed       # Re-crawl 403/error pages
 Post-processes the raw Crawl4AI markdown output to fix formatting issues.
 
 ```bash
-python -m src.td_mcp.cleaner                     # Clean all docs
-python -m src.td_mcp.cleaner -f path/to/file.md  # Clean single file
-python -m src.td_mcp.cleaner --dry-run            # Preview changes
+python -m src.td_docs_mcp.cleaner                     # Clean all docs
+python -m src.td_docs_mcp.cleaner -f path/to/file.md  # Clean single file
+python -m src.td_docs_mcp.cleaner --dry-run            # Preview changes
 ```
 
 **Processing order within `clean_td_markdown()`:**
@@ -102,20 +102,20 @@ When adding/removing general pages, update both.
 2. **Decide placement**: Line-by-line rules go in the main loop of `clean_td_markdown()`. Section-aware or multi-line rules should be separate functions called from the post-processing section.
 3. **Pattern**: New functions should take `content: str` and return `content: str` for composability.
 4. **Update this doc**: Add the rule to the appropriate table above.
-5. **Test**: Run `python -m src.td_mcp.cleaner --dry-run` and spot-check affected files.
+5. **Test**: Run `python -m src.td_docs_mcp.cleaner --dry-run` and spot-check affected files.
 
 ## Common Commands
 
 ```bash
 # Full re-crawl of a category (delete dir first to force fresh crawl)
-rm -rf td_docs/TOPs && python -m src.td_mcp.crawler -c TOPs
+rm -rf td_docs/TOPs && python -m src.td_docs_mcp.crawler -c TOPs
 
 # Re-crawl only 403/failed pages
-python -m src.td_mcp.crawler --retry-failed
+python -m src.td_docs_mcp.crawler --retry-failed
 
 # Clean all docs (also relocates general files)
-python -m src.td_mcp.cleaner
+python -m src.td_docs_mcp.cleaner
 
 # Run MCP server
-uv run td-mcp
+uv run td-docs-mcp
 ```

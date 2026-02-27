@@ -1,14 +1,14 @@
 # Claude Desktop Configuration
 
-This guide explains how to configure TD-MCP with Claude Desktop.
+This guide explains how to configure TD-DOCS-MCP with Claude Desktop.
 
 ## Setup
 
-1. First, ensure you've installed TD-MCP and crawled the documentation:
+1. First, ensure you've installed TD-DOCS-MCP and crawled the documentation:
    ```bash
-   cd /path/to/td-mcp
+   cd /path/to/td-docs-mcp
    uv sync
-   uv run python -m td_mcp.crawler
+   uv run python -m td_docs_mcp.crawler
    ```
 
 2. Locate your Claude Desktop configuration file:
@@ -20,23 +20,23 @@ This guide explains how to configure TD-MCP with Claude Desktop.
    ```json
    {
      "mcpServers": {
-       "td-mcp": {
+       "td-docs-mcp": {
          "command": "uv",
-         "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+         "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
        }
      }
    }
    ```
 
-   Replace `/path/to/td-mcp` with the actual path to your td-mcp installation.
+   Replace `/path/to/td-docs-mcp` with the actual path to your td-docs-mcp installation.
 
    **Windows users**: Use forward slashes or escaped backslashes:
    ```json
    {
      "mcpServers": {
-       "td-mcp": {
+       "td-docs-mcp": {
          "command": "uv",
-         "args": ["--directory", "C:/Users/you/td-mcp", "run", "td-mcp"]
+         "args": ["--directory", "C:/Users/you/td-docs-mcp", "run", "td-docs-mcp"]
        }
      }
    }
@@ -68,9 +68,9 @@ On Windows, you may need to:
    ```json
    {
      "mcpServers": {
-       "td-mcp": {
+       "td-docs-mcp": {
          "command": "C:/Users/you/.cargo/bin/uv.exe",
-         "args": ["--directory", "C:/Users/you/td-mcp", "run", "td-mcp"]
+         "args": ["--directory", "C:/Users/you/td-docs-mcp", "run", "td-docs-mcp"]
        }
      }
    }
@@ -97,5 +97,5 @@ New-Item -ItemType Directory -Force -Path "$env:APPDATA\Claude"
 ### Tools not appearing
 
 1. Check Claude Desktop logs for errors
-2. Verify the path is correct and td-mcp is properly installed
-3. Test the server manually: `uv --directory /path/to/td-mcp run td-mcp`
+2. Verify the path is correct and td-docs-mcp is properly installed
+3. Test the server manually: `uv --directory /path/to/td-docs-mcp run td-docs-mcp`

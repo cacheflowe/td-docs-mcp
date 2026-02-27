@@ -1,14 +1,14 @@
 # Claude Code Configuration
 
-This guide explains how to configure TD-MCP with Claude Code.
+This guide explains how to configure TD-DOCS-MCP with Claude Code.
 
 ## Setup
 
-1. First, ensure you've installed TD-MCP and crawled the documentation:
+1. First, ensure you've installed TD-DOCS-MCP and crawled the documentation:
    ```bash
-   cd /path/to/td-mcp
+   cd /path/to/td-docs-mcp
    uv sync
-   uv run python -m td_mcp.crawler
+   uv run python -m td_docs_mcp.crawler
    ```
 
 2. Add the MCP server to your Claude Code configuration at `~/.claude.json`:
@@ -16,15 +16,15 @@ This guide explains how to configure TD-MCP with Claude Code.
    ```json
    {
      "mcpServers": {
-       "td-mcp": {
+       "td-docs-mcp": {
          "command": "uv",
-         "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+         "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
        }
      }
    }
    ```
 
-   Replace `/path/to/td-mcp` with the actual path to your td-mcp installation.
+   Replace `/path/to/td-docs-mcp` with the actual path to your td-docs-mcp installation.
 
 3. Restart Claude Code to load the new configuration.
 
@@ -50,11 +50,11 @@ If your documentation is in a non-standard location, set the environment variabl
 ```json
 {
   "mcpServers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"],
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"],
       "env": {
-        "TD_MCP_DOCS_DIR": "/custom/path/to/td_docs"
+        "TD_DOCS_MCP_DOCS_DIR": "/custom/path/to/td_docs"
       }
     }
   }
@@ -67,11 +67,11 @@ If your documentation is in a non-standard location, set the environment variabl
 
 - Check that the path in `--directory` is correct
 - Ensure `uv` is in your PATH
-- Try running `uv --directory /path/to/td-mcp run td-mcp` manually to see any errors
+- Try running `uv --directory /path/to/td-docs-mcp run td-docs-mcp` manually to see any errors
 
 ### No search results
 
-- Make sure you ran the crawler: `uv run python -m td_mcp.crawler`
+- Make sure you ran the crawler: `uv run python -m td_docs_mcp.crawler`
 - Check that `td_docs/` folder exists and contains markdown files
 
 ### Permission errors

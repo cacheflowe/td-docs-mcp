@@ -2,7 +2,7 @@
 TouchDesigner Documentation Crawler
 
 Scrapes documentation from docs.derivative.ca and saves as markdown files
-with metadata headers for use by the TD-MCP server.
+with metadata headers for use by the TD-DOCS-MCP server.
 """
 
 import asyncio
@@ -31,6 +31,9 @@ import aiofiles
 
 # Crawl4AI imports
 from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
+
+# Import the documentation cleaner for post-processing during crawl
+from td_docs_mcp.cleaner import clean_td_markdown
 
 # Base URL for TouchDesigner documentation
 BASE_URL = "https://docs.derivative.ca"
@@ -200,6 +203,10 @@ title: {page_name}
 """
 
     full_content = metadata + markdown_content
+
+    # Clean the markdown in-place before writing
+    is_python_doc = category == "Python" or "_Class" in filename
+    full_content = clean_td_markdown(full_content, is_python_doc=is_python_doc)
 
     # Save to file
     async with aiofiles.open(output_path, 'w', encoding='utf-8') as f:

@@ -1,6 +1,6 @@
 # VS Code + GitHub Copilot Setup
 
-VS Code natively supports MCP servers through GitHub Copilot. This guide covers configuring TD-MCP for use in VS Code.
+VS Code natively supports MCP servers through GitHub Copilot. This guide covers configuring TD-DOCS-MCP for use in VS Code.
 
 ## Configuration
 
@@ -9,26 +9,26 @@ Create a `.vscode/mcp.json` file in your project root:
 ```json
 {
   "servers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
     }
   }
 }
 ```
 
-Replace `/path/to/td-mcp` with the actual path to your cloned td-mcp repository.
+Replace `/path/to/td-docs-mcp` with the actual path to your cloned td-docs-mcp repository.
 
 ### Windows Example
 
 ```json
 {
   "servers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["--directory", "C:\\Users\\you\\projects\\td-mcp", "run", "td-mcp"]
+      "args": ["--directory", "C:\\Users\\you\\projects\\td-docs-mcp", "run", "td-docs-mcp"]
     }
   }
 }
@@ -41,26 +41,26 @@ If your documentation is in a non-default location, pass the path via an environ
 ```json
 {
   "servers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"],
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"],
       "env": {
-        "TD_MCP_DOCS_DIR": "/path/to/your/td_docs"
+        "TD_DOCS_MCP_DOCS_DIR": "/path/to/your/td_docs"
       }
     }
   }
 }
 ```
 
-## Using TD-MCP in Copilot Chat
+## Using TD-DOCS-MCP in Copilot Chat
 
-Once configured, TD-MCP tools are available in Copilot's agent mode:
+Once configured, TD-DOCS-MCP tools are available in Copilot's agent mode:
 
 1. Open Copilot Chat in VS Code
 2. Switch to **Agent** mode (if not already active)
-3. Click the "Configure tools" button next to the model seletor. Find td-mcp in the list and refresh the tools. Once completed, it should list all available TD-MCP tools.
-4. Ask TouchDesigner questions directly — Copilot will automatically invoke TD-MCP tools as needed. You may need to allow permissions for the tools to run on first use.
+3. Click the "Configure tools" button next to the model seletor. Find td-docs-mcp in the list and refresh the tools. Once completed, it should list all available TD-DOCS-MCP tools.
+4. Ask TouchDesigner questions directly — Copilot will automatically invoke TD-DOCS-MCP tools as needed. You may need to allow permissions for the tools to run on first use.
    1. `/search_touchdesigner_docs scriptCHOP` — Search for documentation related to `scriptCHOP`
       1. `/search_touchdesigner_docs scriptCHOP_class` — Search for documentation related to `scriptCHOP` python class
    2. `/read_operator_doc scriptCHOP` — Get the full documentation for `scriptCHOP`
@@ -78,7 +78,7 @@ You can also reference specific tools by typing `#` followed by the tool name in
 
 ## Global Configuration
 
-To make TD-MCP available across all VS Code projects (not just one workspace), use the **MCP: Open User Configuration** command from the VS Code command palette. This stores the server config globally rather than in a per-project `.vscode/mcp.json`.
+To make TD-DOCS-MCP available across all VS Code projects (not just one workspace), use the **MCP: Open User Configuration** command from the VS Code command palette. This stores the server config globally rather than in a per-project `.vscode/mcp.json`.
 
 ## Additional Resources
 

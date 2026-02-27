@@ -176,7 +176,7 @@ def onExtensionChange(op):
 
 ## MCP Integration (Optional)
 
-If [TD-MCP](https://github.com/cacheflowe/td-docs-mcp) is configured for this workspace, use its tools to verify parameter names and API details before writing `par.X` code:
+If [TD-DOCS-MCP](https://github.com/cacheflowe/td-docs-mcp) is configured for this workspace, use its tools to verify parameter names and API details before writing `par.X` code:
 
 - `search_touchdesigner_docs` — keyword search across all TD docs
 - `read_operator_doc` — full documentation for a specific operator

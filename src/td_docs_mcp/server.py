@@ -1,5 +1,5 @@
 """
-TD-MCP Server
+TD-DOCS-MCP Server
 
 MCP server that provides TouchDesigner documentation to AI coding assistants.
 Implements tools for searching and retrieving documentation.
@@ -29,7 +29,7 @@ DEFAULT_DOCS_DIR = Path(__file__).parent.parent.parent / "td_docs"
 def get_docs_dir() -> Path:
     """Get the documentation directory path."""
     # Check environment variable first
-    env_path = os.environ.get("TD_MCP_DOCS_DIR")
+    env_path = os.environ.get("TD_DOCS_MCP_DOCS_DIR")
     if env_path:
         return Path(env_path)
     return DEFAULT_DOCS_DIR
@@ -246,7 +246,7 @@ def get_python_class(class_name: str) -> str | None:
 
 
 # Create the MCP server
-server = Server("td-mcp")
+server = Server("td-docs-mcp")
 
 
 @server.list_tools()
@@ -334,7 +334,7 @@ async def list_tools() -> list[Tool]:
         Tool(
             name="help",
             description=(
-                "Show a summary of all available TD-MCP tools with usage examples."
+                "Show a summary of all available TD-DOCS-MCP tools with usage examples."
             ),
             inputSchema={
                 "type": "object",
@@ -345,7 +345,7 @@ async def list_tools() -> list[Tool]:
 
 
 HELP_TEXT = """\
-TD-MCP — TouchDesigner Documentation Server
+TD-DOCS-MCP — TouchDesigner Documentation Server
 
 Available tools:
 
@@ -440,7 +440,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             return [TextContent(
                 type="text",
                 text="No documentation categories found. "
-                     "Run the crawler first: python -m td_mcp.crawler"
+                     "Run the crawler first: python -m td_docs_mcp.crawler"
             )]
 
         output_lines = ["Available TouchDesigner documentation categories:\n"]

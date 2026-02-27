@@ -1,14 +1,14 @@
-# Contributing to TD-MCP
+# Contributing to TD-DOCS-MCP
 
-Thank you for your interest in contributing to TD-MCP! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to TD-DOCS-MCP! This document provides guidelines and information for contributors.
 
 ## Getting Started
 
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/yourusername/td-mcp.git
-   cd td-mcp
+   git clone https://github.com/yourusername/td-docs-mcp.git
+   cd td-docs-mcp
    ```
 3. Install development dependencies:
    ```bash
@@ -27,17 +27,17 @@ Thank you for your interest in contributing to TD-MCP! This document provides gu
 
 ```bash
 # Full crawl
-uv run python -m td_mcp.crawler
+uv run python -m td_docs_mcp.crawler
 
 # Quick test (limit pages)
-uv run python -m td_mcp.crawler --limit 5
+uv run python -m td_docs_mcp.crawler --limit 5
 ```
 
 ### Testing the MCP Server
 
 ```bash
 # With MCP Inspector
-npx @modelcontextprotocol/inspector uv --directory . run td-mcp
+npx @modelcontextprotocol/inspector uv --directory . run td-docs-mcp
 
 # Unit tests
 uv run pytest
@@ -118,7 +118,7 @@ uv run pytest
 When reporting bugs:
 
 1. Check existing issues first
-2. Include your environment (OS, Python version, TD-MCP version)
+2. Include your environment (OS, Python version, TD-DOCS-MCP version)
 3. Provide steps to reproduce
 4. Include error messages and logs
 

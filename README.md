@@ -1,4 +1,4 @@
-# TD-MCP
+# TD-DOCS-MCP
 
 An MCP (Model Context Protocol) server that provides TouchDesigner documentation to AI coding assistants. This enables better Python scripting suggestions and UI recommendations for TouchDesigner projects.
 
@@ -33,8 +33,8 @@ The MCP tools are reactive — Copilot calls them when it thinks they're relevan
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/td-mcp.git
-   cd td-mcp
+   git clone https://github.com/yourusername/td-docs-mcp.git
+   cd td-docs-mcp
    ```
 
 2. Install dependencies with uv:
@@ -44,7 +44,7 @@ The MCP tools are reactive — Copilot calls them when it thinks they're relevan
 
 3. [Optional] Crawl the TouchDesigner documentation. There's already a recent crawl in the `td_docs/` directory, so this step is optional unless you want the latest docs or want to customize the process. The crawler fetches documentation from the official TD docs and saves it as markdown files in `td_docs/`. Run the crawler with:
    ```bash
-   uv run python -m td_mcp.crawler
+   uv run python -m td_docs_mcp.crawler
    ```
    This creates a `td_docs/` folder with all documentation as markdown files.
 
@@ -59,9 +59,9 @@ Add to `~/.claude.json`:
 ```json
 {
   "mcpServers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
     }
   }
 }
@@ -77,9 +77,9 @@ Add to your Claude Desktop configuration file:
 ```json
 {
   "mcpServers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
     }
   }
 }
@@ -96,10 +96,10 @@ VS Code natively supports MCP servers. Create `.vscode/mcp.json` in your project
 ```json
 {
   "servers": {
-    "td-mcp": {
+    "td-docs-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["--directory", "/path/to/td-mcp", "run", "td-mcp"]
+      "args": ["--directory", "/path/to/td-docs-mcp", "run", "td-docs-mcp"]
     }
   }
 }
@@ -174,25 +174,25 @@ All stages have resume capability — files already on disk are skipped automati
 
 ```bash
 # Crawl all documentation (all three stages)
-uv run python -m td_mcp.crawler
+uv run python -m td_docs_mcp.crawler
 
 # Crawl specific categories only
-uv run python -m td_mcp.crawler -c TOPs CHOPs Python
+uv run python -m td_docs_mcp.crawler -c TOPs CHOPs Python
 
 # Limit pages per category/stage (for testing)
-uv run python -m td_mcp.crawler --limit 5
+uv run python -m td_docs_mcp.crawler --limit 5
 
 # Only crawl operator Python class pages (stage 3 only, requires existing operator docs)
-uv run python -m td_mcp.crawler --classes-only
+uv run python -m td_docs_mcp.crawler --classes-only
 
 # Skip the operator Python class crawl (stages 1 & 2 only)
-uv run python -m td_mcp.crawler --skip-classes
+uv run python -m td_docs_mcp.crawler --skip-classes
 
 # Re-crawl pages that previously returned 403/error content
-uv run python -m td_mcp.crawler --retry-failed
+uv run python -m td_docs_mcp.crawler --retry-failed
 
 # Custom output directory
-uv run python -m td_mcp.crawler -o /path/to/docs
+uv run python -m td_docs_mcp.crawler -o /path/to/docs
 ```
 
 ## Markdown Cleaner
@@ -201,13 +201,13 @@ After every crawl (full, single-category, `--classes-only`, or `--retry-failed`)
 
 ```bash
 # Clean all docs
-uv run python -m td_mcp.cleaner
+uv run python -m td_docs_mcp.cleaner
 
 # Clean a single file
-uv run python -m td_mcp.cleaner -f td_docs/TOPs/Blur_TOP.md
+uv run python -m td_docs_mcp.cleaner -f td_docs/TOPs/Blur_TOP.md
 
 # Preview changes without writing (dry run)
-uv run python -m td_mcp.cleaner --dry-run
+uv run python -m td_docs_mcp.cleaner --dry-run
 ```
 
 The cleaner applies these fixes:
@@ -227,7 +227,7 @@ The cleaner applies these fixes:
 ### Test with MCP Inspector
 
 ```bash
-npx @modelcontextprotocol/inspector uv --directory . run td-mcp
+npx @modelcontextprotocol/inspector uv --directory . run td-docs-mcp
 ```
 
 ### Run unit tests
@@ -239,13 +239,13 @@ uv run pytest
 ## Project Structure
 
 ```
-td-mcp/
+td-docs-mcp/
 ├── pyproject.toml              # Project configuration
 ├── README.md                   # This file
 ├── CONTRIBUTING.md             # Contribution guidelines
 ├── LICENSE                     # MIT License
 ├── src/
-│   └── td_mcp/
+│   └── td_docs_mcp/
 │       ├── __init__.py
 │       ├── server.py           # MCP server implementation
 │       ├── crawler.py          # Documentation scraper
@@ -262,7 +262,7 @@ td-mcp/
 
 ## Environment Variables
 
-- `TD_MCP_DOCS_DIR`: Custom path to documentation directory (defaults to `td_docs/` in project root)
+- `TD_DOCS_MCP_DOCS_DIR`: Custom path to documentation directory (defaults to `td_docs/` in project root)
 
 ## Contributing
 
