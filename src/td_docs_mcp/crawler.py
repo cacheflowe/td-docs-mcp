@@ -148,6 +148,12 @@ async def crawl_page(
 ) -> bool:
     """Crawl a single documentation page and save as markdown."""
     page_name = extract_page_name(url)
+
+    # Strip "Experimental:" prefix — these are regular operators that happen
+    # to be flagged as experimental on the wiki.  Removing the prefix ensures
+    # the saved filename matches the corresponding _Class file.
+    page_name = re.sub(r'^Experimental:', '', page_name)
+
     filename = filename_override or (sanitize_filename(page_name) + ".md")
 
     # Redirect general/meta pages to the General directory
@@ -192,6 +198,20 @@ async def crawl_page(
         else:
             print(f"    Failed after {RETRY_ATTEMPTS} attempts: {page_name}")
             return False
+
+    # Detect MediaWiki redirect stubs and follow the target URL.
+    # Some _Class pages redirect to Experimental: versions of themselves.
+    redirect_match = re.search(
+        r'REDIRECT\s*\[.*?\]\((https://docs\.derivative\.ca/[^)\s"]+)',
+        markdown_content,
+    )
+    if redirect_match:
+        redirect_url = redirect_match.group(1)
+        result = await crawler.arun(url=redirect_url, config=config)
+        if result.success and result.markdown:
+            redirected_content = clean_markdown(result.markdown)
+            if not is_failed_content(redirected_content):
+                markdown_content = redirected_content
 
     # Add metadata header
     metadata = f"""---
@@ -328,7 +348,10 @@ async def crawl_python_reference(
     return success_count
 
 
-def extract_class_urls_from_docs(docs_dir: Path) -> list[tuple[str, str, str | None]]:
+def extract_class_urls_from_docs(
+    docs_dir: Path,
+    categories: list[str] | None = None,
+) -> list[tuple[str, str, str | None]]:
     """Scan saved operator markdown files for Python class page URLs.
 
     Looks through all .md files in operator category directories (TOPs, CHOPs,
@@ -339,8 +362,14 @@ def extract_class_urls_from_docs(docs_dir: Path) -> list[tuple[str, str, str | N
     When a class name matches its containing operator (e.g. BlurTOP_Class found
     in Blur_TOP.md), operator_stem is set (e.g. "Blur_TOP") so the class file
     can be named Blur_TOP_Class.md.  Otherwise operator_stem is None.
+
+    If *categories* is provided, only those category directories are scanned.
     """
-    operator_dirs = {"TOPs", "CHOPs", "DATs", "SOPs", "POPs", "MATs", "COMPs"}
+    all_operator_dirs = {"TOPs", "CHOPs", "DATs", "SOPs", "POPs", "MATs", "COMPs"}
+    if categories:
+        operator_dirs = {d for d in all_operator_dirs if d in categories}
+    else:
+        operator_dirs = all_operator_dirs
     pattern = re.compile(r"https://docs\.derivative\.ca/(\w+_Class)")
     # Map url -> (category, operator_stem) — prefer entries with a stem
     best: dict[str, tuple[str, str | None]] = {}
@@ -379,6 +408,7 @@ async def crawl_operator_classes(
     crawler: AsyncWebCrawler,
     docs_dir: Path,
     limit: int | None = None,
+    categories: list[str] | None = None,
 ) -> int:
     """Crawl operator-specific Python class pages discovered in saved docs.
 
@@ -388,7 +418,7 @@ async def crawl_operator_classes(
     """
     print("\nCrawling operator Python class pages")
 
-    entries = extract_class_urls_from_docs(docs_dir)
+    entries = extract_class_urls_from_docs(docs_dir, categories)
     if limit:
         entries = entries[:limit]
 
@@ -540,7 +570,7 @@ async def run_crawler(
 
         # Crawl operator-specific Python class pages found in saved docs
         if not skip_classes:
-            count = await crawl_operator_classes(crawler, output_dir, limit)
+            count = await crawl_operator_classes(crawler, output_dir, limit, categories)
             total_pages += count
 
         print("\n" + "=" * 40)

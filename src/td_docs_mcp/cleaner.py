@@ -309,6 +309,9 @@ def clean_td_markdown(content: str, is_python_doc: bool = False) -> str:
         if 'Jump to navigation' in line or 'Jump to search' in line:
             continue
 
+        # Strip "Experimental:" prefix from headers and content
+        line = re.sub(r'Experimental:', '', line)
+
         # Remove edit links [[edit](...)]
         line = re.sub(r'\s*\[\[edit\]\([^)]+\)\]', '', line)
 
