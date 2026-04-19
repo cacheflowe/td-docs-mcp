@@ -1,0 +1,48 @@
+---
+url: https://docs.derivative.ca/Orbbec
+category: Interoperability
+title: Orbbec
+---
+
+# Orbbec
+
+[Orbbec](https://www.orbbec.com/) is a developer and manufacturer of 3D cameras and other sensors that can be used within TouchDesigner. Orbbec produces [multiple product lines](https://www.orbbec.com/products/) that rely on different 3D technologies such as stereo vision, structured light, or time of flight (TOF) to produce a depth maps and point clouds. Depending on the model, these cameras can use either USB or ethernet (include POE) and are supported on Windows and/or OSX. In [coordination with Microsoft](https://www.orbbec.com/news/orbbec-announces-family-of-products-based-on-microsoft-itof-depth-technology/), Orbbec also produces multiple cameras that include the same hardware sensors as the Kinect Azure and are compatible with the Microsoft body tracking system.
+
+###  Orbbec TOP / Orbbec Select TOP
+
+The [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP") and [Orbbec Select TOP](https://docs.derivative.ca/Orbbec_Select_TOP "Orbbec Select TOP") can be used to stream video data (color, depth & point cloud) from a wide range of Orbbec cameras including the Femto, Gemini and Astra product lines. The TOPs use the Orbbec SDK and a complete list of compatible cameras can be found [here](https://www.orbbec.com/developers/orbbec-sdk/). Some models connect via USB, other models connect via PoE Ethernet.
+
+In TouchDesigner, the Orbbec TOP is used to connect to and configure the camera and can output one video stream. To obtain additional video streams, the [Orbbec Select TOP](https://docs.derivative.ca/Orbbec_Select_TOP "Orbbec Select TOP") can be linked to the primary [Orbbec TOP](https://docs.derivative.ca/Orbbec_TOP "Orbbec TOP"). An [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") can also be connected to obtain IMU data on supported devices.
+
+###  Kinect Azure TOP / Kinect Azure CHOP / Kinect Azure Select TOP
+
+Compatible cameras (including the [Femto Mega](https://www.orbbec.com/products/tof-camera/femto-mega/) and [Femto Bolt](https://www.orbbec.com/products/tof-camera/femto-bolt/)) share internal hardware with the Microsoft Kinect Azure and can be used directly by the [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP") and [Kinect Azure Select TOP](https://docs.derivative.ca/Kinect_Azure_Select_TOP "Kinect Azure Select TOP") in place of original Microsoft devices. You can utilize these cameras by switching the 'Hardware' parameter on the Kinect Azure TOP to 'Orbbec'. By using the Kinect Azure node with the Orbbec camera, you can make use of the Microsoft body tracking library and obtain skeleton player index data. **Notes:** The Kinect Azure node does not automatically support the Femto Mega's ethernet connection; however, you can enable this feature by placing a config file alongside your toe file. See the [Orbbec docs](https://www.orbbec.com/documentation-mega/k4a-access-femtomega-network-mode/) for more info. Also note, using the Orbbec TOP and Kinect Azure TOP in the same project can cause instabilities. If you are only using the depth or color camera images, it is recommended to use the Orbbec TOP directly.
+
+###  Usage Recommendations
+
+It is not recommended to use the Kinect and native Orbbec nodes together in the same project. If you need to use skeleton tracking (player index or Kinect Azure CHOP), then you should only use Kinect Azure nodes to access the Orbbec cameras. If you do not need skeleton tracking, use the native Orbbec nodes.
+
+###  Tested Devices by Derivative
+
+Femto Mega, Firmware 1.2.7
+  * OS: Windows 11, macOS M4 Sequoia 15.6
+  * Supported Operators on Windows: Orbbec TOP, Orbbec Select TOP, Kinect Azure TOP, Kinect Azure Select TOP, Kinect Azure CHOP
+  * Supported Operators on macOS: Orbbec TOP, Orbbec Select TOP
+
+Femto Bolt, Firmware 1.0.9 (Windows support only)
+  * OS: Windows 11
+  * Supported Operators on Windows: Orbbec TOP, Orbbec Select TOP, Kinect Azure TOP, Kinect Azure Select TOP, Kinect Azure CHOP
+
+Gemini 2, Firmware 1.4.76
+  * OS: Windows 11, macOS M4 Sequoia 15.6
+  * Supported Operators on Windows and macOS: Orbbec TOP, Orbbec Select TOP
+
+Astra 2, Firmware 2.8.20
+  * OS: Windows 11, macOS M4 Sequoia 15.6
+  * Supported Operators on Windows and macOS: Orbbec TOP, Orbbec Select TOP
+
+An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
+An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+
+An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
