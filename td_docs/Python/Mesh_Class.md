@@ -6,7 +6,7 @@ title: Mesh_Class
 
 # Mesh Class
 
-A Mesh describes an instance of a single [geometry mesh](https://docs.derivative.ca/Mesh "Mesh"). It is an instance of a [Prim Class](https://docs.derivative.ca/Prim_Class "Prim Class").
+A Mesh describes an instance of a single [geometry mesh](https://docs.derivative.ca/Mesh "Mesh"). It is an instance of a [Prim Class](Prim_Class.md "Prim Class").
 
 ## Members
 
@@ -48,11 +48,11 @@ The calculated normal vector of this primitive, expressed as a TDU.Vector object
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 `weight` → `float` **(Read Only)** :
 
-The associated weight of the primitive. Only certain primitives, such as those created by the [Metaball SOP](https://docs.derivative.ca/Metaball_SOP "Metaball SOP") can modify this value from its default of 2.0.
+The associated weight of the primitive. Only certain primitives, such as those created by the [Metaball SOP](../SOPs/Metaball_SOP.md "Metaball SOP") can modify this value from its default of 2.0.
 
 `direction` → `TDU.Vector` **(Read Only)** :
 
@@ -74,12 +74,12 @@ The size of this primitive along each dimension, expressed as a TDU.Position obj
 
 `destroy(destroyPoints=True)`→ `None`:
 
-Destroy and remove the actual primitive this object refers to. This operation is only valid when the primitive belongs to a [scriptSOP](https://docs.derivative.ca/ScriptSOP_Class "ScriptSOP Class"). Note: after this call, other existing Prim objects in this SOP may no longer be valid.
-  * destroyPoints - (Keyword, Optional) If True, its [points](https://docs.derivative.ca/Point_Class "Point Class") are destroyed as well, if false, they are simply detached. The argument is True by default.
+Destroy and remove the actual primitive this object refers to. This operation is only valid when the primitive belongs to a [scriptSOP](../SOPs/Script_SOP_Class.md "ScriptSOP Class"). Note: after this call, other existing Prim objects in this SOP may no longer be valid.
+  * destroyPoints - (Keyword, Optional) If True, its [points](../SOPs/Point_Class.md "Point Class") are destroyed as well, if false, they are simply detached. The argument is True by default.
 
 `eval(u, v)`→ `TDU.Position`:
 
-Evaluate the [position](https://docs.derivative.ca/Position_Class "Position Class") on the primitive given the u,v coordinates. u,v should be in the range [0,1]. **Note:** Polygons and curves ignore the v parameter.
+Evaluate the [position](Position_Class.md "Position Class") on the primitive given the u,v coordinates. u,v should be in the range [0,1]. **Note:** Polygons and curves ignore the v parameter.
 
 ```
 center = op('box1').prim[0].eval(0.5, 0.5)

@@ -8,22 +8,21 @@ title: Touch_In_TOP
 
 ## Summary
 
-The Touch In TOP will read in image data send over a TCP/IP network connection from a [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP"). The other TouchDesigner process can be on the same computer or from another computer anywhere on the connected network.
+The Touch In TOP will read in image data send over a TCP/IP network connection from a [Touch Out TOP](Touch_Out_TOP.md "Touch Out TOP"). The other TouchDesigner process can be on the same computer or from another computer anywhere on the connected network.
 
-It can receive [Hap Q](https://docs.derivative.ca/Hap "Hap"), Hap Q Alpha, and Uncompressed video.
+It can receive [Hap Q](../Interoperability/Hap.md "Hap"), Hap Q Alpha, and Uncompressed video.
 
 Make sure Windows Firewall settings are set to UNBLOCK for TouchDesigner, otherwise the data will be blocked.
 
-See also [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP").
+See also [Touch Out TOP](Touch_Out_TOP.md "Touch Out TOP").
 
-For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP"), [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP"), [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and [NDI In TOP](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP").
+For other protocols over IP see [Video Stream Out TOP](Video_Stream_Out_TOP.md "Video Stream Out TOP"), [Video Stream In TOP](Video_Stream_In_TOP.md "Video Stream In TOP"), [NDI Out TOP](NDI_Out_TOP.md "NDI Out TOP") and [NDI In TOP](NDI_In_TOP.md "NDI In TOP").
 
 **NOTE for Windows OS - If experiencing connection issues make sure Windows Firewall is disabled.**
 
-[touchinTOP_Class](https://docs.derivative.ca/TouchinTOP_Class "TouchinTOP Class")
+[touchinTOP_Class](Touch_In_TOP_Class.md "TouchinTOP Class")
 
 ## Parameters - Touch In Page
-
 - Computer Name / IP `address` - The IP address of the computer with the transmitting Touch Out TOP. Use _localhost_ to reference the local machine.
 - Network Port `port` - The TCP/IP port that the Touch Out TOP is transmitting on.
 - Active `active` - Receives image data while Active is on.
@@ -33,7 +32,6 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
 - Queue Adjust Time `targetdelay` - The maximum amount of time allowed for a queue to be above or below the maximum or minimum target without adjusting the sampling speed.
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -45,29 +43,25 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
   * Fit Resolution `fit` - Grow or shrink the input resolution to fit this resolution, while keeping the aspect ratio the same.
   * Limit Resolution `limit` - Limit the input resolution to be not larger than this resolution, while keeping the aspect ratio the same.
   * Custom Resolution `custom` - Directly control the width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -76,13 +70,11 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail. When the input is 32-bit float format, only nearest filtering will be used (regardless of what is selected).
-
-- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
+- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](GLSL_TOP.md "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
   * Use Input `useinput` - Uses the input's pixel format.
@@ -114,25 +106,18 @@ For other protocols over IP see [Video Stream Out TOP](https://docs.derivative.c
 
 ## Info CHOP Channels
 
-Extra Information for the Touch In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Touch In TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 Specific Touch In TOP Info Channels
   * connected -
-
   * num_received_frames -
-
   * receive_fps -
-
   * num_shown_frames -
-
   * num_skipped_frames -
-
   * queue_size -
-
   * queue_refills -
-
   * queue_culls -
 
 ###
@@ -140,15 +125,10 @@ Specific Touch In TOP Info Channels
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -156,19 +136,11 @@ Specific Touch In TOP Info Channels
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

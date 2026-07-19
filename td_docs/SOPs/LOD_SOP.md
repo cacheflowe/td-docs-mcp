@@ -12,10 +12,9 @@ The LOD SOP is unusual in so far as it does not actually alter any geometry. Ins
 
 The second input is the **Rest Geometry**. If provided, this is the geometry wich will be used to do the (expensive) polygon reduction, and only the points of the left input will be used.
 
-[lodSOP_Class](https://docs.derivative.ca/LodSOP_Class "LodSOP Class")
+[lodSOP_Class](LOD_SOP_Class.md "LodSOP Class")
 
 ## Parameters - Page
-
 - Step % `steppercent` - Each successive level of detail will contain approximately this percentage on the number of polygons in the higher level of detail.
 - Dist. Threshhold `distance` - This is the distance from the camera at which full detail will be present.
 - Minimum % `minpercent` - The objects won't be drawn with fewer than this number of polygons.
@@ -32,20 +31,16 @@ The second input is the **Rest Geometry**. If provided, this is the geometry wic
 
 ## Info CHOP Channels
 
-Extra Information for the LOD SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the LOD SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -53,19 +48,11 @@ Extra Information for the LOD SOP can be accessed via an [Info CHOP](https://doc
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

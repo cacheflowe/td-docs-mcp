@@ -6,7 +6,7 @@ title: Palette
 
 # Palette
 
-The Palette is a collection of useful [Components](https://docs.derivative.ca/Component "Component") that you can drag-drop on to your [network](https://docs.derivative.ca/Network "Network"). It is opened/closed via the [![PaletteIcon.jpg](https://docs.derivative.ca/images/c/c0/PaletteIcon.jpg)](https://docs.derivative.ca/File:PaletteIcon.jpg) icon at the top-left of the UI.
+The Palette is a collection of useful [Components](../Glossary/Component.md "Component") that you can drag-drop on to your [network](../Glossary/Network.md "Network"). It is opened/closed via the [![PaletteIcon.jpg](https://docs.derivative.ca/images/c/c0/PaletteIcon.jpg)](https://docs.derivative.ca/File:PaletteIcon.jpg) icon at the top-left of the UI.
 
 See [Category:Palette](https://docs.derivative.ca/Category:Palette "Category:Palette") for some of the individual palette components.
 [![Palette.jpg](https://docs.derivative.ca/images/thumb/7/7b/Palette.jpg/200px-Palette.jpg)](https://docs.derivative.ca/File:Palette.jpg) [![Palette.2.jpg](https://docs.derivative.ca/images/thumb/2/2b/Palette.2.jpg/205px-Palette.2.jpg)](https://docs.derivative.ca/File:Palette.2.jpg)
@@ -16,7 +16,7 @@ See [Category:Palette](https://docs.derivative.ca/Category:Palette "Category:Pal
 The Palette Browser can be accessed:
   * by selecting Dialogs -> Palette Browser from the main menu bar.
   * by clicking on the **Open Palette** button, found to the left of the Pane Layout options, underneath the File menu.
-  * use python [UI Class](https://docs.derivative.ca/UI_Class "UI Class") to open `ui.openPaletteBrowser()`
+  * use python [UI Class](../Python/UI_Class.md "UI Class") to open `ui.openPaletteBrowser()`
 
 ##  The Interface
 
@@ -46,8 +46,8 @@ When adding files to a folder that contains a Palette, these files are not autom
 
 A built-in panel in TouchDesigner that contains a library of components and media that can be dragged-dropped into a TouchDesigner network.
 
-(1) The TouchDesigner window is made of a menu bar at the top, a [Timeline](https://docs.derivative.ca/Timeline "Timeline") at the bottom, plus one of a choice of Layouts in the middle. A Layout is made on one or more Panes, each Pane can contain a Network Editor, Viewer, Panel, etc. See [Pane](https://docs.derivative.ca/Pane "Pane") and [Bookmark](https://docs.derivative.ca/Bookmark "Bookmark"). (2) Nodes in a network are arranged using Layout commands in the RMB menu.
+(1) The TouchDesigner window is made of a menu bar at the top, a [Timeline](../Glossary/Timeline.md "Timeline") at the bottom, plus one of a choice of Layouts in the middle. A Layout is made on one or more Panes, each Pane can contain a Network Editor, Viewer, Panel, etc. See [Pane](../Glossary/Pane.md "Pane") and [Bookmark](../Glossary/Bookmark.md "Bookmark"). (2) Nodes in a network are arranged using Layout commands in the RMB menu.
 
-A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](../Glossary/Network_Path.md "Network Path").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").

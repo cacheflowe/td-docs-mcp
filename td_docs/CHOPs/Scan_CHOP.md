@@ -8,25 +8,23 @@ title: Scan_CHOP
 
 ## Summary
 
-**DEPRECATED:** use the [Laser CHOP](https://docs.derivative.ca/Laser_CHOP "Laser CHOP") instead.
+**DEPRECATED:** use the [Laser CHOP](Laser_CHOP.md "Laser CHOP") instead.
 
-The Scan CHOP converts a [SOP](https://docs.derivative.ca/SOP "SOP") or [TOP](https://docs.derivative.ca/TOP "TOP") to oscilloscope or laser friendly control waves. The output is usually in the audible range and can be heard directly via an [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP"), or used to drive the X and Y deflector inputs of an oscilloscope, or a laser projector recreating the imagery. The output can also be visualized through use of a [Limit SOP](https://docs.derivative.ca/Limit_SOP "Limit SOP").
+The Scan CHOP converts a [SOP](../SOPs/SOP.md "SOP") or [TOP](../TOPs/TOP.md "TOP") to oscilloscope or laser friendly control waves. The output is usually in the audible range and can be heard directly via an [Audio Device Out CHOP](../Interoperability/Audio_Device_Out_CHOP.md "Audio Device Out CHOP"), or used to drive the X and Y deflector inputs of an oscilloscope, or a laser projector recreating the imagery. The output can also be visualized through use of a [Limit SOP](../SOPs/Limit_SOP.md "Limit SOP").
 
 A sample component found at: [Op to Audio CHOP example](http://www.derivative.ca/Forum/viewtopic.php?f=22&t=1201)
 
 A sample video can be found at: [Total Internal Reflection](http://vimeo.com/channels/touchdesigner#3750626)
 
-See also: [EtherDream CHOP](https://docs.derivative.ca/EtherDream_CHOP "EtherDream CHOP"), [EtherDream DAT](https://docs.derivative.ca/EtherDream_DAT "EtherDream DAT")
+See also: [EtherDream CHOP](EtherDream_CHOP.md "EtherDream CHOP"), [EtherDream DAT](../DATs/EtherDream_DAT.md "EtherDream DAT")
 
-[scanCHOP_Class](https://docs.derivative.ca/ScanCHOP_Class "ScanCHOP Class")
+[scanCHOP_Class](Scan_CHOP_Class.md "ScanCHOP Class")
 
 ## Parameters - Scan Page
-
 - Source OP `source` - ⊞ - Choose the source node family.
   * TOP `top` - A raster image is converted to control signals by converting each pixel's location to X and Y amplitude values.
   * SOP `sop` - A geometry is converted to control signals by converting each point's position to X and Y amplitude values.
   * CHOP `chop` - A waveform is converted to control signals by converting each graph into corresponding horizontal and vertical offsets.
-
 - Sample Rate `rate` - Samples per second, the output sample rate.
 - Swap Output `swap` - Reverse the X and Y channel outputs.
 - X Scale `xscale` - Scale the x amplitude.
@@ -47,6 +45,7 @@ A raster image is converted to control signals by converting each pixel's locati
 - Height `height` - The number of rows to resample the image at.
 - Level `level` - The number of brightness levels each pixel can have.
 - Auto Reduce `limit` - Automatically reduce the number of rows and columns dynamically to keep the output frame rate
+
 at a constant level.
 - Layered `layered` - Output the pixels in order of brightness, else they are output left to right for each row.
 - Interleave `interleave` - ⊞ - Controls the order in which rows are output to minimize flicker.
@@ -66,7 +65,7 @@ Every point in a SOP creates a frame-buffered, stereo audio sample, where the SO
 
 ## Parameters - CHOP Page
 
-A waveform is converted to control signals by converting each graph into corresponding horizontal and vertical offsets, reproducing the original CHOP waveform. The CHOP should not be [Time Sliced](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)"), but instead have some length (example a [Trail CHOP](https://docs.derivative.ca/Trail_CHOP "Trail CHOP") or animated [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP")).
+A waveform is converted to control signals by converting each graph into corresponding horizontal and vertical offsets, reproducing the original CHOP waveform. The CHOP should not be [Time Sliced](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)"), but instead have some length (example a [Trail CHOP](Trail_CHOP.md "Trail CHOP") or animated [Wave CHOP](Wave_CHOP.md "Wave CHOP")).
 - CHOP `chop` - Path to the CHOP node.
 - Trigger `trigger` - The output graph will begin where its value exceeds this value. This allows for steady 'frozen' waveforms, analagous to an oscilloscope triggered sweep.
 - Trigger Value `triggerval` - The value to begin the trigger.
@@ -75,19 +74,16 @@ A waveform is converted to control signals by converting each graph into corresp
 - Trim Units `trimunits` - Select the units to use for this parameter, Samples, Frames, or Seconds.
 
 ## Parameters - Common Page
-
-- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
+- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](../Glossary/Time_Slicing.md "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
   * Resample At First Input's Rate `first` - Use rate of first input to resample others.
   * Resample At Maximum Rate `max` - Resample to the highest sample rate.
   * Resample At Minimum Rate `min` - Resample to the lowest sample rate.
   * Error If Rates Differ `err` - Doesn't accept conflicting sample rates.
-
-- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](https://docs.derivative.ca/Export "Export") article for more information.
+- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](../Glossary/Export.md "Export") article for more information.
   * DAT Table by Index `datindex` - Uses the docked DAT table and references the channel via the index of the channel in the CHOP.
   * DAT Table by Name `datname` - Uses the docked DAT table and references the channel via the name of the channel in the CHOP.
   * Channel Name is Path:Parameter `autoname` - The channel is the full destination of where to export to, such has `geo1/transform1:tx`.
-
 - Export Root `autoexportroot` - This path points to the root node where all of the paths that exporting by **Channel Name is Path:Parameter** are relative to.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).

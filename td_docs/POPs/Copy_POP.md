@@ -18,14 +18,13 @@ The Template page chooses which attributes of the template are used to define th
 
 The Template Attributes page determines what attributes are added to the output, and how the attributes are combinations of the first input and the template input, multiplying or adding them together.
 
-If the number of copies is greater than 1, The Dimension of the first input is increased by one, and the number of dimensions is increased by the second (template) input's dimension. See [Dimension](https://docs.derivative.ca/Dimension "Dimension").
+If the number of copies is greater than 1, The Dimension of the first input is increased by one, and the number of dimensions is increased by the second (template) input's dimension. See [Dimension](../Glossary/Dimension.md "Dimension").
 
-See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy POP").
+See also: [GLSL Copy POP](GLSL_Copy_POP.md "GLSL Copy POP"), [POP Rotations](https://docs.derivative.ca/POP_Rotations "POP Rotations")
 
-[copyPOP_Class](https://docs.derivative.ca/CopyPOP_Class "CopyPOP Class")
+[copyPOP_Class](Copy_POP_Class.md "CopyPOP Class")
 
 ## Parameters - Copy Page
-
 - Number of Copies `ncy` - Sets the number of copies. If the template input is used, that's the number of copies per template point.
 - Transform Order `xord` - ⊞ - Sets the overall transform order for the transformations.
   * Scale Rotate Translate `srt` -
@@ -34,7 +33,6 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * Rotate Translate Scale `rts` -
   * Translate Scale Rotate `tsr` -
   * Translate Rotate Scale `trs` -
-
 - Rotate Order `rord` - ⊞ - Sets the order of the rotations within the overall transform order.
   * Rx Ry Rz `xyz` -
   * Rx Rz Ry `xzy` -
@@ -42,38 +40,31 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * Ry Rz Rx `yzx` -
   * Rz Rx Ry `zxy` -
   * Rz Ry Rx `zyx` -
-
 - Translate `t` - ⊞ - Translate the points in the three axes.
   * Translate `tx` -
   * Translate `ty` -
   * Translate `tz` -
-
 - Rotate `r` - ⊞ - Rotate the points around the corresponding X, Y and Z axes. Angles are given in degrees.
   * Rotate `rx` -
   * Rotate `ry` -
   * Rotate `rz` -
-
 - Scale `s` - ⊞ - These three fields scale the Source geometry in the three axes.
   * Scale `sx` -
   * Scale `sy` -
   * Scale `sz` -
-
 - Pivot `p` - ⊞ - The pivot point for the transform rotates and scales.
   * Pivot `px` -
   * Pivot `py` -
   * Pivot `pz` -
-
 - Uniform Scale `scale` - Specifies a uniform scale factor in all axes.
 - CopyId Attribute `copyid` - ⊞ - Whether to output an attribute containing the copy index and where.
   * CopyId Attribute `copyid` -
   * CopyId Attrib Name `copyidname` - Sets the attribute scope when outputting the Copy Id attribute.
-
 - Look At `lookat` - Orients the copied geometry (Z axis) to look at, or point to, the object component specified in the parameter.
 - Up Vector `upvector` - ⊞ - Sets the up vector when setting up the look at transform.
   * Up Vector `upvectorx` -
   * Up Vector `upvectory` -
   * Up Vector `upvectorz` -
-
 - Forward Direction `forwarddir` - ⊞ - Determines the forward direction for look at transformation.
   * +X `posx` -
   * -X `negx` -
@@ -81,18 +72,15 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * -Y `negy` -
   * +Z `posz` -
   * -Z `negz` -
-
 - Vectors Maintain Length `vlength` - Enable preserving the original vector length after applying transformations.
 - Append Dimension `dimension` - ⊞ - Always add a dimension, or only add a dimesion when its size is 2 or more.
   * When Template Points / Copies > 1 `morethanone` -
   * Always `always` -
 
 ## Parameters - Template Page
-
 - Template Matrix Transform `dotemplatematrix` - ⊞ - Whether to use a transform matrix attribute on the template points.
   * Template Matrix Transform `dotemplatematrix` -
   * Transform Attribute `transformattr` - Specifies the scope of the template attribute that holds the transform matrices.
-
 - Template Transform Order `templatexord` - ⊞ - Sets the overall transform order for the template transformations.
   * Scale Rotate Translate `srt` -
   * Scale Translate Rotate `str` -
@@ -100,7 +88,6 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * Rotate Translate Scale `rts` -
   * Translate Scale Rotate `tsr` -
   * Translate Rotate Scale `trs` -
-
 - Template Rotate Order `templaterord` - ⊞ - Sets the order of the X, Y and Z rotations within the overall template transform.
   * Rx Ry Rz `xyz` -
   * Rx Rz Ry `xzy` -
@@ -108,29 +95,23 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * Ry Rz Rx `yzx` -
   * Rz Rx Ry `zxy` -
   * Rz Ry Rx `zyx` -
-
 - Template Translate `dotemplatetranslate` - ⊞ - Whether to use a translate attribute on the template points.
   * Template Translate `dotemplatetranslate` -
   * Template Translate Attribute `translateattr` - The attribute scope for the translation base on the template input.
-
-- Template Rotate `dotemplaterotate` - ⊞ - Whether to use a rotate attribute on the template points.
+- Template Rotate `dotemplaterotate` - ⊞ - Whether to use a rotate attribute on the template points. Can be Euler angles or quaternions. For Euler angles, the rotation order is determined by the Template Rotate Order parameter.
   * Template Rotate `dotemplaterotate` -
   * Template Rotate Attribute `rotateattr` - The attribute scope for the rotation base on the template input.
-
 - Template Scale `dotemplatescale` - ⊞ - Whether to use a scale attribute on the template points.
   * Template Scale `dotemplatescale` -
   * Scale Attribute `scaleattrib` - Input attribute scope for scaling.
-
 - Template Pivot `dotemplatepivot` - ⊞ - Whether to use a pivot attribute on the template points.
   * Template Pivot `dotemplatepivot` -
   * Template Pivot Attribute `pivotattr` - The attribute scope for the pivot base on the template input.
-
 - Template Rotate to Vector `dotemplaterotateto` - Enable align to vector rotation, using the template input as a reference.
 - Template Rotate to Order `templaterottoord` - ⊞ - Sets the order of axis and align to vector rotations within the overall template transform.
   * Rotate to Vector, then Transform `rottoxform` -
   * Rotate, then Rotate to Vector `rotaterotto` -
   * Rotate to Vector, then Rotate `rottorotate` -
-
 - Rotate to Vector : Forward Direction `instanceforward` - ⊞ - Base forward direction used to compute the rotation to vector.
   * +X `posx` -
   * -X `negx` -
@@ -138,24 +119,20 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * -Y `negy` -
   * +Z `posz` -
   * -Z `negz` -
-
 - Rotate to Vector Attribute `vecattr` - Input attribute used to compute the rotation to vector.
 - Up Vector Type `upvectoratype` - ⊞ - Specifies the up vector source.
   * Attribute `attribute` -
   * Constant `constant` -
-
 - Up Attribute `upattr` - Defines the scope of the up attribute used for alignment with template vectors.
 - Up Constant `upconstant` - ⊞ - Sets the up vector to align with the template vectors.
   * Up Constant `upconstantx` -
   * Up Constant `upconstanty` -
   * Up Constant `upconstantz` -
-
 - TemplateId Attribute `templateid` - ⊞ - Output a template ID attribute to points, vertices or primitives.
   * TemplateId Attribute `templateid` -
   * TemplateId Attrib Name `templateidname` - Output attribute scope for the template Id.
 
 ## Parameters - Template Attributes Page
-
 - Use Template Point Attribs `doattr` - Enable additional operations on template input attributes.
 - Template Attribute `templateattr` - Start of Sequential Parameter Blocks for attributes as combinations of the first input and the template input.
 - Operation `templateattr0op` - ⊞ - Choose how to combine the template attribute with the matching attribute on the copy if it exists.
@@ -163,17 +140,14 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
   * Multiply `mul` -
   * Add `add` -
   * Subtract `subtract` -
-
 - Destination `templateattr0dest` - ⊞ - Sets the attribute class where the template point attribute operation will happen.
   * Point `point` -
   * Vertex `vertex` -
   * Primitive `primitive` -
-
 - Names `templateattr0names` - ⊞ - Names of the attributes on the template input to use.
   * * `*` -
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -185,7 +159,7 @@ See also: [GLSL Copy POP](https://docs.derivative.ca/GLSL_Copy_POP "GLSL Copy PO
 
 ## Info CHOP Channels
 
-Extra Information for the Copy POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Copy POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -196,19 +170,11 @@ Extra Information for the Copy POP can be accessed via an [Info CHOP](https://do
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

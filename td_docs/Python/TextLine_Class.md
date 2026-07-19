@@ -6,7 +6,7 @@ title: TextLine_Class
 
 # TextLine Class
 
-A line of text in the [Text TOP](https://docs.derivative.ca/Text_TOP "Text TOP") or [Text SOP](https://docs.derivative.ca/Text_SOP "Text SOP"), after it has been formatted. It is also used by the [Geo Text COMP](https://docs.derivative.ca/Geo_Text_COMP "Geo Text COMP") to return the position and glyphs for a block of text. Contains various members about the line such as it's text, position etc."
+A line of text in the [Text TOP](../TOPs/Text_TOP.md "Text TOP") or [Text SOP](../SOPs/Text_SOP.md "Text SOP"), after it has been formatted. It is also used by the [Geo Text COMP](../COMPs/Geo_Text_COMP.md "Geo Text COMP") to return the position and glyphs for a block of text. Contains various members about the line such as it's text, position etc."
 
 ## Members
 
@@ -28,7 +28,7 @@ A tdu.Position object that gives the baseline origin of the line of text.
 
 `lineWidth` → `float` **(Read Only)** :
 
-The width of the format box of this line of text. This member is not used by the [Geo Text COMP](https://docs.derivative.ca/Geo_Text_COMP "Geo Text COMP").
+The width of the format box of this line of text. This member is not used by the [Geo Text COMP](../COMPs/Geo_Text_COMP.md "Geo Text COMP").
 
 ## Methods
 

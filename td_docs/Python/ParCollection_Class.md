@@ -6,7 +6,7 @@ title: ParCollection_Class
 
 # ParCollection Class
 
-The ParCollection class can be used to access [Parameters](https://docs.derivative.ca/Par_Class "Par Class"). To access a parameter you need to use its internal name, which you can obtain by hovering your mouse over the parameter name, and looking at the popup that will come up. See also [Par Class](https://docs.derivative.ca/Par_Class "Par Class"). An operator's instance of this can be found in `OP.par`.
+The ParCollection class can be used to access [Parameters](../SOPs/Par_Class.md "Par Class"). To access a parameter you need to use its internal name, which you can obtain by hovering your mouse over the parameter name, and looking at the popup that will come up. See also [Par Class](../SOPs/Par_Class.md "Par Class"). An operator's instance of this can be found in `OP.par`.
 
 ## Members
 
@@ -25,13 +25,13 @@ a = op('geo1').par.lookat = 'null1'
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 ## Methods
 
 `[name]`→ `Par`:
 
-[Parameters](https://docs.derivative.ca/Par_Class "Par Class") may be easily accessed using the [] subscript and assignment operators.
+[Parameters](../SOPs/Par_Class.md "Par Class") may be easily accessed using the [] subscript and assignment operators.
   * name - Must be an exact string name. Wildcards are not supported. If not found None is returned.
 
 ```

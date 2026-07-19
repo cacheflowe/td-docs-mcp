@@ -10,7 +10,7 @@ Here are several forms and corresponding solutions of projection mapping with To
 
 ###  Kantan Mapper
 
-[Kantan Mapper](https://docs.derivative.ca/Palette:kantanMapper "Palette:kantanMapper") is a projection mapping and masking tool where you define 2D polygons and bezier outlines in the field of view of a projector, then fills each shape with a selected image (TOP).
+[Kantan Mapper](../Interoperability/Palette_kantanMapper.md "Palette:kantanMapper") is a projection mapping and masking tool where you define 2D polygons and bezier outlines in the field of view of a projector, then fills each shape with a selected image (TOP).
 
 ####  Kantan UV Helper
 
@@ -18,15 +18,15 @@ Here are several forms and corresponding solutions of projection mapping with To
 
 ###  CamSchnappr
 
-[CamSchnappr](https://docs.derivative.ca/Palette:camSchnappr "Palette:camSchnappr") - If you have a physical 3D structure plus a virtual 3D model of that structure, you can to project a rendered virtual model onto that physical structure perfectly-aligned, by choosing and moving 6 guide points in your projected image. It can do multiple projectors with blend regions.
+[CamSchnappr](../Interoperability/Palette_camSchnappr.md "Palette:camSchnappr") - If you have a physical 3D structure plus a virtual 3D model of that structure, you can to project a rendered virtual model onto that physical structure perfectly-aligned, by choosing and moving 6 guide points in your projected image. It can do multiple projectors with blend regions.
 
 ###  Projector Blend
 
-[projectorBlend](https://docs.derivative.ca/Palette:projectorBlend "Palette:projectorBlend") - a tool to smoothly blend NxM arrays of projectors.
+[projectorBlend](../Interoperability/Palette_projectorBlend.md "Palette:projectorBlend") - a tool to smoothly blend NxM arrays of projectors.
 
 ###  Stoner
 
-[Stoner](https://docs.derivative.ca/Palette:stoner "Palette:stoner") - An interactive corner-pin image warper plus a mesh warper for manually fitting an image on a physical 3D surface.
+[Stoner](../Interoperability/Palette_stoner.md "Palette:stoner") - An interactive corner-pin image warper plus a mesh warper for manually fitting an image on a physical 3D surface.
 
 ###  Corner Pin SOP
 
@@ -38,6 +38,6 @@ Here are several forms and corresponding solutions of projection mapping with To
 
 ###  Vioso
 
-[Vioso](https://docs.derivative.ca/Vioso "Vioso") is integrated with TouchDesigner and lets you read in calibration data from the VIOSO Calibrator Software. Vioso's auto-alignment technology makes the setup of installations like multi-projector panorama displays, domes and multi-projector setups for projection mapping more automated and quick.
+[Vioso](../Interoperability/Vioso.md "Vioso") is integrated with TouchDesigner and lets you read in calibration data from the VIOSO Calibrator Software. Vioso's auto-alignment technology makes the setup of installations like multi-projector panorama displays, domes and multi-projector setups for projection mapping more automated and quick.
 
 ###  Scalable Dislays

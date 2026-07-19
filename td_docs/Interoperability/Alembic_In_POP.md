@@ -35,43 +35,37 @@ The conversion between the Alembic geometries scopes to the TouchDesigner attrib
 Varying, Vertex |  Point
 Facevarying |  Vertex
 Uniform, Constant |  Primitive
-[alembicPOP_Class](https://docs.derivative.ca/AlembicPOP_Class "AlembicPOP Class")
+[alembicPOP_Class](../POPs/AlembicPOP_Class.md "AlembicPOP Class")
 
-See also [Alembic Out POP](https://docs.derivative.ca/Alembic_Out_POP "Alembic Out POP"), [File In POP](https://docs.derivative.ca/File_In_POP "File In POP"), [File Out POP](https://docs.derivative.ca/File_Out_POP "File Out POP")
+See also [Alembic Out POP](https://docs.derivative.ca/Alembic_Out_POP "Alembic Out POP"), [File In POP](../POPs/File_In_POP.md "File In POP"), [File Out POP](../POPs/File_Out_POP.md "File Out POP")
 
 ## Parameters - Alembic Page
-
 - Alembic File `file` - The file path to the Alembic file.
 - Object Path `objectpath` - ⊞ - Specify which geometry object to be loaded. Each geometry object can represent a hierarchies of multiple geometries. It is also possible to choose the "All Objects" (ie. "*") option from the list of available objects. This option is selected by default.
   * * `*` -
   * /box_object1/color1 `/box_object1/color1` -
-
 - Transform `xform` - ⊞ - Select which transform is applied if the transform data is available from the input Alembic file.
   * None `none` - No transformation is applied to the geometry(s), they reside at the origin.
   * Static Local Transformation `staticlocalxform` - Applies the static local transformation for the selected geometry objects from the Object Path.
   * Static World Transformation `staticworldxform` - Applies the static world transformation of the selected geometry objects from the Object Path up to their parents transformation.
   * Dynamic Transformation `dynamicxform` - In the case that the Alembic file includes dynamic or animated geometries the transformation is applied to the selected geometries. This option performs both local and world transformation (if available) for the given geometry.
-
 - Time `time` - ⊞ - Specify which part of the Alembic samples sequence is loaded. The time unit menu converts the current time units to the selected unit. The available options are Frames, Seconds, Indices, and Fraction.
   * Time `time` - Specify which part of the Alembic samples sequence is loaded.
   * Time Unit `timeunit` - The time unit menu converts the current time units to the selected unit. The available options are Frames, Seconds, Indices, and Fraction.
-
 - FPS `fps` - Specify the rate used for sample calculation for reading from the Alembic file.
 - Interpolation `interp` - ⊞ - Interpolate between the samples/keyframes in the Alembic file. This parameter only works if the selected geometries are defined as dynamic and the transformation information are available from the input Alembic file.
   * None `none` - No interpolation is performed between each samples.
   * Linear Interpolation `interp` - Smooth interpolation between each two samples is calculated.
-
 - Unload `loadfile` - Toggling the unload to "on" will unload the file and close it. By setting it to "off", the file will be loaded again. When the file is unloaded it can be overwritten by other applications or deleted.
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
 
-Extra Information for the Alembic In POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Alembic In POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -82,19 +76,11 @@ Extra Information for the Alembic In POP can be accessed via an [Info CHOP](http
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

@@ -14,7 +14,7 @@ title: Skin_Deform_POP
 
 #### Detail attribute pCaptPath
 
-The pCaptPath detail attribute is an index attribute that contains a list of paths to COMPs are used as bones. The first path is for index 0, the next for index 1 etc. You can use the [SOP to DAT](https://docs.derivative.ca/SOP_to_DAT "SOP to DAT") to inspect the values of this attribute.
+The pCaptPath detail attribute is an index attribute that contains a list of paths to COMPs are used as bones. The first path is for index 0, the next for index 1 etc. You can use the [SOP to DAT](../Glossary/SOP_to_DAT.md "SOP to DAT") to inspect the values of this attribute.
 
 #### Detail attribute pCaptData
 
@@ -22,7 +22,7 @@ This attribute has the same number of entries as pCaptPath. It contains 20 float
 
 #### Point or Vertex attribute pCapt[]
 
-This attribute contains pairs of information. In each pair the first value is the index number of the transform that affects the point, and the second number is the weight for that particular transform. When deforming, TouchDesigner uses the index from this attribute to find the correct COMP, using pCaptPath. The sum of all the weights for a given points should add up to 1. An index of -1 indicates that there is no transform to apply for that entry. The attribute has a size which will indicate the number of entries it has (pCapt[8] for example). This size includes both the indices and the weights, so if pCapt has a size of 8, it means a maximum of 4 transforms (4 transforms and 4 weights) are applied to each point. The size of pCapt will be big enough to accommodate the point with the most transforms deforming it. It's possible (or even likely) that there will be just one or two points in a geometry that are affected by many more transforms than the rest, you can use the [Bone Group SOP](https://docs.derivative.ca/Bone_Group_SOP "Bone Group SOP") to trim out these points and make pCapt smaller.
+This attribute contains pairs of information. In each pair the first value is the index number of the transform that affects the point, and the second number is the weight for that particular transform. When deforming, TouchDesigner uses the index from this attribute to find the correct COMP, using pCaptPath. The sum of all the weights for a given points should add up to 1. An index of -1 indicates that there is no transform to apply for that entry. The attribute has a size which will indicate the number of entries it has (pCapt[8] for example). This size includes both the indices and the weights, so if pCapt has a size of 8, it means a maximum of 4 transforms (4 transforms and 4 weights) are applied to each point. The size of pCapt will be big enough to accommodate the point with the most transforms deforming it. It's possible (or even likely) that there will be just one or two points in a geometry that are affected by many more transforms than the rest, you can use the [Bone Group SOP](../SOPs/Bone_Group_SOP.md "Bone Group SOP") to trim out these points and make pCapt smaller.
 
 #### Unsupported Houdini attributes
 
@@ -36,13 +36,13 @@ _pCaptFrame_ - This attribute isn't supported.
 
 To deform on the CPU simply use the Deform SOP. The Deform SOP uses Point Capture Attributes rather than Vertex Capture Attributes. You'll need to specify the path to the skeleton in the Skeleton Root Path parameter.
 
-For example, to deform in [FBX](https://docs.derivative.ca/FBX "FBX") on the CPU: an [Import Select SOP](https://docs.derivative.ca/Import_Select_SOP "Import Select SOP") with capture attributes can be used as an input to the Deform SOP. The skeleton root path of the Deform SOP will be the [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP").
+For example, to deform in [FBX](../Interoperability/FBX.md "FBX") on the CPU: an [Import Select SOP](../SOPs/Import_Select_SOP.md "Import Select SOP") with capture attributes can be used as an input to the Deform SOP. The skeleton root path of the Deform SOP will be the [FBX COMP](../COMPs/FBX_COMP.md "FBX COMP").
 
 ## Deforming on the GPU
 
-Deforming on the GPU is very fast (practically free), but requires a bit more work to setup. The first issue is that most GPUs can only handle the required data for between 50 and 200 bones in a single pass. What this means is that the geometry needs to be split up into subsections, each of which are affected by a different subset of the bones of the skeleton. These are called Bone Groups. The [Bone Group SOP](https://docs.derivative.ca/Bone_Group_SOP "Bone Group SOP") will split up geometry with capture attributes into different bone groups. The detail attributes pCaptData and pCaptPath will be split up into detail attributes with postfixes starting at 0. So for example if the geometry gets split into two bone groups, there will be detail attributes pCaptData0, pCaptPath0, pCaptData1, and pCaptPath1. The original pCaptData and pCaptPath will be deleted. The point/vertex attribute pCapt will become a vertex attribute named pCapt. There will also be primitives groups named boneGroup0, boneGroup1 that contain all of the primitives in each bone group.
+Deforming on the GPU is very fast (practically free), but requires a bit more work to setup. The first issue is that most GPUs can only handle the required data for between 50 and 200 bones in a single pass. What this means is that the geometry needs to be split up into subsections, each of which are affected by a different subset of the bones of the skeleton. These are called Bone Groups. The [Bone Group SOP](../SOPs/Bone_Group_SOP.md "Bone Group SOP") will split up geometry with capture attributes into different bone groups. The detail attributes pCaptData and pCaptPath will be split up into detail attributes with postfixes starting at 0. So for example if the geometry gets split into two bone groups, there will be detail attributes pCaptData0, pCaptPath0, pCaptData1, and pCaptPath1. The original pCaptData and pCaptPath will be deleted. The point/vertex attribute pCapt will become a vertex attribute named pCapt. There will also be primitives groups named boneGroup0, boneGroup1 that contain all of the primitives in each bone group.
 
-You should isolate out each of the primitive bone groups using the [Delete SOP](https://docs.derivative.ca/Delete_SOP "Delete SOP"). Next drop down a MAT (like the [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT")) that supports deforms. You will need to give the MAT a few pieces of information:
+You should isolate out each of the primitive bone groups using the [Delete SOP](../SOPs/Delete_SOP.md "Delete SOP"). Next drop down a MAT (like the [Phong MAT](../MATs/Phong_MAT.md "Phong MAT")) that supports deforms. You will need to give the MAT a few pieces of information:
   * The path to the SOP that contains the deform information you want this MAT to use. This is generally the Delete SOP, or some node after it.
   * The name of the pCaptData and pCaptPath attribute. So for example if you are rendering bone group 0 with this MAT, you'd specify pCaptData0 and pCaptPath0.
   * The path to the root of the skeleton.
@@ -100,21 +100,18 @@ vec4 TDSkinnedDeform(vec4 pos)
 }
 ```
 
-[skindeformPOP_Class](https://docs.derivative.ca/SkindeformPOP_Class "SkindeformPOP Class")
+[skindeformPOP_Class](Skin_Deform_POP_Class.md "SkindeformPOP Class")
 
 ## Parameters - Deform Page
-
 - Mode `mode` - ⊞ - Choose what the skin deform is applied to.
   * Skin Deform Geometry `skindeformgeo` -
   * Skin Deform Attribute `skindeformattrib` -
   * Skin Deform Attribute Scope as Position `skindeformattribscopepos` -
   * Skin Deform Attribute Scope as Vector `skindeformattribscopevec` -
-
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
   * Primitive `primitive` -
-
 - Input Attribute (Scope) `inputattrscope` - Input attribute when mode is Skin Deform Attribute, input attribute scope when mode is Skin Deform Attribute Scope
 - Bone Paths Attribute `bonepaths` - The name of the bone paths detail attribute.
 - Bone Bind Poses Attribute `bonebindposes` - The name of the bone bind poses detail attribute.
@@ -129,7 +126,6 @@ vec4 TDSkinnedDeform(vec4 pos)
   * Tex `Tex` -
   * PointScale `PointScale` -
   * LineWidth `LineWidth` -
-
 - Override Automatic Attribute `overrideautoattr` - Whether to override the kind of attribute automatically created based on the POP input and parameters. Allows to specify manually the type and number of components of the new attribute.
 - Attribute Type `attrtype` - ⊞ - The output attribute's data type, default float.
   * float `float` -
@@ -140,13 +136,11 @@ vec4 TDSkinnedDeform(vec4 pos)
   * Color (double) `dcolor` -
   * Direction `dir` -
   * Direction (double) `ddir` -
-
 - Components `attrnumcomps` - ⊞ - The number of components in the new custom attribute.
   * 1 `1` -
   * 2 `2` -
   * 3 `3` -
   * 4 `4` -
-
 - Default Value `attrdefaultval` - ⊞ - Default values of the output attribute components if they cannot be computed.
   * Default Value `attrdefaultval0` - Default value(s) of the attribute.
   * Default Value `attrdefaultval1` - Default value(s) of the attribute.
@@ -154,7 +148,6 @@ vec4 TDSkinnedDeform(vec4 pos)
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -165,7 +158,7 @@ vec4 TDSkinnedDeform(vec4 pos)
 
 ## Info CHOP Channels
 
-Extra Information for the Skin Deform POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Skin Deform POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -176,19 +169,11 @@ Extra Information for the Skin Deform POP can be accessed via an [Info CHOP](htt
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

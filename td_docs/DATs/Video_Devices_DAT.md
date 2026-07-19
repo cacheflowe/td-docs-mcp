@@ -8,7 +8,7 @@ title: Video_Devices_DAT
 
 ## Summary
 
-The Video Devices DAT provides information about all detected video devices including driver, direction (input or output), label, and name that can be referenced in the [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP") and [Video Device Out TOP](https://docs.derivative.ca/Video_Device_Out_TOP "Video Device Out TOP").
+The Video Devices DAT provides information about all detected video devices including driver, direction (input or output), label, and name that can be referenced in the [Video Device In TOP](../TOPs/Video_Device_In_TOP.md "Video Device In TOP") and [Video Device Out TOP](../TOPs/Video_Device_Out_TOP.md "Video Device Out TOP").
 
 You can also set it to display all available video devices.
 
@@ -35,10 +35,9 @@ Device Label - An English-readable label for the device. Usually unique by addin
 
 Unlike most menus, the contents of the string the menu is set to does not need to be an exact match to the devices available on the system. This is done to allow falling back to other devices when a project moves from one machine to another. It will first try to find devices that match using both 'Device Unique ID' and 'Device Sub Index'. If there are no devices on the system that match both of those it will then try to match using both 'Device Label' and 'Device Sub Index'. If there are still no matches, it will finally try to match using both 'Device Index' and 'Device Sub Index'.
 
-[videodevicesDAT_Class](https://docs.derivative.ca/VideodevicesDAT_Class "VideodevicesDAT Class")
+[videodevicesDAT_Class](Video_Devices_DAT_Class.md "VideodevicesDAT Class")
 
 ## Parameters - Video Devices Page
-
 - Driver `driver` - ⊞ - Menu of available drivers, table will only include devices belonging to selected driver.
   * DirectShow (WDM) `directshow` -
   * Media Foundation `mediafoundation` -
@@ -54,23 +53,19 @@ Unlike most menus, the contents of the string the menu is set to does not need t
   * AJA `aja` -
   * Ximea `ximea` -
   * Deltacast `deltacast` -
-
 - All Drivers `alldrivers` - While on, the table will display devices from all available drivers.
 - Input Devices `input` - Toggle to include input devices.
 - Output Devices `output` - Toggle to include output devices.
 - Callbacks DAT `callbacks` - Runs this script once for each change to the table (ie. device state change).
 
 ## Parameters - Common Page
-
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
-
 - Edit/View Extension `extension` - ⊞ - Select the file extension this DAT should expose to external editors.
   * dat `dat` - various common file extensions.
   * From Language `language` - pick extension from DATs script language.
   * Custom Extension `custom` - Specify a custom extension.
-
 - Custom Extension `customext` - Specifiy the custom extension.
 - Word Wrap `wordwrap` - ⊞ - Enable Word Wrap for Node Display.
   * Input `input` - The DAT uses the inputs setting.
@@ -79,14 +74,13 @@ Unlike most menus, the contents of the string the menu is set to does not need t
 
 ## Info CHOP Channels
 
-Extra Information for the Video Devices DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Video Devices DAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common DAT Info Channels
 
   * num_rows - Number of rows in this DAT.
-
   * num_cols - Number of columns in this DAT.
 
 ###
@@ -94,19 +88,11 @@ Extra Information for the Video Devices DAT can be accessed via an [Info CHOP](h
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

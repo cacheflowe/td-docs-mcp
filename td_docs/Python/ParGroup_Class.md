@@ -84,7 +84,7 @@ op('geo1').parGroup.t.defaultMode = (ParMode.EXPRESSION, ParMode.EXPRESSION, Par
 
 The modes are one of: ParMode.CONSTANT, ParMode.EXPRESSION, or ParMode.EXPORT, or ParMode.BIND.
 
-See [Parameter_Dialog#Working_with_Parameter_Modes](https://docs.derivative.ca/Parameter_Dialog#Working_with_Parameter_Modes "Parameter Dialog") for more information.
+See [Parameter_Dialog#Working_with_Parameter_Modes](../Glossary/Parameter_Dialog.md#Working_with_Parameter_Modes "Parameter Dialog") for more information.
 
 `enable` → `bool` :
 
@@ -227,7 +227,7 @@ op('geo1').parGroup.t.mode = (ParMode.EXPRESSION, ParMode.EXPRESSION, ParMode.EX
 
 The modes are one of: `ParMode.CONSTANT`, `ParMode.EXPRESSION`, or `ParMode.EXPORT`, or `ParMode.BIND`.
 
-See [Parameter_Dialog#Working_with_Parameter_Modes](https://docs.derivative.ca/Parameter_Dialog#Working_with_Parameter_Modes "Parameter Dialog") for more information.
+See [Parameter_Dialog#Working_with_Parameter_Modes](../Glossary/Parameter_Dialog.md#Working_with_Parameter_Modes "Parameter Dialog") for more information.
 
 `name` → `str` :
 
@@ -315,18 +315,18 @@ True if the referenced parameter currently exists, False if it has been deleted.
 The parameter's order in the list.
 
 `sequence` → `Sequence | None` **(Read Only)** :
-The [Sequence](https://docs.derivative.ca/Sequence_Class "Sequence Class") this parGroup is a part of. None if not in a sequence.
+The [Sequence](Sequence_Class.md "Sequence Class") this parGroup is a part of. None if not in a sequence.
 
 `sequenceBlock` → `SequenceBlock | None` **(Read Only)** :
-The [SequenceBlock](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class") this parGroup belongs to. None if not in a sequence.
+The [SequenceBlock](SequenceBlock_Class.md "SequenceBlock Class") this parGroup belongs to. None if not in a sequence.
 
 `blockIndex` → `int` **(Read Only)** :
 
-The index of the parGroup within its [SequenceBlock](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class"). None if not in a sequence.
+The index of the parGroup within its [SequenceBlock](SequenceBlock_Class.md "SequenceBlock Class"). None if not in a sequence.
 
 `sequenceIndex` → `int` **(Read Only)** :
 
-The index of the parGroup's [SequenceBlock](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class") in its [Sequence](https://docs.derivative.ca/Sequence_Class "Sequence Class"). None if not in a sequence.
+The index of the parGroup's [SequenceBlock](SequenceBlock_Class.md "SequenceBlock Class") in its [Sequence](Sequence_Class.md "Sequence Class"). None if not in a sequence.
 
 `size` → `int` :
 
@@ -334,15 +334,15 @@ Get or set the parameter's vector size.
 
 `maxSize` → `int` **(Read Only)** :
 
-Returns the maximum number of [Par](https://docs.derivative.ca/Par_Class "Par Class") elements for this ParGroup
+Returns the maximum number of [Par](../SOPs/Par_Class.md "Par Class") elements for this ParGroup
 
 `defaultSize` → `int` **(Read Only)** :
 
-Returns the default number of [Par](https://docs.derivative.ca/Par_Class "Par Class") elements for this ParGroup.
+Returns the default number of [Par](../SOPs/Par_Class.md "Par Class") elements for this ParGroup.
 
 `suffixes` → `list` **(Read Only)** :
 
-Returns a list of suffixes used to name the [Par](https://docs.derivative.ca/Par_Class "Par Class") elements of this ParGroup.
+Returns a list of suffixes used to name the [Par](../SOPs/Par_Class.md "Par Class") elements of this ParGroup.
 
 ## Methods
 
@@ -383,7 +383,7 @@ Evaluate the expression portions of a parameter, if it contains any. This will i
 a = op('geo1').parGroup.t.evalExpression()
 ```
 
-To evaluate an arbitrary expression string, that is not inside a parameter, see [OP.evalExpression](https://docs.derivative.ca/OP_Class#evalExpression "OP Class").
+To evaluate an arbitrary expression string, that is not inside a parameter, see [OP.evalExpression](OP_Class.md#evalExpression "OP Class").
 
 `evalNorm()`→ `Tuple[float, ...]`:
 
@@ -424,14 +424,14 @@ True if the provided parGroup is the same ParGroup on the same operator. Because
 
 A ParGroup is a group of related parameters that you can set and get as a whole instead of its individual parameters, like ParGroup `t` is `tx ty tz`.
 
-Every Parameter can be in one of four modes: Constant Mode, [Expression](https://docs.derivative.ca/Expression "Expression") Mode, [Export](https://docs.derivative.ca/Export "Export") Mode or Bind ([Binding](https://docs.derivative.ca/Binding "Binding")) Mode.
+Every Parameter can be in one of four modes: Constant Mode, [Expression](../Glossary/Expression.md "Expression") Mode, [Export](../Glossary/Export.md "Export") Mode or Bind ([Binding](../Glossary/Binding.md "Binding")) Mode.
 
-Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off.
+Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off or the root timeline is paused.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-To "pulse" a parameter is to send it a signal from (1) an [exported](https://docs.derivative.ca/Export "Export") CHOP channel or (2) a python command or (3) a mouse click that causes a new action to occur immediately. A pulse via python is via the `.pulse()` function on a pulse-type parameter, such as Reset parameter in a [Speed CHOP](https://docs.derivative.ca/Speed_CHOP "Speed CHOP"). A pulse from a CHOP is typically a 0 to 1 to 0 signal in an exported channel.
+To "pulse" a parameter is to send it a signal from (1) an [exported](../Glossary/Export.md "Export") CHOP channel or (2) a python command or (3) a mouse click that causes a new action to occur immediately. A pulse via python is via the `.pulse()` function on a pulse-type parameter, such as Reset parameter in a [Speed CHOP](../Glossary/Speed_CHOP.md "Speed CHOP"). A pulse from a CHOP is typically a 0 to 1 to 0 signal in an exported channel.
 
-Matching names using wildcard characters and bracketing. Useful in "[Select](https://docs.derivative.ca/Select_CHOP "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.
+Matching names using wildcard characters and bracketing. Useful in "[Select](../Glossary/Select_CHOP.md "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.
 
-Matching names using wildcard characters and bracketing. Useful in "[Select](https://docs.derivative.ca/Select_CHOP "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.
+Matching names using wildcard characters and bracketing. Useful in "[Select](../Glossary/Select_CHOP.md "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.

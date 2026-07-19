@@ -6,15 +6,15 @@ title: Bezier_Class
 
 # Bezier Class
 
-A Bezier describes an instance of a single geometry Bezier primitive (containing a set of connected Bezier curves). It is an instance of a [Prim Class](https://docs.derivative.ca/Prim_Class "Prim Class"). It can be created from either a [Model SOP](https://docs.derivative.ca/ModelSOP_Class "ModelSOP Class") or [Script SOP](https://docs.derivative.ca/ScriptSOP_Class "ScriptSOP Class"). Each curve is described by a set of segments, where each segment is a list of [vertices](https://docs.derivative.ca/Vertex_Class "Vertex Class"). The first and last vertex of each segment is an anchor position, while its neighboring vertices describe tangent handles.
+A Bezier describes an instance of a single geometry Bezier primitive (containing a set of connected Bezier curves). It is an instance of a [Prim Class](Prim_Class.md "Prim Class"). It can be created from either a [Model SOP](../SOPs/Model_SOP_Class.md "ModelSOP Class") or [Script SOP](../SOPs/Script_SOP_Class.md "ScriptSOP Class"). Each curve is described by a set of segments, where each segment is a list of [vertices](Vertex_Class.md "Vertex Class"). The first and last vertex of each segment is an anchor position, while its neighboring vertices describe tangent handles.
 
-The members and methods below allow modification of the Bezier in a modelling context, however the Bezier can also be modified by direction manipulation of its vertices. See [Prim Class](https://docs.derivative.ca/Prim_Class "Prim Class") for more details.
+The members and methods below allow modification of the Bezier in a modelling context, however the Bezier can also be modified by direction manipulation of its vertices. See [Prim Class](Prim_Class.md "Prim Class") for more details.
 
 ## Members
 
 `anchors` → `list` **(Read Only)** :
 
-Returns the list of anchor [vertices](https://docs.derivative.ca/Vertex_Class "Vertex Class").
+Returns the list of anchor [vertices](Vertex_Class.md "Vertex Class").
 
 `basis` → `list` **(Read Only)** :
 
@@ -30,11 +30,11 @@ Return the bezier order. The order is one more than the degree.
 
 `segments` → `list` **(Read Only)** :
 
-Returns a list of segments, where each segment is a list of [vertices](https://docs.derivative.ca/Vertex_Class "Vertex Class").
+Returns a list of segments, where each segment is a list of [vertices](Vertex_Class.md "Vertex Class").
 
 `tangents` → `list` **(Read Only)** :
 
-Returns the tangents as a list of [vertex](https://docs.derivative.ca/Vertex_Class "Vertex Class") pairs.
+Returns the tangents as a list of [vertex](Vertex_Class.md "Vertex Class") pairs.
 
 ## Methods
 
@@ -44,7 +44,7 @@ inserts anchor at given position (u from 0..1) and returns anchor vertex.
 
 `updateAnchor(anchorIndex, targetPosition, tangents=True)`→ `tdu.Position`:
 
-Modify the anchor vertex to the new [position](https://docs.derivative.ca/Position_Class "Position Class"). If tangents is True, modify neighboring tangent vertices as well. Returns resulting position.
+Modify the anchor vertex to the new [position](Position_Class.md "Position Class"). If tangents is True, modify neighboring tangent vertices as well. Returns resulting position.
 
 `appendAnchor(targetPosition, preserveShape=True)`→ `Vertex`:
 
@@ -55,7 +55,7 @@ Returns final anchor vertex.
 
 `updateTangent(tangentIndex, targetPosition, rotate=True, scale=True, rotateLock=True, scaleLock=True)`→ `tdu.Position`:
 
-Modify the vertex vertex to the new [position](https://docs.derivative.ca/Position_Class "Position Class"), constraining either rotation or scale. Locked controls matching tangent. Returns resulting position.
+Modify the vertex vertex to the new [position](Position_Class.md "Position Class"), constraining either rotation or scale. Locked controls matching tangent. Returns resulting position.
 
 `deleteAnchor(anchorIndex)`→ `None`:
 

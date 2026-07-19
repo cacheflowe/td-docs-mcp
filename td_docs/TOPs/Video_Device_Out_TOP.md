@@ -11,39 +11,34 @@ title: Video_Device_Out_TOP
 The Video Device Out TOP routes video to output devices using their native driver libraries.
 
 Devices currently supported:
-  * [Blackmagic Design](https://docs.derivative.ca/Blackmagic_Design "Blackmagic Design") devices.
-  * [Bluefish444](https://docs.derivative.ca/Bluefish444 "Bluefish444") devices.
-  * [AJA](https://docs.derivative.ca/AJA "AJA") devices.
-  * [Deltacast](https://docs.derivative.ca/Deltacast "Deltacast") devices.
+  * [Blackmagic Design](../Interoperability/Blackmagic_Design.md "Blackmagic Design") devices.
+  * [Bluefish444](../Interoperability/Bluefish444.md "Bluefish444") devices.
+  * [AJA](../Interoperability/AJA.md "AJA") devices.
+  * [Deltacast](../Interoperability/Deltacast.md "Deltacast") devices.
 
-See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP").
+See also [Video Device In TOP](Video_Device_In_TOP.md "Video Device In TOP").
 
-[videodeviceoutTOP_Class](https://docs.derivative.ca/VideodeviceoutTOP_Class "VideodeviceoutTOP Class")
+[videodeviceoutTOP_Class](Video_Device_Out_TOP_Class.md "VideodeviceoutTOP Class")
 
 ## Parameters - Device Out Page
-
 - Active `active` - Enable or disable the output card.
 - Library `library` - ⊞ - Select the driver library to use.
   * Blackmagic `blackmagic` - Supports driver version 12.x
   * BlueFish444 `bluefish444` -
   * AJA `aja` -
   * Deltacast `deltacast` -
-
 - Device `device` - ⊞ - A menu of available video devices to output to. Set the Library parameter above prior to selecting your device.
   * DeckLink 8K Pro (1) `V1` -
-
 - Signal Format `signalformat` - The signal format to output at. This is the resolution and the frame rate, as well as if the frames are progressive or interlaced. Note that when using an interlaced format, the rate refers to fields per second.
 - Output Pixel Format `outputpixelformat` - ⊞ - Set the pixel format of the output when possible (depends what type of device is used). Data may be converted to YUV colorspace depending on what the device and settings require.
   * 8-bit RGB `fixed8` - 8-bit color data, no alpha channel.
   * 8-bit + 8-bit Key (Alpha) `fixed8key8` - 8-bit color data and 8-bit alpha. This usually means SDI cables where one cable will be the color data and one cable will be the alpha data.
   * 10-bit RGB `fixed10` - 10-bit color data, no alpha.
   * 12-bit `fixed12` -
-
 - Output Color Format `outputcolorformat` - ⊞ - Set the color format of the data sent out, for supported devices. YUV 4:2:2 or RGB 4:4:4
   * `yuv422` - YUV 4:2:2. This is the most common color format to send data over SDI wires. It requires lower bandwidth than RGB 4:4:4, but results in some information loss.
   * `rgb444` - RGB 4:4:4. This requires more bandwidth but doesn't suffer from the information loss that YUV 4:2:2 has.
-
-- Audio CHOP `chop` - If you want to embed audio data into the output, put the path to a [Time Slice](https://docs.derivative.ca/Time_Slicing "Time Slicing") CHOP here.
+- Audio CHOP `chop` - If you want to embed audio data into the output, put the path to a [Time Slice](../Glossary/Time_Slicing.md "Time Slicing") CHOP here.
 - Reference Source `referencesource` - ⊞ - On AJA devices what input to use as a reference source input.
   * Default `default` -
   * External Ref In `external` -
@@ -55,27 +50,23 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
   * SDI Input 6 `sdi6` -
   * SDI Input 7 `sdi7` -
   * SDI Input 8 `sdi8` -
-
-- Audio CHOP `audiochop` - If you want to embed audio data into the output, put the path to a [Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing") CHOP here.
+- Audio CHOP `audiochop` - If you want to embed audio data into the output, put the path to a [Time Sliced](../Glossary/Time_Slicing.md "Time Slicing") CHOP here.
 - Buffer Length `bufferlength` - The length in seconds to buffer the audio data, to avoid crackles and pops.
 - Audio Bit Depth `audiobitdepth` - ⊞ - Describes the number of bits of information used for each sample.
   * 16-Bit `16bit` -
   * 32-Bit `32bit` -
-
-- Manual Field Control `manualfield` - When outputting interlaced video if you are using a source video that is also interlaced, it's likely you'll want to make sure you are keeping the odd/even fields in sync, otherwise the video will look stuttery. You can use the 'odd_field' value in the [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") on the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") or [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP") to know if the current frame is the odd field or the even field. In general the odd field is the first frame, so you use this value in the First Field parameter to tell the Video Device Out TOP that the current frame is the first field. On the next frame you would put this value to 0 (which is also what the 'odd_frame' will go to) to tell the Video Device Out TOP that the current frame is the 2nd frame, and you now have a complete frame to output. Deinterlacing should be enabled on the Video Device In or Movie File In TOP, so that fields are fed into the network one at a time.
+- Manual Field Control `manualfield` - When outputting interlaced video if you are using a source video that is also interlaced, it's likely you'll want to make sure you are keeping the odd/even fields in sync, otherwise the video will look stuttery. You can use the 'odd_field' value in the [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP") on the [Movie File In TOP](Movie_File_In_TOP.md "Movie File In TOP") or [Video Device In TOP](Video_Device_In_TOP.md "Video Device In TOP") to know if the current frame is the odd field or the even field. In general the odd field is the first frame, so you use this value in the First Field parameter to tell the Video Device Out TOP that the current frame is the first field. On the next frame you would put this value to 0 (which is also what the 'odd_frame' will go to) to tell the Video Device Out TOP that the current frame is the 2nd frame, and you now have a complete frame to output. Deinterlacing should be enabled on the Video Device In or Movie File In TOP, so that fields are fed into the network one at a time.
 - First Field `firstfield` - Tells the Video Device Out TOP if the current frame being given as it's input is the First or Second field in the final output image, when outputting an interlaced video. Look at the description for Manual Field Control for more information.
-- Timecode Object/CHOP/DAT `timecodeop` - Embed timecode into the output. A reference to either a CHOP with channels 'hour', 'second', 'minute', 'frame', a DAT with a timecode string in its first cell, or a [Timecode Class](https://docs.derivative.ca/Timecode_Class "Timecode Class") object.
+- Timecode Object/CHOP/DAT `timecodeop` - Embed timecode into the output. A reference to either a CHOP with channels 'hour', 'second', 'minute', 'frame', a DAT with a timecode string in its first cell, or a [Timecode Class](Timecode_Class.md "Timecode Class") object.
 - Transfer Mode `transfermode` - ⊞ - Controls how the image data is transfered between the GPU and the output card.
   * Automatic `automatic` - Will choose the best transfer mode for the components installed on the computer. It will choose 'Pinned' when possible, since that is the best performance.
   * Default `default` - Transfer will be done in 3 stages. GPU to CPU memory. CPU memory to driver memory. Driver memory to output card.
   * Pinned `pinned` - Transfer will be done in 2 stages. GPU to driver memory. Driver memory to output card.
-
-- Sync Outputs `syncoutputs` - **This feature requires a Pro license.** Supported on the [Deltacast](https://docs.derivative.ca/Deltacast "Deltacast") FLEX line of cards, and [Blackmagic Design](https://docs.derivative.ca/Blackmagic_Design "Blackmagic Design") cards. Blackmagic requires a reference input to be connected. This will cause multiple independent output nodes to stay in sync with each other. Without this then each output will have it's own output queue length which may be off from the other nodes by 1 or 2 frames. Most Blackmagic cards require a Genlock source to be connected for this feature to function as well.
+- Sync Outputs `syncoutputs` - **This feature requires a Pro license.** Supported on the [Deltacast](../Interoperability/Deltacast.md "Deltacast") FLEX line of cards, and [Blackmagic Design](../Interoperability/Blackmagic_Design.md "Blackmagic Design") cards. Blackmagic requires a reference input to be connected. This will cause multiple independent output nodes to stay in sync with each other. Without this then each output will have it's own output queue length which may be off from the other nodes by 1 or 2 frames. Most Blackmagic cards require a Genlock source to be connected for this feature to function as well.
 - Sync Group Index `syncgroupindex` - For different groups of cards, they can be ganged together into different sync groups by specifying the same index for multiple cards in the same group.
-- Reset Stats `resetstats` - A pulse to reset the statistics in an attached [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+- Reset Stats `resetstats` - A pulse to reset the statistics in an attached [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ## Parameters - Color Page
-
 - Output Color Space `colorspace` - ⊞ - Controls what color space the data will be converted to before output. If the output (SDI/ST2110 etc) supports metadata, will also attempt to include the color space in that. Some output forms only support a limited number of color spaces in their metadata. If the color space is unknown to the output form, then no metadata will be included.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
@@ -92,14 +83,12 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACESproxy `acesproxy` - [ACESproxy](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) color space, which has a log transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Output Reference White `outputreferencewhite` - ⊞ - When converting the color values to the Working Color Space for output, this controls how they should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of the colors will be adjusted to the range expected by the Output Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, and the project Working Color Space is HDR while the Output Color Space is SDR: then a color of (1, 1, 1), which is 80 nits in the HDR color space, will be converted to be (0.66, 0.66, 0.66), which is 80 nits still in the SDR Output Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space detected/selected.
   * Standard (SDR) `sdr` - Will treat the Output Color Space as SDR for it's reference white value.
   * High (HDR) `hdr` - Will treat the Output Color Space as HDR for it's reference white value.
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -111,29 +100,25 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
   * Fit Resolution `fit` - Fits the width and height to the resolution given below, while maintaining the aspect ratio.
   * Limit Resolution `limit` - The width and height are limited to the resolution given below. If one of the dimensions exceeds the given resolution, the width and height will be reduced to fit inside the given limits while maintaining the aspect ratio.
   * Custom Resolution `custom` - Enables the Resolution parameter below, giving direct control over width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -142,12 +127,10 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Passes `npasses` - Duplicates the operation of the TOP the specified number of times. Making this larger than 1 is essentially the same as taking the output from each pass, and passing it into the first input of the node and repeating the process. Other inputs and parameters remain the same for each pass.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
@@ -184,31 +167,21 @@ See also [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "V
 
 ## Info CHOP Channels
 
-Extra Information for the Video Device Out TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Video Device Out TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 Specific Video Device Out TOP Info Channels
   * connected - 1 if the device is connected/active, 0 if not.
-
   * play_speed - The play speed of the audio data. 1 if it's playing at normal speed, it'll be slightly faster or slower if it's needing to adjust the queue size to hit the target size.
-
   * dropped_frames - The number of frames drops from the output. These are frames that the output failed to provide new data for. If TD is running lower than the framerate the signal format is running at, this value should be increasing.
-
   * skipped_frames - These are frames that TD produced, but didn't get consumed by the output. This can be caused by the PCIe bandwidth (or the device) running slower than what is required for the data throughput/framerate.
-
   * late_frames - These are frames that were delivered to the card in time, but ended up getting shown later than expected. Usually only tracked on Blackmagic devices.
-
   * frame_queue_length - The number of video frames queued in software for output.
-
   * frame_hw_queue_length - The number of video frames queued in the device hardware for output.
-
   * audio_sw_buffer_length - The length of the audio buffer (in seconds) in software.
-
   * audio_hw_buffer_length - The length of the audio buffer (in seconds) in the device hardware.
-
   * genlocked - 1 if the card is known to be genlocked to an input, 0 if is card is not. -1 if it's not known.
-
   * last_dma_copy_time - The amount of time (in milliseconds) the last copy from the driver memory to the device took. -1 if it's not measured by this device type.
 
 ###
@@ -216,15 +189,10 @@ Specific Video Device Out TOP Info Channels
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -232,19 +200,11 @@ Specific Video Device Out TOP Info Channels
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

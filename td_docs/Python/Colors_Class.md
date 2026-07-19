@@ -6,7 +6,7 @@ title: Colors_Class
 
 # Colors Class
 
-The Colors Class describes the application colors. It can be accessed from the global [ui](https://docs.derivative.ca/UI_Class "UI Class") object.
+The Colors Class describes the application colors. It can be accessed from the global [ui](UI_Class.md "UI Class") object.
 
 ## Members
 

@@ -8,26 +8,23 @@ title: MIDI
 
 MIDI is a standard used by musical instruments and interface controllers to send event data between devices.
 
-See the [MIDI Device Mapper Dialog](https://docs.derivative.ca/MIDI_Device_Mapper_Dialog "MIDI Device Mapper Dialog"), [MIDI In DAT](https://docs.derivative.ca/MIDI_In_DAT "MIDI In DAT"), [MIDI Event DAT](https://docs.derivative.ca/MIDI_Event_DAT "MIDI Event DAT"), [MIDI In Map CHOP](https://docs.derivative.ca/MIDI_In_Map_CHOP "MIDI In Map CHOP"), [MIDI In CHOP](https://docs.derivative.ca/MIDI_In_CHOP "MIDI In CHOP"), [MIDI Out CHOP](https://docs.derivative.ca/MIDI_Out_CHOP "MIDI Out CHOP").
+See the [MIDI Device Mapper Dialog](https://docs.derivative.ca/MIDI_Device_Mapper_Dialog "MIDI Device Mapper Dialog"), [MIDI In DAT](../DATs/MIDI_In_DAT.md "MIDI In DAT"), [MIDI Event DAT](../DATs/MIDI_Event_DAT.md "MIDI Event DAT"), [MIDI In Map CHOP](../CHOPs/MIDI_In_Map_CHOP.md "MIDI In Map CHOP"), [MIDI In CHOP](../CHOPs/MIDI_In_CHOP.md "MIDI In CHOP"), [MIDI Out CHOP](../CHOPs/MIDI_Out_CHOP.md "MIDI Out CHOP").
 
-To send MIDI events via Python to a MIDI device, use the [MidioutCHOP Class](https://docs.derivative.ca/MidioutCHOP_Class "MidioutCHOP Class") with the [MIDI Out CHOP](https://docs.derivative.ca/MIDI_Out_CHOP "MIDI Out CHOP"). For [Tscript](https://docs.derivative.ca/Tscript "Tscript") use the Tscript `midi` command.
+To send MIDI events via Python to a MIDI device, use the [MidioutCHOP Class](../CHOPs/MIDI_Out_CHOP_Class.md "MidioutCHOP Class") with the [MIDI Out CHOP](../CHOPs/MIDI_Out_CHOP.md "MIDI Out CHOP"). For [Tscript](../Glossary/Tscript.md "Tscript") use the Tscript `midi` command.
 
 ###  Types of MIDI Data
 
   * Note Events - MIDI keyboards output note on/off events, pitch bend events, and aftertouch events. MIDI sequencer devices like the MIDI-enabled descendents of the Roland 808 give note on/off events as well, timed automatically. Many MIDI applications describe these events with english note names such as 'C2' or 'C3', denoting their position on a keyboard piano. TouchDesigner however deals only in index numbers. For example Note 60 may appear as C2 or C3, outside of TouchDesigner even though it represents the exact same MIDI event.
-
   * Controller Events - MIDI controller devices, like the Peavey slider box.
-
   * MCR box each output controller events, which are 0-127 values. Controller events can be used to control anything, and do not generally signify note on - note off events.
-
-  * Others event types - see the [MIDI In CHOP](https://docs.derivative.ca/MIDI_In_CHOP "MIDI In CHOP").
+  * Others event types - see the [MIDI In CHOP](../CHOPs/MIDI_In_CHOP.md "MIDI In CHOP").
 
 ##  Using MIDI With CHOPs
 
-To get MIDI events into CHOP channels, use a [MIDI In CHOP](https://docs.derivative.ca/MIDI_In_CHOP "MIDI In CHOP") or the [MIDI Device Mapper Dialog](https://docs.derivative.ca/MIDI_Device_Mapper_Dialog "MIDI Device Mapper Dialog") in conjunction with the [MIDI In Map CHOP](https://docs.derivative.ca/MIDI_In_Map_CHOP "MIDI In Map CHOP").
+To get MIDI events into CHOP channels, use a [MIDI In CHOP](../CHOPs/MIDI_In_CHOP.md "MIDI In CHOP") or the [MIDI Device Mapper Dialog](https://docs.derivative.ca/MIDI_Device_Mapper_Dialog "MIDI Device Mapper Dialog") in conjunction with the [MIDI In Map CHOP](../CHOPs/MIDI_In_Map_CHOP.md "MIDI In Map CHOP").
 
 **Using the MIDI In CHOP**
-  1. Create a [MIDI In CHOP](https://docs.derivative.ca/MIDI_In_CHOP "MIDI In CHOP").
+  1. Create a [MIDI In CHOP](../CHOPs/MIDI_In_CHOP.md "MIDI In CHOP").
   2. In the MIDI Source parameter menu, select the MIDI input device which is receiving the MIDI events. It should say Serial Port 2, SoundBlaster Card, In From MIDI Yoke:1, or something to that effect.
   3. On the MIDI In CHOP's Control parameter page, make sure the Controller Index covers the an appropriate range for the input device you are using.
   4. Now TouchDesigner is ready to receive MIDI events. Make sure TouchDesigner is playing forward. Turn on the MIDI In CHOP's node viewer, it will display the MIDI values in the CHOP channels which have been created.
@@ -35,7 +32,7 @@ To get MIDI events into CHOP channels, use a [MIDI In CHOP](https://docs.derivat
 **Using the MIDI In Map CHOP**
   1. Setup MIDI input devices in the [MIDI Device Mapper Dialog](https://docs.derivative.ca/MIDI_Device_Mapper_Dialog "MIDI Device Mapper Dialog").
   2. Map the MIDI in controller events to Sliders and Buttons in the MIDI Device Mapper.
-  3. Create a [MIDI In Map CHOP](https://docs.derivative.ca/MIDI_In_Map_CHOP "MIDI In Map CHOP").
+  3. Create a [MIDI In Map CHOP](../CHOPs/MIDI_In_Map_CHOP.md "MIDI In Map CHOP").
   4. In the MIDI In Map CHOP's parameters, scope the sliders and buttons you mapped in step 2.
   5. Now TouchDesigner is ready to receive MIDI events. Make sure TouchDesigner is playing forward. Turn on the MIDI In Map CHOP's node viewer, it will display the MIDI values in the CHOP channels which have been created.
 
@@ -115,7 +112,6 @@ There are a number of MIDI devices that are suitable for TouchDesigner. Naturall
 
 Any MIDI hardware like slider devices are good for setting things up, but because the sliders cannot be forced to a previous state, they become less useful to edit existing slider settings in a CHOP. However the Constant CHOP allows the editing of slider-data using relative motion of the sliders.
 
-
 ###  General Transducer Devices
 
 [www.infusionsystems.com Infusion Systems] make I-Cube, a set of transducers and output devices that are configurable as parts.
@@ -124,21 +120,20 @@ Any MIDI hardware like slider devices are good for setting things up, but becaus
 
 TouchDesigner can be used with virtually any MIDI keyboard to receive note events, pitch bend, velocity and aftertouch. TouchDesigner can also be used with MIDI sequencers.
 
-
 ##  See Also
 
   * [OSC](https://docs.derivative.ca/OSC "OSC")
   * [MIDI Topics](https://docs.derivative.ca/index.php?title=Category:MIDI&action=edit&redlink=1 "Category:MIDI \(page does not exist\)")
   * [Wikipedia on MIDI](http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface)
 
-TouchDesigner's original built-in Command scripting language prior to [Python](https://docs.derivative.ca/Python "Python").
+TouchDesigner's original built-in Command scripting language prior to [Python](../General/Python.md "Python").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
 A parameter in most CHOPs that restricts which channels of that CHOP will be affected. Normally all channels of a CHOP are affected by the operator. TOPs have Channel Mask, a similar feature.
 
-The term "Frame" is a measurement of time used (1) in the [Timeline](https://docs.derivative.ca/Timeline "Timeline"), (2) as a time-unit in CHOPs, and (3) as a time unit in movie files that are read into [TOPs](https://docs.derivative.ca/TOP "TOP") and written out from TOPs. The frame rate is the frames per second ([FPS](https://docs.derivative.ca/index.php?title=FPS&action=edit&redlink=1 "FPS \(page does not exist\)")).
+The term "Frame" is a measurement of time used (1) in the [Timeline](../Glossary/Timeline.md "Timeline"), (2) as a time-unit in CHOPs, and (3) as a time unit in movie files that are read into [TOPs](../TOPs/TOP.md "TOP") and written out from TOPs. The frame rate is the frames per second ([FPS](https://docs.derivative.ca/index.php?title=FPS&action=edit&redlink=1 "FPS \(page does not exist\)")).
 
-To re-compute the output data of the [Operators](https://docs.derivative.ca/Operator "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](https://docs.derivative.ca/Parameter "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](https://docs.derivative.ca/Script "Script") commands are run on the node. When the operator is a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](https://docs.derivative.ca/Dependency "Dependency") - the necessary operators in all [Networks](https://docs.derivative.ca/Network "Network"), contributing to a frame's total "cook time".
+To re-compute the output data of the [Operators](../General/Operator.md "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](../Glossary/Parameter.md "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](../Glossary/Script.md "Script") commands are run on the node. When the operator is a [Panel Component](../Glossary/Panel_Component.md "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](../Glossary/Dependency.md "Dependency") - the necessary operators in all [Networks](../Glossary/Network.md "Network"), contributing to a frame's total "cook time".
 
-In the [Animation component](https://docs.derivative.ca/Animation_COMP "Animation COMP") each keyframe specifies a channel's value at a specific time (or frame). A keyframe holds a value, slopes and accelerations, and an interpolation type. A channel's keyframes are used to interpolate and determine the values of all the samples of the channel.
+In the [Animation component](../Glossary/Animation_COMP.md "Animation COMP") each keyframe specifies a channel's value at a specific time (or frame). A keyframe holds a value, slopes and accelerations, and an interpolation type. A channel's keyframes are used to interpolate and determine the values of all the samples of the channel.

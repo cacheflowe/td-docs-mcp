@@ -25,7 +25,7 @@ Get or set the operating system clipboard text contents.
 
 `colors` → `Colors` **(Read Only)** :
 
-Access to the application [colors](https://docs.derivative.ca/Colors_Class "Colors Class").
+Access to the application [colors](Colors_Class.md "Colors Class").
 
 `dpiBiCubicFilter` → `bool` :
 
@@ -37,19 +37,19 @@ Get or set the master audio output volume. A value of 0 is no output, while a va
 
 `options` → `Options` **(Read Only)** :
 
-Access to the application [options](https://docs.derivative.ca/Options_Class "Options Class").
+Access to the application [options](Options_Class.md "Options Class").
 
 `panes` → `Panes` **(Read Only)** :
 
-Access to the set of all [panes](https://docs.derivative.ca/Panes_Class "Panes Class").
+Access to the set of all [panes](Panes_Class.md "Panes Class").
 
 `performMode` → `bool` :
 
-Get or set [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode"). Set to True to go into Perform Mode, False to go into [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode").
+Get or set [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode"). Set to True to go into Perform Mode, False to go into [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode").
 
 `preferences` → `Preferences` **(Read Only)** :
 
-Access to the application [preferences](https://docs.derivative.ca/Preferences_Class "Preferences Class"), which can also be access through the [Preferences Dialog](https://docs.derivative.ca/Dialogs:Preferences_Dialog "Dialogs:Preferences Dialog").
+Access to the application [preferences](Preferences_Class.md "Preferences Class"), which can also be access through the [Preferences Dialog](https://docs.derivative.ca/Dialogs:Preferences_Dialog "Dialogs:Preferences Dialog").
 
 `redrawMainWindow` → `bool` :
 
@@ -75,7 +75,7 @@ combines the other rollover members into one test, reporting the TD object under
 
 `lastChopChannelSelected` → `Channel` **(Read Only)** :
 
-Last [CHOP channel](https://docs.derivative.ca/Channel "Channel") selected via mouse.
+Last [CHOP channel](../Glossary/Channel.md "Channel") selected via mouse.
 
 `showPaletteBrowser` → `bool` :
 
@@ -91,7 +91,7 @@ ui.status = 'Operation Complete'
 
 `undo` → `Undo` **(Read Only)** :
 
-The [Undo](https://docs.derivative.ca/Undo_Class "Undo Class") object, which provides access to application undo functions.
+The [Undo](Undo_Class.md "Undo Class") object, which provides access to application undo functions.
 
 `windowWidth` → `int` **(Read Only)** :
 
@@ -167,7 +167,7 @@ Open a dialog box for loading or saving a file. Returns the filename selected or
   * load - (Keyword, Optional) If set to True, the dialog will be a Load dialog, otherwise it's a Save dialog.
   * start - (Keyword, Optional) If provided, specifies an initial folder location and/or filename selection.
   * fileTypes - (Keyword, Optional) If provided, specifies a list of file extensions that can be used as filters. Otherwise '*.*' is the only filter.
-  * asExpression - (Keyword, Optional) If set to true, the results are provided as an expression, suitable for a [Parameter](https://docs.derivative.ca/Par_Class "Par Class") expression or as input to an eval() call. [App Class](https://docs.derivative.ca/App_Class "App Class") member constants such as samplesFolder may be included in the result.
+  * asExpression - (Keyword, Optional) If set to true, the results are provided as an expression, suitable for a [Parameter](../SOPs/Par_Class.md "Par Class") expression or as input to an eval() call. [App Class](App_Class.md "App Class") member constants such as samplesFolder may be included in the result.
   * title (Keyword, Optional) If provided, will override the default window title.
 
 ```
@@ -182,7 +182,7 @@ if (path):
 Open a dialog box for selecting a folder. Returns the folder selected or None if the dialog is cancelled.
   * title - (Keyword, Optional) If provided, specifies the window title.
   * start - (Keyword, Optional) If provided, specifies an initial folder location and/or filename selection.
-  * asExpression - (Keyword, Optional) If set to true, the results are provided as an expression, suitable for a [Parameter](https://docs.derivative.ca/Par_Class "Par Class") expression or as input to an eval() call. [App Class](https://docs.derivative.ca/App_Class "App Class") member constants such as samplesFolder may be included in the result.
+  * asExpression - (Keyword, Optional) If set to true, the results are provided as an expression, suitable for a [Parameter](../SOPs/Par_Class.md "Par Class") expression or as input to an eval() call. [App Class](App_Class.md "App Class") member constants such as samplesFolder may be included in the result.
 
 ```
 a = ui.chooseFolder()
@@ -271,7 +271,7 @@ Open the Operator Snippets window.
 
 `openPaletteBrowser()`→ `None`:
 
-Open the [Palette](https://docs.derivative.ca/Palette "Palette").
+Open the [Palette](../Learn/Palette.md "Palette").
 
 `openPerformanceMonitor()`→ `None`:
 
@@ -287,11 +287,11 @@ Open the [Search Replace Dialog](https://docs.derivative.ca/Search_Replace_Dialo
 
 `openTextport()`→ `None`:
 
-Open the [Textport](https://docs.derivative.ca/Textport "Textport").
+Open the [Textport](../Glossary/Textport.md "Textport").
 
 `openVersion()`→ `None`:
 
-Open a dialog displaying current version information. See also: [App.version](https://docs.derivative.ca/App_Class "App Class")
+Open a dialog displaying current version information. See also: [App.version](App_Class.md "App Class")
 
 `openWindowPlacement()`→ `None`:
 
@@ -300,24 +300,24 @@ Open the [Window Placement Dialog](https://docs.derivative.ca/Window_Placement_D
 `findEditDAT(filename)`→ `DAT | None`:
 Given an external filename, finds the corresponding DAT thats update from this filename if any..
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](../Glossary/Pane.md "Pane") or [Viewer](../Glossary/Viewer.md "Viewer").
 
-Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"). Alternate with F1 and Esc.
+Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](../Glossary/Window_COMP.md "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"). Alternate with F1 and Esc.
 
 A ParGroup is a group of related parameters that you can set and get as a whole instead of its individual parameters, like ParGroup `t` is `tx ty tz`.
 
-A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](https://docs.derivative.ca/Panel_Component "Panel Component").
+A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](../Glossary/Panel_Component.md "Panel Component").
 
-A [CHOP](https://docs.derivative.ca/CHOP "CHOP") outputs one or more channels, where a channel is simply a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample")), representing motion, audio, etc. Channels are passed between CHOPs in TouchDesigner networks. Channels can be [Exported](https://docs.derivative.ca/Export "Export") to [Parameters](https://docs.derivative.ca/Parameter "Parameter").
+A [CHOP](../Glossary/CHOP.md "CHOP") outputs one or more channels, where a channel is simply a sequence of numbers ([Samples](../Glossary/Sample.md "Sample")), representing motion, audio, etc. Channels are passed between CHOPs in TouchDesigner networks. Channels can be [Exported](../Glossary/Export.md "Export") to [Parameters](../Glossary/Parameter.md "Parameter").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](../Glossary/Network_Path.md "Network Path").
 
-A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), or (2) a user-created [Panel](https://docs.derivative.ca/Panel "Panel") inside a [Window Component](https://docs.derivative.ca/Window_COMP "Window COMP"). The user-created windows can span [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") borderless, or be floating windows with borders, or popups.
+A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"), or (2) a user-created [Panel](../Glossary/Panel.md "Panel") inside a [Window Component](../Glossary/Window_COMP.md "Window COMP"). The user-created windows can span [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors") borderless, or be floating windows with borders, or popups.
 
-[OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") is a set of 700+ live examples of TouchDesigner operators. You can access snippets via the Help menu, or by right-clicking on network operators, or r-clicking on OP Create dialog items.
+[OP Snippets](../Learn/OP_Snippets.md "OP Snippets") is a set of 700+ live examples of TouchDesigner operators. You can access snippets via the Help menu, or by right-clicking on network operators, or r-clicking on OP Create dialog items.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.

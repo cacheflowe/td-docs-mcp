@@ -12,27 +12,23 @@ The Art-Net DAT polls and lists all devices on the network.
 
 **Tip** : If you are having trouble inspecting the Art-Net packets that are or aren’t being read by a device, use the [Wireshark](https://www.wireshark.org/) utility to capture a network stream for comparison.
 
-See [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [DMX In CHOP](https://docs.derivative.ca/DMX_In_CHOP "DMX In CHOP"), [DMX Out CHOP](https://docs.derivative.ca/DMX_Out_CHOP "DMX Out CHOP").
+See [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [DMX In CHOP](../CHOPs/DMX_In_CHOP.md "DMX In CHOP"), [DMX Out CHOP](../CHOPs/DMX_Out_CHOP.md "DMX Out CHOP").
 
-[artnetDAT_Class](https://docs.derivative.ca/ArtnetDAT_Class "ArtnetDAT Class")
+[artnetDAT_Class](ArtnetDAT_Class.md "ArtnetDAT Class")
 
 ## Parameters - ArtNet Page
-
-- Callbacks DAT `callbacks` - Runs this script when polling the network for devices. See [artnetDAT_Class](https://docs.derivative.ca/ArtnetDAT_Class "ArtnetDAT Class") for usage.
+- Callbacks DAT `callbacks` - Runs this script when polling the network for devices. See [artnetDAT_Class](ArtnetDAT_Class.md "ArtnetDAT Class") for usage.
 - Columns `columns` - Select which columns are included in the table. Click the drop menu to the right to see all that are available.
 - Poll Devices `poll` - Poll the network for devices.
 
 ## Parameters - Common Page
-
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
-
 - Edit/View Extension `extension` - ⊞ - Select the file extension this DAT should expose to external editors.
   * dat `dat` - various common file extensions.
   * From Language `language` - pick extension from DATs script language.
   * Custom Extension `custom` - Specify a custom extension.
-
 - Custom Extension `customext` - Specifiy the custom extension.
 - Word Wrap `wordwrap` - ⊞ - Enable Word Wrap for Node Display.
   * Input `input` - The DAT uses the inputs setting.
@@ -41,14 +37,13 @@ See [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net"), [DMX In CHOP](https
 
 ## Info CHOP Channels
 
-Extra Information for the Art-Net DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Art-Net DAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common DAT Info Channels
 
   * num_rows - Number of rows in this DAT.
-
   * num_cols - Number of columns in this DAT.
 
 ###
@@ -56,19 +51,11 @@ Extra Information for the Art-Net DAT can be accessed via an [Info CHOP](https:/
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

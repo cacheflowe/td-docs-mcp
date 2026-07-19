@@ -10,11 +10,10 @@ Description
 
 The Performance Monitor dialog (Dialogs -> Performance Monitor) allows you to monitor and diagnose which operators consume the most processing time, and what order operations are done, so you can optimize your networks. You can do this in a number of ways:
   * **Performance Dialog** - The Cook time, Cook counter, Viewport display times, User Interface compute times, and more can be logged in the Performance Monitor dialog. Click the Analyze button to get a snapshot of what is happening in your synth.
-
   * **Each OP's Info Pop-up** - The Cook time and Cook counter of each OP can be displayed in the Info pop-up of each OP. Middle-mouse click on the icon of any operator (Alt-right-click if you have no middle-mouse button).
-  * A more graphical multi-frame analysis of CPU and CPU time and memory use is **[probe](https://docs.derivative.ca/Palette:probe "Palette:probe")** in the [Palette](https://docs.derivative.ca/Palette "Palette").
+  * A more graphical multi-frame analysis of CPU and CPU time and memory use is **[probe](https://docs.derivative.ca/Palette:probe "Palette:probe")** in the [Palette](../Learn/Palette.md "Palette").
 
-See also [Optimize](https://docs.derivative.ca/Optimize "Optimize").
+See also [Optimize](../Learn/Optimize.md "Optimize").
 [![PerformanceDialog.jpg](https://docs.derivative.ca/images/4/44/PerformanceDialog.jpg)](https://docs.derivative.ca/File:PerformanceDialog.jpg)
 
 ###
@@ -131,9 +130,9 @@ When looking at the cook times for nodes like SOPs, DATs and CHOPs, what you see
 
 COMPs generally have a very small cook time, so there is no way to speed up their cooking, other than avoiding the cook altogether.
 
-TOPs are where things get tricky. The actual work for most TOPs is executed on the GPU, and is not shown in the Performance Monitor. An exception to this are TOPs that upload or download images from the GPU, like Touch In, Movie File In, Touch Out, Movie Out, etc. For the majority of TOPs, their cook time is simply the time it took the TOP to tell the GPU what work it wants it to do (e.g. it tells the GPU to execute the Displace operation on input image X and input image Y). The TOP will finish cooking long before the GPU has finished executing its task. This is called asynchronous execution. Currently there is no way to find out exactly how much time it takes the GPU to execute an operation. Consequently the Performance Monitor is currently not particularly useful to help optimize GPU usage. To optimize GPU usage refer to the [Optimize](https://docs.derivative.ca/Optimize "Optimize") article.
+TOPs are where things get tricky. The actual work for most TOPs is executed on the GPU, and is not shown in the Performance Monitor. An exception to this are TOPs that upload or download images from the GPU, like Touch In, Movie File In, Touch Out, Movie Out, etc. For the majority of TOPs, their cook time is simply the time it took the TOP to tell the GPU what work it wants it to do (e.g. it tells the GPU to execute the Displace operation on input image X and input image Y). The TOP will finish cooking long before the GPU has finished executing its task. This is called asynchronous execution. Currently there is no way to find out exactly how much time it takes the GPU to execute an operation. Consequently the Performance Monitor is currently not particularly useful to help optimize GPU usage. To optimize GPU usage refer to the [Optimize](../Learn/Optimize.md "Optimize") article.
 
-After reading the [Cook](https://docs.derivative.ca/Cook "Cook") article, you can further figure out 'why' a node is cooking by looking the graph and taking note of which OP's bars appear within which other OP's bars. In a batch of nodes whose bars are within each other, the nodes that are higher in the list are requesting the nodes lower in the list to cook. The nodes that are lower in the list are the reason a node above it cooks.
+After reading the [Cook](Cook.md "Cook") article, you can further figure out 'why' a node is cooking by looking the graph and taking note of which OP's bars appear within which other OP's bars. In a batch of nodes whose bars are within each other, the nodes that are higher in the list are requesting the nodes lower in the list to cook. The nodes that are lower in the list are the reason a node above it cooks.
 
 ###
 
@@ -153,28 +152,28 @@ A common question is what is the 'Draw All TouchDesigner Windows' entry. This en
 
 ## See Also
 
-  * [Optimize](https://docs.derivative.ca/Optimize "Optimize")
+  * [Optimize](../Learn/Optimize.md "Optimize")
 
 The tool built-in to TouchDesigner that analyzes and displays what TouchDesigner is doing as it generates the output images, audio and data.
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](Pane.md "Pane") or [Viewer](Viewer.md "Viewer").
 
-To re-compute the output data of the [Operators](https://docs.derivative.ca/Operator "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](https://docs.derivative.ca/Parameter "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](https://docs.derivative.ca/Script "Script") commands are run on the node. When the operator is a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](https://docs.derivative.ca/Dependency "Dependency") - the necessary operators in all [Networks](https://docs.derivative.ca/Network "Network"), contributing to a frame's total "cook time".
+To re-compute the output data of the [Operators](../General/Operator.md "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](Parameter.md "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](Script.md "Script") commands are run on the node. When the operator is a [Panel Component](Panel_Component.md "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](Dependency.md "Dependency") - the necessary operators in all [Networks](Network.md "Network"), contributing to a frame's total "cook time".
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](Node.md "Node").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-Operators that need 1 or more inputs are called Filters in TouchDesigner, like a Math CHOP. See [Generator](https://docs.derivative.ca/Generator "Generator").
+Operators that need 1 or more inputs are called Filters in TouchDesigner, like a Math CHOP. See [Generator](Generator.md "Generator").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](Operator_Family.md "Operator Family") which operate on [Channels](Channel.md "Channel") (a sequence of numbers ([Samples](Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](https://docs.derivative.ca/CHOP_Viewer "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](https://docs.derivative.ca/Parameter "Parameter").
+Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](CHOP_Viewer.md "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](Parameter.md "Parameter").
 
-The sub-[Family](https://docs.derivative.ca/Operator_Family "Operator Family") of [Component](https://docs.derivative.ca/Component "Component") types that are used to define and render 3D scenes. A [Geometry Component](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") is an Object that contains the 3D shapes to render. A [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP") are other Object types. Separately, "Objects" also refers to Python objects.
+The sub-[Family](Operator_Family.md "Operator Family") of [Component](Component.md "Component") types that are used to define and render 3D scenes. A [Geometry Component](Geometry_COMP.md "Geometry COMP") is an Object that contains the 3D shapes to render. A [Camera COMP](Camera_COMP.md "Camera COMP") and [Light COMP](Light_COMP.md "Light COMP") are other Object types. Separately, "Objects" also refers to Python objects.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.

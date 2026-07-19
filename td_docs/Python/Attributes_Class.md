@@ -6,19 +6,19 @@ title: Attributes_Class
 
 # Attributes Class
 
-An Attributes object describes a set of [Prim](https://docs.derivative.ca/Prim_Class "Prim Class") Class, [Point](https://docs.derivative.ca/Point_Class "Point Class") Class, or [Vertex Class](https://docs.derivative.ca/Vertex_Class "Vertex Class") [attributes](https://docs.derivative.ca/Attribute "Attribute"), contained within a [SOP](https://docs.derivative.ca/SOP_Class "SOP Class").
+An Attributes object describes a set of [Prim](Prim_Class.md "Prim Class") Class, [Point](../SOPs/Point_Class.md "Point Class") Class, or [Vertex Class](Vertex_Class.md "Vertex Class") [attributes](../Glossary/Attribute.md "Attribute"), contained within a [SOP](../SOPs/SOP_Class.md "SOP Class") or a [POP](POP_Class.md "POP Class").
 
 ## Members
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 ## Methods
 
 `[name]`→ `Attribute`:
 
-[Attributes](https://docs.derivative.ca/Attribute_Class "Attribute Class") can be accessed using the [] subscript operator.
+[Attributes](Attribute_Class.md "Attribute Class") can be accessed using the [] subscript operator.
   * name - The name of the attribute.
 
 ```
@@ -28,7 +28,7 @@ normals = attribs['N']
 
 `create(name, default)`→ `Attribute`:
 
-Create a new [Attribute](https://docs.derivative.ca/Attribute_Class "Attribute Class").
+Create a new [Attribute](Attribute_Class.md "Attribute Class") for [SOP](../SOPs/SOP_Class.md "SOP Class").
   * name - The name of the attribute.
   * default - (Optional) Specify default values for custom attributes. For standard attributes, default values are implied.
 
@@ -48,10 +48,12 @@ n = scriptOP.vertexAttribs.create('custom1', (0.0, 0.0) )
 n = scriptOP.primAttribs.create('custom2', 1 )
 ```
 
-Attributes are data associated with [POP](https://docs.derivative.ca/POP "POP") geometry. [Points](https://docs.derivative.ca/Point "Point"), [Vertex (Vertices)](https://docs.derivative.ca/Vertex "Vertex") and [Primitives](https://docs.derivative.ca/Primitive "Primitive") (polygons, lines, etc) can have any number of attributes.
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Attributes make up the numeric data blocks of [POPs](../POPs/POP.md "POP"). Each POPs has three blocks of data: a Point List which includes the `P` point Position attribute, a Primitive List and a Vertex List, and each are made of any number of attributes.
 
-A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+shared points, normals on shared points, unique points, recalculate.
 
-A surface type in [SOPs](https://docs.derivative.ca/SOP "SOP") that includes polygon, curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like sphere, tube and metaball. [Points](https://docs.derivative.ca/Point "Point") and Primitives are part of the [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), which is a part of a [SOP](https://docs.derivative.ca/SOP "SOP").
+A sequence of vertices form a [Polygon](../Glossary/Polygon.md "Polygon") in a [SOP](../SOPs/SOP.md "SOP"). Each vertex is an integer index into the [Point List](../Glossary/Point_List.md "Point List"), and each [Point](../Glossary/Point.md "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+
+A surface type in [POPs](../POPs/POP.md "POP") and [SOPs](../SOPs/SOP.md "SOP") that includes polygon, curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like sphere, tube and metaball. [Points](../Glossary/Point.md "Point") and Primitives are part of the [Geometry Detail](../Glossary/Geometry_Detail.md "Geometry Detail"), which is a part of a [SOP](../SOPs/SOP.md "SOP").

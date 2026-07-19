@@ -6,13 +6,13 @@ title: Pane_Class
 
 # Pane Class
 
-The Pane class describes an instance of a [pane](https://docs.derivative.ca/Pane "Pane") interface. It can be accessed through the [ui.panes](https://docs.derivative.ca/Panes_Class "Panes Class") object. It is the parent class of the [NetworkEditor Class](https://docs.derivative.ca/NetworkEditor_Class "NetworkEditor Class").
+The Pane class describes an instance of a [pane](../Glossary/Pane.md "Pane") interface. It can be accessed through the [ui.panes](Panes_Class.md "Panes Class") object. It is the parent class of the [NetworkEditor Class](NetworkEditor_Class.md "NetworkEditor Class").
 
 ## Members
 
 `owner` → `COMP` :
 
-Get or set the [component](https://docs.derivative.ca/COMP_Class "COMP Class") this pane points to.
+Get or set the [component](COMP_Class.md "COMP Class") this pane points to.
 
 `id` → `int` **(Read Only)** :
 
@@ -104,6 +104,6 @@ Split the top portion of the pane into a new pane.
 
 Detach the pane into a floating window. Returns True if successful.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-A work area in TouchDesigner's layout that includes the [Network Editor](https://docs.derivative.ca/Network_Editor "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.
+A work area in TouchDesigner's layout that includes the [Network Editor](../Glossary/Network_Editor.md "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.

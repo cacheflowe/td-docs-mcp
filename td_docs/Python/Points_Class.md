@@ -6,13 +6,13 @@ title: Points_Class
 
 # Points Class
 
-The Points class describes the set of [point objects](https://docs.derivative.ca/Point_Class "Point Class") owned by one [SOP](https://docs.derivative.ca/SOP_Class "SOP Class").
+The Points class describes the set of [point objects](../SOPs/Point_Class.md "Point Class") owned by one [SOP](../SOPs/SOP_Class.md "SOP Class").
 
 ## Members
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 ## Methods
 

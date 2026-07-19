@@ -12,11 +12,11 @@ title: Palette:kantanMapper
 
 Kantan Mapper is an interface overlaid on-top of an actual projection to enable the drawing, creation and placement of various shapes onto real life objects and the possibility to assign TOP Image Nodes to these shapes and masks.
 
-See also [Projection Mapping](https://docs.derivative.ca/Projection_Mapping "Projection Mapping"), [Vioso](https://docs.derivative.ca/Vioso "Vioso"), [Scalable Displays](https://docs.derivative.ca/Scalable_Display_TOP "Scalable Display TOP"), [camSchnappr](https://docs.derivative.ca/Palette:camSchnappr "Palette:camSchnappr"), [projectorBlend](https://docs.derivative.ca/Palette:projectorBlend "Palette:projectorBlend").
+See also [Projection Mapping](../Learn/Projection_Mapping.md "Projection Mapping"), [Vioso](Vioso.md "Vioso"), [Scalable Displays](../TOPs/Scalable_Display_TOP.md "Scalable Display TOP"), [camSchnappr](Palette_camSchnappr.md "Palette:camSchnappr"), [projectorBlend](Palette_projectorBlend.md "Palette:projectorBlend").
 
 ##  Getting Started
 
-Kantan Mapper 2 is located in the Palette in 'Mapping' folder. To begin, open the [Palette](https://docs.derivative.ca/Palette "Palette") and drag `kantanMapper` from Palette>Mapping onto your network pane.
+Kantan Mapper 2 is located in the Palette in 'Mapping' folder. To begin, open the [Palette](../Learn/Palette.md "Palette") and drag `kantanMapper` from Palette>Mapping onto your network pane.
 
 ##  Parameters - Kantan Page
 
@@ -70,7 +70,7 @@ With a shape selected, click the Edit Texture Button to bring up the Texture Edi
 
 Resolution - Specify the output Resolution of the full Canvas. This should match the resolution of the projector(s) used for this project.
 
-Window Options - Will open the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") parameters for the output screen.
+Window Options - Will open the [Window COMP](../Glossary/Window_COMP.md "Window COMP") parameters for the output screen.
 
 Toogle Output - Will open/close the output window as set-up in the Window Options.
 
@@ -129,7 +129,7 @@ Orientation - Change the orientation of the assigned texture or flip it.
 
 Edit Texture - Open the Texture Editor.
 
-Softedge - Apply softedge to the shape. While softedge on the quad is done via a basic shader, the softedge on the freeform is a bit more of an experiment using the [Extrude SOP](https://docs.derivative.ca/Extrude_SOP "Extrude SOP") and [Skin SOP](https://docs.derivative.ca/Skin_SOP "Skin SOP"). To see it's inner workings, navigate to .../kantanMapper/project/allShapes/item*.
+Softedge - Apply softedge to the shape. While softedge on the quad is done via a basic shader, the softedge on the freeform is a bit more of an experiment using the [Extrude SOP](../SOPs/Extrude_SOP.md "Extrude SOP") and [Skin SOP](../SOPs/Skin_SOP.md "Skin SOP"). To see it's inner workings, navigate to .../kantanMapper/project/allShapes/item*.
 
 Lock Handle - Locks and unlocks the gridwarp handles of the quad and the key handles of the freeform shape.
 

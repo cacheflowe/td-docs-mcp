@@ -6,7 +6,7 @@ title: License_Class
 
 # License Class
 
-The License class describes a single instance of an installed license. They can be accessed from the [licenses](https://docs.derivative.ca/Licenses_Class "Licenses Class") object.
+The License class describes a single instance of an installed license. They can be accessed from the [licenses](Licenses_Class.md "Licenses Class") object.
 
 ## Members
 
@@ -44,7 +44,7 @@ The system code associated with this license.
 
 `type` → `str` **(Read Only)** :
 
-The license type, e.g. some products being 'Pro', 'Non-Commercial', 'Commercial'. See also app.product in [App Class](https://docs.derivative.ca/App_Class "App Class")
+The license type, e.g. some products being 'Pro', 'Non-Commercial', 'Commercial'. See also app.product in [App Class](App_Class.md "App Class")
 
 `updateExpiryDate` → `tuple[int, int, int]` **(Read Only)** :
 

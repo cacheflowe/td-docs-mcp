@@ -8,22 +8,22 @@ title: Meta_VR
 
 ##  Oculus Rift and Meta Quest
 
-TouchDesigner supports several VR headsets from Meta including the Meta Quest and Oculus Rift through the [Oculus Rift TOP](https://docs.derivative.ca/Oculus_Rift_TOP "Oculus Rift TOP") and [Oculus Rift CHOP](https://docs.derivative.ca/Oculus_Rift_CHOP "Oculus Rift CHOP").
+TouchDesigner supports several VR headsets from Meta including the Meta Quest and Oculus Rift through the [Oculus Rift TOP](../TOPs/Oculus_Rift_TOP.md "Oculus Rift TOP") and [Oculus Rift CHOP](../CHOPs/Oculus_Rift_CHOP.md "Oculus Rift CHOP").
 
 Download three demos files: [File:OculusRiftCV1Demos.zip](https://docs.derivative.ca/File:OculusRiftCV1Demos.zip "File:OculusRiftCV1Demos.zip")
 [![Oculus cv1.jpg](https://docs.derivative.ca/images/e/ea/Oculus_cv1.jpg)](https://docs.derivative.ca/File:Oculus_cv1.jpg)
 
 ###  Meta VR support in TouchDesigner
 
-TouchDesigner has built-in support for Meta headsets through the [Oculus Rift TOP](https://docs.derivative.ca/Oculus_Rift_TOP "Oculus Rift TOP") and [Oculus Rift CHOP](https://docs.derivative.ca/Oculus_Rift_CHOP "Oculus Rift CHOP"). Both operators have a **Device** parameter to support using multiple devices connected to one machine.
+TouchDesigner has built-in support for Meta headsets through the [Oculus Rift TOP](../TOPs/Oculus_Rift_TOP.md "Oculus Rift TOP") and [Oculus Rift CHOP](../CHOPs/Oculus_Rift_CHOP.md "Oculus Rift CHOP"). Both operators have a **Device** parameter to support using multiple devices connected to one machine.
 
 **Requirements**
   * [VR hardware](https://www.meta.com/quest/)
   * Setup headset device: [Setup Headset](https://www.meta.com/quest/setup/)
 
 **Ways to interface with Meta headsets in TouchDesigner**
-  * [Oculus Rift CHOP](https://docs.derivative.ca/Oculus_Rift_CHOP "Oculus Rift CHOP") - Outputs several sets of channels such as orientation, left and right eye camera positions, acceleration and left and right eye projection matrices.
-  * [Oculus Rift TOP](https://docs.derivative.ca/Oculus_Rift_TOP "Oculus Rift TOP") - Outputs the left and right images to the headset device.
+  * [Oculus Rift CHOP](../CHOPs/Oculus_Rift_CHOP.md "Oculus Rift CHOP") - Outputs several sets of channels such as orientation, left and right eye camera positions, acceleration and left and right eye projection matrices.
+  * [Oculus Rift TOP](../TOPs/Oculus_Rift_TOP.md "Oculus Rift TOP") - Outputs the left and right images to the headset device.
 
 ###  Getting Started
 
@@ -39,21 +39,21 @@ Most desktop monitors run at 60hz, but Meta headsets may run at a different refr
 
 ###  Oculus Rift CHOP
 
-The [Oculus Rift CHOP](https://docs.derivative.ca/Oculus_Rift_CHOP "Oculus Rift CHOP") provides two main sets of data. Each eye's camera render position via a transform matrix as 16 CHOP channels. The other set of data is each eye's projection matrix also as 16 CHOP channels. These two matrices can be used directly in the Camera COMP using the CHOP/DAT Matrix parameters for the Pre-XForm and Projection Matrix.
+The [Oculus Rift CHOP](../CHOPs/Oculus_Rift_CHOP.md "Oculus Rift CHOP") provides two main sets of data. Each eye's camera render position via a transform matrix as 16 CHOP channels. The other set of data is each eye's projection matrix also as 16 CHOP channels. These two matrices can be used directly in the Camera COMP using the CHOP/DAT Matrix parameters for the Pre-XForm and Projection Matrix.
 
 ###  Tips for Working with Meta headsets
 
   * In [this video](https://youtu.be/N9GoD_1FZ5I?t=7470) Markus Heckmann walks through basic VR setup for Oculus including creating a scene, outputting to Oculus, and using 3D audio. Check the comments for a list of timestamps.
   * For additional support and troubleshooting refer to the [Meta Community forum](https://communityforums.atmeta.com/).
 
-A [Link](https://docs.derivative.ca/Link "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A [Link](../Glossary/Link.md "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
-A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](https://docs.derivative.ca/Export "Export"), node [Paths](https://docs.derivative.ca/Network_Path "Network Path") in parameters, and [expressions](https://docs.derivative.ca/Expression "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](https://docs.derivative.ca/Wire "Wire") that connects nodes in the same [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](../Glossary/Export.md "Export"), node [Paths](../Glossary/Network_Path.md "Network Path") in parameters, and [expressions](../Glossary/Expression.md "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](../Glossary/Wire.md "Wire") that connects nodes in the same [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
-A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), or (2) a user-created [Panel](https://docs.derivative.ca/Panel "Panel") inside a [Window Component](https://docs.derivative.ca/Window_COMP "Window COMP"). The user-created windows can span [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") borderless, or be floating windows with borders, or popups.
+A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"), or (2) a user-created [Panel](../Glossary/Panel.md "Panel") inside a [Window Component](../Glossary/Window_COMP.md "Window COMP"). The user-created windows can span [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors") borderless, or be floating windows with borders, or popups.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.

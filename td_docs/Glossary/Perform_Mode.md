@@ -6,29 +6,29 @@ title: Perform_Mode
 
 # Perform Mode
 
-Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"). The function key F1 and the Esc key alternate between the two modes. See Edit -> Window Placement and `/perform`.
+Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](Window_COMP.md "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](Designer_Mode.md "Designer Mode"). The function key F1 and the Esc key alternate between the two modes. See Edit -> Window Placement and `/perform`.
 
 **Tip** : Pause/unpause the timeline using Shift-Spacebar in Perform Mode and in TouchPlayer.
 
-See also [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP"), [TouchPlayer](https://docs.derivative.ca/TouchPlayer "TouchPlayer").
+See also [Window COMP](Window_COMP.md "Window COMP"), [TouchPlayer](TouchPlayer.md "TouchPlayer").
 
 ##  Using Perform Mode
 
 By default, the Window COMP `/perform` is set up in Edit - Window Placement to render in Perform Mode.
 
-**Enter Perform Mode** - click the [![PerformButton.png](https://docs.derivative.ca/images/thumb/d/d8/PerformButton.png/20px-PerformButton.png)](https://docs.derivative.ca/File:PerformButton.png) button on the left side of the [Layout](https://docs.derivative.ca/Layout "Layout") bar or use the F1 function key to enter Perform Mode. You will now only be able to interact with the window specified in the Window COMP.
+**Enter Perform Mode** - click the [![PerformButton.png](https://docs.derivative.ca/images/thumb/d/d8/PerformButton.png/20px-PerformButton.png)](https://docs.derivative.ca/File:PerformButton.png) button on the left side of the [Layout](Layout.md "Layout") bar or use the F1 function key to enter Perform Mode. You will now only be able to interact with the window specified in the Window COMP.
 
 **Exit Perform Mode** - press the **Esc** ape key while your cursor is over perform window to leave Perform mode and go back to the full TouchDesigner network editing interface. **Tip** : You may need to press **Shift-Esc** if the Window COMP has the parameter 'Close on Escape Key' turned off.
 
 ##  Configuration Options
 
-In the [Window Placement Dialog](https://docs.derivative.ca/Window_Placement_Dialog "Window Placement Dialog") you can view all [Window COMPs](https://docs.derivative.ca/Window_COMP "Window COMP") in your project and configure them. The first column in the list, called **Perform Window**, lets you set which Window Component will be used by default for Perform Mode. This controls which will open when using the UI Perform Mode button or pressing F1.
+In the [Window Placement Dialog](https://docs.derivative.ca/Window_Placement_Dialog "Window Placement Dialog") you can view all [Window COMPs](Window_COMP.md "Window COMP") in your project and configure them. The first column in the list, called **Perform Window**, lets you set which Window Component will be used by default for Perform Mode. This controls which will open when using the UI Perform Mode button or pressing F1.
 
-The settings (size, location, behavior) for the window which opens are all set in [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP")'s parameters.
+The settings (size, location, behavior) for the window which opens are all set in [Window COMP](Window_COMP.md "Window COMP")'s parameters.
 
 ##  Startup Options
 
-A default TouchDesigner starts in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), which is where you edit your [network](https://docs.derivative.ca/Network "Network"), [nodes](https://docs.derivative.ca/Node "Node") and [parameters](https://docs.derivative.ca/Parameter "Parameter").
+A default TouchDesigner starts in [Designer Mode](Designer_Mode.md "Designer Mode"), which is where you edit your [network](Network.md "Network"), [nodes](Node.md "Node") and [parameters](Parameter.md "Parameter").
 
 In the [Window Placement Dialog](https://docs.derivative.ca/Window_Placement_Dialog "Window Placement Dialog"), you can turn on "Start in Perform Mode" to force TouchDesigner to start in Perform Mode for this project. After changing this setting, save the project file and on restart the project will open directly into Perform Mode.
 [![StartInPerformMode.png](https://docs.derivative.ca/images/thumb/c/c7/StartInPerformMode.png/400px-StartInPerformMode.png)](https://docs.derivative.ca/File:StartInPerformMode.png)
@@ -42,21 +42,21 @@ You can tell that you are in this mode because if you alt-tab or switch windows,
 
 ##  Tips
 
-[TouchPlayer](https://docs.derivative.ca/TouchPlayer "TouchPlayer") runs exclusively in Perform Mode. Your project's perform mode settings will determine how it runs in TouchPlayer.
+[TouchPlayer](TouchPlayer.md "TouchPlayer") runs exclusively in Perform Mode. Your project's perform mode settings will determine how it runs in TouchPlayer.
 
-If the project file has [Privacy](https://docs.derivative.ca/Privacy "Privacy") option is set, you cannot exit Perform mode back into Designer Mode.
+If the project file has [Privacy](Privacy.md "Privacy") option is set, you cannot exit Perform mode back into Designer Mode.
 
-You can also enter Perform Mode using python: `ui.performMode = True`. See [UI_Class](https://docs.derivative.ca/UI_Class "UI Class").
+You can also enter Perform Mode using python: `ui.performMode = True`. See [UI_Class](../Python/UI_Class.md "UI Class").
 
-See also [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), [Window Placement](https://docs.derivative.ca/Window_Placement_Dialog "Window Placement Dialog") and [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP").
+See also [Designer Mode](Designer_Mode.md "Designer Mode"), [Window Placement](https://docs.derivative.ca/Window_Placement_Dialog "Window Placement Dialog") and [Window COMP](Window_COMP.md "Window COMP").
 
-Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"). Alternate with F1 and Esc.
+Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](Window_COMP.md "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](Designer_Mode.md "Designer Mode"). Alternate with F1 and Esc.
 
-A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), or (2) a user-created [Panel](https://docs.derivative.ca/Panel "Panel") inside a [Window Component](https://docs.derivative.ca/Window_COMP "Window COMP"). The user-created windows can span [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") borderless, or be floating windows with borders, or popups.
+A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](Designer_Mode.md "Designer Mode"), or (2) a user-created [Panel](Panel.md "Panel") inside a [Window Component](Window_COMP.md "Window COMP"). The user-created windows can span [Multiple Monitors](Multiple_Monitors.md "Multiple Monitors") borderless, or be floating windows with borders, or popups.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 

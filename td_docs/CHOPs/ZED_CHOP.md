@@ -40,16 +40,15 @@ When Body 2D is enabled `bbox2d:[xywh]` channels indicate the bottom left (x,y) 
 
 When Body 3D is enabled both the bounding box `bbox3d` and head bounding box `headbbox3d` are provided.
 
-**NOTE:** This CHOP works with the [Stereolabs ZED](https://www.stereolabs.com/zed/) hardware. For more information and to know what ZED SDK to install refer to the [ZED](https://docs.derivative.ca/ZED "ZED") article.
+**NOTE:** This CHOP works with the [Stereolabs ZED](https://www.stereolabs.com/zed/) hardware. For more information and to know what ZED SDK to install refer to the [ZED](../Interoperability/ZED.md "ZED") article.
 
-See also [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED POP](https://docs.derivative.ca/ZED_POP "ZED POP") and [ZED SOP](https://docs.derivative.ca/ZED_SOP "ZED SOP").
+See also [ZED TOP](../TOPs/ZED_TOP.md "ZED TOP"), [ZED POP](../POPs/ZED_POP.md "ZED POP") and [ZED SOP](../SOPs/ZED_SOP.md "ZED SOP").
 
-[zedCHOP_Class](https://docs.derivative.ca/ZedCHOP_Class "ZedCHOP Class")
+[zedCHOP_Class](ZED_CHOP_Class.md "ZedCHOP Class")
 
 ## Parameters - ZED Page
-
 - Active `active` - When 'On' data is captured from the ZED camera.
-- ZED TOP `zedtop` - The name of the primary [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP") that is configuring the camera. The primary TOP controls which camera the CHOP receives data from.
+- ZED TOP `zedtop` - The name of the primary [ZED TOP](../TOPs/ZED_TOP.md "ZED TOP") that is configuring the camera. The primary TOP controls which camera the CHOP receives data from.
 - Camera Transform `cameratransform` - Enables transformation, which returns the position and rotation of the camera.
 - Camera Transform `resetcameratransform` - Zeros out the current camera position, effectively makes the current position the new origin.
 - Plane Orientation `planeorientation` - Enables plane at point, which returns the position of the plane corresponding the UV coordinate.
@@ -58,7 +57,6 @@ See also [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED POP](http
 - Plane Reference Frame `planereferenceframe` - ⊞ - Controls if the panel coordinates will be given relative to the camera or the world.
   * World `world` - Plane position outputs are relative to the initial position of the camera.
   * Camera `camera` - Plane position outputs are relative to the previous position of the camera.
-
 - Plane Point U `planepointu` - Sets the U coordinate of the point in the image to extract plane position.
 - Plane Point V `planepointv` - Sets the V coordinate of the point in the image to extract plane position.
 - Plane Position `planeposition` - Returns `tx`, `ty`, and `tz` position channels of the center of the plane.
@@ -69,53 +67,43 @@ See also [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED POP](http
   * Off `off` - Body Tracking is disabled.
   * Skeleton - 18 Joints `skeleton18` - Tracks an 18 joint skeleton as described in [this article](https://www.stereolabs.com/docs/body-tracking/).
   * Skeleton - 34 Joints `skeleton34` - Tracks an 34 joint skeleton as described in [this article](https://www.stereolabs.com/docs/body-tracking/). The positions and rotations are relative to the parent joints, as described in that article, where the 0 joint is the 'root' joint.
-
 - Max Bodies `maxbodies` - The maximum number of bodies that will be tracked.
 - Body 3D `body3d` - Enable to output 3D positions. Rotations will be included if the Joint Mode is set to 'Relative'.
 - Joint Mode `jointmode` - ⊞ - Controls if the joint values are given in absolute in scene or relative to each other.
   * Absolute Position `absolute` - Absolute XYZ positions of each in space, given in meters.
   * Relative, with Orientation `relative` - 3D skeleton positions and rotations in heriachical terms, each relative to a parent joint.
-
 - Body 2D `body2d` - 2D normalized UV coordinates for each joint, giving their position within the image.
 - Aspect Correct UVs `aspectcorrectuv` - Corrects the UV coordinate using the aspect ratio. For a 2x1 aspect ratio, a normalized coordinate of (0.25, 0.25) will cover a quarter of the width and an eighth of the height, not a quarter of the height. This mode is useful when performing orthographic rendering or using the Fraction Aspect unit within TOPs.
 - Bounding Boxes `boundingboxes` - Enable bounding boxes. Head bounding box is only enabled when Body 3D is enabled.
 
 ## Parameters - Common Page
-
-- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
+- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](../Glossary/Time_Slicing.md "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
   * Resample At First Input's Rate `first` - Use rate of first input to resample others.
   * Resample At Maximum Rate `max` - Resample to the highest sample rate.
   * Resample At Minimum Rate `min` - Resample to the lowest sample rate.
   * Error If Rates Differ `err` - Doesn't accept conflicting sample rates.
-
-- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](https://docs.derivative.ca/Export "Export") article for more information.
+- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](../Glossary/Export.md "Export") article for more information.
   * DAT Table by Index `datindex` - Uses the docked DAT table and references the channel via the index of the channel in the CHOP.
   * DAT Table by Name `datname` - Uses the docked DAT table and references the channel via the name of the channel in the CHOP.
   * Channel Name is Path:Parameter `autoname` - The channel is the full destination of where to export to, such has `geo1/transform1:tx`.
-
 - Export Root `autoexportroot` - This path points to the root node where all of the paths that exporting by **Channel Name is Path:Parameter** are relative to.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
 
-Extra Information for the ZED CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the ZED CHOP can be accessed via an [Info CHOP](Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common CHOP Info Channels
 
   * start - Start of the CHOP interval in samples.
-
   * length - Number of samples in the CHOP.
-
   * sample_rate - The samplerate of the channels in frames per second.
-
   * num_channels - Number of channels in the CHOP.
-
   * time_slice - 1 if CHOP is Time Slice enabled, 0 otherwise.
-
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
@@ -123,19 +111,11 @@ Extra Information for the ZED CHOP can be accessed via an [Info CHOP](https://do
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

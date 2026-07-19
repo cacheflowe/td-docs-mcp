@@ -20,21 +20,18 @@ If a channel name is not provided, it uses the names in their sequential order.
 
 See also [Extrude POP](https://docs.derivative.ca/Extrude_POP "Extrude POP").
 
-[skinPOP_Class](https://docs.derivative.ca/SkinPOP_Class "SkinPOP Class")
+[skinPOP_Class](Skin_POP_Class.md "SkinPOP Class")
 
 ## Parameters - Skin Page
-
 - Skin `skinops` - ⊞ - Skin primitive method.
   * All Primitives `all` -
   * Groups of N Primitives `group` -
   * Skip Every Nth Primitive `skip` -
-
 - N `inc` - N value when skinning groups of N input primitives or every N input primitives.
 - Closed `closed` - The last vertex is connected to the first vertex.
 - Output Quads `outputquads` - Whether to output quad primitives instead of triangle primitives.
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -45,7 +42,7 @@ See also [Extrude POP](https://docs.derivative.ca/Extrude_POP "Extrude POP").
 
 ## Info CHOP Channels
 
-Extra Information for the Skin POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Skin POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -56,19 +53,11 @@ Extra Information for the Skin POP can be accessed via an [Info CHOP](https://do
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

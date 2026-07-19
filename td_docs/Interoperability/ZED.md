@@ -12,7 +12,7 @@ ZED cameras are stereo depth camera's produced by [Stereolabs](https://www.stere
 
 TouchDesigner supports the [ZED2i](https://www.stereolabs.com/zed-2i/), [ZED Mini](https://www.stereolabs.com/zed-mini/), [ZED](https://www.stereolabs.com/zed/), [ZED2](https://www.stereolabs.com/zed-2/) and [ZED](https://www.stereolabs.com/zed/) cameras.
 
-See [ZED TOP](https://docs.derivative.ca/ZED_TOP "ZED TOP"), [ZED CHOP](https://docs.derivative.ca/ZED_CHOP "ZED CHOP") and [ZED POP](https://docs.derivative.ca/ZED_POP "ZED POP").
+See [ZED TOP](../TOPs/ZED_TOP.md "ZED TOP"), [ZED CHOP](../CHOPs/ZED_CHOP.md "ZED CHOP") and [ZED POP](../POPs/ZED_POP.md "ZED POP").
 
 ## SDK Version
 

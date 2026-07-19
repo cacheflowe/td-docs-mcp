@@ -6,7 +6,7 @@ title: Licenses_Class
 
 # Licenses Class
 
-The Licenses class describes the set of all installed [license objects](https://docs.derivative.ca/License_Class "License Class"). It can be accessed with the licenses object, , found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module").
+The Licenses class describes the set of all installed [license objects](License_Class.md "License Class"). It can be accessed with the licenses object, , found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module").
 
 ```
 print(len(licenses))	# number of licenses
@@ -19,7 +19,7 @@ for l in licenses:
 
 `disablePro` → `bool` :
 
-When True, the application will run as though no Pro licenses are available. This can be used to test compatibility with lesser licenses. (See also: [app.addNonCommercialLimit](https://docs.derivative.ca/App_Class#Methods "App Class"))
+When True, the application will run as though no Pro licenses are available. This can be used to test compatibility with lesser licenses. (See also: [app.addNonCommercialLimit](App_Class.md#Methods "App Class"))
 
 `dongles` → `list` **(Read Only)** :
 
@@ -43,10 +43,10 @@ When True, the application is running with a Non-Commercial license. It is recom
 
 `type` → `str` **(Read Only)** :
 
-The highest ranking license type of all installed licenses, some products being 'Pro', 'Non-Commercial', 'Commercial'. See also app.product in [App Class](https://docs.derivative.ca/App_Class "App Class").
+The highest ranking license type of all installed licenses, some products being 'Pro', 'Non-Commercial', 'Commercial'. See also app.product in [App Class](App_Class.md "App Class").
 
 ## Methods
 
 `install(key)`→ `bool`:
 
-Install a [license](https://docs.derivative.ca/License_Class "License Class") with the specified key. Returns True if successful.
+Install a [license](License_Class.md "License Class") with the specified key. Returns True if successful.

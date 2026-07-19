@@ -6,7 +6,7 @@ title: Runs_Class
 
 # Runs Class
 
-The Runs class describes the set of all delayed [run objects](https://docs.derivative.ca/Run_Class "Run Class"). It can be accessed with the runs object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). See [Run Command Examples](https://docs.derivative.ca/Run_Command_Examples "Run Command Examples") for more info.
+The Runs class describes the set of all delayed [run objects](Run_Class.md "Run Class"). It can be accessed with the runs object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). See [Run Command Examples](https://docs.derivative.ca/Run_Command_Examples "Run Command Examples") for more info.
 
 ```
 print(len(runs))	# number of active run objects

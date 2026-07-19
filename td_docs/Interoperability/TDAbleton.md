@@ -7,7 +7,7 @@ title: TDAbleton
 # TDAbleton
 
 [![Screenshot.PNG](https://docs.derivative.ca/images/2/29/Screenshot.PNG)](https://docs.derivative.ca/File:Screenshot.PNG)
-TDAbleton is a tool for linking TouchDesigner tightly with Ableton Live. It offers full access to most everything going on in an Ableton set, both for viewing and setting. The TDAbleton system contains a number of [components](https://docs.derivative.ca/Component "Component") for 2 way communication, and a framework for building custom components and new features.
+TDAbleton is a tool for linking TouchDesigner tightly with Ableton Live. It offers full access to most everything going on in an Ableton set, both for viewing and setting. The TDAbleton system contains a number of [components](../Glossary/Component.md "Component") for 2 way communication, and a framework for building custom components and new features.
 
 TDAbleton operates through Ableton's MIDI Remote Scripts system and, when necessary, Max for Live (M4L) devices. Communication with TouchDesigner is via [OSC](https://docs.derivative.ca/OSC "OSC") (using UDP). It is fully network-capable, so TouchDesigner can be running on a separate machine from Ableton. The Python in TDAbleton extensively uses Ableton's [Live Object Model](#Navigating_your_Live_Set_using_the_Live_Object_Model). Much of the groundwork for this Python interface is based on research done by [Julien Bayle's Structure Void](https://structure-void.com/).
 
@@ -116,13 +116,13 @@ To look at the basic structure of a TDAbleton Component, we'll use **`abletonSon
 
 #####  Data from Ableton Live
 
-You will notice that the data shown in the viewer reflects the current state of the Ableton Live Set. You can see a number of channels reflecting time data (e.g. `song/info/beats`) and a few others reflecting various states (e.g. `song/info/play`). Data coming in from Live is generally [CHOP](https://docs.derivative.ca/CHOP "CHOP") data, and can be accessed by wiring from the TDAbleton Component, as has been done with the `nullSong` CHOP. Look in the parameters of the `circle1` SOP to see one way of using this incoming data. Some data from Live come in [DAT](https://docs.derivative.ca/DAT "DAT") format, and can be accessed similarly from outputs.
+You will notice that the data shown in the viewer reflects the current state of the Ableton Live Set. You can see a number of channels reflecting time data (e.g. `song/info/beats`) and a few others reflecting various states (e.g. `song/info/play`). Data coming in from Live is generally [CHOP](../Glossary/CHOP.md "CHOP") data, and can be accessed by wiring from the TDAbleton Component, as has been done with the `nullSong` CHOP. Look in the parameters of the `circle1` SOP to see one way of using this incoming data. Some data from Live come in [DAT](../Glossary/DAT.md "DAT") format, and can be accessed similarly from outputs.
 
 In certain cases, incoming data may also come via callback. Examples of this can be found in the `abletonSong1_callbacks` DAT. Python callbacks are beyond the scope of this guide, but if you know a little Python, looking in this DAT will reveal the examples which set the `locatorByCallback` and `sceneByCallback` textTOPs.
 
 #####  Sending Data to Ableton Live
 
-Data to be sent out to Ableton is usually sent via parameters. If you go to the **Ableton Song** parameter page of `abletonSong1` you will see the **Play** , **Loop** , and **Tempo** parameters which set the corresponding values in the Live Set. The `abletonChain1` component shows examples of using [CHOP exports](https://docs.derivative.ca/Export "Export") to automatically change an outgoing parameter and thereby change a value in Live.
+Data to be sent out to Ableton is usually sent via parameters. If you go to the **Ableton Song** parameter page of `abletonSong1` you will see the **Play** , **Loop** , and **Tempo** parameters which set the corresponding values in the Live Set. The `abletonChain1` component shows examples of using [CHOP exports](../Glossary/Export.md "Export") to automatically change an outgoing parameter and thereby change a value in Live.
 
 These parameter values are kept up to date with incoming Live data only if the **Auto Sync Pars To CHOP** toggle is on. This option is provided because in certain cases Auto Sync can cause echoing changes between TouchDesigner and Ableton.
 
@@ -177,18 +177,19 @@ The TDAbleton system also provides a number of features for creating your own cu
 
 ####  Setting Up Your Project
 
-As you have seen, TDAbleton uses a separate Component for each aspect of the Live Object Model that you want TouchDesigner to interact with. To set up all your observers, just copy as many [TDAbleton Components](https://docs.derivative.ca/TDAbleton_System_Components "TDAbleton System Components") from `tdAbletonPackage` as you need and set them up appropriately. You can also drag TDAbleton components from the palette. As always in TouchDesigner, using [select CHOPs](https://docs.derivative.ca/Select_CHOP "Select CHOP") for duplicate data will be more efficient than creating duplicate Components.
+As you have seen, TDAbleton uses a separate Component for each aspect of the Live Object Model that you want TouchDesigner to interact with. To set up all your observers, just copy as many [TDAbleton Components](https://docs.derivative.ca/TDAbleton_System_Components "TDAbleton System Components") from `tdAbletonPackage` as you need and set them up appropriately. You can also drag TDAbleton components from the palette. As always in TouchDesigner, using [select CHOPs](../Glossary/Select_CHOP.md "Select CHOP") for duplicate data will be more efficient than creating duplicate Components.
 
 ####  Multiple TDAbleton Packages in One Project
 
-If you want to connect to multiple Ableton Live sessions in a single TouchDesigner project, you will need a separate TDAbleton package for each session. Because TDAbleton uses a [global op shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") you will need a utility to create your second instance. To change the shortcut, go to the Utilities parameter page of the package (or the tdAbleton component) and pulse the Change Global OP Shortcut parameter. Enter the new name in the dialog.
+If you want to connect to multiple Ableton Live sessions in a single TouchDesigner project, you will need a separate TDAbleton package for each session. Because TDAbleton uses a [global op shortcut](../Glossary/Global_OP_Shortcut.md "Global OP Shortcut") you will need a utility to create your second instance. To change the shortcut, go to the Utilities parameter page of the package (or the tdAbleton component) and pulse the Change Global OP Shortcut parameter. Enter the new name in the dialog.
 
 This will change the shortcut on your package **and will also change the shortcut on all the TDAbleton components inside the package**. You can now copy those components into your project and they will be connected to this package. **TDAbleton components from the palette will no longer be connected to this package**.
 
 ##  Caveats and Gotchas
 
-  * **Most Importantly:** the system will be confused by tracks with **duplicate names** and devices with duplicate names on the same track or in the same chain. In some cases, this is also true of names that are the same after being converted to valid TouchDesigner [Channel](https://docs.derivative.ca/Channel "Channel") names. TDAbleton will pop up a warning dialog if it finds duplicate names, and will give an option to automatically rename duplicates. This behavior can be controlled using the `tdAbleton` master Component's **Report Duplicate Names** parameter.
+  * **Most Importantly:** the system will be confused by tracks with **duplicate names** and devices with duplicate names on the same track or in the same chain. In some cases, this is also true of names that are the same after being converted to valid TouchDesigner [Channel](../Glossary/Channel.md "Channel") names. TDAbleton will pop up a warning dialog if it finds duplicate names, and will give an option to automatically rename duplicates. This behavior can be controlled using the `tdAbleton` master Component's **Report Duplicate Names** parameter.
   * **Automatic Ableton Track Names with "#" in them** can cause some problems because Ableton does some strange renaming stuff behind the scenes. The best solution is to just rename your tracks without using the # character.
+  * **Connection problems on Mac:** There is a strange default limit on Mac OS that can cause problems. To fix it, try using this command in the terminal: `sudo launchctl limit maxfiles 128000 524288`.
   * **Live Set is too large:** massive Live Sets can cause connection problems and overload the OSC connection, especially on Macs. This can often be avoided by using the **TDA_Ignore** and **TDA_Ignore_MIDI** max devices wherever possible. Anything after these devices in a device chain will be ignored by TouchDesigner.
   * **Duplicate VST effects in the same chain** are particularly nasty, because VST effects cannot be renamed. The auto-fix features will fail and you cannot rename the effects manually. There are two solutions for this. If you don't want to control/watch the effects in TouchDesigner, you can just ignore them by placing a **TDA_Ignore** Max device before them in the chain. All devices after the **TDA_Ignore** will be ignored. If you do want to control/watch the effects in TouchDesigner, place each one inside an effect rack. TDAbleton's abletonRack components will work particularly well for this.
   * **TDAbleton M4l devices on the same track** (e.g. TDA_MIDI and TDAbleton Racks) will need different names to broadcast properly from Max.
@@ -200,11 +201,13 @@ This will change the shortcut on your package **and will also change the shortcu
 
 ##  Troubleshooting
 
-Because TDAbleton is linked to Ableton Live's Python Remote Scripts via OSC and the Python Remote Scripts are linked to the Ableton app through a lower-level system, troubleshooting can be a bit tricky. If you are having problems, your most important tool is the **[Textport](https://docs.derivative.ca/Textport "Textport")**. Be sure to have it open while troubleshooting, as most errors will be reported there.
+Because TDAbleton is linked to Ableton Live's Python Remote Scripts via OSC and the Python Remote Scripts are linked to the Ableton app through a lower-level system, troubleshooting can be a bit tricky. If you are having problems, your most important tool is the **[Textport](../Glossary/Textport.md "Textport")**. Be sure to have it open while troubleshooting, as most errors will be reported there.
 
 The most common issues with TDAbleton will have to do with **connections**. The simplest connection test is the **Ping** parameter on the `tdAbleton` master. Press that and you should see a response in the textport. If not, you may have incorrect address or port settings on `tdAbleton`. All TDAbleton Components, including the master, have a **Connect** parameter. Toggling that on and off will reset the connection and will often print useful error messages as to the problem.
 
 **If you are not connecting** make sure that the Ableton Port (on the TDA_Master device on your Live master track) matches the Ableton Port parameter (on the tdAbleton component in TouchDesigner). If those are matching, you may have an OSC conflict with something else running on your system. Change them both to a different matching number. Unfortunately there is no way to tell if an OSC port is taken, so this must be done by trial and error.
+
+**If the ports on your TDA_Master device are locked to an incorrect value** this can be from a problem in Ableton's Preferences.cfg file. You can find the preferences file in the folder pointed to by the Preferences Folder parameter on the tdAbleton component. Deleting the file and restarting Live should fix the issue.
 
 **If you are still not connecting** try closing your external text editor and any other sub-processes of TouchDesigner. For some reason, OSC ports can be associated with these sub-processes and the ports will not reopen until the applications are closed.
 
@@ -212,30 +215,30 @@ TDAbleton will attempt to transmit any errors from the TouchDesigner Remote Scri
 
 **Tip:** the Log TDA Debug Msgs parameter turns on and off verbose debugging in Ableton's log file. If this parameter is off, only errors and the most basic information will be put in the Ableton log.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-The panel at the bottom of TouchDesigner, it controls the current global looping [Time](https://docs.derivative.ca/Time_COMP "Time COMP") your TouchDesigner project, or of just one component.
+The panel at the bottom of TouchDesigner, it controls the current global looping [Time](../Glossary/Time_COMP.md "Time COMP") your TouchDesigner project, or of just one component.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-The F1 to F12 keys run macros. The F1 macro puts you in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode"). Pressing F9 or F10 over a panel brings up the network of the panel element you are pointing at. Macros are written in the legacy [Tscript](https://docs.derivative.ca/Tscript "Tscript").
+The F1 to F12 keys run macros. The F1 macro puts you in [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode"). Pressing F9 or F10 over a panel brings up the network of the panel element you are pointing at. Macros are written in the legacy [Tscript](../Glossary/Tscript.md "Tscript").
 
 A built-in panel in TouchDesigner that contains a library of components and media that can be dragged-dropped into a TouchDesigner network.
 
-A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](https://docs.derivative.ca/Python "Python") and the original [Tscript](https://docs.derivative.ca/Tscript "Tscript"). Scripts and single-line commands can also be run in the [Textport](https://docs.derivative.ca/Textport "Textport").
+A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](../General/Python.md "Python") and the original [Tscript](../Glossary/Tscript.md "Tscript"). Scripts and single-line commands can also be run in the [Textport](../Glossary/Textport.md "Textport").
 
-A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](../Glossary/Network_Path.md "Network Path").
 
-A [Link](https://docs.derivative.ca/Link "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A [Link](../Glossary/Link.md "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
-A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](https://docs.derivative.ca/Export "Export"), node [Paths](https://docs.derivative.ca/Network_Path "Network Path") in parameters, and [expressions](https://docs.derivative.ca/Expression "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](https://docs.derivative.ca/Wire "Wire") that connects nodes in the same [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](../Glossary/Export.md "Export"), node [Paths](../Glossary/Network_Path.md "Network Path") in parameters, and [expressions](../Glossary/Expression.md "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](../Glossary/Wire.md "Wire") that connects nodes in the same [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-Every operator in TouchDesigner has a set of control Parameters that can be integer or floating point numbers, menus, binary toggles, text strings or operator [paths](https://docs.derivative.ca/Network_Path "Network Path"), which determine the output of the operator.
+Every operator in TouchDesigner has a set of control Parameters that can be integer or floating point numbers, menus, binary toggles, text strings or operator [paths](../Glossary/Network_Path.md "Network Path"), which determine the output of the operator.
 
 A name for a component that is accessible from any node in a project, which can be declared in a component's Global Operator Shortcut parameter.

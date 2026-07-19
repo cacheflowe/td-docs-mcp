@@ -8,19 +8,19 @@ title: Palette:stoner
 
 Stoner is a grid-warping and upscale 'keystoner' tool. It has two levels of warping. First is a 4-point corner-pin. Within that is a mesh warper where for each point of the mesh you can adjust position and curvature using bezier handles. Stoner has 2 outputs:
   * the final warped image and
-  * a displacement map which can be used in conjunction with the [Remap TOP](https://docs.derivative.ca/Remap_TOP "Remap TOP")
+  * a displacement map which can be used in conjunction with the [Remap TOP](../TOPs/Remap_TOP.md "Remap TOP")
 
-On the Stoner custom parameter page you can also specify a custom COMP (usually a [Base COMP](https://docs.derivative.ca/Base_COMP "Base COMP") will be perfect) where the displacement data and the displacement map are stored.
+On the Stoner custom parameter page you can also specify a custom COMP (usually a [Base COMP](../COMPs/Base_COMP.md "Base COMP") will be perfect) where the displacement data and the displacement map are stored.
 
 **Note:** Stoner is intended to be used to create the displacement map and then to be removed from the file with only the necessary data inside the COMP defined in the "Project" custom parameter staying behind. This will increase performance quite a lot and let you use one centralized Stoner instead of many.
 
-See also [Projection Mapping](https://docs.derivative.ca/Projection_Mapping "Projection Mapping").
+See also [Projection Mapping](../Learn/Projection_Mapping.md "Projection Mapping").
 
 ##  Getting Started
 
-You can find Stoner in the [Palette](https://docs.derivative.ca/Palette "Palette") under the folder Derivative>Mapping.
+You can find Stoner in the [Palette](../Learn/Palette.md "Palette") under the folder Derivative>Mapping.
 
-Drag and drop the component from the [Palette](https://docs.derivative.ca/Palette "Palette") into your network.
+Drag and drop the component from the [Palette](../Learn/Palette.md "Palette") into your network.
 
 Connect a TOP to the input of the Stoner component.
 

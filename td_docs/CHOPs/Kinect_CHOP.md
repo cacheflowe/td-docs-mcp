@@ -22,29 +22,26 @@ To use a Kinect 2 device you need to install the Kinect 2 SDK or runtime from [h
 
 To use the original Kinect 1 you will need to install the [Kinect Runtime 1.8](http://www.microsoft.com/en-ca/download/details.aspx?id=40277) for builds greater than 12000, or [Kinect Runtime 1.7](http://www.microsoft.com/en-us/download/details.aspx?id=36997) for builds below 12000. Multiple Kinects: The Kinect 2 SDK does not allow for multiple kinects to be used on one system at a time. There is no way to connect to different devices through the SDK. The Kinect 1 can do this, but not the 2.
 
-See also [Kinect TOP](https://docs.derivative.ca/Kinect_TOP "Kinect TOP"), [Kinect](https://docs.derivative.ca/Kinect "Kinect") and [Kinect1](https://docs.derivative.ca/Kinect1 "Kinect1").
+See also [Kinect TOP](../TOPs/Kinect_TOP.md "Kinect TOP"), [Kinect](https://docs.derivative.ca/Kinect "Kinect") and [Kinect1](https://docs.derivative.ca/Kinect1 "Kinect1").
 
-[kinectCHOP_Class](https://docs.derivative.ca/KinectCHOP_Class "KinectCHOP Class")
+[kinectCHOP_Class](Kinect_CHOP_Class.md "KinectCHOP Class")
 
 ## Parameters - Kinect Page
-
 - Active `active` - When 'On' data is captured from the Kinect sensor.
 - Hardware Version `hwversion` - ⊞ - Choose between Kinect v1 or Kinect v2 sensors.
   * Version 1 `version1` -
   * Version 2 `version2` -
-
 - Sensor `sensor` - Selects which Kinect sensor to use. Only available when using Kinect v1.
 - Skeleton `skeleton` - ⊞ - Selects options for skeletal tracking.
   * Full `full` - Track full skeleton.
   * Seated `seated` - Track seated skeleton.
   * Off `off` - Do not track skeleton.
-
 - Max Players `maxplayers` - Limits how many players to track.
 - Interactions `interactions` - Enables interactions, which returns interaction data such as "grip" and "press". The additional channels output are prefixed with `p[1-2]/hand_l_*` and `p[1-2]/hand_r_*`.<
   * For the x and y values of the interaction hand, 0.0 corresponds to left edge of interaction region and 1.0 corresponds to right edge of interaction region, but values could be outside of this range.
   * For the z value of the interaction hand, 0.0 means that hand is close to shoulder and 1.0 represents a fully extended arm, but values could be outside of this range.
 
-**NOTE:** Interaction mode requires a depth resolution of 640x480. As such, a [Kinect TOP](https://docs.derivative.ca/Kinect_TOP "Kinect TOP") displaying a depth image for the same sensor will output an image with a resolution of 640x480 and the Near Depth Mode setting will be set in the Kinect CHOP.
+**NOTE:** Interaction mode requires a depth resolution of 640x480. As such, a [Kinect TOP](../TOPs/Kinect_TOP.md "Kinect TOP") displaying a depth image for the same sensor will output an image with a resolution of 640x480 and the Near Depth Mode setting will be set in the Kinect CHOP.
 
 For guidelines in creating applications with Kinect Interaction, download the [Kinect for Windows Human Interface Guidelines](http://download.microsoft.com/download/B/0/7/B070724E-52B4-4B1A-BD1B-05CC28D07899/Human_Interface_Guidelines_v1.7.0.pdf).
 - Relative Bone Rotations `relbonerotations` - Returns rx, ry, and rz relative rotation channels for each bone. The rotation is relative to the previous joint.
@@ -61,7 +58,6 @@ For guidelines in creating applications with Kinect Interaction, download the [K
 - Flip Face U Direction `flipfaceu` - Flips the u-axis for face channels, helpful when using a mirror image from the camera.
 
 ## Parameters - Smoothing Page
-
 - Joint Smoothing `jointsmoothing` - Activates Kinect's smoothing algorithm for joint tracking and enables the smoothing parameters below.
 - Smoothing `smoothing` - Increasing the smoothing parameter value leads to more highly-smoothed skeleton position values being returned. It is the nature of smoothing that, as the smoothing value is increased, responsiveness to the raw data decreases. Thus, increased smoothing leads to increased latency in the returned skeleton values. Values must be in the range 0 through 1.0. Passing 0 causes the raw data to be returned.
 - Correction `correction` - Lower values are slower to correct towards the raw data and appear smoother, while higher values will correct toward the raw data more quickly. Values must be in the range 0 through 1.0.
@@ -71,41 +67,33 @@ For guidelines in creating applications with Kinect Interaction, download the [K
 - Rotation Smoothing `rotationsmoothing` - Activates Kinect's smoothing algorithm for rotations. As with joint smoothing above, higher levels of smoothing will introduce more latency.
 
 ## Parameters - Common Page
-
-- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
+- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](../Glossary/Time_Slicing.md "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
   * Resample At First Input's Rate `first` - Use rate of first input to resample others.
   * Resample At Maximum Rate `max` - Resample to the highest sample rate.
   * Resample At Minimum Rate `min` - Resample to the lowest sample rate.
   * Error If Rates Differ `err` - Doesn't accept conflicting sample rates.
-
-- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](https://docs.derivative.ca/Export "Export") article for more information.
+- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](../Glossary/Export.md "Export") article for more information.
   * DAT Table by Index `datindex` - Uses the docked DAT table and references the channel via the index of the channel in the CHOP.
   * DAT Table by Name `datname` - Uses the docked DAT table and references the channel via the name of the channel in the CHOP.
   * Channel Name is Path:Parameter `autoname` - The channel is the full destination of where to export to, such has `geo1/transform1:tx`.
-
 - Export Root `autoexportroot` - This path points to the root node where all of the paths that exporting by **Channel Name is Path:Parameter** are relative to.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
 
-Extra Information for the Kinect CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Kinect CHOP can be accessed via an [Info CHOP](Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common CHOP Info Channels
 
   * start - Start of the CHOP interval in samples.
-
   * length - Number of samples in the CHOP.
-
   * sample_rate - The samplerate of the channels in frames per second.
-
   * num_channels - Number of channels in the CHOP.
-
   * time_slice - 1 if CHOP is Time Slice enabled, 0 otherwise.
-
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
@@ -113,19 +101,11 @@ Extra Information for the Kinect CHOP can be accessed via an [Info CHOP](https:/
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

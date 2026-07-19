@@ -6,7 +6,7 @@ title: Hap
 
 # Hap
 
-The Hap, Hap Q and Hap R codecs are supported in the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"), and the [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") encodes them as well. Hap and Hap Q are also used in the video-over-IP operators [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP") and [Touch In TOP](https://docs.derivative.ca/Touch_In_TOP "Touch In TOP").
+The Hap, Hap Q and Hap R codecs are supported in the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP"), and the [Movie File Out TOP](../TOPs/Movie_File_Out_TOP.md "Movie File Out TOP") encodes them as well. Hap and Hap Q are also used in the video-over-IP operators [Touch Out TOP](../TOPs/Touch_Out_TOP.md "Touch Out TOP") and [Touch In TOP](../TOPs/Touch_In_TOP.md "Touch In TOP").
 
 Hap is a video codec that performs decompression using a computer's graphics hardware, substantially reducing the CPU usage necessary to play video. It allows for playback of higher resolution and/or frame rate videos than any other codec we know of. It also allows for playback many more streams of lower resolution video than other codecs, assuming you have the drive speed for it.
 
@@ -58,7 +58,7 @@ Its specification and sample code can be found at the github location: [Hap vide
 
 ##  Working with High Resolution or High FPS Video
 
-Hap Q is the best codec choice when ultra high resolution or FPS video is required. However the videos must be encoded properly to allow for multi-threaded CPU decoding. This is called 'Chunked' encoding in the Hap standard. The [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") always encodes using chunked encoding.Chunked encoding can also be done using the latest version of FFmpeg. This can be done using the -chunks option. For example
+Hap Q is the best codec choice when ultra high resolution or FPS video is required. However the videos must be encoded properly to allow for multi-threaded CPU decoding. This is called 'Chunked' encoding in the Hap standard. The [Movie File Out TOP](../TOPs/Movie_File_Out_TOP.md "Movie File Out TOP") always encodes using chunked encoding.Chunked encoding can also be done using the latest version of FFmpeg. This can be done using the -chunks option. For example
 ```
  ffmpeg -i source.mov -c:v hap -format hap_q -chunks 12 dest.mov
 ```
@@ -69,10 +69,10 @@ Each chunk can utilize a different CPU to be decoded, so chunks equal or greater
 
 ###  Extreme Cases
 
-For extreme resolution cases, it's possible having any CPU compression enabled will be too heavy. This can turned off in TouchDesigner on 'Advanced' page of the [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP"), under the 'Hap Secondary Compression' option. This will write the frames only using the constant ratio texture compression. This avoids any CPU decompression, and also can result in less memory bandwidth usage when 'High Performance Read' is enabled on the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP").
+For extreme resolution cases, it's possible having any CPU compression enabled will be too heavy. This can turned off in TouchDesigner on 'Advanced' page of the [Movie File Out TOP](../TOPs/Movie_File_Out_TOP.md "Movie File Out TOP"), under the 'Hap Secondary Compression' option. This will write the frames only using the constant ratio texture compression. This avoids any CPU decompression, and also can result in less memory bandwidth usage when 'High Performance Read' is enabled on the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-The width and height of an image in pixels. Most TOPs, like the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") can set the image resolution. See [Aspect Ratio](https://docs.derivative.ca/TOP_Generator_Common_Page "TOP Generator Common Page") for the width/height ratio of an image, taking into account non-square pixels.
+The width and height of an image in pixels. Most TOPs, like the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP") can set the image resolution. See [Aspect Ratio](../Glossary/TOP_Generator_Common_Page.md "TOP Generator Common Page") for the width/height ratio of an image, taking into account non-square pixels.
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.

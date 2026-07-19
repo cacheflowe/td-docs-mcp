@@ -16,7 +16,7 @@ For a more detailed description of "V", see our [Blog article](http://derivative
 
 See also: [BlackTrax Showcase](http://blacktrax.cast-soft.com/showcase/).
 
-BlackTrax tracking data can be brought into TouchDesigner using the [BlackTrax CHOP](https://docs.derivative.ca/BlackTrax_CHOP "BlackTrax CHOP").
+BlackTrax tracking data can be brought into TouchDesigner using the [BlackTrax CHOP](../CHOPs/BlackTrax_CHOP.md "BlackTrax CHOP").
 
 ###
 
@@ -32,6 +32,6 @@ For additional information see [BlackTrax FAQ](https://cast-soft.com/faq/) or [H
 
 Applications
 
-BlackTrax has applications in projection mapping. To projection map onto a movable object, attach BlackTrax Beacons to the object so that no matter where it is in the projector FOV it can be accurately mapped using the positional and rotational data from the beacons. In TouchDesigner this can be achieved using the [BlackTrax CHOP](https://docs.derivative.ca/BlackTrax_CHOP "BlackTrax CHOP") and one of TouchDesigner's projection mapping tools, [CamSchnappr](https://docs.derivative.ca/Palette:camSchnappr "Palette:camSchnappr") or [Kantan Mapper](https://docs.derivative.ca/Palette:kantanMapper "Palette:kantanMapper").
+BlackTrax has applications in projection mapping. To projection map onto a movable object, attach BlackTrax Beacons to the object so that no matter where it is in the projector FOV it can be accurately mapped using the positional and rotational data from the beacons. In TouchDesigner this can be achieved using the [BlackTrax CHOP](../CHOPs/BlackTrax_CHOP.md "BlackTrax CHOP") and one of TouchDesigner's projection mapping tools, [CamSchnappr](Palette_camSchnappr.md "Palette:camSchnappr") or [Kantan Mapper](Palette_kantanMapper.md "Palette:kantanMapper").
 
 BlackTrax is an excellent choice for tracking performers. By attaching Beacons to performers you can track their movements with a high degree of accuracy, and with this data available in TouchDesigner the options are limitless. For inspiration, see [Mattia Diomedi's "V"](http://derivative.ca/Events/2017/MattiaDiomedi/) or the [BlackTrax Showcase](http://blacktrax.cast-soft.com/showcase/)

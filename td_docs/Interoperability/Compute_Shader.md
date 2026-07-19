@@ -18,6 +18,6 @@ Compute shaders are relatively complex to write properly. There is a lot of cave
 
 Caveat: Compute Shaders need GLSL 4.30 or later.
 
-See the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") which has one docked compute shader as well as a normal GLSL shader. Change he Mode to Compute Shader.
+See the [GLSL TOP](../TOPs/GLSL_TOP.md "GLSL TOP") which has one docked compute shader as well as a normal GLSL shader. Change he Mode to Compute Shader.
 
-The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](https://docs.derivative.ca/Text_DAT "Text DAT") and referenced by a [GLSL Material](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") or a [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.
+The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](../Glossary/Text_DAT.md "Text DAT") and referenced by a [GLSL Material](../MATs/GLSL_MAT.md "GLSL MAT") or a [GLSL TOP](../TOPs/GLSL_TOP.md "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.

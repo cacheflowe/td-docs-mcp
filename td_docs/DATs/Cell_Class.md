@@ -6,7 +6,7 @@ title: Cell_Class
 
 # Cell Class
 
-The Cell Class describes the contents of a single cell from a [DAT](https://docs.derivative.ca/DAT "DAT") operator table. The [DAT Class](https://docs.derivative.ca/DAT_Class "DAT Class") offers many ways of accessing its individual cells. [DAT](https://docs.derivative.ca/DAT "DAT") cells are always internally stored as strings, but may be accessed as numeric values.
+The Cell Class describes the contents of a single cell from a [DAT](../Glossary/DAT.md "DAT") operator table. The [DAT Class](../Python/DAT_Class.md "DAT Class") offers many ways of accessing its individual cells. [DAT](../Glossary/DAT.md "DAT") cells are always internally stored as strings, but may be accessed as numeric values.
 
 **IMPORTANT** : `op('table1')[1,2]` is this python cell object which usually gets converted for you to the string in the cell. More safely use `op('table1')[1,2].val` which always gives you the string.
 
@@ -26,7 +26,7 @@ The numeric column of the cell.
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](../Python/OP_Class.md "OP Class") to which this object belongs.
 
 `val` → `str` :
 
@@ -36,15 +36,15 @@ Get or set the cell contents, which are always stored as a string value.
 
 `run(*args, endFrame=False, fromOP=None, asParameter=False, group=None, delayFrames=0, delayMilliSeconds=0, wallTime=False, delayRef=None)`→ `td.Run`:
 
-[Run](https://docs.derivative.ca/Run_Class "Run Class") the contents of the cell as a script, returning a Run object which can be used to optionally modify its execution.
+[Run](../Python/Run_Class.md "Run Class") the contents of the cell as a script, returning a Run object which can be used to optionally modify its execution.
   * endFrame - (Keyword, Optional) If set to True, the execution will be delayed until the end of the current frame.
-  * fromOP - (Keyword, Optional) Specifies an optional [operator](https://docs.derivative.ca/OP_Class "OP Class") from which the execution will be run relative to.
+  * fromOP - (Keyword, Optional) Specifies an optional [operator](../Python/OP_Class.md "OP Class") from which the execution will be run relative to.
   * asParameter - (Keyword, Optional) When fromOP used, run relative to a parameter of fromOP.
-  * group - (Keyword, Optional) Can be used to specify a group label string. This label can then be used with the [td.runs](https://docs.derivative.ca/Runs_Class "Runs Class") object to modify its execution.
+  * group - (Keyword, Optional) Can be used to specify a group label string. This label can then be used with the [td.runs](../Python/Runs_Class.md "Runs Class") object to modify its execution.
   * delayFrames - (Keyword, Optional) Can be used to delay the execution a specific amount of frames.
   * delayMilliSeconds - (Keyword, Optional) Can be used to delay the execution a specific amount of milliseconds. This value is rounded to the nearest frame.
   * wallTime - (Keyword, Optional) Setting this to True results in the delay options being based on actual elapsed time instead of elapsed frames.
-  * delayRef - (Keyword, Optional) Specifies an optional [operator](https://docs.derivative.ca/OP_Class "OP Class") from which the delay time is derived. If none is provided, will use the cell owner.
+  * delayRef - (Keyword, Optional) Specifies an optional [operator](../Python/OP_Class.md "OP Class") from which the delay time is derived. If none is provided, will use the cell owner.
   * arg - (Optional) Arguments that will be made available to the script in a local tuple named args.
 
 `offset(r, c)`→ `Cell | None`:
@@ -100,4 +100,4 @@ If n[1,2] contained a non-numeric value such as "a" then
 n[1,2] + n[1,2] # will return "aa"
 ```
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").

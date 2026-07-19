@@ -6,7 +6,7 @@ title: Blackmagic_Design
 
 # Blackmagic Design
 
-TouchDesigner supports [Blackmagic Design](http://www.blackmagicdesign.com) devices through the [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP") and [Video Device Out TOP](https://docs.derivative.ca/Video_Device_Out_TOP "Video Device Out TOP").
+TouchDesigner supports [Blackmagic Design](http://www.blackmagicdesign.com) devices through the [Video Device In TOP](../TOPs/Video_Device_In_TOP.md "Video Device In TOP") and [Video Device Out TOP](../TOPs/Video_Device_Out_TOP.md "Video Device Out TOP").
 [![BlackmagicDesign.png](https://docs.derivative.ca/images/thumb/5/5c/BlackmagicDesign.png/300px-BlackmagicDesign.png)](https://docs.derivative.ca/File:BlackmagicDesign.png)
 [![DeckLink 8K Pro.png](https://docs.derivative.ca/images/thumb/8/8f/DeckLink_8K_Pro.png/300px-DeckLink_8K_Pro.png)](https://docs.derivative.ca/File:DeckLink_8K_Pro.png)[![DeckLink 4KExtreme12G.png](https://docs.derivative.ca/images/thumb/6/69/DeckLink_4KExtreme12G.png/300px-DeckLink_4KExtreme12G.png)](https://docs.derivative.ca/File:DeckLink_4KExtreme12G.png)
 Blackmagic Design builds a wide array of high performance input and output video devices. They offer devices for PCI-e and USB 3.0 interfaces that are available in a variety of input/output connections such as HDMI, SDI/HD-SDI, DVI, Component, and more.
@@ -24,10 +24,9 @@ TouchDesigner has built-in native driver support for Blackmagic devices providin
   * Install the [Blackmagic Design Desktop Video](http://www.blackmagicdesign.com/support) drivers.
 
 **Ways to interface with Blackmagic Design in TouchDesigner**
-  * [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP") - Captures video and timecode streams from capture cards and input devices such as the [Decklink](http://www.blackmagicdesign.com/products/decklink) and [Intensity](http://www.blackmagicdesign.com/products/intensity).
-  * [Audio Device In CHOP](https://docs.derivative.ca/Audio_Device_In_CHOP "Audio Device In CHOP") - Captures audio streams from the capture cards.
-
-  * [Video Device Out TOP](https://docs.derivative.ca/Video_Device_Out_TOP "Video Device Out TOP") - Outputs video, audio and timecode from the Decklink and Intensity devices.
+  * [Video Device In TOP](../TOPs/Video_Device_In_TOP.md "Video Device In TOP") - Captures video and timecode streams from capture cards and input devices such as the [Decklink](http://www.blackmagicdesign.com/products/decklink) and [Intensity](http://www.blackmagicdesign.com/products/intensity).
+  * [Audio Device In CHOP](../CHOPs/Audio_Device_In_CHOP.md "Audio Device In CHOP") - Captures audio streams from the capture cards.
+  * [Video Device Out TOP](../TOPs/Video_Device_Out_TOP.md "Video Device Out TOP") - Outputs video, audio and timecode from the Decklink and Intensity devices.
 
 ###
 
@@ -37,9 +36,11 @@ Tips for Working with Blackmagic Design
 
 ###  ST2110 Support
 
-The [Decklink IP](https://www.blackmagicdesign.com/ca/products/decklinkip) devices allow using ST2110 for both input and output. Unlike SDI/HDMI workflows, the configuration of these streams is mostly done externally or automatically. In particular for input you need to tell the input device to read from a specific source using [NMOS](https://specs.amwa.tv/nmos/). A simple to use tool to try out working with NMOS is available from Riedel, called [NMOS Explorer](https://www.riedel.net/en/downloads/firmware-software), or you can use the Blackmagic 360P Ethernet switch to apply the routes using it's NMOS controller.
+The [Decklink IP](https://www.blackmagicdesign.com/ca/products/decklinkip) devices allow using [ST2110](https://docs.derivative.ca/ST2110 "ST2110") for both input and output. It includes support for the reecnt Blackmagic 100G ST2110 cards.
 
-SDPs can also be manually assigned using the parameters on the ST2110 In TOPs.
+Unlike SDI/HDMI workflows, the configuration of these streams is mostly done externally or automatically. ST2110 support is done via the [ST2110 In TOP](../TOPs/ST2110_In_TOP.md "ST2110 In TOP"), [ST2110 Out TOP](../TOPs/ST2110_Out_TOP.md "ST2110 Out TOP") and the [ST2110 Device CHOP](../CHOPs/ST2110_Device_CHOP.md "ST2110 Device CHOP"). Blackmagic supports NMOS as a way to configure the flows. A simple to use tool to try out working with NMOS is available from Riedel, called [NMOS Explorer](https://www.riedel.net/en/downloads/firmware-software), or you can use the Blackmagic 360P Ethernet switch to apply the routes using it's NMOS controller.
+
+SDPs can also be manually assigned using the parameters on the [ST2110 In TOP](../TOPs/ST2110_In_TOP.md "ST2110 In TOP").
 
 ###  8K Support
 
@@ -63,6 +64,6 @@ To perform updates (-u) on all devices (-a), use:
 
 With the switch to Vulkan we are able to achieve similar performance via Vulkan features directly using something called Pinned Memory. This works on most GPUs (even non-Quadros), so GPU Direct For Video support is no longer needed.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.

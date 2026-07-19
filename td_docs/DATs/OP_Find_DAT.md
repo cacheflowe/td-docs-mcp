@@ -34,20 +34,18 @@ Instead of being give the path to a component to start at, the OP Find DAT can t
 
 For example, say you first list all components that are panels, then you separate into groups based on type or Clone parameter. The first OP Find DAT pre-filters a huge hierarchy to a small fraction of the nodes, the subsequent OP Find DATs are operating on simpler sets to eliminate a lot of checking and cooking.
 
-Refer to Help -> [Operator Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets").
+Refer to Help -> [Operator Snippets](../Learn/OP_Snippets.md "OP Snippets").
 
-See also: [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT")
+See also: [Script DAT](Script_DAT.md "Script DAT")
 
-[opfindDAT_Class](https://docs.derivative.ca/OpfindDAT_Class "OpfindDAT Class")
+[opfindDAT_Class](OP_Find_DAT_Class.md "OpfindDAT Class")
 
 ## Parameters - Component Page
-
 - Active Cook `activecook` - ⊞ - Determines when to cook the DAT.
   * Off `off` - This stops the operator from cooking altogether.
   * Automatic `auto` - Only cook / update the contents when the results would change.
   * Always `always` - Continually cook this operator repeatedly for update cases that might be missed.
   * Incremental `incremental` - This will cook each frame, but only add one result per cook, until all results are added. At that point cooking stops.
-
 - Cook Pulse `cookpulse` - Manually force the OP Find DAT to update.
 - Component `component` - The path to the component where the search starts from.
 - Include Component `includecomponent` - Include the component the search starts from in the search itself.
@@ -71,13 +69,11 @@ The page of parameters determines which operator families are included in the se
 - DATs `dats` - Include DAT family operators in the search.
 
 ## Parameters - Filters Page
-
 - Case Sensitive `casesensitive` - Use case sensitivity in all pattern matching below.
 - Combine Filters `combinefilters` - ⊞ - Combine 'All', 'Any' or 'Custom' of the filters below to get a match. 'Custom' allows for specifying a subselection of filters with 'or' and 'and' keywords.
   * All `all` - All filters must match for an operator to be included in the search result. (AND)
   * Any `any` - Any of the filter conditions must be met for an operator to be included in the search result. (OR)
   * Custom `custom` -
-
 - Custom Combine `customcombine` - Specify which filters to combine in the search.
 - Name `namefilter` - Use the operator's names like 'wave1', 'wave2', etc.
 - Type `typefilter` - Use names like `waveCHOP` and `panelexecuteDAT`. Look at the column Type to see the syntax.
@@ -96,7 +92,6 @@ The page of parameters determines which operator families are included in the se
 - Par Non-Default Only `parnondefaultonly` - Only match with parameters that are non-default values.
 
 ## Parameters - Columns Page
-
 - Use Legacy Columns `legacycols` - Use only when expecting column headers to be named with legacy titles.
 - ID `idcol` - An integer that uniquely defines the node in this process. It's the same number for the duration of the process, but may be different when you run the process again.
 - Name `namecol` - Inlcude the name of the operator in the result table.
@@ -118,22 +113,18 @@ The page of parameters determines which operator families are included in the se
 - Children `children` - Include the children of the operator in the result table.
 
 ## Parameters - Callbacks Page
-
-- Callbacks DAT `callbacks` - Path to a DAT containing callbacks for each event received. See [opfindDAT_Class](https://docs.derivative.ca/OpfindDAT_Class "OpfindDAT Class") for usage.
+- Callbacks DAT `callbacks` - Path to a DAT containing callbacks for each event received. See [opfindDAT_Class](OP_Find_DAT_Class.md "OpfindDAT Class") for usage.
 - Convert Bool to Int `convertbool` - For boolean logic values, the value will be '1' or '0'. When this parameter is Off, they will be 'True" or 'False'.
 - Convert None to Empty `convertnone` - For 'None' values, the value will be converted to Empty.
 
 ## Parameters - Common Page
-
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
-
 - Edit/View Extension `extension` - ⊞ - Select the file extension this DAT should expose to external editors.
   * dat `dat` - various common file extensions.
   * From Language `language` - pick extension from DATs script language.
   * Custom Extension `custom` - Specify a custom extension.
-
 - Custom Extension `customext` - Specifiy the custom extension.
 - Word Wrap `wordwrap` - ⊞ - Enable Word Wrap for Node Display.
   * Input `input` - The DAT uses the inputs setting.

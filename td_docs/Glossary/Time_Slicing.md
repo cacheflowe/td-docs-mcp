@@ -8,23 +8,23 @@ title: Time_Slicing
 
 Time Slicing is a feature in TouchDesigner that keeps your CHOP channels smooth, even when your overall frame rate goes down and your timeline skips frames. Time Slicing keeps your overall animation smoother and more accurate, and helps keep your audio from popping when your frame rate drops.
 
-A **Time Slice** is the time from the last cook frame to the current cook frame. (See [Absolute Time](https://docs.derivative.ca/Absolute_Time "Absolute Time").) In [CHOPs](https://docs.derivative.ca/CHOP "CHOP") it is the set of short channels that contain the CHOP channels' samples between the last and the current cook frame.
+A **Time Slice** is the time from the last cook frame to the current cook frame. (See [Absolute Time](Absolute_Time.md "Absolute Time").) In [CHOPs](CHOP.md "CHOP") it is the set of short channels that contain the CHOP channels' samples between the last and the current cook frame.
 
 If the global frame rate is 60 frames per second, the time slice is a multiple of 1/60 second. For example, if TouchDesigner skipped a frame, the time slice is 2 samples and is 2/60 seconds.
 
-You can see the time slice sizes by creating a [Perform CHOP](https://docs.derivative.ca/Perform_CHOP "Perform CHOP") and sending it to a [Trail CHOP](https://docs.derivative.ca/Trail_CHOP "Trail CHOP") and setting Perform to the Cook and Time Slice Step channels, `cook` and `timeslice_step`.
+You can see the time slice sizes by creating a [Perform CHOP](../CHOPs/Perform_CHOP.md "Perform CHOP") and sending it to a [Trail CHOP](../CHOPs/Trail_CHOP.md "Trail CHOP") and setting Perform to the Cook and Time Slice Step channels, `cook` and `timeslice_step`.
 
-See the [Time Slice CHOP](https://docs.derivative.ca/Time_Slice_CHOP "Time Slice CHOP") in [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets").
+See the [Time Slice CHOP](../CHOPs/Time_Slice_CHOP.md "Time Slice CHOP") in [OP Snippets](../Learn/OP_Snippets.md "OP Snippets").
 
-Many CHOPs, like the [Filter CHOP](https://docs.derivative.ca/Filter_CHOP "Filter CHOP") cook a timeslice of samples to assure that curves are smooth and pulses are accurate, even if the TouchDesigner process is skipping frames. In contrast, the [Constant CHOP](https://docs.derivative.ca/Constant_CHOP "Constant CHOP") is not time sliced - it it always one sample long.
+Many CHOPs, like the [Filter CHOP](Filter_CHOP.md "Filter CHOP") cook a timeslice of samples to assure that curves are smooth and pulses are accurate, even if the TouchDesigner process is skipping frames. In contrast, the [Constant CHOP](../CHOPs/Constant_CHOP.md "Constant CHOP") is not time sliced - it it always one sample long.
 
 Time Slice is a **Common** page parameter on each CHOP and is automatically set/unset on most CHOPs.
 
 **Example** : If the current frame is 77 and the previously-displayed frame is 73, then the time slice is 4 frames long (frames 74 to 77). This means that TouchDesigner jumped ahead 4 frames to keep up with the real-time clock. Assuming the timeline frame rate is 60 frames per second, if the CHOP contains audio at its default 44100 samples per second, there will be 44100*4/60 = 2940 samples in the CHOP containing audio.
 
-You can check if a CHOP is time sliced via the [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") info pop-up on any CHOP node.
+You can check if a CHOP is time sliced via the [MMB](Mouse_Click.md "Mouse Click") info pop-up on any CHOP node.
 
-**Note** : The maximum length of a time slice is set via the preference in Edit -> Preferences -> CHOPs. It is currently 200 msec. See the audio tip in [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP").
+**Note** : The maximum length of a time slice is set via the preference in Edit -> Preferences -> CHOPs. It is currently 200 msec. See the audio tip in [Audio Device Out CHOP](../Interoperability/Audio_Device_Out_CHOP.md "Audio Device Out CHOP").
 
 These short channels can be computed much faster than a full animation range channel, and uses less memory. This gain in speed and memory efficiency is extremely important for interactive 3D, puppeteering and audio processing.
 
@@ -36,13 +36,13 @@ However, if the channel does need to be evaluated every frame due to user input 
 
 When you view the info on a CHOP, it reports its frame range and whether it is time sliced or not.
 
-See also [Absolute Time](https://docs.derivative.ca/Absolute_Time "Absolute Time"), the [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") for the [Time Slice CHOP](https://docs.derivative.ca/Time_Slice_CHOP "Time Slice CHOP"), the [Timeline](https://docs.derivative.ca/Timeline "Timeline"), the [Hog CHOP](https://docs.derivative.ca/Hog_CHOP "Hog CHOP") and the Tscript:timeslice Command.
+See also [Absolute Time](Absolute_Time.md "Absolute Time"), the [OP Snippets](../Learn/OP_Snippets.md "OP Snippets") for the [Time Slice CHOP](../CHOPs/Time_Slice_CHOP.md "Time Slice CHOP"), the [Timeline](Timeline.md "Timeline"), the [Hog CHOP](../CHOPs/Hog_CHOP.md "Hog CHOP") and the Tscript:timeslice Command.
 
-To Time Slice a CHOP, set its flag on the Common page. Try the [Noise CHOP](https://docs.derivative.ca/Noise_CHOP "Noise CHOP") to see the effect with Time Slice On and Off.
+To Time Slice a CHOP, set its flag on the Common page. Try the [Noise CHOP](../CHOPs/Noise_CHOP.md "Noise CHOP") to see the effect with Time Slice On and Off.
 
-Send a [Constant CHOP](https://docs.derivative.ca/Constant_CHOP "Constant CHOP") to a [Filter CHOP](https://docs.derivative.ca/Filter_CHOP "Filter CHOP"), play forward and adjust the Constant CHOP slider to see the results of a Time Sliced CHOP.
+Send a [Constant CHOP](../CHOPs/Constant_CHOP.md "Constant CHOP") to a [Filter CHOP](Filter_CHOP.md "Filter CHOP"), play forward and adjust the Constant CHOP slider to see the results of a Time Sliced CHOP.
 
-With Time Slicing, samples do not get lost or un-processed when TouchDesigner cannot keep up with the [timeline](https://docs.derivative.ca/Timeline "Timeline")'s sample rate, default 60 frames per second. All frames get processed, albeit in batches of 1, 2 or more at a time. This gives TouchDesigner more accurate curves and timing.
+With Time Slicing, samples do not get lost or un-processed when TouchDesigner cannot keep up with the [timeline](Timeline.md "Timeline")'s sample rate, default 60 frames per second. All frames get processed, albeit in batches of 1, 2 or more at a time. This gives TouchDesigner more accurate curves and timing.
 
 Time Slicing especially reduces the memory requirements of high sample-rate CHOPs like those in audio networks, and provides nearly instantaneous results when you tweak audio parameters in a network. Since even a short audio clip can use over a megabyte of storage, storing and processing only the necessary fraction of the clip reduces the memory requirements significantly, especially in large CHOP networks.
 
@@ -50,7 +50,7 @@ Time Sliced CHOPs do not maintain any more history about the channel than is nee
 
 How Time Slicing Works
 
-Time Sliced CHOPs cook whenever the [Timeline](https://docs.derivative.ca/Timeline "Timeline") is moved forward. The amount of time that the Timeline jumps ahead is the size of the current Time Slice. The Time Slice is synchronized with the Timeline so that its first sample begins just after the previous Time Slice's last sample, and its last sample is at the current frame. If the Timeline is playing forwards, the Time Slices generated will never overlap, nor will there be any gaps between them. All Time Sliced CHOPs will have the same Time Slice interval for a given cook.
+Time Sliced CHOPs cook whenever the [Timeline](Timeline.md "Timeline") is moved forward. The amount of time that the Timeline jumps ahead is the size of the current Time Slice. The Time Slice is synchronized with the Timeline so that its first sample begins just after the previous Time Slice's last sample, and its last sample is at the current frame. If the Timeline is playing forwards, the Time Slices generated will never overlap, nor will there be any gaps between them. All Time Sliced CHOPs will have the same Time Slice interval for a given cook.
 
 When the CHOP network needs to cook, the Time Slice interval is computed and a single Time Slice is passed through the network. Since the current frame is always contained within the slice, the slice can be easily exported to any parameter.
 
@@ -70,13 +70,13 @@ CHOPs which are Occasionally Time Sliced
 
 The following CHOPs will output Time Slices under certain conditions, but are not considered Time Sliced CHOPs. The Time Slice button in the Common page is greyed out for these CHOPs.
 
-[Trim CHOP](https://docs.derivative.ca/Trim_CHOP "Trim CHOP") - The Trim CHOP can trim the current time slice out of any input CHOP. This function is selected by changing the Unit Values menu to Current Time Slice.
+[Trim CHOP](../CHOPs/Trim_CHOP.md "Trim CHOP") - The Trim CHOP can trim the current time slice out of any input CHOP. This function is selected by changing the Unit Values menu to Current Time Slice.
 
-[Record CHOP](https://docs.derivative.ca/Record_CHOP "Record CHOP") - This CHOP can be used to record the output of a Time Sliced CHOP over the animation range. It can also be used to interpolate a Time Slice from a CHOP that outputs a single frame (like the Mouse or Keyboard CHOPs). The input can be sampled over the entire Time Slice, or only at the current frame using the Record Input parameter. The output range can be selected using the Record Output parameter.
+[Record CHOP](../CHOPs/Record_CHOP.md "Record CHOP") - This CHOP can be used to record the output of a Time Sliced CHOP over the animation range. It can also be used to interpolate a Time Slice from a CHOP that outputs a single frame (like the Mouse or Keyboard CHOPs). The input can be sampled over the entire Time Slice, or only at the current frame using the Record Input parameter. The output range can be selected using the Record Output parameter.
 
 Null CHOP Can Stop Overcooking
 
-See the [Null CHOP](https://docs.derivative.ca/Null_CHOP "Null CHOP") Cook Type -> Selective option.
+See the [Null CHOP](../CHOPs/Null_CHOP.md "Null CHOP") Cook Type -> Selective option.
 
 Time Slice Options
 
@@ -112,18 +112,18 @@ Time Slicing allows you to clean up or add effects to audio files more efficient
 
 A Time Slice is the time from the last cook frame to the current cook frame. In CHOPs it is the set of short channels that contain the CHOP channels' samples between the last and the current cook frame.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](Operator_Family.md "Operator Family") which operate on [Channels](Channel.md "Channel") (a sequence of numbers ([Samples](Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
 A Time Slice is the time from the last cook frame to the current cook frame. In CHOPs it is the set of short channels that contain the CHOP channels' samples between the last and the current cook frame.
 
-To re-compute the output data of the [Operators](https://docs.derivative.ca/Operator "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](https://docs.derivative.ca/Parameter "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](https://docs.derivative.ca/Script "Script") commands are run on the node. When the operator is a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](https://docs.derivative.ca/Dependency "Dependency") - the necessary operators in all [Networks](https://docs.derivative.ca/Network "Network"), contributing to a frame's total "cook time".
+To re-compute the output data of the [Operators](../General/Operator.md "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](Parameter.md "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](Script.md "Script") commands are run on the node. When the operator is a [Panel Component](Panel_Component.md "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](Dependency.md "Dependency") - the necessary operators in all [Networks](Network.md "Network"), contributing to a frame's total "cook time".
 
-TouchDesigner's original built-in Command scripting language prior to [Python](https://docs.derivative.ca/Python "Python").
+TouchDesigner's original built-in Command scripting language prior to [Python](../General/Python.md "Python").
 
-The panel at the bottom of TouchDesigner, it controls the current global looping [Time](https://docs.derivative.ca/Time_COMP "Time COMP") your TouchDesigner project, or of just one component.
+The panel at the bottom of TouchDesigner, it controls the current global looping [Time](Time_COMP.md "Time COMP") your TouchDesigner project, or of just one component.
 
 A floating dialog, pane type, or dialog in a Network Editor that displays one operator's parameters.
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](Pane.md "Pane") or [Viewer](Viewer.md "Viewer").
 
 The dialog box in which commands and scripts can typed in manually. Output to the textport includes script errors and messages from `print()` and `debug()` calls in python code. You can also edit DATs in the textport.

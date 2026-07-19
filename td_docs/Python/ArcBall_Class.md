@@ -94,13 +94,13 @@ m.dollyTo(.1, .2)
 
 `transform()`→ `TDU.Matrix`:
 
-Gets the current transform [matrix](https://docs.derivative.ca/Matrix_Class "Matrix Class") for the arcball.
+Gets the current transform [matrix](Matrix_Class.md "Matrix Class") for the arcball.
 
 ```
 m.transform()
 ```
 
-`setTransform(matrix:TDU.Matrix[](https://docs.derivative.ca/Matrix_Class "Matrix Class"))`→ `None`:
+`setTransform(matrix:TDU.Matrix[](Matrix_Class.md "Matrix Class"))`→ `None`:
 
 Sets the current transform matrix for the arcball. Scales in the given matrix will be ignored.
 

@@ -37,7 +37,7 @@ print(q[1])		# same as q.y
 q[2] = 0		# same as q.z
 ```
 
-See also [Transform CHOP](https://docs.derivative.ca/Transform_CHOP "Transform CHOP") which accepts, manipulates and outputs quaternions as sets of CHOP channels.
+See also [Transform CHOP](../CHOPs/Transform_CHOP.md "Transform CHOP") which accepts, manipulates and outputs quaternions as sets of CHOP channels.
 
 ## Instantiators
 
@@ -47,8 +47,8 @@ The following argument forms are valid instantiators:
   * `tdu.Quaternion()` - (0, 0, 0, 1)
   * `tdu.Quaternion(quaternion : TDU.Quaternion)` - copy the quaternion in the argument
   * `tdu.Quaternion(rx : float, ry : float, rz : float)` - from Euler angles in degrees
-  * `tdu.Quaternion(rot : float, axis: TDU.Vector[](https://docs.derivative.ca/Vector_Class "Vector Class"))` - from a rotation angle and a rotational axis
-  * `tdu.Quaternion(v1 : TDU.Vector[](https://docs.derivative.ca/Vector_Class "Vector Class"), v2: TDU.Vector[](https://docs.derivative.ca/Vector_Class "Vector Class"))` - rotate from v1 to v2
+  * `tdu.Quaternion(rot : float, axis: TDU.Vector[](Vector_Class.md "Vector Class"))` - from a rotation angle and a rotational axis
+  * `tdu.Quaternion(v1 : TDU.Vector[](Vector_Class.md "Vector Class"), v2: TDU.Vector[](Vector_Class.md "Vector Class"))` - rotate from v1 to v2
   * `tdu.Quaternion(x : float, y : float, z : float, w : float)` - from quaternion values
   * `tdu.Quaternion(xyzw : list)` - from quaternion values in a list
   * `tdu.Quaternion(matrix : TDU.Matrix)` - from a matrix
@@ -200,4 +200,4 @@ Applies the rotation of one quaternion to another quaternion.
 q1 *= q2
 ```
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

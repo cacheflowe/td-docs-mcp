@@ -6,7 +6,7 @@ title: File_Metadata
 
 # File Metadata
 
-[Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") and [Audio File Out CHOP](https://docs.derivative.ca/Audio_File_Out_CHOP "Audio File Out CHOP") allow users to provide a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") of metadata key value pairs to be written to the file. Similarly [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"), [Audio File In CHOP](https://docs.derivative.ca/Audio_File_In_CHOP "Audio File In CHOP") and [Media File Info DAT](https://docs.derivative.ca/Media_File_Info_DAT "Media File Info DAT") can read this metadata in. Below is a list of valid key values for the metadata table.
+[Movie File Out TOP](../TOPs/Movie_File_Out_TOP.md "Movie File Out TOP") and [Audio File Out CHOP](../CHOPs/Audio_File_Out_CHOP.md "Audio File Out CHOP") allow users to provide a [Table DAT](Table_DAT.md "Table DAT") of metadata key value pairs to be written to the file. Similarly [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP"), [Audio File In CHOP](../CHOPs/Audio_File_In_CHOP.md "Audio File In CHOP") and [Media File Info DAT](../DATs/Media_File_Info_DAT.md "Media File Info DAT") can read this metadata in. Below is a list of valid key values for the metadata table.
 
 ##  File Metadata
 
@@ -81,7 +81,7 @@ ShutterSpeedValue | 1/300
 
 ##  See Also
 
-  * [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP"), [Audio File Out CHOP](https://docs.derivative.ca/Audio_File_Out_CHOP "Audio File Out CHOP"),[Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"), [Audio File In CHOP](https://docs.derivative.ca/Audio_File_In_CHOP "Audio File In CHOP"), [Media File Info DAT](https://docs.derivative.ca/Media_File_Info_DAT "Media File Info DAT")
+  * [Movie File Out TOP](../TOPs/Movie_File_Out_TOP.md "Movie File Out TOP"), [Audio File Out CHOP](../CHOPs/Audio_File_Out_CHOP.md "Audio File Out CHOP"),[Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP"), [Audio File In CHOP](../CHOPs/Audio_File_In_CHOP.md "Audio File In CHOP"), [Media File Info DAT](../DATs/Media_File_Info_DAT.md "Media File Info DAT")
 
 Read and write different types of file metadata.
 

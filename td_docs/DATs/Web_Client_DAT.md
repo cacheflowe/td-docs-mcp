@@ -28,14 +28,13 @@ The second input is the data/parameters to send in the request. This can be a ta
 name  | joe
 ---|---
 month  | May
-The Web Client DAT is the successor to the [Web DAT](https://docs.derivative.ca/Web_DAT "Web DAT").
+The Web Client DAT is the successor to the [Web DAT](Web_DAT.md "Web DAT").
 
-See also: [Web Server DAT](https://docs.derivative.ca/Web_Server_DAT "Web Server DAT"), [SocketIO DAT](https://docs.derivative.ca/SocketIO_DAT "SocketIO DAT"), [XML DAT](https://docs.derivative.ca/XML_DAT "XML DAT"), [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT"), [WebSocket DAT](https://docs.derivative.ca/WebSocket_DAT "WebSocket DAT"), [Web DAT](https://docs.derivative.ca/Web_DAT "Web DAT").
+See also: [Web Server DAT](../Interoperability/Web_Server_DAT.md "Web Server DAT"), [SocketIO DAT](../Interoperability/SocketIO_DAT.md "SocketIO DAT"), [XML DAT](../Interoperability/XML_DAT.md "XML DAT"), [TCP/IP DAT](https://docs.derivative.ca/TCP/IP_DAT "TCP/IP DAT"), [WebSocket DAT](../Interoperability/WebSocket_DAT.md "WebSocket DAT"), [Web DAT](Web_DAT.md "Web DAT").
 
-[webclientDAT_Class](https://docs.derivative.ca/WebclientDAT_Class "WebclientDAT Class")
+[webclientDAT_Class](Web_Client_DAT_Class.md "WebclientDAT Class")
 
 ## Parameters - Web Client Page
-
 - Active `active` - Toggles the operator on/off.
 - Request Method `reqmethod` - ⊞ - Selects the [HTTP request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
   * GET `get` - The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
@@ -45,7 +44,6 @@ See also: [Web Server DAT](https://docs.derivative.ca/Web_Server_DAT "Web Server
   * HEAD `head` - The HEAD method asks for a response identical to that of a GET request, but without the response body.
   * OPTIONS `options` - The OPTIONS method is used to describe the communication options for the target resource.
   * PATCH `patch` - The PATCH method is used to apply partial modifications to a resource.
-
 - URL `url` - The URL of the server to send the HTTP request. Generally, if sending an HTTP request to a secure server, then the URL should begin with "https://".
 - Upload File `uploadfile` - The contents of the upload file will be sent to the server (chunked, if necessary).
 - Request `request` - Sends the request
@@ -56,13 +54,11 @@ See also: [Web Server DAT](https://docs.derivative.ca/Web_Server_DAT "Web Server
 - Include Header in Output `includeheader` - Includes the header in the output of the response.
 
 ## Parameters - Authentication Page
-
 - Authentication Type `authtype` - ⊞ - The type of authentication.
   * None `none` - No authentication
   * Basic `basic` - Basic authentication is base-64 encoded username and password.
   * Digest `digest` - Digest authentication is base-64 encoded username and password that's encrypted with a hashing function. Digest is a more secure version of Basic authentication.
   * OAuth1 `ouath1` - Version 1 of OAuth. OAuth1 requires App Key, App Secret, User OAuth Token, and User OAuth Secret. These can be found via the account on the web server that request is being sent to. For example, in the case of the Twitter API the values of these 4 parameters can be found under the account profile.
   * OAuth2 `ouath2` - Version 2 of OAuth. OAuth2 first requires an HTTP request be sent to the web server to acquire the Client ID and token. It can be acquired using a browser.
-
 - Username `username` - Username used in Basic/Digest authentication.
 - Password `pw` - Password used in Basic/Digest authentication.

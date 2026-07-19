@@ -18,29 +18,29 @@ It also puts the filtered results as `DAT.results` (a Python list of results) an
 
 You can test expressions on `DAT.source`, `DAT.result` and `DAT.results` by setting the Output menu to Expression and using expressions like `me.result['city']`, which outputs the evaluated expression from the DAT. You can then use that expression as `op('json1').result['city']` in an expression elsewhere. `DAT.expr` is also a member of the JSON DAT, for example, `op('json1').expr` returns the evaluated expression parameter.
 
-**Output tables** : The JSON DAT can output a table by setting the Output Format menu to Table. It will do its best to take the result of the JSON Filter and form rows and columns of values and headings in a DAT table. Any cell that can't be expressed as a simple string, integer, float or boolean will be left as the JSON string of the remainder. A cell or range of cells can be further reduced with a [Select DAT](https://docs.derivative.ca/Select_DAT "Select DAT") and then passed to another JSON DAT which can convert the JSON strings to a table.
+**Output tables** : The JSON DAT can output a table by setting the Output Format menu to Table. It will do its best to take the result of the JSON Filter and form rows and columns of values and headings in a DAT table. Any cell that can't be expressed as a simple string, integer, float or boolean will be left as the JSON string of the remainder. A cell or range of cells can be further reduced with a [Select DAT](Select_DAT.md "Select DAT") and then passed to another JSON DAT which can convert the JSON strings to a table.
 
-**See also:** [JSONPath](https://docs.derivative.ca/JSONPath "JSONPath"), [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets"), and the [TDJSON](https://docs.derivative.ca/TDJSON "TDJSON") functions for converting and manipulating JSON data.
+**See also:** [JSONPath](https://docs.derivative.ca/JSONPath "JSONPath"), [OP Snippets](../Learn/OP_Snippets.md "OP Snippets"), and the [TDJSON](https://docs.derivative.ca/TDJSON "TDJSON") functions for converting and manipulating JSON data.
 
-[jsonDAT_Class](https://docs.derivative.ca/JsonDAT_Class "JsonDAT Class")
+[jsonDAT_Class](JSON_DAT_Class.md "JsonDAT Class")
 
 ## Parameters - JSON Page
-
 - Filter `filter` - A filter string following JSONPath syntax that will be used to filter the input JSON.
 - Output `output` - ⊞ - Select the output of the JSON DAT.
   * Filter Result `filterresult` - Outputs list returned from applying the filter to the JSON text input.
   * Expression `expression` - Output a custom expression.
-
 - Expression `expression` - The custom expression to output
-- Format Output `formatoutput` - When enabled, the output of the DAT will formatted with indents and newlines.
+- Output Format `outputformat` - ⊞ - Select the format of the DAT output.
+  * None `none` - No formatting done to the output, which essentially means it will be in a Python format (ie. with single quotes).
+  * Indented `indented` - Indent and convert single quotes to double quotes.
+  * Table `table` - Format the JSON output as a table. If the root structure is a list then it will be a column of values. If the root structure is a dictionary then it will have the first row as the name headers, and the next row as the value. If the output is a list of dictionaries then there will be multiple value rows below the name headers. In this case each row will represent a single dictionary structure in the list, and if that dictionary does not contain an entry for one of the names in the column header then it will be left blank.
+  * Double Quotes `doublequotes` - Convert single quotes to double quotes.
 - Hold Last Non-Empty Results `holdlast` - When enabled, the most recent result will be held if the results become empty, in effect only new non-empty results will update the output.
 
 ## Parameters - Common Page
-
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
-
 - Edit/View Extension `extension` - ⊞ - Select the file extension this DAT should expose to external editors.
   * dat `dat` - various common file extensions.
   * frag `frag` -
@@ -55,7 +55,6 @@ You can test expressions on `DAT.source`, `DAT.result` and `DAT.results` by sett
   * xml `xml` -
   * From Language `languageext` - pick extension from DATs script language.
   * Custom Extension `customext` - Specify a custom extension.
-
 - Custom Extension `customext` - Specifiy the custom extension.
 - Word Wrap `wordwrap` - ⊞ - Enable Word Wrap for Node Display.
   * Input `input` - The DAT uses the inputs setting.
@@ -68,14 +67,13 @@ You can test expressions on `DAT.source`, `DAT.result` and `DAT.results` by sett
 
 ## Info CHOP Channels
 
-Extra Information for the JSON DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the JSON DAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common DAT Info Channels
 
   * num_rows - Number of rows in this DAT.
-
   * num_cols - Number of columns in this DAT.
 
 ###
@@ -83,19 +81,11 @@ Extra Information for the JSON DAT can be accessed via an [Info CHOP](https://do
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

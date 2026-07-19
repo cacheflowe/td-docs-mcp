@@ -6,7 +6,7 @@ title: Matrix_Class
 
 # Matrix Class
 
-The matrix class holds a single 4x4 matrix for use in transformations. The matrix's data layout is in [column-major format](http://en.wikipedia.org/wiki/Column-major_order#Column-major_order), which is to say that the matrix is multiplied from the left of [vectors](https://docs.derivative.ca/Vector_Class "Vector Class") and [positions](https://docs.derivative.ca/Position_Class "Position Class"). The translation values are stored in the last column of the matrix.
+The matrix class holds a single 4x4 matrix for use in transformations. The matrix's data layout is in [column-major format](http://en.wikipedia.org/wiki/Column-major_order#Column-major_order), which is to say that the matrix is multiplied from the left of [vectors](Vector_Class.md "Vector Class") and [positions](Position_Class.md "Position Class"). The translation values are stored in the last column of the matrix.
 
 **Note:** tdu.Matrix and TDU.Matrix can be used interchangeably. In general, TDU.Matrix is used to represent the class, while tdu.Matrix is used for the instantiator function.
 
@@ -38,7 +38,7 @@ m = tdu.Matrix([1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16])
 4  8  12  16
 ```
 
-Other valid instantiator arguments include a quaternion as a list of 4 values or transformation/projection matrices from [Object COMP](https://docs.derivative.ca/ObjectCOMP_Class "ObjectCOMP Class") and [Camera COMP](https://docs.derivative.ca/CameraCOMP_Class "CameraCOMP Class") using various methods such as `transform()`, `pretransform()`, or `projection()`.
+Other valid instantiator arguments include a quaternion as a list of 4 values or transformation/projection matrices from [Object COMP](ObjectCOMP_Class.md "ObjectCOMP Class") and [Camera COMP](../COMPs/Camera_COMP_Class.md "CameraCOMP Class") using various methods such as `transform()`, `pretransform()`, or `projection()`.
 
 ## Instantiators
 
@@ -219,7 +219,7 @@ m.lookat(eyeP, target, up)
 
 `decompose()`→ `tuple[tuple, tuple, tuple]`:
 
-Decomposes the matrix into its scale, rotate and translate values. These are the same as the translate, rotate and scale that are in the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") and other Object components. However due to rotations being able to be solved in different ways, it's likely a decomposed transform matrix from a Geometry COMP will not have the same values as its parameter. The resulting transform is the same though. This function returns a tuple of tuples (3 tuples), which are the scale, rotate and translate values respectively.
+Decomposes the matrix into its scale, rotate and translate values. These are the same as the translate, rotate and scale that are in the [Geometry COMP](../Glossary/Geometry_COMP.md "Geometry COMP") and other Object components. However due to rotations being able to be solved in different ways, it's likely a decomposed transform matrix from a Geometry COMP will not have the same values as its parameter. The resulting transform is the same though. This function returns a tuple of tuples (3 tuples), which are the scale, rotate and translate values respectively.
 
 ```
 s, r, t = m.decompose()
@@ -276,7 +276,7 @@ Subtracts the matrices, component-by-component, and returns the results in a new
 
 Adds the matrices, component-by-component, and returns the results in a new matrix
 
-`Matrix * TDU.Vector[](https://docs.derivative.ca/Vector_Class "Vector Class")`→ `TDU.Vector[](https://docs.derivative.ca/Vector_Class "Vector Class")`:
+`Matrix * TDU.Vector[](Vector_Class.md "Vector Class")`→ `TDU.Vector[](Vector_Class.md "Vector Class")`:
 
 Multiplies the vector by the matrix and returns the a new vector as the result. Since a Vector is direction only and has no notion of a position, the translate part of the matrix does not get applied to the vector.
 
@@ -284,7 +284,7 @@ Multiplies the vector by the matrix and returns the a new vector as the result. 
 newV = M * v
 ```
 
-`Matrix * TDU.Position[](https://docs.derivative.ca/Position_Class "Position Class")`→ `TDU.Position[](https://docs.derivative.ca/Position_Class "Position Class")`:
+`Matrix * TDU.Position[](Position_Class.md "Position Class")`→ `TDU.Position[](Position_Class.md "Position Class")`:
 
 Multiplies the position by the matrix and returns the a new position as the result. If the matrix was not an transformation matrix, such as a projection matrix instead, the perspective divide by W will automatically be applied to X, Y and Z.
 
@@ -292,4 +292,4 @@ Multiplies the position by the matrix and returns the a new position as the resu
 newP = M * p
 ```
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").

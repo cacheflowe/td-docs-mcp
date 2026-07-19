@@ -123,19 +123,19 @@ Resolution | Codec | Bit Rate | Format | File Size Bytes | CPU% | MB/s | Max Str
 ##  Supported Video Data Input / Output Technology (SDI etc)[")]
 
 TouchDesigner supports the latest cards from the following manufacturers.
-  * [AJA](https://docs.derivative.ca/AJA "AJA") - <https://www.aja.com/>
+  * [AJA](../Interoperability/AJA.md "AJA") - <https://www.aja.com/>
   * AJA Kona line is well tested - <https://www.aja.com/family/desktop-io>
   * AJA Corvid 88 is part of our video server testing platform - <https://www.aja.com/family/developer>
-  * [Blackmagic Design](https://docs.derivative.ca/Blackmagic_Design "Blackmagic Design") - <https://www.blackmagicdesign.com/>
+  * [Blackmagic Design](../Interoperability/Blackmagic_Design.md "Blackmagic Design") - <https://www.blackmagicdesign.com/>
   * Blackmagic Decklink 8K Pro is well tested - <https://www.blackmagicdesign.com/products/decklink>
-  * [Bluefish444](https://docs.derivative.ca/Bluefish444 "Bluefish444") - <https://bluefish444.com/>
+  * [Bluefish444](../Interoperability/Bluefish444.md "Bluefish444") - <https://bluefish444.com/>
   * Datapath - <https://www.datapath.co.uk/>
 
 ##  Supported IP Audio and Video Technology
 
 TouchDesigner supports the follow IP based technologies for sending audio and video over networks.
-  * [Dante](https://docs.derivative.ca/Dante "Dante") - <https://www.audinate.com/>
-  * [NDI](https://docs.derivative.ca/NDI "NDI") - <https://www.newtek.com/ndi/>
+  * [Dante](../Interoperability/Dante.md "Dante") - <https://www.audinate.com/>
+  * [NDI](../Interoperability/NDI.md "NDI") - <https://www.newtek.com/ndi/>
 
 ##  Recommended Product Links
 
@@ -148,6 +148,6 @@ TouchDesigner supports the follow IP based technologies for sending audio and vi
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-The width and height of an image in pixels. Most TOPs, like the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") can set the image resolution. See [Aspect Ratio](https://docs.derivative.ca/TOP_Generator_Common_Page "TOP Generator Common Page") for the width/height ratio of an image, taking into account non-square pixels.
+The width and height of an image in pixels. Most TOPs, like the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP") can set the image resolution. See [Aspect Ratio](../Glossary/TOP_Generator_Common_Page.md "TOP Generator Common Page") for the width/height ratio of an image, taking into account non-square pixels.
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.

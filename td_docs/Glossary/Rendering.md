@@ -24,12 +24,12 @@ Rendering or "rasterization" in TouchDesigner is done through GLSL and includes 
   * integrated particle system with sprite rendering
   * SSAO
 
-Rendering is achieved in TouchDesigner using the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") and the [Render Pass TOP](https://docs.derivative.ca/Render_Pass_TOP "Render Pass TOP"). To render objects you need to do a few things.
-  * Create a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and assign it to the Render TOPs **Camera** parameter.
-  * Assign [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP")(s) to be rendered
-  * Make sure the [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag") is turned on for every SOP and COMP that you want to render.
-  * Create and assign [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP")(s)
-  * Assign materials ([MATs](https://docs.derivative.ca/MAT "MAT")) to the Geometry COMPs. (A default material will be assigned if none is listed).
+Rendering is achieved in TouchDesigner using the [Render TOP](../TOPs/Render_TOP.md "Render TOP") and the [Render Pass TOP](../TOPs/Render_Pass_TOP.md "Render Pass TOP"). To render objects you need to do a few things.
+  * Create a [Camera COMP](Camera_COMP.md "Camera COMP") and assign it to the Render TOPs **Camera** parameter.
+  * Assign [Geometry COMP](Geometry_COMP.md "Geometry COMP")(s) to be rendered
+  * Make sure the [Render Flag](Render_Flag.md "Render Flag") is turned on for every SOP and COMP that you want to render.
+  * Create and assign [Light COMP](Light_COMP.md "Light COMP")(s)
+  * Assign materials ([MATs](../MATs/MAT.md "MAT")) to the Geometry COMPs. (A default material will be assigned if none is listed).
 
 This may be helpful: [Why is My Render Black](https://docs.derivative.ca/Why_is_My_Render_Black "Why is My Render Black")
 
@@ -53,12 +53,12 @@ This is also true when using the **Render/Render Pass TOP** parameter in the Ren
 
 Rendering is the creation of a 3D image with the Render TOP. Rendering is also used more generally to include the compositing (with TOPs) to generate an output image.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.

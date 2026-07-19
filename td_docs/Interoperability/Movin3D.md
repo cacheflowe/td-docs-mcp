@@ -16,17 +16,17 @@ For full product details, see [MOVIN TRACIN](https://movin3d.com/tracin) and [mo
 
 ##  Motion Capture Streaming (OSC In CHOP)[")]
 
-MOVIN Studio streams skeleton joint rotations over OSC, which TouchDesigner receives natively via the [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP"). The channel names encode the path and parameter for each joint, so a [Null CHOP](https://docs.derivative.ca/Null_CHOP "Null CHOP") with the Export Method set to _Channel Name is Path:Parameter_ can drive a character rig directly.
+MOVIN Studio streams skeleton joint rotations over OSC, which TouchDesigner receives natively via the [OSC In CHOP](OSC_In_CHOP.md "OSC In CHOP"). The channel names encode the path and parameter for each joint, so a [Null CHOP](../CHOPs/Null_CHOP.md "Null CHOP") with the Export Method set to _Channel Name is Path:Parameter_ can drive a character rig directly.
 
 ###  Setup
 
 **1. Add an OSC In CHOP**
 
-In your TouchDesigner project, add an [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP") from the CHOP tab. Set the **Network Port** to `11237` (the default port used by MOVIN Studio for TouchDesigner streaming).
+In your TouchDesigner project, add an [OSC In CHOP](OSC_In_CHOP.md "OSC In CHOP") from the CHOP tab. Set the **Network Port** to `11237` (the default port used by MOVIN Studio for TouchDesigner streaming).
 
 **2. Add a Null CHOP**
 
-Add a [Null CHOP](https://docs.derivative.ca/Null_CHOP "Null CHOP") and connect the OSC In CHOP to it. In the Null CHOP's **Common** tab, set the **Export Method** to `Channel Name is Path:Parameter`.
+Add a [Null CHOP](../CHOPs/Null_CHOP.md "Null CHOP") and connect the OSC In CHOP to it. In the Null CHOP's **Common** tab, set the **Export Method** to `Channel Name is Path:Parameter`.
 
 **3. Import the same character in both MOVIN Studio and TouchDesigner**
 
@@ -60,19 +60,19 @@ The Null CHOP's `Channel Name is Path:Parameter` export method uses this naming 
 
 ##  Point Cloud Streaming (OSC In DAT + Python)[")]
 
-In addition to skeleton data, MOVIN TRACIN can stream raw LiDAR point cloud data to TouchDesigner. Because the point cloud data is more complex (arrays of XYZ positions and optional intensity values), this workflow uses an [OSC In DAT](https://docs.derivative.ca/OSC_In_DAT "OSC In DAT") with a Python callback to parse the incoming data into geometry that can be rendered.
+In addition to skeleton data, MOVIN TRACIN can stream raw LiDAR point cloud data to TouchDesigner. Because the point cloud data is more complex (arrays of XYZ positions and optional intensity values), this workflow uses an [OSC In DAT](../DATs/OSC_In_DAT.md "OSC In DAT") with a Python callback to parse the incoming data into geometry that can be rendered.
 
 ###  Setup
 
 **1. Add an OSC In DAT**
 
-Add an [OSC In DAT](https://docs.derivative.ca/OSC_In_DAT "OSC In DAT") and set its **Network Port** to the port configured for point cloud output in MOVIN Studio (check the MOVIN Studio streaming settings for the correct port — this is separate from the mocap skeleton port).
+Add an [OSC In DAT](../DATs/OSC_In_DAT.md "OSC In DAT") and set its **Network Port** to the port configured for point cloud output in MOVIN Studio (check the MOVIN Studio streaming settings for the correct port — this is separate from the mocap skeleton port).
 
 **2. Create a callback DAT**
 
-Create a [Text DAT](https://docs.derivative.ca/Text_DAT "Text DAT") and reference it as the **Callbacks DAT** on the OSC In DAT. The callback script parses incoming point cloud messages and writes them into a format that can be consumed by geometry operators.
+Create a [Text DAT](../Glossary/Text_DAT.md "Text DAT") and reference it as the **Callbacks DAT** on the OSC In DAT. The callback script parses incoming point cloud messages and writes them into a format that can be consumed by geometry operators.
 
-Below is an example callback that receives point cloud data and stores it for use with a [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP") or [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP"):
+Below is an example callback that receives point cloud data and stores it for use with a [Script SOP](../SOPs/Script_SOP.md "Script SOP") or [Geometry COMP](../Glossary/Geometry_COMP.md "Geometry COMP"):
 ```
 # Example OSC In DAT callback for MOVIN point cloud data
 # Assign this Text DAT as the Callbacks DAT on your OSC In DAT
@@ -107,7 +107,7 @@ def onReceiveOSC(dat, rowIndex, message, bytes, timeStamp, address, args, peer):
 
 **3. Visualize with a Script SOP**
 
-Use a [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP") (or [Script POP](https://docs.derivative.ca/index.php?title=Script_POP&action=edit&redlink=1 "Script POP \(page does not exist\)")) to read the stored points and create geometry:
+Use a [Script SOP](../SOPs/Script_SOP.md "Script SOP") (or [Script POP](https://docs.derivative.ca/Script_POP "Script POP")) to read the stored points and create geometry:
 ```
 # Example Script SOP for visualizing MOVIN point cloud
 # Place this in the Script SOP's callbacks
@@ -126,7 +126,7 @@ def onCook(scriptSOP):
     return
 ```
 
-Alternatively, the point cloud can be fed into a [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") and rendered using the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") with a point sprite material for real-time visualization.
+Alternatively, the point cloud can be fed into a [Geometry COMP](../Glossary/Geometry_COMP.md "Geometry COMP") and rendered using the [Render TOP](../TOPs/Render_TOP.md "Render TOP") with a point sprite material for real-time visualization.
 
 **Note:** For a complete working example of both mocap and point cloud streaming together, download the sample project linked in the [Sample Project](#Sample_Project) section below.
 
@@ -143,11 +143,8 @@ A step-by-step streaming guide is also available in the MOVIN documentation: [St
 ##  Troubleshooting
 
   * **No data arriving in the OSC In CHOP** — Verify that the port number in the OSC In CHOP matches the port configured in MOVIN Studio. Check that Windows Firewall is not blocking the connection. If streaming across machines, ensure both are on the same network and the Host IP in MOVIN Studio is set to the TouchDesigner machine's IP address.
-
   * **Character does not move** — Make sure the Export flag (green circle) is enabled on the Null CHOP. Confirm that the character's Node Name in TouchDesigner exactly matches the Character Name in MOVIN Studio.
-
   * **Skeleton appears distorted or broken** — Ensure the same FBX character file is loaded in both MOVIN Studio and TouchDesigner. Different files or mismatched bone hierarchies will cause retargeting errors.
-
   * **Point cloud data not appearing** — Verify that the OSC In DAT is set to the correct port for point cloud streaming (separate from the mocap port). Check that the callback DAT is properly referenced and that the address pattern in the callback matches what MOVIN Studio is sending.
 
 ##  External Links
@@ -159,22 +156,22 @@ A step-by-step streaming guide is also available in the MOVIN documentation: [St
   * [TouchDesigner Sample Project](https://drive.google.com/drive/folders/1JBOIXo8Ze7letvP2k-SvP6FXJTOHffRE)
   * [MOVIN GitHub](https://github.com/MOVIN3D)
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](https://docs.derivative.ca/CHOP_Viewer "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](https://docs.derivative.ca/Parameter "Parameter").
+Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](../Glossary/CHOP_Viewer.md "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](../Glossary/Parameter.md "Parameter").
 
-The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](https://docs.derivative.ca/Root "Root"). This path is displayed at the top of every [Pane](https://docs.derivative.ca/Pane "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](https://docs.derivative.ca/Folder "Folder").
+The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](../Glossary/Root.md "Root"). This path is displayed at the top of every [Pane](../Glossary/Pane.md "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](../Glossary/Folder.md "Folder").
 
-Every operator in TouchDesigner has a set of control Parameters that can be integer or floating point numbers, menus, binary toggles, text strings or operator [paths](https://docs.derivative.ca/Network_Path "Network Path"), which determine the output of the operator.
+Every operator in TouchDesigner has a set of control Parameters that can be integer or floating point numbers, menus, binary toggles, text strings or operator [paths](../Glossary/Network_Path.md "Network Path"), which determine the output of the operator.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](https://docs.derivative.ca/Python "Python") and the original [Tscript](https://docs.derivative.ca/Tscript "Tscript"). Scripts and single-line commands can also be run in the [Textport](https://docs.derivative.ca/Textport "Textport").
+A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](../General/Python.md "Python") and the original [Tscript](../Glossary/Tscript.md "Tscript"). Scripts and single-line commands can also be run in the [Textport](../Glossary/Textport.md "Textport").
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](https://docs.derivative.ca/Text_DAT "Text DAT") and referenced by a [GLSL Material](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") or a [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.
+The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](../Glossary/Text_DAT.md "Text DAT") and referenced by a [GLSL Material](../MATs/GLSL_MAT.md "GLSL MAT") or a [GLSL TOP](../TOPs/GLSL_TOP.md "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.

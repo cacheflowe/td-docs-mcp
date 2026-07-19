@@ -6,7 +6,7 @@ title: Monitors_Class
 
 # Monitors Class
 
-The Monitors class describes the set of all installed [monitor objects](https://docs.derivative.ca/Monitor_Class "Monitor Class"). It can be accessed with the monitors object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). It operates much like a Python list of monitor objects.
+The Monitors class describes the set of all installed [monitor objects](Monitor_Class.md "Monitor Class"). It can be accessed with the monitors object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). It operates much like a Python list of monitor objects.
 
 ```
 print(len(monitors))		# number of monitors
@@ -19,7 +19,7 @@ for m in monitors:
 
 `primary` → `int` **(Read Only)** :
 
-The primary [monitor](https://docs.derivative.ca/Monitor_Class "Monitor Class") display.
+The primary [monitor](Monitor_Class.md "Monitor Class") display.
 
 `width` → `int` **(Read Only)** :
 
@@ -49,8 +49,8 @@ The bottommost position of the combined monitor area, measured in pixels.
 
 `locate(x,y)`→ `td.Monitor`:
 
-Return the [monitor](https://docs.derivative.ca/Monitor_Class "Monitor Class") at the specified mouse coordinates, or None.
+Return the [monitor](Monitor_Class.md "Monitor Class") at the specified mouse coordinates, or None.
 
 `refresh()`→ `None`:
 
-Causes the application to behave as if a monitor device has changed. [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT") and other sources will be updated. This is typically done automatically by the operating system, but in special cases can be triggered manually with this method.
+Causes the application to behave as if a monitor device has changed. [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT") and other sources will be updated. This is typically done automatically by the operating system, but in special cases can be triggered manually with this method.

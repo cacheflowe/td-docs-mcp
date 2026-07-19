@@ -6,17 +6,17 @@ title: TOP_Viewer
 
 # TOP Viewer
 
-All [TOP](https://docs.derivative.ca/TOP "TOP") operators have interactive [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer"). To interact with it, turn on the TOP's [Viewer Active Flag](https://docs.derivative.ca/Viewer_Active_Flag "Viewer Active Flag") to make the viewer active.
+All [TOP](TOP.md "TOP") operators have interactive [Node Viewers](../Glossary/Node_Viewer.md "Node Viewer"). To interact with it, turn on the TOP's [Viewer Active Flag](https://docs.derivative.ca/Viewer_Active_Flag "Viewer Active Flag") to make the viewer active.
 [![TOPviewer.jpg](https://docs.derivative.ca/images/b/bb/TOPviewer.jpg)](https://docs.derivative.ca/File:TOPviewer.jpg)
 A gray checkerboard background will be displayed in images where an alpha channel is present. This can be turned off by opening [Preferences](https://docs.derivative.ca/Dialogs:Preferences_Dialog "Dialogs:Preferences Dialog") in the **Edit** menu. In preferences you can choose to use checkerboard or black as you alpha background.
 
-Use [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") to move the image around. Use [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") to zoom in and out of the image. Re-center the image by using the home shortcut "**h** ".
+Use [LMB](../Glossary/Mouse_Click.md "Mouse Click") to move the image around. Use [MMB](../Glossary/Mouse_Click.md "Mouse Click") to zoom in and out of the image. Re-center the image by using the home shortcut "**h** ".
 
-Clicking the [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") will open the viewer options menu. Keyboard shortcuts are listed beside each entry in the menu.
+Clicking the [RMB](../Glossary/Mouse_Click.md "Mouse Click") will open the viewer options menu. Keyboard shortcuts are listed beside each entry in the menu.
 [![TOPviewermenu.png](https://docs.derivative.ca/images/c/c1/TOPviewermenu.png)](https://docs.derivative.ca/File:TOPviewermenu.png)
 **Home** - Re-centers and scales the image to fit in the viewer.
 
-**Display Pixel Values** - Displays pixel information over the image. The [Timeline](https://docs.derivative.ca/Timeline "Timeline") should be playing forward for the values to properly update.
+**Display Pixel Values** - Displays pixel information over the image. The [Timeline](../Glossary/Timeline.md "Timeline") should be playing forward for the values to properly update.
 
 The following is displayed:
   * cursor uv coordinates
@@ -38,6 +38,6 @@ The following display modes are available:
 [![PointCloudViews.png](https://docs.derivative.ca/images/thumb/c/cc/PointCloudViews.png/800px-PointCloudViews.png)](https://docs.derivative.ca/File:PointCloudViews.png)
 Point cloud data displayed 3 modes: 1) Color 2) Normalized Split 3) View as Points
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

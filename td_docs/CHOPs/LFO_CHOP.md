@@ -22,14 +22,13 @@ Up to three input CHOPs can be connected to the LFO CHOP:
 
 The LFO CHOP can serve as a general motion time-warper and repeater. If you alter the Frequency, you can control the time warp.
 
-Unlike the [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP"), this is a time-sliced CHOP, that is, it generates its waveform as it goes, and speeds/slows how it steps through the waveform Type while the Frequency changes. Unlike the [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CHOP "Audio Oscillator CHOP"), the LFO CHOP is designed for non-audio frequencies.
+Unlike the [Wave CHOP](Wave_CHOP.md "Wave CHOP"), this is a time-sliced CHOP, that is, it generates its waveform as it goes, and speeds/slows how it steps through the waveform Type while the Frequency changes. Unlike the [Audio Oscillator CHOP](Audio_Oscillator_CHOP.md "Audio Oscillator CHOP"), the LFO CHOP is designed for non-audio frequencies.
 
-See also: [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CHOP "Audio Oscillator CHOP"), [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP"), [Pulse CHOP](https://docs.derivative.ca/Pulse_CHOP "Pulse CHOP").
+See also: [Audio Oscillator CHOP](Audio_Oscillator_CHOP.md "Audio Oscillator CHOP"), [Wave CHOP](Wave_CHOP.md "Wave CHOP"), [Pulse CHOP](Pulse_CHOP.md "Pulse CHOP").
 
-[lfoCHOP_Class](https://docs.derivative.ca/LfoCHOP_Class "LfoCHOP Class")
+[lfoCHOP_Class](LFO_CHOP_Class.md "LfoCHOP Class")
 
 ## Parameters - LFO Page
-
 - Type `wavetype` - ⊞ - The shape of the waveform to repeat, unless overridden by the Source Wave:
   * Sine `sin` - [![TouchChannels71.gif](https://docs.derivative.ca/images/a/ad/TouchChannels71.gif)](https://docs.derivative.ca/File:TouchChannels71.gif)(-1 to 1) A Sine wave.
   * Gaussian `normal` - [![TouchChannels74.gif](https://docs.derivative.ca/images/2/2b/TouchChannels74.gif)](https://docs.derivative.ca/File:TouchChannels74.gif)(0 to 1) A Gaussian (also known as a bell or normal) curve.
@@ -37,7 +36,6 @@ See also: [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CH
   * Ramp `ramp` - [![TouchChannels78.gif](https://docs.derivative.ca/images/c/cd/TouchChannels78.gif)](https://docs.derivative.ca/File:TouchChannels78.gif)(0 to 1) A ramp from 0 to 1.
   * Square `square` - [![TouchChannels80.gif](https://docs.derivative.ca/images/3/33/TouchChannels80.gif)](https://docs.derivative.ca/File:TouchChannels80.gif)(-1 to 1) Step-up/step-down, with Bias control to make it rectangular.
   * Pulse `pulse` - [![TouchChannels82.gif](https://docs.derivative.ca/images/c/c4/TouchChannels82.gif)](https://docs.derivative.ca/File:TouchChannels82.gif)Produces a 1 for one sample, 0 otherwise.
-
 - Play `play` - The LFO oscillates when 1, and stops when 0. Think of it like play and pause.
 - Frequency `frequency` - The cycles per second of the oscillation. When the Octave Control input is connected, it alters the frequency exponentially.
 - Offset `offset` - Values output from the CHOP can have an offset added to them.
@@ -49,31 +47,27 @@ See also: [Audio Oscillator CHOP](https://docs.derivative.ca/Audio_Oscillator_CH
   * While On `on` - Channels are reset when the Reset input goes on. The channel will hold the reset value until the input turns off.
   * On to Off `ontooff` - Channels are reset when the Reset input goes on to off.
   * While Off `off` - Channels are reset when the Reset input goes off. The channel will hold the reset value until the input turns on.
-
 - Reset `reset` - This toggle resets the channel(s) to 0 while On.
 - Reset Pulse `resetpulse` - This button instantly resets the channel(s) to 0.
 
 ## Parameters - Channel Page
+- Channel Name `channelname` - A list of the names of the channels. You can put patterns like `chan[1-10]` to generate 10 channels. See [Pattern Expansion](../Glossary/Pattern_Expansion.md "Pattern Expansion").
 
-- Channel Name `channelname` - A list of the names of the channels. You can put patterns like `chan[1-10]` to generate 10 channels. See [Pattern Expansion](https://docs.derivative.ca/Pattern_Expansion "Pattern Expansion").
 Each channel can be different by putting the channel index variable, `$C` in parameters like the frequency channel.
 - Sample Rate `rate` - The sample rate of the CHOP. The default sample rate is 60 samples per second.
 
 ## Parameters - Common Page
-
-- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
+- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](../Glossary/Time_Slicing.md "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
   * Resample At First Input's Rate `first` - Use rate of first input to resample others.
   * Resample At Maximum Rate `max` - Resample to the highest sample rate.
   * Resample At Minimum Rate `min` - Resample to the lowest sample rate.
   * Error If Rates Differ `err` - Doesn't accept conflicting sample rates.
-
-- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](https://docs.derivative.ca/Export "Export") article for more information.
+- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](../Glossary/Export.md "Export") article for more information.
   * DAT Table by Index `datindex` - Uses the docked DAT table and references the channel via the index of the channel in the CHOP.
   * DAT Table by Name `datname` - Uses the docked DAT table and references the channel via the name of the channel in the CHOP.
   * Channel Name is Path:Parameter `autoname` - The channel is the full destination of where to export to, such has `geo1/transform1:tx`.
-
 - Export Root `autoexportroot` - This path points to the root node where all of the paths that exporting by **Channel Name is Path:Parameter** are relative to.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
@@ -85,22 +79,17 @@ Each channel can be different by putting the channel index variable, `$C` in par
 
 ## Info CHOP Channels
 
-Extra Information for the LFO CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the LFO CHOP can be accessed via an [Info CHOP](Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common CHOP Info Channels
 
   * start - Start of the CHOP interval in samples.
-
   * length - Number of samples in the CHOP.
-
   * sample_rate - The samplerate of the channels in frames per second.
-
   * num_channels - Number of channels in the CHOP.
-
   * time_slice - 1 if CHOP is Time Slice enabled, 0 otherwise.
-
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
@@ -108,19 +97,11 @@ Extra Information for the LFO CHOP can be accessed via an [Info CHOP](https://do
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

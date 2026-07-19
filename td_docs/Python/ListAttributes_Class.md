@@ -6,7 +6,7 @@ title: ListAttributes_Class
 
 # ListAttributes Class
 
-The ListAttributes class describes a set of [list attribute objects](https://docs.derivative.ca/ListAttribute_Class "ListAttribute Class") for cells, rows, columns or table. It can be accessed from a [List Component](https://docs.derivative.ca/ListCOMP_Class "ListCOMP Class").
+The ListAttributes class describes a set of [list attribute objects](ListAttribute_Class.md "ListAttribute Class") for cells, rows, columns or table. It can be accessed from a [List Component](ListCOMP_Class.md "ListCOMP Class").
 
 Access to individual List Attributes depends on what type: row, col, or cell:
 

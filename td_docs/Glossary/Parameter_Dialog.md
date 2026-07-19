@@ -10,11 +10,11 @@ A floating dialog, pane type, or dialog in a Network Editor that displays one op
 
 A Parameter Dialog allows you to view and manipulate all the [Parameters](https://docs.derivative.ca/index.php?title=Parameters&action=edit&redlink=1 "Parameters \(page does not exist\)") of an Operator. Each Operator has one or more pages (or "tabs") of parameters viewable in the dialog, some tabs are unique to individual OPs, while others are common to different OP types.
 [![Parameter Dialog](https://docs.derivative.ca/images/b/b5/Parameters_Dialog.png)](https://docs.derivative.ca/File:Parameters_Dialog.png "Parameter Dialog")
-The dialog is viewable in three different areas in the TouchDesigner user interface. The Parameter Dialog is viewable in the Network Editor pane by pressing the **p** key. This will also hide the dialog if it is already visible. Parameters Dialog can also be an floating window by selecting it from the right-click menu on nodes. Finally, it can be viewed as a [Pane](https://docs.derivative.ca/Pane "Pane") type.
+The dialog is viewable in three different areas in the TouchDesigner user interface. The Parameter Dialog is viewable in the Network Editor pane by pressing the **p** key. This will also hide the dialog if it is already visible. Parameters Dialog can also be an floating window by selecting it from the right-click menu on nodes. Finally, it can be viewed as a [Pane](Pane.md "Pane") type.
 
 All of the parameter dialogs have a similar layout with the same set of gadgets to manipulate the various parameter values. Parameter dialogs are displayed on the right side of a network. Multiple parameter dialogs can be open at once, by flipping either the Network or Pane Sticky button. The topmost visible parameter dialog is the currently selected OP.
 
-**Note** : You can put a parameter dialog in a panel with the [Parameter COMP](https://docs.derivative.ca/Parameter_COMP "Parameter COMP") and customize which pages and parameters to display.
+**Note** : You can put a parameter dialog in a panel with the [Parameter COMP](../COMPs/Parameter_COMP.md "Parameter COMP") and customize which pages and parameters to display.
 
 ##  Header
 
@@ -43,7 +43,7 @@ Each page displays a different parameter page for the operator.
 
 **Left click** on any parameter name/label to expand the Parameter Modes (See section below). Left click in a parameter's editable field to enter a new value.
 
-**Middle click** on and numeric parameter to bring up the [Value Ladder](https://docs.derivative.ca/Value_Ladder "Value Ladder") to adjust the value. If the parameter is a double/triple/quadruple parameter (such as **Offset** in the [Displace TOP](https://docs.derivative.ca/Displace_TOP "Displace TOP") or **Translate** in the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP")), opening the value ladder on the parameter's name/label will adjust all two/three/four at the same time. For individual parameter adjustment middle-mouse click on the numeric field itself.
+**Middle click** on and numeric parameter to bring up the [Value Ladder](https://docs.derivative.ca/Value_Ladder "Value Ladder") to adjust the value. If the parameter is a double/triple/quadruple parameter (such as **Offset** in the [Displace TOP](../TOPs/Displace_TOP.md "Displace TOP") or **Translate** in the [Geometry COMP](Geometry_COMP.md "Geometry COMP")), opening the value ladder on the parameter's name/label will adjust all two/three/four at the same time. For individual parameter adjustment middle-mouse click on the numeric field itself.
 [![ValueLadder.png](https://docs.derivative.ca/images/f/fd/ValueLadder.png)](https://docs.derivative.ca/File:ValueLadder.png)
 **Right click** on any parameter to open a popup menu of options for the parameter.
 [![ParameterPopupMenu.png](https://docs.derivative.ca/images/3/38/ParameterPopupMenu.png)](https://docs.derivative.ca/File:ParameterPopupMenu.png)
@@ -56,13 +56,13 @@ Also with multiple operators selected you can set which parameter page is first 
 
 ##  Working with Parameter Modes
 
-Every [Parameter](https://docs.derivative.ca/Parameter "Parameter") can be in one of four modes, Constant Mode, [Expression](https://docs.derivative.ca/Expression "Expression") Mode, [Export](https://docs.derivative.ca/Export "Export") Mode, or [Bind](https://docs.derivative.ca/Binding "Binding") mode. The Parameter Mode lets you quickly switch modes to test new values, expressions, export, or bind settings.
+Every [Parameter](Parameter.md "Parameter") can be in one of four modes, Constant Mode, [Expression](Expression.md "Expression") Mode, [Export](Export.md "Export") Mode, or [Bind](Binding.md "Binding") mode. The Parameter Mode lets you quickly switch modes to test new values, expressions, export, or bind settings.
   * **Constant** - this is the default mode which handles number and string values as entered into the parameter.
   * **Expression** - this mode is for using a python or tscript expression to set the parameter's value.
-  * **Export** - this mode is for driving the parameter by [Exporting](https://docs.derivative.ca/Export "Export") from a CHOP or DAT.
-  * **Bind** - this mode is for driving the parameter by [Binding](https://docs.derivative.ca/Binding "Binding") to a parameter, table cell, [Bind CHOP](https://docs.derivative.ca/Bind_CHOP "Bind CHOP"), or [Dependency Class](https://docs.derivative.ca/Dependency_Class "Dependency Class").
+  * **Export** - this mode is for driving the parameter by [Exporting](Export.md "Export") from a CHOP or DAT.
+  * **Bind** - this mode is for driving the parameter by [Binding](Binding.md "Binding") to a parameter, table cell, [Bind CHOP](../CHOPs/Bind_CHOP.md "Bind CHOP"), or [Dependency Class](../Python/Dependency_Class.md "Dependency Class").
 
-To access the parameter modes, expand the parameter by clicking on the parameter's name/label area with the [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click"). This will open an editing area for the parameter as well 4 toggles to switch between modes. To close this area, simply click on the parameter name/label or "-" icon.
+To access the parameter modes, expand the parameter by clicking on the parameter's name/label area with the [LMB](Mouse_Click.md "Mouse Click"). This will open an editing area for the parameter as well 4 toggles to switch between modes. To close this area, simply click on the parameter name/label or "-" icon.
 
 When the parameter is expanded, you will see the internal name of the parameter. This name is used for scripting and directly accessing the parameter.
 
@@ -93,20 +93,20 @@ A pane type where networks of operators can be created and edited.
 
 A floating dialog, pane type, or dialog in a Network Editor that displays one operator's parameters.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](Node.md "Node").
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](Pane.md "Pane") or [Viewer](Viewer.md "Viewer").
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](Node.md "Node").
 
-TouchDesigner's original built-in Command scripting language prior to [Python](https://docs.derivative.ca/Python "Python").
+TouchDesigner's original built-in Command scripting language prior to [Python](../General/Python.md "Python").
 
-Every Parameter can be in one of four modes: Constant Mode, [Expression](https://docs.derivative.ca/Expression "Expression") Mode, [Export](https://docs.derivative.ca/Export "Export") Mode or Bind ([Binding](https://docs.derivative.ca/Binding "Binding")) Mode.
+Every Parameter can be in one of four modes: Constant Mode, [Expression](Expression.md "Expression") Mode, [Export](Export.md "Export") Mode or Bind ([Binding](Binding.md "Binding")) Mode.
 
-A text string that contains data (string, float, list, boolean, etc.) and operators (+ * < etc) that are evaluated by the node's language (python or Tscript) and returns a string, float list or boolean, etc. Expressions are used in parameters, [DATs](https://docs.derivative.ca/DAT "DAT") and in scripts.
+A text string that contains data (string, float, list, boolean, etc.) and operators (+ * < etc) that are evaluated by the node's language (python or Tscript) and returns a string, float list or boolean, etc. Expressions are used in parameters, [DATs](DAT.md "DAT") and in scripts.
 
-Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](https://docs.derivative.ca/CHOP_Viewer "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](https://docs.derivative.ca/Parameter "Parameter").
+Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](CHOP_Viewer.md "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](Parameter.md "Parameter").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](Operator_Family.md "Operator Family") which operate on [Channels](Channel.md "Channel") (a sequence of numbers ([Samples](Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](Script.md "Script") or [GLSL](GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.

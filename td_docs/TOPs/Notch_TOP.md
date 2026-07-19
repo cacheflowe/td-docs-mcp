@@ -34,20 +34,23 @@ Exposed block properties will be added as parameters on the Notch TOP. Each para
 
 Most parameters translate easily to TouchDesigner's parameter configuration, but some may require additional context, which is appended to the parameter label in parentheses:
   * **TOP** : A TOP reference. The pixel format should be 8-bit fixed (RGBA) or 16-bit float (RGBA).
-  * **Xform** : A 3D Object COMP with transform data (eg. Geometry COMP or Null COMP). The world transform translation and rotation (as a quaternion) values are sent to the Notch block.
-  * **Cam** : A Camera COMP or any other object with a projection matrix (eg. Light COMP). In addition to world transform, projection values (projection scale/offset, near/far) are sent to the Notch block.
-  * **CHOP** : A CHOP reference of equal size to the exposed array in the Notch block. The Notch TOP will throw a warning if the CHOP is of the incorrect size. The number of samples must correspond to the number of array instances to the number of array instances that the Notch block expects, which is project dependent. The number of channels depends on the property type, and is based on channel order not channel name, although names will be used below for informative purposes:
+  * **Xform** : A 3D Object COMP with transform data (eg. [Geometry COMP](../Glossary/Geometry_COMP.md "Geometry COMP") or [Null COMP](../COMPs/Null_COMP.md "Null COMP")). The world transform translation and rotation (as a quaternion) values are sent to the Notch block.
+  * **Cam** : A [Camera COMP](../Glossary/Camera_COMP.md "Camera COMP") or any other object with a projection matrix (eg. [Light COMP](../Glossary/Light_COMP.md "Light COMP")). In addition to world transform, projection values (projection scale/offset, near/far) are sent to the Notch block.
+  * **CHOP** : A CHOP reference of equal size to the exposed array in the Notch block. The Notch TOP will throw a warning if the CHOP is of the incorrect size. The number of samples must correspond to the number of array instances that the Notch block expects, which is project dependent. The number of channels depends on the property type, and is based on channel order not channel name, although names will be used below for informative purposes:
     * **Euler** (9 channels): `t[xyz] r[xyz] s[xyz]`
     * **Quaternion** (10 channels): `t[xyz] q[xyzw] s[xyz]`
     * **Matrix 4x4** (16 channels): `m00 m10 m20 ... m33`
     * **Generic** (1 channel)
 
-See also: [Notch](https://docs.derivative.ca/Notch "Notch")
+#### Subregion Rendering
 
-[notchTOP_Class](https://docs.derivative.ca/NotchTOP_Class "NotchTOP Class")
+Subregion rendering is available for certain blocks (compiled with at least Notch version 1.0) through the Crop page of the Notch TOP.
+
+See also: [Notch](../Interoperability/Notch.md "Notch")
+
+[notchTOP_Class](Notch_TOP_Class.md "NotchTOP Class")
 
 ## Parameters - Notch Page
-
 - Active `active` - The active state of the node/block. When active, the node will actively render the block. If disabled, the node will release its instance of the block, and unload it if there are no other instances (ie. no other Notch TOPs with the same block). This will allow the block (`.dfxdll`) to become editable again. If re-activated, the block will be reloaded along with any changes.
 - Clear Parameter Values on File Change `clearparams` - When enabled, all parameters will be cleared. When disabled, it will keep parameter values for exposed parameters of the same name when the Notch Block file changes.
 - Block `block` - Specify the .dfxdll file (ie. Notch Block).
@@ -56,7 +59,6 @@ See also: [Notch](https://docs.derivative.ca/Notch "Notch")
   * Locked to Timeline `lockedtotimeline` - This mode locks the animation position to the timeline.
   * Specify Index `specifyindex` - This mode allows the user to specify a particular index (position) in the animation using the Index parameter below.
   * Sequential `sequential` - This mode plays continually.
-
 - Initialize `init` - Initialize the playback of the block. This will reset it to the start, but not move forward with playback.
 - Start `start` - Start the playback of the block. This will reset it to the start and begin playback.
 - Play `play` - Enable playback of the block. When disabled and in Sequential mode the playback will be paused.
@@ -66,11 +68,17 @@ See also: [Notch](https://docs.derivative.ca/Notch "Notch")
   * I `samples` -
   * F `frames` -
   * S `seconds` -
-
 - Purge GPU Mem `purge` - Purge Video RAM used by the block.
 
-## Parameters - Common Page
+## Parameters - Crop Page
+- Crop `crop` - Enable cropping (ie. **Subregion Rendering**) on the Notch Block. The resolution of the TOP will remain unchanged, and will be used with the crop parameters to derive the full canvas width and height.
+- Crop Left `cropleft` - The left crop border as a percentage of the overall resolution. The canvas width will be resolution width multiplied by the difference between crop right and left.
+- Crop Right `cropright` - The right crop border as a percentage of the overall resolution. The canvas width will be resolution width multiplied by the difference between crop right and left.
+- Crop Bottom `cropbottom` - The bottom crop border as a percentage of the overall resolution. The canvas height will be resolution height multiplied by the difference between crop top and bottom.
+- Crop Top `croptop` - The top crop border as a percentage of the overall resolution. The canvas height will be resolution height multiplied by the difference between crop top and bottom.
+- Overdraw `overdraw` - Overdraw allows for expansion of the rendered area beyond the requested region boundary. This is important for post-effects such as blur or glow that are computed regionally. Without overdraw, regions would show hard seams at their edges where the effect has insufficient context. Overdraw is also known as overscan.
 
+## Parameters - Common Page
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -82,29 +90,25 @@ See also: [Notch](https://docs.derivative.ca/Notch "Notch")
   * Fit Resolution `fit` - Grow or shrink the input resolution to fit this resolution, while keeping the aspect ratio the same.
   * Limit Resolution `limit` - Limit the input resolution to be not larger than this resolution, while keeping the aspect ratio the same.
   * Custom Resolution `custom` - Directly control the width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -113,13 +117,11 @@ See also: [Notch](https://docs.derivative.ca/Notch "Notch")
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail. When the input is 32-bit float format, only nearest filtering will be used (regardless of what is selected).
-
-- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
+- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](GLSL_TOP.md "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
   * Use Input `useinput` - Uses the input's pixel format.
@@ -151,37 +153,24 @@ See also: [Notch](https://docs.derivative.ca/Notch "Notch")
 
 ## Info CHOP Channels
 
-Extra Information for the Notch TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Notch TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 Specific Notch TOP Info Channels
   * initializing -
-
   * ready -
-
   * running -
-
   * done -
-
   * timer_fraction -
-
   * timer_seconds -
-
   * timer_index -
-
   * playing_seconds -
-
   * running_seconds -
-
   * length_seconds -
-
   * sample_rate -
-
   * index -
-
   * block_gpu_memory_used -
-
   * block_render_time -
 
 ###
@@ -189,15 +178,10 @@ Specific Notch TOP Info Channels
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -205,19 +189,11 @@ Specific Notch TOP Info Channels
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

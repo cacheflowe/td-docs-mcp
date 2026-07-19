@@ -16,7 +16,7 @@ Get or set Compare Flag.
 
 `dimension` → `Dimension` **(Read Only)** :
 
-The dimension in this POP.
+The dimension in this POP. This value updates independently of time dependent content.
 
 `maxVertsPerLineStrip` → `int` **(Read Only)** :
 
@@ -54,12 +54,12 @@ The vert attributes changed by this POP.
 
 `bounds(delayed=False)`→ `Bounds`:
 
-Returns an [object](https://docs.derivative.ca/Bounds_Class "Bounds Class") with the bounds, center and size of the POP's geometry.
+Returns an [object](../Python/Bounds_Class.md "Bounds Class") with the bounds, center and size of the POP's geometry.
   * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to bounds(), avoiding stalling the GPU waiting for the result immediately.
 
 `computeBounds(display=False, render=False, delayed=False)`→ `Bounds`:
 
-Returns an [object](https://docs.derivative.ca/Bounds_Class "Bounds Class") with the bounds, center and size of the POP's geometry.
+Returns an [object](../Python/Bounds_Class.md "Bounds Class") with the bounds, center and size of the POP's geometry.
   * display - (Keyword, Optional) If set to True, only calculate Bounding Box if POP display flag is set.
   * render - (Keyword, Optional) If set to True, only calculate Bounding Box if POP render flag is set.
   * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to computeBounds(), avoiding stalling the GPU waiting for the result immediately.
@@ -84,12 +84,24 @@ Returns the number of vertices contained in this POP.
   * max - (Keyword, Optional) If set to True, returns the number of allocated vertices (max number of verts). In that case result is always instant, delayed is disregarded.
   * lineStrips - (Keyword, Optional) If set to true, returns the number of verts for line strips only.
 
+`point(attributeName, index, delayed=False)`→ `float | int | tuple`:
+Returns the point attribute value.
+  * attributeName - The attribute name.
+  * index - The point index.
+  * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to vals(), avoiding stalling the GPU waiting for the result immediately.
+
 `points(attributeName, startIndex=0, count=-1, delayed=False)`→ `list`:
 
 Returns the point attribute values as a list.
   * attributeName - The attribute name.
   * startIndex - (Keyword, Optional )The point index to start at (default 0).
   * count - (Keyword, Optional) The number of points to download. A value of -1 fetches all elements from the start index onward.
+  * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to vals(), avoiding stalling the GPU waiting for the result immediately.
+
+`prim(attributeName, index, delayed=False)`→ `float | int | tuple`:
+Returns the primitive attribute value.
+  * attributeName - The attribute name.
+  * index - The prim index.
   * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to vals(), avoiding stalling the GPU waiting for the result immediately.
 
 `prims(attributeName, startIndex=0, count=-1, delayed=False)`→ `list`:
@@ -110,6 +122,12 @@ Save the POP geometry to file system. Multiple file types are supported. Returns
   * filepath - (Optional) The path and filename to save to. If not given then a default filename will be used, and the file will be saved in the project.folder folder.
   * createFolders - (Keyword, Optional) If True, it creates the not existent directories provided by the filepath.
 
+`vert(attributeName, index, delayed=False)`→ `float | int | tuple`:
+Returns the vertex attribute value.
+  * attributeName - The attribute name.
+  * index - The vertex index.
+  * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to vals(), avoiding stalling the GPU waiting for the result immediately.
+
 `verts(attributeName, startIndex=0, count=-1, delayed=False)`→ `list`:
 
 Returns the vertex attribute values as a list.
@@ -118,10 +136,10 @@ Returns the vertex attribute values as a list.
   * count - (Keyword, Optional) The number of vertices to download. A value of -1 fetches all elements from the start index onward.
   * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to vals(), avoiding stalling the GPU waiting for the result immediately.
 
-POPs (**Point Operators**) is a new [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
+Indicator of certain states of an operator (Bypass flag, Render flag, Lock flag, Viewer Active flag).
 
-Indicator of certain states of an operator (bypass, display, lock, viewer active).
+Dimension is metadata of a POP that describes the structure of the point list, which may be arranged as rows and columns of points (which is two dimensions of size _nrows_ and _ncolumns_).
 
-Dimension is metadata of a POP that describes the structure of the point list, which may be made of rows and columns of points (which is two dimensions of size nrows and ncolumns).
+POPs (Point Operators) is a new [Operator Family](../Glossary/Operator_Family.md "Operator Family") that works with 3D geometry or any general numeric data, runs on GPU-accelerated graphics cards or chips, is rendered as images or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.

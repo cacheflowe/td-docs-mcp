@@ -10,7 +10,7 @@ title: Notch
 
 ###  Notch Block Playback
 
-Notch Block playback is integrated in TouchDesigner via the [Notch TOP](https://docs.derivative.ca/Notch_TOP "Notch TOP"), allowing for direct control of Notch blocks inside a TouchDesigner project. This feature is available when using any paid licenses, but Commercial and Educational licenses have limits on their capabilities, as listed [here](https://docs.derivative.ca/Licensing "Licensing").
+Notch Block playback is integrated in TouchDesigner via the [Notch TOP](../TOPs/Notch_TOP.md "Notch TOP"), allowing for direct control of Notch blocks inside a TouchDesigner project. This feature is available when using any paid licenses, but Commercial and Educational licenses have limits on their capabilities, as listed [here](https://docs.derivative.ca/Licensing "Licensing").
 
 Loading a Notch block automatically generates any exposed properties as custom parameters on the Notch TOP.
 
@@ -22,6 +22,6 @@ CodeMeter User Runtime v7.60+ must also be installed: <https://www.wibu.com/supp
 
 The [NotchLC](https://docs.derivative.ca/NotchLC "NotchLC") codec is also supported for both decode and encode. More information available in it's article.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

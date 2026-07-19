@@ -11,9 +11,9 @@ This guide will cover the supported protocols and services that are now availabl
 ####  Current Protocols in Official
 
   * [RTMP](https://docs.derivative.ca/RTMP "RTMP") - A widely adopted protocol for streaming audio video to streaming services like YouTube and Twitch.
-  * [RTSP](https://docs.derivative.ca/RTSP "RTSP") - An open source server and client protocol for sending and receiving audio video data over the internet.
-  * [NDI](https://docs.derivative.ca/NDI "NDI") - A video over IP protocol that is extremely useful in a variety of networked video use cases.
-  * [SRT](https://docs.derivative.ca/SRT "SRT") - (Secure Reliable Transport) upcoming in [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP"), currently in Experimental builds.
+  * [RTSP](../Interoperability/RTSP.md "RTSP") - An open source server and client protocol for sending and receiving audio video data over the internet.
+  * [NDI](../Interoperability/NDI.md "NDI") - A video over IP protocol that is extremely useful in a variety of networked video use cases.
+  * [SRT](../Interoperability/SRT.md "SRT") - (Secure Reliable Transport) upcoming in [Video Stream In TOP](../TOPs/Video_Stream_In_TOP.md "Video Stream In TOP"), currently in Experimental builds.
 
 See also [Broadcasting to Social Media from TouchDesigner](https://derivative.ca/community-post/broadcasting-social-media-touchdesigner) via virtual webcams.
 
@@ -63,7 +63,6 @@ A service owned and operated by Amazon. It's probably the most popular live stre
   * Keyframe Interval: 2 seconds
   * Profile: Main
   * B-frames: 2
-
   * Maximum quality settings trade quality for size / bandwidth and are possibly less compatible with a wider audience. We encourage you to try all the settings to figure out what’s best for your use case.
 
 ###  Youtube
@@ -196,12 +195,12 @@ Pay to stream service charges you based on your bandwidth usage. <http://cloud.w
 
   1. Sign up for a demo user account. Follow the instructions.
 
-See also [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP"), [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP") and [RTMP](https://docs.derivative.ca/RTMP "RTMP").
+See also [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP"), [Video Stream In TOP](../TOPs/Video_Stream_In_TOP.md "Video Stream In TOP") and [RTMP](https://docs.derivative.ca/RTMP "RTMP").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-The width and height of an image in pixels. Most TOPs, like the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") can set the image resolution. See [Aspect Ratio](https://docs.derivative.ca/TOP_Generator_Common_Page "TOP Generator Common Page") for the width/height ratio of an image, taking into account non-square pixels.
+The width and height of an image in pixels. Most TOPs, like the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP") can set the image resolution. See [Aspect Ratio](../Glossary/TOP_Generator_Common_Page.md "TOP Generator Common Page") for the width/height ratio of an image, taking into account non-square pixels.
 
-In the [Animation component](https://docs.derivative.ca/Animation_COMP "Animation COMP") each keyframe specifies a channel's value at a specific time (or frame). A keyframe holds a value, slopes and accelerations, and an interpolation type. A channel's keyframes are used to interpolate and determine the values of all the samples of the channel.
+In the [Animation component](../Glossary/Animation_COMP.md "Animation COMP") each keyframe specifies a channel's value at a specific time (or frame). A keyframe holds a value, slopes and accelerations, and an interpolation type. A channel's keyframes are used to interpolate and determine the values of all the samples of the channel.

@@ -6,7 +6,7 @@ title: Global_OP_Shortcut
 
 # Global OP Shortcut
 
-Global Operator Shortcuts help you get to any [component](https://docs.derivative.ca/COMP_Class "COMP Class") from **any** [operator](https://docs.derivative.ca/OP_Class "OP Class"). In large systems you may want to access components that are not a parent of the current operator, but located in arbitrary components. Thus [Parent Shortcuts](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") would not work in this case.
+Global Operator Shortcuts help you get to any [component](../Python/COMP_Class.md "COMP Class") from **any** [operator](../Python/OP_Class.md "OP Class"). In large systems you may want to access components that are not a parent of the current operator, but located in arbitrary components. Thus [Parent Shortcuts](Parent_Shortcut.md "Parent Shortcut") would not work in this case.
 
 ###  Example
 
@@ -26,8 +26,8 @@ For example `/myProject/Player1` and `Player2` may have their shortcut parameter
 
 This results in shortcuts `Player1` and `Player2`.
 
-For exact usage and details, see [OP Class#Members](https://docs.derivative.ca/OP_Class#Members "OP Class").
+For exact usage and details, see [OP Class#Members](../Python/OP_Class.md#Members "OP Class").
 
-See also: `parent()` in [Td_Module](https://docs.derivative.ca/Td_Module "Td Module"), [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut").
+See also: `parent()` in [Td_Module](https://docs.derivative.ca/Td_Module "Td Module"), [Parent Shortcut](Parent_Shortcut.md "Parent Shortcut").
 
 A name for a component that is accessible from any node in a project, which can be declared in a component's Global Operator Shortcut parameter.

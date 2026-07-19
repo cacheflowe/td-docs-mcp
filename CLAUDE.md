@@ -64,8 +64,9 @@ python -m src.td_docs_mcp.cleaner --dry-run            # Preview changes
 9. Operator family footer removal
 10. Page footer removal
 11. Parameter bullet formatting
-12. Blank line contraction (max 2 consecutive)
-13. Trailing whitespace removal
+12. Bullet list compaction
+13. Blank line contraction (max 2 consecutive)
+14. Trailing whitespace removal
 
 ## Cleaning Rules Reference
 
@@ -100,6 +101,13 @@ Rules are applied in the order listed. When adding new rules, consider where in 
 | **Operator family footer removal** | `remove_operator_family_footer()` | Detects a bare family name line (CHOPs/TOPs/etc.) followed by `---`, and truncates everything from there to EOF. Removes the redundant link list and glossary definitions |
 | **Page footer removal** | `remove_page_footer()` | Keeps `__setstate__()` and its description line, discards all glossary/boilerplate after. Falls back to truncating at "TouchDesigner Build" if no `__setstate__` is found |
 | **Parameter bullet formatting** | `format_parameter_bullets()` | Inside `## Parameters` sections: prefixes top-level param lines matching `ParamName \`id\` - description` with `- `. Removes blank lines between consecutive sub-bullet (`* `) items for tight nested lists |
+| **Bullet list compaction** | `compact_bullet_lists()` | Removes blank lines between any consecutive bullet/sub-bullet list items (`- `, `* `, `+ `) across the entire document. Uses regex substitution so it is unaffected by stray/unclosed code fences |
+
+### Directory-level rules (run by `clean_directory()`)
+
+| Rule | Function | What it does |
+|------|----------|-------------|
+| **Link localization** | `localize_links()` | Converts `docs.derivative.ca` URLs to relative local file paths using a pre-built URL-to-file map (`build_url_to_file_map()`). Same-directory links become `File.md`, cross-category links become `../Category/File.md`. Fragment anchors are preserved. Links to pages not in the local docs are left as absolute URLs |
 
 ### File organization rules
 

@@ -20,7 +20,7 @@ Returns the size of the CUDA Memory, in bytes.
 
 `shape` → `CUDAMemoryShape` **(Read Only)** :
 
-Returns the [CUDAMemoryShape Class](https://docs.derivative.ca/CUDAMemoryShape_Class "CUDAMemoryShape Class") describing this CUDA memory. See the help for that class for notes about channel order for different data types.
+Returns the [CUDAMemoryShape Class](CUDAMemoryShape_Class.md "CUDAMemoryShape Class") describing this CUDA memory. See the help for that class for notes about channel order for different data types.
 
 ## Methods
 

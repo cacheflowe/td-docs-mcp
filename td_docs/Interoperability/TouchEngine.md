@@ -6,9 +6,9 @@ title: TouchEngine
 
 # TouchEngine
 
-TouchEngine allows other software packages to load TouchDesigner components from [.tox](https://docs.derivative.ca/.tox ".tox") files, process them, and pass data back and forth.
+TouchEngine allows other software packages to load TouchDesigner components from [.tox](../Glossary/.tox.md ".tox") files, process them, and pass data back and forth.
 
-TouchEngine is the core technology behind the [Engine COMP](https://docs.derivative.ca/Engine_COMP "Engine COMP"), as well as the [Unreal Engine plugin](https://docs.derivative.ca/TouchEngine_For_Unreal_Engine_Plugin "TouchEngine For Unreal Engine Plugin").
+TouchEngine is the core technology behind the [Engine COMP](../COMPs/Engine_COMP.md "Engine COMP"), as well as the [Unreal Engine plugin](https://docs.derivative.ca/TouchEngine_For_Unreal_Engine_Plugin "TouchEngine For Unreal Engine Plugin").
 
 ##  TouchEngine API
 
@@ -24,13 +24,13 @@ and for macOS:
 
 There is no licensing fee or royalty required to make use of TouchEngine within your software package. It can be included in any software package for free, and the feature becomes enabled by the end-user installing a paid TouchDesigner or TouchPlayer license on the machine (**Educational, Commercial,** or **Pro** , see [Licensing](https://docs.derivative.ca/Licensing "Licensing") for details). Additionally TouchDesigner or TouchPlayer must be installed on the system to use TouchEngine.
 
-In TouchDesigner the [Engine COMP](https://docs.derivative.ca/Engine_COMP "Engine COMP") works with any license including **Non-Commercial licenses**.
+In TouchDesigner the [Engine COMP](../COMPs/Engine_COMP.md "Engine COMP") works with any license including **Non-Commercial licenses**.
 
 ##  Implementations
 
 ###  Derivative
 
-**[Engine COMP](https://docs.derivative.ca/Engine_COMP "Engine COMP")** - The Engine COMP is a native component in TouchDesigner that loads .tox component files into a project yet runs them on a separate TouchEngine process.
+**[Engine COMP](../COMPs/Engine_COMP.md "Engine COMP")** - The Engine COMP is a native component in TouchDesigner that loads .tox component files into a project yet runs them on a separate TouchEngine process.
 
 **[Unreal Engine Plugin](https://docs.derivative.ca/TouchEngine_For_Unreal_Engine_Plugin "TouchEngine For Unreal Engine Plugin")** - The TouchEngine For UE Plugin allows Unreal Engine users and developers to load TouchDesigner .tox files, process them, and pass data back and forth from within Unreal Engine.
 
@@ -48,10 +48,12 @@ In TouchDesigner the [Engine COMP](https://docs.derivative.ca/Engine_COMP "Engin
 
 **[Hippotizer](https://www.green-hippo.com/)** - Green Hippo media servers now support TouchEngine! [Read about it here](https://www.green-hippo.com/about/partnerships/touchdesigner/).
 
-**[LightAct](https://lightact.com/)** - LightAct software and media servers now support TouchEngine.
+**[LightAct](https://lightact.com/)** - LightAct software and media servers now support TouchEngine. [Read about it here](https://docs.lightact.com/real-time-content-playback/touchdesigner).
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+**[Pixera](https://pixera.one/en/)** - Pixera software and media servers now support TouchEngine. Read about it in this 2 part series: [Part 1](https://help.pixera.one/helpjuice-import/touchdesigner-integration-part-1?from_search=225212079), [Part 2](https://help.pixera.one/helpjuice-import/touchdesigner-integration-part-2?from_search=225212079).
 
-TouchDesigner Component file, the file type used to save a [Component](https://docs.derivative.ca/Component "Component") of your TouchDesigner project.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
+
+TouchDesigner Component file, the file type used to save a [Component](../Glossary/Component.md "Component") of your TouchDesigner project.
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.

@@ -10,7 +10,7 @@ CUDA is a programming language developed by NVIDIA to allow developers to exploi
 
 Writing CUDA code in TouchDesigner has many benefits, chief among them being the reduced amount of coding that needs to be done. For example, the typical procedure to port an existing CUDA application to run within TouchDesigner involves simply deleting all the code needed to initialize a window, allocate OpenGL resources and display the results in OpenGL.
 
-Integrating CUDA code in TouchDesigner is done through the [CPlusPlus TOP](https://docs.derivative.ca/CPlusPlus_TOP "CPlusPlus TOP").
+Integrating CUDA code in TouchDesigner is done through the [CPlusPlus TOP](../TOPs/CPlusPlus_TOP.md "CPlusPlus TOP").
 
 CUDA versions for each TouchDesigner release:
 

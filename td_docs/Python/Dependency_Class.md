@@ -6,7 +6,7 @@ title: Dependency_Class
 
 # Dependency Class
 
-A **[Dependency](https://docs.derivative.ca/Dependency "Dependency")** object is a value that automatically causes any expression referencing it to update when the dependency value has changed. These objects eliminate the need to manually force cook operators referencing values in [Extensions](https://docs.derivative.ca/Extensions "Extensions") or [Storage](https://docs.derivative.ca/OP_Class#Storage "OP Class") for example. For information about dependencies in mutable objects (lists, dicts, sets), see **[Deeply Dependable Collections](https://docs.derivative.ca/TDStoreTools#Deeply_Dependable_Collections "TDStoreTools")**
+A **[Dependency](../Glossary/Dependency.md "Dependency")** object is a value that automatically causes any expression referencing it to update when the dependency value has changed. These objects eliminate the need to manually force cook operators referencing values in [Extensions](../Glossary/Extensions.md "Extensions") or [Storage](OP_Class.md#Storage "OP Class") for example. For information about dependencies in mutable objects (lists, dicts, sets), see **[Deeply Dependable Collections](https://docs.derivative.ca/TDStoreTools#Deeply_Dependable_Collections "TDStoreTools")**
 
 ## Instantiators
 
@@ -34,11 +34,11 @@ A modifiable list of functions. When the Dependency object is modified, it calls
 
 `ops` → `list` **(Read Only)** :
 
-A list of [operators](https://docs.derivative.ca/OP_Class "OP Class") currently dependent on the object.
+A list of [operators](OP_Class.md "OP Class") currently dependent on the object.
 
 `listAttributes` → `list` **(Read Only)** :
 
-A list of [list attributes](https://docs.derivative.ca/ListAttribute_Class "ListAttribute Class") currently dependent on the object.
+A list of [list attributes](ListAttribute_Class.md "ListAttribute Class") currently dependent on the object.
 
 ## Methods
 
@@ -65,7 +65,7 @@ print(dep[2]) # prints "g". The index to the list works directly on the dependen
 
 ###  Usage
 
-Consider the following module, used as an [extension](https://docs.derivative.ca/Extensions "Extensions") in a component called `comp1` for example
+Consider the following module, used as an [extension](../Glossary/Extensions.md "Extensions") in a component called `comp1` for example
 
 ```
 class MyClass:
@@ -158,6 +158,6 @@ callbacks.remove(print)
 op('comp1').Scale.callbacks = callbacks
 ```
 
-is the [Procedural](https://docs.derivative.ca/Procedural "Procedural") mechanism in TouchDesigner, where if one piece of data changes, it automatically causes other operators and expressions to re-[Cook](https://docs.derivative.ca/Cook "Cook").
+is the [Procedural](../Glossary/Procedural.md "Procedural") mechanism in TouchDesigner, where if one piece of data changes, it automatically causes other operators and expressions to re-[Cook](../Glossary/Cook.md "Cook").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

@@ -15,7 +15,7 @@ The Leap Motion controller tracks hands and fingers in an area directly above th
 
 Leap Motion Support in TouchDesigner
 
-TouchDesigner has built-in support for Leap Motion through the [Leap Motion CHOP](https://docs.derivative.ca/Leap_Motion_CHOP "Leap Motion CHOP") and [Leap Motion TOP](https://docs.derivative.ca/Leap_Motion_TOP "Leap Motion TOP"). At this time only 1 Leap Motion device can be connected at a time.
+TouchDesigner has built-in support for Leap Motion through the [Leap Motion CHOP](../CHOPs/Leap_Motion_CHOP.md "Leap Motion CHOP") and [Leap Motion TOP](../TOPs/Leap_Motion_TOP.md "Leap Motion TOP"). At this time only 1 Leap Motion device can be connected at a time.
 
 ###  Leap Motion Licensing
 
@@ -25,10 +25,9 @@ TouchDesigner does not include a license to use the Leap Motion hardware or soft
   * [Leap Motion](http://www.leapmotion.com/product) hardware device
   * Install the Leap Motion software available here: [www.leapmotion.com/setup](http://www.leapmotion.com/setup)
 
-
 **Ways to interact with Leap Motion in TouchDesigner**
 
-[Leap Motion CHOP](https://docs.derivative.ca/Leap_Motion_CHOP "Leap Motion CHOP") - will bring in sensor data from the LeapMotion controller as CHOP channels.
+[Leap Motion CHOP](../CHOPs/Leap_Motion_CHOP.md "Leap Motion CHOP") - will bring in sensor data from the LeapMotion controller as CHOP channels.
   * Status channels - how many tracked and tracking channels for each tracked element
   * Hand channels - position, type, and velocity
   * Finger channels - position, rotation, size, is extended, and joints.
@@ -40,19 +39,15 @@ TouchDesigner does not include a license to use the Leap Motion hardware or soft
     * Key Tap - index, position
     * Screen Tap - index, position
 
-[Leap Motion TOP](https://docs.derivative.ca/Leap_Motion_TOP "Leap Motion TOP") - will bring in image data from the Leap Motion image API.
+[Leap Motion TOP](../TOPs/Leap_Motion_TOP.md "Leap Motion TOP") - will bring in image data from the Leap Motion image API.
   * Ability to view camera 0 or camera 1. Use 2 Leap Motion TOPs to view both cameras.
   * Some simple parameters to flip the images and enable Image Correction.
-
-
 
 ###
 
 Tips for Working with Leap Motion
 
   * For additional support and troubleshooting, refer to [Leap Motion Support](http://support.leapmotion.com/home)
-
-
 
 ###
 
@@ -73,4 +68,4 @@ Examples of Leap Motion with TouchDesigner
     * [Painting CG](https://vimeo.com/groups/touchdesigner/videos/75503831)
     * [Painting on a Wall](https://vimeo.com/groups/touchdesigner/videos/75736105)
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

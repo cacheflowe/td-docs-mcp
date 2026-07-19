@@ -6,7 +6,7 @@ title: DongleList_Class
 
 # DongleList Class
 
-A list of [dongles](https://docs.derivative.ca/Dongle_Class "Dongle Class") connected to the system. The system instance can be found in `licenses.dongles`.
+A list of [dongles](Dongle_Class.md "Dongle Class") connected to the system. The system instance can be found in `licenses.dongles`.
 
 ```
 dongles = licenses.dongles		# get the DongleList object

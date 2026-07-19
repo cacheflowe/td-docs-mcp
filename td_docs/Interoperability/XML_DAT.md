@@ -49,17 +49,15 @@ Each parsed element contains a number of details:
 
 **Attributes** - Each tagged element can have an arbitrary number of attributes. Each attribute consists of a name and a value. In the above example, the greeting tag would contain 3 attributes (with names a, b and c and values 1, 2, and 3 respectively).
 
-[xmlDAT_Class](https://docs.derivative.ca/XmlDAT_Class "XmlDAT Class")
+[xmlDAT_Class](../DATs/XML_DAT_Class.md "XmlDAT Class")
 
 ## Parameters - Format Page
-
 - Parse SGML/HTML `sgml` - If enabled, the input should be in SGML/HTML format. This includes form data. If disabled, XML format is assumed.
 - Merge `merge` - ⊞ - Merge and label can be used to combine two inputs of data. The second input must be XML formatted, and not SGML/HTML. These two parameters control where and how the second input is merged.
   * Before Element `before` - The second input is merged before the specified element label.
   * After Element `after` - The second input is merged after the specified element label.
   * Inside Element `inside` - The second input is merged as a child of the specified element label.
   * Replace Element `replace` - The second input replaces the specified element label.
-
 - Label `mlabel` - Specify the element at which the merge occurs.
 
 ## Parameters - Element Scope Page
@@ -90,15 +88,12 @@ Once a selection of elements have been selected for output, its output can be fu
   * Attributes per Column `attribscol` - This outputs a table of all attributes for the selected elements. Each element is output in output on a single row, where each column represents one attribute.
   * Children `children` - This outputs a table of all children for the selected elements.
   * Text `text` - This outputs all text contents from all elements of type 'text'.
-
 - Label Prefix `lprefix` - This determines whether or not the element label is prefixed when outputting tables or attributes or children.
 
 ## Parameters - Common Page
-
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
-
 - Edit/View Extension `extension` - ⊞ - Select the file extension this DAT should expose to external editors.
   * dat `dat` - various common file extensions.
   * frag `frag` -
@@ -113,7 +108,6 @@ Once a selection of elements have been selected for output, its output can be fu
   * xml `xml` -
   * From Language `languageext` - pick extension from DATs script language.
   * Custom Extension `customext` - Specify a custom extension.
-
 - Custom Extension `customext` - Specifiy the custom extension.
 - Word Wrap `wordwrap` - ⊞ - Enable Word Wrap for Node Display.
   * Input `input` - The DAT uses the inputs setting.
@@ -127,14 +121,13 @@ Once a selection of elements have been selected for output, its output can be fu
 
 ## Info CHOP Channels
 
-Extra Information for the XML DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the XML DAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common DAT Info Channels
 
   * num_rows - Number of rows in this DAT.
-
   * num_cols - Number of columns in this DAT.
 
 ###
@@ -142,19 +135,11 @@ Extra Information for the XML DAT can be accessed via an [Info CHOP](https://doc
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

@@ -8,7 +8,7 @@ title: Math_Combine_POP
 
 ## Summary
 
-The Math Combine POP can do numerous math operations in one node, and is an expansion of the more elementary [Math POP](https://docs.derivative.ca/Math_POP "Math POP") and [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"). Each sequential block on Math Combine's Combine page is an operation that can combine one, two or three attributes. There are over 70 different operations to choose from, such as A + B, sin(A), or mix(A, B, C). Scope A, Scope B and Scope C are parameters containing attribute names of the incoming POPs.
+The Math Combine POP can do numerous math operations in one node, and is an expansion of the more elementary [Math POP](Math_POP.md "Math POP") and [Math Mix POP](Math_Mix_POP.md "Math Mix POP"). Each sequential block on Math Combine's Combine page is an operation that can combine one, two or three attributes. There are over 70 different operations to choose from, such as A + B, sin(A), or mix(A, B, C). Scope A, Scope B and Scope C are parameters containing attribute names of the incoming POPs.
 
 Aside from handling inputs differently than Math Mix, Math Combine also has:
   * New page - lets you create new attributes with constant values, with more control over type and size, usable in the Combine page and outputs directly unless you delete them on the Output page.
@@ -16,7 +16,7 @@ Aside from handling inputs differently than Math Mix, Math Combine also has:
   * Post page - has a set of post-process blocks after the Combine page, operating on one attribute at a time again, with re-ranging.
   * Output page - gives more control over keeping or deleting temporary attributes.
 
-**Handling Inputs** : Math Combine handles inputs differently than Math Mix: In Math Combine you explicitly select the attributes from all the inputs, you can use [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") and you can give attributes new names. All selected attributes go to the output (unless you delete them on the Output page). The Math Combine POP treats multiple input POPs the same way as the [Attribute Combine POP](https://docs.derivative.ca/Attribute_Combine_POP "Attribute Combine POP"). In contrast, Math Mix auto-names all the inputs’ attributes (`in2_Tex` for example), and the attributes don’t go to the output except for the first input's attributes.
+**Handling Inputs** : Math Combine handles inputs differently than Math Mix: In Math Combine you explicitly select the attributes from all the inputs, you can use [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") and you can give attributes new names. All selected attributes go to the output (unless you delete them on the Output page). The Math Combine POP treats multiple input POPs the same way as the [Attribute Combine POP](Attribute_Combine_POP.md "Attribute Combine POP"). In contrast, Math Mix auto-names all the inputs’ attributes (`in2_Tex` for example), and the attributes don’t go to the output except for the first input's attributes.
 
 On the Inputs page, Math Combine lets you choose whether you are operating on point, vertex or primitive attributes.
 
@@ -41,7 +41,7 @@ Scope A, B or C can contain an attribute name, or individual "**components** " o
 
 Since we can put in the Scope A, B or C things like `P(0) P(2) N(0)`, you can actually mix and **reorder components** and put the results in any (other) component combination of one attribute.
 
-Attribute menu - From the Scope A, B and C's menu on their right you can choose from the incoming attributes, the new attributes you created in Math Mix, and also via the **>** at the bottom of the menu the set of very useful **built-in attributes** (they all start with a `_`. Built-in attributes include the point index, normalized indexes, the time slice step time, Pi (3.14157), [Dimensions](https://docs.derivative.ca/Dimension "Dimension"), number of points, etc.
+Attribute menu - From the Scope A, B and C's menu on their right you can choose from the incoming attributes, the new attributes you created in Math Mix, and also via the **>** at the bottom of the menu the set of very useful **built-in attributes** (they all start with a `_`. Built-in attributes include the point index, normalized indexes, the time slice step time, Pi (3.14157), [Dimensions](../Glossary/Dimension.md "Dimension"), number of points, etc.
 
 The Result Scope parameter directs the results of an operation to an attribute. You specify the name of the attribute you want to create or over-write, and it will do its best to figure out its properties - type and size. It visually shows in italics what attribute that a block would be writing to, without you explicitly specifying.
 
@@ -53,7 +53,7 @@ You can specify groups of points/vertices to operate on, others being untouched 
 
 **New** page: Unlike the Uniforms page, the New page creates a full array of data, one per point constant value per point, and by default are is output from the POP like any attribute.
 
-The **Pre** and **Post** pages (similar to the [Math POP](https://docs.derivative.ca/Math_POP "Math POP")) are sequential blocks that operate on one attribute per block, with these parameters:
+The **Pre** and **Post** pages (similar to the [Math POP](Math_POP.md "Math POP")) are sequential blocks that operate on one attribute per block, with these parameters:
   * Scope - which attribute to operate on
   * Parameter Size (default 1) (Parameter Size means how many sets of parameters, like Parameter Size of 3 will present a set of parameters for each of X, Y and Z.
   * Pre page has:
@@ -83,38 +83,32 @@ Optimized - Note that any attribute you select on the Inputs page does not copy 
 
 Attaching an Info DAT will show you raw GLSL code that is generated.
 
-See also [Math Mix POP](https://docs.derivative.ca/Math_Mix_POP "Math Mix POP"), [Math POP](https://docs.derivative.ca/Math_POP "Math POP"), [ReRange POP](https://docs.derivative.ca/ReRange_POP "ReRange POP"), [Quantize POP](https://docs.derivative.ca/Quantize_POP "Quantize POP"), [Limit POP](https://docs.derivative.ca/Limit_POP "Limit POP")
+See also [Math Mix POP](Math_Mix_POP.md "Math Mix POP"), [Math POP](Math_POP.md "Math POP"), [ReRange POP](ReRange_POP.md "ReRange POP"), [Quantize POP](Quantize_POP.md "Quantize POP"), [Limit POP](Limit_POP.md "Limit POP")
 
-See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title=Math_Mix_Combine_Functions&action=edit&redlink=1 "Math Mix Combine Functions \(page does not exist\)")
+See also [Math Mix Combine Functions](https://docs.derivative.ca/Math_Mix_Combine_Functions "Math Mix Combine Functions"), [POP Rotations](https://docs.derivative.ca/POP_Rotations "POP Rotations")
 
-[mathcombinePOP_Class](https://docs.derivative.ca/MathcombinePOP_Class "MathcombinePOP Class")
+[mathcombinePOP_Class](Math_Combine_POP_Class.md "MathcombinePOP Class")
 
 ## Parameters - Inputs Page
-
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
   * Primitive `primitive` -
-
 - Length Mismatch `lengthmismatchnotif` - ⊞ - Length mis-match motification action.
   * Length Mismatch `lengthmismatchnotif` -
   * Length Mismatch Action `lengthmismatchaction` - Specify which attribute values to use when sampling outside of the input range.
-
 - Group `group` - If there are input groups, specifying a group name in this field will cause this POP to act only upon the group specified.
 - Angle Units `angleunit` - ⊞ - Any angles in parameters are expressed in degrees (0-360 is one rotation), radians (0-2*pi) or cycles (0-1 is one rotation).
   * Degrees `deg` -
   * Radians `rad` -
   * Cycles `cycle` -
-
 - Input `input` - Start of Sequential Parameter Blocks managing the inputs of the POP.
 - In POP(s) `input0pop` - Input POPs for the current sequence block.
 - In Attributes `input0attrs` - ⊞ - Selected attributes for the current sequence block.
   * * `*` -
-
 - Rename to `input0renameto` - Change the input attributes to a new name.
 
 ## Parameters - Uniforms Page
-
 - Vector `vec` - Start of Sequential Parameter Blocks to define uniform variables.
 - Name `vec0name` - The name of the uniform.
 - Type `vec0type` - ⊞ - The number of components for the array.
@@ -134,13 +128,11 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * uint2 `uint2` -
   * uint3 `uint3` -
   * uint4 `uint4` -
-
 - Value `vec0value` - ⊞ - Vector value.
   * Value `vec0value0` -
   * Value `vec0value1` -
   * Value `vec0value2` -
   * Value `vec0value3` -
-
 - Pre-Multiply RGB by Alpha `premultcolor` - Enable RGB values pre-multiplication with the Alpha.
 - Color `color` - Start of Sequential Parameter Blocks for color uniforms.
 - Name `color0name` - The name of the color uniform.
@@ -148,20 +140,16 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * RGB `color0rgbr` -
   * RGB `color0rgbg` -
   * RGB `color0rgbb` -
-
 - Alpha `color0alpha` - Alpha value.
 
 ## Parameters - New Page
-
 - New Attribute `attr` - Start of Sequential Parameter Blocks to create new attributes.
 - Name `attr0name` - ⊞ - Choose to create a predefined attribute or a custom attribute.
   * Name `attr0name` -
   * Custom Name `attr0customname` - The name of the new cutom attribute.
-
 - Type `attr0type` - ⊞ - Determines the type.
   * Type `attr0type` -
   * Components `attr0numcomps` - The number of components in the new custom attribute.
-
 - Default Value `attr0defaultval` - ⊞ - The value of the new custom attribute if it cannot be computed.
   * Default Value `attr0defaultval0` -
   * Default Value `attr0defaultval1` -
@@ -169,7 +157,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * Default Value `attr0defaultval3` -
 
 ## Parameters - Pre Page
-
 - Pre `pre` - Start of Sequential Parameter Blocks for Pre operations.
 - Scope `pre0scope` - Attribute scope.
 - Parameter Size `pre0parsize` - ⊞ - Number of independent configurable parameter values.
@@ -177,13 +164,11 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * 2 `2` -
   * 3 `3` -
   * 4 `4` -
-
 - Order `pre0order` - ⊞ - Selects the order of the Multiply, Add, and Operation.
   * Multiply, Add, Operation `multaddop` -
   * Add, Multiply, Operation `addmultop` -
   * Operation, Multiply, Add `opmultadd` -
   * Operation, Add, Multiply `opaddmult` -
-
 - Multiply `pre0mult` - Multiply by this value.
 - Add `pre0add` - Value to add.
 - Operation `pre0oper` - ⊞ - Selects the operation to perform.
@@ -217,7 +202,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * powtodb(A) `powtodb` -
   * dbtoamp(A) `dbtoamp` -
   * amptodb(A) `amptodb` -
-
 - Quantize `pre0quantize` - ⊞ - Convert values into a finite set of discrete levels.
   * Off `off` -
   * floor(A) `floor` -
@@ -229,7 +213,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * A != 0 `neq0` -
   * A <= 0 `lteq0` -
   * A < 0 `lt0` -
-
 - Result Scope `pre0resultscope` - ⊞ - Operation result output attribute scope.
   * Color `Color` -
   * Color.rgb `Color.rgb` -
@@ -237,7 +220,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * Tex `Tex` -
 
 ## Parameters - Combine Page
-
 - Combine `comb` - Start of Sequential Parameter Blocks for combines.
 - Operation `comb0oper` - ⊞ - Selects the combine operation to perform.
   * None `none` -
@@ -316,7 +298,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * B < A < C `bltaltec` -
   * B <= A <= C `bltaltec` -
   * refract(A, B, C) `refract` -
-
 - Scope A `comb0scopea` - Attribute scope for operand A.
 - Scope B `comb0scopeb` - Attribute scope for operand B.
 - Scope C `comb0scopec` - Attribute scope for operand C.
@@ -327,7 +308,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * Tex `Tex` -
 
 ## Parameters - Post Page
-
 - Post `post` - Start of Sequential Parameter Blocks for Post operations.
 - Scope `post0scope` - Attribute scope.
 - Parameter Size `post0parsize` - ⊞ - Number of independent configurable parameter values.
@@ -335,7 +315,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * 2 `2` -
   * 3 `3` -
   * 4 `4` -
-
 - Map from Low `post0fromlow` - Reranges the attribute value.
 - Map from High `post0fromhigh` - Reranges the attribute value.
 - Map to Low `post0tolow` - Reranges the attribute value.
@@ -351,12 +330,10 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * A != 0 `neq0` -
   * A <= 0 `lteq0` -
   * A < 0 `lt0` -
-
 - Cast to `post0castto` - ⊞ - Allows to cast the output attribute to a different type if wanted.
   * Automatic `auto` -
   * Float `float` -
   * Int `int` -
-
 - Result Scope `post0result` - ⊞ - Operation result output attribute scope.
   * Color `Color` -
   * Color.rgb `Color.rgb` -
@@ -364,18 +341,16 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * Tex `Tex` -
 
 ## Parameters - Output Page
-
 - Delete Attributes `delattrs` - Attributes to delete from output.
 - Delete New Attributes `delnewattrs` - Enable removal of attributes created by the operator
 - Output Secondary Attributes `outputsecondary` - ⊞ - List of attributes from the secondary inputs to output.
   * * `*` -
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
+- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. Only available when a [Working Color Space](https://docs.derivative.ca/Working_Color_Space "Working Color Space") is active for the project. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
   * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
@@ -387,27 +362,6 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
   * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
   * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
@@ -421,7 +375,7 @@ See also [Math Mix Combine Functions](https://docs.derivative.ca/index.php?title
 
 ## Info CHOP Channels
 
-Extra Information for the Math Combine POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Math Combine POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -432,19 +386,11 @@ Extra Information for the Math Combine POP can be accessed via an [Info CHOP](ht
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

@@ -12,7 +12,7 @@ The Capture Region SOP defines capture region (cregion), which is a type of prim
 
 Capture Regions are always shown in wireframe (even in shaded mode) so that you can focus on the geometry for which the region will act on.
 
-[captureregionSOP_Class](https://docs.derivative.ca/CaptureregionSOP_Class "CaptureregionSOP Class")
+[captureregionSOP_Class](Capture_Region_SOP_Class.md "CaptureregionSOP Class")
 
 ## Parameters - Region Page
 
@@ -24,31 +24,27 @@ The Max/Min Weight parameter is used in the weighting of points. The closer a po
   * X Axis `x` -
   * Y Axis `y` -
   * Z Axis `z` -
-
 - Center `t` - ⊞ - Position of the center of the region.
   * X `tx` -
   * Y `ty` -
   * Z `tz` -
-
 - Top Height `theight` - Height of the region from the centre to the top cap.
 - Top Cap `tcap` - ⊞ - The X, Y, Z radii of the top/bottom hemisphere.
   * X `tcapx` -
   * Y `tcapy` -
   * Z `tcapz` -
-
 - Bottom Height `bheight` - Height of the region from the centre to the top cap.
 - Bottom Cap `bcap` - ⊞ - The X, Y, Z radii of the top/bottom hemisphere.
   * X `bcapx` -
   * Y `bcapy` -
   * Z `bcapz` -
-
 - Max/Min Weight `weight` - ⊞ - Defines the weight of a point exactly on the centre line and edge of the region respectively. Point weights in-between are blended.
   * `weight1` -
   * `weight2` -
 
 ## Parameters - Display Page
-
 - Display Color `color` - ⊞ - The Capture Region SOP<uses region colors for helpful feedback.
+
 By default the region inherits the color of its containing object (via an expression).
   * Red `colorr` -
   * Green `colorg` -
@@ -65,20 +61,16 @@ Capture regions shown with their containing bone objects.
 
 ## Info CHOP Channels
 
-Extra Information for the Capture Region SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Capture Region SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -86,19 +78,11 @@ Extra Information for the Capture Region SOP can be accessed via an [Info CHOP](
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

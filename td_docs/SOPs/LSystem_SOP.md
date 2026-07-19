@@ -32,14 +32,12 @@ ISBN: 0-387-94676-4, 1996.
 
 which is the definitive reference on the subject. It contains a multitude of L-systems examples complete with descriptions of the ideas and theories behind modelling realistic plant growth.
 
-[lsystemSOP_Class](https://docs.derivative.ca/LsystemSOP_Class "LsystemSOP Class")
+[lsystemSOP_Class](LSystem_SOP_Class.md "LsystemSOP Class")
 
 ## Parameters - Geometry Page
-
 - Type `type` - ⊞ - Provides two options for output geometry:
   * Skeleton `skel` - Creates wire frame geometry. This option is ideal for geometry that is stiff and jagged like lightning or snowflakes. It is also useful to reduce SOP cooking time.
   * Tube `tube` - Creates tube geometry. This option can be used with solid geometry that would need smooth curves, like trees or shrubs. Parameters on the [Tube Page](#Parameters_-_Tube_Page) are only enabled when this Type is selected.
-
 - Generations `generations` - Determines the number of times to apply the rules to the initial string. This value controls the growth of the L-system. Place a time-based function here to animate the L-system growth.
 - Random Scale `randscale` - Random Scale as a percentage. This will apply a random scale to the changing geometry's lengths, angles and thickness.
 - Random Seed `randseed` - Random Seed for the SOP. This value can be used to select different sequences of random values.
@@ -51,7 +49,6 @@ which is the definitive reference on the subject. It contains a multitude of L-s
 - UV Increment `inc` - ⊞ - Defines the default color U, V index increments when the turtle symbols ` or # are used.
   * `incu` -
   * `incv` -
-
 - Point Width Attribute `pointwidth` - Adds a point `width` attribute to each point in the geometry. This width is effected by the Thickness and Thickness Scale parameters on the Tube Page.
 
 ## Parameters - Tube Page
@@ -67,7 +64,6 @@ The parameters on this page are active only if [Geometry Page](#Parameters_-_Geo
 - Vertical Increment `vertinc` - Defines the vertical spacing of texture coordinates over tube geometry when tube texture is applied.
 
 ## Parameters - Values Page
-
 - Step Size `stepinit` - Step Size allows you to define the default length of the edges when new geometry is generated.
 - Step Size Scale `stepscale` - Step Size Scale defines the scale by which the geometry will be modified by the " or _ (double quote, or underscore) turtle operators.
 - Angle `angleinit` - Angle defines the default turning angle for turns, rolls and pitches.
@@ -84,10 +80,13 @@ The parameters on this page allow you to stamp your leaf geometry (each copy can
 - Group Prefix `grpprefix` - If the production g(n) is encountered, all subsequent geometry is included in a primitive group prefixed with this label and ending with the ascii value of n. See [#CreateGroup Creating Groups within L-systems](#CreateGroup_Creating_Groups_within_L-systems) below for an example.
 - Channel Prefix `chanprefix` - If the expression chan(n) is encountered, it is replaced with the local channel prefixed with this label and ending with the ascii value of n.
 - Leaf Param A `stampa` - You can determine which parameters are used by leaves.
+
 See [#CreateGroup Creating Groups within L-systems](#CreateGroup_Creating_Groups_within_L-systems) below for an example.
 - Leaf Param B `stampb` - You can determine which parameters are used by leaves.
+
 See [#CreateGroup Creating Groups within L-systems](#CreateGroup_Creating_Groups_within_L-systems) below for an example.
 - Leaf Param C `stampc` - You can determine which parameters are used by leaves.
+
 See [#CreateGroup Creating Groups within L-systems](#CreateGroup_Creating_Groups_within_L-systems) below for an example.
 - Rules DAT `rules` - Path to the DAT defining the rules for the LSystem.
   * Context Ignore `context_ignore:` - Defining this in the Rules DAT specifies all characters which are to be skipped when testing context sensitivity in the rules below.
@@ -449,7 +448,7 @@ This way "`i`" is scaled before `A` is again evaluated. The important part is th
 
 ## Example
 
-**Step 1)** Place a [Circle SOP](https://docs.derivative.ca/Circle_SOP "Circle SOP"), and set the Number of Divisions to`: param("lsys", 3`)
+**Step 1)** Place a [Circle SOP](Circle_SOP.md "Circle SOP"), and set the Number of Divisions to`: param("lsys", 3`)
 
 It then displays a triangle (3 is default value).
 
@@ -471,7 +470,7 @@ Rule1`A(i)=FJ(,,i+3)A(i+1)`
 
 This creates a line of increasing-order polygons.
 
-**Step 4)** Finally, we will want to create 20 leaves, and put them all into a [Switch SOP](https://docs.derivative.ca/Switch_SOP "Switch SOP"). Do this by entering the following expression into the Switch SOP's Select Input: `param("lsys",0)`
+**Step 4)** Finally, we will want to create 20 leaves, and put them all into a [Switch SOP](Switch_SOP.md "Switch SOP"). Do this by entering the following expression into the Switch SOP's Select Input: `param("lsys",0)`
 
 **Step 5)** Then in your L-system, J(,,0) gives you the first SOP, J(,,1) gives you the second, and so on. This solves the problem of a limited number of leaves using only JKM.
 
@@ -488,20 +487,16 @@ The first two parameters of J, K, M are used to override length and width, like 
 
 ## Info CHOP Channels
 
-Extra Information for the LSystem SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the LSystem SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -509,19 +504,11 @@ Extra Information for the LSystem SOP can be accessed via an [Info CHOP](https:/
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

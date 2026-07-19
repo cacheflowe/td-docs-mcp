@@ -6,7 +6,7 @@ title: AbsTime_Class
 
 # absTime Class
 
-This class contains information on the "[absolute time](https://docs.derivative.ca/Absolute_Time "Absolute Time")", the time TouchDesigner has been running since the process started. It can be accessed with the abstime object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). It is paused only with the power on/off button at the top of the UI, or with the power() method in the [td module](https://docs.derivative.ca/Td_Module "Td Module") or pausing the root timeline. Absolute time is the same for all nodes. See [absolute time](http://en.wikipedia.org/wiki/Absolute_time_and_space).
+This class contains information on the "[absolute time](../Glossary/Absolute_Time.md "Absolute Time")", the time TouchDesigner has been running since the process started. It can be accessed with the abstime object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). It is paused only with the power on/off button at the top of the UI, or with the power() method in the [td module](https://docs.derivative.ca/Td_Module "Td Module") or pausing the root timeline. Absolute time is the same for all nodes. See [absolute time](http://en.wikipedia.org/wiki/Absolute_time_and_space).
 
 ## Members
 

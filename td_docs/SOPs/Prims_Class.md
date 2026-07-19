@@ -6,13 +6,13 @@ title: Prims_Class
 
 # Prims Class
 
-The Prims class describes the set of [prim objects](https://docs.derivative.ca/Prim_Class "Prim Class") (primitives) owned by one [SOP](https://docs.derivative.ca/SOP_Class "SOP Class").
+The Prims class describes the set of [prim objects](../Python/Prim_Class.md "Prim Class") (primitives) owned by one [SOP](SOP_Class.md "SOP Class").
 
 ## Members
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](../Python/OP_Class.md "OP Class") to which this object belongs.
 
 ## Methods
 

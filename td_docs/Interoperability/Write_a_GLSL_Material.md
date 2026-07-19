@@ -4,7 +4,9 @@ category: Interoperability
 title: Write_a_GLSL_Material
 ---
 
-# Write a GLSL Material
+# Write a GLSL MAT
+
+(Redirected from [Write a GLSL Material](https://docs.derivative.ca/index.php?title=Write_a_GLSL_Material&redirect=no "Write a GLSL Material"))
 
 ##  Overview
 
@@ -16,7 +18,7 @@ TouchDesigner uses GLSL 3.30 and newer versions as it's language. Many online ex
 
 ###  The concept of GLSL Shaders
 
-A GLSL [Shader](https://docs.derivative.ca/Shader "Shader") is a program that is applied to geometry as it is being rendered. A GLSL shader is split into two main components, vertex shader and pixel shader.
+A GLSL [Shader](../Glossary/Shader.md "Shader") is a program that is applied to geometry as it is being rendered. A GLSL shader is split into two main components, vertex shader and pixel shader.
 
 **Vertex Shader** - A vertex shader is a program that is applied to every vertex of the geometry the Material is applied to.
 
@@ -28,13 +30,9 @@ There is also the **Geometry Shader**, which is a stage between the vertex and p
 
 All functions and uniforms provided by TouchDesigner as augmentations of the GLSL language will follow these conventions.
   * Function names will always start with the letters `TD`. e.g. `TDLighting()`.
-
   * Uniforms will start with the letters `uTD`.
-
   * Samplers will start with the letters `sTD`.
-
   * Images will start with the letters `mTD`.
-
   * Vertex input attributes will be named the same as they are in the TouchDesigner SOP interface (P, N, uv).
 
 Most uniforms provided by TouchDesigner will be contained in Uniform Blocks. This means instead of accessing a single matrix by `uTDMatrixName`, the matrices will be stored a single block with many matrices such as `uTDMats`, which has members such as `uTDMats[0].worldCam` and `uTDMats[0].projInverse`.
@@ -265,7 +263,7 @@ buffer TDEnvLightBuffer
 } uTDEnvLightBuffers[TD_ENV_LIGHTS_ARRAY_SIZE];
 ```
 
-When using sampler3D created using a [Texture 3D TOP](https://docs.derivative.ca/Texture_3D_TOP "Texture 3D TOP"), it can sometimes be useful to know which slice is the 'newest' slice in the array, when using the [Texture 3D TOP](https://docs.derivative.ca/Texture_3D_TOP "Texture 3D TOP") as a circular cache. The P-coordinate location of where the newest slice will provided by a uniform named the same as your sampler, with the suffix 'POffset'. For example if you have a uniform named sColorMap, you can declare a matching `sColorMapPOffset` uniform and it will automatically be filled in for you.
+When using sampler3D created using a [Texture 3D TOP](../TOPs/Texture_3D_TOP.md "Texture 3D TOP"), it can sometimes be useful to know which slice is the 'newest' slice in the array, when using the [Texture 3D TOP](../TOPs/Texture_3D_TOP.md "Texture 3D TOP") as a circular cache. The P-coordinate location of where the newest slice will provided by a uniform named the same as your sampler, with the suffix 'POffset'. For example if you have a uniform named sColorMap, you can declare a matching `sColorMapPOffset` uniform and it will automatically be filled in for you.
 ```
 uniform float sColorMapPOffset; // P offset to newest slice in sampler3D named sColorMap
 ```
@@ -386,8 +384,6 @@ vec4 TDQuadReproject(vec4 v, int camIndex);
 // This function just returns the point unchanged if picking isn't active for this render.
 vec4 TDPickAdjust(vec4 v, int camIndex);
 ```
-
-
 
 ```
 // Returns the uv coordinate that was selected for UV unwrapping in the Render TOP
@@ -617,101 +613,197 @@ float TDConeLookup(int lightIndex, float coord);
 
 Available in all shader stages.
 
-####  General functions
+####  Math Functions
 
 ```
-// A function that gives a half-sine ramp from 0 to 1.
-// Sampling it with a coordinate outside the (0, 1) range will return 0 for anything below 0 and 1 for anything above 1.
-// It's possibly faster than using the GLSL sin() function, depending on the hardware.
-float TDSineLookup(float coord);
-```
+// TDMath
 
-####  Matrix functions
+// Creates a rotation matrix that rotates starting from looking down +Z, to the 'forward' vector direction.
+// The 'forward' and 'up' vectors passed to this function do not need to be normalized.
+mat3 TDRotateToVector(vec3 forward, vec3 up);
 
-```
-// Creates a translation matrix for the given 3 translation values.
-mat4 TDTranslate(float x, float y, float z);
+// Creates a rotation matrix that rotates around the 'axis', the given number of 'radians'
+// The 'axis' vector must already be normalized before being passed to this function.
+mat3 TDRotateOnAxis(float radians, vec3 axis);
 
 // Creates a rotation matrix that rotates around the +X, +Y and +Z axis repectively.
 mat3 TDRotateX(float radians);
 mat3 TDRotateY(float radians);
 mat3 TDRotateZ(float radians);
 
-// Creates a rotation matrix that rotates around the 'axis', the given number of 'radians'
-// The 'axis' vector must already be normalized before being passed to this function.
-mat3 TDRotateOnAxis(float radians, vec3 axis);
-
 // Creates a scale matrix for the given 3 scale values.
 mat3 TDScale(float x, float y, float z);
 
-// Creates a rotation matrix that rotates starting from looking down +Z, to the 'forward' vector direction.
-// The 'forward' and 'up' vectors passed to this function do not need to be normalized.
-mat3 TDRotateToVector(vec3 forward, vec3 up);
+// Creates a translation matrix for the given 3 translation values.
+mat4 TDTranslate(float x, float y, float z);
+
+// A function that gives a half-sine ramp from 0 to 1.
+// Sampling it with a coordinate outside the (0, 1) range will return 0 for anything below 0 and 1 for anything above 1.
+// It's possibly faster than using the GLSL sin() function, depending on the hardware.
+float TDSineLookup(float v);
 
 // Creates a rotation matrix to rotate from vector 'from' to vector 'to'. The solution isn't particularly stable, but useful in some cases.
 // The 'from' and 'to' vectors must already be normalized before being passed to this function.
 mat3 TDCreateRotMatrix(vec3 from, vec3 to);
-```
 
-```
 // Takes a surface normal, the tangent to the surface, and a handedness value (either -1 or 1)
 // Returns a matrix that will convert vectors from tangent space, to the space the normal and tangent are in
 // Both the normal and the tangent must be normalized before this function is called.
 // The w coordinate of the T attribute created by the [[Attribute Create SOP]] contains the handedness
 // that should be passed in as-is.
-mat3 TDCreateTBNMatrix(vec3 normal, vec3 tangent, float handedness);
-```
+mat3 TDCreateTBNMatrix(vec3 N, vec3 T, float handedness);
 
-####  Perlin and Simplex noise functions
-
-```
-// Noise functions
-// These will return the same result for the same input
-// Results are between -1 and 1
-// Can be slow so just be aware when using them.
-// Different dimensionality selected by passing vec2, vec3 or vec4.
-float TDPerlinNoise(vec2 v);
-float TDPerlinNoise(vec3 v);
-float TDPerlinNoise(vec4 v);
-float TDSimplexNoise(vec2 v);
-float TDSimplexNoise(vec3 v);
-float TDSimplexNoise(vec4 v);
-```
-
-####  HSV Conversion
-
-```
 // Converts between RGB and HSV color space
-vec3 TDHSVToRGB(vec3 c);
 vec3 TDRGBToHSV(vec3 c);
-```
+vec3 TDHSVToRGB(vec3 c);
 
-####  Projection Conversions
-
-```
 // Converts a 0-1 equirectangular texture coordinate into cubemap coordinates.
 // A 0 for the U coordinate corresponds to the middle of the +X face. So along the vec3(1, Y, 0) plane.
-// As U rises, equirectangular coordinates rotate from +X, to +Z, then -X and -Z.
-vec3 TDEquirectangularToCubeMap(vec2 equiCoord);
-```
+// As U rises, equirectangular coordinates rotate from +X, to +Z, then -X and -Z.vec3 TDEquirectangularToCubeMap(vec2 mapCoord);
+vec3 TDEquirectangularToCubeMap(vec2 mapCoord);
 
-```
 // Converts from cubemap coordinates to equirectangular
 // cubemapCoord MUST be normalized before calling this function.
-vec2 TDCubeMapToEquirectangular(vec3 cubemapCoord);
+vec2 TDCubeMapToEquirectangular(vec3 envMapCoord)
 
 // Available in builds 2019.18140
 // This version will also output a mipmap bias float. This float should be passed in the 'bias'
 // parameter of texture(), to help select the mipmap level. This helps avoids seams at the edge
 // of equirectangular map.
-vec2 TDCubeMapToEquirectangular(vec3 cubemapCoord, out float mipMapBias);
+vec2 TDCubeMapToEquirectangular(vec3 envMapCoord, out float mipMapBias)
+
+// Converts from RGB to monochrome using the standard weights of luminance (0.2126, 0.7152, 0.0722)
+float TDLuminance(vec3 c);
+
+// Returns a looping value between low and high
+float TDLoop(float val, float low, float high);
+// Returns a value that zigzags between low and high
+float TDZigZag(float val, float low, float high);
+// Returns the average between the two values.
+float TDAverage(float valA, float valB);
+
+// Like the remap feature in the Math CHOP, will remap 'value' frmo thew range [low1, high1] to the range [low2, high2].
+float TDRemap(float value, float low1, float high1, float low2, float high2);
+vec2 TDRemap(vec2 value, vec2 low1, vec2 high1, vec2 low2, vec2 high2);
+vec3 TDRemap(vec3 value, vec3 low1, vec3 high1, vec3 low2, vec3 high2);
+vec4 TDRemap(vec4 value, vec4 low1, vec4 high1, vec4 low2, vec4 high2);
+
+// Triplanar blend function. Blends between the 3 orthogonal color values weighted by the normal vector. <code>blendPower</code> argument is the exponent taken by the weight function to control the falloff.
+vec4 TDTriplanarBlend(vec3 normal, vec4 xcolor, vec4 ycolor, vec4 zcolor, int blendPower);
+
+// Performs Tricubic and bicubic sampling/interlolation on the given sampler.
+// texSize and invTexSize should be the resolution and 1.0 / resolution of the texture.
+vec4 TDBicubicInterpolation(sampler2D tex, vec2 texCoord, vec2 texSize, vec2 invTexSize);
+vec4 TDBicubicInterpolation(sampler2D tex, vec2 texCoord);
+vec4 TDTricubicInterpolation(sampler3D tex, vec3 texCoord, vec3 texSize, vec3 invTexSize);
+vec4 TDTricubicInterpolation(sampler3D tex, vec3 texCoord);
+
+// Generate 2D coordinates to look up into a sphere-map from 3D environment coordinates.
+vec2 TDTexGenSphere(vec3 envMapCoord);
+```
+
+```
+// TDQuaternionMath
+// Builds a quaternion representing a rotation around an axis, using an angle in radians.
+vec4 TDAxisAngleToQuaternion(vec3 axis, float angle) ;
+// Builds a 3×3 rotation matrix from a quaternion.
+mat3 TDQuaternionToRotMatrix(vec4 q);
+// Extracts a quaternion representing the rotation of a 3×3 matrix.
+vec4 TDRotMatrixToQuaternion(mat3 rotMat);
+// Rotates a vector or a point using a quaternion rotation.
+vec3 TDRotateFromQuaternion(vec3 v, vec4 q);
+// Combines two quaternions to apply their rotations sequentially.
+vec4 TDQuaternionMultiply(vec4 Q1, vec4 Q2);
+// Performs spherical linear interpolation between two quaternions.
+vec4 TDSlerpQuaternions(vec4 q0, vec4 q1, float t);
+// Extracts the pure rotation component from a 4×4 transform matrix.
+mat3 TDExtractRotation(mat4 m);
+// Interpolates smoothly between two rotation matrices via quaternion slerp.
+mat3 TDSlerpRotationMatrices(mat3 m0, mat3 m1, float t);
+// Interpolates translation, rotation, and scale between two transform matrices.
+mat4 TDInterpolateTransformMatrices(mat4 m0, mat4 m1, float t);
+// Computes the quaternion that rotates one vector direction into another.
+vec4 TDQuaternionFromTo(vec3 from, vec3 to);
+```
+
+####  Noise Functions
+
+```
+// Returns <code>t*t*t*(t*(t*6.0-15.0)+10.0);</code>.
+float TDFade(float t);
+
+// Perlin 2D,3D,4D noise functions
+float TDPerlinNoise(vec2 P);
+float TDPerlinNoise(vec3 P);
+float TDPerlinNoise(vec4 P);
+
+// Simplex 2D,3D,4D noise functions
+float TDSimplexNoise(vec2 P);
+float TDSimplexNoise(vec3 P);
+float TDSimplexNoise(vec4 P);
+
+// Derivative of the TDFade() function. Returns <code>30*t*t*(t*(t-2)+1)</code>
+float TDFadeDeriv(float t);
+
+// Gradients of the TDPerlinNoise() functions. The gradient is an analytical derivative, calculated in the noise space.
+vec4 TDPerlinNoiseDeriv(vec2 P);
+vec4 TDPerlinNoiseDeriv(vec3 P);
+vec4 TDPerlinNoiseDeriv(vec4 P, out float outNoise);
+vec4 TDPerlinNoiseDeriv(vec4 P);
+
+// Gradients of the TDSimplexNoise() functions. The gradient is an analytical derivative, calculated in the noise space.
+vec4 TDSimplexNoiseDeriv(vec2 P);
+vec4 TDSimplexNoiseDeriv(vec3 P);
+vec4 TDSimplexNoiseDeriv(vec4 P, out float outNoise);
+vec4 TDSimplexNoiseDeriv(vec4 P);
+```
+
+####  Color Space Functions
+
+The `TDTransfer*` functions will convert between a linear and non-linear transfer for the color data. If a vec4 is provided then the RGB will be un-premultipled by Alpha before applying the operation, and then then mulitpled by alpha again at the end.
+```
+// TDBasicColorSpace
+vec3 TDTransferLinearToSRGB(vec3 c);
+vec4 TDTransferLinearToSRGB(vec4 c);
+
+vec3 TDTransferSRGBToLinear(vec3 c);
+vec4 TDTransferSRGBToLinear(vec4 c);
+
+// TDColorSpace
+vec3 TDTransferLinearToRec709(vec3 c);
+vec3 TDTransferRec709ToLinear(vec3 c);
+
+vec3 TDTransferLinearToGamma1_8(vec3 c);
+vec3 TDTransferLinearToGamma2_2(vec3 c);
+vec3 TDTransferLinearToGamma2_4(vec3 c);
+vec3 TDTransferLinearToGamma2_6(vec3 c);
+vec3 TDTransferLinearToGamma2_8(vec3 c);
+
+vec3 TDTransferACESproxyToLinear(vec3 c);
+vec3 TDTransferLinearToACESproxy(vec3 c);
+
+vec3 TDTransferGamma1_8ToLinear(vec3 c);
+vec3 TDTransferGamma2_2ToLinear(vec3 c);
+vec3 TDTransferGamma2_4ToLinear(vec3 c);
+vec3 TDTransferGamma2_6ToLinear(vec3 c);
+vec3 TDTransferGamma2_8ToLinear(vec3 c);
+
+// referenceWhiteNits denotes what brightness in nits a value of 1.0 will be for the linear data.
+vec3 TDTransferLinearToST2084PQ(vec3 color, float referenceWhiteNits);
+vec3 TDTransferST2084PQToLinear(vec3 color, float referenceWhiteNits);
+
+vec3 TDTransferBT2100HLGToLinear(vec3 color, float peakNits, float referenceWhiteNits);
+vec3 TDTransferLinearToBT2100HLG(vec3 color, float peakNits, float referenceWhiteNits);
+
+vec3 TDGamutRec709ToRec2020(vec3 c);
+vec3 TDGamutRec2020ToRec709(vec3 c);
 ```
 
 ##  Working with Lights
 
 To help shaders be as fast as possible, a lot of the logic to calculate lights is hard-coded into the shader depending on what features are enabled and what the light type is. Shaders written for the GLSL MAT will be recompiled with different implementation of TDLightingPBR(), TDLighting() etc depending on the number and types of lights in the scene. This allows the same GLSL MAT to be used in multiple different scenes without needing to be changed based on the number of lights in the scene. These compilations are cached, so each permutation of lighting settings will only cause one compilation to occur, each time TD is run.
 
-**TIP:** Geometry viewers have built-in lighting separate from your scene's lighting objects. For information on how to duplicate that lighting, see the [Geometry Viewer](https://docs.derivative.ca/Geometry_Viewer "Geometry Viewer") article.
+**TIP:** Geometry viewers have built-in lighting separate from your scene's lighting objects. For information on how to duplicate that lighting, see the [Geometry Viewer](Geometry_Viewer.md "Geometry Viewer") article.
 
 ###  Custom work with lights
 
@@ -719,9 +811,9 @@ If you decide to do custom lighting work, this section describes how a lot of th
 
 ####  Knowing which variables correspond to which Light COMPs
 
-The variables will be indexed to differentiate the lights, starting at 0. Light 0 will be the first light listed in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"), Light 1 will be the 2nd light listed and so on. In the event that lights are selected using a wildcard such as light*, the lights gathered from this wildcard will be sorted alpha-numerically.
+The variables will be indexed to differentiate the lights, starting at 0. Light 0 will be the first light listed in the [Render TOP](../TOPs/Render_TOP.md "Render TOP"), Light 1 will be the 2nd light listed and so on. In the event that lights are selected using a wildcard such as light*, the lights gathered from this wildcard will be sorted alpha-numerically.
 
-For example, say the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") has "/light3 /container1/light* /alight1" listed in its Light parameter, and /container1/ has two light COMPs, named light1 and light2. In this case the lights would correspond to the following indices:
+For example, say the [Render TOP](../TOPs/Render_TOP.md "Render TOP") has "/light3 /container1/light* /alight1" listed in its Light parameter, and /container1/ has two light COMPs, named light1 and light2. In this case the lights would correspond to the following indices:
 
 /light3 would be index 0
 
@@ -814,7 +906,7 @@ Use `TDHardShadow()` or `TDSoftShadow()` to manually get the shadow value.
 
 ##  Multiple Render Targets
 
-Using the '# Of Color Buffers' parameter in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") along with the [Render Select TOP](https://docs.derivative.ca/Render_Select_TOP "Render Select TOP"), you can write GLSL shaders that output multiple color values per pixel. This is done by declaring and writing to pixel shader outputs declare like this:
+Using the '# Of Color Buffers' parameter in the [Render TOP](../TOPs/Render_TOP.md "Render TOP") along with the [Render Select TOP](../TOPs/Render_Select_TOP.md "Render Select TOP"), you can write GLSL shaders that output multiple color values per pixel. This is done by declaring and writing to pixel shader outputs declare like this:
 ```
 layout(location = 0) vec4 fragColor[TD_NUM_COLOR_BUFFERS];
 ```
@@ -827,7 +919,7 @@ Multi-Camera Rendering is rendering multiple cameras in a single rendering pass,
 
 Multi-Camera Rendering will not function if the Cameras have different light masks. The cameras will be rendered one pass at a time in that case.
 
-This feature is used by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") when multiple cameras are listed in the 'Cameras' parameter. The 'Multi-Camera Hint' parameter can help control how this feature is used for that particular Render TOP. The results of each camera's render can be obtained using [Render Select TOP](https://docs.derivative.ca/Render_Select_TOP "Render Select TOP").
+This feature is used by the [Render TOP](../TOPs/Render_TOP.md "Render TOP") when multiple cameras are listed in the 'Cameras' parameter. The 'Multi-Camera Hint' parameter can help control how this feature is used for that particular Render TOP. The results of each camera's render can be obtained using [Render Select TOP](../TOPs/Render_Select_TOP.md "Render Select TOP").
 
 Nvidia calls this feature 'Simultaneous Multi-Projection'.
 
@@ -835,7 +927,7 @@ The multi-camera functionality on these GPUs is not general and requires some tr
 
 ##  Image Outputs
 
-In the [Render TOP](https://docs.derivative.ca/Render_TOP#Parameters_-_Images_Page "Render TOP") you can allocate extra image outputs that can be accessed during rendering. These outputs are arbitrarily sized images that can be written and read from at any location (similar to the Compute shader workflow for the GLSL TOP), using `TDImageStore_Name()` and `TDImageLoad_Name()`. Where 'Name' will be replaced with what you named the image output as. The images will automatically be declared for you inside of the shader, you should not declare them yourself (as you do for other uniforms). This is because there is a lot of extra decoration required for the image uniforms. Currently when compiling in the GLSL MAT itself your code will result in an error, since the images are not available there. You can avoid those compile errors by using this around your code that uses the `TDImage*` functions
+In the [Render TOP](../TOPs/Render_TOP.md#Parameters_-_Images_Page "Render TOP") you can allocate extra image outputs that can be accessed during rendering. These outputs are arbitrarily sized images that can be written and read from at any location (similar to the Compute shader workflow for the GLSL TOP), using `TDImageStore_Name()` and `TDImageLoad_Name()`. Where 'Name' will be replaced with what you named the image output as. The images will automatically be declared for you inside of the shader, you should not declare them yourself (as you do for other uniforms). This is because there is a lot of extra decoration required for the image uniforms. Currently when compiling in the GLSL MAT itself your code will result in an error, since the images are not available there. You can avoid those compile errors by using this around your code that uses the `TDImage*` functions
 ```
 #ifdef TD_RENDER_TOP
 // Render TOP only code
@@ -856,7 +948,6 @@ vec4 TDImageLoad_Name(uint arrayIndex, uvec3 coord);
 
 For example if the Image Output was named 'test', then the functions would be called `TDImageStore_test()`
 
-
 ##  Outputting gl_Position
 
 Although in general you can transform your points/vectors using the built-in model/view and projection matrices at will, when outputting to gl_Position you should use the built-in functions. These functions allow TouchDesigner to do some manipulation of the values for final output, depending on the rendering setup. For example for doing optimized [Multi-Camera Rendering](#Multi-Camera_Rendering), the position will need to be multiplied by the correct camera for this execution of the vertex shader. To give TouchDesigner a chance to do this manipulation, you should call the built-in functions to transform your vertex position:
@@ -876,10 +967,10 @@ Specialization Constants are a new feature in Vulkan that allow code to be re-op
 
 To define a specialization constant, declare a constant with an extra layout() qualifier.
 ```
- layout(constant_id = 0) const int SomeMode = 0;
+layout(constant_id = 0) const int SomeMode = 0;
 ```
 
-Then you can use `SomeMode` just as you would any other variable. If you don't want it to be = 0, you can assign a different value on the 'Constants' page of the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP"), [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") etc. You can declare multiple specialization constants, you just need to give each one it's own unique `constant_id` value (0, 1, 2, etc.).
+Then you can use `SomeMode` just as you would any other variable. If you don't want it to be = 0, you can assign a different value on the 'Constants' page of the [GLSL TOP](../TOPs/GLSL_TOP.md "GLSL TOP"), [GLSL MAT](../MATs/GLSL_MAT.md "GLSL MAT") etc. You can declare multiple specialization constants, you just need to give each one it's own unique `constant_id` value (0, 1, 2, etc.).
 
 ##  Working with Deforms
 
@@ -894,7 +985,6 @@ vec3 TDDeform(vec3 p);
 vec3 TDDeformVec(vec3 v);
 vec3 TDDeformNorm(vec3 v);
 ```
-
 
 As the shader writer, it's your job to manipulate the vertex attributes such as the position and normal (since there's no place for TouchDesigner to do it if you're the one writing the shader), so it's up to you to call the TDDeform() function. In general you will simply call it simply like this:
 ```
@@ -925,7 +1015,7 @@ mat4 TDBoneMat(int boneIndex);
 
 ###  Instancing
 
-When you enable instancing on the Instance page of the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") the TDDeform() functions will automatically call the correct lower level function that will transform the instance, based on the channels given in the XForm CHOP parameter. If you don't specify a CHOP, then all of the instances will be drawn at the same spot, unless you transform them yourself.
+When you enable instancing on the Instance page of the [Geometry COMP](../Glossary/Geometry_COMP.md "Geometry COMP") the TDDeform() functions will automatically call the correct lower level function that will transform the instance, based on the channels given in the XForm CHOP parameter. If you don't specify a CHOP, then all of the instances will be drawn at the same spot, unless you transform them yourself.
 
 ####  Instance Index/ID
 
@@ -1040,7 +1130,7 @@ TDCheckOrderIndTrans();
 
 ##  Dithering
 
-If dithering is enabled in the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP"), you can have this dithering applied to your color by simply calling:
+If dithering is enabled in the [Render TOP](../TOPs/Render_TOP.md "Render TOP"), you can have this dithering applied to your color by simply calling:
 ```
 finalColor = TDDither(finalColor);
 ```
@@ -1088,7 +1178,7 @@ vTDPickVert.camSpacePosition = uTDMats[TDCameraIndex()].worldCam * vec4(newPosit
 
 You do not have to write to all the entries in this structure, but you can for completeness. Only the values that are being read by the Render Pick CHOP/DAT (selected in their parameters) must be filled in.
 
-For custom attributes that you set for picking in the [Render Pick CHOP](https://docs.derivative.ca/Render_Pick_CHOP "Render Pick CHOP") or [Render Pick DAT](https://docs.derivative.ca/Render_Pick_DAT "Render Pick DAT"), the attributes are available in `vTDCustomPickVert` with the name and size as defined in the Render Pick node.
+For custom attributes that you set for picking in the [Render Pick CHOP](../CHOPs/Render_Pick_CHOP.md "Render Pick CHOP") or [Render Pick DAT](../DATs/Render_Pick_DAT.md "Render Pick DAT"), the attributes are available in `vTDCustomPickVert` with the name and size as defined in the Render Pick node.
 
 ##  Shadertoy
 
@@ -1131,25 +1221,18 @@ If you are experiencing a full application crash when writing GLSL code, you may
 
 Shaders written for 1.20 will not compile as 3.30 shaders. The language received a large overhaul, changing the name of many key functions and replacing a lot of functionality. All of the changes can be seen in the official GLSL documentation linked to earlier. Some of the more important changes are:
   * Removed `texture1D(sampler1D, float), texture2D(sampler2D, vec2), etc.` All texture sampling is done with identical function names, regardless of the dimensionality of the texture. e.g. `texture(sampler1D, float), or texture(sampler2D, vec2)`.
-
   * Removed the keyword `varying`. Instead use `in` and `out` (depending on if the value is getting outputted from the shader or inputted from a previous shader stage). Examples later on in the article.
-
   * Removed the keyword `attribute`. Instead just use `in` in your vertex shader.
-
   * Removed built-in varyings `gl_TexCoord[]`. You'll need to always declare your own variables that get output/input between shader stages.
-
   * Removed `gl_FragColor` and `gl_FragData[]`. Instead you name your own color outputs using the syntax `layout(location = 0) vec4 oFragColor[TD_NUM_COLOR_BUFFERS]`.
-
   * Removed all built-in attributes such as `gl_Vertex, gl_MultiTexCoord0, gl_Normal`. In TouchDesigner these attributes will be accessible through automatically declared attributes such as `in vec3 TDPos(); in vec3 TDTexCoord(uint coordLayer); in vec3 TDNormal(); vec4 TDPointColor()`. More details on this [later](#Working_with_Geometry_Attributes).
-
   * Removed almost all built-in uniforms such as matrices (`gl_ModelViewMatrix, gl_ProjectionMatrix`), light information (`gl_LightSource[]`), fog information (`gl_Fog`). All of this data will be available through new means provided by TouchDesigner, detailed [later](#TouchDesigner_specific_Uniforms).
-
   * Arrays of samplers are now supported, and are used extensively in TouchDesigner when appropriate. There are limitations on how these samplers are indexed though, detailed in the GLSL spec for the particular version you are using (3.30 has different rules from 4.10, for example).
 
 ###  Major changes since TouchDesigner088
 
 A lot of changes have been done to TouchDesigner's GLSL API in 099. Most of these changes were done to better facilitate [Multi-Camera Rendering](#Multi-Camera_Rendering). A summary of most of these changes is:
-  * Lighting and other work is now done in World space instead of Camera space. This makes code cleaner since the shaders would need to do their work in multiple different camera spaces for multiple cameras. Legacy GLSL shaders are supported with the [GLSL TOPs](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") 'Lighting Space' parameter which will be set to Camera Space for older shaders.
+  * Lighting and other work is now done in World space instead of Camera space. This makes code cleaner since the shaders would need to do their work in multiple different camera spaces for multiple cameras. Legacy GLSL shaders are supported with the [GLSL TOPs](../TOPs/GLSL_TOP.md "GLSL TOP") 'Lighting Space' parameter which will be set to Camera Space for older shaders.
   * `TDInstanceID()` should be used instead of `gl_InstanceID/uTDInstanceIDOffset`.
   * `uTDMat` has been removed when lighting in World Space, use the array `uTDMats[]` instead.
   * Some values from the `uTDGeneral` structure have been moved to `uTDCamInfos[]`, since that info is camera specific.
@@ -1159,36 +1242,34 @@ A lot of changes have been done to TouchDesigner's GLSL API in 099. Most of thes
 
 ##  Related Articles
 
-MATs or Materials are an [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that applies a [Shader](https://docs.derivative.ca/Shader "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
+MATs or Materials are an [Operator Family](../Glossary/Operator_Family.md "Operator Family") that applies a [Shader](../Glossary/Shader.md "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
 
-A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+A sequence of vertices form a [Polygon](../Glossary/Polygon.md "Polygon") in a [SOP](../SOPs/SOP.md "SOP"). Each vertex is an integer index into the [Point List](../Glossary/Point_List.md "Point List"), and each [Point](../Glossary/Point.md "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
 
-The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](https://docs.derivative.ca/Text_DAT "Text DAT") and referenced by a [GLSL Material](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") or a [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.
+The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](../Glossary/Text_DAT.md "Text DAT") and referenced by a [GLSL Material](../MATs/GLSL_MAT.md "GLSL MAT") or a [GLSL TOP](../TOPs/GLSL_TOP.md "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-Attributes are data associated with [POP](https://docs.derivative.ca/POP "POP") geometry. [Points](https://docs.derivative.ca/Point "Point"), [Vertex (Vertices)](https://docs.derivative.ca/Vertex "Vertex") and [Primitives](https://docs.derivative.ca/Primitive "Primitive") (polygons, lines, etc) can have any number of attributes.
+MATs or Materials are an [Operator Family](../Glossary/Operator_Family.md "Operator Family") that applies a [Shader](../Glossary/Shader.md "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
 
-MATs or Materials are an [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that applies a [Shader](https://docs.derivative.ca/Shader "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-POPs (**Point Operators**) is a new [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
-
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
-
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
-
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
 Quad Reprojection renders pixel-perfect perspective-correct images for flat TVs and LED panels hung at any orientation.
 
 Rendering is the creation of a 3D image with the Render TOP. Rendering is also used more generally to include the compositing (with TOPs) to generate an output image.
 
-(1) A [Geometry Component](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") can instance and render its SOP geometry many times: once for each sample in a CHOP, row of a DAT table, pixel in a TOP, or point of a SOP, (2) An instance is an OP that doesn't actually have its own data, but rather just refers to an OP (or has an input) whose data it uses. This includes Null OPs, Switch OPs and in some cases Select OPs.
+(1) A [Geometry Component](../Glossary/Geometry_COMP.md "Geometry COMP") can instance and render its SOP geometry many times: once for each sample in a CHOP, row of a DAT table, pixel in a TOP, or point of a SOP, (2) An instance is an OP that doesn't actually have its own data, but rather just refers to an OP (or has an input) whose data it uses. This includes Null OPs, Switch OPs and in some cases Select OPs.
+
+Attributes make up the numeric data blocks of [POPs](../POPs/POP.md "POP"). Each POPs has three blocks of data: a Point List which includes the `P` point Position attribute, a Primitive List and a Vertex List, and each are made of any number of attributes.
+
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
 A technique or workflow that allows for displaying content on often irregular shapes and surfaces.
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+shared points, normals on shared points, unique points, recalculate.

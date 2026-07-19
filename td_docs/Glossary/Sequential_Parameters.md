@@ -8,11 +8,11 @@ title: Sequential_Parameters
 
 ##  The Basics
 
-Sequential Parameters are blocks of parameters (**Sequence Blocks**) that can be reproduced multiple times by a user to create multiple entities. For example, the [Constant CHOP](https://docs.derivative.ca/Constant_CHOP "Constant CHOP") lets you create multiple channels by clicking the + button in the parameter dialog. The Point POP lets you create multiple points, etc.
+Sequential Parameters are blocks of parameters (**Sequence Blocks**) that can be reproduced multiple times by a user to create multiple entities. For example, the [Constant CHOP](../CHOPs/Constant_CHOP.md "Constant CHOP") lets you create multiple channels by clicking the + button in the parameter dialog. The Point POP lets you create multiple points, etc.
 
 ( See "Creating Custom Sequential Parameters" at the end of this page to create your own sequential blocks. )
 
-All parameter sequences start with a sequence header parameter with a + and - button, followed by one or more "blocks" of parameters. The image below shows the parameter dialog for [Add SOP](https://docs.derivative.ca/Add_SOP "Add SOP")'s Points page. The sequence header has the label "Point", and is followed by two sequence blocks, each block containing a Position and a Weight parameter.
+All parameter sequences start with a sequence header parameter with a + and - button, followed by one or more "blocks" of parameters. The image below shows the parameter dialog for [Add SOP](../SOPs/Add_SOP.md "Add SOP")'s Points page. The sequence header has the label "Point", and is followed by two sequence blocks, each block containing a Position and a Weight parameter.
 [![Seqpars.png](https://docs.derivative.ca/images/7/72/Seqpars.png)](https://docs.derivative.ca/File:Seqpars.png)
 The parameters in sequence blocks are named in the form:      `<sequence name><sequence index><parameter name>`
   * _sequence name_ : the sequence name, which is also the name of the sequence's header parameter
@@ -26,22 +26,22 @@ You can add and remove sequential parameter blocks in multiple ways. The + and -
 ###  Sequence Helpers for Parameter Expressions
 
 In a parameter expression, you can use:
-  * `me.curSeq` to access the [sequence](https://docs.derivative.ca/Sequence_Class "Sequence Class") of the parameter currently being evaluated.
+  * `me.curSeq` to access the [sequence](../Python/Sequence_Class.md "Sequence Class") of the parameter currently being evaluated.
   * `me.curSeq.numBlocks` to access the number of blocks in the sequence of the parameter currently being evaluated. `len(me.curSeq)` works too.
-  * `me.curBlock` to access the [sequence block](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class") of the parameter currently being evaluated.
+  * `me.curBlock` to access the [sequence block](../Python/SequenceBlock_Class.md "SequenceBlock Class") of the parameter currently being evaluated.
   * With that you can refer to any other parameter in the block, for example, `me.curBlock.par.posz`, not needing to specify the sequence name or block number.
 
 Below are some examples:
 [![CurBlock.png](https://docs.derivative.ca/images/2/2c/CurBlock.png)](https://docs.derivative.ca/File:CurBlock.png)
-See what else you can use here: [Sequence Class](https://docs.derivative.ca/Sequence_Class "Sequence Class"), [SequenceBlock Class](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class"), [SequenceCollection Class](https://docs.derivative.ca/SequenceCollection_Class "SequenceCollection Class").
+See what else you can use here: [Sequence Class](../Python/Sequence_Class.md "Sequence Class"), [SequenceBlock Class](../Python/SequenceBlock_Class.md "SequenceBlock Class"), [SequenceCollection Class](../Python/SequenceCollection_Class.md "SequenceCollection Class").
 
 ##  Working with Sequential Parameters in Python
 
-There are a number of utility classes, members, and methods that allow you to work with sequential parameters in Python. This section will give an overview of these features, but for detailed documentation please refer to: [Sequence Class](https://docs.derivative.ca/Sequence_Class "Sequence Class"), [SequenceBlock Class](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class"), [SequenceCollection Class](https://docs.derivative.ca/SequenceCollection_Class "SequenceCollection Class")
+There are a number of utility classes, members, and methods that allow you to work with sequential parameters in Python. This section will give an overview of these features, but for detailed documentation please refer to: [Sequence Class](../Python/Sequence_Class.md "Sequence Class"), [SequenceBlock Class](../Python/SequenceBlock_Class.md "SequenceBlock Class"), [SequenceCollection Class](../Python/SequenceCollection_Class.md "SequenceCollection Class")
 
 ###  Sequence Objects
 
-**[Sequence objects](https://docs.derivative.ca/Sequence_Class "Sequence Class")** are the main interface for interacting with parameter sequences in Python. They can be accessed via the `sequence` member of any parameter in a sequence or via the sequence name and **[seq](https://docs.derivative.ca/SequenceCollection_Class "SequenceCollection Class")** member of operators.
+**[Sequence objects](../Python/Sequence_Class.md "Sequence Class")** are the main interface for interacting with parameter sequences in Python. They can be accessed via the `sequence` member of any parameter in a sequence or via the sequence name and **[seq](../Python/SequenceCollection_Class.md "SequenceCollection Class")** member of operators.
 ```
 mySequence = op('/add1').par.point0posx.sequence	# get the sequence object
 sameSequence = op('/add1').seq.point				# another way to get the sequence object
@@ -51,7 +51,7 @@ Every sequence has a unique **sequence name**. This name is used to identify the
 
 ###  Sequence Blocks
 
-**[Sequence blocks](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class")** are the blocks of parameters that are repeated in parameter sequences. The blocks in a sequence can be accessed and controlled using through the Sequence object. The following examples use the `point` sequence shown in the ADD SOP images above.
+**[Sequence blocks](../Python/SequenceBlock_Class.md "SequenceBlock Class")** are the blocks of parameters that are repeated in parameter sequences. The blocks in a sequence can be accessed and controlled using through the Sequence object. The following examples use the `point` sequence shown in the ADD SOP images above.
 ```
 seq = op('/add1').seq.point				# get the sequence object with the name "point"
 alsoSeq = op('/add1').seq['point']		# you can also use bracket notation
@@ -68,7 +68,7 @@ seq.insertBlock(2)						# insert a block at position 2
 seq.destroyBlock(0)						# destroy the first block
 ```
 
-Sequence blocks provide easy access to the parameters within the block, using the familiar `par[](https://docs.derivative.ca/ParCollection_Class "ParCollection Class")` and `parGroup[](https://docs.derivative.ca/ParGroupCollection_Class "ParGroupCollection Class")` collection classes. Note that when accessing parameters from a sequence block, you use their base names (no sequence prefix) instead of their full names. The examples below illustrate this, again using the Add SOP images above:
+Sequence blocks provide easy access to the parameters within the block, using the familiar `par[](../Python/ParCollection_Class.md "ParCollection Class")` and `parGroup[](../Python/ParGroupCollection_Class.md "ParGroupCollection Class")` collection classes. Note that when accessing parameters from a sequence block, you use their base names (no sequence prefix) instead of their full names. The examples below illustrate this, again using the Add SOP images above:
 ```
 seq = op('/add1').seq.point				# get the sequence object with the name "point"
 block = seq[1]							# second block in the sequence
@@ -146,20 +146,16 @@ There are a few ways to add or remove parameters from a sequence:
 
 ###  Referring to Another Block
 
-**NOTE** : This will be removed and then changed to a different system in upcoming Official builds.
-
 Referring to another block in your sequence, where blocks may be re-ordered, deleted or inserted requires something invariant in blocks. For example, `me.curSeq[3]` will become `me.curSeq[2]` if you delete any of the prior blocks 0, 1 or 2.
 
-However if you create a parameter in a block called `Blockid`, then when you create a new block, its value is automatically set to a unique number. Say a parameter called `.Blockid` in a block has been set to `7`. To get that block any time in the future, you can write `me.curSeq.id(7)` and you will always get the same block. And to get to a parameter of that block, you write `me.curSeq.id(7).par.Speed`, for example.
+However if you create a parameter (numeric or string) in a block specifically called `Blockname`, then for each new block, its value is automatically appended with a unique number. If for example the first `Blockname` in a block has been set to `A7`, then next block will contain a blockname set to `A8` etc. To get that block any time in the future, you can index it directly by name: `me.curSeq['A7']` and to get to a parameter of that block, it is simply `me.curSeq['A7'].par.Speed`, for example.
 
-If you make the original parameter of the block Read-only, then any newly-created `Blockid` parameters will be read-only, which is preferable as you don't want anyone accidentally changing it.
-
-Sequential Parameters are blocks of parameters (Sequential Blocks) that can be reproduced multiple times by a user to create multiple entities.
+If you make the original parameter of the block Read-only, then any newly-created `Blockname` parameters will also be read-only, which is preferable as you don't want anyone accidentally changing it.
 
 Sequential Parameters are blocks of parameters (Sequential Blocks) that can be reproduced multiple times by a user to create multiple entities.
 
-POPs (**Point Operators**) is a new [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
+Sequential Parameters are blocks of parameters (Sequential Blocks) that can be reproduced multiple times by a user to create multiple entities.
 
-Each SOP has a list of Points. Each point has an XYZ 3D position value plus other optional attributes. Each polygon [Primitive](https://docs.derivative.ca/Primitive "Primitive") is defined by a vertex list, which is list of point numbers.
+Each SOP has a list of Points. Each point has an XYZ 3D position value plus other optional attributes. Each polygon [Primitive](Primitive.md "Primitive") is defined by a vertex list, which is list of point numbers.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.

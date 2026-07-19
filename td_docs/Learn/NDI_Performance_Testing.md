@@ -8,7 +8,7 @@ title: NDI_Performance_Testing
 
 NDI is networking protocol that has quickly gained prominance in the video distribution and playback world. This document covers a session of NDI performance testing that occured in Oct 2019 which was conducted at Cocolabs Mexico with Derivative. The goal of the testing was to attempt to uncover maximum throughput of various computers and networking technologies and to address any issues with other networking technologies like the Dante audio protocol.
 
-For working with NDI and Dante over the same network infrastructure see Using Dante with NDI on the [Dante](https://docs.derivative.ca/Dante "Dante") page.
+For working with NDI and Dante over the same network infrastructure see Using Dante with NDI on the [Dante](../Interoperability/Dante.md "Dante") page.
 
 ##  Testing Platforms
 
@@ -222,12 +222,12 @@ We saw no indication that having Jumbo frames either on or off made any differen
   * NDI will often get into a state where the receiving TOPs info reports they are connected but no video is being received. Using the NDI Monitor App yields a black image with a green and red bar at the top of the image. When in this state also when sending a test pattern from their Test Pattern app the NDI Monitor receives only black. It can see the signal in the menu but nothing comes through. When in this state the NDI streams are still detected on the receiver side even though they are no longer active on the sender side. The only way we have found to fix this state is to reboot the sender computer. Rebooting the clients doesn’t help. This generally happens when making modifications to network settings.
   * The only sure way to get a single 4K stream to play smoothly is for it to be the only stream. A second stream will often lead to dropped frames on both inputs.
 
-A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](../Glossary/Network_Path.md "Network Path").
 
-A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](https://docs.derivative.ca/Panel_Component "Panel Component").
+A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](../Glossary/Panel_Component.md "Panel Component").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

@@ -12,25 +12,25 @@ The Laser CHOP produces channels that can drive a laser projector. It uses the p
 
 When sending CHOP channels to the Laser CHOP, the CHOP expects `x` and `y` channels and every sample will be interpreted as a point to be drawn. To draw multiple shapes, also specify a channel named `id` to identify each shape. Points with `id = 0` are part of the first shape, points with `id = 1` form the second shape. All other channels will be interpreted as color channels and blanking will be applied to those. This makes it possible to drive lasers that have more than just RGB diodes active.
 
-The channels output from the Laser CHOP can be sent to the [Laser Device CHOP](https://docs.derivative.ca/Laser_Device_CHOP "Laser Device CHOP") in case of controlling a Laser via the [ILDA Protocol](https://en.wikipedia.org/wiki/International_Laser_Display_Association), or the [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP") in case of using one of LaserAnimation Sollinger's [AVB](https://en.wikipedia.org/wiki/Audio_Video_Bridging) capable devices, where the audio is output via the [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP") to a low-latency AVB-ready audio device like those from MOTU, RME, LaserAnimation Sollinger or Apple macOS.
+The channels output from the Laser CHOP can be sent to the [Laser Device CHOP](Laser_Device_CHOP.md "Laser Device CHOP") in case of controlling a Laser via the [ILDA Protocol](https://en.wikipedia.org/wiki/International_Laser_Display_Association), or the [Audio Device Out CHOP](../Interoperability/Audio_Device_Out_CHOP.md "Audio Device Out CHOP") in case of using one of LaserAnimation Sollinger's [AVB](https://en.wikipedia.org/wiki/Audio_Video_Bridging) capable devices, where the audio is output via the [Audio Device Out CHOP](../Interoperability/Audio_Device_Out_CHOP.md "Audio Device Out CHOP") to a low-latency AVB-ready audio device like those from MOTU, RME, LaserAnimation Sollinger or Apple macOS.
 
-[LaserAnimation Sollinger's AVB2ILDA devices](https://laseranimation.com/en/products/avb-devices) give you access to features for the professional sector. See [Lasers](https://docs.derivative.ca/Lasers "Lasers").
+[LaserAnimation Sollinger's AVB2ILDA devices](https://laseranimation.com/en/products/avb-devices) give you access to features for the professional sector. See [Lasers](../Interoperability/Lasers.md "Lasers").
 
 The CHOP was developed with the help of [LaserAnimation Sollinger](https://laseranimation.com/en/) who guided us in speccing and implementing the necessary parameters, especially in regards of the blanking timing settings.
 
-**Tip** : See the [OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") for setup and usage examples.
+**Tip** : See the [OP Snippets](../Learn/OP_Snippets.md "OP Snippets") for setup and usage examples.
 
 (The Laser CHOP replaces the legacy Scan CHOP.)
 
 **LASERS ARE DANGEROUS - DAMAGE TO YOUR OR THE AUDIENCE'S EYE SIGHT IS A VERY REAL RISK**
   * If you plan to use lasers
-
   1. Understand all the laws and regulations for laser operation in your area.
   2. Become a certified Laser Safety Officer (this is required by law in some areas). Courses are available from ILDA directly: [ILDA Laser Safety Courses](https://www.ilda.com/LSOcourse.htm)
-
   * Make sure an emergency stop button is close to you at all times.
   * Do not let anyone enter the laser projection area unless all precautions have been taken to limit the output.
   * Make sure there are no reflective surfaces in the projection area that might cause the beam to reflect unintendedly.
+
+**BACKWARD COMPATIBILITY (2025.30000):** The Laser CHOP was overhauled in 2025.30000 which includes many changes and additions from previous versions. Certain changes like the removal of Start Point Hold Time and Input Rate may cause output differences when loading older files into builds 2025.30000 or newer. The Input Rate parameter was previously used to define the sample rate during laser point generation, but that is now always done at 192000, followed by a resample to the Output Rate. This may require changes to parameters like Step Size or Blanking Step Size to achieve the same effect as in older versions.
 
 ### Corner Points
 
@@ -57,18 +57,16 @@ Blanking is the capability of a laser projector to rapidly turn on / off the las
 
 As the laser's mirrors are driven by motors, the positional data that is send to the laser is likely to be ahead of the actual mirror position - the mirror must catch up to the data. The Color data though is in time and as a result the effect can be visible tails at points where the laser switches off its color. Adjusting the blanking parameters can help prevent this.
 
-See also: [Laser Device CHOP](https://docs.derivative.ca/Laser_Device_CHOP "Laser Device CHOP"), [Pangolin CHOP](https://docs.derivative.ca/Pangolin_CHOP "Pangolin CHOP"), [Line Smooth POP](https://docs.derivative.ca/Line_Smooth_POP "Line Smooth POP")
+See also: [Laser Device CHOP](Laser_Device_CHOP.md "Laser Device CHOP"), [Pangolin CHOP](Pangolin_CHOP.md "Pangolin CHOP"), [Line Smooth POP](../POPs/Line_Smooth_POP.md "Line Smooth POP")
 
-[laserCHOP_Class](https://docs.derivative.ca/LaserCHOP_Class "LaserCHOP Class")
+[laserCHOP_Class](Laser_CHOP_Class.md "LaserCHOP Class")
 
 ## Parameters - Laser Page
-
 - Active `active` - When disabled, the CHOP will zero out all channels.
 - Source OP `source` - ⊞ - Select the source operator type for the laser image.
   * SOP `sop` - Use a SOP as the source for the Laser image. Apart from position attributes, the SOP's point color attributes are used to determine the color output.
   * CHOP `chop` - Use a CHOP as the source for the Laser image. Tthe CHOP expects `x` and `y` channels and every sample will be interpreted as a point to be drawn. To draw multiple shapes, also specify a channel named `id` to identify each shape. Points with `id = 0` are part of the first shape, points with `id = 1` form the second shape. All other channels will be interpreted as color channels and blanking will be applied to those. This makes it possible to drive lasers that have more than just RGB diodes active.
   * POP `pop` - Use a POP as the source for the Laser image. Apart from position attributes, the POP's color attributes are used to determine the color output.
-
 - SOP `sop` - Path to the SOP. The SOP's position and color attributes (as well as other miscellaneous attributes such as `LasCorner`) will be used to generate the laser points.
 - CHOP `chop` - Path to the CHOP. The input CHOP must have **x** , **y** channels for the point positions. In addition, it also supports **z** , **r** , **g** , **b** , and **id** channels. The **id** channel is used for grouping points together as a single shape. By default when no **id** channel is present, each point is separate and unconnected. Additional and arbitrarily named colour channels may be added for laser projectors that accept more than just r, g, b. Additional channels include: "lascorner", "lascornerholdadd", and "lascornerholdlookupfactor".
 - POP `pop` - Path to the POP. The POP's position and color attributes (as well as other miscellaneous attributes such as `LasCorner`) will be used to generate the laser points.
@@ -79,12 +77,12 @@ See also: [Laser Device CHOP](https://docs.derivative.ca/Laser_Device_CHOP "Lase
 - Rotate `rotate` - Control the rotation of the output.
 - Camera `camera` - Specify the path to a Camera COMP used to draw a SOP from the cameras view.
 - Update Method `updatemethod` - ⊞ - Control how the Laser CHOP pulls data from its source.
+
 In most cases you will want to keep this at the default setting "When All Points Drawn".
 
 There is a specific usage case that requires the "Every Frame" update method. Background is that the Laser CHOP might have to draw the input values over multiple frames. For example given a source with 200 sampling values. After applying all blanking and step sizes at a certain sample rate, the Laser might need more than one frame to draw the full image. The effect will be visible by the Laser image flickering. With the default setting, the Laser will grab a new set of samples from its input once it has completed drawing all previous values. With the "Every Frame" update method, the Laser will grab the updated values for the remaining samples after each frame.
   * When All Points Drawn `alldrawn` - The Laser CHOP will read the source data once all points of the previous frame have been drawn.
   * Every Frame `everyframe` - The Laser CHOP will update the input every frame, no matter if it finished drawing the previous frame or not.
-
 - Frame Start Pulse `startpulse` - When enabled, will insert a sample with all colors set to -1 at the beginning of the laser frame.
 - Debug Channel `debugchan` - When enabled, an extra channel with point state will be included:
   * -1 : Frame Start Pulse
@@ -96,15 +94,13 @@ There is a specific usage case that requires the "Every Frame" update method. Ba
   * 5 : Blanking
   * 6 : Pre Blank Off
   * 7 : Post Blank Off
-
 - Corner Attribute Name `cornerattr` - For SOP and POP inputs, optionally change the point attribute name used to specifiy if a point is a corner point. Default is `LasCorner`.
 - Corner Hold Add Attribute Name `cornerholdaddattr` - For SOP and POP inputs, optionally change the name of the point attribute used to add a constant value to the corner hold time. Default is `LasCornerHoldAdd`.
 - Corner Hold Factor Attribute Name `cornerholdfactorattr` - For SOP and POP inputs, optionally change the name of the point attribute used to apply a lookup factor to the corner point hold. Default is `LasCornerHoldLookupFactor`.
 
 ## Parameters - Scanning Page
-
-- Step Size `stepsize` - The distance each x,y can change while outputing color.
-- Blanking Step Size `bstepsize` - The distance each x,y can change while not outputing color (blanking).
+- Step Size `stepsize` - The distance each x,y can change while outputting color.
+- Blanking Step Size `bstepsize` - The distance each x,y can change while not outputting color (blanking).
 - Minimum Corner Hold `mincornerhold` - The minimum value of the corner hold of a point. The value of the corner hold of a point is calculated linearly in the range from the minimum to maximum corner hold, based on the steepness of the angle at the point. This angle is calculated with the following three points: the previous point, the point itself, and the next point. Example: when the angle at the point is 180 degrees then the corner hold of the point will be the minimum value.
 - Maximum Corner Hold `maxcornerhold` - The maximum value of the corner hold of a point. See Minimum corner Hold for more details. When the angle at the point is 0 degrees, then the corner hold will be the maximum value. If the maximum value is lower than the minimum then the maximum will be clamped upward.
 - Corner Hold Lookup CHOP `cornerholdchop` - Reference to a CHOP to use as the custom lookup curve when interpolating from min to max hold. By default (ie. when no CHOP is specified), then it is linearly interpolated.
@@ -126,41 +122,33 @@ These parameters let you control how the color channels for the Laser are create
 - Brightness Curve Lookup CHOP `brightnesscurvechop` - Reference a CHOP to use as a custom look-up for soft-edge blending of closed shapes.
 
 ## Parameters - Common Page
-
-- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
+- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](../Glossary/Time_Slicing.md "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
   * Resample At First Input's Rate `first` - Use rate of first input to resample others.
   * Resample At Maximum Rate `max` - Resample to the highest sample rate.
   * Resample At Minimum Rate `min` - Resample to the lowest sample rate.
   * Error If Rates Differ `err` - Doesn't accept conflicting sample rates.
-
-- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](https://docs.derivative.ca/Export "Export") article for more information.
+- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](../Glossary/Export.md "Export") article for more information.
   * DAT Table by Index `datindex` - Uses the docked DAT table and references the channel via the index of the channel in the CHOP.
   * DAT Table by Name `datname` - Uses the docked DAT table and references the channel via the name of the channel in the CHOP.
   * Channel Name is Path:Parameter `autoname` - The channel is the full destination of where to export to, such has `geo1/transform1:tx`.
-
 - Export Root `autoexportroot` - This path points to the root node where all of the paths that exporting by **Channel Name is Path:Parameter** are relative to.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
 
-Extra Information for the Laser CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Laser CHOP can be accessed via an [Info CHOP](Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common CHOP Info Channels
 
   * start - Start of the CHOP interval in samples.
-
   * length - Number of samples in the CHOP.
-
   * sample_rate - The samplerate of the channels in frames per second.
-
   * num_channels - Number of channels in the CHOP.
-
   * time_slice - 1 if CHOP is Time Slice enabled, 0 otherwise.
-
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
@@ -168,19 +156,11 @@ Extra Information for the Laser CHOP can be accessed via an [Info CHOP](https://
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

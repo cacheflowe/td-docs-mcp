@@ -1,6 +1,6 @@
 ---
 url: https://docs.derivative.ca/Python
-category: CHOPs
+category: General
 title: Python
 ---
 
@@ -9,9 +9,9 @@ title: Python
 ##  Python In TouchDesigner
 
 TouchDesigner uses [Python](https://www.python.org/) for scripting tasks. A custom Python build is included, with most of the features of a standard Python installation and a huge number of tools and utilities specific to working in the software.
-  * Quick Start: [Tutorial: Introduction to Python in TouchDesigner](https://docs.derivative.ca/Introduction_to_Python_Tutorial "Introduction to Python Tutorial").
+  * Quick Start: [Tutorial: Introduction to Python in TouchDesigner](../Learn/Introduction_to_Python_Tutorial.md "Introduction to Python Tutorial").
   * Common script examples: [Python Tips](https://docs.derivative.ca/Python_Tips "Python Tips")
-  * List of [TouchDesigner Python Classes and Modules](https://docs.derivative.ca/Python_Classes_and_Modules "Python Classes and Modules")
+  * List of [TouchDesigner Python Classes and Modules](../Python/Python_Classes_and_Modules.md "Python Classes and Modules")
   * Index of all Python pages in this wiki: [Python Reference](https://docs.derivative.ca/Category:Python_Reference "Category:Python Reference")
 
 In addition, selecting **Help - > Python Examples** in the TouchDesigner UI takes you to the `PythonExamples.toe` file with 100+ working examples.
@@ -37,19 +37,19 @@ TouchDesigner includes all the modules in a [standard Python installation](https
 
 The following can be found in the `td` module:
   * **[Main TouchDesigner utilities](https://docs.derivative.ca/Td_Module "Td Module")** - the most basic starting points for interacting with TouchDesigner, such as `me` and `op()`.
-  * **[TouchDesigner Python helper classes](https://docs.derivative.ca/Python_Classes_and_Modules#Helper_Classes "Python Classes and Modules")** - important helper objects used to organize functions and information pertaining to a specific part of TouchDesigner.
-  * **[Operator related classes](https://docs.derivative.ca/Python_Classes_and_Modules#Operator_Related_Classes "Python Classes and Modules")** - every [Operator](https://docs.derivative.ca/Operator "Operator") in TouchDesigner has an associated Python class in the `td` module. Their wiki pages can be accessed by clicking on the Python Help button in their [parameter dialog](https://docs.derivative.ca/Parameter_Dialog "Parameter Dialog"). There are also a number of associated Python objects that are used when working with Operators.
-  * **[Useful standard Python modules](https://docs.derivative.ca/Python_Classes_and_Modules#Standard_Python_Modules "Python Classes and Modules")** - the `td` module also automatically imports a number of helpful standard modules (e.g. `math`), allowing them to be accessed in expressions through their namespace.
+  * **[TouchDesigner Python helper classes](../Python/Python_Classes_and_Modules.md#Helper_Classes "Python Classes and Modules")** - important helper objects used to organize functions and information pertaining to a specific part of TouchDesigner.
+  * **[Operator related classes](../Python/Python_Classes_and_Modules.md#Operator_Related_Classes "Python Classes and Modules")** - every [Operator](Operator.md "Operator") in TouchDesigner has an associated Python class in the `td` module. Their wiki pages can be accessed by clicking on the Python Help button in their [parameter dialog](../Glossary/Parameter_Dialog.md "Parameter Dialog"). There are also a number of associated Python objects that are used when working with Operators.
+  * **[Useful standard Python modules](../Python/Python_Classes_and_Modules.md#Standard_Python_Modules "Python Classes and Modules")** - the `td` module also automatically imports a number of helpful standard modules (e.g. `math`), allowing them to be accessed in expressions through their namespace.
 
 ###  TouchDesigner Utility Modules
 
 TouchDesigner also contains utility modules for advanced Python programming. Utility modules are not imported into the `td` module automatically. Instructions for their use can be found on their wiki pages.
-  * **[List of Python Utility Modules and Python Utilities](https://docs.derivative.ca/Python_Classes_and_Modules#TouchDesigner_Utility_Modules_and_Python_Utilities "Python Classes and Modules")**.
+  * **[List of Python Utility Modules and Python Utilities](../Python/Python_Classes_and_Modules.md#TouchDesigner_Utility_Modules_and_Python_Utilities "Python Classes and Modules")**.
 
 ###  3rd Party Packages
 
 TouchDesigner includes a number of 3rd party Python packages that are generally useful when working with the software. These are not included in the `td` module so must be imported explicitly.
-  * **[List of 3rd party Python Packages](https://docs.derivative.ca/Python_Classes_and_Modules#3rd_Party_Packages "Python Classes and Modules")**.
+  * **[List of 3rd party Python Packages](../Python/Python_Classes_and_Modules.md#3rd_Party_Packages "Python Classes and Modules")**.
 
 ###  Installing Custom Python Packages
 
@@ -68,7 +68,7 @@ Once the module is successfully installed, you can import it in TouchDesigner fo
 
 Under the Edit->Preferences menu, tick "Add External Python to Search Path". You can add the search path by modifying the Preference labelled "Python 32/64 bit Module Path". Multiple paths are separated by semicolons (`;`).
 
-Finally you can modify the search path directly by either modifying the system environment variable `PYTHONPATH` or by **firing an[Execute DAT](https://docs.derivative.ca/Execute_DAT "Execute DAT") onStart()** with the code snippet below.
+Finally you can modify the search path directly by either modifying the system environment variable `PYTHONPATH` or by **firing an[Execute DAT](../DATs/Execute_DAT.md "Execute DAT") onStart()** with the code snippet below.
 
 ```
 import sys
@@ -120,7 +120,7 @@ Once the module is successfully installed, you can import it in TouchDesigner fo
 
 Under the Edit->Preferences menu, tick "Add External Python to Search Path". You can add the search path by modifying the Preference labelled "Python 32/64 bit Module Path". Multiple paths are separated by semicolons (`;`). You can enter the path to your Python packages (usually `<python install>/Lib/site-packages`)
 
-If the preferences method doesn't work for you, there are a couple other methods: you can modify the Python search path directly by either modifying the **system environment variable`PYTHONPATH`** or by **setting up an[Execute DAT](https://docs.derivative.ca/Execute_DAT "Execute DAT") onStart()** with the code snippet below.
+If the preferences method doesn't work for you, there are a couple other methods: you can modify the Python search path directly by either modifying the **system environment variable`PYTHONPATH`** or by **setting up an[Execute DAT](../DATs/Execute_DAT.md "Execute DAT") onStart()** with the code snippet below.
 
 ```
 import sys
@@ -151,6 +151,6 @@ There are a few things in standard Python that can trip you up in TouchDesigner.
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](https://docs.derivative.ca/Root "Root"). This path is displayed at the top of every [Pane](https://docs.derivative.ca/Pane "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](https://docs.derivative.ca/Folder "Folder").
+The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](../Glossary/Root.md "Root"). This path is displayed at the top of every [Pane](../Glossary/Pane.md "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](../Glossary/Folder.md "Folder").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

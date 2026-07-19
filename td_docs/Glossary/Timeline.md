@@ -6,11 +6,11 @@ title: Timeline
 
 # Timeline
 
-The Timeline is found at the bottom of TouchDesigner's interface. The transport buttons and timeline settings control the playback of [Time Components](https://docs.derivative.ca/Time_COMP "Time COMP") throughout TouchDesigner networks.
+The Timeline is found at the bottom of TouchDesigner's interface. The transport buttons and timeline settings control the playback of [Time Components](Time_COMP.md "Time COMP") throughout TouchDesigner networks.
 [![Timeline.png](https://docs.derivative.ca/images/thumb/0/0d/Timeline.png/700px-Timeline.png)](https://docs.derivative.ca/File:Timeline.png)
 Every component can have its own Timeline.
 
-See also: [Frame](https://docs.derivative.ca/Frame "Frame") and [Time Slicing](https://docs.derivative.ca/Time_Slicing "Time Slicing")
+See also: [Frame](Frame.md "Frame") and [Time Slicing](Time_Slicing.md "Time Slicing")
 
 Timepath - Changing the Scope of the Timeline
 
@@ -28,7 +28,7 @@ Transport Controls
 
 This part of the Timeline holds the timecode display and the transport controls.
 [![TransportControls.png](https://docs.derivative.ca/images/2/2b/TransportControls.png)](https://docs.derivative.ca/File:TransportControls.png)
-The Timecode display shows the current time in either frames or beats. This can be selected using the **TimeCode** or **Beats** buttons beside the timecode display. To the right of the timecode display, the frames-per-second TouchDesigner is running at is displayed in the **[fps](https://docs.derivative.ca/Frame_Rate "Frame Rate")** field and the current frame is displayed in the **frame** field. A frame number can also be entered into the frame field to jump to a specific frame.
+The Timecode display shows the current time in either frames or beats. This can be selected using the **TimeCode** or **Beats** buttons beside the timecode display. To the right of the timecode display, the frames-per-second TouchDesigner is running at is displayed in the **[fps](Frame_Rate.md "Frame Rate")** field and the current frame is displayed in the **frame** field. A frame number can also be entered into the frame field to jump to a specific frame.
 
 The transport controls offer the basic controls for playback. The buttons from left-to-right are:
   * **Reset** - the playhead to the beginning of the working range
@@ -51,15 +51,15 @@ The **Timepath** displays the path to the Time Component the Timeline is current
 The Timeline settings change the parameters of the Time Component the Timeline is currently controlling. The settings are:
   * **Start/End** - sets the Start and End frames, the overall length
   * **RStart/REnd** - sets the Start and End frames of the working range (sub-range). Also displayed as the colored bar above the time index in the Timeline.
-  * **FPS** - sets the [frame rate](https://docs.derivative.ca/Frame_Rate "Frame Rate") in frames per second.
+  * **FPS** - sets the [frame rate](Frame_Rate.md "Frame Rate") in frames per second.
   * **BPM** - beat per minute
   * **ResetF** - reset frame
   * **T Sig** - the time signature used when in Beats mode.
 
-The panel at the bottom of TouchDesigner, it controls the current global looping [Time](https://docs.derivative.ca/Time_COMP "Time COMP") your TouchDesigner project, or of just one component.
+The panel at the bottom of TouchDesigner, it controls the current global looping [Time](Time_COMP.md "Time COMP") your TouchDesigner project, or of just one component.
 
 A parameter in most CHOPs that restricts which channels of that CHOP will be affected. Normally all channels of a CHOP are affected by the operator. TOPs have Channel Mask, a similar feature.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's Timeline runs at. Set with `project.cookRate`.
+The [Frames](Frame.md "Frame")-per-Second that TouchDesigner's Timeline runs at. Set with `project.cookRate`.

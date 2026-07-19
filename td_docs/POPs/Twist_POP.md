@@ -16,15 +16,13 @@ The amount of deformation can also be increased or decreased using a Weight attr
 
 You can deform any point, vertex or primitive attribute.
 
-[twistPOP_Class](https://docs.derivative.ca/TwistPOP_Class "TwistPOP Class")
+[twistPOP_Class](Twist_POP_Class.md "TwistPOP Class")
 
 ## Parameters - Twist Page
-
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
   * Primitive `primitive` -
-
 - Input Attribute Scope `inputattrscope` - Input's attributes you want to affect within the chosen attribute class, or attribute components.
 - Weight Attribute `weightattr` - Specifies the scope of the attribute that stores weight values
 - Operation `op` - ⊞ - Selects the operation to perform.
@@ -34,22 +32,18 @@ You can deform any point, vertex or primitive attribute.
   * Taper `taper` -
   * Linear Taper `ltaper` -
   * Squash & Stretch `squash` -
-
 - Primary Axis `paxis` - ⊞ - Primary transform axis of the twist.
   * X Axis `x` -
   * Y Axis `y` -
   * Z Axis `z` -
-
 - Secondary Axis `saxis` - ⊞ - Secondary transform axis.
   * X Axis `x` -
   * Y Axis `y` -
   * Z Axis `z` -
-
 - Pivot `p` - ⊞ - The pivot point for the transform rotates and scales.
   * Pivot `px` -
   * Pivot `py` -
   * Pivot `pz` -
-
 - Strength `strength` - Sets the transform operation strength.
 - Rolloff `rolloff` - Rolloff factor on the twist operation.
 - Output Attribute Scope `outputattrscope` - ⊞ - Name of attribute to output (can choose components of attribute), can choose from menu.
@@ -60,7 +54,6 @@ You can deform any point, vertex or primitive attribute.
   * Tex `Tex` -
   * PointScale `PointScale` -
   * LineWidth `LineWidth` -
-
 - Override Automatic Attribute `overrideautoattr` - Whether to override the kind of attribute automatically created based on the POP input and parameters. Allows to specify manually the type and number of components of the new attribute.
 - Attribute Type `attrtype` - ⊞ - The output attribute's data type, default float.
   * float `float` -
@@ -71,13 +64,11 @@ You can deform any point, vertex or primitive attribute.
   * Color (double) `dcolor` -
   * Direction `dir` -
   * Direction (double) `ddir` -
-
 - Components `attrnumcomps` - ⊞ - The number of components in the new custom attribute.
   * 1 `1` -
   * 2 `2` -
   * 3 `3` -
   * 4 `4` -
-
 - Default Value `attrdefaultval` - ⊞ - Default values of the output attribute components if they cannot be computed.
   * Default Value `attrdefaultval0` - Default value(s) of the attribute.
   * Default Value `attrdefaultval1` - Default value(s) of the attribute.
@@ -85,7 +76,6 @@ You can deform any point, vertex or primitive attribute.
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -96,7 +86,7 @@ You can deform any point, vertex or primitive attribute.
 
 ## Info CHOP Channels
 
-Extra Information for the Twist POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Twist POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -107,19 +97,11 @@ Extra Information for the Twist POP can be accessed via an [Info CHOP](https://d
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

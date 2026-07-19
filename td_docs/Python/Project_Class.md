@@ -20,11 +20,11 @@ The filename under which the project is saved.
 
 `saveVersion` → `str` **(Read Only)** :
 
-The [App](https://docs.derivative.ca/App_Class "App Class") version number when the project was last saved.
+The [App](App_Class.md "App Class") version number when the project was last saved.
 
 `saveBuild` → `str` **(Read Only)** :
 
-The [App](https://docs.derivative.ca/App_Class "App Class") build number when the project was last saved.
+The [App](App_Class.md "App Class") build number when the project was last saved.
 
 `saveTime` → `str` **(Read Only)** :
 
@@ -32,19 +32,19 @@ The time and date the project was last saved.
 
 `saveOSName` → `str` **(Read Only)** :
 
-The [App](https://docs.derivative.ca/App_Class "App Class") operating system name when the project was last saved.
+The [App](App_Class.md "App Class") operating system name when the project was last saved.
 
 `saveOSVersion` → `str` **(Read Only)** :
 
-The [App](https://docs.derivative.ca/App_Class "App Class") operating system version when the project was last saved.
+The [App](App_Class.md "App Class") operating system version when the project was last saved.
 
 `paths` → `dict` **(Read Only)** :
 
-A dictionary which can be used to define URL-syntax path prefixes, enabling you to move your media to different locations easily. This dictionary is saved and loaded in the `.toe` file. Example: Run `project.paths['movies'] = 'C:/MyMovies'`, and reference it with a parameter expression: `movies://butterfly.jpg`. To manually convert between expanded and collapsed paths, use `tdu.collapsePath()` and `tdu.expandPath[](https://docs.derivative.ca/TDU_Class "TDU Class")`, for example `tdu.expandPath('movies://butterfly.jpg')` expands to `C:/MyMovies/butterfly.jpg`. If you already have your paths setup, choosing files from file browsers in OPs will create paths using these shortcuts rather than full paths. Additionally, to enable you to have different media locations on different machines, you can put a JSON file in the same folder as your `.toe` that gets read on startup. This will override any existing locations saved in projects.paths to the new machine specific file paths specified in the .json. Only existing entries in `project.paths` will be used. If the .json contains path names not specified in `project.paths`, those will be ignored. It would contain something like `{ "project.paths": { "movies": "M:/MyMovies" } }`. If your `.toe` file is called `MyProject.10.toe`, the JSON file must be called `MyProject.Settings.json`. The idea is that this .json would be unique to machines, and not commited to version control or shared between machines.
+A dictionary which can be used to define URL-syntax path prefixes, enabling you to move your media to different locations easily. This dictionary is saved and loaded in the `.toe` file. Example: Run `project.paths['movies'] = 'C:/MyMovies'`, and reference it with a parameter expression: `movies://butterfly.jpg`. To manually convert between expanded and collapsed paths, use `tdu.collapsePath()` and `tdu.expandPath[](TDU_Class.md "TDU Class")`, for example `tdu.expandPath('movies://butterfly.jpg')` expands to `C:/MyMovies/butterfly.jpg`. If you already have your paths setup, choosing files from file browsers in OPs will create paths using these shortcuts rather than full paths. Additionally, to enable you to have different media locations on different machines, you can put a JSON file in the same folder as your `.toe` that gets read on startup. This will override any existing locations saved in projects.paths to the new machine specific file paths specified in the .json. Only existing entries in `project.paths` will be used. If the .json contains path names not specified in `project.paths`, those will be ignored. It would contain something like `{ "project.paths": { "movies": "M:/MyMovies" } }`. If your `.toe` file is called `MyProject.10.toe`, the JSON file must be called `MyProject.Settings.json`. The idea is that this .json would be unique to machines, and not commited to version control or shared between machines.
 
 `cookRate` → `float` :
 
-Get or set the maximum number of frames processed each second. In general you should not need to use this. It is preferred to look at the FPS of the root component to know the cooking rate. Individual [components](https://docs.derivative.ca/COMP_Class "COMP Class") may have their own rates, specified by rate.
+Get or set the maximum number of frames processed each second. In general you should not need to use this. It is preferred to look at the FPS of the root component to know the cooking rate. Individual [components](COMP_Class.md "COMP Class") may have their own rates, specified by rate.
 
 ```
 a = project.cookRate # get the current cook rate
@@ -233,26 +233,26 @@ print(project.pythonStack())
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-Some operators have a DAT [docked](https://docs.derivative.ca/Docking "Docking") to them that contains some python functions. These functions, called "callbacks", get called when something in the operator changes.
+Some operators have a DAT [docked](../Glossary/Docking.md "Docking") to them that contains some python functions. These functions, called "callbacks", get called when something in the operator changes.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-A [Link](https://docs.derivative.ca/Link "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A [Link](../Glossary/Link.md "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
-The grey dashed lines between nodes is a Reference (or [Link](https://docs.derivative.ca/Link "Link")). A Reference is (1) a [Parameter Reference](https://docs.derivative.ca/Parameter_Reference "Parameter Reference"), a parameter in an OP that is a name or path to another operator, (2) a [Node Reference](https://docs.derivative.ca/index.php?title=Node_Reference&action=edit&redlink=1 "Node Reference \(page does not exist\)"), an expression in a parameter or DAT script that contains the name or path of another operator, (3) a DAT Cell Reference or (4) a CHOP Channel Reference.
+The grey dashed lines between nodes is a Reference (or [Link](../Glossary/Link.md "Link")). A Reference is (1) a [Parameter Reference](../Glossary/Parameter_Reference.md "Parameter Reference"), a parameter in an OP that is a name or path to another operator, (2) a [Node Reference](https://docs.derivative.ca/index.php?title=Node_Reference&action=edit&redlink=1 "Node Reference \(page does not exist\)"), an expression in a parameter or DAT script that contains the name or path of another operator, (3) a DAT Cell Reference or (4) a CHOP Channel Reference.
 
-A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](https://docs.derivative.ca/Export "Export"), node [Paths](https://docs.derivative.ca/Network_Path "Network Path") in parameters, and [expressions](https://docs.derivative.ca/Expression "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](https://docs.derivative.ca/Wire "Wire") that connects nodes in the same [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](../Glossary/Export.md "Export"), node [Paths](../Glossary/Network_Path.md "Network Path") in parameters, and [expressions](../Glossary/Expression.md "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](../Glossary/Wire.md "Wire") that connects nodes in the same [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
-A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), or (2) a user-created [Panel](https://docs.derivative.ca/Panel "Panel") inside a [Window Component](https://docs.derivative.ca/Window_COMP "Window COMP"). The user-created windows can span [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") borderless, or be floating windows with borders, or popups.
+A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"), or (2) a user-created [Panel](../Glossary/Panel.md "Panel") inside a [Window Component](../Glossary/Window_COMP.md "Window COMP"). The user-created windows can span [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors") borderless, or be floating windows with borders, or popups.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-TouchDesigner Component file, the file type used to save a [Component](https://docs.derivative.ca/Component "Component") of your TouchDesigner project.
+TouchDesigner Component file, the file type used to save a [Component](../Glossary/Component.md "Component") of your TouchDesigner project.
 
 Privacy of TouchDesigner Components (`.tox` files) or Projects (`.toe` files) is the protection of networks that enables them to be used but not be visible or editable.

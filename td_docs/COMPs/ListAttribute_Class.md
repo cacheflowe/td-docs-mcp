@@ -6,7 +6,7 @@ title: ListAttribute_Class
 
 # ListAttribute Class
 
-The ListAttribute class describes an attribute defining a cell or set of cells in a [List Component](https://docs.derivative.ca/ListCOMP_Class "ListCOMP Class").
+The ListAttribute class describes an attribute defining a cell or set of cells in a [List Component](../Python/ListCOMP_Class.md "ListCOMP Class").
 
 ## Members
 
@@ -72,7 +72,7 @@ Get or set text size units. When True size is in points, when False it is in pix
 
 `top` → `TOP` :
 
-Get or set background image [TOP](https://docs.derivative.ca/TOP_Class "TOP Class").
+Get or set background image [TOP](../TOPs/TOP_Class.md "TOP Class").
 
 `topFill` → `FillMode` :
 
@@ -158,8 +158,8 @@ Returns true if the mouse is currently pressed over the cell/row/column/table.
 
 No operator specific methods.
 
-Lets you embed files inside a `.tox[](https://docs.derivative.ca/.tox ".tox")` or `.toe[](https://docs.derivative.ca/.toe ".toe")` file. Operators like the Movie File In TOP that read regular files can also read the embedded VFS files using a `vfs:` syntax.
+Lets you embed files inside a `.tox[](../Glossary/.tox.md ".tox")` or `.toe[](../Glossary/.toe.md ".toe")` file. Operators like the Movie File In TOP that read regular files can also read the embedded VFS files using a `vfs:` syntax.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

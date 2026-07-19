@@ -8,25 +8,21 @@ title: Layer_TOP
 
 ## Summary
 
-[layerTOP_Class](https://docs.derivative.ca/LayerTOP_Class "LayerTOP Class")
+[layerTOP_Class](Layer_TOP_Class.md "LayerTOP Class")
 
 ## Parameters - Setup Page
-
 - Fixed Layer `fixedlayer` - ⊞ -
   * Base TOP `basetop` -
   * Blank Layer `blanklayer` -
   * First Input `firstinput` -
-
 - Base TOP `base` -
 - Layer Resolution `layerres` - ⊞ -
   * Layer Resolution `layerresw` -
   * Layer Resolution `layerresh` -
-
 - Layer Color `layercolor` - ⊞ -
   * Layer Color `layercolorr` -
   * Layer Color `layercolorg` -
   * Layer Color `layercolorb` -
-
 - Layer Alpha `layeralpha` -
 - Enable Crop `enblcrop` -
 - Pre-Fit Overlay `prefit` - ⊞ -
@@ -37,24 +33,20 @@ title: Layer_TOP
   * Fit Best `fitbest` -
   * Fit Outside `fitoutside` -
   * Native Resolution `nativeres` -
-
 - Justify Horizontal `justifyh` - ⊞ -
   * Left `left` -
   * Center `center` -
   * Right `right` -
-
 - Justify Vertical `justifyv` - ⊞ -
   * Bottom `bottom` -
   * Center `center` -
   * Top `top` -
-
 - Extend `extend` - ⊞ -
   * Per Layer `extperlayer` -
   * Hold `hold` -
   * Zero `zero` -
   * Repeat `repeat` -
   * Mirror `mirror` -
-
 - Enable Rotate `enblrot` -
 - Enable Translate `enbltrans` -
 - Enable Scale `enblscale` -
@@ -112,12 +104,10 @@ title: Layer_TOP
   * Z Film `zfilm` -
 
 ## Parameters - Layers Page
-
 - Layer `lay` -
 - TOP `lay0top` -
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -129,29 +119,25 @@ title: Layer_TOP
   * Fit Resolution `fit` - Fits the width and height to the resolution given below, while maintaining the aspect ratio.
   * Limit Resolution `limit` - The width and height are limited to the resolution given below. If one of the dimensions exceeds the given resolution, the width and height will be reduced to fit inside the given limits while maintaining the aspect ratio.
   * Custom Resolution `custom` - Enables the Resolution parameter below, giving direct control over width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -160,12 +146,10 @@ title: Layer_TOP
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Passes `npasses` - Duplicates the operation of the TOP the specified number of times. Making this larger than 1 is essentially the same as taking the output from each pass, and passing it into the first input of the node and repeating the process. Other inputs and parameters remain the same for each pass.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
@@ -195,8 +179,7 @@ title: Layer_TOP
   * 16-bit fixed (Mono+Alpha) `monoalpha16fixed` - A 2 channel format, one value for RGB and one value for Alpha. 16-bits per channel, 32-bits per pixel.
   * 16-bit float (Mono+Alpha) `monoalpha16float` - A 2 channel format, one value for RGB and one value for Alpha. 16-bits per channel, 32-bits per pixel.
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
+- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. Only available when a [Working Color Space](https://docs.derivative.ca/Working_Color_Space "Working Color Space") is active for the project. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
   * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
@@ -208,7 +191,6 @@ title: Layer_TOP
   * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
   * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
@@ -222,22 +204,17 @@ title: Layer_TOP
 
 ## Info CHOP Channels
 
-Extra Information for the Layer TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Layer TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -245,19 +222,11 @@ Extra Information for the Layer TOP can be accessed via an [Info CHOP](https://d
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

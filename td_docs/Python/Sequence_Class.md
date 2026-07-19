@@ -6,9 +6,9 @@ title: Sequence_Class
 
 # Sequence Class
 
-An object describing and controlling a set of [sequential parameters](https://docs.derivative.ca/Sequential_Parameters "Sequential Parameters"). Accessed via
-  * the `sequence` member of [parameters](https://docs.derivative.ca/Par_Class "Par Class")
-  * `OP.seq` [Sequence Collection](https://docs.derivative.ca/SequenceCollection_Class "SequenceCollection Class") - the set of sequences of an object.
+An object describing and controlling a set of [sequential parameters](../Glossary/Sequential_Parameters.md "Sequential Parameters"). Accessed via
+  * the `sequence` member of [parameters](../SOPs/Par_Class.md "Par Class")
+  * `OP.seq` [Sequence Collection](SequenceCollection_Class.md "SequenceCollection Class") - the set of sequences of an object.
   * `me.curSeq` in a parameter expression
 
 ```
@@ -40,17 +40,17 @@ page.appendInt('I')
 base.seq.Numbers.blockSize = 2 # include the 2 parameter groups in the sequence
 ```
 
-See also: [Sequential Parameters](https://docs.derivative.ca/Sequential_Parameters "Sequential Parameters"), [SequenceBlock Class](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class"), [SequenceCollection Class](https://docs.derivative.ca/SequenceCollection_Class "SequenceCollection Class")
+See also: [Sequential Parameters](../Glossary/Sequential_Parameters.md "Sequential Parameters"), [SequenceBlock Class](SequenceBlock_Class.md "SequenceBlock Class"), [SequenceCollection Class](SequenceCollection_Class.md "SequenceCollection Class")
 
 ## Members
 
 `blockSize` → `int` :
 
-Get or set the sequence blocksize, which is the number of [ParGroups](https://docs.derivative.ca/ParGroup "ParGroup") in the block. Changing this will add ParGroups to or remove ParGroups from the sequence.
+Get or set the sequence blocksize, which is the number of [ParGroups](../Glossary/ParGroup.md "ParGroup") in the block. Changing this will add ParGroups to or remove ParGroups from the sequence.
 
 `blocks` → `list[SequenceBlock]` **(Read Only)** :
 
-The set of all blocks in this sequence. A block is a set of parameters which can be repeated in an operator. See [SequenceBlock](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class") class.
+The set of all blocks in this sequence. A block is a set of parameters which can be repeated in an operator. See [SequenceBlock](SequenceBlock_Class.md "SequenceBlock Class") class.
 
 `maxBlocks` → `int | None` **(Read Only)** :
 The maximum number of blocks allowed in the sequence, or None if limitless.
@@ -109,7 +109,7 @@ The main sequence parameter defining this sequence.
 
 `[block index]`→ `SequenceBlock`:
 
-[Sequence blocks](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class") may be easily accessed using the `[]` subscript and assignment operators.
+[Sequence blocks](SequenceBlock_Class.md "SequenceBlock Class") may be easily accessed using the `[]` subscript and assignment operators.
   * block index - The index of the desired block.
 
 `destroyBlock(block)`→ `None`:
@@ -156,8 +156,8 @@ n.seq.Info.sortBlocks(key=lambda block: block.par.X + block.par.Y) # sort on the
 n.seq.Info.sortBlocks(key=lambda block: (block.par.X, block.par.Y)) # sort by X parameter, then Y parameter within that.
 ```
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
 A ParGroup is a group of related parameters that you can set and get as a whole instead of its individual parameters, like ParGroup `t` is `tx ty tz`.

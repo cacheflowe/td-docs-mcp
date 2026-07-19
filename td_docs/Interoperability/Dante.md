@@ -16,9 +16,9 @@ It is supported in TouchDesigner by installing the [Dante Virtual Soundcard](htt
 
 Dante Virtual sound card is a software application that acts like a sound card and appears in TouchDesiger as a regular audio device. It provides for an inexpensive solution for streaming audio between Dante Supported Devices or regular MacOS and Windows computers using a 1Gbs wired network. It can be purchased for $29.99 here. [Dante Virtual Sound Card](https://www.audinate.com/products/software/dante-virtual-soundcard)
 
-Once you install the Dante Virtial Soundcard, Dante devices will appear in the [Audio Device In CHOP](https://docs.derivative.ca/Audio_Device_In_CHOP "Audio Device In CHOP") as a set of stereo input channels as ASIO or Direct Sound devices on Windows, and Core Audio devices on macOS. In ASIO TouchDesigner supports 16 and 24 bits, while 32 bits are down-converted to 24 bits.
+Once you install the Dante Virtial Soundcard, Dante devices will appear in the [Audio Device In CHOP](../CHOPs/Audio_Device_In_CHOP.md "Audio Device In CHOP") as a set of stereo input channels as ASIO or Direct Sound devices on Windows, and Core Audio devices on macOS. In ASIO TouchDesigner supports 16 and 24 bits, while 32 bits are down-converted to 24 bits.
 
-It will also appear in the [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP") as a set of stereo output channels.
+It will also appear in the [Audio Device Out CHOP](Audio_Device_Out_CHOP.md "Audio Device Out CHOP") as a set of stereo output channels.
 
 See also: [NDI and Dante Networks](https://docs.derivative.ca/NDI_and_Dante_Networks "NDI and Dante Networks")
 
@@ -34,7 +34,7 @@ Once a Dante Network is setup with a valid clock source device, the DVS software
 
 Note that to maintain low latency, your TouchDesigner process has to be running with no frame dropouts longer than the latency, or the audio needs to be running in a separate TouchDesigner process.
 
-See the [Audio Device In CHOP](https://docs.derivative.ca/Audio_Device_In_CHOP "Audio Device In CHOP") and the [Audio Device Out CHOP](https://docs.derivative.ca/Audio_Device_Out_CHOP "Audio Device Out CHOP").
+See the [Audio Device In CHOP](../CHOPs/Audio_Device_In_CHOP.md "Audio Device In CHOP") and the [Audio Device Out CHOP](Audio_Device_Out_CHOP.md "Audio Device Out CHOP").
 
 ## Network Configuration
 

@@ -28,7 +28,7 @@ Right-click on any parameter that is the master of any number of clones and sele
 
 Immunity allows (1) a node inside a clone to be not updated from the clone master, and (2) a node to exist in a clone that does not exist in the clone master.
 
-If you turn on the [Immunity](https://docs.derivative.ca/Immune "Immune") flag on a node in a clone, and you change that node in the clone master, the node in the clone will remain the same. A typical example is using Clone Immune to keep personalized [DAT](https://docs.derivative.ca/DAT "DAT") tables inside clones: these tables can contain different data in each clone.
+If you turn on the [Immunity](Immune.md "Immune") flag on a node in a clone, and you change that node in the clone master, the node in the clone will remain the same. A typical example is using Clone Immune to keep personalized [DAT](DAT.md "DAT") tables inside clones: these tables can contain different data in each clone.
 
 You can add any number new nodes in a clone and turn on their Immunity flag. These nodes will not be deleted or changed by cloning.
 
@@ -36,16 +36,16 @@ In a clone master component, if you turn in the Immune flag of any node, then th
 
 If you paster a Clone Immune node in the Master Clone, then that Immune node will be created in each clone. If you delete an immune node in the clone master, it will delete it in the clones unless you hae gone to the clones and manually set teh clone immune flag.
 
-See [Immunity](https://docs.derivative.ca/Immune "Immune") for more behaviors.
+See [Immunity](Immune.md "Immune") for more behaviors.
 
 ##  See also
 
-[Immune](https://docs.derivative.ca/Immune "Immune"), [Replicator Component](https://docs.derivative.ca/Replicator_COMP "Replicator COMP")
+[Immune](Immune.md "Immune"), [Replicator Component](Replicator_COMP.md "Replicator COMP")
 
-Cloning makes multiple components match the contents of a master component. A [Component](https://docs.derivative.ca/Component "Component") whose Clone parameter is set will be forced to contain the same nodes, wiring and parameters as its master component. Cloning does not create new components as does the [Replicator COMP](https://docs.derivative.ca/Replicator_COMP "Replicator COMP").
+Cloning makes multiple components match the contents of a master component. A [Component](Component.md "Component") whose Clone parameter is set will be forced to contain the same nodes, wiring and parameters as its master component. Cloning does not create new components as does the [Replicator COMP](Replicator_COMP.md "Replicator COMP").
 
-A form of [DATs](https://docs.derivative.ca/DAT "DAT") (Data Operators) that is structured as rows and columns of text strings.
+A form of [DATs](DAT.md "DAT") (Data Operators) that is structured as rows and columns of text strings.
 
-Every node has an [Immune Flag](https://docs.derivative.ca/Immune_Flag "Immune Flag"), when on and the node is inside a Clone, it is not affected by any change to the clone master, so you can store extra data in the clone or set a node to be ignored by the cloning process.
+Every node has an [Immune Flag](Immune_Flag.md "Immune Flag"), when on and the node is inside a Clone, it is not affected by any change to the clone master, so you can store extra data in the clone or set a node to be ignored by the cloning process.
 
 Indicator of certain states of an operator (bypass, display, lock, viewer active).

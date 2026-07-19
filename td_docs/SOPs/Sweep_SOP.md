@@ -14,10 +14,9 @@ A backbone is a primitive curve that can be open or closed, but must have at lea
 
 If the backbone primitive(s) have point colors or texture coordinates, they will be maintained and applied to the cross section primitives.
 
-[sweepSOP_Class](https://docs.derivative.ca/SweepSOP_Class "SweepSOP Class")
+[sweepSOP_Class](Sweep_SOP_Class.md "SweepSOP Class")
 
 ## Parameters - Sweep Page
-
 - X-Section Group `xgrp` - You can use only a subset of primitives from the Cross-section inputs by specifying a group here.
 - Path Group `pathgrp` - You can use only a subset of primitives from the Backbone inputs by specifying a group here.
 - Reference Group `refgrp` - You can use only a subset of primitives from the Reference inputs by specifying a group here.
@@ -25,29 +24,29 @@ If the backbone primitive(s) have point colors or texture coordinates, they will
   * All Primitives at Each Point `all` - Places all the primitives from the Cross-section input at each point on the Backbone.
   * One Primitive at a Time `each` - Similar to the above, except the transformation is applied to individual primitives rather than to the whole.
   * Cycle Primitives `cycle` - This cycles through incoming primitives when placing them on a backbone. i.e. Start with 0 at vertex 0, primitive 1 > vertex 1, etc.
-
 - Angle Fix `angle` - Attempts to fix buckling twists that may occur when sweeping.
 - Fix Flipping `noflip` - Attempts to fix buckling twists that may occur when sweeping by fixing flipped normals.
 - Remove Coincident Points on Path `skipcoin` - When selected, any points right on top of one another will be ignored.
 - Aim at Reference Points `aimatref` - Reference Points are used in conjunction with the backbone to control the orientation of the elements along the sweep. This is done by drawing a line between the reference point and corresponding backbone point in order to determine an angle vector which determines the orientation of the cross-section profiles. Enable this parameter to allow this behaviour.
+
 **Note:** In order for this to work, you must supply **Reference Points** via the third input, and there must be exactly the same number of **Reference Points** as there are points in the **Backbone**.
 - Use Vertex `usevtx` - Use vertex number of the incoming cross-section to place the cross-section on the backbone.
 - Connection Vertex `vertex` - Specify a specific vertex to connect to the backbone.
 - Scale `scale` - Scales the cross sections globally.
 - Twist `twist` - Cumulative rotation of the cross sections around the backbone. If a value of five is specified, the cross section at the first point of the backbone is rotated five degrees, the next ten degrees, the next fifteen degrees and so on.
 - Roll `roll` - Non-cumulative rotation of the cross sections around the backbone. All cross sections get the same rotation.
-**Note:** The **Scale** , **Twist** and **Roll** parameters can now be controlled directly by points' attributes of the same names. Thus, combined with the [Channel SOP](https://docs.derivative.ca/CHOP_to_SOP "CHOP to SOP"), those parameters can now be controlled dynamically. You can use scale and other attributes coming in to taper.
+
+**Note:** The **Scale** , **Twist** and **Roll** parameters can now be controlled directly by points' attributes of the same names. Thus, combined with the [Channel SOP](CHOP_to_SOP.md "CHOP to SOP"), those parameters can now be controlled dynamically. You can use scale and other attributes coming in to taper.
 
 ## Parameters - Output Page
-
-- Create Groups `newg` - Selecting this option enables the creation of groups. A group is created for each backbone that is incoming. This allows for easy skinning in the [Skin SOP](https://docs.derivative.ca/Skin_SOP "Skin SOP").
+- Create Groups `newg` - Selecting this option enables the creation of groups. A group is created for each backbone that is incoming. This allows for easy skinning in the [Skin SOP](Skin_SOP.md "Skin SOP").
 - Sweep Groups `sweepgrp` - Specify the name of your output groups in this field.
 - Skin Output `skin` - ⊞ - Determines the output based on these menu options.
   * Off `off` - Doesn't skin the output.
   * On `on` - Skins the output.
   * On with Auto Close `auto` - Closes the skinned mesh if the path curve which it follows is also closed. This allows you to close primitives properly.
 
-**Tip:** There is a way of speeding the skinning of many points using the second input of the [Point SOP](https://docs.derivative.ca/Point_SOP "Point SOP"). Suppose you have Thousands of proceedurally animated curves you wish to skin with the Sweep SOP - rather than performing a skining operation after the animation, make a second set of unanimated geometry that is preskinned. Then assuming your have a matching number of points you can just swap in the animated points into the skinned geometry.
+**Tip:** There is a way of speeding the skinning of many points using the second input of the [Point SOP](Point_SOP.md "Point SOP"). Suppose you have Thousands of proceedurally animated curves you wish to skin with the Sweep SOP - rather than performing a skining operation after the animation, make a second set of unanimated geometry that is preskinned. Then assuming your have a matching number of points you can just swap in the animated points into the skinned geometry.
 
 This technique is significantly faster than using the Skin Output option of the Sweep SOP, or a Skin SOP following the Sweep SOP.
 - Fast Sweep `fast` - Enables an optimized skinning technique which speeds up output from 2 - 4 times in many cases at the expense of accuracy. In order for it to work correctly, the input topologies must remain consistent between cooks and each cross-section must have the same number of vertices.
@@ -60,20 +59,16 @@ This technique is significantly faster than using the Skin Output option of the 
 
 ## Info CHOP Channels
 
-Extra Information for the Sweep SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Sweep SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -81,19 +76,11 @@ Extra Information for the Sweep SOP can be accessed via an [Info CHOP](https://d
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

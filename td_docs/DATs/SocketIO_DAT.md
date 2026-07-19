@@ -22,12 +22,11 @@ The SocketIO DAT is built with [socket.io's C++ Client API](https://github.com/s
 
 The SocketIO DAT prints socket.io status messages to the TouchDesigner text console. The text console can be enabled by setting the environment variable `TOUCH_TEXT_CONSOLE=1` (see: <https://docs.derivative.ca/Variables#System_Environment_Variables>). The text console will open the next time TouchDesigner is launched.
 
-See also: [WebSocket DAT](https://docs.derivative.ca/WebSocket_DAT "WebSocket DAT"), [Web Client DAT](https://docs.derivative.ca/Web_Client_DAT "Web Client DAT")
+See also: [WebSocket DAT](../Interoperability/WebSocket_DAT.md "WebSocket DAT"), [Web Client DAT](../Interoperability/Web_Client_DAT.md "Web Client DAT")
 
-[socketioDAT_Class](https://docs.derivative.ca/SocketioDAT_Class "SocketioDAT Class")
+[socketioDAT_Class](SocketIO_DAT_Class.md "SocketioDAT Class")
 
 ## Parameters - Connect Page
-
 - Active `active` - When enabled, the SocketIO DAT is actively listening for events from the server, and can also emit events.
 - Reset `reset` - Disconnects the connection and then reconnects.
 - URL `url` - The URL of the socket.io server.
@@ -35,13 +34,11 @@ See also: [WebSocket DAT](https://docs.derivative.ca/WebSocket_DAT "WebSocket DA
 - Reconnect Delay `delay` - The delay in milliseconds between reconnection attempts.
 
 ## Parameters - Received Messages Page
-
 - Callbacks DAT `callbacks` - The Callbacks DAT will execute once for each message coming in.
 - Execute from `executeloc` - ⊞ - Determines the location the script is run from.
   * Current Node `current` - The script is executed from the current node location.
   * Callbacks DAT `callbacks` - The script is executed from the location of the DAT specified in the Callbacks DAT parameter.
   * Specified Operator `op` - The script is executed from the operator specified in the From Operator parameter below.
-
 - From Operator `fromop` - The operator whose state change will trigger the DAT to execute its script when Execute from is set to Specified Operator. This operator is also the path that the script will be executed from if the Execute from parameter is set to Specified Operator.
 - Clamp Output `clamp` - The DAT is limited to 100 messages by default but with Clamp Output, this can be set to anything including unlimited.
 - Maximum Lines `maxlines` - Limits the number of messages, older messages are removed from the list first.
@@ -49,16 +46,13 @@ See also: [WebSocket DAT](https://docs.derivative.ca/WebSocket_DAT "WebSocket DA
 - Bytes Column `bytes` - Outputs the raw bytes of the message in a separate column.
 
 ## Parameters - Common Page
-
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
-
 - Edit/View Extension `extension` - ⊞ - Select the file extension this DAT should expose to external editors.
   * dat `dat` - various common file extensions.
   * From Language `language` - pick extension from DATs script language.
   * Custom Extension `custom` - Specify a custom extension.
-
 - Custom Extension `customext` - Specifiy the custom extension.
 - Word Wrap `wordwrap` - ⊞ - Enable Word Wrap for Node Display.
   * Input `input` - The DAT uses the inputs setting.
@@ -72,14 +66,13 @@ See also: [WebSocket DAT](https://docs.derivative.ca/WebSocket_DAT "WebSocket DA
 
 ## Info CHOP Channels
 
-Extra Information for the SocketIO DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the SocketIO DAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common DAT Info Channels
 
   * num_rows - Number of rows in this DAT.
-
   * num_cols - Number of columns in this DAT.
 
 ###
@@ -87,19 +80,11 @@ Extra Information for the SocketIO DAT can be accessed via an [Info CHOP](https:
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

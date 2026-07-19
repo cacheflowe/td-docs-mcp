@@ -6,17 +6,17 @@ title: Par_Class
 
 # Par Class
 
-The Par class describes an instance of a single [Parameter](https://docs.derivative.ca/Parameter "Parameter"). See also [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters").
+The Par class describes an instance of a single [Parameter](../Glossary/Parameter.md "Parameter"). See also [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters").
 
 ## Members
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 `val` → `Any` :
 
-Get or set the **constant mode value** of the parameter only. **Important:** To get the parameter's current working value, regardless of the [Parameter Mode](https://docs.derivative.ca/Parameter_Mode "Parameter Mode") (constant, expression, export or bound), always use the `eval()` method described [below](#Methods).
+Get or set the **constant mode value** of the parameter only. **Important:** To get the parameter's current working value, regardless of the [Parameter Mode](../Glossary/Parameter_Mode.md "Parameter Mode") (constant, expression, export or bound), always use the `eval()` method described [below](#Methods).
 
 ```
 op('geo1').par.tx.val   # the constant value
@@ -32,7 +32,7 @@ To set a menu value by its index, use the `menuIndex` member as described below.
 
 `expr` → `str` :
 
-Get or set the non-evaluated expression only. To get the parameter's current value, regardless of the [Parameter Mode](https://docs.derivative.ca/Parameter_Mode "Parameter Mode") (constant, expression, export or bound), use the `eval()` method described below.
+Get or set the non-evaluated expression only. To get the parameter's current value, regardless of the [Parameter Mode](../Glossary/Parameter_Mode.md "Parameter Mode") (constant, expression, export or bound), use the `eval()` method described below.
 
 ```
 op('geo1').par.tx.expr = 'absTime.frame'  #set to match current frame
@@ -48,7 +48,7 @@ Get or set the parameter's enable state. Can only be set on [Custom Parameters](
 
 **TouchDesigner 2023.30000+**
 
-If the parameter is in a [ParGroup](https://docs.derivative.ca/ParGroup_Class "ParGroup Class") with multiple parameters, this will only get/set the enable state of this individual parameter. In previous versions of TouchDesigner, this got/set the enable state for the entire ParGroup.
+If the parameter is in a [ParGroup](ParGroup_Class.md "ParGroup Class") with multiple parameters, this will only get/set the enable state of this individual parameter. In previous versions of TouchDesigner, this got/set the enable state for the entire ParGroup.
 
 `enableExpr` → `str` :
 
@@ -132,7 +132,7 @@ Get or set a custom parameter's help text. To see any parameter's help, rollover
 
 `parGroup` → `ParGroup` **(Read Only)** :
 
-The [ParGroup](https://docs.derivative.ca/ParGroup "ParGroup") of parameters this parameter belongs to. A ParGroup is a set of parameters sharing one line on a parameter dialog with a common label, example: Translate (x, y, z)..
+The [ParGroup](../Glossary/ParGroup.md "ParGroup") of parameters this parameter belongs to. A ParGroup is a set of parameters sharing one line on a parameter dialog with a common label, example: Translate (x, y, z)..
 
 `min` → `int` :
 
@@ -193,7 +193,7 @@ op('geo1').par.tx.defaultMode = ParMode.EXPRESSION
 
 The mode is one of: ParMode.CONSTANT, ParMode.EXPRESSION, or ParMode.EXPORT, or ParMode.BIND.
 
-See [Parameter_Dialog#Working_with_Parameter_Modes](https://docs.derivative.ca/Parameter_Dialog#Working_with_Parameter_Modes "Parameter Dialog") for more information.
+See [Parameter_Dialog#Working_with_Parameter_Modes](../Glossary/Parameter_Dialog.md#Working_with_Parameter_Modes "Parameter Dialog") for more information.
 
 `order` → `float` :
 
@@ -204,10 +204,10 @@ Get or set the parameter's position on the parameter page. Can only be set on [C
 Get or set the parameter page the custom parameter is part of. Can only be set on [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters").
 
 `sequence` → `Sequence | None` **(Read Only)** :
-The [Sequence](https://docs.derivative.ca/Sequence_Class "Sequence Class") this parameter belongs to. None if not in a sequence.
+The [Sequence](Sequence_Class.md "Sequence Class") this parameter belongs to. None if not in a sequence.
 
 `sequenceBlock` → `SequenceBlock | None` **(Read Only)** :
-The [SequenceBlock](https://docs.derivative.ca/SequenceBlock_Class "SequenceBlock Class") this parameter belongs to. None if not in a sequence.
+The [SequenceBlock](SequenceBlock_Class.md "SequenceBlock Class") this parameter belongs to. None if not in a sequence.
 
 `password` → `bool` :
 
@@ -223,7 +223,7 @@ op('geo1').par.tx.mode = ParMode.EXPRESSION
 
 The mode is one of: `ParMode.CONSTANT`, `ParMode.EXPRESSION`, or `ParMode.EXPORT`, or `ParMode.BIND`.
 
-See [Parameter_Dialog#Working_with_Parameter_Modes](https://docs.derivative.ca/Parameter_Dialog#Working_with_Parameter_Modes "Parameter Dialog") for more information.
+See [Parameter_Dialog#Working_with_Parameter_Modes](../Glossary/Parameter_Dialog.md#Working_with_Parameter_Modes "Parameter Dialog") for more information.
 
 `prevMode` → `ParMode` **(Read Only)** :
 
@@ -253,11 +253,11 @@ Note the outside quotes, as menuSource is an expression, not an object.
 
 `exportOP` → `OP` **(Read Only)** :
 
-The [operator](https://docs.derivative.ca/OP_Class "OP Class") exporting to this parameter.
+The [operator](OP_Class.md "OP Class") exporting to this parameter.
 
 `exportSource` → `Channel` **(Read Only)** :
 
-The object exporting to this parameter. Examples: [Cell](https://docs.derivative.ca/Cell_Class "Cell Class"), [Channel](https://docs.derivative.ca/Channel_Class "Channel Class") or None.
+The object exporting to this parameter. Examples: [Cell](Cell_Class.md "Cell Class"), [Channel](Channel_Class.md "Channel Class") or None.
 
 `collapser` → `bool` **(Read Only)** :
 
@@ -394,7 +394,7 @@ a = op('geo1').par.tx.evalExpression()
 
 **Note** : the results of evalExpression is always the expression's Python return value, which can be slightly different than `Par.eval()`. For example, in parameters that hold an operator, `.eval()` will always return an operator if it exists, even if the expression actually returns a string path. The evalExpression function would return the string path.
 
-To evaluate an arbitrary expression string, that is not inside a parameter, see [OP](https://docs.derivative.ca/OP_Class "OP Class").evalExpression.
+To evaluate an arbitrary expression string, that is not inside a parameter, see [OP](OP_Class.md "OP Class").evalExpression.
 
 `evalExport()`→ `Any`:
 
@@ -489,16 +489,16 @@ As are the following:
   * `me.par.tx.hex() # doesn't work`
   * `me.par.tx.eval().hex() # works!`
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off.
+Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off or the root timeline is paused.
 
 A ParGroup is a group of related parameters that you can set and get as a whole instead of its individual parameters, like ParGroup `t` is `tx ty tz`.
 
-A [CHOP](https://docs.derivative.ca/CHOP "CHOP") outputs one or more channels, where a channel is simply a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample")), representing motion, audio, etc. Channels are passed between CHOPs in TouchDesigner networks. Channels can be [Exported](https://docs.derivative.ca/Export "Export") to [Parameters](https://docs.derivative.ca/Parameter "Parameter").
+A [CHOP](../Glossary/CHOP.md "CHOP") outputs one or more channels, where a channel is simply a sequence of numbers ([Samples](../Glossary/Sample.md "Sample")), representing motion, audio, etc. Channels are passed between CHOPs in TouchDesigner networks. Channels can be [Exported](../Glossary/Export.md "Export") to [Parameters](../Glossary/Parameter.md "Parameter").
 
-To "pulse" a parameter is to send it a signal from (1) an [exported](https://docs.derivative.ca/Export "Export") CHOP channel or (2) a python command or (3) a mouse click that causes a new action to occur immediately. A pulse via python is via the `.pulse()` function on a pulse-type parameter, such as Reset parameter in a [Speed CHOP](https://docs.derivative.ca/Speed_CHOP "Speed CHOP"). A pulse from a CHOP is typically a 0 to 1 to 0 signal in an exported channel.
+To "pulse" a parameter is to send it a signal from (1) an [exported](../Glossary/Export.md "Export") CHOP channel or (2) a python command or (3) a mouse click that causes a new action to occur immediately. A pulse via python is via the `.pulse()` function on a pulse-type parameter, such as Reset parameter in a [Speed CHOP](../Glossary/Speed_CHOP.md "Speed CHOP"). A pulse from a CHOP is typically a 0 to 1 to 0 signal in an exported channel.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

@@ -26,26 +26,23 @@ Similarly for latitude around the Y axis, a value of 0 is at the south pole (in 
 
 A similar kind of thing is done for cylindrical normalization around the Y axis.
 
-**See also** the [Projection POP](https://docs.derivative.ca/Projection_POP "Projection POP") and the [Texture Map POP](https://docs.derivative.ca/Texture_Map_POP "Texture Map POP").
+**See also** the [Projection POP](Projection_POP.md "Projection POP") and the [Texture Map POP](Texture_Map_POP.md "Texture Map POP").
 
 **About feeding components to Normalize and other POPs** - If you put `P(1) P(0) P(2)` (or `P.yxz`), it will first swap the first 2 components (x and y) and pass that to the next stage where if you have Box X, it will be processing the original y coordinate (`P(1)`) of the input.
 
-[normalizePOP_Class](https://docs.derivative.ca/NormalizePOP_Class "NormalizePOP Class")
+[normalizePOP_Class](Normalize_POP_Class.md "NormalizePOP Class")
 
 ## Parameters - Normalize Page
-
 - Attribute Class `attrclass` - ⊞ - Makes the POP operate on point attributes, vertex attributes or primitive attributes where applicable.
   * Point `point` -
   * Vertex `vertex` -
   * Primitive `primitive` -
-
 - Input Attribute Scope `inputattrscope` - Input's attributes you want to affect within the chosen attribute class, or attribute components.
 - Parameter Size `parsize` - ⊞ - Number of independent configurable parameter values.
   * 1 `1` -
   * 2 `2` -
   * 3 `3` -
   * 4 `4` -
-
 - Aspect Correct `aspectcorrect` - Whether to preserve the input attribute aspect ratio.
 - Replace Errors `replace` - Enable replacing inf or nan floating points values by a specific value.
 - Error Value `errval` - Sets the replacing value on normalization errors
@@ -53,32 +50,26 @@ A similar kind of thing is done for cylindrical normalization around the Y axis.
   * Mode `mode0` -
   * Mode `mode1` -
   * Mode `mode2` -
-
 - Bias `bias` - ⊞ - Moves the normalized value bias forward or backward.
   * Bias `bias0` -
   * Bias `bias1` -
   * Bias `bias2` -
-
 - Lookup Curve `lookupcurve` - ⊞ - Specifies whether to use a lookup curve from a list of predefined lookup curves.
   * Lookup Curve `lookupcurve0` -
   * Lookup Curve `lookupcurve1` -
   * Lookup Curve `lookupcurve2` -
-
 - Exponent `exp` - ⊞ - Sets the exponent. The internal value is raised by the power of the exponent
   * Exponent `exp0` -
   * Exponent `exp1` -
   * Exponent `exp2` -
-
 - Map to Low `tolow` - ⊞ - Reranges the attribute value.
   * Map to Low `tolow0` -
   * Map to Low `tolow1` -
   * Map to Low `tolow2` -
-
 - Map to High `tohigh` - ⊞ - Reranges the attribute value.
   * Map to High `tohigh0` -
   * Map to High `tohigh1` -
   * Map to High `tohigh2` -
-
 - Output Attribute Scope `outputattrscope` - ⊞ - Name of attribute to output (can choose components of attribute), can choose from menu.
   * P `P` -
   * N `N` -
@@ -87,7 +78,6 @@ A similar kind of thing is done for cylindrical normalization around the Y axis.
   * Tex `Tex` -
   * PointScale `PointScale` -
   * LineWidth `LineWidth` -
-
 - Override Automatic Attribute `overrideautoattr` - Whether to override the kind of attribute automatically created based on the POP input and parameters. Allows to specify manually the type and number of components of the new attribute.
 - Attribute Type `attrtype` - ⊞ - The output attribute's data type, default float.
   * float `float` -
@@ -98,13 +88,11 @@ A similar kind of thing is done for cylindrical normalization around the Y axis.
   * Color (double) `dcolor` -
   * Direction `dir` -
   * Direction (double) `ddir` -
-
 - Components `attrnumcomps` - ⊞ - The number of components in the new custom attribute.
   * 1 `1` -
   * 2 `2` -
   * 3 `3` -
   * 4 `4` -
-
 - Default Value `attrdefaultval` - ⊞ - Default values of the output attribute components if they cannot be computed.
   * Default Value `attrdefaultval0` - Default value(s) of the attribute.
   * Default Value `attrdefaultval1` - Default value(s) of the attribute.
@@ -112,7 +100,6 @@ A similar kind of thing is done for cylindrical normalization around the Y axis.
   * Default Value `attrdefaultval3` - Default value(s) of the attribute.
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -123,7 +110,7 @@ A similar kind of thing is done for cylindrical normalization around the Y axis.
 
 ## Info CHOP Channels
 
-Extra Information for the Normalize POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Normalize POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -134,19 +121,11 @@ Extra Information for the Normalize POP can be accessed via an [Info CHOP](https
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

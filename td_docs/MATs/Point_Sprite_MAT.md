@@ -8,61 +8,57 @@ title: Point_Sprite_MAT
 
 ## Summary
 
-The Point Sprite MAT allows you to control some attributes of Point Sprites (creatable using the [Particle SOP](https://docs.derivative.ca/Particle_SOP "Particle SOP"), [DAT to SOP](https://docs.derivative.ca/DAT_to_SOP "DAT to SOP"), or [Convert SOP](https://docs.derivative.ca/Convert_SOP "Convert SOP")). You can apply color, a color map, change the size of the created point sprite from a square to a rectangle, and scale the size of the point sprite.
+The Point Sprite MAT allows you to control some attributes of Point Sprites (creatable using the [Particle SOP](../SOPs/Particle_SOP.md "Particle SOP"), [DAT to SOP](../SOPs/DAT_to_SOP.md "DAT to SOP"), or [Convert SOP](../SOPs/Convert_SOP.md "Convert SOP")). You can apply color, a color map, change the size of the created point sprite from a square to a rectangle, and scale the size of the point sprite.
 
 A point sprite's final size controls the number of pixels wide/high it is, regardless of how far it is from the camera (unless you are using attenuation).
 
-[pointspriteMAT_Class](https://docs.derivative.ca/PointspriteMAT_Class "PointspriteMAT Class")
+[pointspriteMAT_Class](Point_Sprite_MAT_Class.md "PointspriteMAT Class")
 
 ## Parameters - Point Sprite Page
-
 - Color `color` - ⊞ - The color of the light reflected from the material.
   * Red `colorr` -
   * Green `colorg` -
   * Blue `colorb` -
-
 - Alpha `alpha` - The opacity of the material. This parameter is multiplied by point alpha of the object.
 - Post-Mult Color by Alpha `postmultalpha` - Enable/disable multiplying color by alpha.
-- Color Map `colormap` - ⊞ - The color map to apply to the sprites. The Color Map will be multiplied by the color of the sprites. The Color Map parameter can also take 3D / 2D Texture Arrays (from the [Texture 3D TOP](https://docs.derivative.ca/Texture_3D_TOP "Texture 3D TOP") for example), and the w texture coordinate will select the correct map from the array.
+- Color Map `colormap` - ⊞ - The color map to apply to the sprites. The Color Map will be multiplied by the color of the sprites. The Color Map parameter can also take 3D / 2D Texture Arrays (from the [Texture 3D TOP](../TOPs/Texture_3D_TOP.md "Texture 3D TOP") for example), and the w texture coordinate will select the correct map from the array.
+
 The final size of the point sprite is controlled by the pscale point attribute (if present) getting multiplied of the result of the next 6 parameters. There are two types of scale this MAT can apply, and they are blended using the Attenuate Point Scale parameter to create one final point scale (which is multiplied by pscale).
 - Extend U `colormapextendu` - ⊞ -
   * Hold `hold` -
   * Zero `zero` -
   * Repeat `repeat` -
   * Mirror `mirror` -
-
 - Extend V `colormapextendv` - ⊞ -
   * Hold `hold` -
   * Zero `zero` -
   * Repeat `repeat` -
   * Mirror `mirror` -
-
 - Extend W `colormapextendw` - ⊞ -
   * Hold `hold` -
   * Zero `zero` -
   * Repeat `repeat` -
   * Mirror `mirror` -
-
 - Filter `colormapfilter` - ⊞ -
   * Nearest `nearest` -
   * Linear `linear` -
   * Mipmap Linear `mipmaplinear` -
-
 - Anisotropic Filter `colormapanisotropy` - ⊞ -
   * Off `off` -
   * 2x `2x` -
   * 4x `4x` -
   * 8x `8x` -
   * 16x `16x` -
-
 - Offset Left `offsetleft` - Crop the left side of the sprites.
 - Offset Right `offsetright` - Crop the right side of the sprites.
 - Offset Bottom `offsetbottom` - Crop the bottom side of the sprites.
 - Offset Top `offsettop` - Crop the top side of the sprites.
 - Constant Point Size `pointsize` - Sets the size of the sprites. The units of size is determined based on the option set under the 'Sizing Model' menu.
 - Sizing Model `sizingmodel` - A menu that specifies how the size of the sprite is decided. If set to 'Constant/Attenuate', then the value set under the Constant Point Size Parameter specifies the number of pixels wide the sprite will be. It is a constant value that will be applied to all points evenly. And/or the Attenuation Parameters can be used to do distance based attenuation. When Attenuate Point Scale is 0, the point sprite size will be pscale * this value.
+
 If set to 'Perspective Correct' then the value set under Constant Point Size specifies the size of the sprite in the standard world space units like all geo objects. If you set the value of 3 for Constant Point Size, then each sprite will be 3 worldspace units wide.
 - Attenuate Point Scale `attenpscale` - This value blends between the Constant Point Scale and the Attenuated Point Scale. 0 means 100% constant point scale and 1 means 100% attenuated point scale.
+
 Points that are closer than or at the Near distance from the camera will use the Near Point Scale, points between the Near Distance and Far Distance will use a blended scale between the Near Point Scale and the Far Point Scale. Points farther than the Far Point Distance will use the Far Point Scale.
 - Attenuate Near Distance `attennear` - Points that are closer than or at this distance from the camera will use the Near Point Scale Parameter.
 - Attenuate Far Distance `attenfar` - Points that are farther than or at this distance from the camera will use the Far Point Scale Parameter.
@@ -78,9 +74,8 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
   * From a SOP `sop` -
   * From another MAT `mat` -
   * From a DeformIn MAT `deformin` -
-
 - SOP with Capture Data `targetsop` - Specifies the SOP that contains the deform capture attributes.
-- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](https://docs.derivative.ca/Bone_Group_SOP "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
+- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](../SOPs/Bone_Group_SOP.md "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
 - pCaptData Attrib `pcaptdata` - Much like pCaptPath Attrib.
 - Skeleton Root Path `skelrootpath` - Specifies the path to the COMP where the root of the skeleton is located.
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
@@ -92,7 +87,6 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
 Blending
 
 [Blending](https://docs.derivative.ca/Blending "Blending") is summing the color value of the pixel being drawn and the pixel currently present in the Color-Buffer. Blending is typically used to simulate [Transparency](https://docs.derivative.ca/Transparency "Transparency"). The blending equation is: `Final Pixel Value = (Source Blend * Source Color) + (Dest Blend * Destination Color)`
-
 - Blending (Transparency) `blending` - This toggle enables and disables blending. However see the wiki article [Transparency](https://docs.derivative.ca/Transparency "Transparency").
 - Blend Operation `blendop` - ⊞ -
   * Add `add` -
@@ -100,7 +94,6 @@ Blending
   * Reverse Subtract `revsubtract` -
   * Minimum `minimum` -
   * Maximum `maximum` -
-
 - Source Color * `srcblend` - ⊞ - This value is multiplied by the color value of the pixel that is being written to the Color-Buffer (also know as the Source Color).
   * Zero `zero` -
   * Dest Color `dcol` -
@@ -115,7 +108,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Destination Color * `destblend` - ⊞ - This value is multiplied by the color value of the pixel currently in the Color-Buffer (also known as the Destination Color).
   * One `one` -
   * Src Color `scol` -
@@ -132,7 +124,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Separate Alpha Function `separatealphafunc` - This toggle enables and disables separate blending options for the alpha values.
 - Alpha Blend Operation `blendopa` - ⊞ -
   * Add `add` -
@@ -140,7 +131,6 @@ Blending
   * Reverse Subtract `revsubtract` -
   * Minimum `minimum` -
   * Maximum `maximum` -
-
 - Source Alpha * `srcblenda` - ⊞ - This value is multiplied by the alpha value of the pixel that is being written to the Color-Buffer (also know as the Source Alpha).
   * Zero `zero` -
   * Dest Color `dcol` -
@@ -155,7 +145,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Destination Alpha * `destblenda` - ⊞ - This value is multiplied by the alpha value of the pixel currently in the Color-Buffer (also known as the Destination Alpha).
   * One `one` -
   * Src Color `scol` -
@@ -172,19 +161,16 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Blend Constant Color `blendconstant` - ⊞ -
   * Blend Constant Color `blendconstantr` -
   * Blend Constant Color `blendconstantg` -
   * Blend Constant Color `blendconstantb` -
-
 - Blend Constant Alpha `blendconstanta` -
 - Legacy Alpha Behavior `legacyalphabehavior` -
 - Post-Mult Color by Alpha `postmultalpha` - Multiplies the color by alpha after all other operations have taken place.
 - Point Color Pre-Multiply `pointcolorpremult` - ⊞ -
   * Already Pre-Multiplied By Alpha `alreadypremult` -
   * Pre-Multiply By Alpha in Shader `premultinshader` -
-
 - Depth Test `depthtest` - Enables and disables the Depth-Test. If the depth-test is disabled, depths values aren't written to the Depth-Buffer.
 - Depth Test Function `depthfunc` - ⊞ - The depth value of the pixel being drawn is compared to the depth value currently in the depth-buffer using this function. If the test passes then the pixel is drawn to the Frame-Buffer. If the test fails the pixel is discarded and no changes are made to the Frame-Buffer.
   * Less Than `less` -
@@ -210,7 +196,6 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Less Than or Equal `lessorequal` -
   * Greater Than `greater` -
   * Greater Than or Equal `greaterorequal` -
-
 - Alpha Threshold `alphathreshold` - This value is what the pixel's alpha is compared to to determine if the pixel should be drawn. Pixels with alpha greater than the Alpha Threshold will be drawn. Pixels with alpha less than or equal to the Alpha Threshold will not be drawn.
 - Wire Frame `wireframe` - ⊞ - Enables and disables wire-frame rendering with the option of OpenGL Tesselated or Topology based wireframes.
   * Off `off` -
@@ -230,7 +215,6 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
   * Back Faces `backfaces` - Cull back faces, render front faces.
   * Front Faces `frontfaces` - Cull front faces, render back faces.
   * Both Faces `bothfaces` - Cull both faces, render nothing.
-
 - Polygon Depth Offset `polygonoffset` - Turns on the polygon offset feature.
 - Offset Factor `polygonoffsetfactor` -
 - Offset Units `polygonoffsetunits` -
@@ -253,7 +237,7 @@ Polygon Depth Offset
 
 This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly on-top of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing [shadows](https://docs.derivative.ca/Shadows "Shadows").
 
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
+- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. Only available when a [Working Color Space](https://docs.derivative.ca/Working_Color_Space "Working Color Space") is active for the project. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
   * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
@@ -265,27 +249,6 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
   * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
   * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
@@ -295,7 +258,7 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
 
 ## Info CHOP Channels
 
-Extra Information for the Point Sprite MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Point Sprite MAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -306,19 +269,11 @@ Extra Information for the Point Sprite MAT can be accessed via an [Info CHOP](ht
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

@@ -6,11 +6,11 @@ title: FFmpeg
 
 # FFmpeg
 
-FFmpeg is a software library for reading and writing a wide range of image, movie and audio files. It is used by the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") and the [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP") as well as other audio and video reading/writing nodes.
+FFmpeg is a software library for reading and writing a wide range of image, movie and audio files. It is used by the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP") and the [Movie File Out TOP](../TOPs/Movie_File_Out_TOP.md "Movie File Out TOP") as well as other audio and video reading/writing nodes.
 
-`ffmpeg.exe` is included in TouchDesigner's `bin` folder. TouchDesigner [TOPs](https://docs.derivative.ca/TOP "TOP") do most of what `ffmpeg.exe` does. Where they do not, one of many sites with `ffmpeg.exe` examples is [labnol.org](https://www.labnol.org/internet/useful-ffmpeg-commands/28490/)
+`ffmpeg.exe` is included in TouchDesigner's `bin` folder. TouchDesigner [TOPs](../TOPs/TOP.md "TOP") do most of what `ffmpeg.exe` does. Where they do not, one of many sites with `ffmpeg.exe` examples is [labnol.org](https://www.labnol.org/internet/useful-ffmpeg-commands/28490/)
 
-See also [FFmpeg.org](https://www.ffmpeg.org/), [FFmpeg wikipedia](https://en.wikipedia.org/wiki/FFmpeg), [File Types](https://docs.derivative.ca/File_Types#Files_Imported "File Types")
+See also [FFmpeg.org](https://www.ffmpeg.org/), [FFmpeg wikipedia](https://en.wikipedia.org/wiki/FFmpeg), [File Types](File_Types.md#Files_Imported "File Types")
 
 ## Use of FFmpeg
 

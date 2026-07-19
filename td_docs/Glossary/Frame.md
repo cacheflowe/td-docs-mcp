@@ -6,15 +6,15 @@ title: Frame
 
 # Frame
 
-The term "Frame" is a measurement of time, an integer division of a second, used (1) in the [Timeline](https://docs.derivative.ca/Timeline "Timeline"), (2) as a time-unit in CHOPs, (3) as a time unit in movie files that are read into TOPs and written out from TOPs.
+The term "Frame" is a measurement of time, an integer division of a second, used (1) in the [Timeline](Timeline.md "Timeline"), (2) as a time-unit in CHOPs, (3) as a time unit in movie files that are read into TOPs and written out from TOPs.
 
 'Frame' is sometimes also used in image processing and TOPs to refer to the array of pixels in an image, but we refer to these as 'images' in TouchDesigner as much as possible to avoid confusion.
 
 ##  Frames on the Timeline
 
-The frame bar on the [Timeline](https://docs.derivative.ca/Timeline "Timeline") at the bottom of the TouchDesigner window shows the current frame number. TouchDesigner is set at a specific number of frames per second ([FPS](https://docs.derivative.ca/Frame_Rate "Frame Rate")), which is displayed and set in the Timeline. The default frame rate is 60 frames per second, which a common refresh rate of LCD monitor and projectors.
+The frame bar on the [Timeline](Timeline.md "Timeline") at the bottom of the TouchDesigner window shows the current frame number. TouchDesigner is set at a specific number of frames per second ([Frame Rate](Frame_Rate.md "Frame Rate") - FPS), which is displayed and set in the Timeline. The default frame rate is 60 frames per second, which a common refresh rate of LCD monitor and projectors.
 
-You can also query and set the frames per second in python by using `project.cookRate` in the [Textport](https://docs.derivative.ca/Textport "Textport"). For example, `project.cookRate = 60`.
+You can also query and set the frames per second in python by using `project.cookRate` in the [Textport](Textport.md "Textport"). For example, `project.cookRate = 60`.
 
 The current frame is tied to the current time in TouchDesigner: The first frame of the timeline is frame 1, which is time 0 seconds, and at 60 frames per second, frame 61 is time 1 seconds.
 
@@ -24,7 +24,7 @@ You can set your global timeline length to any number of frames on the Timeline 
 
 On the other hand, you can lock some things to the timeline using `me.time.frame` or `me.time.seconds` expression in a parameter set to use index to drive it.
 
-With frames per second set to 60, the frame step is 1/60 second. Because TouchDesigner will not always be able to render in realtime, when it is playing forward in realtime, it will skip frames to keep up, but CHOPs that are [Time Sliced](https://docs.derivative.ca/index.php?title=Time_Slice&action=edit&redlink=1 "Time Slice \(page does not exist\)") will internally compute in-between frames as best it can.
+With frames per second set to 60, the frame step is 1/60 second. Because TouchDesigner will not always be able to render in realtime, when it is playing forward in realtime, it will skip frames to keep up, but CHOPs that are [Time Sliced](Time_Slicing.md "Time Slicing") will internally compute in-between frames as best it can.
 
 Although it may skip frames, you can be assured that after 4 seconds playing in realtime, it has stepped forward by 240 frames.
 
@@ -34,16 +34,14 @@ CHOPs have their own view of frames and time. Parameters involving time in CHOPs
 
 ##  Frames in TOPs and Movie Files
 
-Although the timeline may be set to 60 frames per second, incoming movies like QuickTime MP4 movie files will have their own idea of "frame", and will typically have a built-in setting of 30 images per second. When the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP") reads the movie, the user can refer to the images in terms of 'index', 'frames', 'seconds' or 'fraction'. As in CHOPs, 'frames' is still the timeline frames and frame 61 is one second after frame 1 in the movie. To refer to the movie's built-in setting of say, 30, you need to use 'index' to specify those images, where index of 0 is the first image, and index 30 is the 31st image (one second later).
+Although the timeline may be set to 60 frames per second, incoming movies like QuickTime MP4 movie files will have their own idea of "frame", and will typically have a built-in setting of 30 images per second. When the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP") reads the movie, the user can refer to the images in terms of 'index', 'frames', 'seconds' or 'fraction'. As in CHOPs, 'frames' is still the timeline frames and frame 61 is one second after frame 1 in the movie. To refer to the movie's built-in setting of say, 30, you need to use 'index' to specify those images, where index of 0 is the first image, and index 30 is the 31st image (one second later).
 
-The term "Frame" is a measurement of time used (1) in the [Timeline](https://docs.derivative.ca/Timeline "Timeline"), (2) as a time-unit in CHOPs, and (3) as a time unit in movie files that are read into [TOPs](https://docs.derivative.ca/TOP "TOP") and written out from TOPs. The frame rate is the frames per second ([FPS](https://docs.derivative.ca/index.php?title=FPS&action=edit&redlink=1 "FPS \(page does not exist\)")).
+The term "Frame" is a measurement of time used (1) in the [Timeline](Timeline.md "Timeline"), (2) as a time-unit in CHOPs, and (3) as a time unit in movie files that are read into [TOPs](../TOPs/TOP.md "TOP") and written out from TOPs. The [Frame Rate](Frame_Rate.md "Frame Rate") is the frames per second (FPS).
 
-The panel at the bottom of TouchDesigner, it controls the current global looping [Time](https://docs.derivative.ca/Time_COMP "Time COMP") your TouchDesigner project, or of just one component.
+The panel at the bottom of TouchDesigner, it controls the current global looping [Time](Time_COMP.md "Time COMP") your TouchDesigner project, or of just one component.
 
-The Frames-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The Frames-per-Second that TouchDesigner's [Timeline](Timeline.md "Timeline") runs at. Set with `project.cookRate`.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
-
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](Operator_Family.md "Operator Family") which operate on [Channels](Channel.md "Channel") (a sequence of numbers ([Samples](Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

@@ -6,9 +6,9 @@ title: DMX
 
 # DMX
 
-DMX and its derivatives are supported in the [DMX Out POP](https://docs.derivative.ca/DMX_Out_POP "DMX Out POP"), [DMX Fixture POP](https://docs.derivative.ca/DMX_Fixture_POP "DMX Fixture POP"), [DMX Out CHOP](https://docs.derivative.ca/DMX_Out_CHOP "DMX Out CHOP") and [DMX In CHOP](https://docs.derivative.ca/DMX_In_CHOP "DMX In CHOP").
+DMX and its derivatives are supported in the [DMX Out POP](../POPs/DMX_Out_POP.md "DMX Out POP"), [DMX Fixture POP](../POPs/DMX_Fixture_POP.md "DMX Fixture POP"), [DMX Out CHOP](../CHOPs/DMX_Out_CHOP.md "DMX Out CHOP") and [DMX In CHOP](../CHOPs/DMX_In_CHOP.md "DMX In CHOP").
 
-[sACN](https://docs.derivative.ca/SACN "SACN") (Streaming Architecture for Control Networks) is a DMX protocol over IP networks using UDP.
+[sACN](SACN.md "SACN") (Streaming Architecture for Control Networks) is a DMX protocol over IP networks using UDP.
 
 [Art-Net](https://docs.derivative.ca/Art-Net "Art-Net") is an implementation of DMX512-A protocol over UDP.
 

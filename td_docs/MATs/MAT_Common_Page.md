@@ -83,14 +83,14 @@ Offset Factor `polygonoffsetfactor` - Adds an offset to the Z value that depends
 
 Offset Units `polygonoffsetunits` - Adds a constant offset to the Z value.
 
-MATs or Materials are an [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that applies a [Shader](https://docs.derivative.ca/Shader "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
+MATs or Materials are an [Operator Family](../Glossary/Operator_Family.md "Operator Family") that applies a [Shader](../Glossary/Shader.md "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
 
-The term "Frame" is a measurement of time used (1) in the [Timeline](https://docs.derivative.ca/Timeline "Timeline"), (2) as a time-unit in CHOPs, and (3) as a time unit in movie files that are read into [TOPs](https://docs.derivative.ca/TOP "TOP") and written out from TOPs. The frame rate is the frames per second ([FPS](https://docs.derivative.ca/index.php?title=FPS&action=edit&redlink=1 "FPS \(page does not exist\)")).
+The term "Frame" is a measurement of time used (1) in the [Timeline](../Glossary/Timeline.md "Timeline"), (2) as a time-unit in CHOPs, and (3) as a time unit in movie files that are read into [TOPs](../TOPs/TOP.md "TOP") and written out from TOPs. The frame rate is the frames per second ([FPS](https://docs.derivative.ca/index.php?title=FPS&action=edit&redlink=1 "FPS \(page does not exist\)")).
 
-The connection of an output of one node to the input of another node in a network. In contrast, see [Link](https://docs.derivative.ca/Link "Link").
+The connection of an output of one node to the input of another node in a network. In contrast, see [Link](../Glossary/Link.md "Link").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-A polygon is a type of [Primitive](https://docs.derivative.ca/Primitive "Primitive") that is formed from a set of [Vertices](https://docs.derivative.ca/Vertex "Vertex") in 3D that are implicitly connected together to form a multi-edge shape.
+A polygon is a type of [Primitive](../Glossary/Primitive.md "Primitive") that is formed from a set of [Vertices](../Glossary/Vertex.md "Vertex") in 3D that are implicitly connected together to form a multi-edge shape.

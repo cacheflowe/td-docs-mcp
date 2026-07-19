@@ -14,10 +14,9 @@ Like the Project SOP, it also creates profile curves, but they are extracted as 
 
 Note: When using a Carve SOP on a trimmed surface, you can't fillet or join the trim curves.
 
-[carveSOP_Class](https://docs.derivative.ca/CarveSOP_Class "CarveSOP Class")
+[carveSOP_Class](Carve_SOP_Class.md "CarveSOP Class")
 
 ## Parameters - Carve Page
-
 - Group `group` - If there are input groups, specifying a group name in this field will cause this SOP to act only upon the Group specified. Accepts patterns, as described in the Scripting Guide under Pattern Matching.
 - First U `firstu` - Enables the parameter to set the first position in U.
 - First U `domainu1` - This specifies a starting location to begin the cut/extract. Select this and a parametric U location between 0 and 1.
@@ -29,19 +28,17 @@ Note: When using a Carve SOP on a trimmed surface, you can't fillet or join the 
 - Second V `domainv2` - This specifies an ending location to complete the cut / extract. Select this and a parametric V location between 0 and 1. Applies only to surfaces.
 
 ## Parameters - Method Page
-
 - Carve Method `method` - ⊞ - Select between Cut and Extract methods.
   * Cut `cut` - Cut will slice (or 'cut-out') the original geometry within the area specified on the Carve Page.
   * Extract `extract` - Extract will create 3D curves, points, or 2D profiles within the area specified on the Carve page. The Extract Type parameter is used to determine what is extracted.
-
 - Keep Inside `keepin` - Keep the primitives specified between the first and second locations.
 - Keep Outside `keepout` - Keep the primitives lying outside the first and second locations.
 - Extract Type `extractop` - ⊞ - If enabled, it will extract a cross-section along each location specified above.
+
 Note: if a face is used, only points can be extracted and the V parameters have no effect.
   * Extract 3D Isoparametric Curve(s) `xisoparm` - The extraction operation creates a 3-D, free-floating curve that matches the surface perfectly at the given U or V location.
   * Extract Point(s) `xpoint` - Available for Mesh and surfaces only. If selected, it will create a point at every U, V location specified, rather than removing a U cross section and a V cross section.
   * Extract 2D Isoparametric Profile(s) `xprofile` - Creates a 2D curve at the specified U/V location that matches the surface perfectly.
-
 - Keep Original `keeporiginal` - If selected, it will not remove the original primitive.
 - Location `location` - ⊞ - Determines how the Cut/Extract is defined at the boundaries. Additionally, extra subdivisions can be added in two ways using the parameters below.
   * Divisions `div` - The Cut/Extract occurs precisely at the locations defined on the Carve page. Additional divisions can be specified using the U/V Divisions parameters below and they are evenly distributed across the Cut/Extracted geoemtry.
@@ -85,20 +82,16 @@ Select the Extract option, First U = `x`, Last U disabled, First V = `y`, Last V
 
 ## Info CHOP Channels
 
-Extra Information for the Carve SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Carve SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -106,19 +99,11 @@ Extra Information for the Carve SOP can be accessed via an [Info CHOP](https://d
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

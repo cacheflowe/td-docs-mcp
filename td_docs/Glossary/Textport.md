@@ -8,7 +8,7 @@ title: Textport
 
 The **Textport** is the dialog box in which commands and scripts can typed in manually. Output to the textport includes script errors and messages from `print()` and `debug()` calls in python code. You can also edit DATs in the textport.
 
-Dialogs -> Textport brings up the main textport, but you can also press F4 to open the Textport as a floating window. F4 will also work in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode").
+Dialogs -> Textport brings up the main textport, but you can also press F4 to open the Textport as a floating window. F4 will also work in [Perform Mode](Perform_Mode.md "Perform Mode").
 
 You can type python expressions and get them evaluated, as simple as `2+3`, which prints `5` on the next line.
 
@@ -20,15 +20,15 @@ If you are writing an expression like `op('/project1/geo1').par.tx`, you can mor
 
 Note that some startup and system errors are output to Dialogs -> Console.
 
-You can put textports in [panes](https://docs.derivative.ca/Pane "Pane") by setting the Pane Type menu to **Textport and DATs**.
+You can put textports in [panes](Pane.md "Pane") by setting the Pane Type menu to **Textport and DATs**.
 
-There are two scripting languages in TouchDesigner: [Python](https://docs.derivative.ca/Python "Python") and the obsolete [Tscript](https://docs.derivative.ca/Tscript "Tscript"). For Tscript, all commands are described in [Tscript Commands](https://docs.derivative.ca/Tscript_Commands "Tscript Commands") and [Tscript Expressions](https://docs.derivative.ca/Tscript_Expressions "Tscript Expressions"), and its scripting syntax is found in [Tscript](https://docs.derivative.ca/Tscript "Tscript"). `textport` is a [Tscript](https://docs.derivative.ca/Tscript "Tscript") command that can be used to manipulate the contents of the dialog.
+There are two scripting languages in TouchDesigner: [Python](../General/Python.md "Python") and the obsolete [Tscript](Tscript.md "Tscript"). For Tscript, all commands are described in [Tscript Commands](https://docs.derivative.ca/Tscript_Commands "Tscript Commands") and [Tscript Expressions](https://docs.derivative.ca/Tscript_Expressions "Tscript Expressions"), and its scripting syntax is found in [Tscript](Tscript.md "Tscript"). `textport` is a [Tscript](Tscript.md "Tscript") command that can be used to manipulate the contents of the dialog.
 
 You can redirect Python `stdout` and `stderr` to any DAT. Then you can use the OP Viewer TOP or COMP to convert that DAT into a texture and integrate it into your UI.
 
 ##  Textport Dialog
 
-The textport can be opened from the **Dialogs** menu or by using the _Alt+Shift+T_ keyboard shortcut. Textport can also be opened as a [Pane](https://docs.derivative.ca/Pane "Pane").
+The textport can be opened from the **Dialogs** menu or by using the _Alt+Shift+T_ keyboard shortcut. Textport can also be opened as a [Pane](Pane.md "Pane").
 
 The simplest method to input Python scripts is through the textport. The textport, like all scripting in TouchDesigner, allows scripts to be specified in either Python or Tscript.
 
@@ -67,7 +67,7 @@ In the textport, you can enter `help` for a list of available commands or `help(
 
 Script errors and messages from `print()` commands are also output to this dialog box.
 
-The main textport also receives the error messages and `print()` commands from all scripts that are run in [DATs](https://docs.derivative.ca/DAT "DAT").
+The main textport also receives the error messages and `print()` commands from all scripts that are run in [DATs](DAT.md "DAT").
 
 However startup and system errors are output to **Dialogs - > Console**.
 
@@ -81,7 +81,7 @@ This will output all help related to the `op()` method found in the [td Module](
 
 The [td Module](https://docs.derivative.ca/Td_Module "Td Module") is the main module containing all TouchDesigner related classes and objects. It is imported by default when the application begins.
 
-Another useful item is the [TDU Class](https://docs.derivative.ca/TDU_Class "TDU Class"). This object contains some specific TouchDesigner utility functions useful during scripting and is available automatically through the `tdu` object.
+Another useful item is the [TDU Class](../Python/TDU_Class.md "TDU Class"). This object contains some specific TouchDesigner utility functions useful during scripting and is available automatically through the `tdu` object.
 
 ##  TScript in the Textport
 
@@ -89,7 +89,7 @@ In the textport, you can enter `help` for a list of available commands or `exhel
 
 Script errors and messages from `echo` commands are also output to this dialog box.
 
-The main textport also receives the error messages and `echo` commands from all scripts that are run in [DATs](https://docs.derivative.ca/DAT "DAT").
+The main textport also receives the error messages and `echo` commands from all scripts that are run in [DATs](DAT.md "DAT").
 
 However startup and system errors are output to **Dialogs - > Console**.
 
@@ -98,29 +98,29 @@ You can save typing OP path names by simply dragging any OP onto the Textport. J
 
 ##  `textport` Command (Tscript only)[")]
 
-The `textport` command is used to manipulate the Textport dialog. One of the advantages of using `textport` is the ability to load DATs without having to navigate to them through the [Network](https://docs.derivative.ca/Network "Network") pane. For example, to load a DAT in a floating Textport, the following code can be used:
+The `textport` command is used to manipulate the Textport dialog. One of the advantages of using `textport` is the ability to load DATs without having to navigate to them through the [Network](Network.md "Network") pane. For example, to load a DAT in a floating Textport, the following code can be used:
 ```
  textport -l _/datpath/datname_
 ```
 
-This can be particularly useful while debugging scripts or [monitoring network performance](https://docs.derivative.ca/Optimize "Optimize").
+This can be particularly useful while debugging scripts or [monitoring network performance](../Learn/Optimize.md "Optimize").
 
 The dialog box in which commands and scripts can typed in manually. Output to the textport includes script errors and messages from `print()` and `debug()` calls in python code. You can also edit DATs in the textport.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](Script.md "Script") or [GLSL](GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
 There are 8 pane types; Network, Panel, Textport, Geometry Viewer, TOP Viewer, CHOP Viewer, Parameters, Graph Editor for CHOP Channels, or a Geometry Spreadsheet.
 
-TouchDesigner's original built-in Command scripting language prior to [Python](https://docs.derivative.ca/Python "Python").
+TouchDesigner's original built-in Command scripting language prior to [Python](../General/Python.md "Python").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](Pane.md "Pane") or [Viewer](Viewer.md "Viewer").
 
-Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
+Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](Parent_Shortcut.md "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](Global_OP_Shortcut.md "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
 
-A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](https://docs.derivative.ca/Python "Python") and the original [Tscript](https://docs.derivative.ca/Tscript "Tscript"). Scripts and single-line commands can also be run in the Textport.
+A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](../General/Python.md "Python") and the original [Tscript](Tscript.md "Tscript"). Scripts and single-line commands can also be run in the Textport.

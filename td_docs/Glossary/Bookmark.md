@@ -17,7 +17,7 @@ Bookmarks can be recalled at any time using the [Bookmark Menu](https://docs.der
 
 ##  Bookmark Menu
 
-The Bookmark menu is accessible at the top of every [Pane](https://docs.derivative.ca/Pane "Pane"). Clicking on the Bookmark icon in the Pane Bar opens the menu.
+The Bookmark menu is accessible at the top of every [Pane](Pane.md "Pane"). Clicking on the Bookmark icon in the Pane Bar opens the menu.
 [![Bookmark Menu](https://docs.derivative.ca/images/7/79/BookmarkMenu.jpg)](https://docs.derivative.ca/File:BookmarkMenu.jpg "Bookmark Menu")
 
 ###
@@ -37,7 +37,7 @@ Bookmarks can be added, edited, and deleted using the Bookmarks Dialog. Select _
 [![BookmarkDialog.jpg](https://docs.derivative.ca/images/5/5d/BookmarkDialog.jpg)](https://docs.derivative.ca/File:BookmarkDialog.jpg)
 Description
 
-The Bookmarks dialog lets you add, edit, and delete Bookmarks. Bookmarks are saved in the [network](https://docs.derivative.ca/Network "Network") location /local/bookmarks.
+The Bookmarks dialog lets you add, edit, and delete Bookmarks. Bookmarks are saved in the [network](Network.md "Network") location /local/bookmarks.
 
 Bookmarks
 
@@ -80,8 +80,8 @@ Deleting a Bookmark
 
 To delete a bookmark, right-click on it to open the options menu and select **Delete**.
 
-A pull-down list at the top of a network [Pane](https://docs.derivative.ca/Pane "Pane") containing jump-to [Network Paths](https://docs.derivative.ca/Network_Path "Network Path").
+A pull-down list at the top of a network [Pane](Pane.md "Pane") containing jump-to [Network Paths](Network_Path.md "Network Path").
 
-A work area in TouchDesigner's layout that includes the [Network Editor](https://docs.derivative.ca/Network_Editor "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.
+A work area in TouchDesigner's layout that includes the [Network Editor](Network_Editor.md "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](Pane.md "Pane") or [Viewer](Viewer.md "Viewer").

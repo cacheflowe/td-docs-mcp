@@ -8,7 +8,7 @@ title: First_Things_to_Know_about_TouchDesigner
 
 These are the basics to help you become skilled in working with the TouchDesigner interface. This will take you about 2-3 hours if you pause and work through it sequentially. We will touch on all the main parts and concepts of TouchDesigner, as well as all the basics of operating the UI. Afterwards you will hopefully be more proficient and comfortable with exploring TouchDesigner on your own.
 
-**TIP** : If the meaning of a term in TouchDesigner is unclear, you can look it up in the **[TouchDesigner Glossary](https://docs.derivative.ca/TouchDesigner_Glossary "TouchDesigner Glossary")** or **Search** for it, both found in the menus to the left.
+**TIP** : If the meaning of a term in TouchDesigner is unclear, you can look it up in the **[TouchDesigner Glossary](../General/TouchDesigner_Glossary.md "TouchDesigner Glossary")** or **Search** for it, both found in the menus to the left.
 
 ####  1. Starting TouchDesigner
 
@@ -16,19 +16,19 @@ To use TouchDesigner, you will need a 3-button mouse with a roller wheel. (If yo
 
 Start by double-clicking the TouchDesigner icon on the desktop.
 
-When you start TouchDesigner, you see the [network](https://docs.derivative.ca/Network "Network") editor on the right, and the [Palette](https://docs.derivative.ca/Palette "Palette") browser on the left. Close the palette by clicking the x at its upper right corner to get more space until you need it.
+When you start TouchDesigner, you see the [network](../Glossary/Network.md "Network") editor on the right, and the [Palette](Palette.md "Palette") browser on the left. Close the palette by clicking the x at its upper right corner to get more space until you need it.
 
 ####  2. Pan, zoom and center the Network
 
-To pan the network, click and drag the left mouse button ([LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click")) on an empty area of the network.
+To pan the network, click and drag the left mouse button ([LMB](../Glossary/Mouse_Click.md "Mouse Click")) on an empty area of the network.
 
-To zoom the network, click and hold down the middle mouse button ([MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click")) and drag it left-and-right. (Reminder: If you don't have a middle mouse button, press alt+rightclick.)
+To zoom the network, click and hold down the middle mouse button ([MMB](../Glossary/Mouse_Click.md "Mouse Click")) and drag it left-and-right. (Reminder: If you don't have a middle mouse button, press alt+rightclick.)
 
 Alternately, to zoom you can move the rollerwheel forward and backward.
 
 Press the "h" key to center it (this is also called **h** oming). To home just the highlighted node, press Shift-h.
 
-In an empty area of the network right-click ([RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click")) and release the mouse - you will see the network menu. Choose 'Home All'.
+In an empty area of the network right-click ([RMB](../Glossary/Mouse_Click.md "Mouse Click")) and release the mouse - you will see the network menu. Choose 'Home All'.
 
 ####  3. Current Nodes and Selected Nodes
 
@@ -46,7 +46,7 @@ To add more to the set of selected nodes, Shift-click, or Shift-box-pick other n
 
 You can act on selected nodes together. Right-click on the network background and select Delete to remove the nodes, then press Ctrl+z to undo (Command+z on macOS). You can also undo via the Edit menu.
 
-Now click the top-left corner ([Flag](https://docs.derivative.ca/Flag "Flag")) on any of the selected nodes. This toggles between all their [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer") and their 3-letter icons. Turn back on the node viewers.
+Now click the top-left corner ([Flag](../Glossary/Flag.md "Flag")) on any of the selected nodes. This toggles between all their [Node Viewers](../Glossary/Node_Viewer.md "Node Viewer") and their 3-letter icons. Turn back on the node viewers.
 
 To un-select everything, left-click on the background of the network, which un-selects all the nodes except for the green "current" node.
 
@@ -56,37 +56,37 @@ Right-click on one of the nodes - you will see the node menu. Choose 'View' to b
 
 To delete all the nodes, press Control-a to select all, then press Delete.
 
-Now double-click on the empty network. The [OP Create Dialog](https://docs.derivative.ca/OP_Create_Dialog "OP Create Dialog") appears, where OP means "[operator](https://docs.derivative.ca/Operator "Operator")", or "node". The purple "TOP" tab should be selected. [TOPs](https://docs.derivative.ca/TOP "TOP") are Texture Operators and work with images. Click on Movie File In, then click anywhere on the network to place it.
+Now double-click on the empty network. The [OP Create Dialog](https://docs.derivative.ca/OP_Create_Dialog "OP Create Dialog") appears, where OP means "[operator](../General/Operator.md "Operator")", or "node". The purple "TOP" tab should be selected. [TOPs](../TOPs/TOP.md "TOP") are Texture Operators and work with images. Click on Movie File In, then click anywhere on the network to place it.
 
 You can also press Tab to bring up OP Create. To cancel, click the background.
 
-On the right side of `moviefilein1`, right-click on its purple output connector. On the OP Create click 'Level' and then click to the right of `moviefilein1` to create `level1`, which will be connected to `moviefilein1`. You have just added an image "[filter](https://docs.derivative.ca/Filter "Filter")" (`level1`) that modifies the levels of an image "[generator](https://docs.derivative.ca/Generator "Generator")" (`moviefilein1`).
+On the right side of `moviefilein1`, right-click on its purple output connector. On the OP Create click 'Level' and then click to the right of `moviefilein1` to create `level1`, which will be connected to `moviefilein1`. You have just added an image "[filter](../Glossary/Filter.md "Filter")" (`level1`) that modifies the levels of an image "[generator](../Glossary/Generator.md "Generator")" (`moviefilein1`).
 
 TouchDesigner Operators are Generators or Filters. "Filters" require at least one input, and modify the data of an incoming operator.
 
 "Generators" do not require an input - they create new data or read data from external devices and programs. Darker-colored OPs are the generators. Lighter colored OPs are filters.
 
-Click on `level1`. On the top-right dialog, move the sliders labelled Black Level and Brightness. These are typical "[parameters](https://docs.derivative.ca/Parameter "Parameter")" in TouchDesigner, which we will cover soon.
+Click on `level1`. On the top-right dialog, move the sliders labelled Black Level and Brightness. These are typical "[parameters](../Glossary/Parameter.md "Parameter")" in TouchDesigner, which we will cover soon.
 
 ####  5. In the Network Editor, add an Operator from each Family
 
 Let's look at rest of the six families of operators. Once again, double-click on the background.
 
-The [OP Create Dialog](https://docs.derivative.ca/OP_Create_Dialog "OP Create Dialog") has six headings of what we call [Operator Families](https://docs.derivative.ca/Operator "Operator"). Click on '[CHOP](https://docs.derivative.ca/CHOP "CHOP")' for 'Channel Operators'. Press Tab several times to cycle back to CHOPs.
+The [OP Create Dialog](https://docs.derivative.ca/OP_Create_Dialog "OP Create Dialog") has six headings of what we call [Operator Families](../General/Operator.md "Operator"). Click on '[CHOP](../Glossary/CHOP.md "CHOP")' for 'Channel Operators'. Press Tab several times to cycle back to CHOPs.
 
 Click on the CHOP type "Pattern" and place the Pattern CHOP in the network in a row above the TOPs. Channel Operators are used for motion, control signals, audio and more.
 
-Bring up OP Create again. You can find a specific operator by typing its name. Type "noi", click on Noise, and before clicking again, you can use the roller wheel to zoom the network and find a space, and click to create a [Noise CHOP](https://docs.derivative.ca/Noise_CHOP "Noise CHOP").
+Bring up OP Create again. You can find a specific operator by typing its name. Type "noi", click on Noise, and before clicking again, you can use the roller wheel to zoom the network and find a space, and click to create a [Noise CHOP](../CHOPs/Noise_CHOP.md "Noise CHOP").
 
-Bring up OP Create and Click "SOP". Surface Operators ([SOPs](https://docs.derivative.ca/SOP "SOP")) work with polygons, 3D lines and other surfaces. Choose a [Sphere SOP](https://docs.derivative.ca/Sphere_SOP "Sphere SOP") and place the node in the network.
+Bring up OP Create and Click "SOP". Surface Operators ([SOPs](../SOPs/SOP.md "SOP")) work with polygons, 3D lines and other surfaces. Choose a [Sphere SOP](../SOPs/Sphere_SOP.md "Sphere SOP") and place the node in the network.
 
-Press the Tab key and select "MAT". Material Operators ([MATs](https://docs.derivative.ca/MAT "MAT")) add textures and shading to 3D objects. Choose a [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT") and place the node.
+Press the Tab key and select "MAT". Material Operators ([MATs](../MATs/MAT.md "MAT")) add textures and shading to 3D objects. Choose a [Phong MAT](../MATs/Phong_MAT.md "Phong MAT") and place the node.
 
-Press the Tab key and select "DAT". Data Operators ([DATs](https://docs.derivative.ca/DAT "DAT")) manipulate text strings, both free-form text and in tables. Choose a [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT"), which is a table containing one row for every monitor attached to your computer.
+Press the Tab key and select "DAT". Data Operators ([DATs](../Glossary/DAT.md "DAT")) manipulate text strings, both free-form text and in tables. Choose a [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT"), which is a table containing one row for every monitor attached to your computer.
 
-Press the Tab key and select "COMP" for Components. There are four categories of components. From the 3D Objects column on the left, choose a [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP"), which unites SOPs and a Material for 3D rendering.
+Press the Tab key and select "COMP" for Components. There are four categories of components. From the 3D Objects column on the left, choose a [Geometry COMP](../Glossary/Geometry_COMP.md "Geometry COMP"), which unites SOPs and a Material for 3D rendering.
 
-Press the Tab key again. From the Panels column, choose a [Slider COMP](https://docs.derivative.ca/Slider_COMP "Slider COMP"), which is one of the 2D gadgets for building control panels.
+Press the Tab key again. From the Panels column, choose a [Slider COMP](../COMPs/Slider_COMP.md "Slider COMP"), which is one of the 2D gadgets for building control panels.
 
 You now have examples of all Operator Families in your network.
 
@@ -100,7 +100,7 @@ Now press Tab and create a TOP called Monochrome, by typing 'mon', and place it 
 
 Connect the output of `level1` to the input of `mono1` in one of four ways: First, click `level1`'s output and without releasing, drag to `mono1`'s input and release.
 
-The connecting lines between nodes in the same family are called [Wires](https://docs.derivative.ca/Wire "Wire").
+The connecting lines between nodes in the same family are called [Wires](../Glossary/Wire.md "Wire").
 
 Press Ctrl-z to undo the wiring. Now click-release on `level1`'s output, then click-release on `mono1`'s input. Or you can connect in reverse order from the `mono1`'s input to `level1`'s output.
 
@@ -122,7 +122,7 @@ Replace an input to a node by clicking from another node’s output to anywhere 
 
 ####  7. Wires, Data Flow and Cooking
 
-You can think of data flowing along these wires, in this case, images. Now watch the wires animate. Click on `level1`, go to its [Parameter Dialog](https://docs.derivative.ca/Parameter_Dialog "Parameter Dialog") on the right, and operate the Brightness slider. When a wire is animating it means that data is flowing: the node upstream is [cooking](https://docs.derivative.ca/Cook "Cook") and giving its output to the next node to cook, and so on downstream.
+You can think of data flowing along these wires, in this case, images. Now watch the wires animate. Click on `level1`, go to its [Parameter Dialog](../Glossary/Parameter_Dialog.md "Parameter Dialog") on the right, and operate the Brightness slider. When a wire is animating it means that data is flowing: the node upstream is [cooking](../Glossary/Cook.md "Cook") and giving its output to the next node to cook, and so on downstream.
 
 Middle-click on `tile1`. This shows information about the TOP. Look at Total Cooks to see how many times it has cooked, and then middle-click on `moviefilein1` and see it has only had to cook once, because it's not changing.
 
@@ -138,13 +138,12 @@ Put a Container component above the geo1 component. In the same way, the 2D comp
 
 (Reminder: If you don't have a middle mouse button, press Alt+Right-click.)
 
-Clicking the "[Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active")" flag at the bottom right of `geo1` removes its border and allows you inspect more closely the contents of the operator's data. Click-and-drag any of the mouse buttons to move around the geometry, and a quick right-click gives you an operator-specific menu of viewing options, which is where you find the wireframe toggle.
+Clicking the "[Viewer Active](../Glossary/Viewer_Active.md "Viewer Active")" flag at the bottom right of `geo1` removes its border and allows you inspect more closely the contents of the operator's data. Click-and-drag any of the mouse buttons to move around the geometry, and a quick right-click gives you an operator-specific menu of viewing options, which is where you find the wireframe toggle.
 
 In the case of panels, if you click Viewer Active, it lets you operate the panel.
 
 There are two more ways to make the viewer active:
   * First, Alt+a puts all nodes into the Viewer Active state until you let go.
-
   * Second, with the cursor over the background, the [shortcut](https://docs.derivative.ca/Shortcut "Shortcut") key "`a`" will toggle the Viewer Active flag of all selected nodes.
 
 Even when a node has its Viewer Active flag on, you can still access the common popups. On the name bar at the bottom, middle click to get the node info, and right click to get the nodes' common menu.
@@ -155,7 +154,7 @@ You can click-drag the operator from the bottom name bar any time. If you just c
 
 ####  9. Adjust Parameters of Operators
 
-Every Operator in TouchDesigner has a set of [Parameters](https://docs.derivative.ca/Parameter "Parameter") that affects its output. Select and look at `pattern1`. The [Parameter Dialog](https://docs.derivative.ca/Parameter_Dialog "Parameter Dialog") is normally docked in the upper right corner of a Network. Press the lower-case `p` key to hide it and gain more space, and `p` again to bring it back.
+Every Operator in TouchDesigner has a set of [Parameters](../Glossary/Parameter.md "Parameter") that affects its output. Select and look at `pattern1`. The [Parameter Dialog](../Glossary/Parameter_Dialog.md "Parameter Dialog") is normally docked in the upper right corner of a Network. Press the lower-case `p` key to hide it and gain more space, and `p` again to bring it back.
 
 To see `pattern1`'s parameters in a floating window, right-click on `pattern1` and select Parameters....
 
@@ -177,7 +176,7 @@ Tip: You can use the left-mouse button to operate the value ladder, but you must
 
 ####  11. Operator Flags and Table Mode
 
-[Operator Flags](https://docs.derivative.ca/Flag "Flag") surround each node. The flags on the left are common to most operator families, and the ones at the bottom are more specific to a family.
+[Operator Flags](../Glossary/Flag.md "Flag") surround each node. The flags on the left are common to most operator families, and the ones at the bottom are more specific to a family.
 
 Let's look at `tile1`. We have seen the Viewer flag at the top left, and Viewer Active at the bottom right.
 
@@ -209,7 +208,7 @@ Let's delete everything in our project. Type Ctrl-a to select all, and press you
 
 ####  13. Get Media into TouchDesigner
 
-You can bring in common file types into TouchDesigner including movie, image, audio, FBX, point cloud, JSON files and more. It also imports TouchDesigner `.tox` component files. See the wiki page [File Types](https://docs.derivative.ca/File_Types "File Types").
+You can bring in common file types into TouchDesigner including movie, image, audio, FBX, point cloud, JSON files and more. It also imports TouchDesigner `.tox` component files. See the wiki page [File Types](../Interoperability/File_Types.md "File Types").
 
 On the top menu bar under Dialogs, select Explorer on Windows, or Finder on macOS.
 
@@ -227,9 +226,9 @@ Note that the `.toe` "TouchDesigner Environment" files that contain your entire 
 
 ####  14. Navigate into Components that contain Networks
 
-Components are unique in that every component contains a [Network](https://docs.derivative.ca/Network "Network"), and every network lives in a component.
+Components are unique in that every component contains a [Network](../Glossary/Network.md "Network"), and every network lives in a component.
 
-Bring up OP Create (Tab) and create a Button component, `button1`. Note that all [Components](https://docs.derivative.ca/Component "Component") have a grey border.
+Bring up OP Create (Tab) and create a Button component, `button1`. Note that all [Components](../Glossary/Component.md "Component") have a grey border.
 
 To go into `button1`, select it and press Enter or the key "i". The path at the top of the pane `/project1/button1` tells you where you are.
 
@@ -268,29 +267,29 @@ Let's look closer at exporting. For that we need to know more about CHOPs, chann
 
 ####  17. CHOPs output Channels of Samples
 
-CHOPs output numbers. A Channel Operator creates a set of 1 or more channels, and each Channel is a set of numbers ([Sample](https://docs.derivative.ca/Sample "Sample")). Let's create a [Constant CHOP](https://docs.derivative.ca/Constant_CHOP "Constant CHOP") and move its slider. It has 1 channel and 1 sample, as you can see if you middle-click (or click "i" at the top of the parameter dialog) on the node and see `1i`, where `i` means sample or index.
+CHOPs output numbers. A Channel Operator creates a set of 1 or more channels, and each Channel is a set of numbers ([Sample](../Glossary/Sample.md "Sample")). Let's create a [Constant CHOP](../CHOPs/Constant_CHOP.md "Constant CHOP") and move its slider. It has 1 channel and 1 sample, as you can see if you middle-click (or click "i" at the top of the parameter dialog) on the node and see `1i`, where `i` means sample or index.
 
 Click the + under `chan1` to create new parameters which generates a second channel. Vertify that in the "info popup".
 
-Now create a [Noise CHOP](https://docs.derivative.ca/Noise_CHOP "Noise CHOP"). This is one [Channel](https://docs.derivative.ca/Channel "Channel") with multiple samples. To prove this, zoom in to the node a bit, turn on Viewer Active, right-click on the graph and select Dot per Sample. Now middle-click and drag the mouse right to reveal a dot for every sample. (Be aware that mouse clicks on the node do different things depending on whether the viewer is active or not.)
+Now create a [Noise CHOP](../CHOPs/Noise_CHOP.md "Noise CHOP"). This is one [Channel](../Glossary/Channel.md "Channel") with multiple samples. To prove this, zoom in to the node a bit, turn on Viewer Active, right-click on the graph and select Dot per Sample. Now middle-click and drag the mouse right to reveal a dot for every sample. (Be aware that mouse clicks on the node do different things depending on whether the viewer is active or not.)
 
 Press 'h' over the Noise CHOP's graph to home the channel. On the parameter dialog, click the Channel page and change the Channel Names parameter to `chan[1-3]`. There are now 3 channels, each with 600 samples. To verify this, middle-click on the bottom strip of the node where then name `noise1` is located, look at the pop-up info and see 600i meaning 600 samples or indexes.
 
 To see CHOPs as numbers, bring up OP Create, click on DAT, and create a "CHOP to" DAT. Then turn on the parameter called "Include Names". Now connect the Noise CHOP to the CHOP to DAT by dragging a node to the CHOP to DAT and to the parameter called "CHOP". Look at the table in the viewer, where each cell is a sample. Now try the Constant CHOP You can drag Constant onto CHOP to.
 
-Overall, a CHOP is used to represent a curve, a motion, an audio signal or a control signal in TouchDesigner. (See: [Channel](https://docs.derivative.ca/Channel "Channel"), [CHOP](https://docs.derivative.ca/CHOP "CHOP")).
+Overall, a CHOP is used to represent a curve, a motion, an audio signal or a control signal in TouchDesigner. (See: [Channel](../Glossary/Channel.md "Channel"), [CHOP](../Glossary/CHOP.md "CHOP")).
 
 ####  18. Export CHOP Channels to Parameters
 
-[Export](https://docs.derivative.ca/Export "Export") sends a value from a CHOP channel to an operator's parameter.
+[Export](../Glossary/Export.md "Export") sends a value from a CHOP channel to an operator's parameter.
 
-Create an [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"), slow it down, and connect it to a new Math CHOP. Turn on the Math CHOP's [Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active") flag on the bottom right. Create a [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"), then and add a new [Transform TOP](https://docs.derivative.ca/Transform_TOP "Transform TOP").
+Create an [LFO CHOP](../CHOPs/LFO_CHOP.md "LFO CHOP"), slow it down, and connect it to a new Math CHOP. Turn on the Math CHOP's [Viewer Active](../Glossary/Viewer_Active.md "Viewer Active") flag on the bottom right. Create a [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP"), then and add a new [Transform TOP](../TOPs/Transform_TOP.md "Transform TOP").
 
-Click the Transform TOP so you can export to its parameters. Left-click and hold down the channel in the Math CHOP's viewer and drag it to a parameter in the [Parameter Dialog](https://docs.derivative.ca/Parameter_Dialog "Parameter Dialog"): the Transform TOP's Translate parameter over the first number, the X value, and release the mouse button. Select 'Export CHOP' from the menu that appears to complete the export. Note the parameter goes green, indicating the parameter is in Export mode.
+Click the Transform TOP so you can export to its parameters. Left-click and hold down the channel in the Math CHOP's viewer and drag it to a parameter in the [Parameter Dialog](../Glossary/Parameter_Dialog.md "Parameter Dialog"): the Transform TOP's Translate parameter over the first number, the X value, and release the mouse button. Select 'Export CHOP' from the menu that appears to complete the export. Note the parameter goes green, indicating the parameter is in Export mode.
 
 Select the Math CHOP again (box-pick it or click the name-bar at bottom), and then adjust the motion range by selecting the Mult-Add page and adjusting the Multiply parameter.
 
-You can turn off the export: On the Math CHOP, turn off Viewer Active and click the green dot at the bottom of the CHOP: the Transform TOP's Translate goes back to its constant mode. Now turn on the export again. (See [Export](https://docs.derivative.ca/Export "Export") for more techniques).
+You can turn off the export: On the Math CHOP, turn off Viewer Active and click the green dot at the bottom of the CHOP: the Transform TOP's Translate goes back to its constant mode. Now turn on the export again. (See [Export](../Glossary/Export.md "Export") for more techniques).
 
 ####  19. Put a Python Expression in a Parameter
 
@@ -306,7 +305,7 @@ To enlarge the Parameter dialog to get more space: Put your cursor over the left
 
 If you press Ctrl-e with the cursor in a parameter it brings up the current parameter’s expression in your text editor, making it easier to see and edit long expressions. Alternately, right-click on the parameter and select Edit Expression.
 
-Look at this table for the most common Python expressions in TouchDesigner: [Python Tips](https://docs.derivative.ca/Python_Tips "Python Tips"). Many examples are in Help -> Python Examples. See also [Parameter](https://docs.derivative.ca/Parameter "Parameter").
+Look at this table for the most common Python expressions in TouchDesigner: [Python Tips](https://docs.derivative.ca/Python_Tips "Python Tips"). Many examples are in Help -> Python Examples. See also [Parameter](../Glossary/Parameter.md "Parameter").
 
 ####  20. Parameter Mode: Binding
 
@@ -320,7 +319,7 @@ Note that the actual value being shared is on `pattern1` - Expand the parameter 
 
 Press Tab, select TOP, select Ramp and place it. Right-click on the ramp node's output and select an Out TOP. Press Tab, select CHOP, select the In CHOP. Go back outside the component (press `u` or roller-wheel backward) and create an LFO CHOP by right-clicking on the component's input. This connects the new LFO CHOP to the input of the component. Set its Type parameter to Ramp.
 
-Go back into the component and [Export](https://docs.derivative.ca/Export "Export") the In CHOP channel to the Phase parameter of the Ramp TOP. You should see the ramp shifting. Go back outside the component. On the container's Panel page, in the Background TOP parameter, put `./out1`. You should see the rising ramp in the viewer. Right-click on the output of the container and add a Null TOP. You have now created a custom component with a CHOP input and a TOP output.
+Go back into the component and [Export](../Glossary/Export.md "Export") the In CHOP channel to the Phase parameter of the Ramp TOP. You should see the ramp shifting. Go back outside the component. On the container's Panel page, in the Background TOP parameter, put `./out1`. You should see the rising ramp in the viewer. Right-click on the output of the container and add a Null TOP. You have now created a custom component with a CHOP input and a TOP output.
 
 ####  22. Containers Hold User Interfaces
 
@@ -356,27 +355,27 @@ In python expressions you will often see `parent()`, which also refers to the pa
 
 ####  25. Split Panes and fill with other Pane Types
 
-Sometimes you want to be in two places at once. The TouchDesigner window can be split into 2 or more [Panes](https://docs.derivative.ca/Pane "Pane"). Split a pane via the pull-down menu at the top-right corner of a pane, selecting Split Left-Right.
+Sometimes you want to be in two places at once. The TouchDesigner window can be split into 2 or more [Panes](../Glossary/Pane.md "Pane"). Split a pane via the pull-down menu at the top-right corner of a pane, selecting Split Left-Right.
 
-Panes get filled with a choice of pane types via a pane's top-left corner menu. The Network Editor pane type is what you have been working in so far. The pane type "Panel" lets you interact with panel components. Pane type [Geometry Viewer](https://docs.derivative.ca/Geometry_Viewer "Geometry Viewer") lets you interact with 3D scenes and objects. right-click -> Viewer on nodes give similar views in floating windows.
+Panes get filled with a choice of pane types via a pane's top-left corner menu. The Network Editor pane type is what you have been working in so far. The pane type "Panel" lets you interact with panel components. Pane type [Geometry Viewer](../Interoperability/Geometry_Viewer.md "Geometry Viewer") lets you interact with 3D scenes and objects. right-click -> Viewer on nodes give similar views in floating windows.
 
-Adjust the panes' sizes with the dividing bar between the panes, then close the pane via the pull-down menu at the top-right corner of a pane. You can also click the Layout or Bookmark icons at the top of a pane to select a multi-pane layout. See [Pane](https://docs.derivative.ca/Pane "Pane") for more.
+Adjust the panes' sizes with the dividing bar between the panes, then close the pane via the pull-down menu at the top-right corner of a pane. You can also click the Layout or Bookmark icons at the top of a pane to select a multi-pane layout. See [Pane](../Glossary/Pane.md "Pane") for more.
 
 ####  26. Render a 3D Scene with a Render TOP
 
 Now let's render something in 3D with the Render TOP. Create a Container component in `/project1`, rename it to `scene` and go into it. Create a Render TOP. Next create three components: a Geometry, a Light and a Camera. The dashed lines mean that parameters of the Render TOP already refer to these components. In the Render TOP's Camera parameter, you see `cam1`, which means "get your camera from the node `cam1`". In the Geometry parameter, the `*` in `geo*` means "get all Geometry components in this network whose name starts with `geo`".
 
-Go to the parameters of the `geo1` Geometry node and Rotate the torus in Z (the third field of Rotate) to 30 degrees. The Render TOP changes. Now click the [Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active") flag of `geo1` and click/move the torus to tumble it. Note the render stays the same. The tumbling in the Geometry component viewer is for inspection only. Press `h` in the `geo1` viewer to home (reset the tumble).
+Go to the parameters of the `geo1` Geometry node and Rotate the torus in Z (the third field of Rotate) to 30 degrees. The Render TOP changes. Now click the [Viewer Active](../Glossary/Viewer_Active.md "Viewer Active") flag of `geo1` and click/move the torus to tumble it. Note the render stays the same. The tumbling in the Geometry component viewer is for inspection only. Press `h` in the `geo1` viewer to home (reset the tumble).
 
 Now go back up to `/project1`. Put `absTime.seconds * 20` in the first field of the Rotate parameter (X). `absTime.seconds` is python for the "absolute time in seconds", which is a number that continues to rise by 1 every second until you quit TouchDesigner. Affecting parameters affects the render. This is your basic render setup. (`absTime.frame` increases by 1 each frame, so speed depends on your timeline frames per second)
 
 ####  27. Timeline lets you Play, Pause and Examine
 
-The [Timeline](https://docs.derivative.ca/Timeline "Timeline") is located along the bottom of the main TouchDesigner window. The FPS at the bottom left is the number of frames TouchDesigner will step forward every second. Note that the FPS at the top of the UI is the actual number of frames TouchDesigner drew in the last second, which will be the FPS or less.
+The [Timeline](../Glossary/Timeline.md "Timeline") is located along the bottom of the main TouchDesigner window. The FPS at the bottom left is the number of frames TouchDesigner will step forward every second. Note that the FPS at the top of the UI is the actual number of frames TouchDesigner drew in the last second, which will be the FPS or less.
 The timeline lets you pause (||), play (>) and single-step (+) the timeline in TouchDesigner.
 Spacebar will always stop and start the timeline. Every time it steps to another frame, it redraws the screen.
 The power button at the top (0|1) shuts off all computing, clocks and communication in the TouchDesigner process, and is useful for inspecting things in a frozen state.
-You will see when the timeline reaches the far right, it loops to the beginning of the timeline. But TouchDesigner is mostly event-driven with a free-running clock, so most things you build don't follow the looping timeline and its frame number: For example, create a Constant CHOP, set it to 1 and connect it to a Speed CHOP. It increases its count continuously and does not relate to the timeline. The [Speed CHOP](https://docs.derivative.ca/Speed_CHOP "Speed CHOP") restarts when you press its Reset parameter.
+You will see when the timeline reaches the far right, it loops to the beginning of the timeline. But TouchDesigner is mostly event-driven with a free-running clock, so most things you build don't follow the looping timeline and its frame number: For example, create a Constant CHOP, set it to 1 and connect it to a Speed CHOP. It increases its count continuously and does not relate to the timeline. The [Speed CHOP](../Glossary/Speed_CHOP.md "Speed CHOP") restarts when you press its Reset parameter.
 
 Create a Movie File In TOP and on the File parameter select + and select `Count.mov`. Movie File In TOP plays in its default Sequential Play Mode continuously regardless of the timeline position, which you can see if you reduce the Speed parameter.
 
@@ -386,21 +385,21 @@ But most often, the movie is played using a CHOP channel. Create a Constant CHOP
 
 ####  28. Create Animation Curves with the Animation Editor
 
-Create an [Animation Component](https://docs.derivative.ca/Animation_COMP "Animation COMP"). By default it outputs a CHOP with no channels. Now right-click on the node and select Edit Animation... (or press Edit Animation... in its parameter dialog).
+Create an [Animation Component](../Glossary/Animation_COMP.md "Animation COMP"). By default it outputs a CHOP with no channels. Now right-click on the node and select Edit Animation... (or press Edit Animation... in its parameter dialog).
 
 Click Add Channels button and 3 channels will be created, `tx`, `ty`, and `tz`. Keyframes are the dots on the channels. Click on any keyframe and move it anywhere. To add additional keyframes to any channel, use alt+LMB and click on the location you want the keyframe. Use the right-mouse-button to box-select. Box-select the curve (not the keyframe dot), and change the Function menu from `cubic()` to `linear()` to change interpolation type.
 
-Then watch the [Timeline](https://docs.derivative.ca/Timeline "Timeline") at the bottom and the values of the channel in the Animation component viewer. Note the channel values follow the timeline.
+Then watch the [Timeline](../Glossary/Timeline.md "Timeline") at the bottom and the values of the channel in the Animation component viewer. Note the channel values follow the timeline.
 
-If you want more control of the timing, connect an animated channel to the Animation component's input: Create a [Beat CHOP](https://docs.derivative.ca/Beat_CHOP "Beat CHOP") and wire it to Animation COMP's input. Set the Animation COMP's **Play Mode** to "Use Input Index" and the **Input Index Unit** parameter menu to "Fraction".
+If you want more control of the timing, connect an animated channel to the Animation component's input: Create a [Beat CHOP](../CHOPs/Beat_CHOP.md "Beat CHOP") and wire it to Animation COMP's input. Set the Animation COMP's **Play Mode** to "Use Input Index" and the **Input Index Unit** parameter menu to "Fraction".
 
-Then create a [Constant CHOP](https://docs.derivative.ca/Constant_CHOP "Constant CHOP"), wire it to the Animation COMP first input and move the Constant's `chan1` slider. In both cases, the 0-1 value will control which part of the animation curve is output, de-coupling the Animation COMP from the timeline. You can always change Play Mode to Output Full Range to output the full-length channels.
+Then create a [Constant CHOP](../CHOPs/Constant_CHOP.md "Constant CHOP"), wire it to the Animation COMP first input and move the Constant's `chan1` slider. In both cases, the 0-1 value will control which part of the animation curve is output, de-coupling the Animation COMP from the timeline. You can always change Play Mode to Output Full Range to output the full-length channels.
 
 Another way to create an animation component pre-wired is to right-click on a parameter and select Keyframe Parameter in...
 
 ####  29. DAT Operators manipulate Text
 
-[DATs](https://docs.derivative.ca/DAT "DAT") are "Data Operators" that allow you to store and manipulate text in your TouchDesigner networks. Text DATs are used to write scripts, shaders and any free-form text.
+[DATs](../Glossary/DAT.md "DAT") are "Data Operators" that allow you to store and manipulate text in your TouchDesigner networks. Text DATs are used to write scripts, shaders and any free-form text.
 
 Create a Web DAT and assuming you are on the Internet, press the Fetch parameter. This retrieves HTML from a website.
 
@@ -411,22 +410,22 @@ This is a bit of a taste of DATs.
 ####  30. Sweet Sixteen Operators
 
 There are a lot of OP types in TouchDesigner, but the most common and useful operators in each family are the Sweet Sixteens. You may want to try some of them out. This includes:
-  * [Sweet Sixteen CHOPs](https://docs.derivative.ca/CHOP#Sweet_16_CHOPs "CHOP")
-  * [Sweet Sixteen TOPs](https://docs.derivative.ca/TOP#Sweet_16_TOPs "TOP")
-  * [Sweet Sixteen SOPs](https://docs.derivative.ca/SOP#Sweet_16_SOPs "SOP")
-  * [Sweet Sixteen DATs](https://docs.derivative.ca/DAT#Sweet_16_DATs "DAT")
+  * [Sweet Sixteen CHOPs](../Glossary/CHOP.md#Sweet_16_CHOPs "CHOP")
+  * [Sweet Sixteen TOPs](../TOPs/TOP.md#Sweet_16_TOPs "TOP")
+  * [Sweet Sixteen SOPs](../SOPs/SOP.md#Sweet_16_SOPs "SOP")
+  * [Sweet Sixteen DATs](../Glossary/DAT.md#Sweet_16_DATs "DAT")
 
 These are in the wiki, which you can get to from the WIKI button in the UI.
 
 ####  31. Explore the Operator Snippets
 
-One way to learn more about operators is to see them in small examples. Select the menu Help -> [Operator Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets"). This will start another TouchDesigner window that contains hundreds of examples using operators from each family. This is a rich resource of tips.
+One way to learn more about operators is to see them in small examples. Select the menu Help -> [Operator Snippets](OP_Snippets.md "OP Snippets"). This will start another TouchDesigner window that contains hundreds of examples using operators from each family. This is a rich resource of tips.
 
 ####  32. Get Components from the Palette
 
 Components from the Palette Browser contain pre-made networks, and some have a custom control panel. You can also store Components you create in the Palette for easy access and reuse them elsewhere your projects.
 
-To display a browser of pre-made [Components](https://docs.derivative.ca/Component "Component"), toggle off/on the Palette icon. Alternately, click Dialogs -> Palette Browser. Click on a component and drag it to the network. Components on disk are `.tox` files.
+To display a browser of pre-made [Components](../Glossary/Component.md "Component"), toggle off/on the Palette icon. Alternately, click Dialogs -> Palette Browser. Click on a component and drag it to the network. Components on disk are `.tox` files.
 
 Watch the video [A Movie Player Panel and Building UIs](http://www.derivative.ca/Events/2016/NorwayWorkshop/), a tutorial on the basics of panel building.
 
@@ -440,13 +439,13 @@ Alternately Press [ [FORUM](http://www.derivative.ca/Forum/viewforum.php?f=22) ]
 
 ####  34. Perform Mode runs your Application Solo and Optimized
 
-Press the F1 function key. See the container panel of `/project1` in a floating window. TouchDesigner is in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode") which runs it without the network editor. Then press Esc to go back to [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode").
+Press the F1 function key. See the container panel of `/project1` in a floating window. TouchDesigner is in [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode") which runs it without the network editor. Then press Esc to go back to [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode").
 
 TouchPlayer runs your application in Perform Mode only.
 
 ####  35. Speeding it up with the Performance Monitor
 
-Dialogs -> [Performance Monitor](https://docs.derivative.ca/Performance_Monitor "Performance Monitor") will let you see, in one frame, what nodes cook, in what order, and how long they took. Now be aware, Performance Monitor only shows what cooks on the CPU, not the GPU. But a long bar at the bottom usually means the GPU is still busy finishing rendering a frame and displaying the UI.
+Dialogs -> [Performance Monitor](../Glossary/Performance_Monitor.md "Performance Monitor") will let you see, in one frame, what nodes cook, in what order, and how long they took. Now be aware, Performance Monitor only shows what cooks on the CPU, not the GPU. But a long bar at the bottom usually means the GPU is still busy finishing rendering a frame and displaying the UI.
 
 middle-click on any node to see if the node is cooking every frame or not, and how long it took the most recent time it cooked.
 
@@ -455,7 +454,6 @@ There is also the Perform CHOP, and you can create Info CHOP and drag any node o
 Another tool called "probe" lets you see GPU and CPU cooking and memory usage. Get `probe` from the Palette -> Tools -> probe, and see its wiki page: [Palette:probe](https://docs.derivative.ca/Palette:probe "Palette:probe").
 
 ####  36. Quick Tips and Good Habits
-
   * Click on the **bulls-eye** circles in a parameter dialog to see which parameters are non-default. This is very useful for understanding other people's networks.
   * To get quick help for a parameter, hold down Alt and move your cursor over a parameter. You will get the parameter's help info that is in the wiki.
   * **Color Code Nodes** - With your cursor over the network, press "c" to bring up the color swatch. Select some nodes. Click any color in the color swatch. This only affects the node's appearance in the network.
@@ -464,16 +462,16 @@ Another tool called "probe" lets you see GPU and CPU cooking and memory usage. G
   * Ctrl+f (Command+f on macOS) will bring up a **Find bar** that will let you type node names that you may be looking for. Names that match what you type are highlighted and centered. Use **Edit - > Search/Replace** to generate a list of operators in your whole project that match search criteria and optionally modify them.
   * When you **don't have a mouse** , zoom and scroll the network editor by pressing the keyboard shortcuts Ctrl+=, Ctrl+-, Ctrl+up, Ctrl+down, Ctrl+left, Ctrl+right (all with Command+ on macOS).
   * In OP Create, you can **create nodes-in-a-row** faster by using Shift-click to select a sequence of nodes. Use Ctrl-click on the OP Create menu to create a node in a new independent row.
-  * To connect multiple operators at once to a **multi-input OP** like a [Composite TOP](https://docs.derivative.ca/Composite_TOP "Composite TOP") or [Switch CHOP](https://docs.derivative.ca/Switch_CHOP "Switch CHOP"), box-pick the inputs, and connect one of their outputs to the multi-input OP's input connector. They all get wired in.
+  * To connect multiple operators at once to a **multi-input OP** like a [Composite TOP](../TOPs/Composite_TOP.md "Composite TOP") or [Switch CHOP](../CHOPs/Switch_CHOP.md "Switch CHOP"), box-pick the inputs, and connect one of their outputs to the multi-input OP's input connector. They all get wired in.
   * Node names are **case-sensitive** , so `level2` is different from `Level2`.
-  * The idea of "**Absolute Time** " is a clock that counts up forever and doesn't loop to 0 like the timeline. This gives smooth always-changing values when using python: `absTime.seconds`, `absTime.frame`. Try code>absTime.seconds in a [Transform TOP](https://docs.derivative.ca/Transform_TOP "Transform TOP") Rotate parameter.
+  * The idea of "**Absolute Time** " is a clock that counts up forever and doesn't loop to 0 like the timeline. This gives smooth always-changing values when using python: `absTime.seconds`, `absTime.frame`. Try code>absTime.seconds in a [Transform TOP](../TOPs/Transform_TOP.md "Transform TOP") Rotate parameter.
   * Use **Null operators** when referencing or exporting - you can then insert additional operators before the Null to modify your network without having to change your reference or export location
   * use the **Info DAT or Info CHOP** on a node to see some of its internal states and possibly help troubleshooting.
   * You can turn on/off **Adaptive Homing in SOP viewers** and Geometry viewers - in the right-click menu on SOP Or Geometry viewers in Viewer Active mode. In Preferences -> Geometry turn the options on and then Accept, which makes sure you always see your 3D geometry in-view.
   * **replace an existing wire** by clicking on the output of the new source and clicking on the wire you want to replace.
   * Add **[comments and annotations](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates")** in networks using Alt-right-click and drag to set an annotate box, or use the "a", "b" or "c" shortcuts. Comments are more concise annotates.
   * The preferred scripting language is Python, though you may see Tscript in older work, and a T in the parameter dialog where you would normally see the python icon.
-  * The **Status Bar** is located at the top right of TouchDesigner's main window and provides information about recent operations. It may display a message to indicate success/failure of events, or display a hint to tell you how to use a tool. Keep an eye on it. (The [python code](https://docs.derivative.ca/UI_Class "UI Class") `ui.status = 'My message'` can be used to place a line in the status bar.)
+  * The **Status Bar** is located at the top right of TouchDesigner's main window and provides information about recent operations. It may display a message to indicate success/failure of events, or display a hint to tell you how to use a tool. Keep an eye on it. (The [python code](../Python/UI_Class.md "UI Class") `ui.status = 'My message'` can be used to place a line in the status bar.)
 
 ####  More...
 
@@ -481,92 +479,92 @@ Now you know the basics. Take a break. Later you can go to **[More Things to Kno
 
 Every component contains a network of operators that create and modify data. The operators are connected by wires that define where data is routed after the operator cooks its inputs and generates an output.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
 A pane type where networks of operators can be created and edited.
 
-The Operator Families are [TOPs](https://docs.derivative.ca/TOP "TOP"), [CHOPs](https://docs.derivative.ca/CHOP "CHOP"), [POPs](https://docs.derivative.ca/POP "POP") (Point Operators), [MATs](https://docs.derivative.ca/MAT "MAT") (Materials), [DATs](https://docs.derivative.ca/DAT "DAT") (data operators), [SOPs](https://docs.derivative.ca/SOP "SOP") and [Components](https://docs.derivative.ca/Component "Component") (Panel Gadgets and Objects).
+The Operator Families are [TOPs](../TOPs/TOP.md "TOP"), [CHOPs](../Glossary/CHOP.md "CHOP"), [POPs](../POPs/POP.md "POP") (Point Operators), [MATs](../MATs/MAT.md "MAT") (Materials), [DATs](../Glossary/DAT.md "DAT") (data operators), [SOPs](../SOPs/SOP.md "SOP") and [Components](../Glossary/Component.md "Component") (Panel Gadgets and Objects).
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-MATs or Materials are an [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that applies a [Shader](https://docs.derivative.ca/Shader "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
+MATs or Materials are an [Operator Family](../Glossary/Operator_Family.md "Operator Family") that applies a [Shader](../Glossary/Shader.md "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
 
-MATs or Materials are an [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that applies a [Shader](https://docs.derivative.ca/Shader "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
+MATs or Materials are an [Operator Family](../Glossary/Operator_Family.md "Operator Family") that applies a [Shader](../Glossary/Shader.md "Shader") to a SOP or 3D Geometry Object for rendering textured surfaces with lighting.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-The Container component type is a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") that holds, lays out and displays any number of other Panel Components.
+The Container component type is a [Panel Component](../Glossary/Panel_Component.md "Panel Component") that holds, lays out and displays any number of other Panel Components.
 
 A state of a node where you can operate the contents of its viewer (the + at botton-right of any node), like operating the gadgets of a panel in a node viewer, or the 3D data in the viewer of a Geometry component. With Viewer Active off you can select, move and delete nodes by clicking/dragging on them, even if the viewer is visible.
 
-Every operator in TouchDesigner has a set of control Parameters that can be integer or floating point numbers, menus, binary toggles, text strings or operator [paths](https://docs.derivative.ca/Network_Path "Network Path"), which determine the output of the operator.
+Every operator in TouchDesigner has a set of control Parameters that can be integer or floating point numbers, menus, binary toggles, text strings or operator [paths](../Glossary/Network_Path.md "Network Path"), which determine the output of the operator.
 
 A floating dialog, pane type, or dialog in a Network Editor that displays one operator's parameters.
 
-Each node has a viewer flag that turns on/off the node's viewer in the [Node Viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer").
+Each node has a viewer flag that turns on/off the node's viewer in the [Node Viewer](../Glossary/Node_Viewer.md "Node Viewer").
 
 An operator whose Bypass flag is set does nothing: All data going into its first input appears at its output unaffected.
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](https://docs.derivative.ca/Root "Root"). This path is displayed at the top of every [Pane](https://docs.derivative.ca/Pane "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](https://docs.derivative.ca/Folder "Folder").
+The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](../Glossary/Root.md "Root"). This path is displayed at the top of every [Pane](../Glossary/Pane.md "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](../Glossary/Folder.md "Folder").
 
-A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](../Glossary/Network_Path.md "Network Path").
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-TouchDesigner Component file, the file type used to save a [Component](https://docs.derivative.ca/Component "Component") of your TouchDesigner project.
+TouchDesigner Component file, the file type used to save a [Component](../Glossary/Component.md "Component") of your TouchDesigner project.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-(1) The TouchDesigner window is made of a menu bar at the top, a [Timeline](https://docs.derivative.ca/Timeline "Timeline") at the bottom, plus one of a choice of Layouts in the middle. A Layout is made on one or more Panes, each Pane can contain a Network Editor, Viewer, Panel, etc. See [Pane](https://docs.derivative.ca/Pane "Pane") and [Bookmark](https://docs.derivative.ca/Bookmark "Bookmark"). (2) Nodes in a network are arranged using Layout commands in the RMB menu.
+(1) The TouchDesigner window is made of a menu bar at the top, a [Timeline](../Glossary/Timeline.md "Timeline") at the bottom, plus one of a choice of Layouts in the middle. A Layout is made on one or more Panes, each Pane can contain a Network Editor, Viewer, Panel, etc. See [Pane](../Glossary/Pane.md "Pane") and [Bookmark](../Glossary/Bookmark.md "Bookmark"). (2) Nodes in a network are arranged using Layout commands in the RMB menu.
 
-Every Parameter can be in one of four modes: Constant Mode, [Expression](https://docs.derivative.ca/Expression "Expression") Mode, [Export](https://docs.derivative.ca/Export "Export") Mode or Bind ([Binding](https://docs.derivative.ca/Binding "Binding")) Mode.
+Every Parameter can be in one of four modes: Constant Mode, [Expression](../Glossary/Expression.md "Expression") Mode, [Export](../Glossary/Export.md "Export") Mode or Bind ([Binding](../Glossary/Binding.md "Binding")) Mode.
 
-Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](https://docs.derivative.ca/CHOP_Viewer "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](https://docs.derivative.ca/Parameter "Parameter").
+Exporting is the connection of CHOP channels to parameters of operators. The output of each exporting CHOP is one or more channels, active only while the [CHOP Viewer](../Glossary/CHOP_Viewer.md "CHOP Viewer") is on. The current value of a channel can be exported to a parameter of any operator, overriding that parameter's value. See [Parameter](../Glossary/Parameter.md "Parameter").
 
-A text string that contains data (string, float, list, boolean, etc.) and operators (+ * < etc) that are evaluated by the node's language (python or Tscript) and returns a string, float list or boolean, etc. Expressions are used in parameters, [DATs](https://docs.derivative.ca/DAT "DAT") and in scripts.
+A text string that contains data (string, float, list, boolean, etc.) and operators (+ * < etc) that are evaluated by the node's language (python or Tscript) and returns a string, float list or boolean, etc. Expressions are used in parameters, [DATs](../Glossary/DAT.md "DAT") and in scripts.
 
-Binding is a [Parameter Mode](https://docs.derivative.ca/Parameter_Mode "Parameter Mode") that ties two or more parameters' values together, where changing the value of any one of the bound parameters changes all of them. The actual value is stored in one place.
+Binding is a [Parameter Mode](../Glossary/Parameter_Mode.md "Parameter Mode") that ties two or more parameters' values together, where changing the value of any one of the bound parameters changes all of them. The actual value is stored in one place.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-samples-per-second of a [CHOP](https://docs.derivative.ca/CHOP "CHOP"). Each CHOP in your network has a sample rate. In contrast, the overall timeline has a [Frame Rate](https://docs.derivative.ca/Frame_Rate "Frame Rate"), which is the number of frames to [cook](https://docs.derivative.ca/Cook "Cook") and display per second, generally your monitor display frequency, default 60.
+samples-per-second of a [CHOP](../Glossary/CHOP.md "CHOP"). Each CHOP in your network has a sample rate. In contrast, the overall timeline has a [Frame Rate](../Glossary/Frame_Rate.md "Frame Rate"), which is the number of frames to [cook](../Glossary/Cook.md "Cook") and display per second, generally your monitor display frequency, default 60.
 
-The generic thing that holds an [Operator](https://docs.derivative.ca/Operator "Operator"), and includes [Flags](https://docs.derivative.ca/Flag "Flag") (display, bypass, lock, render, immune) and its position/size in the network. Whether you "lay down an Operator" or "lay down an Node", you're doing the same thing.
+The generic thing that holds an [Operator](../General/Operator.md "Operator"), and includes [Flags](../Glossary/Flag.md "Flag") (display, bypass, lock, render, immune) and its position/size in the network. Whether you "lay down an Operator" or "lay down an Node", you're doing the same thing.
 
-A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](https://docs.derivative.ca/Panel_Component "Panel Component").
+A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](../Glossary/Panel_Component.md "Panel Component").
 
-The 3D data held in SOPs and passed for rendering by the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP").
+The 3D data held in SOPs and passed for rendering by the [Geometry COMP](../Glossary/Geometry_COMP.md "Geometry COMP").
 
 Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off or the root timeline is paused.
 
-The panel at the bottom of TouchDesigner, it controls the current global looping [Time](https://docs.derivative.ca/Time_COMP "Time COMP") your TouchDesigner project, or of just one component.
+The panel at the bottom of TouchDesigner, it controls the current global looping [Time](../Glossary/Time_COMP.md "Time COMP") your TouchDesigner project, or of just one component.
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.
 
-In the [Animation component](https://docs.derivative.ca/Animation_COMP "Animation COMP") each keyframe specifies a channel's value at a specific time (or frame). A keyframe holds a value, slopes and accelerations, and an interpolation type. A channel's keyframes are used to interpolate and determine the values of all the samples of the channel.
+In the [Animation component](../Glossary/Animation_COMP.md "Animation COMP") each keyframe specifies a channel's value at a specific time (or frame). A keyframe holds a value, slopes and accelerations, and an interpolation type. A channel's keyframes are used to interpolate and determine the values of all the samples of the channel.
 
-[OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") is a set of 700+ live examples of TouchDesigner operators. You can access snippets via the Help menu, or by right-clicking on network operators, or r-clicking on OP Create dialog items.
+[OP Snippets](OP_Snippets.md "OP Snippets") is a set of 700+ live examples of TouchDesigner operators. You can access snippets via the Help menu, or by right-clicking on network operators, or r-clicking on OP Create dialog items.
 
 A built-in panel in TouchDesigner that contains a library of components and media that can be dragged-dropped into a TouchDesigner network.
 
-Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"). Alternate with F1 and Esc.
+Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](../Glossary/Window_COMP.md "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"). Alternate with F1 and Esc.
 
 The tool built-in to TouchDesigner that analyzes and displays what TouchDesigner is doing as it generates the output images, audio and data.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
 Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off or the root timeline is paused.
 
-In the [Node Viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") of a Geometry COMP or any POP, the Adaptive Homing option will continually keep in-view the 3D geometry being displayed, even when the geometry changes shape, size and animated position.
+In the [Node Viewer](../Glossary/Node_Viewer.md "Node Viewer") of a Geometry COMP or any POP, the Adaptive Homing option will continually keep in-view the 3D geometry being displayed, even when the geometry changes shape, size and animated position.
 
-TouchDesigner's original built-in Command scripting language prior to [Python](https://docs.derivative.ca/Python "Python").
+TouchDesigner's original built-in Command scripting language prior to [Python](../General/Python.md "Python").
 
 The line of text at the top of the TouchDesigner window which displays messages from TouchDesigner when certain events succeed or fail.

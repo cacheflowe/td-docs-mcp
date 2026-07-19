@@ -8,7 +8,7 @@ title: JSON
 
 JSON (JavaScript Object Notation) is a lightweight data-interchange format, easy for humans to read and write, and easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language spec.
 
-JSON can be read, written, filtered and manipulated in TouchDesigner. See the [JSON DAT](https://docs.derivative.ca/JSON_DAT "JSON DAT") and [TDJSON](https://docs.derivative.ca/TDJSON "TDJSON").
+JSON can be read, written, filtered and manipulated in TouchDesigner. See the [JSON DAT](../DATs/JSON_DAT.md "JSON DAT") and [TDJSON](https://docs.derivative.ca/TDJSON "TDJSON").
 
 Intro to JSON at json.org - [JSON](http://www.json.org/) and [JSON format](https://www.json.org/json-en.html).
 

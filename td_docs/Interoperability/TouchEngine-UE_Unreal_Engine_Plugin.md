@@ -8,9 +8,9 @@ title: TouchEngine-UE_Unreal_Engine_Plugin
 
 (Redirected from [TouchEngine-UE Unreal Engine Plugin](https://docs.derivative.ca/index.php?title=TouchEngine-UE_Unreal_Engine_Plugin&redirect=no "TouchEngine-UE Unreal Engine Plugin"))
 
-The TouchEngine For UE Plugin is built around the [TouchEngine](https://docs.derivative.ca/TouchEngine "TouchEngine") API.
+The TouchEngine For UE Plugin is built around the [TouchEngine](TouchEngine.md "TouchEngine") API.
 
-It allows Unreal Engine users and developers to load TouchDesigner [.tox](https://docs.derivative.ca/.tox ".tox") files, process them, and pass data back and forth from within Unreal Engine.
+It allows Unreal Engine users and developers to load TouchDesigner [.tox](../Glossary/.tox.md ".tox") files, process them, and pass data back and forth from within Unreal Engine.
 
 **Note:** The TouchEngine For UE Plugin is **only** compatible with Windows.
 

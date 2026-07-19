@@ -8,34 +8,34 @@ title: Object_Component
 
 ## Summary
 
-Object Components, a subset of all [Components](https://docs.derivative.ca/Component "Component"), are used to create and render 3D scenes within TouchDesigner (also called [Objects](https://docs.derivative.ca/Object "Object")).
+Object Components, a subset of all [Components](Component.md "Component"), are used to create and render 3D scenes within TouchDesigner (also called [Objects](Object.md "Object")).
 
-[Ambient Light COMP](https://docs.derivative.ca/Ambient_Light_COMP "Ambient Light COMP")
+[Ambient Light COMP](../COMPs/Ambient_Light_COMP.md "Ambient Light COMP")
 
-[Blend COMP](https://docs.derivative.ca/Blend_COMP "Blend COMP")
+[Blend COMP](../COMPs/Blend_COMP.md "Blend COMP")
 
-[Bone COMP](https://docs.derivative.ca/Bone_COMP "Bone COMP")
+[Bone COMP](../COMPs/Bone_COMP.md "Bone COMP")
 
-[Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP")
+[Camera COMP](Camera_COMP.md "Camera COMP")
 
-[Camera Blend COMP](https://docs.derivative.ca/Camera_Blend_COMP "Camera Blend COMP")
+[Camera Blend COMP](../COMPs/Camera_Blend_COMP.md "Camera Blend COMP")
 
-[Environment Light COMP](https://docs.derivative.ca/Environment_Light_COMP "Environment Light COMP")
+[Environment Light COMP](../COMPs/Environment_Light_COMP.md "Environment Light COMP")
 
-[FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP")
+[FBX COMP](../COMPs/FBX_COMP.md "FBX COMP")
 
-[Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP")
+[Geometry COMP](Geometry_COMP.md "Geometry COMP")
 
-[Handle COMP](https://docs.derivative.ca/Handle_COMP "Handle COMP")
+[Handle COMP](../COMPs/Handle_COMP.md "Handle COMP")
 
-[Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP")
+[Light COMP](Light_COMP.md "Light COMP")
 
-[Null COMP](https://docs.derivative.ca/Null_COMP "Null COMP")
+[Null COMP](../COMPs/Null_COMP.md "Null COMP")
 
 [Nvidia Flow Emitter COMP](https://docs.derivative.ca/Nvidia_Flow_Emitter_COMP "Nvidia Flow Emitter COMP")
 
-[Shared Mem Out COMP](https://docs.derivative.ca/Shared_Mem_Out_COMP "Shared Mem Out COMP"), [Shared Mem In COMP](https://docs.derivative.ca/Shared_Mem_In_COMP "Shared Mem In COMP")
+[Shared Mem Out COMP](../COMPs/Shared_Mem_Out_COMP.md "Shared Mem Out COMP"), [Shared Mem In COMP](../COMPs/Shared_Mem_In_COMP.md "Shared Mem In COMP")
 
-[USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP")
+[USD COMP](../COMPs/USD_COMP.md "USD COMP")
 
-[ObjectCOMP Class](https://docs.derivative.ca/ObjectCOMP_Class "ObjectCOMP Class")
+[ObjectCOMP Class](../Python/ObjectCOMP_Class.md "ObjectCOMP Class")

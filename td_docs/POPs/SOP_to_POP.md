@@ -14,7 +14,7 @@ The attributes of the SOP point list are converted to point attributes, with `P`
 
 For primitives, the triangles and quads are converted intact as triangles and quads. Because POPs do not support polygons with 5 or more points, a menu lets you choose between creating line strips, converting to triangles, or ignoring these primitives.
 
-Mesh primitives in SOPs are converted to a choice of quad, line strip or point primitives. It does not preserve the row/column [Dimension](https://docs.derivative.ca/Dimension "Dimension") but the [Dimension POP](https://docs.derivative.ca/Dimension_POP "Dimension POP") can be used to preserve that information.
+Mesh primitives in SOPs are converted to a choice of quad, line strip or point primitives. It does not preserve the row/column [Dimension](../Glossary/Dimension.md "Dimension") but the [Dimension POP](Dimension_POP.md "Dimension POP") can be used to preserve that information.
 
 SOP primitives like sphere are converted only as points in POPs. and the more rarely used SOP Bezier/NURBS primitives are also converted to points with no primitives.
 
@@ -24,16 +24,15 @@ Primitive attributes are converted intact, again with `Cd` renamed as `Color`.
 
 The attributes in POPs are 32-bit float to float4 attributes.
 
-[soptoPOP_Class](https://docs.derivative.ca/SoptoPOP_Class "SoptoPOP Class")
+[soptoPOP_Class](SOP_to_POP_Class.md "SoptoPOP Class")
 
 ## Parameters - SOP to Page
-
 - SOP `sop` - Reference to a SOP that will have its geometry converted to POP geometry.
+
 5+ Points Polygons `polygons` - ⊞ - Select what to do with 5+ points polygons.
   * Ignore `ignore` -
   * Triangulated `triangulated` -
   * Closed Line Strip `closedlinestrip` -
-
 - Meshes `mesh` - ⊞ - Choose what to do with meshes in the input SOP.
   * Ignore `ignore` -
   * Convert to Quads `quads` -
@@ -41,7 +40,6 @@ The attributes in POPs are 32-bit float to float4 attributes.
   * Convert Columns to Line Strips `cols` -
   * Convert Rows and Columns to Line Strips `rowscols` -
   * Convert to Point Primitives `points` -
-
 - Input Color Space `inputcolorspace` - ⊞ - Override / set the color space, or use the color space in the file, or assume default if there is none.
   * Automatic `automatic` -
   * sRGB `srgb` -
@@ -59,7 +57,6 @@ The attributes in POPs are 32-bit float to float4 attributes.
   * ACEScg `acescg` -
   * ACESproxy `acesproxy` -
   * Passthrough `passthrough` -
-
 - Input Reference White `inputreferencewhite` - ⊞ - Color space to use for the incoming data.
   * Default For Color Space `default` -
   * Standard (SDR) `sdr` -
@@ -67,14 +64,13 @@ The attributes in POPs are 32-bit float to float4 attributes.
   * UI `ui` -
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
 
 ## Info CHOP Channels
 
-Extra Information for the SOP to POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the SOP to POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -85,19 +81,11 @@ Extra Information for the SOP to POP can be accessed via an [Info CHOP](https://
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

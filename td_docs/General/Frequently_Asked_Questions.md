@@ -1,6 +1,6 @@
 ---
 url: https://docs.derivative.ca/Frequently_Asked_Questions
-category: CHOPs
+category: General
 title: Frequently_Asked_Questions
 ---
 
@@ -12,7 +12,7 @@ title: Frequently_Asked_Questions
 
 **Q:** What kind of graphics card (GPU) do I need for TouchDesigner?
 
-**A:** TouchDesigner runs on Nvidia Geforce and Quadro GPUs or AMD Radeon and FirePro GPUs. Recent Intel integrated graphics are supported but will have limitations due to the graphics requirements of TouchDesigner. See [System Requirements](https://docs.derivative.ca/System_Requirements "System Requirements") for details.
+**A:** TouchDesigner runs on Nvidia Geforce and Quadro GPUs or AMD Radeon and FirePro GPUs. Recent Intel integrated graphics are supported but will have limitations due to the graphics requirements of TouchDesigner. See [System Requirements](../Learn/System_Requirements.md "System Requirements") for details.
 
 **Q:** What is the most ideal system I should buy for TouchDesigner?
 
@@ -24,21 +24,21 @@ title: Frequently_Asked_Questions
 
 **Q:** Can I use live audio to drive TouchDesigner visuals?
 
-**A:** Yes, you can use live audio inputs and analyze the incoming signal to create control channels for your visuals, or you can have other audio programs send TouchDesigner raw OSC and MIDI events directly. If you use Ableton Live check out the bi-direction sync environment connecting TouchDesigner to Live called [TDAbleton](https://docs.derivative.ca/TDAbleton "TDAbleton").
+**A:** Yes, you can use live audio inputs and analyze the incoming signal to create control channels for your visuals, or you can have other audio programs send TouchDesigner raw OSC and MIDI events directly. If you use Ableton Live check out the bi-direction sync environment connecting TouchDesigner to Live called [TDAbleton](../Interoperability/TDAbleton.md "TDAbleton").
 
 **Q:** What input devices can be used with TouchDesigner?
 
-**A:** See [Interoperability](https://docs.derivative.ca/Interoperability "Interoperability"). MIDI is fully supported in TouchDesigner, so any MIDI device will work. Software and hardware devices can also connect to TouchDesigner through [OSC](https://docs.derivative.ca/OSC "OSC") (Open Sound Control), UDP, TCP/IP, and/or serial communications. Other software like Ableton Live, apps on iOS and Android, and custom made applications can connect to TouchDesigner using these tools. There are also builtin operators for inputs from [Kinect](https://docs.derivative.ca/Kinect "Kinect") sensors, [joysticks and gamepads](https://docs.derivative.ca/Joystick_CHOP "Joystick CHOP"), [tablet and stylus](https://docs.derivative.ca/Tablet_CHOP "Tablet CHOP"), and [multi-touch devices](https://docs.derivative.ca/Multi_Touch_In_DAT "Multi Touch In DAT"). Serial devices like [Arduino](https://docs.derivative.ca/Arduino "Arduino") can interface using the [Serial DAT](https://docs.derivative.ca/Serial_DAT "Serial DAT") and/or [Serial CHOP](https://docs.derivative.ca/Serial_CHOP "Serial CHOP").
+**A:** See [Interoperability](Interoperability.md "Interoperability"). MIDI is fully supported in TouchDesigner, so any MIDI device will work. Software and hardware devices can also connect to TouchDesigner through [OSC](https://docs.derivative.ca/OSC "OSC") (Open Sound Control), UDP, TCP/IP, and/or serial communications. Other software like Ableton Live, apps on iOS and Android, and custom made applications can connect to TouchDesigner using these tools. There are also builtin operators for inputs from [Kinect](https://docs.derivative.ca/Kinect "Kinect") sensors, [joysticks and gamepads](../Interoperability/Joystick_CHOP.md "Joystick CHOP"), [tablet and stylus](../CHOPs/Tablet_CHOP.md "Tablet CHOP"), and [multi-touch devices](../Interoperability/Multi_Touch_In_DAT.md "Multi Touch In DAT"). Serial devices like [Arduino](../Interoperability/Arduino.md "Arduino") can interface using the [Serial DAT](../Interoperability/Serial_DAT.md "Serial DAT") and/or [Serial CHOP](../CHOPs/Serial_CHOP.md "Serial CHOP").
 
 **Q:** Can TouchDesigner output to multiple screens?
 
 **A:** Running your computer with two monitors allows two images to be displayed on two or more displays. Often the left monitor is a control panel and the right monitor(s) is a full-screen video output, at any resolution your hardware allows.
 
-The right monitor can be a wide view sent to 2 or display outputs, or splitters like DataPathFX4 and Matrox Dualhead2Go/TripleHead2Go devices each going to a different display or projector. This can also be used for left/right eye displays. The same TouchDesigner file can run on several computers at the same time, each with a different camera view, synced through TouchDesigner [TCP/IP](https://docs.derivative.ca/Touch_In_CHOP "Touch In CHOP") pipes or [hardware frame-lock sync](https://docs.derivative.ca/Window_COMP "Window COMP"), or both.
+The right monitor can be a wide view sent to 2 or display outputs, or splitters like DataPathFX4 and Matrox Dualhead2Go/TripleHead2Go devices each going to a different display or projector. This can also be used for left/right eye displays. The same TouchDesigner file can run on several computers at the same time, each with a different camera view, synced through TouchDesigner [TCP/IP](../CHOPs/Touch_In_CHOP.md "Touch In CHOP") pipes or [hardware frame-lock sync](../Glossary/Window_COMP.md "Window COMP"), or both.
 
-**Q:** Does TouchDesigner support vertex, pixel, and geometry [shaders](https://docs.derivative.ca/Shader "Shader")?
+**Q:** Does TouchDesigner support vertex, pixel, and geometry [shaders](../Glossary/Shader.md "Shader")?
 
-**A:** Yes. [GLSL](https://docs.derivative.ca/GLSL "GLSL") shaders are supported. macOS is limited to GLSL 4.1 while Windows OS is only limited by the graphic drivers you have installed.
+**A:** Yes. [GLSL](../Glossary/GLSL.md "GLSL") shaders are supported. macOS is limited to GLSL 4.1 while Windows OS is only limited by the graphic drivers you have installed.
 
 **Q:** Where can I find documentation for TouchDesigner?
 
@@ -46,4 +46,4 @@ The right monitor can be a wide view sent to 2 or display outputs, or splitters 
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.

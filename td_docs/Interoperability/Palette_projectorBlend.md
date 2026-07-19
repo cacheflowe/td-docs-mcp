@@ -13,7 +13,7 @@ ProjectorBlend is a tool to smoothly blend projector arrays based on the ofxProj
 
 On a technical level it incorporates Paul Bourkes [Edge blending using commodity projectors](http://paulbourke.net/texture_colour/edgeblend/) paper.
 
-See also [Projection Mapping](https://docs.derivative.ca/Projection_Mapping "Projection Mapping"), [Vioso](https://docs.derivative.ca/Vioso "Vioso"), [Scalable Displays](https://docs.derivative.ca/Scalable_Display_TOP "Scalable Display TOP"), [kantanMapper](https://docs.derivative.ca/Palette:kantanMapper "Palette:kantanMapper"), [camSchnappr](https://docs.derivative.ca/Palette:camSchnappr "Palette:camSchnappr").
+See also [Projection Mapping](../Learn/Projection_Mapping.md "Projection Mapping"), [Vioso](Vioso.md "Vioso"), [Scalable Displays](../TOPs/Scalable_Display_TOP.md "Scalable Display TOP"), [kantanMapper](Palette_kantanMapper.md "Palette:kantanMapper"), [camSchnappr](Palette_camSchnappr.md "Palette:camSchnappr").
 
 ## Usage
 
@@ -74,23 +74,19 @@ This will allow to set each side of the blend mask individually. The output can 
 [Palette:projectorBlend Ext](https://docs.derivative.ca/index.php?title=Palette:projectorBlend_Ext&action=edit&redlink=1 "Palette:projectorBlend Ext \(page does not exist\)")
 
 ## Parameters - Projector Blend Page
-
 - Help `Help` -
 - Version `Version` -
 - Projector Array `Projectorarray` - ⊞ -
   * Projector Array `Projectorarray1` -
   * Projector Array `Projectorarray2` -
-
 - Projector Resolution `Projectorres` - ⊞ -
   * Projector Resolution `Projectorres1` -
   * Projector Resolution `Projectorres2` -
-
 - Blankout Edges `Blankout` - ⊞ -
   * Blankout Edges `Blankout1` -
   * Blankout Edges `Blankout2` -
   * Blankout Edges `Blankout3` -
   * Blankout Edges `Blankout4` -
-
 - Solid Edge `Solidedge` -
 - Solid Edge Color `Solidedgecolor` - ⊞ -
   * Solid Edge Color `Solidedgecolorr` -
@@ -98,95 +94,77 @@ This will allow to set each side of the blend mask individually. The output can 
   * Solid Edge Color `Solidedgecolorb` -
 
 ## Parameters - Projector1 Page
-
 - Blankout `Projector1blankout` - ⊞ -
   * Blankout `Projector1blankout1` -
   * Blankout `Projector1blankout2` -
   * Blankout `Projector1blankout3` -
   * Blankout `Projector1blankout4` -
-
 - Overlap `Projector1overlap` - ⊞ -
   * Overlap `Projector1overlap1` -
   * Overlap `Projector1overlap2` -
   * Overlap `Projector1overlap3` -
   * Overlap `Projector1overlap4` -
-
 - Blend `Projector1blend` -
 - Luminance `Projector1luminance` -
 - Gamma `Projector1gamma` - ⊞ -
   * Gamma `Projector1gamma1` -
   * Gamma `Projector1gamma2` -
   * Gamma `Projector1gamma3` -
-
 - Hue Adjust RGB `Projector1hue` - ⊞ -
   * Hue Adjust RGB `Projector1hue1` -
   * Hue Adjust RGB `Projector1hue2` -
   * Hue Adjust RGB `Projector1hue3` -
-
 - Saturation Adjust RGB `Projector1sat` - ⊞ -
   * Saturation Adjust RGB `Projector1sat1` -
   * Saturation Adjust RGB `Projector1sat2` -
   * Saturation Adjust RGB `Projector1sat3` -
-
 - Value Adjust RGB `Projector1val` - ⊞ -
   * Value Adjust RGB `Projector1val1` -
   * Value Adjust RGB `Projector1val2` -
   * Value Adjust RGB `Projector1val3` -
-
 - Per Side Control `Projector1perside` -
 - Blankout Left `Projector1pos0c0` - ⊞ -
   * Blankout Left `Projector1pos0c01` -
   * Blankout Left `Projector1pos0c02` -
-
 - Overlap Left `Projector1pos0c1` - ⊞ -
   * Overlap Left `Projector1pos0c11` -
   * Overlap Left `Projector1pos0c12` -
-
 - Blend Left `Projector1blends0` -
 - Luminance Left `Projector1luminances0` -
 - Gamma Left `Projector1gammas0` - ⊞ -
   * Gamma Left `Projector1gammas01` -
   * Gamma Left `Projector1gammas02` -
   * Gamma Left `Projector1gammas03` -
-
 - Blankout Right `Projector1pos1c0` - ⊞ -
   * Blankout Right `Projector1pos1c01` -
   * Blankout Right `Projector1pos1c02` -
-
 - Overlap Right `Projector1pos1c1` - ⊞ -
   * Overlap Right `Projector1pos1c11` -
   * Overlap Right `Projector1pos1c12` -
-
 - Blend Right `Projector1blends1` -
 - Luminance Right `Projector1luminances1` -
 - Gamma Right `Projector1gammas1` - ⊞ -
   * Gamma Right `Projector1gammas11` -
   * Gamma Right `Projector1gammas12` -
   * Gamma Right `Projector1gammas13` -
-
 - Blankout Top `Projector1pos2c0` - ⊞ -
   * Blankout Top `Projector1pos2c01` -
   * Blankout Top `Projector1pos2c02` -
-
 - Overlap Top `Projector1pos2c1` - ⊞ -
   * Overlap Top `Projector1pos2c11` -
   * Overlap Top `Projector1pos2c12` -
-
 - Blend Top `Projector1blends2` -
 - Luminance Top `Projector1luminances2` -
 - Gamma Top `Projector1gammas2` - ⊞ -
   * Gamma Top `Projector1gammas21` -
   * Gamma Top `Projector1gammas22` -
   * Gamma Top `Projector1gammas23` -
-
 - Blankout Bottom `Projector1pos3c0` - ⊞ -
   * Blankout Bottom `Projector1pos3c01` -
   * Blankout Bottom `Projector1pos3c02` -
-
 - Overlap Bottom `Projector1pos3c1` - ⊞ -
   * Overlap Bottom `Projector1pos3c11` -
   * Overlap Bottom `Projector1pos3c12` -
-
 - Blend Bottom `Projector1blends3` -
 - Luminance Bottom `Projector1luminances3` -
 - Gamma Bottom `Projector1gammas3` - ⊞ -
@@ -195,95 +173,77 @@ This will allow to set each side of the blend mask individually. The output can 
   * Gamma Bottom `Projector1gammas33` -
 
 ## Parameters - Projector2 Page
-
 - Blankout `Projector2blankout` - ⊞ -
   * Blankout `Projector2blankout1` -
   * Blankout `Projector2blankout2` -
   * Blankout `Projector2blankout3` -
   * Blankout `Projector2blankout4` -
-
 - Overlap `Projector2overlap` - ⊞ -
   * Overlap `Projector2overlap1` -
   * Overlap `Projector2overlap2` -
   * Overlap `Projector2overlap3` -
   * Overlap `Projector2overlap4` -
-
 - Blend `Projector2blend` -
 - Luminance `Projector2luminance` -
 - Gamma `Projector2gamma` - ⊞ -
   * Gamma `Projector2gamma1` -
   * Gamma `Projector2gamma2` -
   * Gamma `Projector2gamma3` -
-
 - Hue Adjust RGB `Projector2hue` - ⊞ -
   * Hue Adjust RGB `Projector2hue1` -
   * Hue Adjust RGB `Projector2hue2` -
   * Hue Adjust RGB `Projector2hue3` -
-
 - Saturation Adjust RGB `Projector2sat` - ⊞ -
   * Saturation Adjust RGB `Projector2sat1` -
   * Saturation Adjust RGB `Projector2sat2` -
   * Saturation Adjust RGB `Projector2sat3` -
-
 - Value Adjust RGB `Projector2val` - ⊞ -
   * Value Adjust RGB `Projector2val1` -
   * Value Adjust RGB `Projector2val2` -
   * Value Adjust RGB `Projector2val3` -
-
 - Per Side Control `Projector2perside` -
 - Blankout Left `Projector2pos0c0` - ⊞ -
   * Blankout Left `Projector2pos0c01` -
   * Blankout Left `Projector2pos0c02` -
-
 - Overlap Left `Projector2pos0c1` - ⊞ -
   * Overlap Left `Projector2pos0c11` -
   * Overlap Left `Projector2pos0c12` -
-
 - Blend Left `Projector2blends0` -
 - Luminance Left `Projector2luminances0` -
 - Gamma Left `Projector2gammas0` - ⊞ -
   * Gamma Left `Projector2gammas01` -
   * Gamma Left `Projector2gammas02` -
   * Gamma Left `Projector2gammas03` -
-
 - Blankout Right `Projector2pos1c0` - ⊞ -
   * Blankout Right `Projector2pos1c01` -
   * Blankout Right `Projector2pos1c02` -
-
 - Overlap Right `Projector2pos1c1` - ⊞ -
   * Overlap Right `Projector2pos1c11` -
   * Overlap Right `Projector2pos1c12` -
-
 - Blend Right `Projector2blends1` -
 - Luminance Right `Projector2luminances1` -
 - Gamma Right `Projector2gammas1` - ⊞ -
   * Gamma Right `Projector2gammas11` -
   * Gamma Right `Projector2gammas12` -
   * Gamma Right `Projector2gammas13` -
-
 - Blankout Top `Projector2pos2c0` - ⊞ -
   * Blankout Top `Projector2pos2c01` -
   * Blankout Top `Projector2pos2c02` -
-
 - Overlap Top `Projector2pos2c1` - ⊞ -
   * Overlap Top `Projector2pos2c11` -
   * Overlap Top `Projector2pos2c12` -
-
 - Blend Top `Projector2blends2` -
 - Luminance Top `Projector2luminances2` -
 - Gamma Top `Projector2gammas2` - ⊞ -
   * Gamma Top `Projector2gammas21` -
   * Gamma Top `Projector2gammas22` -
   * Gamma Top `Projector2gammas23` -
-
 - Blankout Bottom `Projector2pos3c0` - ⊞ -
   * Blankout Bottom `Projector2pos3c01` -
   * Blankout Bottom `Projector2pos3c02` -
-
 - Overlap Bottom `Projector2pos3c1` - ⊞ -
   * Overlap Bottom `Projector2pos3c11` -
   * Overlap Bottom `Projector2pos3c12` -
-
 - Blend Bottom `Projector2blends3` -
 - Luminance Bottom `Projector2luminances3` -
 - Gamma Bottom `Projector2gammas3` - ⊞ -

@@ -8,7 +8,7 @@ title: Leap_Motion_TOP
 
 ## Summary
 
-The Leap Motion TOP gets the image from the [Leap Motion](https://docs.derivative.ca/Leap_Motion "Leap Motion") controller's cameras. To enable this feature the option **Allow Images** must be turned on in the Leap Motion Control Panel.
+The Leap Motion TOP gets the image from the [Leap Motion](../Interoperability/Leap_Motion.md "Leap Motion") controller's cameras. To enable this feature the option **Allow Images** must be turned on in the Leap Motion Control Panel.
 
 To connect with the device you will need to install the Ultraleap Tracking Software. For best performance, it is recommended to use the latest version Gemini drivers for Windows (v5.13.2 or greater) or MacOS (v5.14.0 or greater) that are available here: <https://developer.leapmotion.com/tracking-software-download>. Legacy version 2 or version 4 Orion drivers are also supported. See the API parameter details below for more information.
 
@@ -22,18 +22,17 @@ In addition to installing the driver, TouchDesigner must also be told where to f
 
 **Note:** TouchDesigner does not include a license to use the Leap Motion hardware or software. Make sure to check with the [UltraLeap website](https://www.ultraleap.com/) regarding any applicable licenses that you may need for your project.
 
-See also [Leap Motion](https://docs.derivative.ca/Leap_Motion "Leap Motion"), [Leap Motion CHOP](https://docs.derivative.ca/Leap_Motion_CHOP "Leap Motion CHOP")
+See also [Leap Motion](../Interoperability/Leap_Motion.md "Leap Motion"), [Leap Motion CHOP](../CHOPs/Leap_Motion_CHOP.md "Leap Motion CHOP")
 
-[leapmotionTOP_Class](https://docs.derivative.ca/LeapmotionTOP_Class "LeapmotionTOP Class")
+[leapmotionTOP_Class](Leap_Motion_TOP_Class.md "LeapmotionTOP Class")
 
 ## Parameters - LeapMotion Page
-
 - Active `active` - If set, this TOP will capture data from the cameras.
 - API `api` - ⊞ - Select between Leap Motion V2 or V4/V5 SDKs for tracking. V5 offers the fastest and most stable tracking, V2 offers some legacy features like gestures.
   * Version 2 Tracking `default` - Legacy tracking that includes gesture and tool tracking. Download [Leap Motion Orion Beta 3.2.1](https://developer.leapmotion.com/releases)
   * Orion (v4) / Gemini (v5) `on` - Orion offers more stable and reliable hand and finger tracking compared to v2. Download [Orion 4.1.0](https://developer.leapmotion.com/releases). Gemini offers even better performance with improved stability and much faster hand recognition to start tracking. Download [Gemini 5.6.1](https://developer.leapmotion.com/tracking-software-download/).
-
 - Library Folder `libfolder` - This parameter should point to the location of the library file (.dll on Windows) that corresponds to the selected API version. The dll file can be found in the driver kit downloaded from the Ultra Leap website inside the 'LeapSDK/lib/x64' folder. For V2, the file will be called 'Leap.dll' and for V4, it is called 'LeapC.dll'.
+
 For Gemini V5, first install the tracking software, then set this parameter to C:\Program Files\Ultraleap\LeapSDK\lib\x64 where it will find the LeapC.dll file.
 - Camera `camera` - Select between the two cameras in the Leap Motion Controller.
 - Flip X `flipx` - Flips the image in X.
@@ -45,7 +44,6 @@ For Gemini V5, first install the tracking software, then set this parameter to C
   * Off `off` -
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -57,29 +55,25 @@ For Gemini V5, first install the tracking software, then set this parameter to C
   * Fit Resolution `fit` - Grow or shrink the input resolution to fit this resolution, while keeping the aspect ratio the same.
   * Limit Resolution `limit` - Limit the input resolution to be not larger than this resolution, while keeping the aspect ratio the same.
   * Custom Resolution `custom` - Directly control the width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -88,13 +82,11 @@ For Gemini V5, first install the tracking software, then set this parameter to C
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail. When the input is 32-bit float format, only nearest filtering will be used (regardless of what is selected).
-
-- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
+- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](GLSL_TOP.md "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
   * Use Input `useinput` - Uses the input's pixel format.
@@ -126,22 +118,17 @@ For Gemini V5, first install the tracking software, then set this parameter to C
 
 ## Info CHOP Channels
 
-Extra Information for the Leap Motion TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Leap Motion TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -149,19 +136,11 @@ Extra Information for the Leap Motion TOP can be accessed via an [Info CHOP](htt
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

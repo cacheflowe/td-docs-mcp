@@ -34,27 +34,27 @@ for suffix.lower() in tdu.fileTypes['movie']:
 
 `Matrix` → `TDU.Matrix` **(Read Only)** :
 
-The [Matrix](https://docs.derivative.ca/Matrix_Class "Matrix Class") definition class.
+The [Matrix](Matrix_Class.md "Matrix Class") definition class.
 
 `Position` → `TDU.Position` **(Read Only)** :
 
-The [Position](https://docs.derivative.ca/Position_Class "Position Class") definition class.
+The [Position](Position_Class.md "Position Class") definition class.
 
 `Vector` → `TDU.Vector` **(Read Only)** :
 
-The [Vector](https://docs.derivative.ca/Vector_Class "Vector Class") definition class.
+The [Vector](Vector_Class.md "Vector Class") definition class.
 
 `Quaternion` → `TDU.Quaternion` **(Read Only)** :
 
-The [Quaternion](https://docs.derivative.ca/Quaternion_Class "Quaternion Class") definition class.
+The [Quaternion](Quaternion_Class.md "Quaternion Class") definition class.
 
 `Color` → `TDU.Color` **(Read Only)** :
 
-The [Color](https://docs.derivative.ca/Color_Class "Color Class") definition class.
+The [Color](Color_Class.md "Color Class") definition class.
 
 `Dependency` → `TDU.Dependency` **(Read Only)** :
 
-The [Dependency](https://docs.derivative.ca/Dependency_Class "Dependency Class") definition class.
+The [Dependency](Dependency_Class.md "Dependency Class") definition class.
 
 `FileInfo` → `TDU.FileInfo` **(Read Only)** :
 
@@ -73,11 +73,11 @@ Utility properties include:
 
 `ArcBall` → `TDU.ArcBall` **(Read Only)** :
 
-The [ArcBall](https://docs.derivative.ca/ArcBall_Class "ArcBall Class") definition class.
+The [ArcBall](ArcBall_Class.md "ArcBall Class") definition class.
 
 `Camera` → `tdu.Camera` **(Read Only)** :
 
-The [Camera](https://docs.derivative.ca/Camera_Class "Camera Class") definition class.
+The [Camera](Camera_Class.md "Camera Class") definition class.
 
 `debug` → `module` **(Read Only)** :
 
@@ -85,7 +85,7 @@ Helper module for the builtin debug statement. [Documentation.](https://docs.der
 
 `Timecode` → `TDU.Timecode` **(Read Only)** :
 
-The [Timecode](https://docs.derivative.ca/Timecode_Class "Timecode Class") definition class.
+The [Timecode](../TOPs/Timecode_Class.md "Timecode Class") definition class.
 
 ## Methods
 
@@ -164,7 +164,7 @@ tdu.validPath('/a#bc d/ef') # returns '/a_bc_d/ef'
 
 `expand(pattern)`→ `list`:
 
-Return a list of the expanded items, following the rules of [Pattern Expansion](https://docs.derivative.ca/Pattern_Expansion "Pattern Expansion").
+Return a list of the expanded items, following the rules of [Pattern Expansion](../Glossary/Pattern_Expansion.md "Pattern Expansion").
 
 ```
 tdu.expand('A[1-3] B[xyz]') # return ['A1', 'A2', 'A3', 'Bx', 'By', 'Bz']
@@ -187,7 +187,7 @@ tdu.collapsePath('C:/downloads/test.bmp') # looks at project.paths for any entri
 ```
 
   * path - The path to be shortened.
-  * asExpression - (Keyword, Optional) If True, result can be used as an expression, including [App Class](https://docs.derivative.ca/App_Class "App Class") members and quoted strings.
+  * asExpression - (Keyword, Optional) If True, result can be used as an expression, including [App Class](App_Class.md "App Class") members and quoted strings.
 
 `split(string, eval=False)`→ `list`:
 
@@ -229,7 +229,7 @@ This is a one-liner try/except function for use in parameter expressions to hand
 
 `ParMenu(menuNames, menuLabels=None)`→ `TDU.MenuObject`:
 
-This method uses a list of strings to create an object meant to be used as a [parameter](https://docs.derivative.ca/Par_Class "Par Class") menu source.
+This method uses a list of strings to create an object meant to be used as a [parameter](../SOPs/Par_Class.md "Par Class") menu source.
   * menuNames - A list of strings for menu values.
   * menuLabels - (Optional) A list of strings for menu labels. Defaults to menuNames.
 
@@ -237,7 +237,7 @@ This method uses a list of strings to create an object meant to be used as a [pa
 
 Create a parameter menu source object based on a DAT table.
 
-This method uses a table to create an object meant to be used as a [parameter](https://docs.derivative.ca/Par_Class "Par Class") menu source.
+This method uses a table to create an object meant to be used as a [parameter](../SOPs/Par_Class.md "Par Class") menu source.
   * table - a DAT table to get the menu information from
   * nameCol - (Keyword, Optional) Column name or number for menuNames. Defaults to 0.
   * labelCol - (Keyword, Optional) Column name or number for menuLabels. Defaults to None, which means to use names as labels.
@@ -267,16 +267,16 @@ Returns a dictionary describing the builtin parameters of the OP class provided.
 tdu.parSummary(mathCHOP) # Works on td.OP types or strings, not actual operator instances.
 ```
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-is the [Procedural](https://docs.derivative.ca/Procedural "Procedural") mechanism in TouchDesigner, where if one piece of data changes, it automatically causes other operators and expressions to re-[Cook](https://docs.derivative.ca/Cook "Cook").
+is the [Procedural](../Glossary/Procedural.md "Procedural") mechanism in TouchDesigner, where if one piece of data changes, it automatically causes other operators and expressions to re-[Cook](../Glossary/Cook.md "Cook").
 
-Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off.
+Absolute Time starts counting from 0 when the TouchDesigner process starts, and is always increasing. It will pause if the Power 0/1 button at the top of the UI is Off or the root timeline is paused.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](https://docs.derivative.ca/Root "Root"). This path is displayed at the top of every [Pane](https://docs.derivative.ca/Pane "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](https://docs.derivative.ca/Folder "Folder").
+The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](../Glossary/Root.md "Root"). This path is displayed at the top of every [Pane](../Glossary/Pane.md "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](../Glossary/Folder.md "Folder").

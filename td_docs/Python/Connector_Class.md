@@ -6,7 +6,7 @@ title: Connector_Class
 
 # Connector Class
 
-The Connector class describes the input or output connection point of an [operator](https://docs.derivative.ca/OP_Class#Connection "OP Class"). There are two types of connections: those between Components, and those between regular operators. Connections between regular operators can be accessed through the [OP.inputConnectors](https://docs.derivative.ca/OP_Class#Connection "OP Class") and [OP.outputConnectors](https://docs.derivative.ca/OP_Class#Connection "OP Class") members. These are the connectors on the left and right sides of [Operators](https://docs.derivative.ca/Operator "Operator"). Connections between components can be accessed through the [COMP.inputCOMPConnectors](https://docs.derivative.ca/COMP_Class#Connection "COMP Class") and [COMP.outputCOMPConnectors](https://docs.derivative.ca/COMP_Class "COMP Class") members. These are the connectors on the top and bottom of [Component](https://docs.derivative.ca/Component "Component") operators
+The Connector class describes the input or output connection point of an [operator](OP_Class.md#Connection "OP Class"). There are two types of connections: those between Components, and those between regular operators. Connections between regular operators can be accessed through the [OP.inputConnectors](OP_Class.md#Connection "OP Class") and [OP.outputConnectors](OP_Class.md#Connection "OP Class") members. These are the connectors on the left and right sides of [Operators](../General/Operator.md "Operator"). Connections between components can be accessed through the [COMP.inputCOMPConnectors](COMP_Class.md#Connection "COMP Class") and [COMP.outputCOMPConnectors](COMP_Class.md "COMP Class") members. These are the connectors on the top and bottom of [Component](../Glossary/Component.md "Component") operators
 
 ## Members
 
@@ -24,15 +24,15 @@ True when the connector is an output.
 
 `inOP` → `OP` **(Read Only)** :
 
-Will return any input operators (e.g. [inSOP](https://docs.derivative.ca/InSOP_Class "InSOP Class"), [inCHOP](https://docs.derivative.ca/InCHOP_Class "InCHOP Class")) associated with this connector. This only applies to regular operator connections attached to components.
+Will return any input operators (e.g. [inSOP](../SOPs/In_SOP_Class.md "InSOP Class"), [inCHOP](../CHOPs/In_CHOP_Class.md "InCHOP Class")) associated with this connector. This only applies to regular operator connections attached to components.
 
 `outOP` → `OP` **(Read Only)** :
 
-Will return any output operators (e.g. [outSOP](https://docs.derivative.ca/OutSOP_Class "OutSOP Class"), [outCHOP](https://docs.derivative.ca/OutCHOP_Class "OutCHOP Class")) associated with this connector. This only applies to regular operator connections attached to components.
+Will return any output operators (e.g. [outSOP](../SOPs/Out_SOP_Class.md "OutSOP Class"), [outCHOP](../CHOPs/Out_CHOP_Class.md "OutCHOP Class")) associated with this connector. This only applies to regular operator connections attached to components.
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 `connections` → `list` **(Read Only)** :
 
@@ -46,7 +46,7 @@ A description for this connection. Example: 'Color Image'.
 
 `connect(target)`→ `None`:
 
-Wire this connector to a target location. The target may be an [operator](https://docs.derivative.ca/OP_Class "OP Class") or another connector.
+Wire this connector to a target location. The target may be an [operator](OP_Class.md "OP Class") or another connector.
 
 When the connector is an input, its connection is replaced with the target. When the connector is an output, a new connection is appended to the target.
   * target - The OP or connector you want to connect to.

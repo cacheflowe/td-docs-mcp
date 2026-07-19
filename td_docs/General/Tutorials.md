@@ -24,7 +24,6 @@ Our **[TouchDesigner Youtube](https://www.youtube.com/touchdesignerofficial)** c
     * **[Beginner - Interactive and Immersive HQ playlist](https://youtube.com/playlist?list=PLSqkC3f_BStyl5j6NqYwLOErW0ych_4k1&si=auI8NiNZbfnqvirH)**
     * **[Beginner - Bileam Tschepe playlist](https://youtube.com/playlist?list=PLSqkC3f_BStyHGlnu0OnnXAWU9PWDokOV&si=TgcDBM5UaqEeihN5)**
     * **[Beginner - Acrylicode](https://youtube.com/playlist?list=PLSqkC3f_BStxPitv7_lJnqlhMQ7ziHLug&si=-NBcXK5UmlCbqNB6)**
-
   * **[Introduction to TouchDesigner](https://www.youtube.com/watch?v=wmM1lCWtn6o&t=150s)** - A beginner's introduction by Ben Voigt covering all the basics you need to get started in a single 4 hour workshop.
 
 ###  **Community Tutorial Playlists**
@@ -39,7 +38,7 @@ Videos from our TouchDesigner Summit Montreal in 2019 are grouped into two playl
 
 ##  **First Things to Know about TouchDesigner**
 
-This tutorial (updated 2016) will quickly show you how to get around the interface and give you an overview of TouchDesigner concepts. It won't tell you WHY you need to know this stuff, it will tell you the fundamentals of WHAT you need to know. You can also read it - **[the full transcript here](https://docs.derivative.ca/First_Things_to_Know_about_TouchDesigner "First Things to Know about TouchDesigner")**.
+This tutorial (updated 2016) will quickly show you how to get around the interface and give you an overview of TouchDesigner concepts. It won't tell you WHY you need to know this stuff, it will tell you the fundamentals of WHAT you need to know. You can also read it - **[the full transcript here](../Learn/First_Things_to_Know_about_TouchDesigner.md "First Things to Know about TouchDesigner")**.
   * **[First Things to Know Part 1](https://docs.derivative.ca/First_Things_to_Know_Part_1_Vid "First Things to Know Part 1 Vid")**
   * **[First Things to Know Part 2](https://docs.derivative.ca/First_Things_to_Know_Part_2_Vid "First Things to Know Part 2 Vid")**
 
@@ -60,7 +59,7 @@ These recordings are from 2018 or earlier, as such some things in TouchDesigner 
 
 ###  **Widget Videos Series**
 
-  * **[Widgets Tutorials](https://www.youtube.com/playlist?list=PLSqkC3f_BStxA4TpF6uWj3HOHPCglRpN9)** - A deep dive into building control panels and using [Widgets](https://docs.derivative.ca/Widgets "Widgets").
+  * **[Widgets Tutorials](https://www.youtube.com/playlist?list=PLSqkC3f_BStxA4TpF6uWj3HOHPCglRpN9)** - A deep dive into building control panels and using [Widgets](../Glossary/Widgets.md "Widgets").
 
 ##  **User-Contributed Tutorials**
 
@@ -108,15 +107,15 @@ A list of previous user-contributed tutorials from around the interwebs.
 
 ###  Introduction to the Operators
 
-The [Operator Families](https://docs.derivative.ca/Operator "Operator").
+The [Operator Families](Operator.md "Operator").
 
 ####  [Operators Overview](https://docs.derivative.ca/Operators_Overview_Vid "Operators Overview Vid")
 
-####  [Introduction To TOPs](https://docs.derivative.ca/Introduction_To_TOPs_Vid "Introduction To TOPs Vid")
+####  [Introduction To TOPs](../TOPs/Introduction_To_TOPs_Vid.md "Introduction To TOPs Vid")
 
-####  [Introduction To CHOPs](https://docs.derivative.ca/Introduction_To_CHOPs_Vid "Introduction To CHOPs Vid")
+####  [Introduction To CHOPs](../CHOPs/Introduction_To_CHOPs_Vid.md "Introduction To CHOPs Vid")
 
-####  [Introduction To SOPs](https://docs.derivative.ca/Introduction_To_SOPs_Vid "Introduction To SOPs Vid")
+####  [Introduction To SOPs](../SOPs/Introduction_To_SOPs_Vid.md "Introduction To SOPs Vid")
 
 ####  [Introduction To DATs](https://docs.derivative.ca/Introduction_To_DATs_Vid "Introduction To DATs Vid")
 
@@ -130,7 +129,7 @@ The [Operator Families](https://docs.derivative.ca/Operator "Operator").
 
 **[Ways to Generate Triggers and Cause Actions](https://docs.derivative.ca/Ways_to_Generate_Triggers_and_Cause_Actions_Vid "Ways to Generate Triggers and Cause Actions Vid")** - Shows a variety of ways to create event triggers in TouchDesigner. Discusses how to create triggers using CHOPs, control panels, and scripts. Also includes sections on controlling movie playback with timing curves and triggers.
 
-**[Time Slicing](https://docs.derivative.ca/Time_Slicing_Vid "Time Slicing Vid")** - An in-depth look at CHOP sample ranges and CHOPs most powerful feature, [Time Slicing](https://docs.derivative.ca/Time_Slicing "Time Slicing")!
+**[Time Slicing](https://docs.derivative.ca/Time_Slicing_Vid "Time Slicing Vid")** - An in-depth look at CHOP sample ranges and CHOPs most powerful feature, [Time Slicing](../Glossary/Time_Slicing.md "Time Slicing")!
 
 **[Using an iPhone with TouchDesigner](https://docs.derivative.ca/IPhone_OSC_Vid "IPhone OSC Vid")** - This video show you how to connect an iPhone, iPod, or iPad to TouchDesigner through OSC. The iOS app [TouchOSC](http://hexler.net/software/touchosc) is used in this tutorial but any OSC-capable application can communicate with TouchDesigner using these techniques.
 
@@ -138,4 +137,4 @@ The [Operator Families](https://docs.derivative.ca/Operator "Operator").
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

@@ -26,8 +26,8 @@ Back at the start screen for TouchOSC, select the Layout you would like to use f
 
 ###  Setting up TouchDesigner
 
-Open TouchDesigner and create a [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP") or [OSC In DAT](https://docs.derivative.ca/OSC_In_DAT "OSC In DAT"). Change the **Network Port** parameter to be the same port you select in TouchOSC's **Port(outgoing)** setting. Default is 8000.
+Open TouchDesigner and create a [OSC In CHOP](OSC_In_CHOP.md "OSC In CHOP") or [OSC In DAT](../DATs/OSC_In_DAT.md "OSC In DAT"). Change the **Network Port** parameter to be the same port you select in TouchOSC's **Port(outgoing)** setting. Default is 8000.
 
 Now move or adjust any control in TouchOSC, you will see the incoming values in TouchDesigner.
 [![TouchOSCIn.png](https://docs.derivative.ca/images/d/de/TouchOSCIn.png)](https://docs.derivative.ca/File:TouchOSCIn.png)
-(1) The TouchDesigner window is made of a menu bar at the top, a [Timeline](https://docs.derivative.ca/Timeline "Timeline") at the bottom, plus one of a choice of Layouts in the middle. A Layout is made on one or more Panes, each Pane can contain a Network Editor, Viewer, Panel, etc. See [Pane](https://docs.derivative.ca/Pane "Pane") and [Bookmark](https://docs.derivative.ca/Bookmark "Bookmark"). (2) Nodes in a network are arranged using Layout commands in the RMB menu.
+(1) The TouchDesigner window is made of a menu bar at the top, a [Timeline](../Glossary/Timeline.md "Timeline") at the bottom, plus one of a choice of Layouts in the middle. A Layout is made on one or more Panes, each Pane can contain a Network Editor, Viewer, Panel, etc. See [Pane](../Glossary/Pane.md "Pane") and [Bookmark](../Glossary/Bookmark.md "Bookmark"). (2) Nodes in a network are arranged using Layout commands in the RMB menu.

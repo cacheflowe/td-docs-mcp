@@ -10,13 +10,13 @@ title: Add_SOP
 
 The Add SOP can both create new Points and Polygons on its own, or it can be used to add Points and Polygons to an existing input.
 
-If an input is specified, this SOP adds points and polygons to it as specified below. If no input is specified, then it generates the points and polygons below as a new entity. It can read points and vertices from DATs. See also [DAT to SOP](https://docs.derivative.ca/DAT_to_SOP "DAT to SOP").
+If an input is specified, this SOP adds points and polygons to it as specified below. If no input is specified, then it generates the points and polygons below as a new entity. It can read points and vertices from DATs. See also [DAT to SOP](DAT_to_SOP.md "DAT to SOP").
 
-[addSOP_Class](https://docs.derivative.ca/AddSOP_Class "AddSOP Class")
+[addSOP_Class](Add_SOP_Class.md "AddSOP Class")
 
 ## Parameters - Points Page
+- Points DAT `pointdat` - Path to a [Table DAT](../Glossary/Table_DAT.md "Table DAT") containing point data. By default, x, y, z, and w can be defined in the first 4 columns of the table using un-named columns.
 
-- Points DAT `pointdat` - Path to a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") containing point data. By default, x, y, z, and w can be defined in the first 4 columns of the table using un-named columns.
 If the `Named Attributes` parameter below is turned on, the following attributes can be defined in the Points Table DAT using named columns:
   * `P(0) P(1) P(2) P(3)`
   * `N(0) N(1) N(2)`
@@ -45,19 +45,15 @@ op('grid1').points[5].x    op('grid1').points[5].y    op('grid1').points[5].z
 ```
 
   * Position `point0posx` -
-
   * Position `point0posy` -
-
   * Position `point0posz` -
 
 Weight `point0weight` - The spline weight of the point. If the point is later used to create a spline (nurbs or Bezier) primitive, the weight will influence the shape of the primitive and may cause that primitive to become rational. Polygons and metaballs are not affected by this weight.
 
 ## Parameters - Polygons Page
-
 - Method `method` - ⊞ - Specify to create polygons from the points by using a Group method or Pattern Method.
   * By Group `group` - Create as many polygons as determined by the group field and by the grouping / skipping rules.
   * By Pattern `pattern` - Specify the points to use to create polygons using the parameters Polygon Table or Polygon 0 below.
-
 - Group `group` - Subset of points to be connected.
 - Add `add` - ⊞ - Optionally join subgroups of points.
   * All Points `all` - Adds all points just as if you added them manually in the Points page.
@@ -71,11 +67,11 @@ Weight `point0weight` - The spline weight of the point. If the point is later us
 - Polygons Table `polydat` - Path to a Table DAT containing polygon data. Accepts rows of polygons specified by point number in the first column. The second column indicates if the polygons are closed (1) or open (0).
 - Polygon `poly` - Sequence of polygon patterns
 - Pattern `poly0pattern` - Create a fixed number of polygons by specifying a point pattern for each polygon. Enter connection lists here to add polygons. These consist of a list of point numbers to define the order in which the points are to be connected. The form is: {from}-{to}[:{every}][,{of}].
+
 Examples of Valid Connection Lists:       `1 2 3 4` - Makes a polygon by connecting point numbers 1,2,3,4.      `1 3-15 16 8` - All points from 3-15 are included.      `1-234 820-410 235-409` - Points from 1-820 are included, in the specified order.      `0-15:2` - Every other point from 0 to 15 is included.      `0-15:2,3` - Every 2 of 3 points are included (i.e. 0, 1, 3, 4, 6, 7, 9, 10, 12, 13, 15).      `!4` - Every point except 4 is included.      `!100-200` - Every point <100 and >200 is included.      `*` - Include all points.      `9-0` - The first ten points are included in reverse order.      `!9-0` - All but the first ten points are included in reverse order.
 - Closed `poly0closed` - To create a closed polygon, check the Closed button.
 
 ## Parameters - Post Page
-
 - Remove Unused Points `remove` - Keep only the connected points, and discard unused points.
 - Compute Normals `normals` - Creates normals on the geometry.
 
@@ -96,20 +92,16 @@ Points added in this way are appended to the end of the point list if a Source i
 
 ## Info CHOP Channels
 
-Extra Information for the Add SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Add SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -117,19 +109,11 @@ Extra Information for the Add SOP can be accessed via an [Info CHOP](https://doc
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

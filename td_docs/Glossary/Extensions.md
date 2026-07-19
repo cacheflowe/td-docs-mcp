@@ -6,11 +6,11 @@ title: Extensions
 
 # Extensions
 
-When creating a custom Component, it is often desirable to extend the component's functionality and data. This can be accomplished using Python **Extensions**. You can add local Python data and functionality, including data that will work with TouchDesigner's [procedural](https://docs.derivative.ca/Dependency "Dependency") system. Extensions are specified as a list of Python objects on the Extensions page of a Component. Each of a Component's extensions can then be accessed by other operators, either directly (when **[Promoted](#Promoting_Extensions)**) or through the [`**ext**`object](#The_ext_Object).
+When creating a custom Component, it is often desirable to extend the component's functionality and data. This can be accomplished using Python **Extensions**. You can add local Python data and functionality, including data that will work with TouchDesigner's [procedural](Dependency.md "Dependency") system. Extensions are specified as a list of Python objects on the Extensions page of a Component. Each of a Component's extensions can then be accessed by other operators, either directly (when **[Promoted](#Promoting_Extensions)**) or through the [`**ext**`object](#The_ext_Object).
 
 Creating extensions requires a basic understanding of the Python programming language. Some great learning resources:
   * [General Python tutorial](http://docs.python.org/tutorial)
-  * [Introduction to Python in TouchDesigner](https://docs.derivative.ca/Introduction_to_Python_Tutorial "Introduction to Python Tutorial")
+  * [Introduction to Python in TouchDesigner](../Learn/Introduction_to_Python_Tutorial.md "Introduction to Python Tutorial")
   * [Matthew Ragan's tutorial: Understanding Extensions](http://matthewragan.com/2015/07/05/touchdesigner-understanding-extensions/)
   * Extension and other Python examples can be found in `Samples/Learn/PythonExamples.toe` of the TouchDesigner installation folder.
 
@@ -20,7 +20,7 @@ The easiest and recommended way to create extensions is using the [Component Edi
 
 ##  Using The Component Editor To Create An Extension
 
-To open the **[Component Editor](https://docs.derivative.ca/Component_Editor_Dialog "Component Editor Dialog")** , select **Customize Component...** from the [RMB Menu](https://docs.derivative.ca/RMB_Menu "RMB Menu") of your custom Component. Open the **Extension Code** section of the dialog.
+To open the **[Component Editor](https://docs.derivative.ca/Component_Editor_Dialog "Component Editor Dialog")** , select **Customize Component...** from the [RMB Menu](RMB_Menu.md "RMB Menu") of your custom Component. Open the **Extension Code** section of the dialog.
 [![Component Editor Extensions](https://docs.derivative.ca/images/9/90/ComponentEditorExtensions.PNG)](https://docs.derivative.ca/File:ComponentEditorExtensions.PNG "Component Editor Extensions")
 The Extension Code section of the Component Editor assists in creating extensions for your custom Component. To create a new extension, simply enter the name in the textbox and click **Add**. Once created, you can edit, reinitialize, or delete the extension using the buttons on the right. The **+** expands advanced features that let you create a custom definition and/or name for your extension, or turn Promotion on or off. For more info, see the [Extension Parameters](#Extension_Parameters) section below.
 
@@ -38,7 +38,7 @@ Each of a Component's four available extensions has three parameters associated 
 
 The **Extension Object** Parameter contains a bit of Python code that must _**return a Python object when executed**_. A reference to this object will be stored as the given extension. In the image above, we see the most common usage: a class (`ExampleExt`) instantiated with the Component (`me`) as argument. The class is defined in a DAT, also named `ExampleExt` inside the Component.
 
-Expert Python users will note that the code in this Parameter can return any Python object, which has some creative uses, such as [Internal Parameters](https://docs.derivative.ca/Internal_Parameters "Internal Parameters").
+Expert Python users will note that the code in this Parameter can return any Python object, which has some creative uses, such as [Internal Parameters](Internal_Parameters.md "Internal Parameters").
 
 ####  Extension Name
 
@@ -100,7 +100,7 @@ from TDStoreTools import StorageManager
 import TDFunctions as TDF
 ```
 
-In the first two lines of the default extension we import a class and a module using standard Python import statements. For more info on this, see [Importing Modules](https://docs.derivative.ca/Introduction_to_Python_Tutorial#Importing_Modules "Introduction to Python Tutorial").
+In the first two lines of the default extension we import a class and a module using standard Python import statements. For more info on this, see [Importing Modules](../Learn/Introduction_to_Python_Tutorial.md#Importing_Modules "Introduction to Python Tutorial").
 
 ##  Python Attributes
 
@@ -171,7 +171,7 @@ As with other attributes, capitalized function names will be accessible through 
 
 #  Dependable Values
 
-Often you'll want to reference extension properties in [Parameter Expressions](https://docs.derivative.ca/Parameter_Expression "Parameter Expression") and have those expression values update automatically when the property value changes. This functionality can be created by using [Dependencies](https://docs.derivative.ca/Dependency_Class "Dependency Class"). The easiest way to create dependable values is to use the `createProperty[](https://docs.derivative.ca/Extensions#Python_Properties)` function or `StorageManager[](https://docs.derivative.ca/Extensions#Storage_Manager)` class, as explained above.
+Often you'll want to reference extension properties in [Parameter Expressions](Parameter_Expression.md "Parameter Expression") and have those expression values update automatically when the property value changes. This functionality can be created by using [Dependencies](../Python/Dependency_Class.md "Dependency Class"). The easiest way to create dependable values is to use the `createProperty[](Extensions.md#Python_Properties)` function or `StorageManager[](Extensions.md#Storage_Manager)` class, as explained above.
 
 Python collections (lists, dictionaries, and sets) can be a bit more complicated to make dependable. For a full explanation of how to achieve this, see [Deeply Dependable Collections](https://docs.derivative.ca/TDStoreTools#Deeply_Dependable_Collections "TDStoreTools").
 
@@ -209,6 +209,10 @@ In some rare cases, you may want to access a Component's extensions directly thr
 #  Extension Gotchas
 
 When doing advanced Python programmimg in TouchDesigner, there are a couple sticky situations you can run into. This section attempts to address the common ones. **Note:** It is not necessary to understand these for basic Python programming.
+
+##  Gotcha: Your extension doesn't initialize immediately when TouchDesigner loads - Solution: toggle **Init Extensions on Start** parameter or pulse **Re-Init Extensions**
+
+By default, TouchDesigner extensions initialize (are instantiated) when they are first accessed or when their component first [cooks](Cook.md "Cook"). In most cases, they will be accessed or will cook on load because something (e.g. a parameter expression) is referencing them. However, if nothing is accessing them or causing them to cook, they won't initialize immediately on load. In the vast majority of cases this won't be a problem, but occasionally it is, usually because the extension does something in the `__init__` function that needs to happen immediately on load. If you want to force extensions to initialize on load, you can toggle the **Init Extensions on Start** parameter on the **Extensions** page. If you want to force extensions to initialize at another time, you can pulse the **Re-Init Extensions** parameter.
 
 ##  Gotcha: "Cannot use an extension during its initialization" and other init timing issues - Solution: **`extensionsReady`**and**`onInitTD`**
 
@@ -263,11 +267,11 @@ This section will describe an example Extension to illustrate many of the concep
 
 The `**ColorExt**`extension creates a system that stores a`baseColor` to be used as a background in panels inside the custom Component. The `baseColor` is not meant to be directly changeable, but can be incremented through a list of available base colors.
 
-**Note:** because Python errors are reported there, it is always worthwhile to keep a [Textport](https://docs.derivative.ca/Textport "Textport") open when working with extensions.
+**Note:** because Python errors are reported there, it is always worthwhile to keep a [Textport](Textport.md "Textport") open when working with extensions.
 
 ##  Step 1: Create The `ColorExt` Extension
 
-For starters, we will want an empty Component to customize. Create a [Container COMP](https://docs.derivative.ca/Container_COMP "Container COMP") somewhere in your network. It's always a good idea to name your Operators, and this is especially true of custom Components, so rename it `colorExample`. Use the [Component Editor](https://docs.derivative.ca/Component_Editor_Dialog "Component Editor Dialog") to add an extension named `ColorExt`. This creates a default extension in a DAT inside `colorExample`. It also sets up `colorExample`'s Extension Parameters to use the new extension. Click the "Edit" button in the Component Editor to edit `ColorExt`.
+For starters, we will want an empty Component to customize. Create a [Container COMP](Container_COMP.md "Container COMP") somewhere in your network. It's always a good idea to name your Operators, and this is especially true of custom Components, so rename it `colorExample`. Use the [Component Editor](https://docs.derivative.ca/Component_Editor_Dialog "Component Editor Dialog") to add an extension named `ColorExt`. This creates a default extension in a DAT inside `colorExample`. It also sets up `colorExample`'s Extension Parameters to use the new extension. Click the "Edit" button in the Component Editor to edit `ColorExt`.
 
 ##  Step 2: Write The `ColorExt` Extension
 
@@ -350,7 +354,7 @@ Once this code is entered, the extension should be initialized automatically. If
 
 ###  Using `BaseColor`
 
-Our original goal was to create a base color that can be used by panels inside `colorExample`. To see this in action, go inside `colorExample` and create a [Container COMP](https://docs.derivative.ca/Container_COMP "Container COMP"). Go to the new container's Look parameter page and enter the following into its Background Color expressions: [![BaseColorPars.PNG](https://docs.derivative.ca/images/3/3e/BaseColorPars.PNG)](https://docs.derivative.ca/File:BaseColorPars.PNG)
+Our original goal was to create a base color that can be used by panels inside `colorExample`. To see this in action, go inside `colorExample` and create a [Container COMP](Container_COMP.md "Container COMP"). Go to the new container's Look parameter page and enter the following into its Background Color expressions: [![BaseColorPars.PNG](https://docs.derivative.ca/images/3/3e/BaseColorPars.PNG)](https://docs.derivative.ca/File:BaseColorPars.PNG)
 
 The color should immediately turn to blue, which is item 0 (the `ColorIndex` default) in `baseColorList`. Notice that we use the `ext` method of accessing `ColorExt`. This will work for every Operator inside `colorExample`, because `ext` will search upwards until it finds the named extension.
 
@@ -372,16 +376,16 @@ The extension system provides effectively limitless Component customization poss
 
 Some examples of extremely customized Components that make heavy use of the extension system: [Lister Custom COMP](https://docs.derivative.ca/Palette:lister "Palette:lister"), [PopMenu Custom COMP](https://docs.derivative.ca/Palette:popMenu "Palette:popMenu"), [PopDialog Custom COMP](https://docs.derivative.ca/Palette:popDialog "Palette:popDialog").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
 Any component can be extended with its own Python classes which contain python functions and data.
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](Script.md "Script") or [GLSL](GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-The sub-[Family](https://docs.derivative.ca/Operator_Family "Operator Family") of [Component](https://docs.derivative.ca/Component "Component") types that are used to define and render 3D scenes. A [Geometry Component](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") is an Object that contains the 3D shapes to render. A [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP") are other Object types. Separately, "Objects" also refers to Python objects.
+The sub-[Family](Operator_Family.md "Operator Family") of [Component](Component.md "Component") types that are used to define and render 3D scenes. A [Geometry Component](Geometry_COMP.md "Geometry COMP") is an Object that contains the 3D shapes to render. A [Camera COMP](Camera_COMP.md "Camera COMP") and [Light COMP](Light_COMP.md "Light COMP") are other Object types. Separately, "Objects" also refers to Python objects.
 
 Storage is a python dictionary in each operator, where users can store and fetch extra data.
 
-Attributes are data associated with [POP](https://docs.derivative.ca/POP "POP") geometry. [Points](https://docs.derivative.ca/Point "Point"), [Vertex (Vertices)](https://docs.derivative.ca/Vertex "Vertex") and [Primitives](https://docs.derivative.ca/Primitive "Primitive") (polygons, lines, etc) can have any number of attributes.
+applies to python objects, parameters, nodes.

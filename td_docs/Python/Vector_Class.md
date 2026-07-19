@@ -6,7 +6,7 @@ title: Vector_Class
 
 # Vector Class
 
-The vector class holds a single 3 component vector. A vector describes a direction in space, and it's important to use a vector or [Position](https://docs.derivative.ca/Position_Class "Position Class") as appropriate for the data that is being calculated. When being multiplied by a [Matrix](https://docs.derivative.ca/Matrix_Class "Matrix Class"), this class will implicitly have a 4th component (W component) of 0. A new vector can be created without any arguments, with 3 arguments for the x,y,z values, or with a single argument which is a variable that has 3 entries such as a list of length 3, or a position or vector.
+The vector class holds a single 3 component vector. A vector describes a direction in space, and it's important to use a vector or [Position](Position_Class.md "Position Class") as appropriate for the data that is being calculated. When being multiplied by a [Matrix](Matrix_Class.md "Matrix Class"), this class will implicitly have a 4th component (W component) of 0. A new vector can be created without any arguments, with 3 arguments for the x,y,z values, or with a single argument which is a variable that has 3 entries such as a list of length 3, or a position or vector.
 
 **Note:** tdu.___ and TDU.___ can be used interchangeably. In general, TDU.___ is used to represent a class, while tdu.___ is used for the instantiator function.
 
@@ -23,6 +23,8 @@ print(v3[1])	# same as v3.y
 v3[2] = 1		# same as v3.z
 ```
 
+## Instantiators
+
 `TDU.Vector(*args)`→ `TDU.Vector`:
 
 Create a new vector object. The following argument forms are valid instantiators:
@@ -32,8 +34,6 @@ Create a new vector object. The following argument forms are valid instantiators
   * `tdu.Vector(x : float, y : float,  z : float)` - (x, y, z)
   * `tdu.Vector(f : float)` - (f, f, f)
   * `tdu.Vector(vec : list)` - 3 item list to fill vector
-
-}}
 
 ## Members
 

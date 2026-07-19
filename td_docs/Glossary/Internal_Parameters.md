@@ -6,7 +6,7 @@ title: Internal_Parameters
 
 # Internal Parameters
 
-[Parameters](https://docs.derivative.ca/Parameter "Parameter") are a powerful way to hold data in TouchDesigner. But putting parameters on the top level of a [component](https://docs.derivative.ca/Component "Component") that are only used inside makes the component messy. “Internal Parameters” provide a simple shortcut to parameter collections that you create within a component, accessible from anywhere in that component. They act like "persistent local variables".
+[Parameters](Parameter.md "Parameter") are a powerful way to hold data in TouchDesigner. But putting parameters on the top level of a [component](Component.md "Component") that are only used inside makes the component messy. “Internal Parameters” provide a simple shortcut to parameter collections that you create within a component, accessible from anywhere in that component. They act like "persistent local variables".
 
 ##  Simplest Procedure
 
@@ -16,11 +16,11 @@ Most simply, right-click on a network background and select Create Internal Para
 
 `ipar._Name_`searches up in the parent components' hierarchy until it finds a component with a matching Internal OP Shortcut name. From there it finds the Base COMP that holds the set of parameters.
 
-See also [Internal Operators](https://docs.derivative.ca/Internal_Operators "Internal Operators").
+See also [Internal Operators](Internal_Operators.md "Internal Operators").
 
 ##  Manual Procedure
 
-Go inside any component, say `/project1` of a default TouchDesigner. Create a [Base Component](https://docs.derivative.ca/Base_COMP "Base COMP"), and name it `iparEffect`.
+Go inside any component, say `/project1` of a default TouchDesigner. Create a [Base Component](../COMPs/Base_COMP.md "Base COMP"), and name it `iparEffect`.
 
 On `iparEffect` create a Float [Custom Parameter](https://docs.derivative.ca/Custom_Parameters "Custom Parameters") and name it `Size`.
 
@@ -40,11 +40,11 @@ On the Text DAT, turn off Viewer Active, and on the node rclick -> Run Script. T
 
 ##  Rationale
 
-Holding values inside a component as parameters has advantages versus holding values in tables, Constant CHOPs, [Extensions](https://docs.derivative.ca/Extensions "Extensions") or [Storage](https://docs.derivative.ca/Storage "Storage"), as discussed in Pros and Cons below. Internal Parameters are simple to use, and can reduce or eliminate the need to write code in extensions. And by creating parameters inside your component, they are not needlessly exposed outside. See also [Internal Operators](https://docs.derivative.ca/Internal_Operators "Internal Operators") or iOPs.
+Holding values inside a component as parameters has advantages versus holding values in tables, Constant CHOPs, [Extensions](Extensions.md "Extensions") or [Storage](Storage.md "Storage"), as discussed in Pros and Cons below. Internal Parameters are simple to use, and can reduce or eliminate the need to write code in extensions. And by creating parameters inside your component, they are not needlessly exposed outside. See also [Internal Operators](Internal_Operators.md "Internal Operators") or iOPs.
 
 ##  Recommendation
 
-Name your internal parameter extension something meaningful. If it's a bin of movies, make the [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") parameter be called `Bin`, and the internal parameter name be also `Bin`.
+Name your internal parameter extension something meaningful. If it's a bin of movies, make the [Parent Shortcut](Parent_Shortcut.md "Parent Shortcut") parameter be called `Bin`, and the internal parameter name be also `Bin`.
 
 Like any parameter, if an internal parameter is a path to an operator, you have to write, for example, `op(ipar.Effect.Oppath)` or `ipar.Effect.Oppath.eval()`. Otherwise you generally don't need `.eval()`.
 
@@ -55,14 +55,14 @@ To see where an internal parameter comes from when it appears in a parameter exp
 ##  Discussion - Where you can Hold and Modify Data in TouchDesigner
 
 To review, there are already several ways to hold data internally in TouchDesigner:
-  * text strings located in [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT") cells and [Text DATs](https://docs.derivative.ca/Text_DAT "Text DAT")
-  * pre-existing parameters (on [Constant CHOP](https://docs.derivative.ca/Constant_CHOP "Constant CHOP"), [Add SOP](https://docs.derivative.ca/Add_SOP "Add SOP"), …)
+  * text strings located in [Table DAT](Table_DAT.md "Table DAT") cells and [Text DATs](Text_DAT.md "Text DAT")
+  * pre-existing parameters (on [Constant CHOP](../CHOPs/Constant_CHOP.md "Constant CHOP"), [Add SOP](../SOPs/Add_SOP.md "Add SOP"), …)
   * [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters") on the outside of components
-  * CHOPs, SOPs and TOPs which are "[locked](https://docs.derivative.ca/Lock_Flag "Lock Flag")" (and harder to modify)
-  * TouchDesigner-python [Storage](https://docs.derivative.ca/Storage "Storage") in any Operator
-  * TouchDesigner-python [Extension](https://docs.derivative.ca/Extensions "Extensions") “Properties”
+  * CHOPs, SOPs and TOPs which are "[locked](Lock_Flag.md "Lock Flag")" (and harder to modify)
+  * TouchDesigner-python [Storage](Storage.md "Storage") in any Operator
+  * TouchDesigner-python [Extension](Extensions.md "Extensions") “Properties”
   * Regular python variables in functions and scripts (these are not persistent after a script runs)
-  * data held in [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP"), [Script DAT](https://docs.derivative.ca/Script_DAT "Script DAT") and [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP") that generate data
+  * data held in [Script CHOP](../CHOPs/Script_CHOP.md "Script CHOP"), [Script DAT](../DATs/Script_DAT.md "Script DAT") and [Script SOP](../SOPs/Script_SOP.md "Script SOP") that generate data
   * Dialogs -> Variables, where you can create variables and access them in python with `var('VARNAME')`. These are simply strings. These variables are not commonly used.
   * Internal Parameters
 
@@ -91,7 +91,6 @@ To review, there are already several ways to hold data internally in TouchDesign
   * In a parameter you cannot easily represent SOP data (points, polygons, primitives, attributes), non-trivial python structures.
   * It has not been possible to manage long lists or large arrays of 1D, 2D or 3D numbers, although now there is the Python parameter type that can hold simple lists, for example.
   * An internal parameter (any parameter) uses more memory than a DAT cell but is the same as any custom parameter.
-
   * The syntax for parameters that are operators is: `op(ipar.Effect.Operatorpath)`. As stated above, in the case where the parameter is not a float, integer, boolean or string, but is an operator (like the path to some node), using `ipar.Effect.Operatorpath` in an expression somewhere may resolve to the parameter object and not the value you intend, so you need to put `op(ipar.Effect.Operatorpath)`. Same with a Python type parameter.
 
 ##  Getting to ipar from Outside a Component
@@ -100,28 +99,28 @@ You may want to get the value of an `ipar` of another component, or you may want
 
 Being "internal" this isn't possible with `ipar`. But you can use a member of the component to access it: `COMP.internalParameters[**Name**]`where` _Name_`is the`ipar` name you want. `COMP.internalParameters` is a dictionary of internal parameter shortcuts found on the component.
 
-See also [Internal Operators](https://docs.derivative.ca/Internal_Operators "Internal Operators").
+See also [Internal Operators](Internal_Operators.md "Internal Operators").
 
 Internal Parameters (iPars) act like local variables in a component. They provide a simple shortcut to collections of parameters that you create within a component, and access from anywhere in that component.
 
 A Parent Shortcut is a parameter on a component that contains a name that you can use anywhere inside the component to refer to that component using the syntax `parent.Name`, for example `parent.Effect.width` to obtain panel width.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
-Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
+Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](Parent_Shortcut.md "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](Global_OP_Shortcut.md "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](Script.md "Script") or [GLSL](GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
 A state of a node where you can operate the contents of its viewer (the + at botton-right of any node), like operating the gadgets of a panel in a node viewer, or the 3D data in the viewer of a Geometry component. With Viewer Active off you can select, move and delete nodes by clicking/dragging on them, even if the viewer is visible.
 
-A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](https://docs.derivative.ca/Python "Python") and the original [Tscript](https://docs.derivative.ca/Tscript "Tscript"). Scripts and single-line commands can also be run in the [Textport](https://docs.derivative.ca/Textport "Textport").
+A set of commands located in a Text DAT that are triggered to run under certain conditions. There are two scripting languages in TouchDesigner: [Python](../General/Python.md "Python") and the original [Tscript](Tscript.md "Tscript"). Scripts and single-line commands can also be run in the [Textport](Textport.md "Textport").
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](Node.md "Node").
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-TouchDesigner Component file, the file type used to save a [Component](https://docs.derivative.ca/Component "Component") of your TouchDesigner project.
+TouchDesigner Component file, the file type used to save a [Component](Component.md "Component") of your TouchDesigner project.

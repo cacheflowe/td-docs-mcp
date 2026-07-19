@@ -10,10 +10,9 @@ title: Switch_MAT
 
 The Switch MAT allows you to switch between multiple materials.
 
-[switchMAT_Class](https://docs.derivative.ca/SwitchMAT_Class "SwitchMAT Class")
+[switchMAT_Class](Switch_MAT_Class.md "SwitchMAT Class")
 
 ## Parameters - Switch Page
-
 - Index `index` - Selects which input to use. The first input is 0.
 - Extend `extend` - ⊞ - Determines extend behaviour when index is out of range. Allows negative indices.
   * Clamp `clamp` -
@@ -28,9 +27,8 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
   * From a SOP `sop` -
   * From another MAT `mat` -
   * From a DeformIn MAT `deformin` -
-
 - SOP with Capture Data `targetsop` - Specifies the SOP that contains the deform capture attributes.
-- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](https://docs.derivative.ca/Bone_Group_SOP "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
+- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](../SOPs/Bone_Group_SOP.md "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
 - pCaptData Attrib `pcaptdata` - Much like pCaptPath Attrib.
 - Skeleton Root Path `skelrootpath` - Specifies the path to the COMP where the root of the skeleton is located.
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
@@ -53,7 +51,6 @@ Blending
   * One Minus Dest Alpha `omda` -
   * Source Alpha Saturate `sas` -
   * One `one` -
-
 - Destination Color * `destblend` - ⊞ - This value is multiplied by the color value of the pixel currently in the Color-Buffer (also known as the Destination Color).
   * One `one` -
   * Src Color `scol` -
@@ -63,7 +60,6 @@ Blending
   * Dest Alpha `da` -
   * One Minus Dest Alpha `omda` -
   * Zero `zero` -
-
 - Separate Alpha Function `separatealphafunc` - This toggle enables and disables separate blending options for the alpha values.
 - Source Alpha * `srcblenda` - ⊞ - This value is multiplied by the alpha value of the pixel that is being written to the Color-Buffer (also know as the Source Alpha).
   * Zero `zero` -
@@ -75,7 +71,6 @@ Blending
   * One Minus Dest Alpha `omda` -
   * Source Alpha Saturate `sas` -
   * One `one` -
-
 - Destination Alpha * `destblenda` - ⊞ - This value is multiplied by the alpha value of the pixel currently in the Color-Buffer (also known as the Destination Alpha).
   * One `one` -
   * Src Color `scol` -
@@ -102,7 +97,6 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Greater Than or Equal `greaterorequal` -
   * Not Equal `notequal` -
   * Always `always` -
-
 - Write Depth Values `depthwriting` - If Write Depth Values is on, pixels that pass the depth-test will write their depth value to the Depth-Buffer. If this isn't on then no changes will be made to the Depth-Buffer, regardless of if the pixels drawn pass or fail the depth-test.
 
 ###
@@ -116,7 +110,6 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
   * Less Than or Equal `lessorequal` -
   * Greater Than `greater` -
   * Greater Than or Equal `greaterorequal` -
-
 - Alpha Threshold `alphathreshold` - This value is what the pixel's alpha is compared to to determine if the pixel should be drawn. Pixels with alpha greater than the Alpha Threshold will be drawn. Pixels with alpha less than or equal to the Alpha Threshold will not be drawn.
 
 ###
@@ -128,7 +121,6 @@ The wire-frame feature will render the geometry as wire-frame, using the actual 
   * Off `off` -
   * OpenGL Tesselated Wire Frame `tesselated` -
   * Topology Wire Frame `topology` -
-
 - Line Width `wirewidth` - This value is the width that the wires will be. This value is in pixels.
 
 ###
@@ -158,7 +150,7 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
 
 ## Info CHOP Channels
 
-Extra Information for the Switch MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Switch MAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -169,19 +161,11 @@ Extra Information for the Switch MAT can be accessed via an [Info CHOP](https://
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

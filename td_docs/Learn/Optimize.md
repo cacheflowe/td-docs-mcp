@@ -12,18 +12,18 @@ Tools of Optimization:
   * middle-mouse click info popup on each node (alt-rclick on macOs)
   * [Performance Monitor Dialog](https://docs.derivative.ca/Performance_Monitor_Dialog "Performance Monitor Dialog") (alt+y) under Dialogs... to assist in optimization.
   * [Probe](https://docs.derivative.ca/Palette:probe "Palette:probe") in the Palette to graphically watch how time and memory on the CPU and GPU are being dynamically consumed, and catch momentary drops in performance.
-  * Dialogs -> Errors and the [Error DAT](https://docs.derivative.ca/Error_DAT "Error DAT") to catch errors that may be slowing thing down.
+  * Dialogs -> Errors and the [Error DAT](../DATs/Error_DAT.md "Error DAT") to catch errors that may be slowing thing down.
   * Textport
-  * [Perform CHOP](https://docs.derivative.ca/Perform_CHOP "Perform CHOP") followed by a [Trail CHOP](https://docs.derivative.ca/Trail_CHOP "Trail CHOP") and turn on Frame Time and Cook channels to look at a time-history of performance.
+  * [Perform CHOP](../CHOPs/Perform_CHOP.md "Perform CHOP") followed by a [Trail CHOP](../CHOPs/Trail_CHOP.md "Trail CHOP") and turn on Frame Time and Cook channels to look at a time-history of performance.
   * `print()` or `debug()` statements in your python scripts
 
 The frames-per-second (or milliseconds-per-frame) depends on the compute load every frame, especially the selection of procedural operators, the amount of geometry, CPU and graphics speeds, and MOST OF ALL the optimizations that the user employs in building the project.
 
-TouchDesigner makes heavy use of both the [CPU](https://docs.derivative.ca/CPU "CPU") and the [GPU](https://docs.derivative.ca/GPU "GPU"). Reducing the workload on these two processors requires two different strategies as described below.
+TouchDesigner makes heavy use of both the [CPU](https://docs.derivative.ca/CPU "CPU") and the [GPU](../Glossary/GPU.md "GPU"). Reducing the workload on these two processors requires two different strategies as described below.
 
-**Quick Tip** : The first thing to determine is if the GPU is the bottleneck. Try turning down your render resolution 64x64 and see if things speed up. If they do then you know it’s GPU related. It’s quite possible your issue isn’t a GPU bottleneck though, unless it’s just GLSL shaders you are running with little else going on in the system. Check the [Performance Monitor](https://docs.derivative.ca/Performance_Monitor "Performance Monitor") to see what is taking up most of the time.
+**Quick Tip** : The first thing to determine is if the GPU is the bottleneck. Try turning down your render resolution 64x64 and see if things speed up. If they do then you know it’s GPU related. It’s quite possible your issue isn’t a GPU bottleneck though, unless it’s just GLSL shaders you are running with little else going on in the system. Check the [Performance Monitor](../Glossary/Performance_Monitor.md "Performance Monitor") to see what is taking up most of the time.
 
-See [Cook](https://docs.derivative.ca/Cook "Cook"), [Dependency](https://docs.derivative.ca/Dependency "Dependency"), [Event](https://docs.derivative.ca/Event "Event"), [Troubleshooting in TouchDesigner](https://docs.derivative.ca/Troubleshooting_in_TouchDesigner "Troubleshooting in TouchDesigner")
+See [Cook](../Glossary/Cook.md "Cook"), [Dependency](../Glossary/Dependency.md "Dependency"), [Event](../Glossary/Event.md "Event"), [Troubleshooting in TouchDesigner](Troubleshooting_in_TouchDesigner.md "Troubleshooting in TouchDesigner")
 
 ##  Determining Bottlenecks
 
@@ -35,9 +35,9 @@ All of the above is true for TouchDesigner, where the different departments are 
 
 ###  CPU Bottleneck
 
-You can use a [Hog CHOP](https://docs.derivative.ca/Hog_CHOP "Hog CHOP") to see if you have a CPU bottleneck. If you place down a Hog CHOP and your framerate goes down, then you have a CPU bottleneck. If your frame-rate doesn't change then you have a GPU bottleneck.
+You can use a [Hog CHOP](../CHOPs/Hog_CHOP.md "Hog CHOP") to see if you have a CPU bottleneck. If you place down a Hog CHOP and your framerate goes down, then you have a CPU bottleneck. If your frame-rate doesn't change then you have a GPU bottleneck.
 
-Conversely, if you reduce the rendering or compositing of images ([TOPs](https://docs.derivative.ca/TOP "TOP")) to a very small resolution (like 32x32) and the frame rate does not change, you have a CPU bottleneck.
+Conversely, if you reduce the rendering or compositing of images ([TOPs](../TOPs/TOP.md "TOP")) to a very small resolution (like 32x32) and the frame rate does not change, you have a CPU bottleneck.
 
 ###  GPU Bottleneck
 
@@ -60,12 +60,12 @@ Use the [Performance Monitor Dialog](https://docs.derivative.ca/Performance_Moni
 ###  OP cooking time, OP info pop-up
 
 Each OP info pop-up (middle mouse on the OP) displays how many times it has cooked and how long its last cook took, in milliseconds.
-  * **cook time** : how long it takes that operator to process (or '[cook](https://docs.derivative.ca/Cook "Cook")').
+  * **cook time** : how long it takes that operator to process (or '[cook](../Glossary/Cook.md "Cook")').
   * **number of cooks** : often what is important is whether it cooks every frame or it cooks just once, or only when its input data changes.
 
 ###  Understand Why Nodes Cook
 
-Refer to the [Cook](https://docs.derivative.ca/Cook "Cook") article.
+Refer to the [Cook](../Glossary/Cook.md "Cook") article.
 
 ###  Finding unnecessary cooking
 
@@ -78,11 +78,11 @@ Generally speaking, DATs, SOPs, CHOPs cook faster on subsequent cooks when they 
 
 ###  Make Sure Your Geometry is in an Optimal Format
 
-While the GPU actually renders geometry, there can be a large cost involved with telling the GPU all of the information it needs to render this geometry. Refer to the [Optimize Geometry for Rendering](https://docs.derivative.ca/Optimize_Geometry_for_Rendering "Optimize Geometry for Rendering") article and the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") for more information on this.
+While the GPU actually renders geometry, there can be a large cost involved with telling the GPU all of the information it needs to render this geometry. Refer to the [Optimize Geometry for Rendering](https://docs.derivative.ca/Optimize_Geometry_for_Rendering "Optimize Geometry for Rendering") article and the [Render TOP](../TOPs/Render_TOP.md "Render TOP") for more information on this.
 
 ###  Transform your Geometry at the Object Level instead of in a SOP
 
-Transform at the [object](https://docs.derivative.ca/Object_Component "Object Component") level if you can. Often if you have a [Transform SOP](https://docs.derivative.ca/Transform_SOP "Transform SOP") among an object's SOPs, it has the same effect of translating, rotating, or scaling an object as if you applied the same transform parameters at the object level. That is, using a Transform SOP has the same effect as using the same numbers on the object transform. However their compute times are very different. As a SOP, the CPU needs to apply a transform to every point. But if the transform is in the object, it lets the graphics hardware do the transform, which is much faster and applied to the object as a whole.
+Transform at the [object](../Glossary/Object_Component.md "Object Component") level if you can. Often if you have a [Transform SOP](../SOPs/Transform_SOP.md "Transform SOP") among an object's SOPs, it has the same effect of translating, rotating, or scaling an object as if you applied the same transform parameters at the object level. That is, using a Transform SOP has the same effect as using the same numbers on the object transform. However their compute times are very different. As a SOP, the CPU needs to apply a transform to every point. But if the transform is in the object, it lets the graphics hardware do the transform, which is much faster and applied to the object as a whole.
 
 ###  Profiling Python Scripts in DATs
 
@@ -98,7 +98,7 @@ Python in parameter expressions now are quite optimized (they usually get pre-co
 
 ###  Reducing Cooking in CHOPs
 
-The [Null CHOP](https://docs.derivative.ca/Null_CHOP "Null CHOP") in Selective mode can be used to reduce downstream cooking in CHOP chains when the input to the Null CHOP doesn't change. However, the [Null CHOP](https://docs.derivative.ca/Null_CHOP "Null CHOP") itself will always cook on data changes in this mode, so use with caution.
+The [Null CHOP](../CHOPs/Null_CHOP.md "Null CHOP") in Selective mode can be used to reduce downstream cooking in CHOP chains when the input to the Null CHOP doesn't change. However, the [Null CHOP](../CHOPs/Null_CHOP.md "Null CHOP") itself will always cook on data changes in this mode, so use with caution.
 
 ###  Other Processes Running and Interrupting TouchDesigner
 
@@ -108,8 +108,7 @@ The [Null CHOP](https://docs.derivative.ca/Null_CHOP "Null CHOP") in Selective m
 ###  Multi-CPU Usage
 
   * You can run multiple instances of TouchDesigner on one computer. Then using the various Touch In/Outs you can move data between the processes and thus offload some work onto other processors.
-
-  * Beware that doing this with the [Touch In TOP](https://docs.derivative.ca/Touch_In_TOP "Touch In TOP") and [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP") and large images may not get you the performance boost you are looking for as TOPs use the graphics card heavily and you only have one of those. However you could certainly do it on another physical computer and use a fast gigabit network.
+  * Beware that doing this with the [Touch In TOP](../TOPs/Touch_In_TOP.md "Touch In TOP") and [Touch Out TOP](../TOPs/Touch_Out_TOP.md "Touch Out TOP") and large images may not get you the performance boost you are looking for as TOPs use the graphics card heavily and you only have one of those. However you could certainly do it on another physical computer and use a fast gigabit network.
 
 ##  Optimizing GPU Usage
 
@@ -129,15 +128,15 @@ If the number of vertices or particles is very high, the Vertex Shader engine wi
 
 ###  Reduce GPU Workload in Render TOP
 
-What does affect speed greatly is the number of lights, the type of lights, and the features that are used in [MATs](https://docs.derivative.ca/MAT "MAT"). For example, a cone light is more expensive than a point or distance point (See [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP")). Enabling features like Rim Lighting in the [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT") will increase the pixel shader cost as well (To see the cost, turn off the rim lighting and see how much faster things run).
+What does affect speed greatly is the number of lights, the type of lights, and the features that are used in [MATs](../MATs/MAT.md "MAT"). For example, a cone light is more expensive than a point or distance point (See [Light COMP](../Glossary/Light_COMP.md "Light COMP")). Enabling features like Rim Lighting in the [Phong MAT](../MATs/Phong_MAT.md "Phong MAT") will increase the pixel shader cost as well (To see the cost, turn off the rim lighting and see how much faster things run).
 
 ###  Render TOP Parameters
 
-There are some parameters on the [Render TOPs](https://docs.derivative.ca/Render_TOP "Render TOP") **Advanced** page that can be used to speed up rendering. For example, if you are only calculating a shadow map, then you can turn on the **Draw Depth Only** feature. If you don't need the color output from that particular Render TOP, you can turn off **Color Output Needed** , which will avoid resolving the offscreen antialias buffer down into a texture which can be used as an input for other TOPs.
+There are some parameters on the [Render TOPs](../TOPs/Render_TOP.md "Render TOP") **Advanced** page that can be used to speed up rendering. For example, if you are only calculating a shadow map, then you can turn on the **Draw Depth Only** feature. If you don't need the color output from that particular Render TOP, you can turn off **Color Output Needed** , which will avoid resolving the offscreen antialias buffer down into a texture which can be used as an input for other TOPs.
 
 ###  Reduce Workload of other TOPs
 
-As noted above, the cost of other TOPs is generally tied directly to their resolution, reducing their resolution will have a 1:1 speedup for GPU workload. Some other TOPs are more expensive depending on their parameters, the filter size of [Blur TOP](https://docs.derivative.ca/Blur_TOP "Blur TOP") is an example of this.
+As noted above, the cost of other TOPs is generally tied directly to their resolution, reducing their resolution will have a 1:1 speedup for GPU workload. Some other TOPs are more expensive depending on their parameters, the filter size of [Blur TOP](../TOPs/Blur_TOP.md "Blur TOP") is an example of this.
 
 ##  Optimizing Memory Usage
 
@@ -145,7 +144,7 @@ Use [Probe](https://docs.derivative.ca/Palette:probe "Palette:probe") to see whe
 
 ###  Audio Play CHOP
 
-The Audio Play CHOP currently loads the entire sound file into RAM. If you have a longer sound file, you should consider using the [Audio File In CHOP](https://docs.derivative.ca/Audio_File_In_CHOP "Audio File In CHOP").
+The Audio Play CHOP currently loads the entire sound file into RAM. If you have a longer sound file, you should consider using the [Audio File In CHOP](../CHOPs/Audio_File_In_CHOP.md "Audio File In CHOP").
 
 ###  See Also
 
@@ -157,22 +156,22 @@ The Graphics Processing Unit. This is the high-speed, many-core processor of the
 
 The dialog box in which commands and scripts can typed in manually. Output to the textport includes script errors and messages from `print()` and `debug()` calls in python code. You can also edit DATs in the textport.
 
-To re-compute the output data of the [Operators](https://docs.derivative.ca/Operator "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](https://docs.derivative.ca/Parameter "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](https://docs.derivative.ca/Script "Script") commands are run on the node. When the operator is a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](https://docs.derivative.ca/Dependency "Dependency") - the necessary operators in all [Networks](https://docs.derivative.ca/Network "Network"), contributing to a frame's total "cook time".
+To re-compute the output data of the [Operators](../General/Operator.md "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](../Glossary/Parameter.md "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](../Glossary/Script.md "Script") commands are run on the node. When the operator is a [Panel Component](../Glossary/Panel_Component.md "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](../Glossary/Dependency.md "Dependency") - the necessary operators in all [Networks](../Glossary/Network.md "Network"), contributing to a frame's total "cook time".
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+A sequence of vertices form a [Polygon](../Glossary/Polygon.md "Polygon") in a [SOP](../SOPs/SOP.md "SOP"). Each vertex is an integer index into the [Point List](../Glossary/Point_List.md "Point List"), and each [Point](../Glossary/Point.md "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
 The tool built-in to TouchDesigner that analyzes and displays what TouchDesigner is doing as it generates the output images, audio and data.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+A sequence of vertices form a [Polygon](../Glossary/Polygon.md "Polygon") in a [SOP](../SOPs/SOP.md "SOP"). Each vertex is an integer index into the [Point List](../Glossary/Point_List.md "Point List"), and each [Point](../Glossary/Point.md "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
 
-The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](https://docs.derivative.ca/Text_DAT "Text DAT") and referenced by a [GLSL Material](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") or a [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.
+The OpenGL (pre-2022) or Vulkan (2022-) code that runs on the GPU and creates rendered images from polygons and textures. A shader is programmed in [Text DATs](../Glossary/Text_DAT.md "Text DAT") and referenced by a [GLSL Material](../MATs/GLSL_MAT.md "GLSL MAT") or a [GLSL TOP](../TOPs/GLSL_TOP.md "GLSL TOP"). Shaders are composed of up to three parts: Vertex Shader, Pixel Shader and Compute Shader.

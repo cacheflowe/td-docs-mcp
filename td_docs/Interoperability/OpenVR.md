@@ -10,23 +10,23 @@ OpenVR is an open standard for VR that is implemented and supported by Valve, an
 
 HTC Vive is the first (and currently only) device that has been tested throughly with TouchDesigner.
 
-The [OpenVR TOP](https://docs.derivative.ca/OpenVR_TOP "OpenVR TOP") outputs the left and right rendered images to an OpenVR device.
+The [OpenVR TOP](../TOPs/OpenVR_TOP.md "OpenVR TOP") outputs the left and right rendered images to an OpenVR device.
 
-The [OpenVR CHOP](https://docs.derivative.ca/OpenVR_CHOP "OpenVR CHOP") supplies data for head tracking as well as data from the Vive's highly-accurate and responsive dual [Controllers](http://www.vive.com/ca/accessory/controller/) (all its buttons, trackpad, and position/rotation values) and [Tracker](http://www.vive.com/ca/vive-tracker/) accessories.
+The [OpenVR CHOP](../CHOPs/OpenVR_CHOP.md "OpenVR CHOP") supplies data for head tracking as well as data from the Vive's highly-accurate and responsive dual [Controllers](http://www.vive.com/ca/accessory/controller/) (all its buttons, trackpad, and position/rotation values) and [Tracker](http://www.vive.com/ca/vive-tracker/) accessories.
 [![Vive.png](https://docs.derivative.ca/images/thumb/8/8f/Vive.png/550px-Vive.png)](https://docs.derivative.ca/File:Vive.png)
 
 ###
 
 OpenVR support in TouchDesigner
 
-OpenVR devices are accessed through the [OpenVR CHOP](https://docs.derivative.ca/OpenVR_CHOP "OpenVR CHOP"), [OpenVR TOP](https://docs.derivative.ca/OpenVR_TOP "OpenVR TOP"), and the [OpenVR SOP](https://docs.derivative.ca/OpenVR_SOP "OpenVR SOP").
+OpenVR devices are accessed through the [OpenVR CHOP](../CHOPs/OpenVR_CHOP.md "OpenVR CHOP"), [OpenVR TOP](../TOPs/OpenVR_TOP.md "OpenVR TOP"), and the [OpenVR SOP](../SOPs/OpenVR_SOP.md "OpenVR SOP").
 
 **NOTE** : It is also possible to run the controllers without the headset.
 
 They implement <https://github.com/ValveSoftware/openvr>.
-  * [OpenVR CHOP](https://docs.derivative.ca/OpenVR_CHOP "OpenVR CHOP") - outputs positional data from the OpenVR SDK. You can choose between Sensor extrinsic data: for use as a transform matrix in a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP"), Sensor intrinsic data: for use as a projection matrix in a [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") for left and right eye or Controller/Tracker data: for positional and interaction channels from external controllers/trackers.
-  * [OpenVR TOP](https://docs.derivative.ca/OpenVR_TOP "OpenVR TOP") - outputs the left and right images to an OpenVR device.
-  * [OpenVR SOP](https://docs.derivative.ca/OpenVR_SOP "OpenVR SOP") - Holds OpenVR driver dependent models ie. a the model for an controller.
+  * [OpenVR CHOP](../CHOPs/OpenVR_CHOP.md "OpenVR CHOP") - outputs positional data from the OpenVR SDK. You can choose between Sensor extrinsic data: for use as a transform matrix in a [Camera COMP](../Glossary/Camera_COMP.md "Camera COMP"), Sensor intrinsic data: for use as a projection matrix in a [Camera COMP](../Glossary/Camera_COMP.md "Camera COMP") for left and right eye or Controller/Tracker data: for positional and interaction channels from external controllers/trackers.
+  * [OpenVR TOP](../TOPs/OpenVR_TOP.md "OpenVR TOP") - outputs the left and right images to an OpenVR device.
+  * [OpenVR SOP](../SOPs/OpenVR_SOP.md "OpenVR SOP") - Holds OpenVR driver dependent models ie. a the model for an controller.
 
 ###
 
@@ -42,4 +42,4 @@ Prior example .toe and .tox files available here: [File:OpenVRExamples.zip](http
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-TouchDesigner Component file, the file type used to save a [Component](https://docs.derivative.ca/Component "Component") of your TouchDesigner project.
+TouchDesigner Component file, the file type used to save a [Component](../Glossary/Component.md "Component") of your TouchDesigner project.

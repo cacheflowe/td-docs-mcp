@@ -6,11 +6,11 @@ title: Geometry_Viewer
 
 # Geometry Viewer
 
-The Geometry Viewer lets you view and manipulate 3D objects in the [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP"), [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP"), [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and all other 3D [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer"), plus in Geometry Viewer [Panes](https://docs.derivative.ca/Pane "Pane") (alt+3 in any pane).
+The Geometry Viewer lets you view and manipulate 3D objects in the [Geometry COMP](Geometry_COMP.md "Geometry COMP"), [Light COMP](Light_COMP.md "Light COMP"), [Camera COMP](Camera_COMP.md "Camera COMP") and all other 3D [Node Viewers](Node_Viewer.md "Node Viewer"), plus in Geometry Viewer [Panes](Pane.md "Pane") (alt+3 in any pane).
 
-Through the [right-click](https://docs.derivative.ca/RMB_Menu "RMB Menu") menu you can get at viewing options like wireframe (w) and the Display Options (d) like point numbers, normals, grids, axes and more. You can also change your navigation modes.
+Through the [right-click](RMB_Menu.md "RMB Menu") menu you can get at viewing options like wireframe (w) and the Display Options (d) like point numbers, normals, grids, axes and more. You can also change your navigation modes.
 
-**TIP:** It has its own lighting for viewing your 3D scene that is separate from the the light objects you create. To duplicate the default lighting in a geometry viewer, create two [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP") objects. Translate one to (30, 30, 100) and set its Light Color to (0.9, 0.9, 0.9). Translate the other to (-100, 0, 30) and set its Light Color to (0.3, 0.3, 0.3).
+**TIP:** It has its own lighting for viewing your 3D scene that is separate from the the light objects you create. To duplicate the default lighting in a geometry viewer, create two [Light COMP](Light_COMP.md "Light COMP") objects. Translate one to (30, 30, 100) and set its Light Color to (0.9, 0.9, 0.9). Translate the other to (-100, 0, 30) and set its Light Color to (0.3, 0.3, 0.3).
 
 ##  Display Options
 
@@ -49,30 +49,30 @@ The geometry viewer has 4 Camera Navigation Modes selectable from the right-clic
 **Viewport Mode**
 
 This standard control scheme always uses the center of the view for the pivot for tumble. Dolly will always move in and out towards the position of the cursor.
-  * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - tumble around pivot
-  * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - dolly using MMB-drag or scroll wheel
-  * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane)
+  * [LMB](Mouse_Click.md "Mouse Click") - tumble around pivot
+  * [MMB](Mouse_Click.md "Mouse Click") - dolly using MMB-drag or scroll wheel
+  * [RMB](Mouse_Click.md "Mouse Click") - move left or right (track) and up or down (crane)
 
 **Cursor Mode**
 
 If the cursor is placed on a piece of geometry, that specific point on the geometry will become the new pivot and will determine the center of rotation for tumbling and the speed of camera movements i.e. if you hold the cursor over a distant piece of geometry and scroll the mouse wheel, it will move quickly towards that point, whereas if you hold it over a closer piece of geometry it would move more slowly. If the cursor is not over a piece of geometry, it uses the center of the view for a pivot at the same distance as the previous pivot (like viewport mode above).
-  * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - tumble around pivot
-  * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move towards or away from the pivot (dolly) using MMB-drag or scroll wheel
-  * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane) perpendicular to the camera direction
+  * [LMB](Mouse_Click.md "Mouse Click") - tumble around pivot
+  * [MMB](Mouse_Click.md "Mouse Click") - move towards or away from the pivot (dolly) using MMB-drag or scroll wheel
+  * [RMB](Mouse_Click.md "Mouse Click") - move left or right (track) and up or down (crane) perpendicular to the camera direction
 
 **Object Mode**
 
-The pivot is the center of all geometry in the viewer, or just the selected geometry if the viewer supports selection (see Geometry [Pane](https://docs.derivative.ca/Pane "Pane")). If no geometry is present, the origin 0,0,0 is used as the pivot.
-  * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - tumble around pivot
-  * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - dolly using MMB-drag or scroll wheel
-  * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane)
+The pivot is the center of all geometry in the viewer, or just the selected geometry if the viewer supports selection (see Geometry [Pane](Pane.md "Pane")). If no geometry is present, the origin 0,0,0 is used as the pivot.
+  * [LMB](Mouse_Click.md "Mouse Click") - tumble around pivot
+  * [MMB](Mouse_Click.md "Mouse Click") - dolly using MMB-drag or scroll wheel
+  * [RMB](Mouse_Click.md "Mouse Click") - move left or right (track) and up or down (crane)
 
 **Camera Mode**
 
 The controls are from the perspective of the camera and the pivot is the camera's position. This is most like camera moves that are possible with a real-world camera, or in a first-person game engine such as Unreal.
-  * [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - look up and down (tilt), or left and right (pan)
-  * [MMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move the camera forward or back in the XZ plane (dolly), or look left and right (pan)
-  * [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") - move left or right (track) and up or down (crane). **NOTE:** reversed from other modes above since movement is based on the camera's perspective.
+  * [LMB](Mouse_Click.md "Mouse Click") - look up and down (tilt), or left and right (pan)
+  * [MMB](Mouse_Click.md "Mouse Click") - move the camera forward or back in the XZ plane (dolly), or look left and right (pan)
+  * [RMB](Mouse_Click.md "Mouse Click") - move left or right (track) and up or down (crane). **NOTE:** reversed from other modes above since movement is based on the camera's perspective.
 
 **Connection Problems** : If you are having trouble with the Spacemouse on macOS, there is a setting under “Privacy & Security” called ‘Input Monitoring’ which could block input from certain devices. It’s worth checking that TouchDesigner is not listed there. Or do an OSX update, which may prompt you to to re-validate the 3Dxware permissions.
 
@@ -94,12 +94,12 @@ This mode is somewhat of a hybrid of the other two camera modes. Twisting the Sp
 
 ##  In Node Viewers
 
-[Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer") of 3D object type Components and SOPs are also geometry viewers. These geometry viewers do not include all the toolbars of a Geometry Viewer in a pane, however you can access many viewer options using the right-click menu over the viewer while in [Viewer Active](https://docs.derivative.ca/Viewer_Active "Viewer Active") mode.
+[Node Viewers](Node_Viewer.md "Node Viewer") of 3D object type Components and SOPs are also geometry viewers. These geometry viewers do not include all the toolbars of a Geometry Viewer in a pane, however you can access many viewer options using the right-click menu over the viewer while in [Viewer Active](Viewer_Active.md "Viewer Active") mode.
 [![Geometry Component.jpg](https://docs.derivative.ca/images/0/04/Geometry_Component.jpg)](https://docs.derivative.ca/File:Geometry_Component.jpg)
 
 ##  In Panes
 
-Any [Pane](https://docs.derivative.ca/Pane "Pane") can be set to Geometry Viewer using the pane type menu or by using the shortcut alt+3.
+Any [Pane](Pane.md "Pane") can be set to Geometry Viewer using the pane type menu or by using the shortcut alt+3.
 [![Pane Type Menu Geo Viewer.jpg](https://docs.derivative.ca/images/a/ac/Pane_Type_Menu_Geo_Viewer.jpg)](https://docs.derivative.ca/File:Pane_Type_Menu_Geo_Viewer.jpg)
 [![Geometry Viewer.png](https://docs.derivative.ca/images/2/2b/Geometry_Viewer.png)](https://docs.derivative.ca/File:Geometry_Viewer.png)
 
@@ -111,12 +111,9 @@ Camera and Geometry Picking
 
 [![GeometryViewerMenuBar.png](https://docs.derivative.ca/images/0/0b/GeometryViewerMenuBar.png)](https://docs.derivative.ca/File:GeometryViewerMenuBar.png)
   * **Camera** - [![MenuCamera.png](https://docs.derivative.ca/images/b/b8/MenuCamera.png)](https://docs.derivative.ca/File:MenuCamera.png) - Select any camera to view the scene through. You can also manually type in the path to the desire camera in the field to the right.
-
   * **Lock Camera** - [![MenuLock.png](https://docs.derivative.ca/images/c/cf/MenuLock.png)](https://docs.derivative.ca/File:MenuLock.png) - When this lock button is on, the position of the camera being viewed through is locked to the view in the viewer. So tumbling, zooming, or repositioning the view will update the camera's position to keep in sync with the view.
-
   * **Save View to** - [![MenuSaveViewto.png](https://docs.derivative.ca/images/2/25/MenuSaveViewto.png)](https://docs.derivative.ca/File:MenuSaveViewto.png) - This takes the current view in the viewer and saves it out to whichever camera is selected from the menu. This updates the camera's position so it is in sync with the current view.
-
-  * **Pick** - [![MenuPick.png](https://docs.derivative.ca/images/3/32/MenuPick.png)](https://docs.derivative.ca/File:MenuPick.png) - This menu lets you select any [Object Component](https://docs.derivative.ca/Object_Component "Object Component") in the scene. The field to the right can be used for [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") to select multiple objects quickly.
+  * **Pick** - [![MenuPick.png](https://docs.derivative.ca/images/3/32/MenuPick.png)](https://docs.derivative.ca/File:MenuPick.png) - This menu lets you select any [Object Component](Object_Component.md "Object Component") in the scene. The field to the right can be used for [Pattern Matching](Pattern_Matching.md "Pattern Matching") to select multiple objects quickly.
 
 ###
 
@@ -141,19 +138,19 @@ Viewer Tools
   * **Shading Options** - [![OptionsShading.png](https://docs.derivative.ca/images/2/2c/OptionsShading.png)](https://docs.derivative.ca/File:OptionsShading.png) - Switch geometry display between wireframe or shaded modes.
   * **Selected Geo Info** - [![OptionsSelectedInfo.png](https://docs.derivative.ca/images/1/1f/OptionsSelectedInfo.png)](https://docs.derivative.ca/File:OptionsSelectedInfo.png) - Displays information for the selected geometry.
   * **Viewport Options** - [![OptionsView.png](https://docs.derivative.ca/images/0/0a/OptionsView.png)](https://docs.derivative.ca/File:OptionsView.png) - Select from different viewport layouts.
-  * **Snapshot** - [![OptionsSnapshot.png](https://docs.derivative.ca/images/5/59/OptionsSnapshot.png)](https://docs.derivative.ca/File:OptionsSnapshot.png) - Click with the [LMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") to take a snapshot of the viewport. Click with the [RMB](https://docs.derivative.ca/Mouse_Click "Mouse Click") to open snapshot options.
-  * **Background TOP** - [![OptionsBGTOP.png](https://docs.derivative.ca/images/3/31/OptionsBGTOP.png)](https://docs.derivative.ca/File:OptionsBGTOP.png) - Enter the path to a [TOP](https://docs.derivative.ca/TOP "TOP") to load an image in the background of the viewport.
+  * **Snapshot** - [![OptionsSnapshot.png](https://docs.derivative.ca/images/5/59/OptionsSnapshot.png)](https://docs.derivative.ca/File:OptionsSnapshot.png) - Click with the [LMB](Mouse_Click.md "Mouse Click") to take a snapshot of the viewport. Click with the [RMB](Mouse_Click.md "Mouse Click") to open snapshot options.
+  * **Background TOP** - [![OptionsBGTOP.png](https://docs.derivative.ca/images/3/31/OptionsBGTOP.png)](https://docs.derivative.ca/File:OptionsBGTOP.png) - Enter the path to a [TOP](../TOPs/TOP.md "TOP") to load an image in the background of the viewport.
   * **Background Scale** - [![OptionsScale.png](https://docs.derivative.ca/images/7/76/OptionsScale.png)](https://docs.derivative.ca/File:OptionsScale.png) - Adjust the scale of the image loaded in the Background TOP.
   * **Snap Options** - [![OptionsSnap.png](https://docs.derivative.ca/images/9/93/OptionsSnap.png)](https://docs.derivative.ca/File:OptionsSnap.png) - Ajusts the viewport's snap options and priority.
 
-A 3D viewport for viewing and manipulating 3D scenes or objects interactively. A geometry viewer can be found in [Panes](https://docs.derivative.ca/Pane "Pane") (alt+3 in any pane) or the [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer") of all Geometry Object components.
+A 3D viewport for viewing and manipulating 3D scenes or objects interactively. A geometry viewer can be found in [Panes](Pane.md "Pane") (alt+3 in any pane) or the [Node Viewers](Node_Viewer.md "Node Viewer") of all Geometry Object components.
 
-In the [Node Viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") of a Geometry COMP or any POP, the Adaptive Homing option will continually keep in-view the 3D geometry being displayed, even when the geometry changes shape, size and animated position.
+In the [Node Viewer](Node_Viewer.md "Node Viewer") of a Geometry COMP or any POP, the Adaptive Homing option will continually keep in-view the 3D geometry being displayed, even when the geometry changes shape, size and animated position.
 
 Privacy of TouchDesigner Components (`.tox` files) or Projects (`.toe` files) is the protection of networks that enables them to be used but not be visible or editable.
 
-A work area in TouchDesigner's layout that includes the [Network Editor](https://docs.derivative.ca/Network_Editor "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.
+A work area in TouchDesigner's layout that includes the [Network Editor](Network_Editor.md "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

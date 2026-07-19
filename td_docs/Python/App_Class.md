@@ -136,7 +136,7 @@ Returns access to the global [python environment helper](https://docs.derivative
 
 `addNonCommercialLimit(password=None)`→ `None`:
 
-Limits the application to operate at non-commercial license level. Multiple calls can be made, but each can be undone with a matching removeNonCommercialLimit(password). If the password is blank the operation cannot be undone. (See also [licenses.disablePro](https://docs.derivative.ca/Licenses_Class "Licenses Class")) member.
+Limits the application to operate at non-commercial license level. Multiple calls can be made, but each can be undone with a matching removeNonCommercialLimit(password). If the password is blank the operation cannot be undone. (See also [licenses.disablePro](Licenses_Class.md "Licenses Class")) member.
   * password - (Keyword, Optional) Password to later remove the restriction.
 
 ```
@@ -174,6 +174,6 @@ Removes the restriction previously added. Returns True if successful.
 app.removeResolutionLimit(password='secret123')
 ```
 
-A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+A Folder in TouchDesigner always refers to a Windows or macOS operating system directory/folder system that contain files and other folders. It does not refer to operators within TouchDesigner. See [Network Path](../Glossary/Network_Path.md "Network Path").
 
-The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](https://docs.derivative.ca/Root "Root"). This path is displayed at the top of every [Pane](https://docs.derivative.ca/Pane "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](https://docs.derivative.ca/Folder "Folder").
+The location of an operator within the TouchDesigner environment, for example, `/geo1/circle1`, a node called `circle1` in a component called `geo1`. The path `/` is called [Root](../Glossary/Root.md "Root"). This path is displayed at the top of every [Pane](../Glossary/Pane.md "Pane"), showing which Component's network you are currently in. To refer instead to a filesystem folder, directory, disk file or `http:` address, see [Folder](../Glossary/Folder.md "Folder").

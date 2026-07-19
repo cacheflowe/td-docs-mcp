@@ -36,12 +36,11 @@ Luxonis has a tutorial on [low latency](https://docs.luxonis.com/projects/api/en
 
 When creating `depthai` pipelines, it's possible to set FPS targets for various nodes such as the [ColorCamera](https://docs.luxonis.com/projects/api/en/latest/components/nodes/color_camera/) node. In general, the FPS cannot be changed after the pipeline has been loaded on the camera. You should pick high FPS values, but keep in mind that if you push these numbers too high, you may see the effective FPS as shown by an Info CHOP begin to fall.
 
-See Also: [OAK-D](https://docs.derivative.ca/OAK-D "OAK-D"), [OAK Select CHOP](https://docs.derivative.ca/OAK_Select_CHOP "OAK Select CHOP"), [OAK Select TOP](https://docs.derivative.ca/OAK_Select_TOP "OAK Select TOP")
+See Also: [OAK-D](https://docs.derivative.ca/OAK-D "OAK-D"), [OAK Select CHOP](OAK_Select_CHOP.md "OAK Select CHOP"), [OAK Select TOP](../TOPs/OAK_Select_TOP.md "OAK Select TOP")
 
-[oakdeviceCHOP_Class](https://docs.derivative.ca/OakdeviceCHOP_Class "OakdeviceCHOP Class")
+[oakdeviceCHOP_Class](OAK_Device_CHOP_Class.md "OakdeviceCHOP Class")
 
 ## Parameters - OAK Page
-
 - Active `active` -
 - Sensor `sensor` - Select the available OAK Device from the dropdown.
 - Refresh Sensor List `refreshpulse` - Refresh the list of available Sensors.
@@ -60,7 +59,6 @@ The built-in page named Stream In helps with sending RGBA 8-bit images from Touc
 - TOP `stream0top` - Specify the TOP operator that contains the texture to be send to the stream.
 
 ## Parameters - Outputs Page
-
 - Initializing `outinit` - Outputs channel `initializing` = 1 while the OAK Device is initalizing (i.e. while the callback `onInitialize()` returns non-zero).
 - Initialize Fail `outinitfail` - Outputs channel `initialize_fail` = 1 if the OAK Device ran into an error while initializing or creating the pipeline.
 - Ready `outready` - Outputs channel `ready` which is 1 after an Initialize and before a Start.
@@ -72,7 +70,6 @@ The built-in page named Stream In helps with sending RGBA 8-bit images from Touc
   * Frames `frames` -
   * Samples `samples` -
   * All `all` -
-
 - Running Time Count `outrunningcount` - ⊞ - Outputs the "wall-clock" time since Start occurred, no matter if the device's `Play` parameter was turned off or not. Will stop counting when the `Done` state has been reached.
   * Off `off` -
   * Seconds `seconds` -
@@ -81,41 +78,33 @@ The built-in page named Stream In helps with sending RGBA 8-bit images from Touc
   * All `all` -
 
 ## Parameters - Common Page
-
-- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](https://docs.derivative.ca/Time_Slicing "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
+- Time Slice `timeslice` - Turning this on forces the channels to be "[Time Sliced](../Glossary/Time_Slicing.md "Time Slicing")". A Time Slice is the time between the last cook frame and the current cook frame.
 - Scope `scope` - To determine which channels get affected, some CHOPs use a Scope string on the Common page.
 - Sample Rate Match `srselect` - ⊞ - Handle cases where multiple input CHOPs' sample rates are different. When Resampling occurs, the curves are interpolated according to the Interpolation Method Option, or "Linear" if the Interpolate Options are not available.
   * Resample At First Input's Rate `first` - Use rate of first input to resample others.
   * Resample At Maximum Rate `max` - Resample to the highest sample rate.
   * Resample At Minimum Rate `min` - Resample to the lowest sample rate.
   * Error If Rates Differ `err` - Doesn't accept conflicting sample rates.
-
-- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](https://docs.derivative.ca/Export "Export") article for more information.
+- Export Method `exportmethod` - ⊞ - This will determine how to connect the CHOP channel to the parameter. Refer to the [Export](../Glossary/Export.md "Export") article for more information.
   * DAT Table by Index `datindex` - Uses the docked DAT table and references the channel via the index of the channel in the CHOP.
   * DAT Table by Name `datname` - Uses the docked DAT table and references the channel via the name of the channel in the CHOP.
   * Channel Name is Path:Parameter `autoname` - The channel is the full destination of where to export to, such has `geo1/transform1:tx`.
-
 - Export Root `autoexportroot` - This path points to the root node where all of the paths that exporting by **Channel Name is Path:Parameter** are relative to.
 - Export Table `exporttable` - The DAT used to hold the export information when using the DAT Table Export Methods (See above).
 
 ## Info CHOP Channels
 
-Extra Information for the oakdevice CHOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the oakdevice CHOP can be accessed via an [Info CHOP](Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common CHOP Info Channels
 
   * start - Start of the CHOP interval in samples.
-
   * length - Number of samples in the CHOP.
-
   * sample_rate - The samplerate of the channels in frames per second.
-
   * num_channels - Number of channels in the CHOP.
-
   * time_slice - 1 if CHOP is Time Slice enabled, 0 otherwise.
-
   * export_sernum - A count of how often the export connections have been updated.
 
 ###
@@ -123,19 +112,11 @@ Extra Information for the oakdevice CHOP can be accessed via an [Info CHOP](http
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

@@ -12,11 +12,11 @@ The Curveclay SOP is similar to the Clay SOP in that you deform a spline surface
 
 The combination of inputs will determine the modes of transformation. For any combination of inputs, the following parameters modify the following behaviors of the SOP.
 
-[curveclaySOP_Class](https://docs.derivative.ca/CurveclaySOP_Class "CurveclaySOP Class")
+[curveclaySOP_Class](Curveclay_SOP_Class.md "CurveclaySOP Class")
 
 ## Parameters - Curve Clay Page
-
 - Face Group `facegroup` - Subset of faces (NURBS, Bézier, Polygons) to project, or subset of proles to deform, depending on how many inputs are connected.
+
 Examples include: 0.5 1.2-3.9 5.*
 
 This group can even take surfaces (possibly intermixed with profile curves) when the 2nd input is not present, indicating that all the surface’s proles must be used.
@@ -56,7 +56,6 @@ How to deform surface. Enabled if only 1 input exists.
   * `deformdir1` -
   * `deformdir2` -
   * `deformdir3` -
-
 - Distance `deformlen` - Distance deformed along the vector.
 - Deform Inside of Loop `deforminside` - Check if the inside of closed loops should be deformed.
 - Consider Profiles Individually `individual` - Check if multiple curves form a closed loop.
@@ -75,20 +74,16 @@ When using CurveClay on a wrapped surface, here are some points to remember:
 
 ## Info CHOP Channels
 
-Extra Information for the Curveclay SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Curveclay SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -96,19 +91,11 @@ Extra Information for the Curveclay SOP can be accessed via an [Info CHOP](https
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

@@ -60,7 +60,7 @@ Using this checkbox will give you more options after clilcking 'Next' such as
 
 **Install Runtime for Dongle Licensing**
 
-Check this box to include the installation of CodeMeter service which is required to use TouchDesigner with a [License Dongle](https://docs.derivative.ca/License_Dongle "License Dongle")
+Check this box to include the installation of CodeMeter service which is required to use TouchDesigner with a [License Dongle](../Interoperability/License_Dongle.md "License Dongle")
 
 ##  Dealing with _Installer Components_ of the Web Installer
 
@@ -232,8 +232,8 @@ When this happen, best practice has been to restart the computer to free up any 
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](../Glossary/Pane.md "Pane") or [Viewer](../Glossary/Viewer.md "Viewer").
 
 Each operator can have a set of text strings that are its "tags". You can set them and search for them within TouchDesigner.

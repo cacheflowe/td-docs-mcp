@@ -85,9 +85,7 @@ Multiple licenses can be loaded onto a dongle (and also [Floating Cloud Licenses
 
 Follow these steps to setup the computer that will act as the license server.
   * Plug the license dongle into the server computer.
-
   * Open the CodeMeter Control Center, click on the WebAdmin button in the lower-right of the panel.
-
   * Check the dongle under the **Container** tab. This will let you inspect the licenses that have been loaded onto the dongle.
 
 [![CodeMeterWebAdmin.png](https://docs.derivative.ca/images/3/31/CodeMeterWebAdmin.png)](https://docs.derivative.ca/File:CodeMeterWebAdmin.png)
@@ -108,15 +106,18 @@ Follow these steps to setup the computer that will act as the license server.
 ###  Client Setup
 
 Before beginning, confirm that the client computer can communicate with the license server computer over the network. In many (but not all) network environments this can be confirmed by pinging the server computer's IP address.
+  * [Install CodeMeter](https://docs.derivative.ca/Installing_Codemeter "Installing Codemeter") and open the CodeMeter Control Center, then click on the WebAdmin button in the lower-right of the panel.
   * Go to **Configuration > Basic > Server Search List**
     * Under **Server Search List** add the IP address of the license server computer. For example, IP address 192.168.1.15. Click 'Apply'.
 
 [![CodeMeterServerSearchList.png](https://docs.derivative.ca/images/f/fb/CodeMeterServerSearchList.png)](https://docs.derivative.ca/File:CodeMeterServerSearchList.png)
-
-  * Restart the CodeMeter service from the **Process** menu in the CodeMeter Control Center.
+  * Restart the CodeMeter service follwoing the instructions below.
+  * **On Windows** select "Restart CodeMeter Service" from the **Process** menu in the CodeMeter Control Center.
 
 [![CodeMeterRestartService.png](https://docs.derivative.ca/images/e/ed/CodeMeterRestartService.png)](https://docs.derivative.ca/File:CodeMeterRestartService.png)
+  * **On macOS** , go to System Settings > General > Login Items & Extensions > CodeMeter. Toggle the option off to stop the service and then back on to restart the service.
 
+[![CodeMeterServiceStopStartMacOS.png](https://docs.derivative.ca/images/thumb/2/27/CodeMeterServiceStopStartMacOS.png/400px-CodeMeterServiceStopStartMacOS.png)](https://docs.derivative.ca/File:CodeMeterServiceStopStartMacOS.png)
   * In the WebAdmin window, confirm connection to the license server is working by clicking on the **orange-arrow icon** at the bottom of the window. You should see the IP address of the license server computer displayed in the list.
 
 [![CodeMeterServerList.png](https://docs.derivative.ca/images/8/87/CodeMeterServerList.png)](https://docs.derivative.ca/File:CodeMeterServerList.png)
@@ -175,12 +176,14 @@ Derivative uses [WIBU-Systems CodeMeter](http://www.wibu.com/codemeter.html) tec
 
 See Also: [Floating Cloud Licenses](https://docs.derivative.ca/Floating_Cloud_Licenses "Floating Cloud Licenses")
 
-A [Link](https://docs.derivative.ca/Link "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A [Link](../Glossary/Link.md "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
-A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](https://docs.derivative.ca/Export "Export"), node [Paths](https://docs.derivative.ca/Network_Path "Network Path") in parameters, and [expressions](https://docs.derivative.ca/Expression "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](https://docs.derivative.ca/Wire "Wire") that connects nodes in the same [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](../Glossary/Export.md "Export"), node [Paths](../Glossary/Network_Path.md "Network Path") in parameters, and [expressions](../Glossary/Expression.md "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](../Glossary/Wire.md "Wire") that connects nodes in the same [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
 Every component contains a network of operators that create and modify data. The operators are connected by wires that define where data is routed after the operator cooks its inputs and generates an output.
 
-The Container component type is a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") that holds, lays out and displays any number of other Panel Components.
+The Container component type is a [Panel Component](../Glossary/Panel_Component.md "Panel Component") that holds, lays out and displays any number of other Panel Components.
 
-A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](https://docs.derivative.ca/Panel_Component "Panel Component").
+Any component can be extended with its own Python classes which contain python functions and data.
+
+A custom interactive control panel built within TouchDesigner. Panels are created using [Panel Components](../Glossary/Panel_Component.md "Panel Component").

@@ -8,7 +8,7 @@ title: Troubleshooting_in_TouchDesigner
 
 TouchDesigner is an incredibly flexible tool, and with that flexibility comes the potential for intricate and difficult-to-find problems in your creations. This page is a brief introduction to the most important troubleshooting techniques and tools you'll use when building TouchDesigner networks. Of course, every problem is unique to its context so it will be up to you to determine which of these best suits your needs. To that end, this page will familiarize you with the range of tools at your disposal.
 
-Troubleshooting, or debugging, or analyzing a crash is different from optimizing, which focuses on making your networks run efficiently and quickly. For optimization information see [Optimization](https://docs.derivative.ca/Optimize "Optimize").
+Troubleshooting, or debugging, or analyzing a crash is different from optimizing, which focuses on making your networks run efficiently and quickly. For optimization information see [Optimization](Optimize.md "Optimize").
 
 Many (but not all) of the techniques described below will require a basic understanding of Python.
 
@@ -16,13 +16,13 @@ Many (but not all) of the techniques described below will require a basic unders
 
 ##  Documentation
 
-The first place to look for information about TouchDesigner features is in this wiki, which serves as the official **TouchDesigner documentation**. Often, the documentation will provide clues (if not answers) about any problem you are having with a feature. If necessary you can [download the entire wiki](https://docs.derivative.ca/Offline_Help "Offline Help") for use offline.
+The first place to look for information about TouchDesigner features is in this wiki, which serves as the official **TouchDesigner documentation**. Often, the documentation will provide clues (if not answers) about any problem you are having with a feature. If necessary you can [download the entire wiki](Offline_Help.md "Offline Help") for use offline.
 
-In addition to using the wiki's search feature, there are portals in the TouchDesigner user interface directly into this wiki. All Operators have links to their wiki pages in their [Parameter Dialog](https://docs.derivative.ca/Parameter_Dialog "Parameter Dialog") header:
+In addition to using the wiki's search feature, there are portals in the TouchDesigner user interface directly into this wiki. All Operators have links to their wiki pages in their [Parameter Dialog](../Glossary/Parameter_Dialog.md "Parameter Dialog") header:
 [![ParameterHeader.png](https://docs.derivative.ca/images/4/42/ParameterHeader.png)](https://docs.derivative.ca/File:ParameterHeader.png)
 The leftmost button in the bottom header section links to Operator help, and the next button to the right links to Python help.
 
-Also, some Components found in the [Palette](https://docs.derivative.ca/Palette "Palette") will have a **Help Page** custom parameter that opens a browser to that Component's wiki page.
+Also, some Components found in the [Palette](Palette.md "Palette") will have a **Help Page** custom parameter that opens a browser to that Component's wiki page.
 
 ##  Forums
 
@@ -31,37 +31,37 @@ Another common place to get help or information about TouchDesigner is in the **
 ##  Troubleshooting Networks
 
 [![ErrorMarkers.png](https://docs.derivative.ca/images/a/ab/ErrorMarkers.png)](https://docs.derivative.ca/File:ErrorMarkers.png)
-Finding errors in networks is generally easy because [nodes](https://docs.derivative.ca/Node "Node") with errors will be displayed with an error marker, a red circle with a black X. To get info about the error, click on the error marker or middle-click anywhere on the node. Generally, when the error is fixed, the error flag will disappear immediately.
+Finding errors in networks is generally easy because [nodes](../Glossary/Node.md "Node") with errors will be displayed with an error marker, a red circle with a black X. To get info about the error, click on the error marker or middle-click anywhere on the node. Generally, when the error is fixed, the error flag will disappear immediately.
 
 If there is an error anywhere inside a Component, it will show an error marker, so often fixing an error will require entering components until the actual source of the error is found.
 
 ###  Errors Dialog and Error DAT
 
-The **[Errors Dialog](https://docs.derivative.ca/Errors_Dialog "Errors Dialog")** , found in the [Dialog](https://docs.derivative.ca/Dialog "Dialog") menu, will allow you to see and jump to all current errors. It also allows you to filter errors by Operator type, specific operator, and error message. The **[Error DAT](https://docs.derivative.ca/Error_DAT "Error DAT")** is very similar to the Errors Dialog, but in a DAT format, and with callback functionality.
+The **[Errors Dialog](https://docs.derivative.ca/Errors_Dialog "Errors Dialog")** , found in the [Dialog](../Glossary/Dialog.md "Dialog") menu, will allow you to see and jump to all current errors. It also allows you to filter errors by Operator type, specific operator, and error message. The **[Error DAT](../DATs/Error_DAT.md "Error DAT")** is very similar to the Errors Dialog, but in a DAT format, and with callback functionality.
 
 ###  OP.errors() and OP.scriptErrors()[ and OP.scriptErrors\(\)")]
 
-Another way to find all node errors in your network is to open a [Textport](https://docs.derivative.ca/Textport "Textport") and enter the command `op('/').errors(recurse=True)[](https://docs.derivative.ca/OP_Class#Errors "OP Class")` to get all node errors or `op('/').scriptErrors(recurse=True)[](https://docs.derivative.ca/OP_Class#Errors "OP Class")` to get all scriptErrors. This will print a list of all errors and which node they are associated with, or you can specify a network path and print all errors under that network. Occasionally you may find that a Component has a child with an error, but the error disappears when you enter its parent. The Error dialog, the **[Error DAT](https://docs.derivative.ca/Error_DAT "Error DAT")** or the `errors()[](https://docs.derivative.ca/OP_Class#Errors "OP Class")` method is a good way to find out what the error is without having to actually navigate to its network.
+Another way to find all node errors in your network is to open a [Textport](../Glossary/Textport.md "Textport") and enter the command `op('/').errors(recurse=True)[](../Python/OP_Class.md#Errors "OP Class")` to get all node errors or `op('/').scriptErrors(recurse=True)[](../Python/OP_Class.md#Errors "OP Class")` to get all scriptErrors. This will print a list of all errors and which node they are associated with, or you can specify a network path and print all errors under that network. Occasionally you may find that a Component has a child with an error, but the error disappears when you enter its parent. The Error dialog, the **[Error DAT](../DATs/Error_DAT.md "Error DAT")** or the `errors()[](../Python/OP_Class.md#Errors "OP Class")` method is a good way to find out what the error is without having to actually navigate to its network.
 
 ###  Getting Info with Info CHOP, Panel CHOP and Info DAT
 
-You will sometimes want to watch values on a node while researching its error. There are a few Operators that are useful for this. The [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") holds numeric information about the node referenced in its Operator parameter. Similarly, the [Panel CHOP](https://docs.derivative.ca/Panel_CHOP "Panel CHOP") holds numeric information about a [Panel](https://docs.derivative.ca/Panel "Panel") Component's panel values. **TIP:** You will notice that the Info CHOP holds panel information as well, but it is best to use a Panel CHOP to watch panel information, as it is sometimes updated more reliably.
+You will sometimes want to watch values on a node while researching its error. There are a few Operators that are useful for this. The [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP") holds numeric information about the node referenced in its Operator parameter. Similarly, the [Panel CHOP](../CHOPs/Panel_CHOP.md "Panel CHOP") holds numeric information about a [Panel](../Glossary/Panel.md "Panel") Component's panel values. **TIP:** You will notice that the Info CHOP holds panel information as well, but it is best to use a Panel CHOP to watch panel information, as it is sometimes updated more reliably.
 
-A few Operators contain string information, which can be viewed using the [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT"). This is especially important when working with [GLSL](https://docs.derivative.ca/GLSL "GLSL") Operators
+A few Operators contain string information, which can be viewed using the [Info DAT](../DATs/Info_DAT.md "Info DAT"). This is especially important when working with [GLSL](../Glossary/GLSL.md "GLSL") Operators
 
 ###  Pinpointing Errors with Bypass and Cook Flags
 
-Often when trying to pinpoint an error in a network, you will want to narrow the possible sources down. Using the [Bypass Flag](https://docs.derivative.ca/Bypass_Flag "Bypass Flag") to narrow down active Operators will often help you. If you want to turn off an entire network to narrow things down, you can turn off the [Cooking Flag](https://docs.derivative.ca/Cooking_Flag "Cooking Flag") of the parent Component.
+Often when trying to pinpoint an error in a network, you will want to narrow the possible sources down. Using the [Bypass Flag](../Glossary/Bypass_Flag.md "Bypass Flag") to narrow down active Operators will often help you. If you want to turn off an entire network to narrow things down, you can turn off the [Cooking Flag](https://docs.derivative.ca/Cooking_Flag "Cooking Flag") of the parent Component.
 
 ###  Using Chop Execute DAT and Parameter Execute DAT to Catch Errors
 
-If you want to print a debug message to the Textport when a certain event happens, you will usually use a [CHOP Execute DAT](https://docs.derivative.ca/CHOP_Execute_DAT "CHOP Execute DAT") or a [Parameter Execute DAT](https://docs.derivative.ca/Parameter_Execute_DAT "Parameter Execute DAT") to watch values. For example, the CHOP Execute DAT can be used in tandem with the Info CHOP and Panel CHOP to notify you of changes to those values. **Note:** the execute DATs can be used to react when a change happens, but they have no direct way to trace what caused that change. Still, knowing _when_ something happens can be very helpful in finding what causes it.
+If you want to print a debug message to the Textport when a certain event happens, you will usually use a [CHOP Execute DAT](../DATs/CHOP_Execute_DAT.md "CHOP Execute DAT") or a [Parameter Execute DAT](../DATs/Parameter_Execute_DAT.md "Parameter Execute DAT") to watch values. For example, the CHOP Execute DAT can be used in tandem with the Info CHOP and Panel CHOP to notify you of changes to those values. **Note:** the execute DATs can be used to react when a change happens, but they have no direct way to trace what caused that change. Still, knowing _when_ something happens can be very helpful in finding what causes it.
 
-When printing a debug message from a script it is always a good idea to use the `debug[](https://docs.derivative.ca/Troubleshooting_in_TouchDesigner#Command:_debug)` command instead of a standard Python `print` command. See below for [more info](#Command:_debug).
+When printing a debug message from a script it is always a good idea to use the `debug[](Troubleshooting_in_TouchDesigner.md#Command:_debug)` command instead of a standard Python `print` command. See below for [more info](#Command:_debug).
 
 ###  Troubleshooting in Perform Mode
 
-When troubleshooting in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode"), the editor is hidden but you will still want access to a lot of info you would normally get from it. The main technique to use here is floating viewers, which stay open when you enter Perform mode. So, if you open floating viewers (use the RMB context menu _View..._ option) and Parameter viewers (RMB context menu _Parameters..._) while in Editor mode, then enter perform mode, you will have access to the things you want to keep an eye on or change. Floating Textports will also stay open in Perform mode. Another important technique in Perform mode is using F10 to open the network of whatever panel your mouse is over. You can also use F9 to open the parent of that panel, with the network view focused on the panel Component. These hot-keys allow easy access to the specific parts of your Perform mode control panel that need attention.
+When troubleshooting in [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode"), the editor is hidden but you will still want access to a lot of info you would normally get from it. The main technique to use here is floating viewers, which stay open when you enter Perform mode. So, if you open floating viewers (use the RMB context menu _View..._ option) and Parameter viewers (RMB context menu _Parameters..._) while in Editor mode, then enter perform mode, you will have access to the things you want to keep an eye on or change. Floating Textports will also stay open in Perform mode. Another important technique in Perform mode is using F10 to open the network of whatever panel your mouse is over. You can also use F9 to open the parent of that panel, with the network view focused on the panel Component. These hot-keys allow easy access to the specific parts of your Perform mode control panel that need attention.
 
 ###  Troubleshooting Disappearing Errors
 
@@ -77,16 +77,16 @@ If the error is a cook order issue that isn't easily resolved, you can sometimes
 
 Under-cooking is when an Operator should be updating but for some reason is not. If you change data in one Operator, and it is not causing itself or another Operator looking at that data to update (cook) it may be an under-cooking problem. An important technique for verifying such an issue is to use an Info CHOP to monitor cook counts. All under-cooking issues should be **[reported to Derivative](#Reporting_a_Bug_to_Derivative)**.
 
-If you have an issue where your operators work properly in the Editor, but not in Perform mode, try turning off all your viewers in the Network Editor using the [Viewer Flag](https://docs.derivative.ca/Viewer_Flag "Viewer Flag"). Because TouchDesigner only cooks nodes that are being used, it may be that you have no issues in the Network Editor because the node's viewer is using the node.
+If you have an issue where your operators work properly in the Editor, but not in Perform mode, try turning off all your viewers in the Network Editor using the [Viewer Flag](../Glossary/Viewer_Flag.md "Viewer Flag"). Because TouchDesigner only cooks nodes that are being used, it may be that you have no issues in the Network Editor because the node's viewer is using the node.
 
 ##  Troubleshooting Poor Performance
 
-See the [Optimize](https://docs.derivative.ca/Optimize "Optimize") guide.
+See the [Optimize](Optimize.md "Optimize") guide.
 
 ##  Troubleshooting Python
 
 [![PythonErrors.png](https://docs.derivative.ca/images/3/37/PythonErrors.png)](https://docs.derivative.ca/File:PythonErrors.png)
-Because TouchDesigner is a realtime engine and does not use a breakpoint/step debugger for Python, debugging can be a bit tricky. When working with Python, the [Textport](https://docs.derivative.ca/Textport "Textport") is your best friend, and you will want to have one open at all times. Python errors are printed to the Textport (as well as showing up in error markers on nodes) and you will often want to print your own debug messages. **TIP:** if you find a floating textport inconvenient, use the [Pane Bar](https://docs.derivative.ca/Pane_Bar "Pane Bar") to split your network view and change one of the pane types to _Textport and DATs_.
+Because TouchDesigner is a realtime engine and does not use a breakpoint/step debugger for Python, debugging can be a bit tricky. When working with Python, the [Textport](../Glossary/Textport.md "Textport") is your best friend, and you will want to have one open at all times. Python errors are printed to the Textport (as well as showing up in error markers on nodes) and you will often want to print your own debug messages. **TIP:** if you find a floating textport inconvenient, use the [Pane Bar](https://docs.derivative.ca/Pane_Bar "Pane Bar") to split your network view and change one of the pane types to _Textport and DATs_.
 
 ###  Python Error Markers in Networks
 
@@ -106,11 +106,11 @@ When outputting information from a Python script for debugging purposes, **alway
 
 ####  Command: project.pythonStack
 
-**`print(project.pythonStack())`**     Sometimes you will want to see what Python calls have led to running one of your Python scripts. To print the stack of Python calls, use `print(project.pythonStack[](https://docs.derivative.ca/Project_Class "Project Class"))`. Python users may recognize that this parallels the `traceback.print_stack` method. It is safer to use `project.pythonStack`, because the Python version occasionally causes unwanted error markers to be placed in TouchDesigner networks. The `project.pythonStack` method has also been customised to provide additional information for TouchDesigner operators. The corresponding `project.stack()` will give the stack of operators being cooked and evaluated.
+**`print(project.pythonStack())`**     Sometimes you will want to see what Python calls have led to running one of your Python scripts. To print the stack of Python calls, use `print(project.pythonStack[](../Python/Project_Class.md "Project Class"))`. Python users may recognize that this parallels the `traceback.print_stack` method. It is safer to use `project.pythonStack`, because the Python version occasionally causes unwanted error markers to be placed in TouchDesigner networks. The `project.pythonStack` method has also been customised to provide additional information for TouchDesigner operators. The corresponding `project.stack()` will give the stack of operators being cooked and evaluated.
 
 ####  Outputting to DATs Instead of Textport
 
-The above methods automatically output to the Textport, and that will suit most debugging needs. Occasionally, though, you may want to store larger amounts of debug data, or be able to keep the data around for longer, such as between file saves. To do this, you will want to output to a [Text DAT](https://docs.derivative.ca/Text_DAT "Text DAT") or a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT"). Using a Table DAT can be helpful by organizing debug information into columns.
+The above methods automatically output to the Textport, and that will suit most debugging needs. Occasionally, though, you may want to store larger amounts of debug data, or be able to keep the data around for longer, such as between file saves. To do this, you will want to output to a [Text DAT](../Glossary/Text_DAT.md "Text DAT") or a [Table DAT](../Glossary/Table_DAT.md "Table DAT"). Using a Table DAT can be helpful by organizing debug information into columns.
 
 ###  Raising Exceptions
 
@@ -165,29 +165,29 @@ To report a bug, please email (support@derivative.ca) or post your .toe file on 
 When reporting a bug, please attempt to do the following:
   * Create a case that is as easy to reproduce as possible. Make it fast and simple for Derivative to see your bug.
   * Trim down your file as much as possible. Remove everything you can to create a small file size and easily understandable network.
-  * Make sure that your file does not require extra media. Many Operators can be ["locked"](https://docs.derivative.ca/Lock_Flag "Lock Flag") to preserve their data and remove their dependence on external files. If external files are absolutely necessary, create a ready-to-run zipped folder with your `.toe` file and all required media.
+  * Make sure that your file does not require extra media. Many Operators can be ["locked"](../Glossary/Lock_Flag.md "Lock Flag") to preserve their data and remove their dependence on external files. If external files are absolutely necessary, create a ready-to-run zipped folder with your `.toe` file and all required media.
   * When sending zipped files, use `.zip`, not `.rar`, `.7z` etc. For larger files, feel free to use Google Drive, Dropbox or something similar.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](../Glossary/Pane.md "Pane") or [Viewer](../Glossary/Viewer.md "Viewer").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-To re-compute the output data of the [Operators](https://docs.derivative.ca/Operator "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](https://docs.derivative.ca/Parameter "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](https://docs.derivative.ca/Script "Script") commands are run on the node. When the operator is a [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](https://docs.derivative.ca/Dependency "Dependency") - the necessary operators in all [Networks](https://docs.derivative.ca/Network "Network"), contributing to a frame's total "cook time".
+To re-compute the output data of the [Operators](../General/Operator.md "Operator"). An operator cooks when (1) its inputs change, (2) its [Parameters](../Glossary/Parameter.md "Parameter") change, (3) when the timeline moves forward in some cases, or (4) [Scripting](../Glossary/Script.md "Script") commands are run on the node. When the operator is a [Panel Component](../Glossary/Panel_Component.md "Panel Component"), it also cooks when a user interacts with it. When an operator cooks, it usually causes operators connected to its output to re-cook. When TouchDesigner draws the screen, it re-cooks all the [Dependencies](../Glossary/Dependency.md "Dependency") - the necessary operators in all [Networks](../Glossary/Network.md "Network"), contributing to a frame's total "cook time".
 
 The dialog box in which commands and scripts can typed in manually. Output to the textport includes script errors and messages from `print()` and `debug()` calls in python code. You can also edit DATs in the textport.
 
-Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"). Alternate with F1 and Esc.
+Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](../Glossary/Window_COMP.md "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"). Alternate with F1 and Esc.
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
 A pane type where networks of operators can be created and edited.
 
-A form of [DATs](https://docs.derivative.ca/DAT "DAT") (Data Operators) that is structured as rows and columns of text strings.
+A form of [DATs](../Glossary/DAT.md "DAT") (Data Operators) that is structured as rows and columns of text strings.

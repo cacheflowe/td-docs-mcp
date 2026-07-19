@@ -16,14 +16,14 @@ For example, when editing the shapes in the Model Editor, each particular geomet
 
 The Blend SOP now only cooks non-zero-weighted inputs.
 
-See also [Sequence Blend SOP](https://docs.derivative.ca/Sequence_Blend_SOP "Sequence Blend SOP").
+See also [Sequence Blend SOP](Sequence_Blend_SOP.md "Sequence Blend SOP").
 
-[blendSOP_Class](https://docs.derivative.ca/BlendSOP_Class "BlendSOP Class")
+[blendSOP_Class](Blend_SOP_Class.md "BlendSOP Class")
 
 ## Parameters - Blend Page
-
-- Group `group` - Specifies a point or primitive group in the first input. If, for example, a group is specified containing the first and third points, then the first and third point of every input will be blended whereas the second, fourth, fifth, etc. points will be set to match the first input source. Accepts patterns, as described in: [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
+- Group `group` - Specifies a point or primitive group in the first input. If, for example, a group is specified containing the first and third points, then the first and third point of every input will be blended whereas the second, fourth, fifth, etc. points will be set to match the first input source. Accepts patterns, as described in: [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching").
 - Differencing `diff` - Generates exaggerated blends between objects where values above 1 or less than 0 will result in over-scaled blends.
+
 When this option is checked, the above channel values are not summed and scaled to 1. The first input is considered a reference; Blend computes the difference between the first input and the others for each point; values greater than 1 and less than 0 produce exaggerations of the shapes for inputs 2 and higher. The first input, however, cannot be exaggerated by its blend channel, /blend1, and it is considered to be the "base". When using Differencing, the /blend1 channel has no effect. If the geometry in the first input must be deformed, feed it into another input, where the blend channels have an effect.
 - Blend Position `dopos` - When checked, the point positions of the inputs will be blended based on the weights of the blend channels. If not checked, the input geometry will not change, only allowing Blending of Colors, Normals and Textures if selected.
 - Blend Colors `doclr` - When checked, the point colors of the geometry inputs will be blended based on the weights of the blend channels.
@@ -59,20 +59,16 @@ For example, if the /blend3 channel's value is 1, and the rest of the channels a
 
 ## Info CHOP Channels
 
-Extra Information for the Blend SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Blend SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -80,19 +76,11 @@ Extra Information for the Blend SOP can be accessed via an [Info CHOP](https://d
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

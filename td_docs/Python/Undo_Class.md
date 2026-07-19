@@ -8,7 +8,7 @@ title: Undo_Class
 
 A class to enable and disable undo functionality. Undo blocks can be created in scripts. At the end of callbacks, any dangling undo blocks will be terminated. See [examples](#Undo_Block_Examples) at bottom of page.
 
-This class is available as a member of the global [UI Class](https://docs.derivative.ca/UI_Class "UI Class"), via `ui.undo`.
+This class is available as a member of the global [UI Class](UI_Class.md "UI Class"), via `ui.undo`.
 
 ## Members
 
@@ -87,7 +87,7 @@ After running this script, performing an undo action will change the referenced 
 
 ### Undo Callbacks
 
-You can also perform Python actions as part of an undo stack. This is necessary when you are changing something that the TouchDesigner editor does not know how to undo, such as changing [extension](https://docs.derivative.ca/Extensions "Extensions") values. The undo callback takes an info argument, which should be used to provide both undo and redo information to the callback.
+You can also perform Python actions as part of an undo stack. This is necessary when you are changing something that the TouchDesigner editor does not know how to undo, such as changing [extension](../Glossary/Extensions.md "Extensions") values. The undo callback takes an info argument, which should be used to provide both undo and redo information to the callback.
 
 ```
 # an undo callback must be defined before it is referenced by ui.undo.addCallback

@@ -20,36 +20,36 @@ For monitor outputs, the OS must be actually presenting the images to the screen
 
 ##  Perfect Playback for Monitor Outputs
 
-These are outputs that are connected to your desktop, which you display images to using a [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP").
+These are outputs that are connected to your desktop, which you display images to using a [Window COMP](../Glossary/Window_COMP.md "Window COMP").
 
 ###  Quick Answer
 
 Do all of the below:
-  * Ensure your TouchDesigner is set to run at the same FPS as your monitor. Use the [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT") to verify this.
-  * Ensure all of your monitors are running at the same refresh rate. Use the [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT") to verify this.
+  * Ensure your TouchDesigner is set to run at the same FPS as your monitor. Use the [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT") to verify this.
+  * Ensure all of your monitors are running at the same refresh rate. Use the [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT") to verify this.
   * If using movie content, ensure it is authored at a FPS that is equal to or exactly divides your monitor's refresh rate.
 
 ####  Using Window COMP and the Desktop
 
-  * Combine all of your monitor outputs into a single monitor output by combining all active outputs together into a single virtual monitor, and optionally splitting those outputs across even more monitors using a [splitter device](https://docs.derivative.ca/Multiple_Monitors#Output_to_Multiple_Monitors "Multiple Monitors").
+  * Combine all of your monitor outputs into a single monitor output by combining all active outputs together into a single virtual monitor, and optionally splitting those outputs across even more monitors using a [splitter device](../Glossary/Multiple_Monitors.md#Output_to_Multiple_Monitors "Multiple Monitors").
   * Ensure the Desktop scaling for Windows is set to 100%.
-  * Ensure Vertical Sync is enabled in the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP").
-  * Use [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode").
-  * Disable Borders in your [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP").
-  * Do not have any extra [Window COMPs](https://docs.derivative.ca/Window_COMP "Window COMP") open. Your perform window should be the only open window coming from TouchDesigner.
+  * Ensure Vertical Sync is enabled in the [Window COMP](../Glossary/Window_COMP.md "Window COMP").
+  * Use [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode").
+  * Disable Borders in your [Window COMP](../Glossary/Window_COMP.md "Window COMP").
+  * Do not have any extra [Window COMPs](../Glossary/Window_COMP.md "Window COMP") open. Your perform window should be the only open window coming from TouchDesigner.
   * Ensure your Perform Window has gotten full-screen exclusive access to the desktop, more information [here](#Running_in_Exclusive_Access_Mode).
 
 **OR**
 
 ####  Direct Display Out
 
-  * Alternatively, the issues that arise from using the Window COMP and the desktop go away when using the [Direct Display Out TOP](https://docs.derivative.ca/Direct_Display_Out_TOP "Direct Display Out TOP"). Consider using that when possible.
+  * Alternatively, the issues that arise from using the Window COMP and the desktop go away when using the [Direct Display Out TOP](../TOPs/Direct_Display_Out_TOP.md "Direct Display Out TOP"). Consider using that when possible.
 
 ###  Monitor Refresh Rate and Project FPS
 
-Use the [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT") to see what refresh rate your monitors are precisely running at. The other dialogs in Windows often round the refresh rate to 60 or 30, when the actual rate is 59.94 or 29.97. Running a 59.94Hz monitor when you are targeting 60FPS will result in a regular dropped frame in your playback.
+Use the [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT") to see what refresh rate your monitors are precisely running at. The other dialogs in Windows often round the refresh rate to 60 or 30, when the actual rate is 59.94 or 29.97. Running a 59.94Hz monitor when you are targeting 60FPS will result in a regular dropped frame in your playback.
 
-There is an option in the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") under 'V-Sync Mode' called 'FPS is Half Monitor Rate'. In builds before 2022.20000 series (pre-Vulkan), this would allow you to run your project at 30FPS on a 60Hz monitor, but ensuring every image is shown for exactly 2 refreshes. Without this option an image may be shown for 1 or 3 refreshes, which makes the content look like it is stuttering. Currently this feature is not functional in the 2022.20000+ series of builds, but we hope to re-add support when Vulkan adds support for it.
+There is an option in the [Window COMP](../Glossary/Window_COMP.md "Window COMP") under 'V-Sync Mode' called 'FPS is Half Monitor Rate'. In builds before 2022.20000 series (pre-Vulkan), this would allow you to run your project at 30FPS on a 60Hz monitor, but ensuring every image is shown for exactly 2 refreshes. Without this option an image may be shown for 1 or 3 refreshes, which makes the content look like it is stuttering. Currently this feature is not functional in the 2022.20000+ series of builds, but we hope to re-add support when Vulkan adds support for it.
 
 ###  Movie Content FPS
 
@@ -61,7 +61,7 @@ Starting with Windows 8, windows on the desktop are managed by the 'Desktop Wind
 
 There are two ways to enter exclusive mode. The first is to have a fullscreen borderless window that covers the entire desktop, and ensure the desktop is only a single monitor. If there is extra monitor connected to the GPU that isn't used as part of the output (say for controlling the OS, or running another application) this stops TouchDesigner from gaining full control of the desktop. When in this mode you can click off the window to leave exclusive mode, and click back onto it to get back into exclusive mode again. You should see a flicker each time.
 
-The second option is new in the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP"), under 'Opening Size', select 'Single Monitor Exclusive'. This allows the perform window to only target a single monitor, and other monitors can still be connected to the desktop. You should see a flicker in this mode as well, however if you click-off the window, you won't be able to re-enter exclusive mode. You'll need to leave and re-enter perform mode.
+The second option is new in the [Window COMP](../Glossary/Window_COMP.md "Window COMP"), under 'Opening Size', select 'Single Monitor Exclusive'. This allows the perform window to only target a single monitor, and other monitors can still be connected to the desktop. You should see a flicker in this mode as well, however if you click-off the window, you won't be able to re-enter exclusive mode. You'll need to leave and re-enter perform mode.
 
 A useful tool for seeing that your Windows's flipping/blitting behavior is is [PresentMon](https://github.com/GameTechDev/PresentMon)
 
@@ -71,23 +71,23 @@ Since only one window can have exclusive access to the driver, something like a 
 
 ###  Combine Multiple Monitors Into a Single Virtual Monitor
 
-To obtain exclusive mode you can only be targeting a single monitor. Most projects require multiple monitor outputs though, so you'll want to combine them into a single virtual monitor using Nvidia Mosaic, Nvidia Surround or AMD EyeFinity. Refer to [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") for more information.
+To obtain exclusive mode you can only be targeting a single monitor. Most projects require multiple monitor outputs though, so you'll want to combine them into a single virtual monitor using Nvidia Mosaic, Nvidia Surround or AMD EyeFinity. Refer to [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors") for more information.
 
 ###  Use Perform Mode and Avoid Multiple Windows
 
-Ensure you are using [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode"), and ensure Vertical Sync is enabled on the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") (altough, it is enabled by default).
+Ensure you are using [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode"), and ensure Vertical Sync is enabled on the [Window COMP](../Glossary/Window_COMP.md "Window COMP") (altough, it is enabled by default).
 
-When you have multiple windows drawing at the same time, this can cut your frame rate down significantly. This GPU driver has to sync up multiple buffer swaps with a single monitor, resulting in large slowdowns. For this reason you should place all of your content in a single window. Use the Perform Panel to do this, or open a single large [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") with its Perform parameter turned on.
+When you have multiple windows drawing at the same time, this can cut your frame rate down significantly. This GPU driver has to sync up multiple buffer swaps with a single monitor, resulting in large slowdowns. For this reason you should place all of your content in a single window. Use the Perform Panel to do this, or open a single large [Window COMP](../Glossary/Window_COMP.md "Window COMP") with its Perform parameter turned on.
 
 ##  Perfect Playback for Non-Monitor Outputs
 
-Examples of Non-Monitor outputs include using [Video Device Out TOP](https://docs.derivative.ca/Video_Device_Out_TOP "Video Device Out TOP") (although it can be used to drive a monitor behind the scenes) and the [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP").
+Examples of Non-Monitor outputs include using [Video Device Out TOP](../TOPs/Video_Device_Out_TOP.md "Video Device Out TOP") (although it can be used to drive a monitor behind the scenes) and the [NDI Out TOP](../TOPs/NDI_Out_TOP.md "NDI Out TOP").
 
 ###  Quick Answer
 
   * Ensure your TouchDesigner is set to run at the same FPS as your output device's desired FPS.
   * If using movie content, ensure it is authored at a FPS that is equal to or exactly divides your monitor's refresh rate.
-  * Use [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode") with either Vertical Sync disabled, or the 'Draw Window' option disabled.
+  * Use [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode") with either Vertical Sync disabled, or the 'Draw Window' option disabled.
 
 ###  Movie Content FPS
 
@@ -95,22 +95,22 @@ Refer to [Perfect_Playback#Movie_Content_FPS](#Movie_Content_FPS).
 
 ###  Perform Mode Sync with your Desktop Monitor
 
-By default the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP")'s settings will have the perform window attempt to vertical sync with the monitor connected to your desktop. When outputting to a different output device, you will likely be targeting a different refresh rate than what you're monitor is running at. This will cause TouchDesigner to be incorrectly syncing to the monitor's refresh rate, even if your project FPS is set to the different value that is correct for your desired output. To avoid this either turn off 'Vertical Sync' in the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") for your perform window, or turn off drawing altogether using the 'Draw Window' parameter in the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP"). There is currently no way to avoid sync when in Designer Mode, so frame drops/performance should only be assessed when in Perform Mode.
+By default the [Window COMP](../Glossary/Window_COMP.md "Window COMP")'s settings will have the perform window attempt to vertical sync with the monitor connected to your desktop. When outputting to a different output device, you will likely be targeting a different refresh rate than what you're monitor is running at. This will cause TouchDesigner to be incorrectly syncing to the monitor's refresh rate, even if your project FPS is set to the different value that is correct for your desired output. To avoid this either turn off 'Vertical Sync' in the [Window COMP](../Glossary/Window_COMP.md "Window COMP") for your perform window, or turn off drawing altogether using the 'Draw Window' parameter in the [Window COMP](../Glossary/Window_COMP.md "Window COMP"). There is currently no way to avoid sync when in Designer Mode, so frame drops/performance should only be assessed when in Perform Mode.
 
 ##  See Also
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.
 
-A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), or (2) a user-created [Panel](https://docs.derivative.ca/Panel "Panel") inside a [Window Component](https://docs.derivative.ca/Window_COMP "Window COMP"). The user-created windows can span [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") borderless, or be floating windows with borders, or popups.
+A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"), or (2) a user-created [Panel](../Glossary/Panel.md "Panel") inside a [Window Component](../Glossary/Window_COMP.md "Window COMP"). The user-created windows can span [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors") borderless, or be floating windows with borders, or popups.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"). Alternate with F1 and Esc.
+Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](../Glossary/Window_COMP.md "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"). Alternate with F1 and Esc.
 
-You edit your networks in Designer Mode. See [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode").
+You edit your networks in Designer Mode. See [Perform Mode](../Glossary/Perform_Mode.md "Perform Mode").

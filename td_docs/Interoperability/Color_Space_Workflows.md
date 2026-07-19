@@ -40,7 +40,7 @@ Color Space correct workflows is an opt-in feature that is done per-project. Thi
 
 **You will need to save your.toe and restart it for color space changes to take effect.**
 
-**NOTE:** You can use the [Preferences Dialog](https://docs.derivative.ca/Preferences "Preferences") 'Color' tab or directly control these settings through the [Project Class](https://docs.derivative.ca/Project_Class "Project Class") in python.
+**NOTE:** You can use the [Preferences Dialog](https://docs.derivative.ca/Preferences "Preferences") 'Color' tab or directly control these settings through the [Project Class](../Python/Project_Class.md "Project Class") in python.
 [![PreferencesColor.png](https://docs.derivative.ca/images/thumb/c/c2/PreferencesColor.png/400px-PreferencesColor.png)](https://docs.derivative.ca/File:PreferencesColor.png)
 
 ###  Working Color Space
@@ -65,7 +65,7 @@ PASS_THROUGH is the default state for all projects, and matching the behavior of
 
 ###  Editor Window Pixel Format
 
-The pixel format used to output content to the OS determines both the bit-depth of content, as if the content is HDR capable or not. For Perform windows, this is selected in the [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP"). For the main editor window though, since can be selected with
+The pixel format used to output content to the OS determines both the bit-depth of content, as if the content is HDR capable or not. For Perform windows, this is selected in the [Window COMP](../Glossary/Window_COMP.md "Window COMP"). For the main editor window though, since can be selected with
 ```
  project.editorWindowPixelFormat
 ```
@@ -84,18 +84,18 @@ Note that this does not control what color space your monitor is running in dire
 
 The bit depth of the data sent to the monitor is usually controlled in the Driver Settings for your GPU.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-POPs (**Point Operators**) is a new [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
+POPs (**Point Operators**) is a new [Operator Family](../Glossary/Operator_Family.md "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](../TOPs/Render_TOP.md "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-TouchDesigner Component file, the file type used to save a [Component](https://docs.derivative.ca/Component "Component") of your TouchDesigner project.
+TouchDesigner Component file, the file type used to save a [Component](../Glossary/Component.md "Component") of your TouchDesigner project.
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), or (2) a user-created [Panel](https://docs.derivative.ca/Panel "Panel") inside a [Window Component](https://docs.derivative.ca/Window_COMP "Window COMP"). The user-created windows can span [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") borderless, or be floating windows with borders, or popups.
+A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](../Glossary/Designer_Mode.md "Designer Mode"), or (2) a user-created [Panel](../Glossary/Panel.md "Panel") inside a [Window Component](../Glossary/Window_COMP.md "Window COMP"). The user-created windows can span [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors") borderless, or be floating windows with borders, or popups.
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.

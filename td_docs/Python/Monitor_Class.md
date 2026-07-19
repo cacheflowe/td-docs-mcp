@@ -6,7 +6,7 @@ title: Monitor_Class
 
 # Monitor Class
 
-The Monitor class describes a single instance of a monitor display. They can be accessed from the [monitors](https://docs.derivative.ca/Monitors_Class "Monitors Class") object.
+The Monitor class describes a single instance of a monitor display. They can be accessed from the [monitors](Monitors_Class.md "Monitors Class") object.
 
 ## Members
 
@@ -104,4 +104,4 @@ No operator specific methods.
 
 ##  Accessing Monitors
 
-See [Monitors Class](https://docs.derivative.ca/Monitors_Class "Monitors Class") for examples on how to access individual monitors.
+See [Monitors Class](Monitors_Class.md "Monitors Class") for examples on how to access individual monitors.

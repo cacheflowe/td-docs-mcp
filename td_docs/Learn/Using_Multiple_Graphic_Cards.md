@@ -10,7 +10,7 @@ title: Using_Multiple_Graphic_Cards
 
 Installing multiple graphics card in your computer can have benefits in some cases, depending on your situation. The most common case is adding support for more monitors, however you need to setup you system in a very specific was to get optimal performance.
 
-See also [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors"), [Sync In CHOP](https://docs.derivative.ca/Sync_In_CHOP "Sync In CHOP")
+See also [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors"), [Sync In CHOP](../CHOPs/Sync_In_CHOP.md "Sync In CHOP")
 
 ##  Multi-GPU Mosaic and EyeFinity
 
@@ -40,39 +40,39 @@ When using GPU Affinity, make sure that the windows from the TouchDesigner proce
 
 GPU Affinity is used by binding a single TouchDesigner instance toa single GPU. You need to specify which GPU to use on the command line when launching TouchDesigner. This is done either with `-gpuformonitor <monitorIndex>` or `-gpubusid <domain:bus:device:function>`.
 
-The `-gpuformonitor` option binds the process to the GPU connected to the specified monitor. The monitors are indexed the same way they are in the [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT"), which is left to right and bottom to top. This does not match the indices the OS may give your monitors. You can specify any monitor that is connected to the particular GPU you want to bind to. For example if you only want run two instances of TouchDesigner, each running on the first and second graphic card respectively, and each GPU has only 1 monitor connected, you'd launch them with a .bat file like this:
+The `-gpuformonitor` option binds the process to the GPU connected to the specified monitor. The monitors are indexed the same way they are in the [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT"), which is left to right and bottom to top. This does not match the indices the OS may give your monitors. You can specify any monitor that is connected to the particular GPU you want to bind to. For example if you only want run two instances of TouchDesigner, each running on the first and second graphic card respectively, and each GPU has only 1 monitor connected, you'd launch them with a .bat file like this:
 ```
  set APPPATH=C:\Program Files\Derivative\TouchDesigner\bin
  start "%APPPATH%" "%APPPATH%\TouchDesigner" -gpuformonitor 0 C:/Projects/Playback.toe
  start "%APPPATH%" "%APPPATH%\TouchDesigner" -gpuformonitor 1 C:/Projects/Control.toe
 ```
 
-Alternatively, the `-gpubusid` option can be used to directly reference a GPU. The value for the Bus ID is also provided in the [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT"), in the `gpu_bus_id` column, which is one of the last columns in the table. This option is less portable between machines, as the values for the Bus ID may not be the same between multiple machines. An example of this is:
+Alternatively, the `-gpubusid` option can be used to directly reference a GPU. The value for the Bus ID is also provided in the [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT"), in the `gpu_bus_id` column, which is one of the last columns in the table. This option is less portable between machines, as the values for the Bus ID may not be the same between multiple machines. An example of this is:
 ```
  set APPPATH=C:\Program Files\Derivative\TouchDesigner\bin
  start "%APPPATH%" "%APPPATH%\TouchDesigner" -gpubusid 0:1:0:0 C:/Projects/Playback.toe
  start "%APPPATH%" "%APPPATH%\TouchDesigner" -gpubusid 0:1:1:0 C:/Projects/Control.toe
 ```
 
-To see if the binding is working as you expected, use the [Monitors DAT](https://docs.derivative.ca/Monitors_DAT "Monitors DAT") and look at the 'affinity' column.
+To see if the binding is working as you expected, use the [Monitors DAT](../DATs/Monitors_DAT.md "Monitors DAT") and look at the 'affinity' column.
 
 ##  SLI and Crossfire
 
 SLI (Nvidia) and Crossfire (AMD) is a feature where two graphic cards are linked together to become one virtual graphics card. When this happens only one graphic card can be connected to the monitor(s), the other card is just used for extra processing power. The idea behind this that the work will be split between the two graphic cards.
 
-Using this feature requires that the driver have a good idea of what is going to happen every frame, so it knows how to schedule the work. This works well for video games since they perform the same render passes each frame (shader, main, post-process, for example). So each game has it's own profile built into the driver for it's particular usage pattern. This does not work well for TouchDesigner since every .toe will have a different usage pattern. Thus, there is no profile built into the drivers for TouchDesigner for SLI/Crossfire. We haven't done much testing to see if there are any benefits to using SLI configurations with TouchDesigner. If you want to try, we suggest using the Alternate Frame Rendering method of SLI, as opposed to the Split Frame Rendering method. To see any speed improvements you would first need to ensure that your project is GPU bottle-necked. See the [Optimize](https://docs.derivative.ca/Optimize "Optimize") article for more information on determining bottlenecks.
+Using this feature requires that the driver have a good idea of what is going to happen every frame, so it knows how to schedule the work. This works well for video games since they perform the same render passes each frame (shader, main, post-process, for example). So each game has it's own profile built into the driver for it's particular usage pattern. This does not work well for TouchDesigner since every .toe will have a different usage pattern. Thus, there is no profile built into the drivers for TouchDesigner for SLI/Crossfire. We haven't done much testing to see if there are any benefits to using SLI configurations with TouchDesigner. If you want to try, we suggest using the Alternate Frame Rendering method of SLI, as opposed to the Split Frame Rendering method. To see any speed improvements you would first need to ensure that your project is GPU bottle-necked. See the [Optimize](Optimize.md "Optimize") article for more information on determining bottlenecks.
 
 ##  Multiple GPUs used as-is
 
 Without GPU Affinity/SLI Mosaic all the work for processes get sent to the first GPU the system lists to TouchDesigner, and only the final images are sent across to the other GPUs to get displayed on-screen. If the system has both dedicated and integrated GPUs, then the dedicated one will be chosen of an integrated one, even if the integrated one is listed first. This is similar to Multi-GPU Mosaic/EyeFinity, but the driver is set up in a less optimal mode. This way of working can have a large performance impact on your project and is not recommended, but may be appropriate in certain situations (if the performance meets requirements).
 
-See also [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors")
+See also [Multiple Monitors](../Glossary/Multiple_Monitors.md "Multiple Monitors")
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-A [Link](https://docs.derivative.ca/Link "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A [Link](../Glossary/Link.md "Link"). The grey dashed lines between nodes is a Reference or Link that indicates one operator is getting data from another operator from any [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
-A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](https://docs.derivative.ca/Export "Export"), node [Paths](https://docs.derivative.ca/Network_Path "Network Path") in parameters, and [expressions](https://docs.derivative.ca/Expression "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](https://docs.derivative.ca/Wire "Wire") that connects nodes in the same [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family").
+A Link or Reference is a dashed line between nodes that represent other data flowing between nodes. Examples are CHOP [Exports](../Glossary/Export.md "Export"), node [Paths](../Glossary/Network_Path.md "Network Path") in parameters, and [expressions](../Glossary/Expression.md "Expression") in parameters referencing CHOP channels, DAT tables and other nodes. In contrast is a [Wire](../Glossary/Wire.md "Wire") that connects nodes in the same [Operator Family](../Glossary/Operator_Family.md "Operator Family").
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 

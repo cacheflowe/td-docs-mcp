@@ -8,7 +8,7 @@ title: Pattern_Expansion
 
 Pattern Expansion takes a short string and expands it to generate a longer string of individual elements. Example: `chan[1-3]` generates `chan1 chan2 chan3`.
 
-[Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement") uses Pattern Expansion, along with having some of it's own syntax on-top of Pattern Expansion. Pattern Expansion is different from "[Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching")", in Pattern Expansion you are creating a list of strings, while in Pattern Matching you are looking for a pattern in a string or a set of strings.
+[Pattern Replacement](Pattern_Replacement.md "Pattern Replacement") uses Pattern Expansion, along with having some of it's own syntax on-top of Pattern Expansion. Pattern Expansion is different from "[Pattern Matching](Pattern_Matching.md "Pattern Matching")", in Pattern Expansion you are creating a list of strings, while in Pattern Matching you are looking for a pattern in a string or a set of strings.
 
 Expansion is done by using putting the data to expand into `[]`. Valid syntax is
   * `[_alphaset_]`- Where _alphaset_ is one or more letters (not numbers), each of which will be split out into it's own result. The [a-g] format is not currently supported, the characters must be listed as [abcdefg]
@@ -25,18 +25,18 @@ Expansion is done by using putting the data to expand into `[]`. Valid syntax is
 `chan[1-11:2]` | Starts expansion at chan1 to chan11 in increments of 2. Expands to `chan1 chan3 chan5 chan7 chan9 chan11`
 `chan[1-3] pos[xyz]` | Starts expanding first term, and then the second. Expands to `chan1 chan2 chan3 posx posy posz`
 Pattern expansion occurs in:
-  * [Rename CHOP](https://docs.derivative.ca/Rename_CHOP "Rename CHOP"), [Select CHOP](https://docs.derivative.ca/Select_CHOP "Select CHOP") and [Panel CHOP](https://docs.derivative.ca/Panel_CHOP "Panel CHOP") - where channels are renamed.
-  * [Constant CHOP](https://docs.derivative.ca/Constant_CHOP "Constant CHOP"), [Noise CHOP](https://docs.derivative.ca/Noise_CHOP "Noise CHOP"), [Wave CHOP](https://docs.derivative.ca/Wave_CHOP "Wave CHOP"), [LFO CHOP](https://docs.derivative.ca/LFO_CHOP "LFO CHOP"), [Pulse CHOP](https://docs.derivative.ca/Pulse_CHOP "Pulse CHOP") and [Joystick CHOP](https://docs.derivative.ca/Joystick_CHOP "Joystick CHOP") - where channels are created using patterns.
-  * [Merge DAT](https://docs.derivative.ca/Merge_DAT "Merge DAT") - where DATs are selected for merging.
+  * [Rename CHOP](Rename_CHOP.md "Rename CHOP"), [Select CHOP](Select_CHOP.md "Select CHOP") and [Panel CHOP](../CHOPs/Panel_CHOP.md "Panel CHOP") - where channels are renamed.
+  * [Constant CHOP](../CHOPs/Constant_CHOP.md "Constant CHOP"), [Noise CHOP](../CHOPs/Noise_CHOP.md "Noise CHOP"), [Wave CHOP](../CHOPs/Wave_CHOP.md "Wave CHOP"), [LFO CHOP](../CHOPs/LFO_CHOP.md "LFO CHOP"), [Pulse CHOP](../CHOPs/Pulse_CHOP.md "Pulse CHOP") and [Joystick CHOP](../Interoperability/Joystick_CHOP.md "Joystick CHOP") - where channels are created using patterns.
+  * [Merge DAT](../DATs/Merge_DAT.md "Merge DAT") - where DATs are selected for merging.
 
-**Note** : See `tdu.expand[](https://docs.derivative.ca/TDU_Class "TDU Class")()`
+**Note** : See `tdu.expand[](../Python/TDU_Class.md "TDU Class")()`
 
-**Note** : To expand a list of operators that is in a parameter type that is a list of operators, see `.evalOPs()` in [Par Class](https://docs.derivative.ca/Par_Class "Par Class")
+**Note** : To expand a list of operators that is in a parameter type that is a list of operators, see `.evalOPs()` in [Par Class](../SOPs/Par_Class.md "Par Class")
 
-See also [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement"), [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching").
+See also [Pattern Replacement](Pattern_Replacement.md "Pattern Replacement"), [Pattern Matching](Pattern_Matching.md "Pattern Matching").
 
 Pattern Expansion takes a short string and expands it to generate a longer string of individual elements.
 
-Matching names using wildcard characters and bracketing. Useful in "[Select](https://docs.derivative.ca/Select_CHOP "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.
+Matching names using wildcard characters and bracketing. Useful in "[Select](Select_CHOP.md "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.
 
-Matching names using wildcard characters and bracketing. Useful in "[Select](https://docs.derivative.ca/Select_CHOP "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.
+Matching names using wildcard characters and bracketing. Useful in "[Select](Select_CHOP.md "Select CHOP")" type parameters to select multiple operators, paths, channels, etc.

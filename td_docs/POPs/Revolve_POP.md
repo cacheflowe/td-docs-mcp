@@ -16,22 +16,19 @@ The axis can be the X Y or Z axis, but the default axis is formed by the first a
 
 Each line strip generates its own surface of revolution.
 
-[revolvePOP_Class](https://docs.derivative.ca/RevolvePOP_Class "RevolvePOP Class")
+[revolvePOP_Class](Revolve_POP_Class.md "RevolvePOP Class")
 
 ## Parameters - Revolve Page
-
 - Axis `axis` - ⊞ - The axis around which to revolve the input curve to create the output geometry.
   * Auto `auto` -
   * X `x` -
   * Y `y` -
   * Z `z` -
-
 - Auto Pivot `autopivot` - Make the pivot axis be the line between the first point and the last point for each line strip.
 - Pivot `p` - ⊞ - The pivot point for the transform rotates and scales.
   * Pivot `px` -
   * Pivot `py` -
   * Pivot `pz` -
-
 - Connectivity `surftype` - ⊞ - Determines the primitive used to connect the points.
   * None `none` -
   * Point Prims `points` -
@@ -41,20 +38,17 @@ Each line strip generates its own surface of revolution.
   * Triangles `triangles` -
   * Alternating Triangles `alttriangles` -
   * Quadrilaterals `quads` -
-
 - Divisions `divs` - The number of divisions.
 - Texture Coordinates `texture` - ⊞ - Sets the attribute class where the texture coordinates should be created.
   * None `none` -
   * Point `pointNormals` -
   * Vertex `vertNormals` -
-
 - Normal `normal` - ⊞ - Choose whether to create a normal attribute and the attribute class of the normal attribute.
   * None `none` -
   * Point `pointNormals` -
   * Vertex `vertNormals` -
 
 ## Parameters - Common Page
-
 - Bypass `bypass` - Pass through the first input to the output unchanged.
 - Free Extra GPU Memory `freeextragpumem` - Free memory that has accumulated when output memory has grown and shrunk.
 - Delete Input Attributes `delinputattrs` - Only output which attributes you specify in this POP - helps isolate attributes into a separate branch.
@@ -65,7 +59,7 @@ Each line strip generates its own surface of revolution.
 
 ## Info CHOP Channels
 
-Extra Information for the Revolve POP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Revolve POP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -76,19 +70,11 @@ Extra Information for the Revolve POP can be accessed via an [Info CHOP](https:/
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

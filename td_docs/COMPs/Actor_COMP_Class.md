@@ -6,13 +6,13 @@ title: ActorCOMP_Class
 
 # actorCOMP Class
 
-This class inherits from the [ COMP class](https://docs.derivative.ca/COMP_Class "COMP Class"). It references a specific [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP").
+This class inherits from the [ COMP class](../Python/COMP_Class.md "COMP Class"). It references a specific [Actor COMP](Actor_COMP.md "Actor COMP").
 
 ## Members
 
 `bodies` → `list` **(Read Only)** :
 
-Returns a list of all the bodies in the [Actor COMP](https://docs.derivative.ca/Actor_COMP "Actor COMP"). Each entry in the list will be a [Body Class](https://docs.derivative.ca/Body_Class "Body Class") object.
+Returns a list of all the bodies in the [Actor COMP](Actor_COMP.md "Actor COMP"). Each entry in the list will be a [Body Class](../Python/Body_Class.md "Body Class") object.
 
 ## Methods
 
@@ -24,7 +24,7 @@ No operator specific methods.
 
 `extensions` → `list` **(Read Only)** :
 
-A list of [extensions](https://docs.derivative.ca/Extensions "Extensions") attached to this component.
+A list of [extensions](../Glossary/Extensions.md "Extensions") attached to this component.
 
 `extensionsReady` → `bool` **(Read Only)** :
 
@@ -32,23 +32,23 @@ True unless the extensions are currently compiling. Can be used to avoid accessi
 
 `internalOPs` → `Dict` **(Read Only)** :
 
-A dictionary of [internal operator shortcuts](https://docs.derivative.ca/Internal_Operators "Internal Operators") found in this component. See also [OP.iop](https://docs.derivative.ca/OP_Class#General "OP Class")
+A dictionary of [internal operator shortcuts](../Glossary/Internal_Operators.md "Internal Operators") found in this component. See also [OP.iop](../Python/OP_Class.md#General "OP Class")
 
 `internalPars` → `Dict` **(Read Only)** :
 
-A dictionary of [internal parameters shortcuts](https://docs.derivative.ca/Internal_Parameters "Internal Parameters") found in this component. See also [OP.ipar](https://docs.derivative.ca/OP_Class#General "OP Class")
+A dictionary of [internal parameters shortcuts](../Glossary/Internal_Parameters.md "Internal Parameters") found in this component. See also [OP.ipar](../Python/OP_Class.md#General "OP Class")
 
 `clones` → `List[COMP]` **(Read Only)** :
 
-A list of all [components](https://docs.derivative.ca/COMP_Class "COMP Class") cloned to this component.
+A list of all [components](../Python/COMP_Class.md "COMP Class") cloned to this component.
 
 `componentCloneImmune` → `bool` :
 
-Get or set [component clone Immune flag](https://docs.derivative.ca/Immune_Flag "Immune Flag"). This works together with the cloneImmune member of the [OP_Class](https://docs.derivative.ca/OP_Class "OP Class"). When componentCloneImmune is True, everything inside the clone is [immune](https://docs.derivative.ca/Immune "Immune"). When componentCloneImmune is False, it uses the [OP_Class](https://docs.derivative.ca/OP_Class "OP Class") cloneImmune member to determine if just the component is immune (its parameters etc, but not the component's network inside).
+Get or set [component clone Immune flag](../Glossary/Immune_Flag.md "Immune Flag"). This works together with the cloneImmune member of the [OP_Class](../Python/OP_Class.md "OP Class"). When componentCloneImmune is True, everything inside the clone is [immune](../Glossary/Immune.md "Immune"). When componentCloneImmune is False, it uses the [OP_Class](../Python/OP_Class.md "OP Class") cloneImmune member to determine if just the component is immune (its parameters etc, but not the component's network inside).
 
 `vfs` → `VFS` **(Read Only)** :
 
-An intermediate [VFS object](https://docs.derivative.ca/VFS_Class "VFS Class") from which embedded [VFSFile objects](https://docs.derivative.ca/VFSFile_Class "VFSFile Class") can be accessed. For more information see [Virtual File System](https://docs.derivative.ca/Virtual_File_System "Virtual File System").
+An intermediate [VFS object](../Python/VFS_Class.md "VFS Class") from which embedded [VFSFile objects](../Python/VFSFile_Class.md "VFSFile Class") can be accessed. For more information see [Virtual File System](../Glossary/Virtual_File_System.md "Virtual File System").
 
 `dirty` → `bool` **(Read Only)** :
 
@@ -56,11 +56,11 @@ True if the contents of the component need to be saved.
 
 `currentChild` → `OP` **(Read Only)** :
 
-The child [operator](https://docs.derivative.ca/OP_Class "OP Class") that is currently selected. To make an operator current, use its own [OP.current](https://docs.derivative.ca/OP_Class#Common_Flags "OP Class") method.
+The child [operator](../Python/OP_Class.md "OP Class") that is currently selected. To make an operator current, use its own [OP.current](../Python/OP_Class.md#Common_Flags "OP Class") method.
 
 `selectedChildren` → `List[OP]` **(Read Only)** :
 
-The list of currently selected [children](https://docs.derivative.ca/OP_Class "OP Class"). To change an individual operator's selection state, use its own [OP.selected](https://docs.derivative.ca/OP_Class#Common_Flags "OP Class") method.
+The list of currently selected [children](../Python/OP_Class.md "OP Class"). To change an individual operator's selection state, use its own [OP.selected](../Python/OP_Class.md#Common_Flags "OP Class") method.
 
 `cpuCookTime` → `float` **(Read Only)** :
 
@@ -88,7 +88,7 @@ Get or set utility flag.
 
 `progressiveUnloader` → `ProgressiveUnloader` **(Read Only)** :
 
-Returns an instance of the [ProgressiveUnloader Class](https://docs.derivative.ca/ProgressiveUnloader_Class "ProgressiveUnloader Class") to control and get details of the latest progressive unload task. This works together with the `progressiveUnload()` [method](https://docs.derivative.ca/COMP_Class#progressiveUnload "COMP Class") of the [component](https://docs.derivative.ca/COMP_Class "COMP Class").
+Returns an instance of the [ProgressiveUnloader Class](https://docs.derivative.ca/ProgressiveUnloader_Class "ProgressiveUnloader Class") to control and get details of the latest progressive unload task. This works together with the `progressiveUnload()` [method](../Python/COMP_Class.md#progressiveUnload "COMP Class") of the [component](../Python/COMP_Class.md "COMP Class").
 
 ###  Privacy
 
@@ -128,15 +128,15 @@ List of input components to this component through its top connector.
 
 `inputCOMPConnectors` → `List[Connector]` **(Read Only)** :
 
-List of input [connectors](https://docs.derivative.ca/Connector_Class "Connector Class") (on the top) associated with this component.
+List of input [connectors](../Python/Connector_Class.md "Connector Class") (on the top) associated with this component.
 
 `outputCOMPs` → `List[COMP]` **(Read Only)** :
 
-List of output [components](https://docs.derivative.ca/COMP_Class "COMP Class") from this component through its bottom connector.
+List of output [components](../Python/COMP_Class.md "COMP Class") from this component through its bottom connector.
 
 `outputCOMPConnectors` → `List[Connector]` **(Read Only)** :
 
-List of output [connectors](https://docs.derivative.ca/Connector_Class "Connector Class") (on the bottom) associated with this component.
+List of output [connectors](../Python/Connector_Class.md "Connector Class") (on the bottom) associated with this component.
 
 ## Methods
 
@@ -156,7 +156,7 @@ w = n.create(boxSOP, 'box12')
 
 `collapseSelected()`→ `OP`:
 
-Move all selected operators into a new [Base COMP](https://docs.derivative.ca/Base_COMP "Base COMP"). Equivalent to right-click on the network background and choosing Collapse Selected. Returns reference to the created Base COMP
+Move all selected operators into a new [Base COMP](Base_COMP.md "Base COMP"). Equivalent to right-click on the network background and choosing Collapse Selected. Returns reference to the created Base COMP
 
 `layout(ops, horizontal=None, vertical=None, gridRows=0)`→ `None`:
 
@@ -200,19 +200,19 @@ n.copyOPs(alist)
 
 `findChildren(type=None, name=None, path=None, depth=None, maxDepth=None, text=None, comment=None, tags=[], allTags=False, parValue=None, parExpr=None, parName=None, onlyNonDefaults=False, includeUtility=False, key=None)`→ `List[OP]`:
 
-Return a list of [operators](https://docs.derivative.ca/OP_Class "OP Class") matching the specified criteria.
+Return a list of [operators](../Python/OP_Class.md "OP Class") matching the specified criteria.
   * type - (Keyword, Optional) Specify the type of OP. Example type=boxSOP
-  * name - (Keyword, Optional) Specify the name of the OP. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: name='project*'
-  * path - (Keyword, Optional) Specify the path of the OP. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: path='*/pics/*'
+  * name - (Keyword, Optional) Specify the name of the OP. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: name='project*'
+  * path - (Keyword, Optional) Specify the path of the OP. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: path='*/pics/*'
   * depth - (Keyword, Optional) Specify the relative depth of the OP to the calling OP. Children have depth 1, their children have depth 2, etc.
   * maxDepth - (Keyword, Optional) Specify the maximum relative depth of the OP from the calling OP.
-  * text - (Keyword, Optional) Specify the DAT contents of the OP. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: text='*import*'
-  * comment - (Keyword, Optional) Specify the OP comment. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: comment='*todo*'
-  * tags - (Keyword, Optional) Specify a list of tags to search. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: tags=['*sequencer*', '*interface*']
+  * text - (Keyword, Optional) Specify the DAT contents of the OP. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: text='*import*'
+  * comment - (Keyword, Optional) Specify the OP comment. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: comment='*todo*'
+  * tags - (Keyword, Optional) Specify a list of tags to search. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: tags=['*sequencer*', '*interface*']
   * allTags - (Keyword, Optional) When True, only include OPs where all specified tags are matched.
-  * parValue - (Keyword, Optional) Specify the value of any parameters in the OP. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: parValue='500'
-  * parExpr - (Keyword, Optional) Specify the expression of any parameters in the OP. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: parExpr='*sin*'
-  * parName - (Keyword, Optional) Specify the name of any parameters in the OP. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") supported. Example: parName='clone'
+  * parValue - (Keyword, Optional) Specify the value of any parameters in the OP. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: parValue='500'
+  * parExpr - (Keyword, Optional) Specify the expression of any parameters in the OP. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: parExpr='*sin*'
+  * parName - (Keyword, Optional) Specify the name of any parameters in the OP. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") supported. Example: parName='clone'
   * onlyNonDefaults - (Keyword, Optional) When True, only non default parameters are included.
   * includeUtility - (Keyword, Optional) If specified, controls whether or not [Utility nodes](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates") (e.g. Comments) are included in the results.
   * key - (Keyword, Optional) Specify a custom search function.
@@ -230,11 +230,11 @@ n.findChildren(type=COMP, parName='clone', onlyNonDefaults=True)
 
 `progressiveUnload(totalFrames=None, timePerFrame=None, nodesPerFrame=None, gpuMemPerFrame=None, opsToExclude=None)`→ `None`:
 
-This method allows you to try to release the CPU and GPU memory allocated for the child nodes of this component, with the unloading staggered over several frames. For each unloaded node, the memory will get reallocated next time the node cooks, so make sure nothing is still using it to keep it released.
+This frees memory of a component, over the time of several frames to minimize the perceivable impact. `progressiveUnload()` allows you to try to release the CPU and GPU memory allocated for the child nodes of this component, with the unloading staggered over several frames. For each unloaded node, the memory will get reallocated next time the node cooks, so make sure nothing is still using it to keep it released.
 
-The `cacheMemory` option that `unload()` has for the Movie File In TOP is not available in `progressiveUnload()`. Hence, all memory for the Movie File In TOP is released. See also [OP](https://docs.derivative.ca/OP_Class "OP Class") method `unload()`.
+The `cacheMemory` option that `unload()` has for the Movie File In TOP is not available in `progressiveUnload()`. Hence, all memory for the Movie File In TOP is released. See also [OP](../Python/OP_Class.md "OP Class") method `unload()`.
 
-The component's `progressiveUnloader` [ member](https://docs.derivative.ca/ProgressiveUnloader_Class "ProgressiveUnloader Class") contains status info regarding the latest unload operation, and has methods for modifying the unload operation such as `kill()` which terminates the unloading.
+See COMP.`progressiveUnloader` to observe and control thge unloading. The component's `progressiveUnloader` [ member](https://docs.derivative.ca/ProgressiveUnloader_Class "ProgressiveUnloader Class") contains status info regarding the latest unload operation, and has methods for modifying the unload operation such as `kill()` which terminates the unloading.
 
 If no arguments are provided then everything is unloaded in a single frame.
 
@@ -261,7 +261,7 @@ n.progressiveUnload(gpuMemPerFrame=15, timePerFrame=16)
 
 `initializeExtensions(index=None)`→ `Any`:
 
-Initialize the components [extensions](https://docs.derivative.ca/Extensions "Extensions"). To initialize an individual extension, specify its index.
+Initialize the components [extensions](../Glossary/Extensions.md "Extensions"). To initialize an individual extension, specify its index.
 
 Returns the compiled extension.
   * index - (Optional) Index to initialize. 0 = first extension, etc.
@@ -338,7 +338,7 @@ op('geo1').saveExternalTox(recurse=False)
 
 `appendCustomPage(name)`→ `Page`:
 
-Add a new [page](https://docs.derivative.ca/Page_Class "Page Class") of custom parameters. See [Page Class](https://docs.derivative.ca/Page_Class "Page Class") for more details. See [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters") for the procedure.
+Add a new [page](../Python/Page_Class.md "Page Class") of custom parameters. See [Page Class](../Python/Page_Class.md "Page Class") for more details. See [Custom Parameters](https://docs.derivative.ca/Custom_Parameters "Custom Parameters") for the procedure.
 
 ```
 n = op('base1')
@@ -435,7 +435,7 @@ Unset the specified component variable. This removes the entry from the '`local/
 `vars(*patterns)`→ `List[str]`:
 
 Return a list of all component variables in this COMP. Optional name patterns may be specified.
-  * patterns - (Optional) The name(s) of variables whose values should be returned. [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") can be used.
+  * patterns - (Optional) The name(s) of variables whose values should be returned. [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") can be used.
 
 ```
 a = n.vars()
@@ -448,163 +448,34 @@ a = n.vars('A*', 'B*')
 
 ###  General
 
-`valid` → `bool` **(Read Only)** :
-
-True if the referenced operator currently exists, False if it has been deleted.
-
-`id` → `int` **(Read Only)** :
-
-Unique id for the operator. This id can also be passed to the op() and ops() shortcuts. Id's are not consistent when a file is re-opened, and will change if the OP is copied/pasted, changes OP types, deleted/undone. The id will not change if the OP is renamed though. Its data type is integer.
-
-`supported` → `bool` **(Read Only)** :
-
-True if supported on the current Operating System.
-
 `name` → `str` :
 
 Get or set the operator name.
-
-`path` → `str` **(Read Only)** :
-
-Full path to the operator.
-
-`digits` → `int` **(Read Only)** :
-
-Returns the numeric value of the last consecutive group of digits in the name, or None if not found. The digits can be in the middle of the name if there are none at the end of the name.
 
 `base` → `str` **(Read Only)** :
 
 Returns the beginning portion of the name occurring before any digits.
 
-`par` → `ParCollection` **(Read Only)** :
+`digits` → `int` **(Read Only)** :
 
-An intermediate [parameter collection](https://docs.derivative.ca/ParCollection_Class "ParCollection Class") object, from which a specific [parameter](https://docs.derivative.ca/Par_Class "Par Class") can be found.
+Returns the numeric value of the last consecutive group of digits in the name, or None if not found. The digits can be in the middle of the name if there are none at the end of the name.
 
-```
-n.par.tx
-# or
-n.par['tx']
-```
+`path` → `str` **(Read Only)** :
 
-`parGroup` → `ParGroupCollection` **(Read Only)** :
+Full path to the operator.
 
-An intermediate [parameter collection](https://docs.derivative.ca/ParGroupCollection_Class "ParGroupCollection Class") object, from which a specific [parameter group](https://docs.derivative.ca/ParGroup_Class "ParGroup Class") can be found.
+`id` → `int` **(Read Only)** :
 
-```
-n.parGroup.t
-# or
-n.parGroup['t']
-```
-
-`ext` → `Ext` **(Read Only)** :
-
-Object that searches for parent [extensions](https://docs.derivative.ca/Extensions "Extensions").
-
-```
-me.ext.MyClass
-```
-
-`passive` → `bool` **(Read Only)** :
-
-If true, operator will not cook before its access methods are called. To use a passive version of an operator n, use passive(n).
-
-`curPar` → `Par` **(Read Only)** :
-
-The parameter currently being evaluated. Can be used in a parameter expression to reference itself. An easy way to see this is to put the expression `curPar.name` in any string parameter.
-
-`curBlock` → `SequenceBlock` **(Read Only)** :
-
-The SequenceBlock of the parameter currently being evaluated. Can be used in a parameter expression to reference itself.
-
-`curSeq` → `Sequence` **(Read Only)** :
-
-The Sequence of the parameter currently being evaluated. Can be used in a parameter expression to reference itself.
-
-`time` → `OP` **(Read Only)** :
-
-[Time Component](https://docs.derivative.ca/TimeCOMP_Class "TimeCOMP Class") that defines the operator's time reference.
-
-`fileFolder` → `str` **(Read Only)** :
-
-Returns the folder where this node is saved.
-
-`filePath` → `str` **(Read Only)** :
-
-Returns the file location of this node.
-
-`mod` → `MOD` **(Read Only)** :
-
-Get a [module on demand](https://docs.derivative.ca/MOD_Class "MOD Class") object that searches for DAT modules relative to this operator.
-
-`pages` → `List[Page]` **(Read Only)** :
-
-A list of all built-in pages.
-
-`seq` → `SequenceCollection` **(Read Only)** :
-
-An intermediate [sequence collection](https://docs.derivative.ca/SequenceCollection_Class "SequenceCollection Class") object, from which a specific [sequence](https://docs.derivative.ca/index.php?title=Sequence&action=edit&redlink=1 "Sequence \(page does not exist\)") can be found.
-
-```
-comp.seq.ext
-# or
-comp.seq['ext']
-```
-
-`builtinPars` → `List[Par]` **(Read Only)** :
-
-A list of all [built-in parameters](https://docs.derivative.ca/Par_Class "Par Class").
-
-`customParGroups` → `List[ParGroup]` **(Read Only)** :
-
-A list of all [ParGroups](https://docs.derivative.ca/ParGroup_Class "ParGroup Class"), where a ParGroup is a set of parameters all drawn on the same line of a dialog, sharing the same label.
-
-`customPars` → `List[Par]` **(Read Only)** :
-
-A list of all [custom parameters](https://docs.derivative.ca/Par_Class "Par Class").
-
-`customPages` → `List[Page]` **(Read Only)** :
-
-A list of all [custom pages](https://docs.derivative.ca/Page_Class "Page Class").
-
-`replicator` → `OP` **(Read Only)** :
-
-The [replicatorCOMP](https://docs.derivative.ca/ReplicatorCOMP_Class "ReplicatorCOMP Class") that created this operator, if any.
-
-`storage` → `dict` **(Read Only)** :
-
-[Storage](https://docs.derivative.ca/Storage "Storage") is dictionary associated with this operator. Values stored in this dictionary are persistent, and saved with the operator. The dictionary attribute is read only, but not its contents. Its contents may be manipulated directly with methods such as OP.fetch() or OP.store() described below, or examined with an [Examine DAT](https://docs.derivative.ca/Examine_DAT "Examine DAT").
-
-`tags` → `set` :
-
-Get or set a set of user defined strings. [Tags](https://docs.derivative.ca/Tag "Tag") can be searched using OP.findChildren() and the [OP Find DAT](https://docs.derivative.ca/OP_Find_DAT "OP Find DAT").
-
-The set is a regular python set, and can be accessed accordingly:
-
-```
-n.tags = ['effect', 'image filter']
-n.tags.add('darken')
-```
-
-`children` → `List[OP]` **(Read Only)** :
-
-A list of [operators](https://docs.derivative.ca/OP_Class "OP Class") contained within this operator. Only [component](https://docs.derivative.ca/COMP_Class "COMP Class") operators have children, otherwise an empty list is returned.
-
-`numChildren` → `int` **(Read Only)** :
-
-Returns the number of children contained within the operator. Only [component](https://docs.derivative.ca/COMP_Class "COMP Class") operators have children.
-
-`numChildrenRecursive` → `int` **(Read Only)** :
-
-Returns the number of operators contained recursively within this operator. Only [component](https://docs.derivative.ca/COMP_Class "COMP Class") operators have children.
+Unique id for the operator. This id can also be passed to the op() and ops() shortcuts. Id's are not consistent when a file is re-opened, and will change if the OP is copied/pasted, changes OP types, deleted/undone. The id will not change if the OP is renamed though. Its data type is integer.
 
 `op` → `OPShortcut` **(Read Only)** :
 
 The operator finder object, for accessing operators through paths or shortcuts. **Note:** a version of this method that searches relative to '/' is also in the global [td module](https://docs.derivative.ca/Td_Module "Td Module").
 
-`**op(pattern1, pattern2..., includeUtility=False)**`→`OP[](https://docs.derivative.ca/OP_Class "OP Class") or None`
+`**op(pattern1, pattern2..., includeUtility=False)**`→`OP[](../Python/OP_Class.md "OP Class") or None`
 
 Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
-  * `pattern` - Can be string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which OP to return, or an integer, which must be an OP Id. Multiple patterns can be given, the first matching OP will be returned.
+  * `pattern` - Can be string following the [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") rules, specifying which OP to return, or an integer, which must be an OP Id. Multiple patterns can be given, the first matching OP will be returned.
   * `includeUtility` **(Optional)** - if True, allow [Utility nodes](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates") to be returned. If False, Utility operators will be ignored.
 
 ```
@@ -615,7 +486,7 @@ b = op(154)
 ```
 
 `**op.shortcut**`→`OP`
-    An operator specified with by a [Global OP Shortcut](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut"). If no operator exists an exception is raised. These shortcuts are global, and must be unique. That is, cutting and pasting an operator with a Global OP Shortcut specified will lead to a name conflict. One shortcut must be renamed in that case. Furthermore, only components can be given Global OP Shortcuts.
+    An operator specified with by a [Global OP Shortcut](../Glossary/Global_OP_Shortcut.md "Global OP Shortcut"). If no operator exists an exception is raised. These shortcuts are global, and must be unique. That is, cutting and pasting an operator with a Global OP Shortcut specified will lead to a name conflict. One shortcut must be renamed in that case. Furthermore, only components can be given Global OP Shortcuts.
   * `shortcut` - Corresponds to the Global OP Shortcut parameter specified in the target operator.
 
 ```
@@ -633,15 +504,15 @@ for x in op:
 
 An operator finder object, for accessing operators through paths or shortcuts. Works like the op() shortcut method, except it will raise an exception if it fails to find the node instead of returning None as op() does. This is now the recommended way to get nodes in parameter expressions, as the error will be more useful than, for example, `NoneType has no attribute "par"`, that is often seen when using op(). **Note:** a version of this method that searches relative to '/' is also in the global [td module](https://docs.derivative.ca/Td_Module "Td Module").
 
-`**op(pattern1, pattern2..., includeUtility=False)**`→`OP[](https://docs.derivative.ca/OP_Class "OP Class")`
+`**op(pattern1, pattern2..., includeUtility=False)**`→`OP[](../Python/OP_Class.md "OP Class")`
 
 Returns the first OP whose path matches the given pattern, relative to the inside of this operator. Will return None if nothing is found. Multiple patterns may be specified which are all added to the search. Numeric OP ids may also be used.
-  * `pattern` - Can be string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which OP to return, or an integer, which must be an OP Id. Multiple patterns can be given, the first matching OP will be returned.
+  * `pattern` - Can be string following the [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") rules, specifying which OP to return, or an integer, which must be an OP Id. Multiple patterns can be given, the first matching OP will be returned.
   * `includeUtility` **(Optional)** - if True, allow [Utility nodes](https://docs.derivative.ca/Network_Utilities:_Comments,_Network_Boxes,_Annotates "Network Utilities: Comments, Network Boxes, Annotates") to be returned. If False, Utility operators will be ignored.
 
 `parent` → `ParentShortcut` **(Read Only)** :
 
-The [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") object, for accessing parent components through indices or shortcuts.
+The [Parent Shortcut](../Glossary/Parent_Shortcut.md "Parent Shortcut") object, for accessing parent components through indices or shortcuts.
 
 **Note:** _a version of this method that searches relative to the current operator is also in the global[td module](https://docs.derivative.ca/Td_Module "Td Module")._
 
@@ -657,7 +528,7 @@ p = parent(2) #grandfather
 `parent.shortcut` → `OP`
 
 A parent component specified with a shortcut. If no parent exists an exception is raised.
-  * shortcut - Corresponds to the [Parent Shortcut](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") parameter specified in the target parent.
+  * shortcut - Corresponds to the [Parent Shortcut](../Glossary/Parent_Shortcut.md "Parent Shortcut") parameter specified in the target parent.
 
 ```
 n = parent.Videoplayer
@@ -667,13 +538,148 @@ See also Parent Shortcut for more examples.
 
 `iop` → `IOPShortcut` **(Read Only)** :
 
-The Internal Operator Shortcut object, for accessing internal shortcuts. See also [Internal Operators](https://docs.derivative.ca/Internal_Operators "Internal Operators"). **Note:** a version of this method that searches relative to the current operator is also in the global [td Module](https://docs.derivative.ca/Td_Module "Td Module").
+The Internal Operator Shortcut object, for accessing internal shortcuts. See also [Internal Operators](../Glossary/Internal_Operators.md "Internal Operators"). **Note:** a version of this method that searches relative to the current operator is also in the global [td Module](https://docs.derivative.ca/Td_Module "Td Module").
 
 `ipar` → `IparShortcut` **(Read Only)** :
 
-The Internal Operator Parameter Shortcut object, for accessing internal shortcuts. See also [Internal Parameters](https://docs.derivative.ca/Internal_Parameters "Internal Parameters"). **Note:** a version of this method that searches relative to the current operator is also in the global [td Module](https://docs.derivative.ca/Td_Module "Td Module").
+The Internal Operator Parameter Shortcut object, for accessing internal shortcuts. See also [Internal Parameters](../Glossary/Internal_Parameters.md "Internal Parameters"). **Note:** a version of this method that searches relative to the current operator is also in the global [td Module](https://docs.derivative.ca/Td_Module "Td Module").
 
-`currentPage` → `Page[](https://docs.derivative.ca/Page_Class "Page Class")` :
+`valid` → `bool` **(Read Only)** :
+
+True if the referenced operator currently exists, False if it has been deleted.
+
+`supported` → `bool` **(Read Only)** :
+
+True if supported on the current Operating System.
+
+`passive` → `bool` **(Read Only)** :
+
+If true, operator will not cook before its access methods are called. To use a passive version of an operator n, use passive(n).
+
+`time` → `OP` **(Read Only)** :
+
+[Time Component](Time_COMP_Class.md "TimeCOMP Class") that defines the operator's time reference.
+
+`ext` → `Ext` **(Read Only)** :
+
+Object that searches for parent [extensions](../Glossary/Extensions.md "Extensions").
+
+```
+me.ext.MyClass
+```
+
+`mod` → `MOD` **(Read Only)** :
+
+Get a [module on demand](../Python/MOD_Class.md "MOD Class") object that searches for DAT modules relative to this operator.
+
+`fileFolder` → `str` **(Read Only)** :
+
+Returns the folder where this node is saved.
+
+`filePath` → `str` **(Read Only)** :
+
+Returns the file location of this node.
+
+`replicator` → `OP` **(Read Only)** :
+
+The [replicatorCOMP](Replicator_COMP_Class.md "ReplicatorCOMP Class") that created this operator, if any.
+
+`storage` → `dict` **(Read Only)** :
+
+[Storage](../Glossary/Storage.md "Storage") is dictionary associated with this operator. Values stored in this dictionary are persistent, and saved with the operator. The dictionary attribute is read only, but not its contents. Its contents may be manipulated directly with methods such as OP.fetch() or OP.store() described below, or examined with an [Examine DAT](../DATs/Examine_DAT.md "Examine DAT").
+
+`tags` → `set` :
+
+Get or set a set of user defined strings. [Tags](../Glossary/Tag.md "Tag") can be searched using OP.findChildren() and the [OP Find DAT](../DATs/OP_Find_DAT.md "OP Find DAT").
+
+The set is a regular python set, and can be accessed accordingly:
+
+```
+n.tags = ['effect', 'image filter']
+n.tags.add('darken')
+```
+
+`children` → `List[OP]` **(Read Only)** :
+
+A list of [operators](../Python/OP_Class.md "OP Class") contained within this operator. Only [component](../Python/COMP_Class.md "COMP Class") operators have children, otherwise an empty list is returned.
+
+`numChildren` → `int` **(Read Only)** :
+
+Returns the number of children contained within the operator. Only [component](../Python/COMP_Class.md "COMP Class") operators have children.
+
+`numChildrenRecursive` → `int` **(Read Only)** :
+
+Returns the number of operators contained recursively within this operator. Only [component](../Python/COMP_Class.md "COMP Class") operators have children.
+
+`enclosedBy` → `List[annotateCOMP]` **(Read Only)** :
+
+The (possibly empty) list of Annotate operators enclosing this node. See also [AnnotateCOMP.enclosedOPs](Annotate_COMP_Class.md "AnnotateCOMP Class").
+
+###  Parameters
+
+`par` → `ParCollection` **(Read Only)** :
+
+An intermediate [parameter collection](../Python/ParCollection_Class.md "ParCollection Class") object, from which a specific [parameter](../SOPs/Par_Class.md "Par Class") can be found.
+
+```
+n.par.tx
+# or
+n.par['tx']
+```
+
+`parGroup` → `ParGroupCollection` **(Read Only)** :
+
+An intermediate [parameter collection](../Python/ParGroupCollection_Class.md "ParGroupCollection Class") object, from which a specific [parameter group](../Python/ParGroup_Class.md "ParGroup Class") can be found.
+
+```
+n.parGroup.t
+# or
+n.parGroup['t']
+```
+
+`curPar` → `Par` **(Read Only)** :
+
+The parameter currently being evaluated. Can be used in a parameter expression to reference itself. An easy way to see this is to put the expression `curPar.name` in any string parameter.
+
+`builtinPars` → `List[Par]` **(Read Only)** :
+
+A list of all [built-in parameters](../SOPs/Par_Class.md "Par Class").
+
+`customPars` → `List[Par]` **(Read Only)** :
+
+A list of all [custom parameters](../SOPs/Par_Class.md "Par Class").
+
+`customParGroups` → `List[ParGroup]` **(Read Only)** :
+
+A list of all [ParGroups](../Python/ParGroup_Class.md "ParGroup Class"), where a ParGroup is a set of parameters all drawn on the same line of a dialog, sharing the same label.
+
+`seq` → `SequenceCollection` **(Read Only)** :
+
+An intermediate [sequence collection](../Python/SequenceCollection_Class.md "SequenceCollection Class") object, from which a specific [sequence](../Python/Sequence_Class.md "Sequence Class") can be found.
+
+```
+comp.seq.ext
+# or
+comp.seq['ext']
+```
+
+`curBlock` → `SequenceBlock` **(Read Only)** :
+
+The SequenceBlock of the parameter currently being evaluated. Can be used in a parameter expression to reference itself.
+
+`curSeq` → `Sequence` **(Read Only)** :
+
+The Sequence of the parameter currently being evaluated. Can be used in a parameter expression to reference itself.
+
+`pages` → `List[Page]` **(Read Only)** :
+
+A list of all built-in pages.
+
+`customPages` → `List[Page]` **(Read Only)** :
+
+A list of all [custom pages](../Python/Page_Class.md "Page Class").
+
+`currentPage` → `Page[](../Python/Page_Class.md "Page Class")` :
 
 Get or set the currently displayed parameter page. It can be set by setting it to another page or a string label.
 
@@ -681,13 +687,9 @@ Get or set the currently displayed parameter page. It can be set by setting it t
 n.currentPage = 'Common'
 ```
 
-`enclosedBy` → `List[annotateCOMP]` **(Read Only)** :
-
-The (possibly empty) list of Annotate operators enclosing this node. See also [AnnotateCOMP.enclosedOPs](https://docs.derivative.ca/AnnotateCOMP_Class "AnnotateCOMP Class").
-
 ###  Common Flags
 
-The following methods get or set specific operator [Flags](https://docs.derivative.ca/Flag "Flag"). Note specific operators may contain other flags not in this section.
+The following methods get or set specific operator [Flags](../Glossary/Flag.md "Flag"). Note specific operators may contain other flags not in this section.
 
 `activeViewer` → `bool` :
 
@@ -699,11 +701,11 @@ Get or set [Cooking Flag](https://docs.derivative.ca/Cooking_Flag "Cooking Flag"
 
 `bypass` → `bool` :
 
-Get or set [Bypass Flag](https://docs.derivative.ca/Bypass_Flag "Bypass Flag").
+Get or set [Bypass Flag](../Glossary/Bypass_Flag.md "Bypass Flag").
 
 `cloneImmune` → `bool` :
 
-Get or set [Clone Immune Flag](https://docs.derivative.ca/Immune_Flag "Immune Flag").
+Get or set [Clone Immune Flag](../Glossary/Immune_Flag.md "Immune Flag").
 
 `current` → `bool` :
 
@@ -711,7 +713,7 @@ Get or set [Current Flag](https://docs.derivative.ca/Current_Flag "Current Flag"
 
 `display` → `bool` :
 
-Get or set [Display Flag](https://docs.derivative.ca/Display_Flag "Display Flag").
+Get or set [Display Flag](../Glossary/Display_Flag.md "Display Flag").
 
 `expose` → `bool` :
 
@@ -719,7 +721,7 @@ Get or set the [Expose Flag](https://docs.derivative.ca/Expose_Flag "Expose Flag
 
 `lock` → `bool` :
 
-Get or set [Lock Flag](https://docs.derivative.ca/Lock_Flag "Lock Flag").
+Get or set [Lock Flag](../Glossary/Lock_Flag.md "Lock Flag").
 
 `selected` → `bool` :
 
@@ -731,19 +733,19 @@ Get or set parameter expression language as python.
 
 `render` → `bool` :
 
-Get or set [Render Flag](https://docs.derivative.ca/Render_Flag "Render Flag").
+Get or set [Render Flag](../Glossary/Render_Flag.md "Render Flag").
 
 `showCustomOnly` → `bool` :
 
-Get or set the Show Custom Only Flag which controls whether or not non custom parameters are display in[ parameter dialogs](https://docs.derivative.ca/Parameter_Dialog "Parameter Dialog").
+Get or set the Show Custom Only Flag which controls whether or not non custom parameters are display in[ parameter dialogs](../Glossary/Parameter_Dialog.md "Parameter Dialog").
 
 `showDocked` → `bool` :
 
-Get or set [Show Docked Flag](https://docs.derivative.ca/Docking "Docking"). This controls whether this node is visible or hidden when it is docked to another node.
+Get or set [Show Docked Flag](../Glossary/Docking.md "Docking"). This controls whether this node is visible or hidden when it is docked to another node.
 
 `viewer` → `bool` :
 
-Get or set [Viewer Flag](https://docs.derivative.ca/Viewer_Flag "Viewer Flag").
+Get or set [Viewer Flag](../Glossary/Viewer_Flag.md "Viewer Flag").
 
 ###  Appearance
 
@@ -757,55 +759,55 @@ Get or set comment string.
 
 `nodeHeight` → `int` :
 
-Get or set node height, expressed in [network editor](https://docs.derivative.ca/NetworkEditor_Class "NetworkEditor Class") units.
+Get or set node height, expressed in [network editor](../Python/NetworkEditor_Class.md "NetworkEditor Class") units.
 
 `nodeWidth` → `int` :
 
-Get or set node width, expressed in [network editor](https://docs.derivative.ca/NetworkEditor_Class "NetworkEditor Class") units.
+Get or set node width, expressed in [network editor](../Python/NetworkEditor_Class.md "NetworkEditor Class") units.
 
 `nodeX` → `int` :
 
-Get or set node X value, expressed in [network editor](https://docs.derivative.ca/NetworkEditor_Class "NetworkEditor Class") units, measured from its left edge.
+Get or set node X value, expressed in [network editor](../Python/NetworkEditor_Class.md "NetworkEditor Class") units, measured from its left edge.
 
 `nodeY` → `int` :
 
-Get or set node Y value, expressed in [network editor](https://docs.derivative.ca/NetworkEditor_Class "NetworkEditor Class") units, measured from its bottom edge.
+Get or set node Y value, expressed in [network editor](../Python/NetworkEditor_Class.md "NetworkEditor Class") units, measured from its bottom edge.
 
 `nodeCenterX` → `int` :
 
-Get or set node X value, expressed in [network editor](https://docs.derivative.ca/NetworkEditor_Class "NetworkEditor Class") units, measured from its center.
+Get or set node X value, expressed in [network editor](../Python/NetworkEditor_Class.md "NetworkEditor Class") units, measured from its center.
 
 `nodeCenterY` → `int` :
 
-Get or set node Y value, expressed in [network editor](https://docs.derivative.ca/NetworkEditor_Class "NetworkEditor Class") units, measured from its center.
+Get or set node Y value, expressed in [network editor](../Python/NetworkEditor_Class.md "NetworkEditor Class") units, measured from its center.
 
 `dock` → `OP` :
 
-Get or set the [operator](https://docs.derivative.ca/OP_Class "OP Class") this operator is docked to. To clear docking, set this member to None.
+Get or set the [operator](../Python/OP_Class.md "OP Class") this operator is docked to. To clear docking, set this member to None.
 
 `docked` → `List[OP]` **(Read Only)** :
 
-The (possibly empty) list of [operators](https://docs.derivative.ca/OP_Class "OP Class") docked to this node.
+The (possibly empty) list of [operators](../Python/OP_Class.md "OP Class") docked to this node.
 
 ###  Connection
 
-See also the `OP.parent` methods. To connect components together see [COMP_Class#Connection](https://docs.derivative.ca/COMP_Class#Connection "COMP Class") section.
+See also the `OP.parent` methods. To connect components together see [COMP_Class#Connection](../Python/COMP_Class.md#Connection "COMP Class") section.
 
 `inputs` → `List[OP]` **(Read Only)** :
 
-List of input [operators](https://docs.derivative.ca/OP_Class "OP Class") (via left side connectors) to this operator. To get the number of inputs, use len(OP.inputs).
+List of input [operators](../Python/OP_Class.md "OP Class") (via left side connectors) to this operator. To get the number of inputs, use len(OP.inputs).
 
 `outputs` → `List[OP]` **(Read Only)** :
 
-List of output [operators](https://docs.derivative.ca/OP_Class "OP Class") (via right side connectors) from this operator.
+List of output [operators](../Python/OP_Class.md "OP Class") (via right side connectors) from this operator.
 
 `inputConnectors` → `List[Connector]` **(Read Only)** :
 
-List of input [connectors](https://docs.derivative.ca/Connector_Class "Connector Class") (on the left side) associated with this operator.
+List of input [connectors](../Python/Connector_Class.md "Connector Class") (on the left side) associated with this operator.
 
 `outputConnectors` → `List[Connector]` **(Read Only)** :
 
-List of output [connectors](https://docs.derivative.ca/Connector_Class "Connector Class") (on the right side) associated with this operator.
+List of output [connectors](../Python/Connector_Class.md "Connector Class") (on the right side) associated with this operator.
 
 ###  Cook Information
 
@@ -843,11 +845,11 @@ True when this operator has cooked the previous frame.
 
 `childrenCookTime` → `float` **(Read Only)** :
 
-**Deprecated** The total accumulated cook time of all children of this operator during the last frame. Zero if the operator is not a [COMP](https://docs.derivative.ca/COMP_Class "COMP Class") and/or has no children.
+**Deprecated** The total accumulated cook time of all children of this operator during the last frame. Zero if the operator is not a [COMP](../Python/COMP_Class.md "COMP Class") and/or has no children.
 
 `childrenCPUCookTime` → `float` **(Read Only)** :
 
-The total accumulated cook time of all children of this operator during the last frame. Zero if the operator is not a [COMP](https://docs.derivative.ca/COMP_Class "COMP Class") and/or has no children.
+The total accumulated cook time of all children of this operator during the last frame. Zero if the operator is not a [COMP](../Python/COMP_Class.md "COMP Class") and/or has no children.
 
 `childrenCookAbsFrame` → `float` **(Read Only)** :
 
@@ -889,7 +891,7 @@ Operator type as a string. Example: 'oscin'.
 
 `subType` → `str` **(Read Only)** :
 
-Operator subtype. Currently only implemented for [components](https://docs.derivative.ca/Component "Component"). May be one of: 'panel', 'object', or empty string in the case of base components.
+Operator subtype. Currently only implemented for [components](../Glossary/Component.md "Component"). May be one of: 'panel', 'object', or empty string in the case of base components.
 
 `opType` → `str` **(Read Only)** :
 
@@ -921,7 +923,7 @@ Maximum number of inputs to the operator.
 
 `isMultiInputs` → `bool` **(Read Only)** :
 
-True if inputs are ordered, false otherwise. Operators with an arbitrary number of inputs have unordered inputs, example [Merge CHOP](https://docs.derivative.ca/Merge_CHOP "Merge CHOP").
+True if inputs are ordered, false otherwise. Operators with an arbitrary number of inputs have unordered inputs, example [Merge CHOP](../CHOPs/Merge_CHOP.md "Merge CHOP").
 
 `visibleLevel` → `int` **(Read Only)** :
 
@@ -929,62 +931,62 @@ Visibility level of the operator. For example, expert operators have visibility 
 
 `isBase` → `bool` **(Read Only)** :
 
-True if the operator is a Base (miscellaneous) [component](https://docs.derivative.ca/Component "Component").
+True if the operator is a Base (miscellaneous) [component](../Glossary/Component.md "Component").
 
 `isCHOP` → `bool` **(Read Only)** :
 
-True if the operator is a [CHOP](https://docs.derivative.ca/CHOP "CHOP").
+True if the operator is a [CHOP](../Glossary/CHOP.md "CHOP").
 
 `isCOMP` → `bool` **(Read Only)** :
 
-True if the operator is a [component](https://docs.derivative.ca/Component "Component").
+True if the operator is a [component](../Glossary/Component.md "Component").
 
 `isDAT` → `bool` **(Read Only)** :
 
-True if the operator is a [DAT](https://docs.derivative.ca/DAT "DAT").
+True if the operator is a [DAT](../Glossary/DAT.md "DAT").
 
 `isMAT` → `bool` **(Read Only)** :
 
-True if the operator is a [Material](https://docs.derivative.ca/MAT "MAT").
+True if the operator is a [Material](../MATs/MAT.md "MAT").
 
 `isObject` → `bool` **(Read Only)** :
 
-True if the operator is an [object](https://docs.derivative.ca/Object "Object").
+True if the operator is an [object](../Glossary/Object.md "Object").
 
 `isPanel` → `bool` **(Read Only)** :
 
-True if the operator is a [Panel](https://docs.derivative.ca/Panel "Panel").
+True if the operator is a [Panel](../Glossary/Panel.md "Panel").
 
 `isSOP` → `bool` **(Read Only)** :
 
-True if the operator is a [SOP](https://docs.derivative.ca/SOP "SOP").
+True if the operator is a [SOP](../SOPs/SOP.md "SOP").
 
 `isTOP` → `bool` **(Read Only)** :
 
-True if the operators is a [TOP](https://docs.derivative.ca/TOP "TOP").
+True if the operators is a [TOP](../TOPs/TOP.md "TOP").
 
 `isPOP` → `bool` **(Read Only)** :
 
-True if the operators is a [POP](https://docs.derivative.ca/POP "POP").
+True if the operators is a [POP](../POPs/POP.md "POP").
 
 `isCustom` → `bool` **(Read Only)** :
 
-True if the operators is a [Custom Operator](https://docs.derivative.ca/Custom_Operators "Custom Operators").
+True if the operators is a [Custom Operator](../Interoperability/Custom_Operators.md "Custom Operators").
 
 `licenseType` → `str` **(Read Only)** :
 
-Type of [License](https://docs.derivative.ca/License_Class "License Class") required for the operator.
+Type of [License](../Python/License_Class.md "License Class") required for the operator.
 
 ## Methods
 
 ###  General
 
-**NOTE** : `create()`, `copy()` and `copyOPs()` is done by the parent operator (a component). For more information see [COMP.create, COMP.copy and COMP.copyOPs methods](https://docs.derivative.ca/COMP_Class#Methods "COMP Class").
+**NOTE** : `create()`, `copy()` and `copyOPs()` is done by the parent operator (a component). For more information see [COMP.create, COMP.copy and COMP.copyOPs methods](../Python/COMP_Class.md#Methods "COMP Class").
 
 `pars(pattern)`→ `list[Par]`:
 
-Returns a (possibly empty) list of [parameter objects](https://docs.derivative.ca/Par_Class "Par Class") that match the pattern.
-  * pattern - Is a string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which parameters to return.
+Returns a (possibly empty) list of [parameter objects](../SOPs/Par_Class.md "Par Class") that match the pattern.
+  * pattern - Is a string following the [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") rules, specifying which parameters to return.
 
 ```
 newlist = op('geo1').pars('t?', 'r?', 's?') #translate/rotate/scale parameters
@@ -999,8 +1001,8 @@ op('geo1').par[name]
 
 `parGroups(pattern)`→ `list[Par]`:
 
-Returns a (possibly empty) list of [parGroup objects](https://docs.derivative.ca/ParGroup_Class "ParGroup Class") that match the pattern.
-  * pattern - Is a string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which parameters to return.
+Returns a (possibly empty) list of [parGroup objects](../Python/ParGroup_Class.md "ParGroup Class") that match the pattern.
+  * pattern - Is a string following the [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") rules, specifying which parameters to return.
 
 ```
 debug(op('geo1').parGroups('p*'))
@@ -1024,7 +1026,7 @@ op('geo1').parGroup.MyColor
 Returns a (possibly empty) list of OPs that match the patterns, relative to the inside of this OP.
 
 Multiple patterns may be provided. Numeric OP ids may also be used. The `ops` member is technically a Python Shortcut Object, not a true method.
-  * `pattern` - Can be string following the [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") rules, specifying which OPs to return, or an integer, which must be an OP Id. Multiple patterns can be given and all matched OPs will be returned.
+  * `pattern` - Can be string following the [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") rules, specifying which OPs to return, or an integer, which must be an OP Id. Multiple patterns can be given and all matched OPs will be returned.
   * `includeUtility` - (Keyword, Optional) If specified, controls whether or not utility components (eg Comments) are included in the results.
 
 **Note:** a version of this method that searches relative to '/' is also in the global [td module](https://docs.derivative.ca/Td_Module "Td Module").
@@ -1042,7 +1044,7 @@ Cook the contents of the operator if required.
 
 `copyParameters(OP, custom=True, builtin=True)`→ `None`:
 
-Copy all of the parameters from the specified [operator](https://docs.derivative.ca/OP_Class "OP Class"). Both operators should be the same type.
+Copy all of the parameters from the specified [operator](../Python/OP_Class.md "OP Class"). Both operators should be the same type.
   * OP - The operator to copy.
   * custom - (Keyword, Optional) When True, custom parameters will be copied.
   * builtin - (Keyword, Optional) When True, built in parameters will be copied.
@@ -1074,7 +1076,7 @@ Evaluate the expression from the context of this OP. Can be used to evaluate arb
 op('wave1').evalExpression('me.digits')  #returns 1
 ```
 
-If the expression already resides in a parameter, use that parameters [evalExpression()](https://docs.derivative.ca/Par_Class "Par Class") method instead.
+If the expression already resides in a parameter, use that parameters [evalExpression()](../SOPs/Par_Class.md "Par Class") method instead.
 
 `destroy()`→ `None`:
 
@@ -1124,7 +1126,7 @@ op('player').resetPars(includeBuiltin=False) # only reset custom
 `unload(cacheMemory=False)`→ `None`:
 
 Unloads CPU and GPU for the node. The memory will be realloted next time the node cooks, so make sure nothing is still using it to keep it released.
-  * cacheMemory - (Keyword, Optional) Currently only supported by the [Movie File In TOP](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP"). If you are preloading into a Movie File In TOP that already has video, and the video format/resolution is the same, you can use the cacheMemory option to first unload the original movie and cache its memory, avoiding a reallocation when the `preload()` occurs. If True the memory (textures, upload buffers) of the movie will be cached for use by another movie later on. Useful if you are opening/closing many movies with the same codec and resolution.>
+  * cacheMemory - (Keyword, Optional) Currently only supported by the [Movie File In TOP](../TOPs/Movie_File_In_TOP.md "Movie File In TOP"). If you are preloading into a Movie File In TOP that already has video, and the video format/resolution is the same, you can use the cacheMemory option to first unload the original movie and cache its memory, avoiding a reallocation when the `preload()` occurs. If True the memory (textures, upload buffers) of the movie will be cached for use by another movie later on. Useful if you are opening/closing many movies with the same codec and resolution.>
 
 `asType(opType, checkType=False)`→ `OP`:
 
@@ -1225,7 +1227,7 @@ Open a floating dialog containing the operator parameters.
 
 ###  Storage
 
-[Storage](https://docs.derivative.ca/Storage "Storage") can be used to keep data within components. Storage is implemented as one python dictionary per node.
+[Storage](../Glossary/Storage.md "Storage") can be used to keep data within components. Storage is implemented as one python dictionary per node.
 
 When an element of storage is changed by using `n.store()` as explained below, expressions and operators that depend on it will automatically re-cook. It is retrieved with the `n.fetch()` function.
 
@@ -1233,7 +1235,7 @@ Storage is saved in `.toe` and `.tox` files and restored on startup.
 
 Storage can hold any python object type (not just strings as in Tscript variables). Storage elements can also have optional startup values, specified separately. Use these startup values for example, to avoid saving and loading some session specific object, and instead save or load a well defined object like `None`.
 
-See the [Examine DAT](https://docs.derivative.ca/Examine_DAT "Examine DAT") for procedurally viewing the contents of storage.
+See the [Examine DAT](../DATs/Examine_DAT.md "Examine DAT") for procedurally viewing the contents of storage.
 
 `fetch(key, default, search=True, storeDefault=False)`→ `Any`:
 

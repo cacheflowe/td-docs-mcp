@@ -16,6 +16,6 @@ To create Cineform files you can use the various tools that GoPro offers. The Mo
 
 To achieve 4K playback you need to split your files into 4 2Kx2K files (top left, bottom left etc.) and make sure you encoding using YUV colorspace, not RGBA. The system should have at least 8 cores but we've only successfully tested 4K playback using 12 core systems.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.

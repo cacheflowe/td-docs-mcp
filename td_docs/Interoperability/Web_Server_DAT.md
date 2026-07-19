@@ -10,7 +10,7 @@ title: Web_Server_DAT
 
 The Web Server DAT allows you to connect to TouchDesigner as a web client, through a web browser for example. The Web Server DAT supports HTTP, WebSockets, as well as the sending/receiving of binary data, such as images (uploading/downloading). How client requests are handled is left up to the user via callbacks.
 
-The Web Server DAT can be secure, and also supports basic authentication via the authenticateBasic in the [webserverDAT_Class](https://docs.derivative.ca/WebserverDAT_Class "WebserverDAT Class"). Currently only Basic authentication (ie. encoded username and password) is supported via a python method. Authentication will be in the HTTP request dictionary under the key 'Authorization'.
+The Web Server DAT can be secure, and also supports basic authentication via the authenticateBasic in the [webserverDAT_Class](../DATs/Web_Server_DAT_Class.md "WebserverDAT Class"). Currently only Basic authentication (ie. encoded username and password) is supported via a python method. Authentication will be in the HTTP request dictionary under the key 'Authorization'.
 
 Ultimately, security is the complete responsibility of the user. It is up to the user to ensure that HTTP requests are properly authenticated, and any data storing usernames/passwords are encrypted or saved privately.
 
@@ -18,12 +18,11 @@ HTTPS is supported via the Secure (TLS) parameter.
 
 The Web Server DAT is built with [POCO](https://github.com/pocoproject/poco) v1.13.3.
 
-See also: [Web Client DAT](https://docs.derivative.ca/Web_Client_DAT "Web Client DAT")
+See also: [Web Client DAT](Web_Client_DAT.md "Web Client DAT")
 
-[webserverDAT_Class](https://docs.derivative.ca/WebserverDAT_Class "WebserverDAT Class")
+[webserverDAT_Class](../DATs/Web_Server_DAT_Class.md "WebserverDAT Class")
 
 ## Parameters - Web Server Page
-
 - Active `active` - Starts and Stops the webserver.
 - Restart `restart` - When the server is active, pulsing will restart it.
 - Port `port` - The web server's connection port. Eg. If the port number is 9980, the web server can be connected to locally (via a web browser) at the address "localhost:9980".
@@ -47,16 +46,13 @@ See also: [Web Client DAT](https://docs.derivative.ca/Web_Client_DAT "Web Client
 `onServerStop` - Triggered when the server stops.
 
 ## Parameters - Common Page
-
 - Language `language` - ⊞ - Select how the DAT decides which script language to operate on.
   * Input `input` - The DAT uses the inputs script language.
   * Node `node` - The DAT uses it's own script language.
-
 - Edit/View Extension `extension` - ⊞ - Select the file extension this DAT should expose to external editors.
   * dat `dat` - various common file extensions.
   * From Language `language` - pick extension from DATs script language.
   * Custom Extension `custom` - Specify a custom extension.
-
 - Custom Extension `customext` - Specifiy the custom extension.
 - Word Wrap `wordwrap` - ⊞ - Enable Word Wrap for Node Display.
   * Input `input` - The DAT uses the inputs setting.
@@ -65,13 +61,12 @@ See also: [Web Client DAT](https://docs.derivative.ca/Web_Client_DAT "Web Client
 
 ## Info CHOP Channels
 
-Extra Information for the Web Server DAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Web Server DAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 Specific Web Server DAT Info Channels
   * server_running -
-
   * websocket_connections -
 
 ###
@@ -79,7 +74,6 @@ Specific Web Server DAT Info Channels
 ## Common DAT Info Channels
 
   * num_rows - Number of rows in this DAT.
-
   * num_cols - Number of columns in this DAT.
 
 ###
@@ -87,19 +81,11 @@ Specific Web Server DAT Info Channels
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

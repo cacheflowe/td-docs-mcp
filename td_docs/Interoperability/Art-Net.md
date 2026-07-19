@@ -6,11 +6,11 @@ title: Art-Net
 
 # Art-Net
 
-Art-Net is an implementation of DMX512-A protocol over UDP, in which packets containing lighting settings are transmitted over IP packets, typically on a private local area network such as Ethernet. Art-Net is basically [DMX](https://docs.derivative.ca/DMX "DMX") over Ethernet (DOE) and was developed by Artistic Licence.
+Art-Net is an implementation of DMX512-A protocol over UDP, in which packets containing lighting settings are transmitted over IP packets, typically on a private local area network such as Ethernet. Art-Net is basically [DMX](DMX.md "DMX") over Ethernet (DOE) and was developed by Artistic Licence.
 
 Art-Net supports up to 32,768 universes over one piece of CAT-5 cable compared to one universe over a DMX cable.
 
-It is accessed using the [DMX In CHOP](https://docs.derivative.ca/DMX_In_CHOP "DMX In CHOP"), the [DMX Out CHOP](https://docs.derivative.ca/DMX_Out_CHOP "DMX Out CHOP") and the [Art-Net DAT](https://docs.derivative.ca/Art-Net_DAT "Art-Net DAT").
+It is accessed using the [DMX In CHOP](../CHOPs/DMX_In_CHOP.md "DMX In CHOP"), the [DMX Out CHOP](../CHOPs/DMX_Out_CHOP.md "DMX Out CHOP") and the [Art-Net DAT](https://docs.derivative.ca/Art-Net_DAT "Art-Net DAT").
 
 USITT DMX512 is well known in the entertainment industry because it is the industry standard for controlling dimmers and automated lighting fixtures (moving lights). The electrical standard of DMX512 is RS485 which is as superset of RS422 which almost the same as RS232, well known as serial port on a PC. Ethernet is the electrical standard that transports data based on TCP/IPt. Art-Net is based on TCP/IP and uses UDP Packets.
 

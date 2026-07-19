@@ -12,4 +12,4 @@ title: Stype
 
 TouchDesigner can use Stype tracking data sent over an ethernet UDP connection to control virtual cameras and to add simulated lens distortion to rendered images.
 
-See [Stype TOP](https://docs.derivative.ca/Stype_TOP "Stype TOP"), [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP") and [FreeD In CHOP](https://docs.derivative.ca/FreeD_In_CHOP "FreeD In CHOP").
+See [Stype TOP](../TOPs/Stype_TOP.md "Stype TOP"), [Stype CHOP](https://docs.derivative.ca/Stype_CHOP "Stype CHOP") and [FreeD In CHOP](../CHOPs/FreeD_In_CHOP.md "FreeD In CHOP").

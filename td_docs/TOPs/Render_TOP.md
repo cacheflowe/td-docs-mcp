@@ -8,9 +8,9 @@ title: Render_TOP
 
 ## Summary
 
-The Render TOP is used to render all 3D scenes in TouchDesigner. You need to give it a [Camera](https://docs.derivative.ca/Camera_COMP "Camera COMP") object and a [Geometry](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") object as a minimum.
+The Render TOP is used to render all 3D scenes in TouchDesigner. You need to give it a [Camera](../Glossary/Camera_COMP.md "Camera COMP") object and a [Geometry](../Glossary/Geometry_COMP.md "Geometry COMP") object as a minimum.
 
-The Geometry object needs to have a [Material](https://docs.derivative.ca/MAT "MAT") assigned to it. Materials can be pre-packaged ones like the [Phong](https://docs.derivative.ca/Phong_MAT "Phong MAT") material, or they can be OpenGL GLSL shaders. All textures and bump maps in TouchDesigner materials are TOPs, i.e. files must be read in via [Movie File In TOPs](https://docs.derivative.ca/Movie_File_In_TOP "Movie File In TOP").
+The Geometry object needs to have a [Material](../MATs/MAT.md "MAT") assigned to it. Materials can be pre-packaged ones like the [Phong](../MATs/Phong_MAT.md "Phong MAT") material, or they can be OpenGL GLSL shaders. All textures and bump maps in TouchDesigner materials are TOPs, i.e. files must be read in via [Movie File In TOPs](Movie_File_In_TOP.md "Movie File In TOP").
 
 Rendering in TouchDesigner ties in nicely with compositing via the Render TOP and all other TOPs.
 
@@ -22,22 +22,20 @@ Multiple Cameras: The Render TOP is able to render multiple cameras (more quickl
 
 Multiple Images out: The Render TOP, working with the GLSL MATs, can output multiple image at arbitrary formats, through the Images page.
 
-See also [Rendering](https://docs.derivative.ca/Rendering "Rendering"), all the articles in the [Rendering Category](http://www.derivative.ca/wiki/index.php?title=Category:Rendering), the [Render Pass TOP](https://docs.derivative.ca/Render_Pass_TOP "Render Pass TOP"), and the troubleshooting page [Why is My Render Black](https://docs.derivative.ca/Why_is_My_Render_Black "Why is My Render Black").
+See also [Rendering](../Glossary/Rendering.md "Rendering"), all the articles in the [Rendering Category](http://www.derivative.ca/wiki/index.php?title=Category:Rendering), the [Render Pass TOP](Render_Pass_TOP.md "Render Pass TOP"), and the troubleshooting page [Why is My Render Black](https://docs.derivative.ca/Why_is_My_Render_Black "Why is My Render Black").
 
-NOTE: If you are doing non-realtime GPU-intensive renders (ones that take multiple seconds to render a single SOP), see the note in Windows GPU Driver Timeouts in the [Movie File Out TOP](https://docs.derivative.ca/Movie_File_Out_TOP "Movie File Out TOP").
+NOTE: If you are doing non-realtime GPU-intensive renders (ones that take multiple seconds to render a single SOP), see the note in Windows GPU Driver Timeouts in the [Movie File Out TOP](Movie_File_Out_TOP.md "Movie File Out TOP").
 
-[renderTOP_Class](https://docs.derivative.ca/RenderTOP_Class "RenderTOP Class")
+[renderTOP_Class](Render_TOP_Class.md "RenderTOP Class")
 
 ## Parameters - Render Page
-
-- Camera(s) `camera` - Specifies which [Cameras](https://docs.derivative.ca/Camera_COMP "Camera COMP") to look through when rendering the scene. You can specify multiple cameras and retrieve each camera image using the Render Select TOP.
+- Camera(s) `camera` - Specifies which [Cameras](../Glossary/Camera_COMP.md "Camera COMP") to look through when rendering the scene. You can specify multiple cameras and retrieve each camera image using the Render Select TOP.
 - Multi-Camera Hint `multicamerahint` - ⊞ - Helps the Render TOP optimize rendering when multiple cameras are used. Controls the [Multi-Camera Rendering](https://docs.derivative.ca/Multi-Camera_Rendering "Multi-Camera Rendering") behavior for this node.
   * Automatic `automatic` - The node will decide based on the GPU and setup if [Multi-Camera Rendering](https://docs.derivative.ca/Multi-Camera_Rendering "Multi-Camera Rendering") can be used and enable it if possible. Currently Multi-Camera rendering works for 2D and Cube Map renders on supported GPUs. For 2D renders multiple cameras can not be rendered in a single pass if their 'Camera Light Mask' parameters don't result in the same lights being used in the scene. Use of Depth Peeling or Order Independent Transparency will also disable Multi-Camera rendering.
   * Off (One Pass Per Camera) `off` - Forces Multi-Camera Render to be disabled, so each camera is rendered one pass at a time.
   * X-Offset Stereo Cameras `stereocameras` - Should be set only if the pair of cameras have transform/projection matrices that result in a difference only in the X-axis after being applied, as is the case for most VR headsets. Other differences between the cameras such as FOV, near/far plane etc will be ignored, and the values form the first camera will be used. This hint allows the TOP to run faster for this particular case, when appropriate hardware is available.
-
-- Geometry `geometry` - Specifies which [Geometry](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") will be included in the rendered scene. You can use [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") to specify objects using patterns. Example: `geo* ^geo7` will render all Geometry components whose names start with `geo` except `geo7`.
-- Lights `lights` - Specifies which [Lights](https://docs.derivative.ca/Light_COMP "Light COMP") will be used to render the scene. You can use [Pattern Matching](https://docs.derivative.ca/Pattern_Matching "Pattern Matching") here as well.
+- Geometry `geometry` - Specifies which [Geometry](../Glossary/Geometry_COMP.md "Geometry COMP") will be included in the rendered scene. You can use [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") to specify objects using patterns. Example: `geo* ^geo7` will render all Geometry components whose names start with `geo` except `geo7`.
+- Lights `lights` - Specifies which [Lights](../Glossary/Light_COMP.md "Light COMP") will be used to render the scene. You can use [Pattern Matching](../Glossary/Pattern_Matching.md "Pattern Matching") here as well.
 - Anti-Alias `antialias` - ⊞ - Sets the level of anti-aliasing in the scene. Setting this to higher values uses more graphics memory.
   * 1x (Off) `aa1` -
   * 2x `aa2` -
@@ -48,33 +46,29 @@ NOTE: If you are doing non-realtime GPU-intensive renders (ones that take multip
   * 16x (Medium) `aa16mid` -
   * 16x (High) `aa16high` -
   * 32x `aa32` -
-
-- Background Color `bgcolor` - ⊞ - This is combined with the [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP")'s Background Color to determine the final Background Color of the render.
+- Background Color `bgcolor` - ⊞ - This is combined with the [Camera COMP](../Glossary/Camera_COMP.md "Camera COMP")'s Background Color to determine the final Background Color of the render.
   * Background Color `bgcolorr` -
   * Background Color `bgcolorg` -
   * Background Color `bgcolorb` -
   * Background Color `bgcolora` -
-
 - Pre-Multiply RGB by Alpha `premultrgbbyalpha` -
-- Render Mode `rendermode` - ⊞ - You can render different projections: normal 2D, Cube Map, Fish Eye (180), or Dual Paraboloid. The Cube Map renders 6 views as needed for environment maps in the [Phong MAT](https://docs.derivative.ca/Phong_MAT "Phong MAT") and [Environment Light COMP](https://docs.derivative.ca/Environment_Light_COMP "Environment Light COMP").
-See also the [Cube Map TOP](https://docs.derivative.ca/Cube_Map_TOP "Cube Map TOP") and the [Projection TOP](https://docs.derivative.ca/Projection_TOP "Projection TOP").
+- Render Mode `rendermode` - ⊞ - You can render different projections: normal 2D, Cube Map, Fish Eye (180), or Dual Paraboloid. The Cube Map renders 6 views as needed for environment maps in the [Phong MAT](../MATs/Phong_MAT.md "Phong MAT") and [Environment Light COMP](../COMPs/Environment_Light_COMP.md "Environment Light COMP").
+
+See also the [Cube Map TOP](Cube_Map_TOP.md "Cube Map TOP") and the [Projection TOP](Projection_TOP.md "Projection TOP").
   * 2D `render2d` - The standard 2D render mode.
   * Cube Map `cubemap` - Does 6 renders, each with 90 degree FOV. The camera is automatically turned to face down each of the 6 axis, with the -Z axis being where the camera is facing to start.
   * Fish-Eye (180) `fisheye180` - A single 2D render that warps the projection so it renders 180 degree FOV in all directions from where the camera is pointing (90 to each side). Since this render doesn't preserve straight lines, geometry that has large polygons that cover a lot of the viewport will suffer from artifacts. Well tesselated geometry is best for this mode.
   * Dual Paraboloid `dualparaboloid` - Similar to Fisheye, but renders twice at 180 degrees, once forward and once backwards. The projection isn't the same as fisheye either. This is a legacy mode that isn't currently consumed by anything in TouchDesigner, but there are articles online that discuss how to sample from it.
   * UV Unwrap `uvunwrap` - A 2D render that uses the UV coordinates of the geometry to unwrap it across the output image.
-  * Cube Map (Omnidirectional Stereo) `cubemapods` - This mode renders a stereo pair (two eyes) of cubemaps that can be used to record out stereo 360 videos. You can obtain the second eye's output by using a [Render Select TOP](https://docs.derivative.ca/Render_Select_TOP "Render Select TOP") and selecting Camera Index=1. The [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP")'s IPD Shift parameter is used here to offset each eye viewport.
-
+  * Cube Map (Omnidirectional Stereo) `cubemapods` - This mode renders a stereo pair (two eyes) of cubemaps that can be used to record out stereo 360 videos. You can obtain the second eye's output by using a [Render Select TOP](Render_Select_TOP.md "Render Select TOP") and selecting Camera Index=1. The [Camera COMP](../Glossary/Camera_COMP.md "Camera COMP")'s IPD Shift parameter is used here to offset each eye viewport.
 - Positive Sides `posside` - ⊞ - When Render Mode is Cube Map, specify which sides if the cube map are rendered, +X, +Y, or +Z.
   * Positive Sides `possidex` -
   * Positive Sides `possidey` -
   * Positive Sides `possidez` -
-
 - Negative Sides `negside` - ⊞ - When Render Mode is Cube Map, specify which sides if the cube map are rendered, -X, -Y, or -Z.
   * Negative Sides `negsidex` -
   * Negative Sides `negsidey` -
   * Negative Sides `negsidez` -
-
 - UV Unwrap SOP Coord `uvunwrapcoord` - ⊞ - When Render Mode is UV Unwrap Coord, for SOPs this selects which Texture Layer coordinates the rendering is done to.
   * Texture Layer 0 (uv[0-2]) `uv0` -
   * Texture Layer 1 (uv[3-5]) `uv1` -
@@ -84,23 +78,20 @@ See also the [Cube Map TOP](https://docs.derivative.ca/Cube_Map_TOP "Cube Map TO
   * Texture Layer 5 (uv[15-17]) `uv5` -
   * Texture Layer 6 (uv[18-20]) `uv6` -
   * Texture Layer 7 (uv[21-23]) `uv7` -
-
 - UV Unwrap POP Coord Attribute `uvunwrapcoordattrib` - When Render Mode is UV Unwrap Coord, for POPs this should be the name of the texture coordinate attribute rendering is done to.
 - Transparency `transparency` - ⊞ - Helps to render transparent geometry in proper depth order. More in-depth discussion available in the [Transparency article](https://docs.derivative.ca/Transparency "Transparency").
   * Sorted Draw with Blending `sortedblending` - <https://docs.derivative.ca/Transparency#Sorting_Geometry_Objects>
   * Order Independent Transparency `orderind` - <https://docs.derivative.ca/Transparency#Order-Independent_Transparency>
   * Alpha-to-Coverage `alphatocoverage` - <https://docs.derivative.ca/Transparency#Alpha-to-Coverage>
-
-- Depth Peel `depthpeel` - Depth peeling is a technique used as part of Order-Independent Transparency, but this parameter allows you to use it in a different way. This parameter enables rendering depth-peels, but without combining all the layers using blending to create order independent transparency. Instead is keeps all the layers separate and they can be retrieved using a [Render Select TOP](https://docs.derivative.ca/Render_Select_TOP "Render Select TOP"). Depth peeling is done by first rendering rendering geometry normally and saving that image and depth. Then another render is done but the closest pixels that were occluded by the previous pass are written to the color buffer instead. This can be done multiple times, each time peeling back farther into the scene. If you are rendering a sphere the first render will be the outside of the sphere, and the second peel layer will be the back-inside of the sphere.
+- Depth Peel `depthpeel` - Depth peeling is a technique used as part of Order-Independent Transparency, but this parameter allows you to use it in a different way. This parameter enables rendering depth-peels, but without combining all the layers using blending to create order independent transparency. Instead is keeps all the layers separate and they can be retrieved using a [Render Select TOP](Render_Select_TOP.md "Render Select TOP"). Depth peeling is done by first rendering rendering geometry normally and saving that image and depth. Then another render is done but the closest pixels that were occluded by the previous pass are written to the color buffer instead. This can be done multiple times, each time peeling back farther into the scene. If you are rendering a sphere the first render will be the outside of the sphere, and the second peel layer will be the back-inside of the sphere.
 - Transparency/Peel Layers `transpeellayers` - Number of passes the renderer will use when Order Independant Transparency is turned on.
 
 ## Parameters - Advanced Page
-
 - Render `render` - Enables rendering; 1 = on, 0 = off.
 - Render Pulse `renderpulse` - The the 'Render' toggle above is Off, click this to render a sinlge frame.
 - Dither `dither` - Dithers the rendering to help deal with banding and other artifacts created by precision limitations of 8-bit displays.
 - Color Output Needed `coloroutputneeded` - This is an optimization if you don't actually need the color result from this pass. Turning this off avoids a copy from the offscreen render buffer to the TOP's texture. When anti-aliasing is enabled, turning this off will also avoid 'resolving' the anti-aliasing.
-- Draw Depth Only `drawdepthonly` - This will cause the render to only draw depth values to the depth buffer. No color values will be created. To make use of the depth buffer, use the [Depth TOP](https://docs.derivative.ca/Depth_TOP "Depth TOP").
+- Draw Depth Only `drawdepthonly` - This will cause the render to only draw depth values to the depth buffer. No color values will be created. To make use of the depth buffer, use the [Depth TOP](Depth_TOP.md "Depth TOP").
 
 # of Color Buffers `numcolorbufs` - Any shader you write can output to more than one RGBA buffer at a time. For GLSL 3.3+ you would use the layout(location = 1) specifier on an out variable in the pixel shader to write to the 2nd buffer. In GLSL 1.2 instead of writing to `gl_FragColor` in your shader, you write to `gl_FragData[i]` where i is the color buffer index you want to write the value to.
 
@@ -108,16 +99,12 @@ Allow Blending for Extra Buffers `allowbufblending` - Controls if blending (as e
 
 Depth Buffer Format `depthformat` - ⊞ - Use either a 24-bit Fixed-Point or 32-bit Floating-Point depth buffer (single channel image).
   * 24-Bit Fixed-Point `fixed24` -
-
   * 32-Bit Floating-Point `float32` -
 
 Cull Face `cullface` - ⊞ - Front Faces, Back Faces, Both Faces, Neither. Will cause the render to avoid rendering certain polygon faces depending on their orientation to the camera. Refer to [Back-Face Culling](https://docs.derivative.ca/Back-Face_Culling "Back-Face Culling") for more information.
   * Neither `neither` -
-
   * Back Faces `backfaces` -
-
   * Front Faces `frontfaces` -
-
   * Both Faces `bothfaces` -
 
 Override Material `overridemat` - This allows you to specify a material that will be applied to every Geometry that is rendered in the Render TOP. It is useful for pre-processing passes where we are outputting information about the geometry rather then lighting them and outputting RGB.
@@ -140,19 +127,16 @@ Cropping here occurs using the projection matrix. It reduces the amount of the o
   * P `pixels` -
   * F `fraction` -
   * A `fractionaspect` -
-
 - Crop Right `cropright` - Positions the right edge of the rendered image.
 - Crop Right Unit `croprightunit` - ⊞ - Select the units for this parameter from Pixels, Fraction (0-1), Fraction Aspect (0-1 considering aspect ratio).
   * P `pixels` -
   * F `fraction` -
   * A `fractionaspect` -
-
 - Crop Bottom `cropbottom` - Positions the bottom edge of the rendered image.
 - Crop Bottom Unit `cropbottomunit` - ⊞ - Select the units for this parameter from Pixels, Fraction (0-1), Fraction Aspect (0-1 considering aspect ratio).
   * P `pixels` -
   * F `fraction` -
   * A `fractionaspect` -
-
 - Crop Top `croptop` - Positions the top edge of the rendered image.
 - Crop Top Unit `croptopunit` - ⊞ - Select the units for this parameter from Pixels, Fraction (0-1), Fraction Aspect (0-1 considering aspect ratio).
   * P `pixels` -
@@ -182,24 +166,20 @@ These samplers will be passed to all GLSL MATs used in the render. They allow fo
   * Zero `zero` -
   * Repeat `repeat` -
   * Mirror `mirror` -
-
 - Extend V `sampler0extendv` - ⊞ -
   * Hold `hold` -
   * Zero `zero` -
   * Repeat `repeat` -
   * Mirror `mirror` -
-
 - Extend W `sampler0extendw` - ⊞ -
   * Hold `hold` -
   * Zero `zero` -
   * Repeat `repeat` -
   * Mirror `mirror` -
-
 - Filter `sampler0filter` - ⊞ -
   * Nearest `nearest` -
   * Linear `linear` -
   * Mipmap Linear `mipmaplinear` -
-
 - Anisotropic Filter `sampler0anisotropy` - ⊞ -
   * Off `off` -
   * 2x `2x` -
@@ -209,14 +189,13 @@ These samplers will be passed to all GLSL MATs used in the render. They allow fo
 
 ## Parameters - Images Page
 
-Images are texture data that can be both read and written to at arbitrary pixels during a render operation, using a [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT"), via the `TDImageStore_Name()` and `TDImageLoad_Name()`. Refer to [Write_a_GLSL_Material#Image_Outputs](https://docs.derivative.ca/Write_a_GLSL_Material#Image_Outputs "Write a GLSL Material") for more information. You can obtain the results of the Image after the render is completed using a [Render Select TOP](https://docs.derivative.ca/Render_Select_TOP "Render Select TOP"). The images will automatically be declared for you inside of the shader, you should not declare them yourself (as you do for other uniforms). This is because there is a lot of extra decoration required for the image uniforms. Currently when compiling in the [GLSL MAT](https://docs.derivative.ca/GLSL_MAT "GLSL MAT") itself your code will result in an error, since the images are not available there. However when you apply your MAT to a geometry and render it via the Render TOP, a new version of your shader will be included that has that image declared.
+Images are texture data that can be both read and written to at arbitrary pixels during a render operation, using a [GLSL MAT](../MATs/GLSL_MAT.md "GLSL MAT"), via the `TDImageStore_Name()` and `TDImageLoad_Name()`. Refer to [Write_a_GLSL_Material#Image_Outputs](../Interoperability/Write_a_GLSL_Material.md#Image_Outputs "Write a GLSL Material") for more information. You can obtain the results of the Image after the render is completed using a [Render Select TOP](Render_Select_TOP.md "Render Select TOP"). The images will automatically be declared for you inside of the shader, you should not declare them yourself (as you do for other uniforms). This is because there is a lot of extra decoration required for the image uniforms. Currently when compiling in the [GLSL MAT](../MATs/GLSL_MAT.md "GLSL MAT") itself your code will result in an error, since the images are not available there. However when you apply your MAT to a geometry and render it via the Render TOP, a new version of your shader will be included that has that image declared.
 - Image `image` - A sequence of parameters to control image outputs available for the GLSL MATs.
 - Name `image0name` - The uniform name for the image.
 - Array Length `image0arraylength` - If this value is 1 or greater, then the uniform is declared as an array and should be accessed using []. If this is 0 then it is not an array.
 - Resolution `image0res` - ⊞ - The resolution the image should be.
   * Resolution `image0resw` -
   * Resolution `image0resh` -
-
 - Format `image0format` - ⊞ - The pixel format the image should be allocated as.
   * Use Output `useoutput` - Use the same pilxe format that the Render TOPs main texture is set to be.
   * 8-bit fixed (RGBA) `rgba8fixed` -
@@ -243,20 +222,17 @@ Images are texture data that can be both read and written to at arbitrary pixels
   * 16-bit fixed (Mono+Alpha) `monoalpha16fixed` -
   * 16-bit float (Mono+Alpha) `monoalpha16float` -
   * 32-bit float (Mono+Alpha) `monoalpha32float` -
-
 - Type `image0type` - ⊞ - Specify what type of texture to create with the image output.
   * 2D Texture `texture2d` -
   * 2D Texture Array `texture2darray` -
   * 3D Texture `texture3d` -
   * Cube Texture `texturecube` -
-
 - Depth `image0depth` - Set the depth when output Type is 2D Texture Array or 3D Texture.
 - Access `image0access` - ⊞ - Controls how the output textures will be accessed. If the textures will be read from (such as using values generated by other shader executions within the same frame), then the access should be changed to Read-Write instead of Write Only.
   * Write Only `writeonly` -
   * Read-Write `readwrite` -
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -268,29 +244,25 @@ Images are texture data that can be both read and written to at arbitrary pixels
   * Fit Resolution `fit` - Grow or shrink the input resolution to fit this resolution, while keeping the aspect ratio the same.
   * Limit Resolution `limit` - Limit the input resolution to be not larger than this resolution, while keeping the aspect ratio the same.
   * Custom Resolution `custom` - Directly control the width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -299,13 +271,11 @@ Images are texture data that can be both read and written to at arbitrary pixels
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail. When the input is 32-bit float format, only nearest filtering will be used (regardless of what is selected).
-
-- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
+- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](GLSL_TOP.md "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
   * Use Input `useinput` - Uses the input's pixel format.
@@ -334,8 +304,7 @@ Images are texture data that can be both read and written to at arbitrary pixels
   * 16-bit fixed (Mono+Alpha) `monoalpha16fixed` - A 2 channel format, one value for RGB and one value for Alpha. 16-bits per channel, 32-bits per pixel.
   * 16-bit float (Mono+Alpha) `monoalpha16float` - A 2 channel format, one value for RGB and one value for Alpha. 16-bits per channel, 32-bits per pixel.
   * 32-bit float (Mono+Alpha) `monoalpha32float` - A 2 channel format, one value for RGB and one value for Alpha. 32-bits per channel, 64-bits per pixel.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
+- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. Only available when a [Working Color Space](https://docs.derivative.ca/Working_Color_Space "Working Color Space") is active for the project. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
   * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
@@ -347,7 +316,6 @@ Images are texture data that can be both read and written to at arbitrary pixels
   * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
   * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
@@ -357,22 +325,17 @@ Images are texture data that can be both read and written to at arbitrary pixels
 
 ## Info CHOP Channels
 
-Extra Information for the Render TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Render TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -380,19 +343,11 @@ Extra Information for the Render TOP can be accessed via an [Info CHOP](https://
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

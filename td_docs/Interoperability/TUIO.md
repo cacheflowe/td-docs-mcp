@@ -6,7 +6,7 @@ title: TUIO
 
 # TUIO
 
-The TUIO protocol provides a general and versatile communication interface between controller interfaces and applications. The [TUIO In DAT](https://docs.derivative.ca/TUIO_In_DAT "TUIO In DAT") can receive TUIO messages from other applications on the network and parse them into columns. The protocol is encoded using the [OSC](https://docs.derivative.ca/OSC "OSC") format which also allows TouchDesigner to get raw message data from the specification using the [OSC In CHOP](https://docs.derivative.ca/OSC_In_CHOP "OSC In CHOP") or [OSC In DAT](https://docs.derivative.ca/OSC_In_DAT "OSC In DAT").
+The TUIO protocol provides a general and versatile communication interface between controller interfaces and applications. The [TUIO In DAT](../DATs/TUIO_In_DAT.md "TUIO In DAT") can receive TUIO messages from other applications on the network and parse them into columns. The protocol is encoded using the [OSC](https://docs.derivative.ca/OSC "OSC") format which also allows TouchDesigner to get raw message data from the specification using the [OSC In CHOP](OSC_In_CHOP.md "OSC In CHOP") or [OSC In DAT](../DATs/OSC_In_DAT.md "OSC In DAT").
 
 TouchDesigner currently supports the [TUIO 1.1](https://www.tuio.org/?tuio11), and the [TUIO 2.0](https://www.tuio.org/?tuio20)
 

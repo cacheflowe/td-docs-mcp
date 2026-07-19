@@ -10,9 +10,9 @@ Newtek NDI® (Network Device Interface) is a network-based video and audio distr
 [![NDI Logo.png](https://docs.derivative.ca/images/3/37/NDI_Logo.png)](https://docs.derivative.ca/File:NDI_Logo.png)
 [](https://docs.derivative.ca/File:NDI_Logo.png "Enlarge")
 
-See [NDI In TOP](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP"), [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP"), [NDI DAT](https://docs.derivative.ca/NDI_DAT "NDI DAT") and [NDI Performance Testing](https://docs.derivative.ca/NDI_Performance_Testing "NDI Performance Testing")
+See [NDI In TOP](../TOPs/NDI_In_TOP.md "NDI In TOP"), [NDI Out TOP](../TOPs/NDI_Out_TOP.md "NDI Out TOP"), [NDI DAT](../DATs/NDI_DAT.md "NDI DAT") and [NDI Performance Testing](../Learn/NDI_Performance_Testing.md "NDI Performance Testing")
 
-See also, for H.264 over IP [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP"), [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP"), and for HAP over IP [Touch In TOP](https://docs.derivative.ca/Touch_In_TOP "Touch In TOP") and [Touch Out TOP](https://docs.derivative.ca/Touch_Out_TOP "Touch Out TOP").
+See also, for H.264 over IP [Video Stream In TOP](../TOPs/Video_Stream_In_TOP.md "Video Stream In TOP"), [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP"), and for HAP over IP [Touch In TOP](../TOPs/Touch_In_TOP.md "Touch In TOP") and [Touch Out TOP](../TOPs/Touch_Out_TOP.md "Touch Out TOP").
 
 Builds 2022.20000+ including 2025.Official use NDI 5.0
 
@@ -24,7 +24,7 @@ Builds 2020.20000-2020.24510 use NDI version 4.1.
 
 ##  Network
 
-The NDI protocol automatically discovers NDI video sources using mDNS, which is a multi-cast service discovery protocol. If your NDI sources are on networks not reachable via multi-cast, you'll need to specify the IP of the source machines in the [NDI In TOPs](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP") parameters.
+The NDI protocol automatically discovers NDI video sources using mDNS, which is a multi-cast service discovery protocol. If your NDI sources are on networks not reachable via multi-cast, you'll need to specify the IP of the source machines in the [NDI In TOPs](../TOPs/NDI_In_TOP.md "NDI In TOP") parameters.
 
 ##  Latency
 
@@ -36,7 +36,7 @@ Video sent over NDI is sent as YUV 4:2:2 format, and is compressed. The video ca
 
 ##  Audio
 
-Audio sent over NDI is transmitted at the sample rate and number of channels in the audio CHOP that is passed to the [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP").
+Audio sent over NDI is transmitted at the sample rate and number of channels in the audio CHOP that is passed to the [NDI Out TOP](../TOPs/NDI_Out_TOP.md "NDI Out TOP").
 
 ##  Metadata
 
@@ -116,6 +116,6 @@ See also: [NDI and Dante Networks](https://docs.derivative.ca/NDI_and_Dante_Netw
 
 Every component contains a network of operators that create and modify data. The operators are connected by wires that define where data is routed after the operator cooks its inputs and generates an output.
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

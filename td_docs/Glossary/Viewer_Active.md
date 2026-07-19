@@ -6,7 +6,7 @@ title: Viewer_Active
 
 # Viewer Active
 
-A node's Viewer Active state lets you operate a [Node Viewer](https://docs.derivative.ca/Node_Viewer "Node Viewer") interactively.
+A node's Viewer Active state lets you operate a [Node Viewer](Node_Viewer.md "Node Viewer") interactively.
 
 Normally when you click/drag on a node, you move it. When the node's viewer is a three-letter icon, it will always move when clicked-dragged. Click the top-left flag on a node to toggle the viewer on. That makes the viewer visible, but it's not yet active. Then
   * click + at the bottom right of a node.
@@ -23,11 +23,11 @@ When a viewer is active, you will only see a viewer and the name below it. You c
 
 **Tip** : When a view is active, you can still drag a node around by clicking on the name field at the bottom, and dragging around the network. You can also right-click on the name field to get the node's right-click menu.
 
-Viewer Active is temporarily switched on for all nodes by holding down Alt in [Network Editor](https://docs.derivative.ca/Network_Editor "Network Editor"), or pressing Alt-a to sustain it. Pressing Alt-a again turns Viewer Active off for all nodes except nodes that have their own Viewer Active flag on.
+Viewer Active is temporarily switched on for all nodes by holding down Alt in [Network Editor](Network_Editor.md "Network Editor"), or pressing Alt-a to sustain it. Pressing Alt-a again turns Viewer Active off for all nodes except nodes that have their own Viewer Active flag on.
 
 When not in Viewer Active, the node viewer area is disabled and acts like the rest of the node. This allows you to click anywhere to select and move the node, or right-click anywhere to access the node's menu.
 
-**Note** : Moving content inside a node viewer does not affect its transforms or parameters. **Exception** : [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP")
+**Note** : Moving content inside a node viewer does not affect its transforms or parameters. **Exception** : [Camera COMP](Camera_COMP.md "Camera COMP")
 [![ViewerActiveMenu.png](https://docs.derivative.ca/images/4/42/ViewerActiveMenu.png)](https://docs.derivative.ca/File:ViewerActiveMenu.png)
 A state of a node where you can operate the contents of its viewer (the + at botton-right of any node), like operating the gadgets of a panel in a node viewer, or the 3D data in the viewer of a Geometry component. With Viewer Active off you can select, move and delete nodes by clicking/dragging on them, even if the viewer is visible.
 

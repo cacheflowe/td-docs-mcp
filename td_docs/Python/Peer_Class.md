@@ -6,13 +6,13 @@ title: Peer_Class
 
 # Peer Class
 
-A Peer describes the network connection originating a message in the callback functions found in [oscinDAT](https://docs.derivative.ca/OscinDAT_Class "OscinDAT Class"), [tcpipDAT](https://docs.derivative.ca/TcpipDAT_Class "TcpipDAT Class"), [udpinDAT](https://docs.derivative.ca/UdpinDAT_Class "UdpinDAT Class"), [udtinDAT](https://docs.derivative.ca/UdtinDAT_Class "UdtinDAT Class").
+A Peer describes the network connection originating a message in the callback functions found in [oscinDAT](../DATs/OSC_In_DAT_Class.md "OscinDAT Class"), [tcpipDAT](../DATs/TCP_IP_DAT_Class.md "TcpipDAT Class"), [udpinDAT](../DATs/UDP_In_DAT_Class.md "UdpinDAT Class"), [udtinDAT](../DATs/UDT_In_DAT_Class.md "UdtinDAT Class").
 
 ## Members
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 `port` → `int` **(Read Only)** :
 

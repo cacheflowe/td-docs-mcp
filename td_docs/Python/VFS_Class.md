@@ -6,11 +6,11 @@ title: VFS_Class
 
 # VFS Class
 
-The VFS Class describes a COMP's [Virtual File System](https://docs.derivative.ca/Virtual_File_System "Virtual File System").
+The VFS Class describes a COMP's [Virtual File System](../Glossary/Virtual_File_System.md "Virtual File System").
 
 To access a virtual file in any operator's file parameter, use the virtual path format: `vfs:<path to comp>:<filename>`.
 
-[VFSFile_Class](https://docs.derivative.ca/VFSFile_Class "VFSFile Class") does the file operators.
+[VFSFile_Class](VFSFile_Class.md "VFSFile Class") does the file operators.
 
 ## Members
 
@@ -22,7 +22,7 @@ Get the OP owner.
 
 `[name]`→ `VFSFile`:
 
-[VFS Files](https://docs.derivative.ca/VFSFile_Class "VFSFile Class") may be easily accessed using the [] syntax.
+[VFS Files](VFSFile_Class.md "VFSFile Class") may be easily accessed using the [] syntax.
   * name - Must be an exact VFS file name. Wildcards are not supported. If not found, an error will be raised.
 
 ```
@@ -31,13 +31,13 @@ p = op('base1').vfs['Banana.tif']
 
 `addByteArray(byteArray, name)`→ `VFSFile`:
 
-Add an embedded file from a bytearray to the component. Returns a VFSFile instance of the added file. To delete the file, see `destroy()` on [VFSFile Class](https://docs.derivative.ca/VFSFile_Class "VFSFile Class").
+Add an embedded file from a bytearray to the component. Returns a VFSFile instance of the added file. To delete the file, see `destroy()` on [VFSFile Class](VFSFile_Class.md "VFSFile Class").
   * byteArray - A bytearray or bytes object representing the contents of the file.
   * name - The name of the file on VFS.
 
 `addFile(filePath, overrideName=None)`→ `VFSFile`:
 
-Add an embedded file from disk to the component with an option to override the name. Returns a VFSFile instance of the added file. To delete the file, see `destroy()` on [VFSFile Class](https://docs.derivative.ca/VFSFile_Class "VFSFile Class").
+Add an embedded file from disk to the component with an option to override the name. Returns a VFSFile instance of the added file. To delete the file, see `destroy()` on [VFSFile Class](VFSFile_Class.md "VFSFile Class").
   * filePath - The path of the file on disk to add.
   * overrideName (Keyword, Optional) - When specified, will override the name of the file in VFS.
 

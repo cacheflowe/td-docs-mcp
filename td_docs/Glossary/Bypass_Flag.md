@@ -15,7 +15,7 @@ Bypass flag is off
 
 Bypass flag is on
 
-**Bypass** is one of the Operator state [Flags](https://docs.derivative.ca/Flag "Flag") present on every [OP](https://docs.derivative.ca/Operator "Operator") in a network. When an operator is bypassed, the operator acts as if it is not there - it's a pass-through. Regardless of how many inputs an operator has, the first input is passed through. Another way to think about it - when bypassed, the network will cook the same as if this operator were deleted.
+**Bypass** is one of the Operator state [Flags](Flag.md "Flag") present on every [OP](../General/Operator.md "Operator") in a network. When an operator is bypassed, the operator acts as if it is not there - it's a pass-through. Regardless of how many inputs an operator has, the first input is passed through. Another way to think about it - when bypassed, the network will cook the same as if this operator were deleted.
 
 The bypass flag is useful for testing to see what the network would do with an operator removed without having to do any rewiring.
 
@@ -25,6 +25,6 @@ To bypass an operator, click on the arrow shaped flag. Clicking on it again remo
 
 **Tip** : TOPs have a Passes parameter that has the same effect, and can be driven with an expression.
 
-See also [Flag](https://docs.derivative.ca/Flag "Flag").
+See also [Flag](Flag.md "Flag").
 
 An operator whose Bypass flag is set does nothing: All data going into its first input appears at its output unaffected.

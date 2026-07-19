@@ -6,7 +6,7 @@ title: MOD_Class
 
 # MOD Class
 
-The MOD class provides access to Module On Demand object, which allows [DATs](https://docs.derivative.ca/DAT "DAT") to be dynamically imported as modules. It can be accessed with the mod object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). Alternatively, one can use the regular python statement: import. Use of the import statement is limited to modules in the search path, where as the mod format allows complete statements in one line, which is more useful for entering expressions. Also note that DAT modules cannot be organized into packages as regular file system based python modules can be.
+The MOD class provides access to Module On Demand object, which allows [DATs](../Glossary/DAT.md "DAT") to be dynamically imported as modules. It can be accessed with the mod object, found in the automatically imported [td module](https://docs.derivative.ca/Td_Module "Td Module"). Alternatively, one can use the regular python statement: import. Use of the import statement is limited to modules in the search path, where as the mod format allows complete statements in one line, which is more useful for entering expressions. Also note that DAT modules cannot be organized into packages as regular file system based python modules can be.
 
 ## Members
 
@@ -92,8 +92,8 @@ c = m.add(5,6)
 
 The current component is searched first.
 
-If the [DAT](https://docs.derivative.ca/DAT "DAT") is not found, the local/modules [component](https://docs.derivative.ca/Component "Component") of the current [component](https://docs.derivative.ca/Component "Component") is then searched.
+If the [DAT](../Glossary/DAT.md "DAT") is not found, the local/modules [component](../Glossary/Component.md "Component") of the current [component](../Glossary/Component.md "Component") is then searched.
 
-Next the local/modules [component](https://docs.derivative.ca/Component "Component") of each parent is successively searched.
+Next the local/modules [component](../Glossary/Component.md "Component") of each parent is successively searched.
 
-If the [DAT](https://docs.derivative.ca/DAT "DAT") is still not found, None is returned.
+If the [DAT](../Glossary/DAT.md "DAT") is still not found, None is returned.

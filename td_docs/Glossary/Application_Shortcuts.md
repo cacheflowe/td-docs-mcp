@@ -7,15 +7,15 @@ title: Application_Shortcuts
 # Application Shortcuts
 
 There are two types of [Shortcuts](https://docs.derivative.ca/Shortcut "Shortcut"):
-  * **[Panel Shortcuts](https://docs.derivative.ca/Panel_Shortcuts "Panel Shortcuts")** that you create for any custom built panels and
+  * **[Panel Shortcuts](Panel_Shortcuts.md "Panel Shortcuts")** that you create for any custom built panels and
   * **Application Shortcuts** (described here) that are built-in to TouchDesigner's authoring interface.
 
-The most important Application Shortcuts (as in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode")) are:
+The most important Application Shortcuts (as in [Designer Mode](Designer_Mode.md "Designer Mode")) are:
   * Space bar stops and starts the timeline.
   * Right-arrow steps forward one frame.
   * Left-arrow steps back one frame.
 
-(The keys are different in [Panel Shortcuts](https://docs.derivative.ca/Panel_Shortcuts "Panel Shortcuts").)
+(The keys are different in [Panel Shortcuts](Panel_Shortcuts.md "Panel Shortcuts").)
 
 The **Application Shortcuts** are defined in a DAT table with 3 columns:
   * Column 1: label
@@ -24,7 +24,7 @@ The **Application Shortcuts** are defined in a DAT table with 3 columns:
 
 ###  Overwriting Shortcuts
 
-Optional shortcut overrides table can be added to a text file located at: `app[](https://docs.derivative.ca/App_Class "App Class").preferencesFolder/TouchShortcuts.txt` If the file does not exist, no shortcut overrides are currently defined.
+Optional shortcut overrides table can be added to a text file located at: `app[](../Python/App_Class.md "App Class").preferencesFolder/TouchShortcuts.txt` If the file does not exist, no shortcut overrides are currently defined.
 
 The text file must be formatted with the same 3 columns and contain the same label of which Application Shortcut to replace in the first column. For Application Shortcuts starting with general, the third column must not be modified.
 
@@ -34,7 +34,7 @@ To disable a shortcut entirely, leave the shortcut in place, and simply blank ou
 
 ###  Default Shortcuts
 
-The following table is searched for each keyboard stroke until a match is found. (000 means no key is defined.) The default shortcuts are listed in a file, read into TouchDesigner when it starts from: `app[](https://docs.derivative.ca/App_Class "App Class").configFolder/TouchShortcuts.txt`
+The following table is searched for each keyboard stroke until a match is found. (000 means no key is defined.) The default shortcuts are listed in a file, read into TouchDesigner when it starts from: `app[](../Python/App_Class.md "App Class").configFolder/TouchShortcuts.txt`
 label  | key  | command
 ---|---|---
 general.pause  | space  | space
@@ -201,8 +201,8 @@ keyframer.timeline.prev.key  | ctrl.left  |
 keyframer.add.closest  | alt.LMB  |
 keyframer.add.selected  | alt.MMB  |
 keyframer.add.all  | alt.RMB  |
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](Script.md "Script") or [GLSL](GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
+Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](Parent_Shortcut.md "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](Global_OP_Shortcut.md "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
 
-Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](https://docs.derivative.ca/Window_COMP "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"). Alternate with F1 and Esc.
+Perform Mode is an optimized mode for live performance that only renders one specified [Window COMP](Window_COMP.md "Window COMP") which is one window that contains your video outputs and your (optional) control interface. In Perform Mode the network editing window is not open - you edit your networks in [Designer Mode](Designer_Mode.md "Designer Mode"). Alternate with F1 and Esc.

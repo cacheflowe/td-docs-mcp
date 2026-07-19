@@ -6,7 +6,7 @@ title: AJA
 
 # AJA
 
-TouchDesigner supports [AJA](https://www.aja.com/) devices in both the [Video Device In TOP](https://docs.derivative.ca/Video_Device_In_TOP "Video Device In TOP") and the [Video Device Out TOP](https://docs.derivative.ca/Video_Device_Out_TOP "Video Device Out TOP").
+TouchDesigner supports [AJA](https://www.aja.com/) devices in both the [Video Device In TOP](../TOPs/Video_Device_In_TOP.md "Video Device In TOP") and the [Video Device Out TOP](../TOPs/Video_Device_Out_TOP.md "Video Device Out TOP").
 [![Aja vs logo.png](https://docs.derivative.ca/images/thumb/5/5f/Aja_vs_logo.png/300px-Aja_vs_logo.png)](https://docs.derivative.ca/File:Aja_vs_logo.png)
 [![Kona 5.png](https://docs.derivative.ca/images/thumb/5/5a/Kona_5.png/600px-Kona_5.png)](https://docs.derivative.ca/File:Kona_5.png)
 

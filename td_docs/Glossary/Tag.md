@@ -10,8 +10,8 @@ Each operator can have a set of text strings that are its "tags". For example, t
 
 You can put tags on operators in the UI at the top of the Parameter dialog, and via python using, for example `node.tags = ['tag 1', 'tag 2']`
 
-You can search for operators with specific tags using `OP.findChildren()` method and the [OP Find DAT](https://docs.derivative.ca/OP_Find_DAT "OP Find DAT").
+You can search for operators with specific tags using `OP.findChildren()` method and the [OP Find DAT](../DATs/OP_Find_DAT.md "OP Find DAT").
 
-See [OP_Class](https://docs.derivative.ca/OP_Class "OP Class")
+See [OP_Class](../Python/OP_Class.md "OP Class")
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](Node.md "Node").

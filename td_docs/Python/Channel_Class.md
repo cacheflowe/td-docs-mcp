@@ -6,7 +6,7 @@ title: Channel_Class
 
 # Channel Class
 
-A Channel object describes a single [channel](https://docs.derivative.ca/Channel "Channel") from a [CHOP](https://docs.derivative.ca/CHOP "CHOP"). The [CHOP Class](https://docs.derivative.ca/CHOP_Class "CHOP Class") provides many ways of accessing its individual channels. See [Working with CHOPs in Python](https://docs.derivative.ca/Working_with_CHOPs_in_Python "Working with CHOPs in Python") for more examples of how to use this class.
+A Channel object describes a single [channel](../Glossary/Channel.md "Channel") from a [CHOP](../Glossary/CHOP.md "CHOP"). The [CHOP Class](CHOP_Class.md "CHOP Class") provides many ways of accessing its individual channels. See [Working with CHOPs in Python](https://docs.derivative.ca/Working_with_CHOPs_in_Python "Working with CHOPs in Python") for more examples of how to use this class.
 
 ## Members
 
@@ -24,15 +24,15 @@ The name of the channel.
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 `exports` → `list` **(Read Only)** :
 
-The (possibly empty) list of [parameters](https://docs.derivative.ca/Par_Class "Par Class") this channel currently exports to.
+The (possibly empty) list of [parameters](../SOPs/Par_Class.md "Par Class") this channel currently exports to.
 
 `vals` → `list` :
 
-Get or set the full list of Channel values. Modifying Channel values can only be done in Python within a [Script CHOP](https://docs.derivative.ca/ScriptCHOP_Class "ScriptCHOP Class").
+Get or set the full list of Channel values. Modifying Channel values can only be done in Python within a [Script CHOP](../CHOPs/Script_CHOP_Class.md "ScriptCHOP Class").
 
 ## Methods
 
@@ -70,7 +70,7 @@ Returns this channels data as a NumPy array with a length equal to the track len
 
 `destroy()`→ `None`:
 
-Destroy and remove the actual Channel this object refers to. This operation is only valid when the channel belongs to a [ Script CHOP](https://docs.derivative.ca/ScriptCHOP_Class "ScriptCHOP Class") or [OSC In CHOP](https://docs.derivative.ca/OscinCHOP_Class "OscinCHOP Class") . Note: after this call, other existing Channel objects in this CHOP may no longer be valid.
+Destroy and remove the actual Channel this object refers to. This operation is only valid when the channel belongs to a [ Script CHOP](../CHOPs/Script_CHOP_Class.md "ScriptCHOP Class") or [OSC In CHOP](../CHOPs/OSC_In_CHOP_Class.md "OscinCHOP Class") . Note: after this call, other existing Channel objects in this CHOP may no longer be valid.
 
 `average()`→ `float`:
 
@@ -87,7 +87,7 @@ Returns the maximum value of all the channel samples.
 `copyNumpyArray(numpyArray)`→ `None`:
 
 Copies the contents of the numpyArray into the Channel sample values.
-  * numpyArray - The NumPy Array to copy. Must be shape(n), where n is the sample length of the CHOP. The data type must be float32. Modifying Channel values can only be done in Python within a [Script CHOP](https://docs.derivative.ca/Script_CHOP "Script CHOP").
+  * numpyArray - The NumPy Array to copy. Must be shape(n), where n is the sample length of the CHOP. The data type must be float32. Modifying Channel values can only be done in Python within a [Script CHOP](../CHOPs/Script_CHOP.md "Script CHOP").
 
 ###  Casting to a Value
 
@@ -107,6 +107,6 @@ n['chan1'].eval() + 1
 n['chan1'] + 1
 ```
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

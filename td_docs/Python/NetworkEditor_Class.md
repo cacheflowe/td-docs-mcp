@@ -6,21 +6,21 @@ title: NetworkEditor_Class
 
 # NetworkEditor Class
 
-The NetworkEditor class describes an instance of a [Network Editor](https://docs.derivative.ca/Network_Editor "Network Editor"). They are subclasses of the [Pane Class](https://docs.derivative.ca/Pane_Class "Pane Class"), which can be accessed from the [ui](https://docs.derivative.ca/UI_Class "UI Class") object.
+The NetworkEditor class describes an instance of a [Network Editor](../Glossary/Network_Editor.md "Network Editor"). They are subclasses of the [Pane Class](Pane_Class.md "Pane Class"), which can be accessed from the [ui](UI_Class.md "UI Class") object.
 
 ## Members
 
 `showBackdropCHOPs` → `bool` :
 
-Enable or disable [CHOP](https://docs.derivative.ca/CHOP "CHOP") viewers as backdrops.
+Enable or disable [CHOP](../Glossary/CHOP.md "CHOP") viewers as backdrops.
 
 `showBackdropGeometry` → `bool` :
 
-Enable or disable [SOP](https://docs.derivative.ca/SOP "SOP") and [Geometry object](https://docs.derivative.ca/index.php?title=Geometry_Object&action=edit&redlink=1 "Geometry Object \(page does not exist\)") viewers as backdrops.
+Enable or disable [SOP](../SOPs/SOP.md "SOP") and [Geometry object](https://docs.derivative.ca/index.php?title=Geometry_Object&action=edit&redlink=1 "Geometry Object \(page does not exist\)") viewers as backdrops.
 
 `showBackdropTOPs` → `bool` :
 
-Enable or disable [TOP](https://docs.derivative.ca/TOP "TOP") viewers as backdrops.
+Enable or disable [TOP](../TOPs/TOP.md "TOP") viewers as backdrops.
 
 `showColorPalette` → `bool` :
 
@@ -104,7 +104,7 @@ Use the mouse to place the specified operators in the pane.
 
 `owner` → `COMP` :
 
-Get or set the [component](https://docs.derivative.ca/COMP_Class "COMP Class") this pane points to.
+Get or set the [component](COMP_Class.md "COMP Class") this pane points to.
 
 `id` → `int` **(Read Only)** :
 
@@ -196,6 +196,6 @@ Split the top portion of the pane into a new pane.
 
 Detach the pane into a floating window. Returns True if successful.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
-A work area in TouchDesigner's layout that includes the [Network Editor](https://docs.derivative.ca/Network_Editor "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.
+A work area in TouchDesigner's layout that includes the [Network Editor](../Glossary/Network_Editor.md "Network Editor") and 7 other pane types used for different tasks. The TouchDesigner interface can consist of a single pane, or be split into multiple panes.

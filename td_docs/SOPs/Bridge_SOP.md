@@ -23,42 +23,40 @@ You will usually need a Trim, Bridge, or Profile SOP after a Project SOP.
 
 **Note:** To texture-map the resulting skin, use an Orthographic projection rather than a Spline-based projection. This results in better continuity across the surfaces.
 
-[bridgeSOP_Class](https://docs.derivative.ca/BridgeSOP_Class "BridgeSOP Class")
+[bridgeSOP_Class](Bridge_SOP_Class.md "BridgeSOP Class")
 
 ## Parameters - Page
-
 - Group `group` - The Group edit field allows you to enter profile groups for profiles and/or faces to bridge. This is optional if you have regular geometric curves or surfaces, however, you must enter something here in order for Bridge to work with profile curves. For example `*.0` will Bridge the 0th (first) profiles of all incoming primitives.
+
 **Note:** Always specify the curves on surface if you want the Bridge SOP bridge curves on surfaces; otherwise it will attempt to bridge free-floating curves.
 - Bridge `bridge` - ⊞ - Allows bridging of subgroups of N primitives or patterns of primitives.
   * All Primitives `all` -
   * Groups of N Primitives `group` -
   * Skip Every Nth Primitive `skip` -
-
 - N `inc` - Determines the pattern of primitives to bridge using this SOP.
 - Order `order` - Sets the spline order for both profile extraction and skinning operations.
 
 ## Parameters - Surface Properties Page
-
 - Min X-Sections `isodivs` - The minimum number of cross-sections in the resulting skin. If you create a high-density surface, TouchDesigner's level of detail may display the surface less smoothly than it actually is. You can increase the level of detail by adjusting the viewdisplay options (e.g. `viewdisplay -l 1.5 SOPmain.persp1` ) for the Viewport.
+
 **Production Tip:** If, in generating a smooth surface, you create an extremely complex surface, some of the complexity can be removed without damaging the appearance of the surface by appending a Refine SOP, and using its **Unrefine** option. In the Refine SOP, set the **First U** parameter to zero and, in the **Unrefine** option's parameters, set the **U** value close to the order of the surface created in the Bridge SOP.
 - Use `frenet` - ⊞ - Specifies the type of normal to use for computing direction:
   * The Frenet Frame of the Face `frenet` - The Frenet Frame of the face. This option uses a local coordinate system on the curve to compute the direction.
   * The Normal of the Face `normal` - The Normal of the face.
-
 - Circular Arc Fillet `circular` - Tells TouchDesigner to try to generate a round fillet rather than a free-form fillet. Only the sign (positive or negative) of the tangent scales is used; the scale magnitude is ignored when building a circular fillet.
+
 The radius of the fillet is computed automatically and adjusted according to the distance between the rails (curves and/or profiles) and their tangents.
 - Rotate Tangents `rotatet` - ⊞ - The scaling and rotation parameters contain three fields. The rotation fields (degrees) apply further rotation to the tangents, while the scale parameter further scales the tangents.
   * `rotatet1` - Applies to the first face in the input.
   * `rotatet2` - Applies to all intermediate faces.
   * `rotatet3` - Applies to the last face in the input.
-
 - Scale Tangents `scalet` - ⊞ - The scaling and rotation parameters contain three fields. The rotation fields (degrees) apply further rotation to the tangents, while the scale parameter further scales the tangents.
   * `scalet1` - Applies to the first face in the input.
   * `scalet2` - Applies to all intermediate faces.
   * `scalet3` - Applies to the last face in the input.
-
 - Use Curvature `curvature` - Takes curvature into consideration as well.
 - Scale Curvatures `scalec` - ⊞ - Further scaling of the curvature.
+
 **Note:** If the resulting skin bulges too greatly, you can achieve a smooth resulting transition between surfaces by disabling the Preserve Tangent & Preserve Curvature Magnitude parameters, and manually tweaking the Tangent Scales and the Curvature Scales. In general, avoid tweaking the Rotations of the Tangents unless you wish to deform the resulting surface.
 
 If the bridge bulges on one side but not the other, try increasing the Min. Number of Cross sections in the bridge.
@@ -72,6 +70,7 @@ This page's parameters are similar to those found in the Fit and Project SOPs.
 - Divisions per Span `sdivs` - Number of 2-D points evaluated in each span.
 - Tolerance `tolerance` - Precision of 2-D fitting algorithm.
 - Preserve Sharp Corners `csharp` - Enables or disables fitting of sharp turns. If cracks appear in the resulting skin, Preserve Sharp Corners is usually a good solution; however, it may add additional knots which can create undesirable "ripples" in some cases.
+
 If this option is disabled, fewer isoparms are generated and the surface may not follow the contours of the profile curves perfectly unless the profile curves were built using the `Preserve Sharp Corners` option.
 
 ## Example
@@ -96,20 +95,16 @@ If this option is disabled, fewer isoparms are generated and the surface may not
 
 ## Info CHOP Channels
 
-Extra Information for the Bridge SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Bridge SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -117,19 +112,11 @@ Extra Information for the Bridge SOP can be accessed via an [Info CHOP](https://
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

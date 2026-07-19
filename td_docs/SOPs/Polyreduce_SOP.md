@@ -19,17 +19,15 @@ Note that as it requires (and outputs) a triangular mesh, the polygon count may 
 
 A second input for feature edges is provided.
 
-[polyreduceSOP_Class](https://docs.derivative.ca/PolyreduceSOP_Class "PolyreduceSOP Class")
+[polyreduceSOP_Class](Polyreduce_SOP_Class.md "PolyreduceSOP Class")
 
 ## Parameters - Reduce Page
-
 - Polygons `reduce` - The polygons which will be candidates for simplification. Other polygons which share points with these might also be affected.
 - Features `creases` - Which polygons are feature edges.
 - Method `method` - ⊞ - Select how to reduce the number of polygons from the following methods.
   * Percentage `percentage` - Choose reduction level with a percentage.
   * Number `number` - Choose reduction level by number of polygons.
   * Distance `distance` - Reduce polygons based on distance to an object.
-
 - Keep % `percentage` - Specify the percentage of polygons to keep when Method set to 'Percentage'.
 - Keep # `numpolys` - Specify the number of polygons to keep when Method set to 'Number'.
 - Object `obj` - The object to use as a reference.
@@ -37,7 +35,6 @@ A second input for feature edges is provided.
 - Minimum % `minpercent` - A lower bound to the level of reduction.
 
 ## Parameters - Clean Page
-
 - Stiffen Border `borderweight` - Without any constraints, the edges of planar surfaces can erode. This controls a bias which penalizes such erosion.
 - Stiffen Features `creaseweight` - The amount of penalty to add to the feature edges being eroded.
 - Equalize Edges `lengthweight` - This bias penalizes the removal of long edges. It tends to reduce high aspect ratio triangles at the expense of more uniform reduction.
@@ -53,20 +50,16 @@ A second input for feature edges is provided.
 
 ## Info CHOP Channels
 
-Extra Information for the Polyreduce SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Polyreduce SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -74,19 +67,11 @@ Extra Information for the Polyreduce SOP can be accessed via an [Info CHOP](http
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

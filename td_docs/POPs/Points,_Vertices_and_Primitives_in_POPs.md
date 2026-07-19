@@ -8,7 +8,7 @@ title: Points,_Vertices_and_Primitives_in_POPs
 
 ## Summary
 
-It is similar but not the same. This is adapted from the [SOP Primitive](https://docs.derivative.ca/Primitive "Primitive") Page
+It is similar but not the same. This is adapted from the [SOP Primitive](../Glossary/Primitive.md "Primitive") Page
 
 Primitives
 
@@ -35,7 +35,7 @@ POPs have no curve primitives at the moment, but spline subdivision on sets of c
 
 Primitives are defined from [Points](https://docs.derivative.ca/index.php?title=Points&action=edit&redlink=1 "Points \(page does not exist\)") plus other data.
 
-In SOPs, see also: [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), [Point](https://docs.derivative.ca/Point "Point"), [Point List](https://docs.derivative.ca/Point_List "Point List"), [Point Class](https://docs.derivative.ca/Point_Class "Point Class"), [Prims Class](https://docs.derivative.ca/Prims_Class "Prims Class"), [Polygon](https://docs.derivative.ca/Polygon "Polygon"), [Vertex](https://docs.derivative.ca/Vertex "Vertex"), [SOP](https://docs.derivative.ca/SOP "SOP"), [SOP Class](https://docs.derivative.ca/SOP_Class "SOP Class"), [SOP to DAT](https://docs.derivative.ca/SOP_to_DAT "SOP to DAT"), [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP"), [Point Groups](https://docs.derivative.ca/index.php?title=Point_Groups&action=edit&redlink=1 "Point Groups \(page does not exist\)"), [Primitive Groups](https://docs.derivative.ca/index.php?title=Primitive_Groups&action=edit&redlink=1 "Primitive Groups \(page does not exist\)"), [Attributes](https://docs.derivative.ca/index.php?title=Attributes&action=edit&redlink=1 "Attributes \(page does not exist\)").
+In SOPs, see also: [Geometry Detail](../Glossary/Geometry_Detail.md "Geometry Detail"), [Point](../Glossary/Point.md "Point"), [Point List](../Glossary/Point_List.md "Point List"), [Point Class](../SOPs/Point_Class.md "Point Class"), [Prims Class](../SOPs/Prims_Class.md "Prims Class"), [Polygon](../Glossary/Polygon.md "Polygon"), [Vertex](../Glossary/Vertex.md "Vertex"), [SOP](../SOPs/SOP.md "SOP"), [SOP Class](../SOPs/SOP_Class.md "SOP Class"), [SOP to DAT](../Glossary/SOP_to_DAT.md "SOP to DAT"), [Script SOP](../SOPs/Script_SOP.md "Script SOP"), [Point Groups](https://docs.derivative.ca/index.php?title=Point_Groups&action=edit&redlink=1 "Point Groups \(page does not exist\)"), [Primitive Groups](https://docs.derivative.ca/index.php?title=Primitive_Groups&action=edit&redlink=1 "Primitive Groups \(page does not exist\)"), [Attributes](https://docs.derivative.ca/index.php?title=Attributes&action=edit&redlink=1 "Attributes \(page does not exist\)").
 
 Every SOP has a Primitive List, which may contain any number of primitives of the following types:
 
@@ -59,7 +59,7 @@ Concave *Polygons*
 
 A polygon is convex if any vertical or horizontal axis intersects it at most twice.
 
-See also for SOPs (POPs equivalents coming): [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), [Point](https://docs.derivative.ca/Point "Point"), [Point List](https://docs.derivative.ca/Point_List "Point List"), [Point Class](https://docs.derivative.ca/Point_Class "Point Class"), [Primitive](https://docs.derivative.ca/Primitive "Primitive"), [Prims Class](https://docs.derivative.ca/Prims_Class "Prims Class"), [Vertex](https://docs.derivative.ca/Vertex "Vertex"), [SOP](https://docs.derivative.ca/SOP "SOP"), [SOP Class](https://docs.derivative.ca/SOP_Class "SOP Class"), [SOP to DAT](https://docs.derivative.ca/SOP_to_DAT "SOP to DAT"), [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP"), [Point Groups](https://docs.derivative.ca/index.php?title=Point_Groups&action=edit&redlink=1 "Point Groups \(page does not exist\)"), [Primitive Groups](https://docs.derivative.ca/index.php?title=Primitive_Groups&action=edit&redlink=1 "Primitive Groups \(page does not exist\)"), [Attributes](https://docs.derivative.ca/index.php?title=Attributes&action=edit&redlink=1 "Attributes \(page does not exist\)").
+See also for SOPs (POPs equivalents coming): [Geometry Detail](../Glossary/Geometry_Detail.md "Geometry Detail"), [Point](../Glossary/Point.md "Point"), [Point List](../Glossary/Point_List.md "Point List"), [Point Class](../SOPs/Point_Class.md "Point Class"), [Primitive](../Glossary/Primitive.md "Primitive"), [Prims Class](../SOPs/Prims_Class.md "Prims Class"), [Vertex](../Glossary/Vertex.md "Vertex"), [SOP](../SOPs/SOP.md "SOP"), [SOP Class](../SOPs/SOP_Class.md "SOP Class"), [SOP to DAT](../Glossary/SOP_to_DAT.md "SOP to DAT"), [Script SOP](../SOPs/Script_SOP.md "Script SOP"), [Point Groups](https://docs.derivative.ca/index.php?title=Point_Groups&action=edit&redlink=1 "Point Groups \(page does not exist\)"), [Primitive Groups](https://docs.derivative.ca/index.php?title=Primitive_Groups&action=edit&redlink=1 "Primitive Groups \(page does not exist\)"), [Attributes](https://docs.derivative.ca/index.php?title=Attributes&action=edit&redlink=1 "Attributes \(page does not exist\)").
 
 Meshes - NOT IMPLEMENTED IN POPS ATM
 
@@ -79,20 +79,20 @@ Note that a POP can have a point list with no primitives. You would not see them
 
 Particles in SOPs: One “particle system” in SOPs contains multiple point indexes:
 
-A particle system in SOPs is a type of **Primitive** of a [SOP](https://docs.derivative.ca/SOP "SOP") that consists of a group of discrete particles (points) which change over time. Each particle has its own attributes controlling size, position, velocity, etc. Particles can generate new attributes depending on their age, or they may die. Assigning values discretely to each particle enables realistic modeling of systems involving turbulence such as: smoke, wind, fire, dust, and hair.)
+A particle system in SOPs is a type of **Primitive** of a [SOP](../SOPs/SOP.md "SOP") that consists of a group of discrete particles (points) which change over time. Each particle has its own attributes controlling size, position, velocity, etc. Particles can generate new attributes depending on their age, or they may die. Assigning values discretely to each particle enables realistic modeling of systems involving turbulence such as: smoke, wind, fire, dust, and hair.)
 
-See also [Point Sprite MAT](https://docs.derivative.ca/Point_Sprite_MAT "Point Sprite MAT")
+See also [Point Sprite MAT](../MATs/Point_Sprite_MAT.md "Point Sprite MAT")
 
 Splines in SOPs
 
 TouchDesigner allows you to create both Bézier and NURBS curves and surfaces using splines. Refer to [Splines](https://docs.derivative.ca/index.php?title=Splines&action=edit&redlink=1 "Splines \(page does not exist\)") article for a complete discussion of these types.
 
-POPs (**Point Operators**) is a new [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
+POPs (**Point Operators**) is a new [Operator Family](../Glossary/Operator_Family.md "Operator Family") of TouchDesigner that runs on the GPU accelerated graphics card or chips, and creates/modifies 3D data which is rendered by the [Render TOP](../TOPs/Render_TOP.md "Render TOP") or passed to devices like DMX lighting, LED arrays, lasers or other external systems.
 
-A surface type in [SOPs](https://docs.derivative.ca/SOP "SOP") that includes polygon, curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like sphere, tube and metaball. [Points](https://docs.derivative.ca/Point "Point") and Primitives are part of the [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), which is a part of a [SOP](https://docs.derivative.ca/SOP "SOP").
+A surface type in [SOPs](../SOPs/SOP.md "SOP") that includes polygon, curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like sphere, tube and metaball. [Points](../Glossary/Point.md "Point") and Primitives are part of the [Geometry Detail](../Glossary/Geometry_Detail.md "Geometry Detail"), which is a part of a [SOP](../SOPs/SOP.md "SOP").
 
-A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+A sequence of vertices form a [Polygon](../Glossary/Polygon.md "Polygon") in a [SOP](../SOPs/SOP.md "SOP"). Each vertex is an integer index into the [Point List](../Glossary/Point_List.md "Point List"), and each [Point](../Glossary/Point.md "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A [Operator Family](../Glossary/Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-A polygon is a type of [Primitive](https://docs.derivative.ca/Primitive "Primitive") that is formed from a set of [Vertices](https://docs.derivative.ca/Vertex "Vertex") in 3D that are implicitly connected together to form a multi-edge shape.
+A polygon is a type of [Primitive](../Glossary/Primitive.md "Primitive") that is formed from a set of [Vertices](../Glossary/Vertex.md "Vertex") in 3D that are implicitly connected together to form a multi-edge shape.

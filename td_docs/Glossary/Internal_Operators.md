@@ -12,7 +12,7 @@ Simply, you create or choose a node that you would access frequently within a co
 
 `iop._ShortcutName_`searches up in the parent components' hierarchy until it finds a component with a matching Internal OP Shortcut name.
 
-See alo [Internal Parameters](https://docs.derivative.ca/Internal_Parameters "Internal Parameters") which provides more concise shortcuts to parameter collections.
+See alo [Internal Parameters](Internal_Parameters.md "Internal Parameters") which provides more concise shortcuts to parameter collections.
 
 ##  Example
 
@@ -34,12 +34,12 @@ You may want to get the value of an `iop` of another component, or you may want 
 
 Being "internal" this isn't possible with `iop`. But you can use a member of the component to access it: `COMP.internalOPs['Name']` where `_Name_`is the`iop` name you want. `COMP.internalOPs` is a dictionary of internal operator shortcuts found on the component.
 
-See also [Internal Parameters](https://docs.derivative.ca/Internal_Parameters "Internal Parameters").
+See also [Internal Parameters](Internal_Parameters.md "Internal Parameters").
 
 Internal Operators (iOPs) provide a simple shortcut to a frequently-used operator, accessing from anywhere in that component.
 
-Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](https://docs.derivative.ca/Parent_Shortcut "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](https://docs.derivative.ca/Global_OP_Shortcut "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
+Operator shortcuts are Python objects that return operators (or sometimes parameters). These include [Parent Shortcuts](Parent_Shortcut.md "Parent Shortcut") for accessing a component from within that component, and [Global OP Shortcuts](Global_OP_Shortcut.md "Global OP Shortcut") that access a unique component from anywhere in TouchDesigner.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").

@@ -10,7 +10,7 @@ title: Depth_MAT
 
 The Depth Only MAT can be used to prevent objects from being drawn by making an invisible barrier in Z.
 
-[depthMAT_Class](https://docs.derivative.ca/DepthMAT_Class "DepthMAT Class")
+[depthMAT_Class](Depth_MAT_Class.md "DepthMAT Class")
 
 ## Parameters - Deform Page
 
@@ -20,9 +20,8 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
   * From a SOP `sop` -
   * From another MAT `mat` -
   * From a DeformIn MAT `deformin` -
-
 - SOP with Capture Data `targetsop` - Specifies the SOP that contains the deform capture attributes.
-- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](https://docs.derivative.ca/Bone_Group_SOP "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
+- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](../SOPs/Bone_Group_SOP.md "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
 - pCaptData Attrib `pcaptdata` - Much like pCaptPath Attrib.
 - Skeleton Root Path `skelrootpath` - Specifies the path to the COMP where the root of the skeleton is located.
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
@@ -34,7 +33,6 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
 Blending
 
 [Blending](https://docs.derivative.ca/Blending "Blending") is summing the color value of the pixel being drawn and the pixel currently present in the Color-Buffer. Blending is typically used to simulate [Transparency](https://docs.derivative.ca/Transparency "Transparency"). The blending equation is: `Final Pixel Value = (Source Blend * Source Color) + (Dest Blend * Destination Color)`
-
 - Blending (Transparency) `blending` - This toggle enables and disables blending. However see the wiki article [Transparency](https://docs.derivative.ca/Transparency "Transparency").
 - Blend Operation `blendop` - ⊞ -
   * Add `add` -
@@ -42,7 +40,6 @@ Blending
   * Reverse Subtract `revsubtract` -
   * Minimum `minimum` -
   * Maximum `maximum` -
-
 - Source Color * `srcblend` - ⊞ - This value is multiplied by the color value of the pixel that is being written to the Color-Buffer (also know as the Source Color).
   * Zero `zero` -
   * Dest Color `dcol` -
@@ -57,7 +54,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Destination Color * `destblend` - ⊞ - This value is multiplied by the color value of the pixel currently in the Color-Buffer (also known as the Destination Color).
   * One `one` -
   * Src Color `scol` -
@@ -74,7 +70,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Separate Alpha Function `separatealphafunc` - This toggle enables and disables separate blending options for the alpha values.
 - Alpha Blend Operation `blendopa` - ⊞ -
   * Add `add` -
@@ -82,7 +77,6 @@ Blending
   * Reverse Subtract `revsubtract` -
   * Minimum `minimum` -
   * Maximum `maximum` -
-
 - Source Alpha * `srcblenda` - ⊞ - This value is multiplied by the alpha value of the pixel that is being written to the Color-Buffer (also know as the Source Alpha).
   * Zero `zero` -
   * Dest Color `dcol` -
@@ -97,7 +91,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Destination Alpha * `destblenda` - ⊞ - This value is multiplied by the alpha value of the pixel currently in the Color-Buffer (also known as the Destination Alpha).
   * One `one` -
   * Src Color `scol` -
@@ -114,19 +107,16 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Blend Constant Color `blendconstant` - ⊞ -
   * Blend Constant Color `blendconstantr` -
   * Blend Constant Color `blendconstantg` -
   * Blend Constant Color `blendconstantb` -
-
 - Blend Constant Alpha `blendconstanta` -
 - Legacy Alpha Behavior `legacyalphabehavior` -
 - Post-Mult Color by Alpha `postmultalpha` - Multiplies the color by alpha after all other operations have taken place.
 - Point Color Pre-Multiply `pointcolorpremult` - ⊞ -
   * Already Pre-Multiplied By Alpha `alreadypremult` -
   * Pre-Multiply By Alpha in Shader `premultinshader` -
-
 - Depth Test `depthtest` - Enables and disables the Depth-Test. If the depth-test is disabled, depths values aren't written to the Depth-Buffer.
 - Depth Test Function `depthfunc` - ⊞ - The depth value of the pixel being drawn is compared to the depth value currently in the depth-buffer using this function. If the test passes then the pixel is drawn to the Frame-Buffer. If the test fails the pixel is discarded and no changes are made to the Frame-Buffer.
   * Less Than `less` -
@@ -152,7 +142,6 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Less Than or Equal `lessorequal` -
   * Greater Than `greater` -
   * Greater Than or Equal `greaterorequal` -
-
 - Alpha Threshold `alphathreshold` - This value is what the pixel's alpha is compared to to determine if the pixel should be drawn. Pixels with alpha greater than the Alpha Threshold will be drawn. Pixels with alpha less than or equal to the Alpha Threshold will not be drawn.
 - Wire Frame `wireframe` - ⊞ - Enables and disables wire-frame rendering with the option of OpenGL Tesselated or Topology based wireframes.
   * Off `off` -
@@ -172,7 +161,6 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
   * Back Faces `backfaces` - Cull back faces, render front faces.
   * Front Faces `frontfaces` - Cull front faces, render back faces.
   * Both Faces `bothfaces` - Cull both faces, render nothing.
-
 - Polygon Depth Offset `polygonoffset` - Turns on the polygon offset feature.
 - Offset Factor `polygonoffsetfactor` -
 - Offset Units `polygonoffsetunits` -
@@ -195,7 +183,7 @@ Polygon Depth Offset
 
 This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly on-top of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing [shadows](https://docs.derivative.ca/Shadows "Shadows").
 
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
+- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. Only available when a [Working Color Space](https://docs.derivative.ca/Working_Color_Space "Working Color Space") is active for the project. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
   * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
@@ -207,7 +195,6 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
   * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
   * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
@@ -217,7 +204,7 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
 
 ## Info CHOP Channels
 
-Extra Information for the Depth MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Depth MAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -228,19 +215,11 @@ Extra Information for the Depth MAT can be accessed via an [Info CHOP](https://d
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

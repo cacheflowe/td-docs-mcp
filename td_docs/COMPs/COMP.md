@@ -8,4 +8,4 @@ title: COMP
 
 ## Summary
 
-[COMP Class](https://docs.derivative.ca/COMP_Class "COMP Class")
+[COMP Class](../Python/COMP_Class.md "COMP Class")

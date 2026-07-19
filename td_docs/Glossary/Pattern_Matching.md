@@ -6,15 +6,17 @@ title: Pattern_Matching
 
 # Pattern Matching
 
-**Note** : _With TouchDesigner 2025 we are transitioning to a new pattern matching that is consistent throughout the product. Some uses of it are obsolete but we have legacy modes that allow older patterns and files to continue to work as-is. With POPs being a new operator family, only the new pattern matching works. See Legacy Features below. Please report any difficulties you may be having._
+**Note** : _With TouchDesigner 2025 we have transitioned to a new pattern matching that is consistent throughout the product. Some uses of it are obsolete but we have legacy modes that allow older patterns and files to continue to work as-is. With POPs being a new operator family, only the new pattern matching works. See Legacy Features below. Please report any difficulties you may be having._
 
-Some parameters in TouchDesigner are used to specify multiple operators, multiple channels, multiple points, etc. For example, the [Render TOP](https://docs.derivative.ca/Render_TOP "Render TOP") allows for multiple lights, geometry COMPs and cameras. The [Join CHOP](https://docs.derivative.ca/Join_CHOP "Join CHOP") and [Composite TOP](https://docs.derivative.ca/Composite_TOP "Composite TOP") accept multiple CHOPs and TOPs respectively.
+Some parameters in TouchDesigner are used to specify multiple operators, multiple channels, multiple points, etc. For example, the [Render TOP](../TOPs/Render_TOP.md "Render TOP") allows for multiple lights, geometry COMPs and cameras. The [Join CHOP](../CHOPs/Join_CHOP.md "Join CHOP") and [Composite TOP](../TOPs/Composite_TOP.md "Composite TOP") accept multiple CHOPs and TOPs respectively.
 
 A parameter that is a "pattern" allows you to specify several names and/or specify "wild cards" which will match all or parts of the names of operators, channels, point indexes etc. Patterns are also used in some Python methods such as `ops()` which allows you to specify more than one OP using a single string.
 
+See [Pattern Matching Support](Pattern_Matching_Support.md "Pattern Matching Support") for the various parts of TouchDesigner where pattern matching exists, and their particular rules.
+
 ##  Basic Patterns
 
-Basic Pattern matching is also often used to match channel names. It uses the following kinds of patterns to select existing channels in an input CHOP, used in CHOPs like the [Select CHOP](https://docs.derivative.ca/Select_CHOP "Select CHOP") and the [Math CHOP](https://docs.derivative.ca/Math_CHOP "Math CHOP")'s Scope parameter, where you only want to affect certain channels and leave the rest as-is.
+Basic Pattern matching is also often used to match channel names. It uses the following kinds of patterns to select existing channels in an input CHOP, used in CHOPs like the [Select CHOP](Select_CHOP.md "Select CHOP") and the [Math CHOP](../CHOPs/Math_CHOP.md "Math CHOP")'s Scope parameter, where you only want to affect certain channels and leave the rest as-is.
   * `_pattern_`- Match string exactly
   * `*` - A "wild card" that matches any sequence of characters
   * `?` - A "wild card" that matches any single character
@@ -40,7 +42,7 @@ Basic Pattern matching is also often used to match channel names. It uses the fo
 `blend[2-3,5,13]` | Matches channels `blend2`, `blend3`, `blend5`, `blend13`
 `t[uvwxyz]` | [`uvwxyz`] matches characters between `u` and `z`, giving channels `tu`, `tv`, `tw`, `tx`, `ty` and `tz`
 `"Instance 3"` | Matches the string "Instance 3" exactly, NOT matching Instance and 3.
-`"run -exec test[0-5]"` | Matches the string "run -exec test0" to "run -exec test5" exactly. Useful for matching Page names in [Parameter DAT](https://docs.derivative.ca/Parameter_DAT "Parameter DAT") or entries in a [Table DAT](https://docs.derivative.ca/Table_DAT "Table DAT")
+`"run -exec test[0-5]"` | Matches the string "run -exec test0" to "run -exec test5" exactly. Useful for matching Page names in [Parameter DAT](../DATs/Parameter_DAT.md "Parameter DAT") or entries in a [Table DAT](Table_DAT.md "Table DAT")
 Some node parameters also support expanding component group names before matching.
   * `@groupname` - Expands all the items in the group. Since each group belongs to a network, you can specify a path before the @groupname identifier.
 
@@ -51,7 +53,7 @@ Some node parameters also support expanding component group names before matchin
 
 ##  Operator Patterns
 
-Some parameters accept Node paths such as [Render TOPs](https://docs.derivative.ca/Render_TOP "Render TOP") Geometry or Lights parameter. Pattern matching in this case can make selecting multiple nodes fast and easy.
+Some parameters accept Node paths such as [Render TOPs](../TOPs/Render_TOP.md "Render TOP") Geometry or Lights parameter. Pattern matching in this case can make selecting multiple nodes fast and easy.
   * `_pattern_`- Searches the current network and matches any node with the Basic Pattern` _pattern_`.
   * `/_subpattern1_/_subpattern2_/_subpattern3_/_pattern_`- Searches each sub-path according to it's sub-pattern and matches any nodes with the Basic Pattern` _pattern_`
 
@@ -85,7 +87,7 @@ Some parameters only match over indices, usually CHOPs and POPs (see below for S
 
 ###  Ordered Index Patterns
 
-Some nodes such as the [Primitive POP](https://docs.derivative.ca/Primitive_POP "Primitive POP") allow orderings within index selection with the following rules
+Some nodes such as the [Primitive POP](../POPs/Primitive_POP.md "Primitive POP") allow orderings within index selection with the following rules
   * `*` acts as a range from `0-max`
   * Entries in ranges are selected in order in which they appear in the range
   * Entries in negated ranges are selected from `0-max` minus the indices specified by the range
@@ -100,7 +102,7 @@ Some nodes such as the [Primitive POP](https://docs.derivative.ca/Primitive_POP 
 
 ##  Set Operator Notation
 
-Some pattern matching rules (see [Pattern Matching Support](https://docs.derivative.ca/Pattern_Matching_Support "Pattern Matching Support")) can be used in conjunction with set operator notation for more expressive selection. Basic, Operator and Index Patterns (i.e. `/project/geo1`, `t?`, `chan*`, `blend[2-6:2]`) create sets and `|`, `&`, `~` can apply the following set operations between them. The pattern will match any element in the final resulting set.
+Some pattern matching rules (see [Pattern Matching Support](Pattern_Matching_Support.md "Pattern Matching Support")) can be used in conjunction with set operator notation for more expressive selection. Basic, Operator and Index Patterns (i.e. `/project/geo1`, `t?`, `chan*`, `blend[2-6:2]`) create sets and `|`, `&`, `~` can apply the following set operations between them. The pattern will match any element in the final resulting set.
   * `|` represents the **Union** of two sets
   * `&` represents the **Intersection** of two sets
   * `~` represents the **Set Difference** of two sets
@@ -131,14 +133,14 @@ The order of precedence of these operations goes `()`, and then the set operatio
 
 ###  Old Index Notation
 
-SOPs still use the old style of index notation, and does not support the new set operator syntax. For Examples and rough documentation: see parameter documentation for [Group SOP](https://docs.derivative.ca/Group_SOP "Group SOP") or [Add SOP](https://docs.derivative.ca/Add_SOP "Add SOP")
+SOPs still use the old style of index notation, and does not support the new set operator syntax. For Examples and rough documentation: see parameter documentation for [Group SOP](../SOPs/Group_SOP.md "Group SOP") or [Add SOP](../SOPs/Add_SOP.md "Add SOP")
 
 ##  See Also
 
-  * [Pattern Expansion](https://docs.derivative.ca/Pattern_Expansion "Pattern Expansion"), [Pattern Replacement](https://docs.derivative.ca/Pattern_Replacement "Pattern Replacement"), [Pattern Matching Support](https://docs.derivative.ca/Pattern_Matching_Support "Pattern Matching Support")
+  * [Pattern Expansion](Pattern_Expansion.md "Pattern Expansion"), [Pattern Replacement](Pattern_Replacement.md "Pattern Replacement"), [Pattern Matching Support](Pattern_Matching_Support.md "Pattern Matching Support")
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](Operator_Family.md "Operator Family") which operate on [Channels](Channel.md "Channel") (a sequence of numbers ([Samples](Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
 A parameter in most CHOPs that restricts which channels of that CHOP will be affected. Normally all channels of a CHOP are affected by the operator. TOPs have Channel Mask, a similar feature.
 
-(1) A [Geometry Component](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") can instance and render its SOP geometry many times: once for each sample in a CHOP, row of a DAT table, pixel in a TOP, or point of a SOP, (2) An instance is an OP that doesn't actually have its own data, but rather just refers to an OP (or has an input) whose data it uses. This includes Null OPs, Switch OPs and in some cases Select OPs.
+(1) A [Geometry Component](Geometry_COMP.md "Geometry COMP") can instance and render its SOP geometry many times: once for each sample in a CHOP, row of a DAT table, pixel in a TOP, or point of a SOP, (2) An instance is an OP that doesn't actually have its own data, but rather just refers to an OP (or has an input) whose data it uses. This includes Null OPs, Switch OPs and in some cases Select OPs.

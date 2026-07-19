@@ -8,38 +8,35 @@ title: NDI_In_TOP
 
 ## Summary
 
-The NDI In TOP will obtain its image data over IP from other DI® (Network Data Interface) enabled applications. The [NDI®](https://docs.derivative.ca/NDI "NDI") protocol is created by [Newtek](http://www.newtek.com/ndi/applications/).
+The NDI In TOP will obtain its image data over IP from other DI® (Network Data Interface) enabled applications. The [NDI®](../Interoperability/NDI.md "NDI") protocol is created by [Newtek](http://www.newtek.com/ndi/applications/).
 
-Attach an [Audio NDI CHOP](https://docs.derivative.ca/Audio_NDI_CHOP "Audio NDI CHOP") to the NDI In DAT to extract audio from the NDI stream.
+Attach an [Audio NDI CHOP](../CHOPs/Audio_NDI_CHOP.md "Audio NDI CHOP") to the NDI In DAT to extract audio from the NDI stream.
 
-Metadata can also be sent to the NDI In TOP from an [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") or another system that has attached metadata to the NDI stream. Attach an [Info DAT](https://docs.derivative.ca/Info_DAT "Info DAT") to the NDI In DAT to get the metadata as text. It is in an XML format. To better see and access the XML, attach an [XML DAT](https://docs.derivative.ca/XML_DAT "XML DAT") to the Info DAT.
+Metadata can also be sent to the NDI In TOP from an [NDI Out TOP](NDI_Out_TOP.md "NDI Out TOP") or another system that has attached metadata to the NDI stream. Attach an [Info DAT](../DATs/Info_DAT.md "Info DAT") to the NDI In DAT to get the metadata as text. It is in an XML format. To better see and access the XML, attach an [XML DAT](../Interoperability/XML_DAT.md "XML DAT") to the Info DAT.
 
-But you can also send a table-format DAT in the [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and it will be received in the Info DAT as a table.
+But you can also send a table-format DAT in the [NDI Out TOP](NDI_Out_TOP.md "NDI Out TOP") and it will be received in the Info DAT as a table.
 
 To send metadata in an NDI stream, see the NDI Out TOP's Metadata DAT parameter.
 
-To see details of the available NDI streams, use the [NDI DAT](https://docs.derivative.ca/NDI_DAT "NDI DAT").
+To see details of the available NDI streams, use the [NDI DAT](../DATs/NDI_DAT.md "NDI DAT").
 
-See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and [NDI DAT](https://docs.derivative.ca/NDI_DAT "NDI DAT").
+See also [NDI](../Interoperability/NDI.md "NDI"), [NDI Out TOP](NDI_Out_TOP.md "NDI Out TOP") and [NDI DAT](../DATs/NDI_DAT.md "NDI DAT").
 
 **NOTE for Windows OS - If experiencing connection issues, check Windows firewall settings.**
 
-[ndiinTOP_Class](https://docs.derivative.ca/NdiinTOP_Class "NdiinTOP Class")
+[ndiinTOP_Class](NDI_In_TOP_Class.md "NdiinTOP Class")
 
 ## Parameters - NDI In Page
-
 - Active `active` - Receives image data while Active is on.
 - Source Name `name` - Select which source stream to use.
 - Extra Search IPs `extraips` - By default NDI searches using mDNS, which is usually limited to locate networks. To find sources available on machines not reachable by mDNS, this parameter can be filled with a space-separated list of one or more IP address.
 - Bandwidth `bandwidth` - ⊞ - Choose High or Low bandwidth option.
   * High `high` -
   * Low `low` -
-
-- Hardware Decode `hwdecode` - Enable hardware decode for NDI|HX encoded video streams. Hardware decoding is not supported for native NDI codec, only NDI|HX (which is H264). The [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and other software based NDI solutions can only send native NDI, not NDI|HX. Currently only some hardware capture devices support streaming NDI|HX.
+- Hardware Decode `hwdecode` - Enable hardware decode for NDI|HX encoded video streams. Hardware decoding is not supported for native NDI codec, only NDI|HX (which is H264). The [NDI Out TOP](NDI_Out_TOP.md "NDI Out TOP") and other software based NDI solutions can only send native NDI, not NDI|HX. Currently only some hardware capture devices support streaming NDI|HX.
 - Input Pixel Format `inputpixelformat` - ⊞ - Choose Native or 8-bit pixel format.
   * Native `native` -
   * 8-Bit `fixed8` -
-
 - Input Color Space `inputcolorspace` - ⊞ - Controls what color space the input data will be treated as. It will be converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") when uploaded to the GPU.
   * Automatic `automatic` - Automatically try to determine the input's color space based on color space metadata available from the input, if any. If no color space can be determined, it is assumed to be sRGB.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
@@ -57,17 +54,14 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACESproxy `acesproxy` - [ACESproxy](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) color space, which has a log transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Input Reference White `inputreferencewhite` - ⊞ - When converting the input color values to the Working Color Space, this controls how they should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of the colors will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space detected/selected.
   * Standard (SDR) `sdr` - Will treat the Input Color Space as SDR for it's reference white value.
   * High (HDR) `hdr` - Will treat the Input Color Space as HDR for it's reference white value.
-
 - Group Names Table `grouptable` - Sources can tag themselves as part of one or more 'Groups'. Fill in rows of this table with the names of one or more groups this node is interested in to limited the 'Sources' listed as available.
 - Audio Buffer Length `audiobuflen` - The length of the audio buffer in seconds. Audio output is delayed by this amount. For example, if the Buffer Length is 0.1 then the sound will occur 100ms = 0.1 seconds later than received (to keep the buffer full).
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -79,29 +73,25 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs
   * Fit Resolution `fit` - Grow or shrink the input resolution to fit this resolution, while keeping the aspect ratio the same.
   * Limit Resolution `limit` - Limit the input resolution to be not larger than this resolution, while keeping the aspect ratio the same.
   * Custom Resolution `custom` - Directly control the width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -110,13 +100,11 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail. When the input is 32-bit float format, only nearest filtering will be used (regardless of what is selected).
-
-- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
+- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](GLSL_TOP.md "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
   * Use Input `useinput` - Uses the input's pixel format.
@@ -157,21 +145,16 @@ See also [NDI](https://docs.derivative.ca/NDI "NDI"), [NDI Out TOP](https://docs
 
 ## Info CHOP Channels
 
-Extra Information for the NDI In TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the NDI In TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 Specific NDI In TOP Info Channels
   * connected -
-
   * receive_fps -
-
   * num_source -
-
   * queue_size -
-
   * received_frames -
-
   * missed_frames -
 
 ###
@@ -179,15 +162,10 @@ Specific NDI In TOP Info Channels
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -195,19 +173,11 @@ Specific NDI In TOP Info Channels
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

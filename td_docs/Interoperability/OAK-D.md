@@ -10,7 +10,7 @@ OAK-D cameras from [Luxonis](https://luxonis.com/) offer a range of high-resolut
 
 OAK cameras do computer vision tasks on-device and send the processed images or data to TouchDesigner on both Windows and macOS. For example, an OAK camera can compute human skeleton landmarks for a live RGB image and send both the landmarks and image to TouchDesigner. OAK is short for the OpenCV AI Kit, which originated through online crowd-funding. [Luxonis](https://luxonis.com/) has expanded the line of OAK hardware and also released several open-source libraries such as [DepthAI](https://docs.luxonis.com/projects/api/en/latest/) that run on the OAK.
 
-Three operator types work together to implement the OAK functionality: The [OAK Device CHOP](https://docs.derivative.ca/OAK_Device_CHOP "OAK Device CHOP") is the main interface to the camera devices. The [OAK Select CHOP](https://docs.derivative.ca/OAK_Select_CHOP "OAK Select CHOP") extracts channel and dictionary data from the camera results of a OAK Device CHOP. The [OAK Select TOP](https://docs.derivative.ca/OAK_Select_TOP "OAK Select TOP") extracts processed images from the camera. Each DepthAI model running on each camera will have one OAK Device CHOP plus one or more of the OAK Select OPs.
+Three operator types work together to implement the OAK functionality: The [OAK Device CHOP](../CHOPs/OAK_Device_CHOP.md "OAK Device CHOP") is the main interface to the camera devices. The [OAK Select CHOP](../CHOPs/OAK_Select_CHOP.md "OAK Select CHOP") extracts channel and dictionary data from the camera results of a OAK Device CHOP. The [OAK Select TOP](../TOPs/OAK_Select_TOP.md "OAK Select TOP") extracts processed images from the camera. Each DepthAI model running on each camera will have one OAK Device CHOP plus one or more of the OAK Select OPs.
 
 The aim of integrating TouchDesigner with OAK cameras is to facilitate novel interactions with the rest of the TouchDesigner environment while providing low-latency, high throughput performance with the OAK hardware, and offloading some compute to an external device.
 
@@ -22,7 +22,7 @@ Note: A Time-of-Flight version of the camera with depth-model support is in deve
 
 ###  Installation
 
-You must select OAK-D when installing TouchDesigner. No other installation steps are necessary. TouchDesigner's installation includes the `depthai` Python module as a [third-party package](https://docs.derivative.ca/Python_Classes_and_Modules#3rd_Party_Packages "Python Classes and Modules"). For simplicity, we ask that you not install `depthai` to any custom Python environments, even if they're not being used with TouchDesigner.
+You must select OAK-D when installing TouchDesigner. No other installation steps are necessary. TouchDesigner's installation includes the `depthai` Python module as a [third-party package](../Python/Python_Classes_and_Modules.md#3rd_Party_Packages "Python Classes and Modules"). For simplicity, we ask that you not install `depthai` to any custom Python environments, even if they're not being used with TouchDesigner.
 
 Models will download once the first time they are used.
 
@@ -57,14 +57,14 @@ A getting started and installation guide for the poe version is located on the L
 
 ###  See Also
 
-  * [OAK Device CHOP](https://docs.derivative.ca/OAK_Device_CHOP "OAK Device CHOP")
-  * [OAK Select CHOP](https://docs.derivative.ca/OAK_Select_CHOP "OAK Select CHOP")
-  * [OAK Select TOP](https://docs.derivative.ca/OAK_Select_TOP "OAK Select TOP")
+  * [OAK Device CHOP](../CHOPs/OAK_Device_CHOP.md "OAK Device CHOP")
+  * [OAK Select CHOP](../CHOPs/OAK_Select_CHOP.md "OAK Select CHOP")
+  * [OAK Select TOP](../TOPs/OAK_Select_TOP.md "OAK Select TOP")
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.

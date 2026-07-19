@@ -12,17 +12,16 @@ title: Kinect_Azure_Select_TOP
 
 **OS:** This operator is only supported under the **Microsoft Windows 10 April 2018 or newer** operating system.
 
-The Kinect Azure Select TOP can be used to capture additional images from a Microsoft Kinect Azure or Kinect compatible Orbbec camera that is controlled by a [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP").
+The Kinect Azure Select TOP can be used to capture additional images from a Microsoft Kinect Azure or Kinect compatible Orbbec camera that is controlled by a [Kinect Azure TOP](Kinect_Azure_TOP.md "Kinect Azure TOP").
 
-This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP").
+This TOP must be used along with a [Kinect Azure TOP](Kinect_Azure_TOP.md "Kinect Azure TOP").
 
-[kinectazureselectTOP_Class](https://docs.derivative.ca/KinectazureselectTOP_Class "KinectazureselectTOP Class")
+[kinectazureselectTOP_Class](Kinect_Azure_Select_TOP_Class.md "KinectazureselectTOP Class")
 
 ## Parameters - Kinect Azure Page
-
-- Active `active` - Controls whether this TOP is retrieving image data from the device. The primary [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP") must also be active to receive data.
-- Kinect Azure TOP `top` - The name of the primary [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP") that is configuring the camera. The primary TOP controls which camera the select TOP receives data from, as well as all device configuration such as resolution, framerate, etc.
-- Image `image` - ⊞ - A list of available image types to capture from the device and display in this TOP. All image types have a second version that is mapped (aligned) to the image space of the other camera so that color and depth image data can be matched. The resolution of the image is controlled by the Color Resolution or Depth Mode parameters of the primary [Kinect Azure TOP](https://docs.derivative.ca/Kinect_Azure_TOP "Kinect Azure TOP").
+- Active `active` - Controls whether this TOP is retrieving image data from the device. The primary [Kinect Azure TOP](Kinect_Azure_TOP.md "Kinect Azure TOP") must also be active to receive data.
+- Kinect Azure TOP `top` - The name of the primary [Kinect Azure TOP](Kinect_Azure_TOP.md "Kinect Azure TOP") that is configuring the camera. The primary TOP controls which camera the select TOP receives data from, as well as all device configuration such as resolution, framerate, etc.
+- Image `image` - ⊞ - A list of available image types to capture from the device and display in this TOP. All image types have a second version that is mapped (aligned) to the image space of the other camera so that color and depth image data can be matched. The resolution of the image is controlled by the Color Resolution or Depth Mode parameters of the primary [Kinect Azure TOP](Kinect_Azure_TOP.md "Kinect Azure TOP").
   * Color `color` - An 8-bit RGBA image from the color camera.
   * Color aligned to Depth `colorremap` - The color camera image remapped to align with the current depth camera image. The resolution is determined by the Depth Mode.
   * Depth `depth` - A single channel 32-bit floating point depth image where pixel values measure the distance in meters from the camera. Resolution and field of view are determined by the Depth Mode parameter.
@@ -33,13 +32,11 @@ This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca
   * Player Index aligned to Color `playerindexremap` - The player index map remapped to align with the current color image. The resolution is determined by the Color Resolution parameter.
   * Point Cloud `pointcloud` - A 32bit floating point RGBA image where the depth information has been converted into XYZ positions that are stored in the RGB channels. Position data is represented in meters and the resolution and field of view are determined by the Depth Mode. The Point Cloud image can be viewed in 3D by activating the TOP and selecting 'View as Points' in the right-click menu, or by using the TOP as an instance source in the Geometry COMP.
   * Point Cloud aligned to Color `pointcloudremap` - The point cloud image remapped to align with the current color image. Note: Remapping the image can create gaps and artifacts when view the points in 3D.
-
 - Align Image to Other Camera `remapimage` - When enabled, the current image will be remapped to align with images from the other camera. For example, use this feature to create a color camera image that maps to the pixels of the depth camera. The current depth mode and color resolution will be used to do the remapping. Note: Remapping the point cloud image can create artifacts in the distribution of points due to gaps in the remapping algorithm.
 - Sync Image to Body Tracking `bodyimage` - When enabled, the image produced will be delayed so that it corresponds to the most recent data from the body tracking system.
 - Mirror Image `mirrorimage` - Flip the image in the horizontal axis.
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -51,29 +48,25 @@ This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca
   * Fit Resolution `fit` - Grow or shrink the input resolution to fit this resolution, while keeping the aspect ratio the same.
   * Limit Resolution `limit` - Limit the input resolution to be not larger than this resolution, while keeping the aspect ratio the same.
   * Custom Resolution `custom` - Directly control the width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -82,13 +75,11 @@ This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail. When the input is 32-bit float format, only nearest filtering will be used (regardless of what is selected).
-
-- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
+- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](GLSL_TOP.md "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
   * Use Input `useinput` - Uses the input's pixel format.
@@ -120,22 +111,17 @@ This TOP must be used along with a [Kinect Azure TOP](https://docs.derivative.ca
 
 ## Info CHOP Channels
 
-Extra Information for the Kinect Azure Select TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Kinect Azure Select TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -143,19 +129,11 @@ Extra Information for the Kinect Azure Select TOP can be accessed via an [Info C
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

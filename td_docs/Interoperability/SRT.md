@@ -12,21 +12,21 @@ There are no fees to incorporate the technology into any device or service so it
 
 The videostreamoutTOP is used to transmit the video while the videostreaminTOP is used to receive the video.
 
-SRT is 2020.40000 series of builds in the [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP") and [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP") nodes.
+SRT is 2020.40000 series of builds in the [Video Stream In TOP](../TOPs/Video_Stream_In_TOP.md "Video Stream In TOP") and [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP") nodes.
 
-See also [Video Streaming User Guide](https://docs.derivative.ca/Video_Streaming_User_Guide "Video Streaming User Guide"), [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP") and [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP").
+See also [Video Streaming User Guide](../Learn/Video_Streaming_User_Guide.md "Video Streaming User Guide"), [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP") and [Video Stream In TOP](../TOPs/Video_Stream_In_TOP.md "Video Stream In TOP").
 
-For other video-over-IP technology see [RTMP](https://docs.derivative.ca/RTMP "RTMP"), [NDI In TOP](https://docs.derivative.ca/NDI_In_TOP "NDI In TOP"), [NDI Out TOP](https://docs.derivative.ca/NDI_Out_TOP "NDI Out TOP") and [NDI DAT](https://docs.derivative.ca/NDI_DAT "NDI DAT").
+For other video-over-IP technology see [RTMP](https://docs.derivative.ca/RTMP "RTMP"), [NDI In TOP](../TOPs/NDI_In_TOP.md "NDI In TOP"), [NDI Out TOP](../TOPs/NDI_Out_TOP.md "NDI Out TOP") and [NDI DAT](../DATs/NDI_DAT.md "NDI DAT").
 
 ## Transmitting SRT - Listener and Caller
 
 SRT uses a listener and caller model which determines the mode of transmition for the transmition start and end points. The video source and destination can be either a listener or caller. The listener end can be thought of as an available IP location with an open port. The caller side is a client that will require the address of the listener and it will try to connect when initiated.
 
-For example if the video source is a [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP"), and the desired mode for the video source to be a listener, the Desination URL will be something like:
+For example if the video source is a [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP"), and the desired mode for the video source to be a listener, the Desination URL will be something like:
 
 `srt://192.168.1.3:5000?mode=listener`
 
-To connect a [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP") to the listener [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP") the URL looks like this:
+To connect a [Video Stream In TOP](../TOPs/Video_Stream_In_TOP.md "Video Stream In TOP") to the listener [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP") the URL looks like this:
 
 `srt://192.168.1.3:5000?mode=caller`
 
@@ -38,11 +38,11 @@ Once you are able to get SRT streaming on a local network using the previous sec
 
 Use your Internet router configuration tools to locate settings for NAT/Gaming or Port Forwarding. You will need to setup a range of ports that forwards calls from the internet to the "host" or "device" on the protected network. The device or host will generally be assigned using its local IP address or its MAC address.
 
-This host, on the local network can be setup using [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP") using listener mode for SRT. In this scenerio you can use a broadcast address to make it easier to find for the router:
+This host, on the local network can be setup using [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP") using listener mode for SRT. In this scenerio you can use a broadcast address to make it easier to find for the router:
 
 `srt://0.0.0.0:5000?mode=listener`
 
-Next you can test this connection in the same instance of TouchDesigner by using a [Video Stream In TOP](https://docs.derivative.ca/Video_Stream_In_TOP "Video Stream In TOP") configured with an SRT caller setup. However you will first need to determine the IP address of router. This can by done by typing "Whats my IP address" into google search. The serach will return an IP4 address in the format [XXX.XXX.XXX.XXX]. Use this IP address in the URL like this:
+Next you can test this connection in the same instance of TouchDesigner by using a [Video Stream In TOP](../TOPs/Video_Stream_In_TOP.md "Video Stream In TOP") configured with an SRT caller setup. However you will first need to determine the IP address of router. This can by done by typing "Whats my IP address" into google search. The serach will return an IP4 address in the format [XXX.XXX.XXX.XXX]. Use this IP address in the URL like this:
 
 `srt://[XXX.XXX.XXX.XXX]:5000?mode=caller`
 
@@ -54,7 +54,7 @@ The following apps have been succesfully tested with TouchDesigner's SRT impleme
 
 <https://apps.apple.com/us/app/haivision-play-pro/id1482925169>
 
-This is a very useful app for testing your streams from TouchDesigner over the Internet. To stream to the app from a [Video Stream Out TOP](https://docs.derivative.ca/Video_Stream_Out_TOP "Video Stream Out TOP") use the follow URL:
+This is a very useful app for testing your streams from TouchDesigner over the Internet. To stream to the app from a [Video Stream Out TOP](../TOPs/Video_Stream_Out_TOP.md "Video Stream Out TOP") use the follow URL:
 
 `srt://[XXX.XXX.XXX.XXX]:5000?mode=caller`
 

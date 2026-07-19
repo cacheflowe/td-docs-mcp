@@ -8,7 +8,7 @@ title: Palette:firmata
 
 ## Summary
 
-Firmata is an [Arduino](https://docs.derivative.ca/Arduino "Arduino") sketch allowing for configuration and control of the Arduino using messages formatted as MIDI.
+Firmata is an [Arduino](Arduino.md "Arduino") sketch allowing for configuration and control of the Arduino using messages formatted as MIDI.
 
 More information on the firmata protocol can be found here: <https://github.com/firmata/protocol>
 
@@ -25,7 +25,6 @@ Getting Started
   * The CHOP output form the component contains all pin values.
 
 ## Parameters - Firmata Page
-
 - Firmata Type `Firmatatype` - When connecting to an Arduino, will display the name of the sketch uploaded to the Arduino.
 - Firmata Version `Firmataversion` - When connecting to an Arduino, will display the version of Firmata uploaded to the Arduino.
 - Active `Active` - Toggle on to start communicating with the Arduino.
@@ -55,7 +54,6 @@ This will contain as many menu parameters as available pins on the Arduino with 
   * ENCODER
   * SERIAL
   * INPUT_PULLUP
-
 - Pin 2 `Modepin2` - Select the operating mode for this pin.
 
 ## Parameters - Pin Values Page
@@ -65,14 +63,13 @@ This page will contain a number of Pin Values either to set the values or displa
 - Pin 2 `Valpin2` - Get or set the current value of the pin.
 
 ## Parameters - Servo Page
-
 - Min Pulse `Minpulse` - The Servo's minimum pulse length for the minimum angle.
 - Max Pulse `Maxpulse` - The Servo's maximum pulse length for the maximum angle.
 
 ## Parameters - About Page
-
 - Help `Help` - Opens this page.
 - Version `Version` - The current version of the component.
+
 .tox Save Build `Toxsavebuild` - THe TouchDesigner build this component was saved with.
 
 ## Operator Outputs

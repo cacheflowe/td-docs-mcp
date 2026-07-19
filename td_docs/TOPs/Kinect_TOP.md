@@ -22,17 +22,15 @@ To use the original Kinect 1 device you will need to install the [Kinect Runtime
 
 Kinect 2 supports color point clouds - getting the camera space positions of the color pixels, outputted as a 32-bit float RGB texture with XYZ in RGB. For use in making point clouds renders.
 
-See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [Kinect](https://docs.derivative.ca/Kinect "Kinect") and [Kinect1](https://docs.derivative.ca/Kinect1 "Kinect1").
+See also [Kinect CHOP](../CHOPs/Kinect_CHOP.md "Kinect CHOP"), [Kinect](https://docs.derivative.ca/Kinect "Kinect") and [Kinect1](https://docs.derivative.ca/Kinect1 "Kinect1").
 
-[kinectTOP_Class](https://docs.derivative.ca/KinectTOP_Class "KinectTOP Class")
+[kinectTOP_Class](Kinect_TOP_Class.md "KinectTOP Class")
 
 ## Parameters - Kinect Page
-
 - Active `active` - When 'On' data is captured from the Kinect sensor.
 - Hardware Version `hwversion` - ⊞ - Choose between Kinect v1 or Kinect v2 sensors.
   * Version 1 `version1` -
   * Version 2 `version2` -
-
 - Sensor `sensor` - Selects which Kinect sensor to use. Only available when using Kinect v1.
 - Image `image` - ⊞ - Selects between the Color, Depth, Infrared, Player Index, or Color Point Cloud modes.
   * Color `color` - Uses the raw image from the RGB camera.
@@ -41,16 +39,13 @@ See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [K
   * Infrared `infrared` - Uses the raw image from the infrared camera.
   * Player Index `playerindex` - The pixel value will be in increments of 0.1 for each player number. I.e a pixel with value ~0.1 will be player 1, ~0.2 will be player 2, etc. The reason is it approximate 0.1 (~) is because the buffer is 8-bit which can't exactly express 0.1, 0.3 etc. So 0.1 * 255 = 25.5 which could round off to a pixel value of 25 or 26 (out of 255).
   * Color Point Cloud `colorpointcloud` - For Kinect 2 devices the texture will be a 32-bit floating point texture where RGB pixel values are XYZ pixel values relative to the color camera, in meters.
-
 - Camera Resolution `camerares` - ⊞ - Only used for Kinect 1 devices. Selects the resolution of the camera capture.
   * 80 x 60 `80x60` -
   * 320 x 240 `320x240` -
   * 640 x 480 `640x480` -
-
 - Skeleton `skeleton` - ⊞ - Only used for Kinect 1 devices. Specify whether to track full skeleton or seated skeleton.
   * Full `full` -
   * Seated `seated` -
-
 - Near Depth Mode `neardepthmode` - Only used for Kinect 1 devices. Enables near mode for the depth camera, which allows the depth camera to see objects as close as 40cm to the camera (instead of the default 80cm).
 - Mirror Image `mirrorimage` - Flips the image in the y-axis.
 - Camera Remap `remap` - Only used for Kinect 2 devices. Enabling this will remap images that are natively from the depth camera (Depth, Infrared, Player Index) to be in the space and resolution of the Color camera instead.
@@ -62,7 +57,6 @@ See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [K
   * (-INF, -INF, -INF) `neginfinite` -
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -74,29 +68,25 @@ See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [K
   * Fit Resolution `fit` - Grow or shrink the input resolution to fit this resolution, while keeping the aspect ratio the same.
   * Limit Resolution `limit` - Limit the input resolution to be not larger than this resolution, while keeping the aspect ratio the same.
   * Custom Resolution `custom` - Directly control the width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -105,13 +95,11 @@ See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [K
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail. When the input is 32-bit float format, only nearest filtering will be used (regardless of what is selected).
-
-- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](https://docs.derivative.ca/GLSL_TOP "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
+- Passes `npasses` - Duplicates the operation of the TOP the specified number of times. For every pass after the first it takes the result of the previous pass and replaces the node's first input with the result of the previous pass. One exception to this is the [GLSL TOP](GLSL_TOP.md "GLSL TOP") when using compute shaders, where the input will continue to be the connected TOP's image.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
   * Use Input `useinput` - Uses the input's pixel format.
@@ -143,22 +131,17 @@ See also [Kinect CHOP](https://docs.derivative.ca/Kinect_CHOP "Kinect CHOP"), [K
 
 ## Info CHOP Channels
 
-Extra Information for the Kinect TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Kinect TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -166,19 +149,11 @@ Extra Information for the Kinect TOP can be accessed via an [Info CHOP](https://
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

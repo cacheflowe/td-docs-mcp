@@ -14,4 +14,4 @@ title: Mouse_Click
 
 TouchDesigner works with the three-button mouse.
 
-See also [RMB Menu](https://docs.derivative.ca/RMB_Menu "RMB Menu").
+See also [RMB Menu](RMB_Menu.md "RMB Menu").

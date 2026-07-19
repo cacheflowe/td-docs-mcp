@@ -6,8 +6,14 @@ title: Timecode_Class
 
 # Timecode Class
 
-The Timecode class holds a timecode value. See also [Timecode](https://docs.derivative.ca/Timecode "Timecode") and [Timecode CHOP](https://docs.derivative.ca/Timecode_CHOP "Timecode CHOP").
-  * `str` (Optional) - Initializes the Timecode object from a Timecode formatted String: ie. `hh:mm:ss:ff` or `hh:mm:ss.ff`
+The Timecode class holds a timecode value. See also [Timecode](../Interoperability/Timecode.md "Timecode") and [Timecode CHOP](Timecode_CHOP.md "Timecode CHOP").
+
+## Instantiators
+
+`TDU.Timecode(str, hour=0, minute=0, second=0, frame=0, negative=False, smpte=True, length=0, cycle=False, autoDropFrame=True)`→ `TDU.Timecode`:
+
+Create a new Timecode object
+  * `str` - (Optional) - Initializes the Timecode object from a Timecode formatted String: ie. `hh:mm:ss:ff` or `hh:mm:ss.ff`
   * `fps` - (Keyword, Optional) Initialize the Timecode object with the specified fps. If not specified it will be initialized with the rate of the local time.
   * `hour` - (Keyword, Optional) Specify the hour. Should be left blank if a String arg is provided. 0 by default.
   * `minute` - (Keyword, Optional) Specify the minute. Should be left blank if a String arg is provided. 0 by default.
@@ -126,6 +132,6 @@ Set Timecode to a custom length. Useful in conjunction with countdown.
 n.setLength(600) # sets the length to 10 seconds for a Timecode with 60 FPS.
 ```
 
-The [Frames](https://docs.derivative.ca/Frame "Frame")-per-Second that TouchDesigner's [Timeline](https://docs.derivative.ca/Timeline "Timeline") runs at. Set with `project.cookRate`.
+The [Frames](../Glossary/Frame.md "Frame")-per-Second that TouchDesigner's [Timeline](../Glossary/Timeline.md "Timeline") runs at. Set with `project.cookRate`.
 
-The sub-[Family](https://docs.derivative.ca/Operator_Family "Operator Family") of [Component](https://docs.derivative.ca/Component "Component") types that are used to define and render 3D scenes. A [Geometry Component](https://docs.derivative.ca/Geometry_COMP "Geometry COMP") is an Object that contains the 3D shapes to render. A [Camera COMP](https://docs.derivative.ca/Camera_COMP "Camera COMP") and [Light COMP](https://docs.derivative.ca/Light_COMP "Light COMP") are other Object types. Separately, "Objects" also refers to Python objects.
+The sub-[Family](../Glossary/Operator_Family.md "Operator Family") of [Component](../Glossary/Component.md "Component") types that are used to define and render 3D scenes. A [Geometry Component](../Glossary/Geometry_COMP.md "Geometry COMP") is an Object that contains the 3D shapes to render. A [Camera COMP](../Glossary/Camera_COMP.md "Camera COMP") and [Light COMP](../Glossary/Light_COMP.md "Light COMP") are other Object types. Separately, "Objects" also refers to Python objects.

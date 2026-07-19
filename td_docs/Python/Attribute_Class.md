@@ -6,13 +6,13 @@ title: Attribute_Class
 
 # Attribute Class
 
-An [Attribute](https://docs.derivative.ca/Attribute "Attribute") describes a general geometric Attribute, associated with a [Prim Class](https://docs.derivative.ca/Prim_Class "Prim Class"), [Point Class](https://docs.derivative.ca/Point_Class "Point Class"), or [Vertex Class](https://docs.derivative.ca/Vertex_Class "Vertex Class"). Specific values for each Prim, Point or Vertex are described with the [AttributeData Class](https://docs.derivative.ca/AttributeData_Class "AttributeData Class"). Lists of attributes for the [SOP](https://docs.derivative.ca/SOP_Class "SOP Class") are described with the [Attributes Class](https://docs.derivative.ca/Attributes_Class "Attributes Class").
+An [Attribute](../Glossary/Attribute.md "Attribute") describes a general geometric Attribute, associated with a [Prim Class](Prim_Class.md "Prim Class"), [Point Class](../SOPs/Point_Class.md "Point Class"), or [Vertex Class](Vertex_Class.md "Vertex Class"). Specific values for each Prim, Point or Vertex are described with the [AttributeData Class](AttributeData_Class.md "AttributeData Class"). Lists of attributes for the [SOP](../SOPs/SOP_Class.md "SOP Class") and [POP](POP_Class.md "POP Class") are described with the [Attributes Class](Attributes_Class.md "Attributes Class").
 
 ## Members
 
 `owner` → `OP` **(Read Only)** :
 
-The [OP](https://docs.derivative.ca/OP_Class "OP Class") to which this object belongs.
+The [OP](OP_Class.md "OP Class") to which this object belongs.
 
 `name` → `str` **(Read Only)** :
 
@@ -22,11 +22,11 @@ The name of this attribute.
 
 The number of values associated with this attribute. For example, a normal attribute has a size of 3.
 
-`type` → `float | int | str | tuple | TDU.Position[](https://docs.derivative.ca/Position_Class "Position Class") | TDU.Vector[](https://docs.derivative.ca/Vector_Class "Vector Class")` **(Read Only)** :
-The type associated with this attribute: float, integer, string, tuple, [Position](https://docs.derivative.ca/Position_Class "Position Class"), or [Vector](https://docs.derivative.ca/Vector_Class "Vector Class").
+`type` → `float | int | str | tuple | TDU.Position[](Position_Class.md "Position Class") | TDU.Vector[](Vector_Class.md "Vector Class")` **(Read Only)** :
+The type associated with this attribute: float, integer, string, tuple, [Position](Position_Class.md "Position Class"), or [Vector](Vector_Class.md "Vector Class").
 
-`default` → `float | int | str | tuple | TDU.Position[](https://docs.derivative.ca/Position_Class "Position Class") | TDU.Vector[](https://docs.derivative.ca/Vector_Class "Vector Class")` **(Read Only)** :
-The default values associated with this attribute. Dependent on the type of attribute, it may return a float, integer, string, tuple, [Position](https://docs.derivative.ca/Position_Class "Position Class"), or [Vector](https://docs.derivative.ca/Vector_Class "Vector Class").
+`default` → `float | int | str | tuple | TDU.Position[](Position_Class.md "Position Class") | TDU.Vector[](Vector_Class.md "Vector Class")` **(Read Only)** :
+The default values associated with this attribute. Dependent on the type of attribute, it may return a float, integer, string, tuple, [Position](Position_Class.md "Position Class"), or [Vector](Vector_Class.md "Vector Class").
 
 `isArray` → `bool` **(Read Only)** :
 
@@ -56,17 +56,17 @@ n = scriptOP.pointAttribs['N'].destroy()
 
 `vals(delayed=False)`→ `list`:
 
-Returns the attribute values as a list.
+Returns the attribute values as a list for POPs.
   * delayed - (Keyword, Optional) If set to True, the download results will be delayed until the next call to vals(), avoiding stalling the GPU waiting for the result immediately.
 
 ###  Accessing Attributes
 
-See [Attributes](https://docs.derivative.ca/Attributes_Class "Attributes Class") for examples on how to access individual attributes.
+See [Attributes](Attributes_Class.md "Attributes Class") for examples on how to access individual attributes.
 
-A sequence of vertices form a [Polygon](https://docs.derivative.ca/Polygon "Polygon") in a [SOP](https://docs.derivative.ca/SOP "SOP"). Each vertex is an integer index into the [Point List](https://docs.derivative.ca/Point_List "Point List"), and each [Point](https://docs.derivative.ca/Point "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+Attributes make up the numeric data blocks of [POPs](../POPs/POP.md "POP"). Each POPs has three blocks of data: a Point List which includes the `P` point Position attribute, a Primitive List and a Vertex List, and each are made of any number of attributes.
 
-Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](https://docs.derivative.ca/Node "Node").
+A sequence of vertices form a [Polygon](../Glossary/Polygon.md "Polygon") in a [SOP](../SOPs/SOP.md "SOP"). Each vertex is an integer index into the [Point List](../Glossary/Point_List.md "Point List"), and each [Point](../Glossary/Point.md "Point") holds an XYZ position and attributes like Normals and Texture Coordinates.
+
+Any of the procedural data operators. OPs do all the work in TouchDesigner. They "cook" and output data to other OPs, which ultimately result in new images, data and audio being generated. See [Node](../Glossary/Node.md "Node").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
-
-Attributes are data associated with [POP](https://docs.derivative.ca/POP "POP") geometry. [Points](https://docs.derivative.ca/Point "Point"), [Vertex (Vertices)](https://docs.derivative.ca/Vertex "Vertex") and [Primitives](https://docs.derivative.ca/Primitive "Primitive") (polygons, lines, etc) can have any number of attributes.

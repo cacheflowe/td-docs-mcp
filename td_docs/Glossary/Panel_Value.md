@@ -6,21 +6,18 @@ title: Panel_Value
 
 # Panel Value
 
-**Panel Values** hold the current states of [Panel Components](https://docs.derivative.ca/Panel_Component "Panel Component"). Panel Values change based on users interactions with control panels.
+**Panel Values** hold the current states of [Panel Components](Panel_Component.md "Panel Component"). Panel Values change based on users interactions with control panels.
 
 Panel values are accessed in 4 ways:
   * Panel values can be viewed by middle-clicking on a panel component to bring up its info box. Note that string values and values that are _instant_ (set to X and then reverted to 0 or empty) will not display on a Panel CHOP. These values are denoted as _string_ and _instant_ below.
-
-  * The [Panel CHOP](https://docs.derivative.ca/Panel_CHOP "Panel CHOP") is used to view and access all the panel values of the component.
-
-  * The [PanelValue Class](https://docs.derivative.ca/PanelValue_Class "PanelValue Class") in Python accesses python values and states, and in TScript, the `panel()` expression returns a panel value.
-
-  * The [Panel Execute DAT](https://docs.derivative.ca/Panel_Execute_DAT "Panel Execute DAT") will run a script when a panel values change.
+  * The [Panel CHOP](../CHOPs/Panel_CHOP.md "Panel CHOP") is used to view and access all the panel values of the component.
+  * The [PanelValue Class](../Python/PanelValue_Class.md "PanelValue Class") in Python accesses python values and states, and in TScript, the `panel()` expression returns a panel value.
+  * The [Panel Execute DAT](Panel_Execute_DAT.md "Panel Execute DAT") will run a script when a panel values change.
 
 Panel values are changed:
   * when users interact with the panels.
-  * when virtually clicking on panels using python `click()` calls. See [ButtonCOMP Class](https://docs.derivative.ca/ButtonCOMP_Class "ButtonCOMP Class"), [SliderCOMP Class](https://docs.derivative.ca/SliderCOMP_Class "SliderCOMP Class"), [ContainerCOMP Class](https://docs.derivative.ca/ContainerCOMP_Class "ContainerCOMP Class")
-  * when in [Tscript](https://docs.derivative.ca/Tscript "Tscript") the click command or the Tscript controlpanel command.
+  * when virtually clicking on panels using python `click()` calls. See [ButtonCOMP Class](../COMPs/Button_COMP_Class.md "ButtonCOMP Class"), [SliderCOMP Class](../COMPs/Slider_COMP_Class.md "SliderCOMP Class"), [ContainerCOMP Class](../COMPs/Container_COMP_Class.md "ContainerCOMP Class")
+  * when in [Tscript](Tscript.md "Tscript") the click command or the Tscript controlpanel command.
 
 ## General Panel Values
 
@@ -51,11 +48,11 @@ The list below gives a brief description of all the panel values. Some of the va
   * **`display`→`int`** - the current value of the panel's display parameter. **NOTE** : This value is readonly.
   * **`enable`→`int`** - 1 if the panel is enabled, 0 otherwise. **NOTE** : This value is readonly.
   * **`key`→`int`** - the most recent key that was pressed while cursor was over this gadget, followed in time by `0`. The value for the 'a' key is `97`, its ASCII value. When you press 'a', and you are triggering a Panel Execute on the panel value `key`, you will get 2 calls, one with .val of `97`, one with `0`.
-  * **`focusselect`→`int`** - 1 if you have last clicked in this panel, 0 otherwise. It keeps track of focus hierarchy, which is set by mouse clicks (any of the left/middle/right mouse buttons). If a panel is clicked on, its and all the panels in its parent hierarchy will have their `focusselect` value set to 1. If you click on a different panel, the `focusselect` of the common ancestors of the two panels will remain unchanged, the first panel and ancestors not shared will have its value set to 0, and the new panel and unset ancestors will have its value set to 1. **NOTE** : This value is readonly, use the [PanelCOMP](https://docs.derivative.ca/PanelCOMP_Class "PanelCOMP Class") method `setFocus` to change the panel focus.
+  * **`focusselect`→`int`** - 1 if you have last clicked in this panel, 0 otherwise. It keeps track of focus hierarchy, which is set by mouse clicks (any of the left/middle/right mouse buttons). If a panel is clicked on, its and all the panels in its parent hierarchy will have their `focusselect` value set to 1. If you click on a different panel, the `focusselect` of the common ancestors of the two panels will remain unchanged, the first panel and ancestors not shared will have its value set to 0, and the new panel and unset ancestors will have its value set to 1. **NOTE** : This value is readonly, use the [PanelCOMP](../Python/PanelCOMP_Class.md "PanelCOMP Class") method `setFocus` to change the panel focus.
   * **`click`→`int`** - counts the number of consecutive clicks separated by .6 seconds or less.
   * **`winopen`→`int`** - 1 if panel is open as a floating window, 0 otherwise.
   * **`wheel`→`int`** - (instant) sends a pulse of a positive or negative number and then back to 0 when the mouse wheel is used.
-  * **`screenw`,`screenh`** → `int` - gets updated with the most recent window size of the panel. [Node Viewers](https://docs.derivative.ca/Node_Viewer "Node Viewer") do not affect this value. Use these values in expressions in TOPs to get them to render at a specific resolutions. Use with caution, as multiple viewers will conflict with each other.
+  * **`screenw`,`screenh`** → `int` - gets updated with the most recent window size of the panel. [Node Viewers](Node_Viewer.md "Node Viewer") do not affect this value. Use these values in expressions in TOPs to get them to render at a specific resolutions. Use with caution, as multiple viewers will conflict with each other.
   * **`screenwm`,`screenhm` → `int`** - Screen Width Margin and Screen Height Margin panel values get the screen coordinates of a panel after margins are taken into account.
   * **`drag`→`int`** - 1 if the panel is currently being dragged.
   * **`drop`→`int`** - 1 when the panel is dropped.
@@ -86,7 +83,7 @@ The list below gives a brief description of all the panel values. Some of the va
 
 ## Field Only Panel Values
 
-  * **`key`→`int`** - (instant) this value is set with the ASCII code of the key when it is hit on the keyboard. it is immediately followed by the value of 0. To monitor keys with no ASCII value please use the [Keyboard In DAT](https://docs.derivative.ca/Keyboard_In_DAT "Keyboard In DAT").
+  * **`key`→`int`** - (instant) this value is set with the ASCII code of the key when it is hit on the keyboard. it is immediately followed by the value of 0. To monitor keys with no ASCII value please use the [Keyboard In DAT](../DATs/Keyboard_In_DAT.md "Keyboard In DAT").
   * **`invalidkey`→`int`** - (instant) value is pulsed whenever an invalid key is pressed. An example is pressing an _alphanumeric_ key 'a' on a field set to _numeric_ , the `invalidkey` panel value would pulse to 97 then 0 in this case.
   * **`focus`→`int`** - `focus` is set when you click on a field. when `focus` is 1, you can type if the field is editable.
   * **`field`→`str`** - (string) this is the current saved value of the field.
@@ -105,6 +102,6 @@ Cell IDs are numeric values, beginning at 0 for the first defined cell.
   * **`celldragid`→`int`** - Cell ID being dragged out.
   * **`celldropid`→`int`** - Cell ID that something dropped onto.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](Operator_Family.md "Operator Family") which operate on [Channels](Channel.md "Channel") (a sequence of numbers ([Samples](Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
 
-TouchDesigner's original built-in Command scripting language prior to [Python](https://docs.derivative.ca/Python "Python").
+TouchDesigner's original built-in Command scripting language prior to [Python](../General/Python.md "Python").

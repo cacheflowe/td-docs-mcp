@@ -6,7 +6,7 @@ title: OP_Snippets
 
 # OP Snippets
 
-OP Snippets is a set of 1000+ live examples of TouchDesigner [Operators](https://docs.derivative.ca/Operator "Operator"). Snippets can be copied/pasted into your projects.
+OP Snippets is a set of 1000+ live examples of TouchDesigner [Operators](../General/Operator.md "Operator"). Snippets can be copied/pasted into your projects.
 
 The OP Snippets examples can be launched three ways:
   * right-clicking on an existing OP in your network, and select Operator Snippets... if the menu entry is selectable.
@@ -32,4 +32,4 @@ Thanks for helping elevate the skills of the TouchDesigner community!
 
 OP Snippets is a set of 700+ live examples of TouchDesigner operators. You can access snippets via the Help menu, or by right-clicking on network operators, or r-clicking on OP Create dialog items.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.

@@ -8,21 +8,19 @@ title: Level_TOP
 
 ## Summary
 
-The Level TOP adjusts image contrast, brightness, gamma, black level, color range, quantization, opacity and more. See also the [Luma Level TOP](https://docs.derivative.ca/Luma_Level_TOP "Luma Level TOP") which preserves hue and saturation more accurately, but is slower.
+The Level TOP adjusts image contrast, brightness, gamma, black level, color range, quantization, opacity and more. See also the [Luma Level TOP](Luma_Level_TOP.md "Luma Level TOP") which preserves hue and saturation more accurately, but is slower.
 
 The Level TOP's features have been built into one TOP to maximize performance in a single pass. It takes all its parameters to make a lookup table on the CPU, so animating parameters in the Level TOP will decrease its performance as the lookup table is recreated each frame that a parameter changes.
 
 **Note:** This TOP supports 3D Textures and 2D Texture Arrays.
 
-[levelTOP_Class](https://docs.derivative.ca/LevelTOP_Class "LevelTOP Class")
+[levelTOP_Class](Level_TOP_Class.md "LevelTOP Class")
 
 ## Parameters - Pre Page
-
 - Clamp Input `clampinput` - ⊞ - This option will clamp pixel values in between 0 and 1. When using higher bit depth floating pixel formats, it is recommended to set it to Unclamped to allow the full range of values to be operated on. Auto should detect the pixel format as set accordingly.
   * Automatic `automatic` - Detects pixel format and clamps if 8-bit fixed or leaves unclamped for floating point pixel formats.
   * Clamp [0-1] `clamp` - Clamps data to values between 0 and 1. Recommended for 8-bit fixed default pixel format for better performance.
   * Unclamped `unclamped` - No clamping of data, use for higher bit-depth pixel formats.
-
 - Invert `invert` - Inverts the colors in the image. Black becomes white, white becomes black. Colors invert across the color wheel, so red becomes cyan, blue becomes yellow, green becomes magenta, and so on.
 - Black Level `blacklevel` - Any pixel with a value less than or equal to this will be black.
 - Brightness 1 `brightness1` - Increases or decreases the brightness of an image. Brightness can be considered the arithmetic mean of the RGB channels. The Brightness parameter adds or subtracts an offset into the R, G, and B channels. Low brightness will result in dark tones, while high brightness will wash the color out towards white.
@@ -30,14 +28,12 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - Contrast `contrast` - Contrast applies a scale factor (gain) to the RGB channels. Increasing contrast will brighten the light areas and darken the dark areas of the image, making the difference between the light and dark areas of the image stronger.
 
 ## Parameters - Range Page
-
 - In Low `inlow` - Any pixel below this value appears black.
 - In High `inhigh` - Any pixel above this value appears white.
 - Out Low `outlow` - Clamps pixel values to this value or higher.
 - Out High `outhigh` - Clamps pixel values to this value or lower.
 
 ## Parameters - RGBA Page
-
 - Low R `lowr` - Clamps the minimum level of the red channel.
 - High R `highr` - Clamps the maximum level of the red channel.
 - Low G `lowg` - Clamps the minimum level of the green channel.
@@ -48,7 +44,6 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - High A `higha` - Clamps the maximum level of the alpha channel.
 
 ## Parameters - Step Page
-
 - Apply Stepping `stepping` - Turns on stepping (posterizing) and enables the parameters below.
 - Step Size `stepsize` - Posterizes the image into bands or stripes. Number of bands equal to the inverse of this parameter (i.e., 0.25 = 4 bands). Use a default Ramp TOP to easily see this parameter's effect.
 - Threshold `threshold` - Offsets the position of the step boundaries.
@@ -57,7 +52,6 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - Soften `soften` - Softens or blends the boundaries between steps.
 
 ## Parameters - Post Page
-
 - Gamma 2 `gamma2` - A second gamma correction that is added after the Range, RGBA, and Step page adjustments have been applied.
 - Opacity `opacity` - Adjust the opacity, or transparency, of the image.
 - Brightness 2 `brightness2` - A second brightness adjustment that is added after the Range, RGBA, and Step page adjustments have been applied.
@@ -67,7 +61,6 @@ The Level TOP's features have been built into one TOP to maximize performance in
 - Pre-Multiply RGB by Alpha `premultrgbbyalpha` - This option makes the color channels pre-multiplied by alpha.
 
 ## Parameters - Common Page
-
 - Output Resolution `outputresolution` - ⊞ - quickly change the resolution of the TOP's data.
   * Use Input `useinput` - Uses the input's resolution.
   * Eighth `eighth` - Multiply the input's resolution by that amount.
@@ -79,29 +72,25 @@ The Level TOP's features have been built into one TOP to maximize performance in
   * Fit Resolution `fit` - Fits the width and height to the resolution given below, while maintaining the aspect ratio.
   * Limit Resolution `limit` - The width and height are limited to the resolution given below. If one of the dimensions exceeds the given resolution, the width and height will be reduced to fit inside the given limits while maintaining the aspect ratio.
   * Custom Resolution `custom` - Enables the Resolution parameter below, giving direct control over width and height.
-
 - Resolution `resolution` - ⊞ - Enabled only when the Resolution parameter is set to Custom Resolution. Some Generators like Constant and Ramp do not use inputs and only use this field to determine their size. The drop down menu on the right provides some commonly used resolutions.
   * W `resolutionw` -
   * H `resolutionh` -
-
 - Resolution Menu `resmenu` - A drop-down menu with some commonly used resolutions.
 - Use Global Res Multiplier `resmult` - Uses the Global Resolution Multiplier found in **Edit >Preferences>TOPs**. This multiplies all the TOPs resolutions by the set amount. This is handy when working on computers with different hardware specifications. If a project is designed on a desktop workstation with lots of graphics memory, a user on a laptop with only 64MB VRAM can set the Global Resolution Multiplier to a value of half or quarter so it runs at an acceptable speed. By checking this checkbox on, this TOP is affected by the global multiplier.
 - Output Aspect `outputaspect` - ⊞ - Sets the image aspect ratio allowing any textures to be viewed in any size. Watch for unexpected results when compositing TOPs with different aspect ratios. (You can define images with non-square pixels using xres, yres, aspectx, aspecty where xres/yres != aspectx/aspecty.)
   * Use Input `useinput` - Uses the input's aspect ratio.
   * Resolution `resolution` - Uses the aspect of the image's defined resolution (ie 512x256 would be 2:1), whereby each pixel is square.
   * Custom Aspect `custom` - Lets you explicitly define a custom aspect ratio in the Aspect parameter below.
-
 - Aspect `aspect` - ⊞ - Use when Output Aspect parameter is set to Custom Aspect.
   * Aspect1 `aspect1` -
   * Aspect2 `aspect2` -
-
 - Aspect Menu `armenu` - A drop-down menu with some commonly used aspect ratios.
 - Input Smoothness `inputfiltertype` - ⊞ - This controls pixel filtering on the input image of the TOP.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. This is how you get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Fill Viewer `fillmode` - ⊞ - Determine how the TOP image is displayed in the viewer.
+
 **NOTE:** To get an understanding of how TOPs work with images, you will want to set this to **Native Resolution** as you lay down TOPs when starting out. This will let you see what is actually happening without any automatic viewer resizing.
   * Use Input `useinput` - Uses the same Fill Viewer settings as it's input.
   * Fill `fill` - Stretches the image to fit the edges of the viewer.
@@ -110,12 +99,10 @@ The Level TOP's features have been built into one TOP to maximize performance in
   * Fit Best `best` - Stretches or squashes image so no part of image is cropped.
   * Fit Outside `outside` - Stretches or squashes image so image fills viewer while constraining it's proportions. This often leads to part of image getting cropped by viewer.
   * Native Resolution `nativeres` - Displays the native resolution of the image in the viewer.
-
 - Viewer Smoothness `filtertype` - ⊞ - This controls pixel filtering in the viewers.
   * Nearest Pixel `nearest` - Uses nearest pixel or accurate image representation. Images will look jaggy when viewing at any zoom level other than Native Resolution.
   * Interpolate Pixels `linear` - Uses linear filtering between pixels. Use this to get TOP images in viewers to look good at various zoom levels, especially useful when using any Fill Viewer setting other than Native Resolution.
   * Mipmap Pixels `mipmap` - Uses [ mipmap](https://docs.derivative.ca/Mipmapping "Mipmapping") filtering when scaling images. This can be used to reduce artifacts and sparkling in moving/scaling images that have lots of detail.
-
 - Passes `npasses` - Duplicates the operation of the TOP the specified number of times. Making this larger than 1 is essentially the same as taking the output from each pass, and passing it into the first input of the node and repeating the process. Other inputs and parameters remain the same for each pass.
 - Channel Mask `chanmask` - Allows you to choose which channels (R, G, B, or A) the TOP will operate on. All channels are selected by default.
 - Pixel Format `format` - ⊞ - Format used to store data for each channel in the image (ie. R, G, B, and A). Refer to [Pixel Formats](https://docs.derivative.ca/Pixel_Formats "Pixel Formats") for more information.
@@ -152,22 +139,17 @@ The Level TOP's features have been built into one TOP to maximize performance in
 
 ## Info CHOP Channels
 
-Extra Information for the Level TOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Level TOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common TOP Info Channels
 
   * resx - Horizontal resolution of the TOP in pixels.
-
   * resy - Vertical resolution of the TOP in pixels.
-
   * aspectx - Horizontal aspect of the TOP.
-
   * aspecty - Vertical aspect of the TOP.
-
   * depth - Depth of 2D or 3D array if this TOP contains a 2D or 3D texture array.
-
   * gpu_memory_used - Total amount of texture memory used by this TOP.
 
 ###
@@ -175,19 +157,11 @@ Extra Information for the Level TOP can be accessed via an [Info CHOP](https://d
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

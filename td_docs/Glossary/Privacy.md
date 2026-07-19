@@ -8,21 +8,21 @@ title: Privacy
 
 Privacy of TouchDesigner Components (`.tox` files) or Projects (`.toe` files) is the protection of networks that enables them to be used but not be visible or editable.
 
-The Privacy features can limit access to the entire `.toe` [TouchDesigner Environment](https://docs.derivative.ca/.toe ".toe") file, or to individual [Component](https://docs.derivative.ca/Component "Component") `.tox` files. Privacy features require **TouchDesigner Pro** license to set after which all licenses types respect the privacy settings of a project or component. That is, the end-user will not need a Pro license to run Private `.toe` files or Private components. Non-Commercial/Commercial/Educational/Pro Designer/Player will work with a Private `.toe` file, as long as it’s not using any features their license doesn’t support.
+The Privacy features can limit access to the entire `.toe` [TouchDesigner Environment](.toe.md ".toe") file, or to individual [Component](Component.md "Component") `.tox` files. Privacy features require **TouchDesigner Pro** license to set after which all licenses types respect the privacy settings of a project or component. That is, the end-user will not need a Pro license to run Private `.toe` files or Private components. Non-Commercial/Commercial/Educational/Pro Designer/Player will work with a Private `.toe` file, as long as it’s not using any features their license doesn’t support.
 
-You can start a project in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode") without Privacy (and the need for a Pro license) using the Dialogs->Window Placement dialog. But without Privacy, pressing Esc in TouchDesigner will bring you into [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode") where the networks are visible and editable.
+You can start a project in [Perform Mode](Perform_Mode.md "Perform Mode") without Privacy (and the need for a Pro license) using the Dialogs->Window Placement dialog. But without Privacy, pressing Esc in TouchDesigner will bring you into [Designer Mode](Designer_Mode.md "Designer Mode") where the networks are visible and editable.
 
 ##  Project Privacy
 
 The Project Privacy option blocks access to editing networks in a `.toe` project file. This will protect the contents of the `.toe` file.
 
-In TouchDesigner, under **File - > Project Privacy...(Pro Only)**, you are given options to add or remove privacy from your toe file. Launching a `.toe` saved with privacy enabled will only open in [Perform Mode](https://docs.derivative.ca/Perform_Mode "Perform Mode"), with no access to the networks. To access the network again press the **Shift+Esc** key over the Perform window, to be prompted for the password.
+In TouchDesigner, under **File - > Project Privacy...(Pro Only)**, you are given options to add or remove privacy from your toe file. Launching a `.toe` saved with privacy enabled will only open in [Perform Mode](Perform_Mode.md "Perform Mode"), with no access to the networks. To access the network again press the **Shift+Esc** key over the Perform window, to be prompted for the password.
 
 Privacy will be reactivated the next time it enters perform mode. That is, the password must be re-entered each time performance mode is exited.
 
 Once in the network, use **File - > Project Privacy...(Pro Only)** again to remove it permanently if desired.
 
-To hide image, movie, audio and other media that you embed in the file use the [Virtual File System](https://docs.derivative.ca/Virtual_File_System "Virtual File System").
+To hide image, movie, audio and other media that you embed in the file use the [Virtual File System](Virtual_File_System.md "Virtual File System").
 
 ##  Component Privacy
 
@@ -40,9 +40,9 @@ Right-click > Privacy... on a component that is temporarily accessed (as describ
 
 ###  Component Privacy with CodeMeter Dongle
 
-Component Privacy can also be locked to [CodeMeter](http://www.wibu.com/codemeter.html) [dongles](https://docs.derivative.ca/License_Dongle "License Dongle").
+Component Privacy can also be locked to [CodeMeter](http://www.wibu.com/codemeter.html) [dongles](../Interoperability/License_Dongle.md "License Dongle").
 
-You can now setup CodeMeter dongles that will license a component to run (cook). These dongles do not give access to the networks inside, they just allow them to run on any licensed TouchDesigner or TouchPlayer computer. If the dongle is not present, the component will not [cook](https://docs.derivative.ca/Cook "Cook"). This gives you a way to customize and manage the licensing of components you create and keep the internal networks private. A using this component dongle privacy requires a [Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro") license for setup but no additional fees charged by Derivative. The component with dongle privacy set will work on all license types of TouchDesigner and TouchPlayer when the appropriate dongle is present.
+You can now setup CodeMeter dongles that will license a component to run (cook). These dongles do not give access to the networks inside, they just allow them to run on any licensed TouchDesigner or TouchPlayer computer. If the dongle is not present, the component will not [cook](Cook.md "Cook"). This gives you a way to customize and manage the licensing of components you create and keep the internal networks private. A using this component dongle privacy requires a [Pro](https://docs.derivative.ca/TouchDesigner_Pro "TouchDesigner Pro") license for setup but no additional fees charged by Derivative. The component with dongle privacy set will work on all license types of TouchDesigner and TouchPlayer when the appropriate dongle is present.
 
 ####  Steps to Using CodeMeter Dongle Component Privacy
 
@@ -66,12 +66,12 @@ A private `.toe` or component does not affect the licensing installed on the sys
 
 Privacy of TouchDesigner Components (`.tox` files) or Projects (`.toe` files) is the protection of networks that enables them to be used but not be visible or editable.
 
-TouchDesigner Component file, the file type used to save a [Component](https://docs.derivative.ca/Component "Component") of your TouchDesigner project.
+TouchDesigner Component file, the file type used to save a [Component](Component.md "Component") of your TouchDesigner project.
 
 TOuch Environment file, the file type used by TouchDesigner to save your entire project.
 
-A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](https://docs.derivative.ca/Designer_Mode "Designer Mode"), or (2) a user-created [Panel](https://docs.derivative.ca/Panel "Panel") inside a [Window Component](https://docs.derivative.ca/Window_COMP "Window COMP"). The user-created windows can span [Multiple Monitors](https://docs.derivative.ca/Multiple_Monitors "Multiple Monitors") borderless, or be floating windows with borders, or popups.
+A Window in TouchDesigner is a window in Microsoft Windows or macOS that contains either (1) the TouchDesigner editing interface that exists in [Designer Mode](Designer_Mode.md "Designer Mode"), or (2) a user-created [Panel](Panel.md "Panel") inside a [Window Component](Window_COMP.md "Window COMP"). The user-created windows can span [Multiple Monitors](Multiple_Monitors.md "Multiple Monitors") borderless, or be floating windows with borders, or popups.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](Operator_Family.md "Operator Family") that contains its own [Network](Network.md "Network"). There are sixteen 3D [Object Component](Object_Component.md "Object Component") and ten 2D [Panel Component](Panel_Component.md "Panel Component") types. See also [Network Path](Network_Path.md "Network Path").
 
-Any floating window that is not a [Pane](https://docs.derivative.ca/Pane "Pane") or [Viewer](https://docs.derivative.ca/Viewer "Viewer").
+Any floating window that is not a [Pane](Pane.md "Pane") or [Viewer](Viewer.md "Viewer").

@@ -16,27 +16,27 @@ Initialization often takes more than one frame to complete, so there is usually 
 
 Note: The convention is, if you press Start when it is already `running` or when it is `done`, it is equivalent to going to done, pressing Initialize and then starting. That is, the Initialize stage automatially goes to completion before it starts again.
 
-Initialize Start is based on the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP").
+Initialize Start is based on the [Timer CHOP](../CHOPs/Timer_CHOP.md "Timer CHOP").
 
 Examples of parts of TouchDesigner where the Initialize Start approach is used are:
-  * [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP")
-  * [FBX COMP](https://docs.derivative.ca/FBX_COMP "FBX COMP")
-  * [USD COMP](https://docs.derivative.ca/USD_COMP "USD COMP")
-  * [Bullet Solver COMP](https://docs.derivative.ca/Bullet_Solver_COMP "Bullet Solver COMP")
-  * [Nvidia Flow TOP](https://docs.derivative.ca/Nvidia_Flow_TOP "Nvidia Flow TOP"), [Nvidia Flex TOP](https://docs.derivative.ca/Nvidia_Flex_TOP "Nvidia Flex TOP")
-  * [Notch TOP](https://docs.derivative.ca/Notch_TOP "Notch TOP")
-  * [Animation COMP](https://docs.derivative.ca/Animation_COMP "Animation COMP")
+  * [Timer CHOP](../CHOPs/Timer_CHOP.md "Timer CHOP")
+  * [FBX COMP](../COMPs/FBX_COMP.md "FBX COMP")
+  * [USD COMP](../COMPs/USD_COMP.md "USD COMP")
+  * [Bullet Solver COMP](../COMPs/Bullet_Solver_COMP.md "Bullet Solver COMP")
+  * [Nvidia Flow TOP](../Interoperability/Nvidia_Flow_TOP.md "Nvidia Flow TOP"), [Nvidia Flex TOP](https://docs.derivative.ca/Nvidia_Flex_TOP "Nvidia Flex TOP")
+  * [Notch TOP](../TOPs/Notch_TOP.md "Notch TOP")
+  * [Animation COMP](../Glossary/Animation_COMP.md "Animation COMP")
   * [Palette:moviePlayer](https://docs.derivative.ca/Palette:moviePlayer "Palette:moviePlayer") COMP in Palette
   * ( [Palette:particlesGpu](https://docs.derivative.ca/Palette:particlesGpu "Palette:particlesGpu") COMP in Palette )
-  * [Engine COMP](https://docs.derivative.ca/Engine_COMP "Engine COMP")
-  * [Feedback POP](https://docs.derivative.ca/Feedback_POP "Feedback POP")
-  * [Particle POP](https://docs.derivative.ca/Particle_POP "Particle POP")
+  * [Engine COMP](../COMPs/Engine_COMP.md "Engine COMP")
+  * [Feedback POP](../POPs/Feedback_POP.md "Feedback POP")
+  * [Particle POP](../POPs/Particle_POP.md "Particle POP")
 
 There is a component in the palette called [initalizeStart](https://docs.derivative.ca/Palette:initializeStart "Palette:initializeStart") that you can use to convert any of your components to use the same mechanism.
 
-Initialize Start follows the model of the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP").
+Initialize Start follows the model of the [Timer CHOP](../CHOPs/Timer_CHOP.md "Timer CHOP").
 
-See also [Event](https://docs.derivative.ca/Event "Event").
+See also [Event](../Glossary/Event.md "Event").
 
 ###  Control Parameters
 
@@ -52,7 +52,7 @@ See also [Event](https://docs.derivative.ca/Event "Event").
 
 ###  Info Channels
 
-This is often achieved by attaching an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP") to the operator. It is the actual output in the Timer CHOP and the [initializeStart](https://docs.derivative.ca/Palette:initializeStart "Palette:initializeStart") palette COMP.
+This is often achieved by attaching an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP") to the operator. It is the actual output in the Timer CHOP and the [initializeStart](https://docs.derivative.ca/Palette:initializeStart "Palette:initializeStart") palette COMP.
 
 States -
   * `initializing` (0 if operator currently initializes in the same-frame)
@@ -77,7 +77,7 @@ Fixed-length vs infinite (unknown) length. An example of infinite length would b
 
 ###  Callbacks
 
-In some cases, like the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Timer CHOP"), there are callbacks where you can run python code when events occur, such as the end of initialization, or the end of a fixed-length behavior. The common ones are:
+In some cases, like the [Timer CHOP](../CHOPs/Timer_CHOP.md "Timer CHOP"), there are callbacks where you can run python code when events occur, such as the end of initialization, or the end of a fixed-length behavior. The common ones are:
   * `onInitialize()` called when the Initialize is pulsed, and is called every frame thereafter until you return 0, in order for multi-frame initializations to occur.
   * `onReady()` is called when initialization is complete.
   * `onStart()` is called when Start is pressed.
@@ -87,10 +87,10 @@ In some cases, like the [Timer CHOP](https://docs.derivative.ca/Timer_CHOP "Time
 
 In some cases, the operator reports errors or warnings, like failure to initialize.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that contains its own [Network](https://docs.derivative.ca/Network "Network"). There are sixteen 3D [Object Component](https://docs.derivative.ca/Object_Component "Object Component") and ten 2D [Panel Component](https://docs.derivative.ca/Panel_Component "Panel Component") types. See also [Network Path](https://docs.derivative.ca/Network_Path "Network Path").
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that contains its own [Network](../Glossary/Network.md "Network"). There are sixteen 3D [Object Component](../Glossary/Object_Component.md "Object Component") and ten 2D [Panel Component](../Glossary/Panel_Component.md "Panel Component") types. See also [Network Path](../Glossary/Network_Path.md "Network Path").
 
 A built-in panel in TouchDesigner that contains a library of components and media that can be dragged-dropped into a TouchDesigner network.
 
-To "pulse" a parameter is to send it a signal from (1) an [exported](https://docs.derivative.ca/Export "Export") CHOP channel or (2) a python command or (3) a mouse click that causes a new action to occur immediately. A pulse via python is via the `.pulse()` function on a pulse-type parameter, such as Reset parameter in a [Speed CHOP](https://docs.derivative.ca/Speed_CHOP "Speed CHOP"). A pulse from a CHOP is typically a 0 to 1 to 0 signal in an exported channel.
+To "pulse" a parameter is to send it a signal from (1) an [exported](../Glossary/Export.md "Export") CHOP channel or (2) a python command or (3) a mouse click that causes a new action to occur immediately. A pulse via python is via the `.pulse()` function on a pulse-type parameter, such as Reset parameter in a [Speed CHOP](../Glossary/Speed_CHOP.md "Speed CHOP"). A pulse from a CHOP is typically a 0 to 1 to 0 signal in an exported channel.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") which operate on [Channels](https://docs.derivative.ca/Channel "Channel") (a sequence of numbers ([Samples](https://docs.derivative.ca/Sample "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") which operate on [Channels](../Glossary/Channel.md "Channel") (a sequence of numbers ([Samples](../Glossary/Sample.md "Sample"))) which are used for animation, audio, mathematics, simulation, logic, UI construction, and data streamed from/to devices and protocols.

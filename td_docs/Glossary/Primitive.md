@@ -6,11 +6,13 @@ title: Primitive
 
 # Primitive
 
-A Primitive is a surface type like [Polygon](https://docs.derivative.ca/Polygon "Polygon"), [Mesh](https://docs.derivative.ca/Mesh "Mesh"), [Particle](https://docs.derivative.ca/Particle "Particle"), curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like [Sphere](https://docs.derivative.ca/Sphere_SOP "Sphere SOP"), [Tube](https://docs.derivative.ca/Tube_SOP "Tube SOP") and [Metaball](https://docs.derivative.ca/Metaball "Metaball").
+(_note - being updated for POPs, page being split into POP and SOP pages_) In POPs a Primitive is a geometry data type like [Polygon](Polygon.md "Polygon") (quad and triangle), [Line Strip](https://docs.derivative.ca/index.php?title=Line_Strip&action=edit&redlink=1 "Line Strip \(page does not exist\)"), [Point Primitive](https://docs.derivative.ca/index.php?title=Point_Primitive&action=edit&redlink=1 "Point Primitive \(page does not exist\)").
 
-Primitives are defined from [Points](https://docs.derivative.ca/Point "Point") plus other data.
+In SOPs a Primitive is a surface type like [Polygon](Polygon.md "Polygon"), [Mesh](https://docs.derivative.ca/Mesh "Mesh"), [Particle](https://docs.derivative.ca/Particle "Particle"), curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like [Sphere](../SOPs/Sphere_SOP.md "Sphere SOP"), [Tube](../SOPs/Tube_SOP.md "Tube SOP") and [Metaball](https://docs.derivative.ca/Metaball "Metaball").
 
-See also: [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), [Point](https://docs.derivative.ca/Point "Point"), [Point List](https://docs.derivative.ca/Point_List "Point List"), [Point Class](https://docs.derivative.ca/Point_Class "Point Class"), [Prims Class](https://docs.derivative.ca/Prims_Class "Prims Class"), [Polygon](https://docs.derivative.ca/Polygon "Polygon"), [Vertex](https://docs.derivative.ca/Vertex "Vertex"), [SOP](https://docs.derivative.ca/SOP "SOP"), [SOP Class](https://docs.derivative.ca/SOP_Class "SOP Class"), [SOP to DAT](https://docs.derivative.ca/SOP_to_DAT "SOP to DAT"), [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP"), [Point Groups](https://docs.derivative.ca/Point_Group "Point Group"), [Primitive Groups](https://docs.derivative.ca/Primitive_Group "Primitive Group"), [Attributes](https://docs.derivative.ca/Attribute "Attribute").
+Primitives are defined from [Points](Point.md "Point") plus other data.
+
+See also: [Geometry Detail](Geometry_Detail.md "Geometry Detail"), [Point](Point.md "Point"), [Point List](Point_List.md "Point List"), [Point Class](../SOPs/Point_Class.md "Point Class"), [Prims Class](../SOPs/Prims_Class.md "Prims Class"), [Polygon](Polygon.md "Polygon"), [Vertex](Vertex.md "Vertex"), [SOP](../SOPs/SOP.md "SOP"), [SOP Class](../SOPs/SOP_Class.md "SOP Class"), [SOP to DAT](SOP_to_DAT.md "SOP to DAT"), [Script SOP](../SOPs/Script_SOP.md "Script SOP"), [Point Groups](https://docs.derivative.ca/Point_Group "Point Group"), [Primitive Groups](https://docs.derivative.ca/Primitive_Group "Primitive Group"), [Attributes](Attribute.md "Attribute").
 
 Every SOP has a Primitive List, which may contain any number of primitives of the following types:
 
@@ -36,7 +38,7 @@ Concave Polygons
 
 A polygon is convex if any vertical or horizontal axis intersects it at most twice.
 
-See also: [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), [Point](https://docs.derivative.ca/Point "Point"), [Point List](https://docs.derivative.ca/Point_List "Point List"), [Point Class](https://docs.derivative.ca/Point_Class "Point Class"), Primitive, [Prims Class](https://docs.derivative.ca/Prims_Class "Prims Class"), [Vertex](https://docs.derivative.ca/Vertex "Vertex"), [SOP](https://docs.derivative.ca/SOP "SOP"), [SOP Class](https://docs.derivative.ca/SOP_Class "SOP Class"), [SOP to DAT](https://docs.derivative.ca/SOP_to_DAT "SOP to DAT"), [Script SOP](https://docs.derivative.ca/Script_SOP "Script SOP"), [Point Groups](https://docs.derivative.ca/Point_Group "Point Group"), [Primitive Groups](https://docs.derivative.ca/Primitive_Group "Primitive Group"), [Attributes](https://docs.derivative.ca/index.php?title=Attributes&action=edit&redlink=1 "Attributes \(page does not exist\)").
+See also: [Geometry Detail](Geometry_Detail.md "Geometry Detail"), [Point](Point.md "Point"), [Point List](Point_List.md "Point List"), [Point Class](../SOPs/Point_Class.md "Point Class"), Primitive, [Prims Class](../SOPs/Prims_Class.md "Prims Class"), [Vertex](Vertex.md "Vertex"), [SOP](../SOPs/SOP.md "SOP"), [SOP Class](../SOPs/SOP_Class.md "SOP Class"), [SOP to DAT](SOP_to_DAT.md "SOP to DAT"), [Script SOP](../SOPs/Script_SOP.md "Script SOP"), [Point Groups](https://docs.derivative.ca/Point_Group "Point Group"), [Primitive Groups](https://docs.derivative.ca/Primitive_Group "Primitive Group"), [Attributes](https://docs.derivative.ca/index.php?title=Attributes&action=edit&redlink=1 "Attributes \(page does not exist\)").
 
 ##  Meshes
 
@@ -49,19 +51,19 @@ A figure that doesn't have an m × n topology cannot be a primitive mesh. The me
 
 ##  Particles
 
-A particle system is a type of Primitive of a [SOP](https://docs.derivative.ca/SOP "SOP") that consists of a group of discrete particles which change over time. Each particle has its own attributes controlling size, position, velocity, etc. Particles can generate new attributes depending on their age, or they may die. Assigning values discretely to each particle enables realistic modeling of systems involving turbulence such as: smoke, wind, fire, dust, and hair.
+A particle system is a type of Primitive of a [SOP](../SOPs/SOP.md "SOP") that consists of a group of discrete particles which change over time. Each particle has its own attributes controlling size, position, velocity, etc. Particles can generate new attributes depending on their age, or they may die. Assigning values discretely to each particle enables realistic modeling of systems involving turbulence such as: smoke, wind, fire, dust, and hair.
 
 ###  Particles on the CPU
 
-Any point or set of [points](https://docs.derivative.ca/Point "Point") can be used as the basis for the particles in a particle system. [Grid SOPs](https://docs.derivative.ca/Grid_SOP "Grid SOP") or [Sphere SOPs](https://docs.derivative.ca/Sphere_SOP "Sphere SOP") are often employed for this purpose. A particle system can be created in SOPs by using a [Particle SOP](https://docs.derivative.ca/Particle_SOP "Particle SOP"), particles will be emitted from the points of the geometry connected to the Particle SOP's first input.
+Any point or set of [points](Point.md "Point") can be used as the basis for the particles in a particle system. [Grid SOPs](../SOPs/Grid_SOP.md "Grid SOP") or [Sphere SOPs](../SOPs/Sphere_SOP.md "Sphere SOP") are often employed for this purpose. A particle system can be created in SOPs by using a [Particle SOP](../SOPs/Particle_SOP.md "Particle SOP"), particles will be emitted from the points of the geometry connected to the Particle SOP's first input.
 
-Any point or set of points can also be converted into particles using a [Convert SOP](https://docs.derivative.ca/Convert_SOP "Convert SOP").
+Any point or set of points can also be converted into particles using a [Convert SOP](../SOPs/Convert_SOP.md "Convert SOP").
 
 ###  Particles on the GPU
 
-Particles can be simulated on the GPU by treating each pixel in a TOP as a particle, and instancing them through the Instancing pages of a [Geometry COMP](https://docs.derivative.ca/Geometry_COMP "Geometry COMP"). TOPs that facilitate this include the [Point File In TOP](https://docs.derivative.ca/Point_File_In_TOP "Point File In TOP"), [Math TOP](https://docs.derivative.ca/Math_TOP "Math TOP"), [Limit TOP](https://docs.derivative.ca/Limit_TOP "Limit TOP"), [Slope TOP](https://docs.derivative.ca/Slope_TOP "Slope TOP"), [Feedback TOP]], [Reorder TOP](https://docs.derivative.ca/Reorder_TOP "Reorder TOP"). In the Palette are several examples under Point Clouds and particlesGPU.
+Particles can be simulated on the GPU by treating each pixel in a TOP as a particle, and instancing them through the Instancing pages of a [Geometry COMP](Geometry_COMP.md "Geometry COMP"). TOPs that facilitate this include the [Point File In TOP](../TOPs/Point_File_In_TOP.md "Point File In TOP"), [Math TOP](../TOPs/Math_TOP.md "Math TOP"), [Limit TOP](../TOPs/Limit_TOP.md "Limit TOP"), [Slope TOP](../TOPs/Slope_TOP.md "Slope TOP"), [Feedback TOP]], [Reorder TOP](../TOPs/Reorder_TOP.md "Reorder TOP"). In the Palette are several examples under Point Clouds and particlesGPU.
 
-See also [Point Sprite MAT](https://docs.derivative.ca/Point_Sprite_MAT "Point Sprite MAT").
+See also [Point Sprite MAT](../MATs/Point_Sprite_MAT.md "Point Sprite MAT").
 
 ##  Splines
 
@@ -86,7 +88,7 @@ Tubes are primitive types which resemble cylinders, with the exception that the 
 
 Metaballs can be thought of as force fields whose surface is an implicit function defined at any point where the density of the force field equals a certain threshold. This field can currently be specified as an elliptical or super-quadric shape around a point. When two metaballs overlap in space, their field effects are added together.
 
-See also [Metaball SOP](https://docs.derivative.ca/Metaball_SOP "Metaball SOP")
+See also [Metaball SOP](../SOPs/Metaball_SOP.md "Metaball SOP")
 
 The field is specified by a weight and a kernel function. The kernel function results in a value of 0 at the outside edge of the metaball and a value of 1 at the center. The kernel function is scaled by the weight to shift the location of the surface closer or further away from the center.
 
@@ -98,7 +100,7 @@ When two or more metaball force fields are combined, as in the illustration belo
 
 Metaballs are defined by the parameters **Center x/y/z** , **Radius x/y/z** , **Exponent x/y/z** , and a 3×3 rotation matrix which determines the orientation. A metaball is known as a super-quadratic if either exponent is not equal to one.
 [![MetaExample2.jpg](https://docs.derivative.ca/images/8/80/MetaExample2.jpg)](https://docs.derivative.ca/File:MetaExample2.jpg)
-You can see a metaball's sphere of influence by turning on **Display Hulls** in a [Geometry Viewer](https://docs.derivative.ca/Geometry_Viewer "Geometry Viewer")'s options dialog.
+You can see a metaball's sphere of influence by turning on **Display Hulls** in a [Geometry Viewer](../Interoperability/Geometry_Viewer.md "Geometry Viewer")'s options dialog.
 
 In the SOP editor, a metaball can be selected only by its hull.
 
@@ -113,7 +115,7 @@ In the instance of metaballs, the XY and Z exponent determines the inflation tow
   * Value < 1 - Results in metaballs that appear more "squarish".
   * Value = 1 - Results in metaballs that appear spherical.
 
-In Touch, metaballs are often used as force fields for particle systems. You can create metaballs with a [Metaball SOP](https://docs.derivative.ca/Metaball_SOP "Metaball SOP"), or in the SOP editor.
+In Touch, metaballs are often used as force fields for particle systems. You can create metaballs with a [Metaball SOP](../SOPs/Metaball_SOP.md "Metaball SOP"), or in the SOP editor.
 
 ##  Metaball Model Types
 
@@ -128,14 +130,12 @@ In Touch, metaballs are often used as force fields for particle systems. You can
   * **Links Kernal** - This is the slowest method, but provides a good compromise between the Blinn and Wyvill methods in terms of weight distribution.
 
 [![LinksMetaball.jpg](https://docs.derivative.ca/images/7/71/LinksMetaball.jpg)](https://docs.derivative.ca/File:LinksMetaball.jpg)
-A surface type in [SOPs](https://docs.derivative.ca/SOP "SOP") that includes polygon, curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like sphere, tube and metaball. [Points](https://docs.derivative.ca/Point "Point") and Primitives are part of the [Geometry Detail](https://docs.derivative.ca/Geometry_Detail "Geometry Detail"), which is a part of a [SOP](https://docs.derivative.ca/SOP "SOP").
+A [Operator Family](Operator_Family.md "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
 
-A [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that reads, creates and modifies 3D points, polygons, lines, particles, surfaces, spheres and meatballs. Particles and point clouds are now done primarily on the GPU using TOPs.
+A surface type in [POPs](../POPs/POP.md "POP") and [SOPs](../SOPs/SOP.md "SOP") that includes polygon, curve (NURBS and Bezier), patch (NURBS and Bezier) and other basic shapes like sphere, tube and metaball. [Points](Point.md "Point") and Primitives are part of the [Geometry Detail](Geometry_Detail.md "Geometry Detail"), which is a part of a [SOP](../SOPs/SOP.md "SOP").
 
 The Graphics Processing Unit. This is the high-speed, many-core processor of the graphics card/chip that takes geometry, images and data from the CPU and creates images and processed data.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
-
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
+An [Operator Family](Operator_Family.md "Operator Family") that creates, composites and modifies images, and reads/writes images and movies to/from files and the network. TOPs run on the graphics card's GPU.
 
 A built-in panel in TouchDesigner that contains a library of components and media that can be dragged-dropped into a TouchDesigner network.

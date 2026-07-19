@@ -14,31 +14,26 @@ If two NURBS circles that are non-rational (i.e. their X and Y radii are unequal
 
 To remedy this, you may want to use a Refine SOP, and unrefine the resulting skin, or better yet - before unrefining, start with the same circle and use a Primitive or Transform SOP to deform the second copy before skinning.
 
-[circleSOP_Class](https://docs.derivative.ca/CircleSOP_Class "CircleSOP Class")
+[circleSOP_Class](Circle_SOP_Class.md "CircleSOP Class")
 
 ## Parameters - Page
-
-- Primitive Type `type` - ⊞ - For information on the different types, see the [Primitive](https://docs.derivative.ca/Primitive "Primitive") and [Spline](https://docs.derivative.ca/Spline "Spline") articles. Depending on the primitive type chosen, some SOP options may not apply. Using the 'Primitive' primitive type is not recommended when using instancing.
+- Primitive Type `type` - ⊞ - For information on the different types, see the [Primitive](../Glossary/Primitive.md "Primitive") and [Spline](https://docs.derivative.ca/Spline "Spline") articles. Depending on the primitive type chosen, some SOP options may not apply. Using the 'Primitive' primitive type is not recommended when using instancing.
   * Primitive `prim` -
   * Polygon `poly` -
   * NURBS Curve `nurbs` -
   * Bezier Curve `bezier` -
-
 - Orientation `orient` - ⊞ - The plane on which the circle lies.
   * XY Plane `xy` -
   * YZ Plane `yz` -
   * ZX Plane `zx` -
-
 - Modify Bounds `modifybounds` - Available only when an input is connected to the Curcle SOP to set bounds for the sphere. When Modify Bounds = On the transform parameters below will further modify the radius and position of the bounds.
 - Radius `rad` - ⊞ - The Radius of the Circle in the X and Y directions.
   * X `radx` -
   * Y `rady` -
-
 - Center `t` - ⊞ - The Center of the Circle in X, Y and Z.
   * X `tx` -
   * Y `ty` -
   * Z `tz` -
-
 - Reverse Anchors `reverseanchors` - Invert the direction of anchors.
 - Anchor U `anchoru` - Set the point in X about which the geometry is positioned, scaled and rotated.
 - Anchor V `anchorv` - Set the point in Y about which the geometry is positioned, scaled and rotated.
@@ -57,12 +52,10 @@ Arc options are available for polygonal circles and some spline types. The diffe
 **Note:** The total angle can exceed 360, making multiple wraps of the circle.
   * `beginangle` -
   * `endangle` -
-
 - Imperfect `imperfect` - This option applies only to Bezier and NURBS circles. If selected, the circles are approximated non-rational curves, otherwise they are perfect rational closed curves.
 - Texture Coordinates `texture` - ⊞ - Option to include texture cooordinates or not.
   * Off `off` - No texture coordinates are created.
-  * Face `face` - Default texture coordinates are created. To modify texture coordinates, see [Texture SOP](https://docs.derivative.ca/Texture_SOP "Texture SOP").
-
+  * Face `face` - Default texture coordinates are created. To modify texture coordinates, see [Texture SOP](Texture_SOP.md "Texture SOP").
 - Compute Normals `normals` - When On, normals are created for the surface.
 
 ## Operator Inputs
@@ -71,20 +64,16 @@ Arc options are available for polygonal circles and some spline types. The diffe
 
 ## Info CHOP Channels
 
-Extra Information for the Circle SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Circle SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -92,19 +81,11 @@ Extra Information for the Circle SOP can be accessed via an [Info CHOP](https://
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

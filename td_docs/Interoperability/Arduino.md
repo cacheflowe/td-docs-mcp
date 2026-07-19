@@ -6,7 +6,7 @@ title: Arduino
 
 # Arduino
 
-TouchDesigner supports [Arduino](http://arduino.cc/) via the [Serial DAT](https://docs.derivative.ca/Serial_DAT "Serial DAT").
+TouchDesigner supports [Arduino](http://arduino.cc/) via the [Serial DAT](Serial_DAT.md "Serial DAT").
 
 **Example Videos**
   * [[1]](http://vimeo.com/19050970) Here is a video by Rob Bairos showing TouchDesigner and Arduino.
@@ -44,7 +44,7 @@ The following simple sketch will output some values once per second:
  }
 ```
 
-In order to receive these messages in TouchDesigner, place down a [Serial DAT](https://docs.derivative.ca/Serial_DAT "Serial DAT"). By default, all the parameters should be compatible with the above sketch and you should see these two values arriving in the DAT every second.
+In order to receive these messages in TouchDesigner, place down a [Serial DAT](Serial_DAT.md "Serial DAT"). By default, all the parameters should be compatible with the above sketch and you should see these two values arriving in the DAT every second.
 
 More specifically, make sure the communication parameters are set to the same baud rate as the Arduino. By default the settings are 9600,8,N,2 but the baud rate can be increased if required. Also, make sure the Table Format is set to **One Row Per Line**.
 
@@ -52,7 +52,7 @@ The above sketch outputs a single new line character '`\n`' after each value. Un
 
 To see the actual received byte values at any time, turn on the Value Column parameter under the Received Messages parameter
 
-Make sure to turn **off** the **Active** parameter in the [Serial DAT](https://docs.derivative.ca/Serial_DAT "Serial DAT"), while using the Arduino to upload new sketches over the shared serial connection.
+Make sure to turn **off** the **Active** parameter in the [Serial DAT](Serial_DAT.md "Serial DAT"), while using the Arduino to upload new sketches over the shared serial connection.
 
 Turn the **Active** parameter back **on** after the sketch is uploaded.
 
@@ -70,9 +70,9 @@ In addition to the above log, a python script can be called for each received en
 
 ##  Receiving data on the Arduino
 
-Finally, to output characters back to the Arduino, use the [Serial DAT's](https://docs.derivative.ca/SerialDAT_Class#Methods "SerialDAT Class") send methods.
+Finally, to output characters back to the Arduino, use the [Serial DAT's](../DATs/Serial_DAT_Class.md#Methods "SerialDAT Class") send methods.
 
-Bytes can be sent through the same [Serial DAT](https://docs.derivative.ca/Serial_DAT "Serial DAT").
+Bytes can be sent through the same [Serial DAT](Serial_DAT.md "Serial DAT").
 
 Use the Arduino commands: `Serial.available()` and `Serial.read()` to access these bytes on the Arduino.
 
@@ -129,6 +129,6 @@ When receiving multiple byte messages, it is important to remember that the stre
  }
 ```
 
-[OP Snippets](https://docs.derivative.ca/OP_Snippets "OP Snippets") is a set of 700+ live examples of TouchDesigner operators. You can access snippets via the Help menu, or by right-clicking on network operators, or r-clicking on OP Create dialog items.
+[OP Snippets](../Learn/OP_Snippets.md "OP Snippets") is a set of 700+ live examples of TouchDesigner operators. You can access snippets via the Help menu, or by right-clicking on network operators, or r-clicking on OP Create dialog items.
 
-An [Operator Family](https://docs.derivative.ca/Operator_Family "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](https://docs.derivative.ca/Script "Script") or [GLSL](https://docs.derivative.ca/GLSL "GLSL") Shader, but can be any multi-line text. [Tables](https://docs.derivative.ca/Table_DAT "Table DAT") are rows and columns of cells, each containing a text string.
+An [Operator Family](../Glossary/Operator_Family.md "Operator Family") that manipulates text strings: multi-line text or tables. Multi-line text is often a python [Script](../Glossary/Script.md "Script") or [GLSL](../Glossary/GLSL.md "GLSL") Shader, but can be any multi-line text. [Tables](../Glossary/Table_DAT.md "Table DAT") are rows and columns of cells, each containing a text string.

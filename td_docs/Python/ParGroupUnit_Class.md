@@ -6,7 +6,7 @@ title: ParGroupUnit_Class
 
 # ParGroupUnit Class
 
-The ParGroupUnit class describes a subclass of a [ParGroup](https://docs.derivative.ca/ParGroup_Class "ParGroup Class") ending with a unit parameter. See also Custom ParGroup.
+The ParGroupUnit class describes a subclass of a [ParGroup](ParGroup_Class.md "ParGroup Class") ending with a unit parameter. See also Custom ParGroup.
 
 **Note:** the ParGroupUnit class will be deprecated in coming TouchDesigner releases. It is recommended that you access unit parameters directly rather than through this object.
 

@@ -26,10 +26,9 @@ Example for CPlusPlus SOP as a Visual Studio project in Windows are available in
 
 The geometry data for exporting to TouchDesigner can have point, normal, and texture coordinates, RGBA colors, triangle information in case of meshes and/or particle systems, as well as custom attributes with an arbitrary name, float or integer type, and up to 4 components (ie. Cd0, Cd1, Cd2, Cd3).
 
-[cplusplusSOP_Class](https://docs.derivative.ca/CplusplusSOP_Class "CplusplusSOP Class")
+[cplusplusSOP_Class](CPlusPlus_SOP_Class.md "CplusplusSOP Class")
 
 ## Parameters - Load Page
-
 - Plugin Path `plugin` - The path to the plugin you want to load.
 - Re-Init Class `reinit` - When this parameter is On, it will delete the instance of the class created by the plugin, and create a new one.
 - Re-Init Class `reinitpulse` - Instantly reinitialize the class.
@@ -41,20 +40,16 @@ The geometry data for exporting to TouchDesigner can have point, normal, and tex
 
 ## Info CHOP Channels
 
-Extra Information for the CPlusPlus SOP can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the CPlusPlus SOP can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
 ## Common SOP Info Channels
 
   * num_points - Number of points in this SOP.
-
   * num_prims - Number of primitives in this SOP.
-
   * num_particles - Number of particles in this SOP.
-
   * last_vbo_update_time - Time spent in another thread updating geometry data on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
-
   * last_meta_vbo_update_time - Time spent in another thread updating meta surface geometry data (such as metaballs or nurbs) on the GPU from the SOP's CPU data. As it is part of another thread, this time is not part of the usual frame time.
 
 ###
@@ -62,19 +57,11 @@ Extra Information for the CPlusPlus SOP can be accessed via an [Info CHOP](https
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.

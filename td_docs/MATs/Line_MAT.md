@@ -16,13 +16,13 @@ You can render a dot at each point. You can render a vector at each point which 
 
 Line Width is a resolution-independent quantity. A line width of 1 will draw a line that is 1/1000 the width of the image. This is true when used with orthographic cameras and perspective cameras.
 
-To make the width of a line and its points vary per-point of a SOP, the width can be set by adding a point attribute `width` on the SOP being rendered. A value of 2 scales the width at that point by 2 times its normal width. New point attributes can be created with the [Point SOP](https://docs.derivative.ca/Point_SOP "Point SOP") Custom page. To affect per-point width and not affect the line width, use the point attribute `pscale`.
+To make the width of a line and its points vary per-point of a SOP, the width can be set by adding a point attribute `width` on the SOP being rendered. A value of 2 scales the width at that point by 2 times its normal width. New point attributes can be created with the [Point SOP](../SOPs/Point_SOP.md "Point SOP") Custom page. To affect per-point width and not affect the line width, use the point attribute `pscale`.
 
 When you are animating Ortho Width or Field of View, you may want line widths to adjust more realistically. When the parameter "Width Affected by FOV/Ortho Width" is on, the behavior is different: For Ortho cameras, the drawn line width increases when Ortho Width drops below 1, (as if you are zooming into it), and decreases when Ortho Width increases above 1. For Perspective cameras, the drawn line width increases when Field of View drops below 90 degrees, and decreases when Field of View increases above 90 degrees. Note that when the parameter "Width Affected by FOV/Ortho Width" is on, lines are still resolution-independent.
 
 Intro article here from Interactive Immersive HQ: [new-superpowers-touchdesigners-line-mat/](https://interactiveimmersive.io/blog/3d/new-superpowers-touchdesigners-line-mat/)
 
-[lineMAT_Class](https://docs.derivative.ca/LineMAT_Class "LineMAT Class")
+[lineMAT_Class](Line_MAT_Class.md "LineMAT Class")
 
 ## Parameters - Setup Page
 
@@ -30,7 +30,6 @@ This is a general setup page for globally control the shared features of Lines, 
 - Depth Interpolation Model `depthinterpolationmodel` - ⊞ - Depth Interpolation Model depthmodel – a menu to select how the width of line items changes by their distance from the camera.
   * S Curve `scurve` - a bounded range for the width between the near and far planes (Distance Near and Far) that uses S Curve for a more dramatic and yet smooth (referring to the continuity of the curve) changes. The curve shape can be controlled by Bias, Steepness, and Linearize parameters.
   * Inverse Distance `inversedistance` - uses the inverse distance weighting which provides a more visually accurate changes on the final width.
-
 - Inverse Distance Exponent `inversedistanceexponent` - When the Depth Interpolation Model is Inverse Distance, this determines how fast the widths/sizes decrease with distance. If it is set to 1 (default), the width goes down at the rate of 1/r. If it set to 2, it goes down by 1/(r*r), meaning that for lines/dots at a distance r that have a width of w, that line/dot at a distance twice as far away (2r) are 1/4 the width/size as they are at distance r.
 - Distance Near `distancenear` - Specifies a near plane with a certain distance from the camera.
 - Distance Far `distancefar` - Specifies a far plane with a certain distance from the camera.
@@ -47,18 +46,15 @@ This is a general setup page for globally control the shared features of Lines, 
   * Along Camera Z Axis `alongcamerazaxis` - displace the points along Camera Z axis.
   * Along Normal `alongnormal` - displace the points along point's Normal vector.
   * Toward Camera `towardcamera` -
-
 - Lift Scale `liftscale` - For lines that are drawn on top of filled polygons or along their edges, they may be cut off because they are rendered in the same place. To make it look good, you want to lift the line toward the camera or along its normal away from the surface. This parameter scales how far you lift the line off the surface to make it look good without separating them too far.
 - Num Points in Circle `numptsincircle` - When drawing Points in Circle (Polygon) mode, or drawing end-caps, or elbows between edges, this determines how many points you would draw in a full-circle arc to simulate a circular shape. The lower the number, the faster it renders.
 
 ## Parameters - Line Page
-
 - Draw Lines `drawlines` - A toggle to draw the Line polygons.
 - Line Joint Type `linejointtype` - ⊞ - A menu to select the joint type where two lines segments meet.
   * Round `round` - a round joint.
   * Miter `miter` - a sharp miter joint.
   * Bevel `bevel` - a square shaped joint.
-
 - Miter Threshold (deg) `miterthreshold` - Specifies a threshold value in degrees for the Miter joint which alters the joint shape to Bevel joint if the angle between each two lines segments is bigger than this value.
 - Line Start Cap Type `linestartcaptype` - ⊞ - A menu to Specify the end cap type at the Line start. You can control the size of each end cap type in the Cap page.
   * Round `round` -
@@ -66,31 +62,25 @@ This is a general setup page for globally control the shared features of Lines, 
   * Triangle `triangle` - Triangle shaped end cap.
   * Arrow `arrow` - Arrow Shaped end cap.
   * None `none` - No end cap (flat shaped).
-
 - Line End Cap Type `lineendcaptype` - ⊞ - A menu to Specify the end cap type at the Line end.
   * Round `round` - Refer to Line Start Cap Type
   * Square `square` - Refer to Line Start Cap Type
   * Triangle `triangle` - Refer to Line Start Cap Type
   * Arrow `arrow` - Refer to Line Start Cap Type
   * None `none` - Refer to Line Start Cap Type
-
-- Line End Taper Strength `lineendtaperstrength` -
 - Line Near Color `linenearcolor` - ⊞ - Specifies the color value for the Line at the Distance Near plane and any location closer to camera.
   * Red `linenearcolorr` -
   * Green `linenearcolorg` -
   * Blue `linenearcolorb` -
-
 - Line Near Alpha `linenearalpha` - Specifies the alpha value for the Line at the Distance Near plane and any location closer to camera.
 - Specify Line Far Color `specifylinefarcolor` - A toggle to use the far color and interpolate the values between near and far color.
 - Line Far Color `linefarcolor` - ⊞ - Specifies the color value for the Line at the Distance Far plane and beyond (farther from camera).
   * Red `linefarcolorr` -
   * Green `linefarcolorg` -
   * Blue `linefarcolorb` -
-
 - Line Far Alpha `linefaralpha` - Specifies the alpha value for the Line at the Distance Far plane and beyond (farther from camera).
 
 ## Parameters - Point Page
-
 - Draw Points `drawpoints` - A toggle to draw the Points.
 - Point Type `pointtype` - ⊞ - A menu to select the Point type.
   * Circle `circle` - draws circle on each point of the geometry.
@@ -98,29 +88,24 @@ This is a general setup page for globally control the shared features of Lines, 
   * Circle (Sprite) `circlesprite` -
   * Square `square` -
   * Cone `cone` -
-
 - Point Size Multiplier `pointsizemultiplier` - Specifies a scale coefficient to the size of the Point. By default, the point radius size equals to the width at the point’s location from the camera.
 - Point Near Color `pointnearcolor` - ⊞ - Specifies the color value for the Point at the Distance Near plane and any location closer to camera.
   * Red `pointnearcolorr` -
   * Green `pointnearcolorg` -
   * Blue `pointnearcolorb` -
-
 - Point Near Alpha `pointnearalpha` - Specifies the alpha value for the Point at the Distance Near plane and any location closer to camera.
 - Specify Point Far Color `specifypointfarcolor` - A toggle to use the far color and interpolate the values between near and far color.
 - Point Far Color `pointfarcolor` - ⊞ - Specifies the color value for the Point at the Distance Far plane and beyond (farther from camera).
   * Red `pointfarcolorr` -
   * Green `pointfarcolorg` -
   * Blue `pointfarcolorb` -
-
 - Point Far Alpha `pointfaralpha` - Specifies the alpha value for the Point at the Distance Far plane and beyond (farther from camera).
 - Point Lift Direction `pointliftdirection` - ⊞ - A menu to select the the dirction to lift points. See parameter Lift Direction.
   * Toward Camera `towardcamera` -
   * Along Normal `alongnormal` -
-
 - Point Lift Scale `pointliftscale` - see parameter Lift Scale.
 
 ## Parameters - Vector Page
-
 - Draw Vectors `drawvectors` - A toggle to draw the Vectors at each point.
 - Scale `scale` - A scale value which applies on the length of the Vector.
 - Vector Start Cap Type `vectorstartcaptype` - ⊞ - A menu to Specify the end cap type at the Vector start. You can control the size of each end cap type in the Cap page.
@@ -129,20 +114,17 @@ This is a general setup page for globally control the shared features of Lines, 
   * Triangle `triangle` -
   * Arrow `arrow` -
   * None `none` -
-
 - Vector End Cap Type `vectorendcaptype` - ⊞ - A menu to Specify the end cap type at the Vector end. You can control the size of each end cap type in the Cap page.
   * Round `round` -
   * Square `square` -
   * Triangle `triangle` -
   * Arrow `arrow` -
   * None `none` -
-
 - Vector Taper Strength `vectortaperstrength` - : A coefficient to scale the width of end part of the Vector.
 - Vector Near Color `vectornearcolor` - ⊞ - Specifies the color value for the Vector at the Distance Near plane and any location closer to camera.
   * Red `vectornearcolorr` -
   * Green `vectornearcolorg` -
   * Blue `vectornearcolorb` -
-
 - Vector Near Alpha `vectornearalpha` - Specifies the alpha value for the Vector at the Distance Near plane and any location closer to camera.
 - Specify Vector Far Color `specifyvectorfarcolor` - A toggle to use the far color and interpolate the values between near and far color.
 - Vector Far Color `vectorfarcolor` - ⊞ - Specifies the color value for the Vector at the Distance Far plane and beyond (farther from camera).
@@ -152,11 +134,9 @@ This is a general setup page for globally control the shared features of Lines, 
   * Vector Far Color `vectorfarcolorr` -
   * Vector Far Color `vectorfarcolorg` -
   * Vector Far Color `vectorfarcolorb` -
-
 - Vector Far Alpha `vectorfaralpha` - Specifies the alpha value for the Vector at the Distance Far plane and beyond (farther from camera).
 
 ## Parameters - Caps Page
-
 - Round Width `roundwidth` - Specifies a scale to the width of Round end caps.
 - Round Height `roundheight` - Specifies a scale to the height of Round end caps.
 - Square Width `squarewidth` - Specifies a scale to the width of Square end caps.
@@ -172,7 +152,6 @@ This is a general setup page for globally control the shared features of Lines, 
 - End Caps Pullback `endcappullback` - By default (0), the end cap goes beyond the end point of the line so that the center of a circular endcap is right at the end point. Setting this to 1 makes the tip of the end cap positioned exactly at the end point.
 
 ## Parameters - Attributes Page
-
 - Line Position Attribute `lineposatt` -
 - Line Width Attribute `linewidthatt` -
 - Line Color Attribute `linecoloratt` -
@@ -183,13 +162,11 @@ This is a general setup page for globally control the shared features of Lines, 
   * SOP Attribute `sopattrib` -
   * Instance Custom Attribute (SOP Space) `instanceattribsop` -
   * Instance Custom Attribute (World Space) `instanceattribworld` -
-
-- Vector Attribute `vectoratt` - ⊞ - Specify the geometry [Attribute](https://docs.derivative.ca/Attribute "Attribute") to use to render the Vector. Some standard attribute are: N, P, Cd, uv, however it is possible to specify a custom attribute. Note that this value is case sensitive, ensure that the it matches with the name of the attribute for that point/vector.
+- Vector Attribute `vectoratt` - ⊞ - Specify the geometry [Attribute](../Glossary/Attribute.md "Attribute") to use to render the Vector. Some standard attribute are: N, P, Cd, uv, however it is possible to specify a custom attribute. Note that this value is case sensitive, ensure that the it matches with the name of the attribute for that point/vector.
   * N (Point Normal X, Y, Z) `N` -
   * P (Point Position X, Y, Z) `P` -
   * Cd (Point Color red, green, blue, alpha) `Cd` -
   * uv (Point Texture Coordinates U,V,W) `uv` -
-
 - Vector Instance Custom Attribute Index `vectorcusattribidx` - When instancing is used, you can get the XYZ vector from an instance attribute. This is the index of the X value in the Instance OP.
 
 ## Parameters - Deform Page
@@ -200,9 +177,8 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
   * From a SOP `sop` -
   * From another MAT `mat` -
   * From a DeformIn MAT `deformin` -
-
 - SOP with Capture Data `targetsop` - Specifies the SOP that contains the deform capture attributes.
-- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](https://docs.derivative.ca/Bone_Group_SOP "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
+- pCaptPath Attrib `pcaptpath` - Specifies the name of the pCaptPath attribute to use. When your geometry has been put through a [Bone Group SOP](../SOPs/Bone_Group_SOP.md "Bone Group SOP"), the attributes will be split into names like pCaptPath0, pCaptPath1. You can only render 1 bone group at a time, so this should match the group you are rendering with this material.
 - pCaptData Attrib `pcaptdata` - Much like pCaptPath Attrib.
 - Skeleton Root Path `skelrootpath` - Specifies the path to the COMP where the root of the skeleton is located.
 - MAT `mat` - When obtaining deform data from a MAT or a Deform In MAT, this is where that MAT is specified.
@@ -214,7 +190,6 @@ Refer to the [ Deform Article](https://docs.derivative.ca/Deforming_Geometry_\(S
 Blending
 
 [Blending](https://docs.derivative.ca/Blending "Blending") is summing the color value of the pixel being drawn and the pixel currently present in the Color-Buffer. Blending is typically used to simulate [Transparency](https://docs.derivative.ca/Transparency "Transparency"). The blending equation is: `Final Pixel Value = (Source Blend * Source Color) + (Dest Blend * Destination Color)`
-
 - Blending (Transparency) `blending` - This toggle enables and disables blending. However see the wiki article [Transparency](https://docs.derivative.ca/Transparency "Transparency").
 - Blend Operation `blendop` - ⊞ -
   * Add `add` -
@@ -222,7 +197,6 @@ Blending
   * Reverse Subtract `revsubtract` -
   * Minimum `minimum` -
   * Maximum `maximum` -
-
 - Source Color * `srcblend` - ⊞ - This value is multiplied by the color value of the pixel that is being written to the Color-Buffer (also know as the Source Color).
   * Zero `zero` -
   * Dest Color `dcol` -
@@ -237,7 +211,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Destination Color * `destblend` - ⊞ - This value is multiplied by the color value of the pixel currently in the Color-Buffer (also known as the Destination Color).
   * One `one` -
   * Src Color `scol` -
@@ -254,7 +227,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Separate Alpha Function `separatealphafunc` - This toggle enables and disables separate blending options for the alpha values.
 - Alpha Blend Operation `blendopa` - ⊞ -
   * Add `add` -
@@ -262,7 +234,6 @@ Blending
   * Reverse Subtract `revsubtract` -
   * Minimum `minimum` -
   * Maximum `maximum` -
-
 - Source Alpha * `srcblenda` - ⊞ - This value is multiplied by the alpha value of the pixel that is being written to the Color-Buffer (also know as the Source Alpha).
   * Zero `zero` -
   * Dest Color `dcol` -
@@ -277,7 +248,6 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Destination Alpha * `destblenda` - ⊞ - This value is multiplied by the alpha value of the pixel currently in the Color-Buffer (also known as the Destination Alpha).
   * One `one` -
   * Src Color `scol` -
@@ -294,19 +264,16 @@ Blending
   * One Minus Constant Color `omconstantcol` -
   * Constant Alpha `constanta` -
   * One Minus Constant Alpha `omconstanta` -
-
 - Blend Constant Color `blendconstant` - ⊞ -
   * Blend Constant Color `blendconstantr` -
   * Blend Constant Color `blendconstantg` -
   * Blend Constant Color `blendconstantb` -
-
 - Blend Constant Alpha `blendconstanta` -
 - Legacy Alpha Behavior `legacyalphabehavior` -
 - Post-Mult Color by Alpha `postmultalpha` - Multiplies the color by alpha after all other operations have taken place.
 - Point Color Pre-Multiply `pointcolorpremult` - ⊞ -
   * Already Pre-Multiplied By Alpha `alreadypremult` -
   * Pre-Multiply By Alpha in Shader `premultinshader` -
-
 - Depth Test `depthtest` - Enables and disables the Depth-Test. If the depth-test is disabled, depths values aren't written to the Depth-Buffer.
 - Depth Test Function `depthfunc` - ⊞ - The depth value of the pixel being drawn is compared to the depth value currently in the depth-buffer using this function. If the test passes then the pixel is drawn to the Frame-Buffer. If the test fails the pixel is discarded and no changes are made to the Frame-Buffer.
   * Less Than `less` -
@@ -332,7 +299,6 @@ For a more detailed description of Depth-Testing, refer to the [Depth-Test](http
   * Less Than or Equal `lessorequal` -
   * Greater Than `greater` -
   * Greater Than or Equal `greaterorequal` -
-
 - Alpha Threshold `alphathreshold` - This value is what the pixel's alpha is compared to to determine if the pixel should be drawn. Pixels with alpha greater than the Alpha Threshold will be drawn. Pixels with alpha less than or equal to the Alpha Threshold will not be drawn.
 - Wire Frame `wireframe` - ⊞ - Enables and disables wire-frame rendering with the option of OpenGL Tesselated or Topology based wireframes.
   * Off `off` -
@@ -352,7 +318,6 @@ Alpha-testing allows you to choose to draw or not draw a pixel based on its alph
   * Back Faces `backfaces` - Cull back faces, render front faces.
   * Front Faces `frontfaces` - Cull front faces, render back faces.
   * Both Faces `bothfaces` - Cull both faces, render nothing.
-
 - Polygon Depth Offset `polygonoffset` - Turns on the polygon offset feature.
 - Offset Factor `polygonoffsetfactor` -
 - Offset Units `polygonoffsetunits` -
@@ -375,7 +340,7 @@ Polygon Depth Offset
 
 This feature pushes the polygons back into space a tiny fraction. This is useful when you are rendering two polygons directly on-top of each other and are experiencing [Z-Fighting](https://docs.derivative.ca/Z-Fighting "Z-Fighting"). Refer to [Polygon Depth Offset](https://docs.derivative.ca/Polygon_Depth_Offset "Polygon Depth Offset") for more information. This is also an important feature when doing [shadows](https://docs.derivative.ca/Shadows "Shadows").
 
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
+- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. Only available when a [Working Color Space](https://docs.derivative.ca/Working_Color_Space "Working Color Space") is active for the project. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
   * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
   * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
   * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
@@ -387,127 +352,6 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
   * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
   * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
-- Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
-  * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
-  * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
-  * Standard (SDR) `sdr` - Will treat the Parameter Color Space as SDR for it's reference white value.
-  * High (HDR) `hdr` - Will treat the Parameter Color Space as HDR for it's reference white value.
-  * UI `ui` - Will treat the Parameter Color Space as UI for it's reference white value. This uses the 'UI Reference White Nits' value for it's brightness.
-
-- Parameter Color Space `parmcolorspace` - ⊞ - Controls how all color parameters on this node are interpreted. The color values as treated as being in the selected color space, and are converted to the Working [Color Space](https://docs.derivative.ca/Color_Space "Color Space") before they are used as part of the node's operation. Note that this does not change the color space of the node itself, as that is always in the Working Color Space.
-  * sRGB `srgb` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with sRGB transfer function. Considered an SDR color space with respect to Reference White.
-  * sRGB - Linear `srgblinear` - [sRGB](https://en.wikipedia.org/wiki/SRGB) color space, with linear transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.601 (NTSC) `rec601ntsc` - [Rec.601](https://en.wikipedia.org/wiki/Rec._601) with NTSC primaries color space, with Rec.601 transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.709 `rec709` - [Rec.709](https://en.wikipedia.org/wiki/Rec._709) color space, with Rec.709 (same as Rec.2020) transfer function. Considered an SDR color space with respect to Reference White.
-  * Rec.2020 `rec2020` - [Rec.2020](https://en.wikipedia.org/wiki/Rec._2020) color space, with Rec.2020 (same as Rec.709) transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 `dcip3` - [DCI-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * DCI-P3 (D60) `dcip3d60` - [DCI-P3 "D60 sim"](https://en.wikipedia.org/wiki/DCI-P3) color space, with D60 white point, and 2.6 gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Display-P3 (D65) `displayp3d65` - [Display-P3](https://en.wikipedia.org/wiki/DCI-P3) color space, with D65 white point, and sRGB gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACES2065-1 `aces2065-1` - [ACES 2065-1](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP0) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * ACEScg `acescg` - [ACEScg](https://en.wikipedia.org/wiki/Academy_Color_Encoding_System) (also known as ACES AP1) color space, with a linear gamma transfer function. Considered an HDR color space with respect to Reference White.
-  * Passthrough `passthrough` - When selected, the color values will be used as-is in the operation, without any modification or attempt to convert them into the Working Color Space.
-
 - Parameter Reference White `parmreferencewhite` - ⊞ - When converting a parameter color value to the Working Color Space, this controls how it should be treated with respect to [Reference White](https://docs.derivative.ca/Color_Space#Reference_White "Color Space"). If the Working Color Space is the same Reference White, then no adjustment is done. If they are different, then the Reference White level (brightness) of this color will be adjusted to the range expected by the Working Color Space. For example if the project is set to have a SDR Reference White of 120 nits, and the HDR Reference White is 80 nits, then a color of (1, 1, 1), which is 120 nits in the SDR color space, will be converted to be (1.5, 1.5, 1.5), which is 120 nits still in the HDR Working Color Space.
   * Default For Color Space `default` - Will use either the SDR or the HDR Reference White, based on the color space selected.
   * Use Parent Panel `useparent` - Will use the Reference White that the parent panel has selected. If the top-level panel also has 'Use Parent' selected, then 'UI Reference White' will be used.
@@ -517,7 +361,7 @@ This feature pushes the polygons back into space a tiny fraction. This is useful
 
 ## Info CHOP Channels
 
-Extra Information for the Line MAT can be accessed via an [Info CHOP](https://docs.derivative.ca/Info_CHOP "Info CHOP").
+Extra Information for the Line MAT can be accessed via an [Info CHOP](../CHOPs/Info_CHOP.md "Info CHOP").
 
 ###
 
@@ -528,19 +372,11 @@ Extra Information for the Line MAT can be accessed via an [Info CHOP](https://do
 ## Common Operator Info Channels
 
   * total_cooks - Number of times the operator has cooked since the process started.
-
   * cook_time - Duration of the last cook in milliseconds.
-
   * cook_frame - Frame number when this operator was last cooked relative to the component timeline.
-
   * cook_abs_frame - Frame number when this operator was last cooked relative to the absolute time.
-
   * cook_start_time - Time in milliseconds at which the operator started cooking in the frame it was cooked.
-
   * cook_end_time - Time in milliseconds at which the operator finished cooking in the frame it was cooked.
-
   * cooked_this_frame - 1 if operator was cooked this frame.
-
   * warnings - Number of warnings in this operator if any.
-
   * errors - Number of errors in this operator if any.
