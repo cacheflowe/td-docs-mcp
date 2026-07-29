@@ -20,7 +20,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "mcp>=1.0.0",
+    "mcp<2.0.0",
     "crawl4ai>=0.4.0",
     "thefuzz>=0.22.0",
     "aiofiles>=24.0.0",
