@@ -42,7 +42,14 @@ The MCP tools are reactive — Copilot calls them when it thinks they're relevan
    uv sync
    ```
 
-3. [Optional] Crawl the TouchDesigner documentation. There's already a recent crawl in the `td_docs/` directory, so this step is optional unless you want the latest docs or want to customize the process. The crawler fetches documentation from the official TD docs and saves it as markdown files in `td_docs/`. Run the crawler with:
+3. [Optional] Crawl the TouchDesigner documentation. There's already a recent crawl in the `td_docs/` directory, so this step is optional unless you want the latest docs or want to customize the process. The crawler fetches documentation from the official TD docs and saves it as markdown files in `td_docs/`.
+
+   Install Playwright browser binaries (required for crawl4ai):
+   ```bash
+   uv run playwright install
+   ```
+
+   Run the crawler:
    ```bash
    uv run python -m td_docs_mcp.crawler
    ```
