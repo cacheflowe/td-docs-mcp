@@ -10,9 +10,7 @@ import os
 import re
 from pathlib import Path
 
-from mcp.server import Server
-from mcp.server.stdio import stdio_server
-from mcp.types import Tool, TextContent
+from mcp.server.fastmcp import FastMCP
 
 from thefuzz import fuzz, process
 
@@ -245,103 +243,97 @@ def get_python_class(class_name: str) -> str | None:
     return None
 
 
-# Create the MCP server
-server = Server("td-docs-mcp")
+# Create the FastMCP server
+mcp = FastMCP("td-docs-mcp")
 
 
-@server.list_tools()
-async def list_tools() -> list[Tool]:
-    """List available tools."""
-    return [
-        Tool(
-            name="search_touchdesigner_docs",
-            description=(
-                "Search TouchDesigner documentation using fuzzy matching. "
-                "Returns a list of matching documents with relevance scores. "
-                "Use this to find documentation about operators, Python classes, "
-                "or any TouchDesigner concept."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "Search query (e.g., 'Noise TOP', 'moviefileinTOP', 'Python OP class')"
-                    },
-                    "limit": {
-                        "type": "integer",
-                        "description": "Maximum number of results to return (default: 10)",
-                        "default": 10
-                    }
-                },
-                "required": ["query"]
-            }
-        ),
-        Tool(
-            name="read_operator_doc",
-            description=(
-                "Read a specific TouchDesigner documentation file by path. "
-                "Use the path returned from search_touchdesigner_docs. "
-                "By default, also includes the associated Python class "
-                "documentation if it exists (e.g., BlurTOP_Class for Blur_TOP)."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "path": {
-                        "type": "string",
-                        "description": "Relative path to the documentation file (e.g., 'TOPs/Noise_TOP.md')"
-                    },
-                    "include_python_class": {
-                        "type": "boolean",
-                        "description": "Also include the Python class doc for this operator (default: true)",
-                        "default": True
-                    }
-                },
-                "required": ["path"]
-            }
-        ),
-        Tool(
-            name="list_categories",
-            description=(
-                "List all available TouchDesigner documentation categories "
-                "with the number of documents in each. Categories include "
-                "TOPs, CHOPs, DATs, SOPs, MATs, COMPs, and Python."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {}
-            }
-        ),
-        Tool(
-            name="get_python_class",
-            description=(
-                "Get documentation for a specific TouchDesigner Python class. "
-                "This is a shortcut for finding Python API documentation. "
-                "Examples: 'OP', 'TOP', 'CHOP', 'Par', 'Cell', 'Matrix', 'Position'"
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "class_name": {
-                        "type": "string",
-                        "description": "Name of the Python class (e.g., 'OP', 'TOP', 'moviefileinTOP')"
-                    }
-                },
-                "required": ["class_name"]
-            }
-        ),
-        Tool(
-            name="help",
-            description=(
-                "Show a summary of all available TD-DOCS-MCP tools with usage examples."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {}
-            }
-        ),
-    ]
+@mcp.tool()
+async def search_touchdesigner_docs(query: str, limit: int = 10) -> str:
+    """Search TouchDesigner documentation using fuzzy matching.
+
+    Returns a list of matching documents with relevance scores.
+    Use this to find documentation about operators, Python classes,
+    or any TouchDesigner concept.
+    """
+    results = search_docs(query, limit)
+
+    if not results:
+        return (
+            f"No documentation found matching '{query}'. "
+            "Try a different search term or check if documentation has been crawled."
+        )
+
+    output_lines = [f"Found {len(results)} results for '{query}':\n"]
+    for i, result in enumerate(results, 1):
+        output_lines.append(
+            f"{i}. [{result['category']}] {result['title']} "
+            f"(score: {result['score']}) - path: {result['path']}"
+        )
+
+    return "\n".join(output_lines)
+
+
+@mcp.tool()
+async def read_operator_doc(path: str, include_python_class: bool = True) -> str:
+    """Read a specific TouchDesigner documentation file by path.
+
+    Use the path returned from search_touchdesigner_docs.
+    By default, also includes the associated Python class
+    documentation if it exists (e.g., BlurTOP_Class for Blur_TOP).
+    """
+    content = read_doc(path)
+
+    if content is None:
+        return f"Documentation file not found: {path}"
+
+    if include_python_class:
+        class_content, class_path = find_class_doc_for_operator(path)
+        if class_content:
+            content += f"\n\n---\n\n# Python Class Documentation\n\n*Source: {class_path}*\n\n{class_content}"
+            if len(content) > MAX_CONTENT_LENGTH:
+                content = content[:MAX_CONTENT_LENGTH]
+                content += f"\n\n[Content truncated at {MAX_CONTENT_LENGTH} characters]"
+
+    return content
+
+
+@mcp.tool()
+async def list_categories_tool() -> str:
+    """List all available TouchDesigner documentation categories
+    with the number of documents in each. Categories include
+    TOPs, CHOPs, DATs, SOPs, MATs, COMPs, and Python.
+    """
+    categories = list_categories()
+
+    if not categories:
+        return (
+            "No documentation categories found. "
+            "Run the crawler first: python -m td_docs_mcp.crawler"
+        )
+
+    output_lines = ["Available TouchDesigner documentation categories:\n"]
+    for cat in categories:
+        output_lines.append(f"- {cat['name']}: {cat['doc_count']} documents")
+
+    return "\n".join(output_lines)
+
+
+@mcp.tool()
+async def get_python_class_doc(class_name: str) -> str:
+    """Get documentation for a specific TouchDesigner Python class.
+
+    This is a shortcut for finding Python API documentation.
+    Examples: 'OP', 'TOP', 'CHOP', 'Par', 'Cell', 'Matrix', 'Position'
+    """
+    content = get_python_class(class_name)
+
+    if content is None:
+        return (
+            f"Python class documentation not found for: {class_name}. "
+            f"Try searching with search_touchdesigner_docs instead."
+        )
+
+    return content
 
 
 HELP_TEXT = """\
@@ -382,106 +374,17 @@ Typical workflow:
 """
 
 
-@server.call_tool()
-async def call_tool(name: str, arguments: dict) -> list[TextContent]:
-    """Handle tool calls."""
-
-    if name == "search_touchdesigner_docs":
-        query = arguments.get("query", "")
-        limit = arguments.get("limit", 10)
-
-        results = search_docs(query, limit)
-
-        if not results:
-            return [TextContent(
-                type="text",
-                text=f"No documentation found matching '{query}'. "
-                     "Try a different search term or check if documentation has been crawled."
-            )]
-
-        # Format results
-        output_lines = [f"Found {len(results)} results for '{query}':\n"]
-        for i, result in enumerate(results, 1):
-            output_lines.append(
-                f"{i}. [{result['category']}] {result['title']} "
-                f"(score: {result['score']}) - path: {result['path']}"
-            )
-
-        return [TextContent(type="text", text="\n".join(output_lines))]
-
-    elif name == "read_operator_doc":
-        path = arguments.get("path", "")
-        include_python_class = arguments.get("include_python_class", True)
-
-        content = read_doc(path)
-
-        if content is None:
-            return [TextContent(
-                type="text",
-                text=f"Documentation file not found: {path}"
-            )]
-
-        # Append Python class documentation if available
-        if include_python_class:
-            class_content, class_path = find_class_doc_for_operator(path)
-            if class_content:
-                content += f"\n\n---\n\n# Python Class Documentation\n\n*Source: {class_path}*\n\n{class_content}"
-                # Re-apply truncation to combined content
-                if len(content) > MAX_CONTENT_LENGTH:
-                    content = content[:MAX_CONTENT_LENGTH]
-                    content += f"\n\n[Content truncated at {MAX_CONTENT_LENGTH} characters]"
-
-        return [TextContent(type="text", text=content)]
-
-    elif name == "list_categories":
-        categories = list_categories()
-
-        if not categories:
-            return [TextContent(
-                type="text",
-                text="No documentation categories found. "
-                     "Run the crawler first: python -m td_docs_mcp.crawler"
-            )]
-
-        output_lines = ["Available TouchDesigner documentation categories:\n"]
-        for cat in categories:
-            output_lines.append(f"- {cat['name']}: {cat['doc_count']} documents")
-
-        return [TextContent(type="text", text="\n".join(output_lines))]
-
-    elif name == "get_python_class":
-        class_name = arguments.get("class_name", "")
-
-        content = get_python_class(class_name)
-
-        if content is None:
-            return [TextContent(
-                type="text",
-                text=f"Python class documentation not found for: {class_name}. "
-                     f"Try searching with search_touchdesigner_docs instead."
-            )]
-
-        return [TextContent(type="text", text=content)]
-
-    elif name == "help":
-        return [TextContent(type="text", text=HELP_TEXT)]
-
-    else:
-        return [TextContent(type="text", text=f"Unknown tool: {name}")]
+@mcp.tool()
+async def help_tool() -> str:
+    """Show a summary of all available TD-DOCS-MCP tools with usage examples."""
+    return HELP_TEXT
 
 
 def main():
     """Main entry point for the MCP server."""
-    async def run():
-        async with stdio_server() as (read_stream, write_stream):
-            await server.run(
-                read_stream,
-                write_stream,
-                server.create_initialization_options()
-            )
-
-    asyncio.run(run())
+    mcp.run()
 
 
 if __name__ == "__main__":
     main()
+
